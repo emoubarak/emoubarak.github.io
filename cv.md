@@ -1,33 +1,59 @@
 # El Mahdi MOUBARAK
-**Senior Software Engineer · SaaS & AI**
-*Full-stack engineer and **pragmatic builder** with 6+ years of experience delivering SaaS products. I specialize in shipping clean features, refactoring legacy systems, and automating the boring stuff. Whether leveraging **AI-assisted development** to accelerate delivery or solving complex problems with simple, robust logic, I am dedicated to **high-quality craftsmanship** over unnecessary abstractions.*
+**Founder & Full-Stack Engineer · Software, SaaS & AI**
+*I build software and AI systems **end-to-end**: specs, architecture, code, deploy. 6 years across **cybersecurity, healthcare and fintech**, mostly as the only engineer on the project. I work with founders and agencies who need something **built properly and shipped fast**.*
 
 ---
 
 ## 🚀 Experience
 
-### **Board of Cyber** | Full-Stack Engineer | Cybersecurity SaaS
-*Mar 2023 - Feb 2026 | Paris, France (Remote)*
-
-Core contributor to Security Rating®, a cyber posture assessment SaaS used by **200+ organizations**.
+### **EMM** | Founder & Software Engineer
+*Mar 2026 - Present | France*
 
 * **Key Achievements:**
-    * **Continuous Delivery:** Shipped platform features across the frontend, sustaining a **high-cadence release cycle** that supported rapid user base scaling.
-    * **Quality & Automation:** Optimized **CI/CD pipelines** and established comprehensive test coverage with **Spectator**, ensuring **100% regression-free deployments**.
-    * **Security Tooling:** Engineered an automated **Python-based nmap** vulnerability scanning probe, significantly accelerating **external attack surface** data collection.
-    * **Technical Debt Reduction:** Led incremental **Angular migrations** and major dependency upgrades, systematically modernizing the stack without disrupting the product roadmap.
+    * **Independent practice:** Web apps, SaaS and AI automation for founders and agencies, delivered end to end.
+    * **AI Training:** Delivered corporate AI training for **DRIVECO** (two tailored FR/EN sessions with live use cases).
 
 ---
 
-### **ALTAO — Health Care Sector** | Full-Stack Engineer
-*Sep 2021 - Sep 2022 | Lille, France (On-site)*
-
-Architected a **greenfield** medical platform replacing a fragmented legacy workflow.
+### **Piktechs** | Founder
+*Mar 2026 - Present*
 
 * **Key Achievements:**
-    * **Product Ownership:** Led the product lifecycle from medical requirement workshops to technical design, translating complex health domain constraints into a **scalable architecture**.
-    * **AI/ML Integration:** Built the core platform from scratch and integrated **prediction algorithms**, turning raw **Data Science models** into a production-ready system for doctors.
-    * **Infrastructure:** Provisioned and managed the complete **AWS infrastructure** autonomously (**EC2, Route53, Amplify**), guaranteeing **high availability** and secure auditing.
+    * **B2B SaaS for events & networking:** digital business cards, lead capture, attendee tracking (**Next.js, TypeScript, Supabase**).
+    * **Full ownership:** Design, build and run the whole product — architecture, frontend, backend, infrastructure.
+
+---
+
+### **KSUR Services** | CTO
+*Mar 2026 - Present | France · Morocco*
+
+* **Key Achievements:**
+    * **Technical leadership:** Own the agency's full technical stack and delivery, from architecture to production.
+    * **Client delivery:** Build tailored web & mobile applications and **AI-powered automation workflows** for clients.
+
+---
+
+### **Board of Cyber** | Full-Stack Engineer | Cybersecurity SaaS
+*Mar 2023 - Feb 2026 | Paris, France (Remote)*
+
+Core contributor to Security Rating®, a SaaS cyber-rating platform used by **200+ organizations** (Angular, TypeScript, Python).
+
+* **Key Achievements:**
+    * **High-cadence delivery:** Solved **700+ tickets** across platform, back office and manager office in a high-cadence release cycle.
+    * **Security Tooling:** Engineered a **Python-based nmap** vulnerability scanning probe automating **attack surface** data collection.
+    * **Quality & Modernization:** Contributed to **Angular migration**, test coverage (**Spectator**) and **CI/CD optimization**.
+
+---
+
+### **ALTAO Santé — Health Care Sector** | Full-Stack Engineer
+*Sep 2021 - Sep 2022 | Lille, France (On-site)*
+
+Sole engineer on a **greenfield** medical platform for hospital discharge summary correction (Vue.js, Django, PostgreSQL).
+
+* **Key Achievements:**
+    * **Impact:** Processed **5,000+ documents** through the platform, saving hospitals **€700,000**.
+    * **Product Ownership:** Ran requirement sessions directly with doctors, wrote specs, integrated **ML algorithms** from the Data Science team.
+    * **Infrastructure:** Deployed and monitored the full **AWS infrastructure** autonomously (**EC2, Route53, Amplify**).
 
 ---
 
@@ -35,8 +61,8 @@ Architected a **greenfield** medical platform replacing a fragmented legacy work
 *Mar 2021 - Jun 2021 | Lille, France (Remote)*
 
 * **Key Achievements:**
-    * **Mobile Transition:** Built and shipped the V1 **React Native** mobile application from scratch, successfully transitioning the business from a web-only model to a **native mobile experience**.
-    * **UX & Integration:** Implemented a **gamified UI** to drive retention and co-architected **real-time APIs** with backend teams for **live order tracking**.
+    * **Sole mobile engineer** on the first version of a **React Native** grocery delivery app.
+    * **Frontend ownership:** Owned the full frontend from designer wireframes to production-ready interface.
 
 ---
 
@@ -44,35 +70,33 @@ Architected a **greenfield** medical platform replacing a fragmented legacy work
 *Apr 2019 - Aug 2019 | Seclin, France (On-site)*
 
 * **Key Achievements:**
-    * **Process Optimization:** Developed a centralized R&D dashboard with **MQTT broker integration**, eliminating manual debugging and saving **hours of engineering time** per week.
+    * **Process Optimization:** Built an internal R&D debugging tool (**Vue.js, Spring Boot, MQTT**) improving team development speed by **70%**.
 
 ---
 
-## 🛠 Projects & Open Source
+## 🛠 Key Projects
+
+### **Piktechs — B2B SaaS**
+* **Highlights:** B2B **NFC cards & event SaaS** — digital business cards, lead capture, attendee tracking (**Next.js, TypeScript, Supabase, Stripe**).
 
 ### **PDFold — Indie SaaS**
-*Mar 2026*
-* **Highlights:** Designed and shipped a **multi-pass AI pipeline** handling **OCR**, layout understanding, and structured **Markdown** generation. Shipped the end-to-end product (**Next.js, TypeScript, Gemini API**) with a freemium model and automated **Stripe billing**.
+* **Highlights:** **AI OCR + Vision pipeline** converting PDFs to structured **Markdown**, 11 languages (**Next.js, Gemini API, Stripe**).
 
-### **env-doctor — Open Source CLI**
-*Feb 2026*
-* **Highlights:** Built and published **@metamarkets/env-doctor** on **npm**. Engineered a **schema-driven CLI** validation tool for environment variables with robust **type checking**.
-
-### **Video Generator — Flask & Multi-modal AI**
-*Jan 2023*
-* **Highlights:** Engineered an early-stage multi-modal pipeline (**GPT, DALL-E, ElevenLabs**) to automate video generation from text scripts. Orchestrated multiple APIs for voice narration and image generation.
+### **Text-to-Short-Video — Multi-modal AI**
+* **Highlights:** AI video generation pipeline (**GPT, ElevenLabs, FFmpeg**) automating video creation from text scripts.
 
 ### **E-commerce Store — Shopify**
-*Mar 2021 - Sep 2021*
-* **Highlights:** Built and operated a profitable online store managing the entire lifecycle (SEO, marketing, tech). Developed **custom plugins** and themes using **Liquid**.
+* **Highlights:** Built and operated an online store end to end with **real revenue** — SEO, marketing, custom **Liquid** themes and plugins.
 
 ---
 
-## 🛠 Technical Expertise
+## 🛠 Skills
 
-* **Languages & Frameworks:** TypeScript, Python, Angular, Vue.js, React Native, Next.js, Django, Node.js
-* **Cloud & DevOps:** AWS (EC2, Route53, Amplify), Docker, PostgreSQL, CI/CD, GitHub, Vercel, Supabase
-* **AI & Tooling:** AI Pair Programming, Claude/Gemini APIs, Multi-pass OCR/Vision pipelines, OpenClaw, Claude Code, Claude Cowork, Paperclip, Agent Orchestration
+* **Web & Mobile Dev:** TypeScript, JavaScript · Next.js, React, React Native · Angular, Vue.js · Python, Django, Flask · PostgreSQL, Supabase
+* **Cloud & DevOps:** AWS (EC2, Route53, Amplify) · Docker, Git, CI/CD · Vercel
+* **AI & Automation:** AI Agents, Agentic Dev · LLM APIs, Local LLMs · RAG, Vectorization · OCR & Vision pipelines · ElevenLabs, Voice AI
+* **E-commerce:** Shopify API, Liquid · Stripe · SEO
+* **Languages:** French (Native) · English (C1) · Spanish
 
 ---
 
@@ -86,7 +110,13 @@ Architected a **greenfield** medical platform replacing a fragmented legacy work
 
 ## 🎓 Education
 
-* **Master's Degree in Computer Science** | IMT Nord Europe (2017 - 2022)
-    * *Focus:* Full-stack development, distributed systems, cybersecurity, networks.
-* **French Baccalaureate, Mathematics** | Lycée Français Louis Massignon (2017)
+* **Engineering Degree in CS, Networks & Telecoms** | IMT Nord Europe (2017 - 2022)
+    * *Location:* Lille, France.
+* **Scientific Baccalaureate, Math Major** | Lycée Français Louis-Massignon (2017)
     * *Network:* AEFE (Casablanca, Morocco).
+
+---
+
+## 📌 Availability
+
+* **Available for:** freelance missions · SaaS & AI development · automation · tech consulting

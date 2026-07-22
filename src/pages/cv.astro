@@ -4,39 +4,67 @@ import Card from '../components/Card.astro';
 
 const experiences = [
   {
+    company: "EMM",
+    role: "Founder & Software Engineer",
+    period: "Mar 2026 – Present",
+    location: "France",
+    summary: "Independent software engineering practice: web apps, SaaS and AI automation for founders and agencies, end to end.",
+    achievements: [
+      "Delivered corporate AI training for DRIVECO (two tailored FR/EN sessions with live use cases).",
+    ],
+  },
+  {
+    company: "Piktechs",
+    role: "Founder",
+    period: "Mar 2026 – Present",
+    location: "France",
+    summary: "B2B SaaS for events & networking: digital business cards, lead capture, attendee tracking (Next.js, TypeScript, Supabase).",
+    achievements: [
+      "Design, build and run the whole product: architecture, frontend, backend, infrastructure.",
+    ],
+  },
+  {
+    company: "KSUR Services",
+    role: "CTO",
+    period: "Mar 2026 – Present",
+    location: "France · Morocco",
+    summary: "Own the agency's full technical stack and delivery, from architecture to production.",
+    achievements: [
+      "Build tailored web & mobile applications and AI-powered automation workflows for clients.",
+    ],
+  },
+  {
     company: "Board of Cyber",
     role: "Full-Stack Engineer",
     period: "Mar 2023 – Feb 2026",
     location: "Paris (Remote)",
-    summary: "Core contributor to Security Rating®, a cyber posture assessment SaaS used by 200+ organizations.",
+    summary: "Core contributor to Security Rating®, a SaaS cyber-rating platform used by 200+ organizations (Angular, TypeScript, Python).",
     achievements: [
-      "Shipped frontend features at high cadence, supporting rapid user base scaling.",
-      "Optimized CI/CD pipelines and established comprehensive test coverage with Spectator — 100% regression-free deploys.",
-      "Engineered an automated Python/nmap vulnerability scanning probe for external attack surface analysis.",
-      "Led incremental Angular migrations and major dependency upgrades without disrupting the product roadmap.",
+      "Solved 700+ tickets across platform, back office and manager office in a high-cadence release cycle.",
+      "Engineered a Python-based nmap vulnerability scanning probe automating attack surface data collection.",
+      "Contributed to Angular migration, test coverage (Spectator) and CI/CD optimization.",
     ],
   },
   {
-    company: "ALTAO",
+    company: "ALTAO Santé",
     role: "Full-Stack Engineer",
     period: "Sep 2021 – Sep 2022",
     location: "Lille (On-site)",
-    summary: "Architected a greenfield medical platform replacing a fragmented legacy workflow.",
+    summary: "Sole engineer on a greenfield medical platform for hospital discharge summary correction (Vue.js, Django, PostgreSQL).",
     achievements: [
-      "Led product lifecycle from medical requirement workshops to technical design.",
-      "Built the core platform and integrated prediction algorithms into a production-ready system for doctors.",
-      "Provisioned and managed full AWS infrastructure (EC2, Route53, Amplify) autonomously.",
+      "Processed 5,000+ documents through the platform, saving hospitals €700,000.",
+      "Ran requirement sessions directly with doctors, wrote specs, integrated ML algorithms from the Data Science team.",
+      "Deployed and monitored the full AWS infrastructure autonomously (EC2, Route53, Amplify).",
     ],
   },
   {
     company: "Deuspi",
-    role: "Mobile Engineer",
+    role: "Mobile Software Engineer",
     period: "Mar 2021 – Jun 2021",
     location: "Lille (Remote)",
-    summary: "Built and shipped the V1 React Native mobile app from scratch.",
+    summary: "Sole mobile engineer on the first version of a React Native grocery delivery app.",
     achievements: [
-      "Transitioned the business from web-only to native mobile.",
-      "Implemented gamified UI for retention and co-architected real-time APIs for live order tracking.",
+      "Owned the full frontend from designer wireframes to production-ready interface.",
     ],
   },
   {
@@ -44,32 +72,32 @@ const experiences = [
     role: "Full-Stack Engineer",
     period: "Apr 2019 – Aug 2019",
     location: "Seclin (On-site)",
-    summary: "Developed a centralized R&D dashboard with MQTT broker integration.",
-    achievements: [
-      "Eliminated manual debugging, saving hours of engineering time per week.",
-    ],
+    summary: "Built an internal R&D debugging tool (Vue.js, Spring Boot, MQTT) improving team development speed by 70%.",
+    achievements: [],
   },
 ];
 
 const education = [
   {
-    degree: "Master's in Computer Science",
+    degree: "Engineering Degree in CS, Networks & Telecoms",
     school: "IMT Nord Europe",
     period: "2017 – 2022",
-    detail: "Full-stack development, distributed systems, cybersecurity, networks.",
+    detail: "Lille, France.",
   },
   {
-    degree: "Baccalaureate, Mathematics",
-    school: "Lycée Français Louis Massignon",
+    degree: "Scientific Baccalaureate, Math Major",
+    school: "Lycée Français Louis-Massignon",
     period: "2017",
     detail: "AEFE network — Casablanca, Morocco.",
   },
 ];
 
 const techGroups = [
-  { label: "Languages & Frameworks", items: ["TypeScript", "Python", "Angular", "Vue.js", "React Native", "Next.js", "Django", "Node.js"] },
-  { label: "Cloud & DevOps", items: ["AWS", "Docker", "PostgreSQL", "CI/CD", "GitHub", "Vercel", "Supabase"] },
-  { label: "AI & Tooling", items: ["AI Pair Programming", "Claude/Gemini APIs", "Multi-pass OCR/Vision", "OpenClaw", "Claude Code", "Claude Cowork", "Paperclip", "Agent Orchestration"] },
+  { label: "Web & Mobile Dev", items: ["TypeScript", "JavaScript", "Next.js", "React", "React Native", "Angular", "Vue.js", "Python", "Django", "Flask", "PostgreSQL", "Supabase"] },
+  { label: "Cloud & DevOps", items: ["AWS (EC2, Route53, Amplify)", "Docker", "Git", "CI/CD", "Vercel"] },
+  { label: "AI & Automation", items: ["AI Agents", "Agentic Dev", "LLM APIs", "Local LLMs", "RAG", "Vectorization", "OCR & Vision pipelines", "ElevenLabs", "Voice AI"] },
+  { label: "E-commerce", items: ["Shopify API", "Liquid", "Stripe", "SEO"] },
+  { label: "Languages", items: ["French (Native)", "English (C1)", "Spanish"] },
 ];
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -82,15 +110,15 @@ const interests = [
 const projects = [
   {
     title: "Piktechs",
-    description: "SaaS platform for digital business cards with analytics, CRM integration, and lead generation tools for professional networking.",
-    tags: ["Next.js", "TypeScript", "SaaS", "Analytics", "CRM", "Stripe"],
+    description: "B2B NFC cards & event SaaS: digital business cards, lead capture, and attendee tracking for professional networking.",
+    tags: ["Next.js", "TypeScript", "Supabase", "SaaS", "NFC", "Stripe"],
     href: "https://piktechs.com/",
   },
   {
     title: "PDFold",
-    description: "Multi-pass AI pipeline for OCR, layout understanding, and Markdown generation. Next.js, Gemini API, Stripe billing.",
+    description: "AI OCR + Vision pipeline converting PDFs to structured Markdown in 11 languages. Next.js, Gemini API, Stripe billing.",
     tags: ["Next.js", "TypeScript", "Gemini", "Stripe", "Supabase", "Replit", "Vercel", "Vapid", "Resend"],
-    href: "https://github.com/emoubarak/pdfold",
+    href: "https://pdfold.com/",
   },
   {
     title: "env-doctor",
@@ -99,29 +127,29 @@ const projects = [
     href: "https://github.com/emoubarak/env-doctor",
   },
   {
-    title: "Video Generator",
-    description: "Multi-modal pipeline orchestrating GPT, DALL-E, and ElevenLabs for automated video generation from scripts.",
-    tags: ["Python", "Flask", "OpenAI API", "DALL-E", "ElevenLabs"],
+    title: "Text-to-Short-Video",
+    description: "AI video generation pipeline orchestrating GPT, ElevenLabs and FFmpeg for automated video creation from text scripts.",
+    tags: ["Python", "Flask", "OpenAI API", "ElevenLabs", "FFmpeg"],
     href: "https://github.com/emoubarak/prompt-to-short-video-generator",
   },
   {
     title: "E-commerce Store",
-    description: "Profitable Shopify store — full lifecycle management including SEO, marketing, and custom Liquid themes.",
+    description: "Shopify store built and operated end to end with real revenue — SEO, marketing, and custom Liquid themes.",
     tags: ["Shopify", "Liquid", "SEO", "Gadget.dev", "Shopify API", "Shopify CLI"],
     href: "https://mon-jouet-montessori.com/",
   },
 ];
 ---
 
-<Layout title="CV — El Mahdi Moubarak" description="Full CV — El Mahdi Moubarak, Senior Software Engineer.">
+<Layout title="CV — El Mahdi Moubarak" description="Full CV — El Mahdi Moubarak, Founder & Full-Stack Engineer.">
   <!-- Header -->
   <section class="mb-12">
     <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
       <div>
         <h1 class="text-2xl font-extrabold mb-1">Curriculum Vitae</h1>
-        <p class="font-mono text-xs text-muted">El Mahdi Moubarak — Senior Software Engineer · SaaS & AI</p>
+        <p class="font-mono text-xs text-muted">El Mahdi Moubarak — Founder & Full-Stack Engineer · Software, SaaS & AI</p>
       </div>
-      <div class="flex gap-3 shrink-0">
+      <div class="flex flex-wrap gap-3 shrink-0">
         <a
           href="https://calendly.com/moubarakelmahdipro/"
           target="_blank"
@@ -130,18 +158,26 @@ const projects = [
           Book a Call
         </a>
         <a
-          href={`${base}/cv.pdf`}
+          href={`${base}/cv-en.pdf`}
           download
           class="font-mono text-xs font-bold b-border px-4 py-2 b-shadow b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block"
         >
-          Download PDF ↓
+          PDF (EN) ↓
+        </a>
+        <a
+          href={`${base}/cv-fr.pdf`}
+          download
+          class="font-mono text-xs font-bold b-border px-4 py-2 b-shadow b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block"
+        >
+          PDF (FR) ↓
         </a>
       </div>
     </div>
 
     <p class="text-sm leading-relaxed text-body">
-      Pragmatic builder with 6+ years of experience. Clean features, legacy refactoring, 
-      automation. AI-assisted development for speed — high-quality craftsmanship over unnecessary abstractions.
+      I build software and AI systems end-to-end: specs, architecture, code, deploy.
+      6 years across cybersecurity, healthcare and fintech, mostly as the only engineer on the project.
+      I work with founders and agencies who need something built properly and shipped fast.
     </p>
   </section>
 
@@ -238,13 +274,22 @@ const projects = [
   <!-- Download CTA -->
   <section>
     <div class="b-border p-6 bg-paper-alt dark:bg-dark-surface text-center">
-      <a
-        href={`${base}/cv.pdf`}
-        download
-        class="font-mono text-xs font-bold b-border px-6 py-3 b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block"
-      >
-        Download CV as PDF ↓
-      </a>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href={`${base}/cv-en.pdf`}
+          download
+          class="font-mono text-xs font-bold b-border px-6 py-3 b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block"
+        >
+          Download CV — English ↓
+        </a>
+        <a
+          href={`${base}/cv-fr.pdf`}
+          download
+          class="font-mono text-xs font-bold b-border px-6 py-3 b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block"
+        >
+          Télécharger le CV — Français ↓
+        </a>
+      </div>
     </div>
   </section>
 </Layout>

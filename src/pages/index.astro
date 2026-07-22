@@ -11,13 +11,13 @@ const latestPosts = allPosts
 const projects = [
   {
     title: "Piktechs",
-    description: "SaaS platform for digital business cards with analytics, CRM integration, and lead generation tools for professional networking.",
-    tags: ["Next.js", "TypeScript", "SaaS", "Analytics", "CRM", "Stripe"],
+    description: "B2B NFC cards & event SaaS: digital business cards, lead capture, and attendee tracking for professional networking.",
+    tags: ["Next.js", "TypeScript", "Supabase", "SaaS", "NFC", "Stripe"],
     href: "https://piktechs.com/",
   },
   {
     title: "PDFold",
-    description: "Multi-pass AI pipeline for OCR, layout understanding, and Markdown generation. Next.js, Gemini API, Stripe billing.",
+    description: "AI OCR + Vision pipeline converting PDFs to structured Markdown in 11 languages. Next.js, Gemini API, Stripe billing.",
     tags: ["Next.js", "TypeScript", "Gemini", "Stripe", "Supabase", "Replit", "Vercel", "Vapid", "Resend"],
     href: "https://pdfold.com/",
   },
@@ -28,14 +28,14 @@ const projects = [
     href: "https://github.com/emoubarak/env-doctor",
   },
   {
-    title: "Video Generator",
-    description: "Multi-modal pipeline orchestrating GPT, DALL-E, and ElevenLabs for automated video generation from scripts.",
-    tags: ["Python", "Flask", "OpenAI API", "DALL-E", "ElevenLabs"],
+    title: "Text-to-Short-Video",
+    description: "AI video generation pipeline orchestrating GPT, ElevenLabs and FFmpeg for automated video creation from text scripts.",
+    tags: ["Python", "Flask", "OpenAI API", "ElevenLabs", "FFmpeg"],
     href: "https://github.com/emoubarak/prompt-to-short-video-generator",
   },
   {
     title: "E-commerce Store",
-    description: "Profitable Shopify store — full lifecycle management including SEO, marketing, and custom Liquid themes.",
+    description: "Shopify store built and operated end to end with real revenue — SEO, marketing, and custom Liquid themes.",
     tags: ["Shopify", "Liquid", "SEO", "Gadget.dev", "Shopify API", "Shopify CLI"],
     href: "https://mon-jouet-montessori.com/",
   },
@@ -45,20 +45,21 @@ const stack = ["TypeScript", "Python", "Angular", "Vue.js", "React Native", "Nex
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<Layout title="El Mahdi Moubarak — Senior Software Engineer">
+<Layout title="El Mahdi Moubarak — Founder & Full-Stack Engineer">
   <!-- Intro -->
   <section class="mb-16">
-    <p class="font-mono text-xs text-muted mb-4">Senior Software Engineer · SaaS & AI</p>
+    <p class="font-mono text-xs text-muted mb-4">Founder & Full-Stack Engineer · Software, SaaS & AI</p>
     <h1 class="text-3xl md:text-4xl leading-tight mb-6">
       El Mahdi <span class="text-accent">Moubarak</span>
     </h1>
     <p class="text-base leading-relaxed max-w-2xl mb-8 text-body">
-      Pragmatic builder with 6+ years of experience. I write clean features, 
-      refactor legacy systems, and automate what should be automated. I use AI-assisted 
-      development to move faster — not to think less.
+      I build software and AI systems end-to-end: specs, architecture, code, deploy.
+      6 years across cybersecurity, healthcare and fintech, mostly as the only engineer
+      on the project. I work with founders and agencies who need something built
+      properly and shipped fast.
     </p>
 
-    <div class="flex gap-3">
+    <div class="flex flex-wrap gap-3">
       <a href={`${base}/cv`} class="font-mono text-xs font-bold b-border px-4 py-2 b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block">
         View CV
       </a>

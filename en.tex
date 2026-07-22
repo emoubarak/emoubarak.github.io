@@ -1,0 +1,168 @@
+% CV El Mahdi Moubarak - Overleaf Template compatible with pdfLaTeX
+\documentclass[a4paper,11pt]{article}
+
+% Required packages
+\usepackage[a4paper,margin=1cm]{geometry}
+\usepackage{fontawesome}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{array}
+
+% Color definitions
+\definecolor{primary}{RGB}{0, 112, 192}
+\definecolor{light}{RGB}{240, 240, 240}
+\definecolor{dark}{RGB}{50, 50, 50}
+
+\hypersetup{colorlinks=true, linkcolor=primary, urlcolor=primary}
+
+\titleformat{\section}
+    {\normalfont\large\bfseries}
+    {}
+    {0em}
+    {\color{primary}\titlerule\vspace{.2em}\MakeUppercase}
+    []
+
+\pagestyle{empty}
+\setlist[itemize]{leftmargin=*,label=\textbullet}
+
+% Light gray divider between experiences
+\newcommand{\expdivider}{\vspace{0.01cm}\noindent{\color{light!60!gray}\rule{\linewidth}{0.4pt}}\vspace{0.01cm}}
+
+\begin{document}
+
+% Header
+\begin{center}
+    {\Huge\textbf{EL MAHDI MOUBARAK}} \\
+    \vspace{0.3cm}
+    {\large Founder \& Full-Stack Engineer · Software, SaaS \& AI} \\
+    \vspace{0.3cm}
+    \begin{tabular}{ccccccc}
+        \faMapMarker\ France & $\cdot$ &
+        \faEnvelope\ \href{mailto:elmahdi@moubarak.dev}{elmahdi@moubarak.dev} & $\cdot$ &
+        \faLinkedin\ \href{https://www.linkedin.com/in/el-mahdi-moubarak}{LinkedIn} & $\cdot$ &
+        \faGithub\ \href{https://github.com/moubarakelmahdi1}{GitHub}
+    \end{tabular}
+\end{center}
+
+\vspace{0.01cm}
+
+\section*{PROFILE}
+I build software and AI systems end-to-end: specs, architecture, code, deploy. 6 years across cybersecurity, healthcare and fintech, mostly as the only engineer on the project. I work with founders and agencies who need something built properly and shipped fast.
+
+\vspace{0.01cm}
+
+\section*{PROFESSIONAL EXPERIENCE}
+
+\noindent\textbf{Founder \& Software Engineer} \hfill \textbf{EMM — France} \\
+\textit{March 2026 – Present}
+\begin{itemize}[nosep]
+    \item Independent software engineering practice: web apps, SaaS and AI automation for founders and agencies, end to end
+    \item Delivered corporate AI training for DRIVECO (two tailored FR/EN sessions with live use cases)
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Founder} \hfill \textbf{Piktechs} \\
+\textit{March 2026 – Present}
+\begin{itemize}[nosep]
+    \item B2B SaaS for events \& networking: digital business cards, lead capture, attendee tracking (Next.js, TypeScript, Supabase)
+    \item Design, build and run the whole product: architecture, frontend, backend, infrastructure
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{CTO} \hfill \textbf{KSUR Services — France · Morocco} \\
+\textit{March 2026 – Present}
+\begin{itemize}[nosep]
+    \item Own the agency's full technical stack and delivery, from architecture to production
+    \item Build tailored web \& mobile applications and AI-powered automation workflows for clients
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Full-Stack Engineer} \hfill \textbf{Board of Cyber — Paris (remote)} \\
+\textit{March 2023 – February 2026}
+\begin{itemize}[nosep]
+    \item Core contributor to \textit{Security Rating®}, a SaaS cyber-rating platform used by 200+ organizations (Angular, TypeScript, Python)
+    \item Solved 700+ tickets across platform, back office and manager office in a high-cadence release cycle
+    \item Engineered a Python-based nmap vulnerability scanning probe automating attack surface data collection
+    \item Contributed to Angular migration, test coverage (Spectator) and CI/CD optimization
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Full-Stack Engineer} \hfill \textbf{ALTAO Santé — Lille} \\
+\textit{Sept. 2021 – Sept. 2022}
+\begin{itemize}[nosep]
+    \item Sole engineer on a greenfield medical platform for hospital discharge summary correction (Vue.js, Django, PostgreSQL)
+    \item Processed 5,000+ documents through the platform, saving hospitals €700,000
+    \item Ran requirement sessions directly with doctors, wrote specs, integrated ML algorithms from the Data Science team
+    \item Deployed and monitored the full AWS infrastructure autonomously (EC2, Route53, Amplify)
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Mobile Software Engineer} \hfill \textbf{Deuspi — Lille} \\
+\textit{March 2021 – June 2021}
+\begin{itemize}[nosep]
+    \item Sole mobile engineer on the first version of a React Native grocery delivery app
+    \item Owned the full frontend from designer wireframes to production-ready interface
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Full-Stack Engineer} \hfill \textbf{Worldline — Seclin} \\
+\textit{April 2019 – August 2019}
+\begin{itemize}[nosep]
+    \item Built an internal R\&D debugging tool (Vue.js, Spring Boot, MQTT) improving team development speed by 70\%
+\end{itemize}
+
+\section*{KEY PROJECTS}
+\noindent\begin{tabularx}{\linewidth}{@{}l X@{}}
+\faRocket\ \textbf{Piktechs} & B2B NFC cards \& event SaaS (Next.js, TypeScript, Supabase, Stripe) \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+\faFileTextO\ \textbf{PDFold} & AI OCR + Vision pipeline converting PDFs to structured Markdown, 11 languages (Next.js, Gemini API, Stripe) \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+\faFilm\ \textbf{Text-to-Short-Video} & AI video generation pipeline (GPT, ElevenLabs, FFmpeg) \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+\faShoppingCart\ \textbf{Shopify Store} & E-commerce store built and operated end to end, real revenue \\
+\end{tabularx}
+\vspace{0.3cm}
+
+\section*{SKILLS}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries}l X@{}}
+Web \& Mobile Dev & TypeScript, JavaScript · Next.js, React, React Native · Angular, Vue.js · Python, Django, Flask · PostgreSQL, Supabase \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+Cloud \& DevOps & AWS (EC2, Route53, Amplify) · Docker, Git, CI/CD · Vercel \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+AI \& Automation & AI Agents, Agentic Dev · LLM APIs, Local LLMs · RAG, Vectorization · OCR \& Vision pipelines · ElevenLabs, Voice AI \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+E-commerce & Shopify API, Liquid · Stripe · SEO \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+Languages & \faFlag\ French (Native) · \faGlobe\ English (C1) · \faGlobe\ Spanish \\
+\end{tabularx}
+
+\vspace{0.3cm}
+
+\section*{EDUCATION}
+
+\noindent\textbf{IMT Nord Europe} \hfill \textbf{Engineering Degree in CS, Networks \& Telecoms} \\
+\textit{Lille | 2017 – 2022}
+
+\vspace{0.1cm}
+
+\noindent\textbf{Lycée Français Louis-Massignon} \hfill \textbf{Scientific Baccalaureate, Math Major} \\
+\textit{Casablanca | 2017}
+
+\vspace{0.3cm}
+
+\section*{AVAILABILITY}
+
+\noindent\textbf{Available for:} freelance missions · SaaS \& AI development · automation · tech consulting
+
+\end{document}
