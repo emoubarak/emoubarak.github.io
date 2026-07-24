@@ -28,10 +28,28 @@ const projects = [
     href: "https://github.com/emoubarak/prompt-to-short-video-generator",
   },
   {
-    title: "E-commerce Store",
+    title: "Mon Jouet Montessori",
     description: "Shopify store built and operated end to end with real revenue — SEO, marketing, and custom Liquid themes.",
     tags: ["Shopify", "Liquid", "SEO", "Gadget.dev", "Shopify API", "Shopify CLI"],
     href: "https://mon-jouet-montessori.com/",
+  },
+];
+
+const services = [
+  {
+    title: "SaaS & Web Apps",
+    description: "Your product built end-to-end: specs, architecture, code, deploy. From idea to a production v1 your users can actually use — I handle the whole stack.",
+    audience: "For founders who need a v1 shipped properly",
+  },
+  {
+    title: "AI Automation & Agents",
+    description: "LLM-powered workflows, AI agents, RAG and OCR/Vision pipelines that remove manual work from your operations — built on your real processes, not demos.",
+    audience: "For teams drowning in repetitive work",
+  },
+  {
+    title: "Corporate AI Training",
+    description: "Hands-on AI sessions (FR/EN) built on your company's real workflows — from the first prompt to automating a complete business process.",
+    audience: "For companies onboarding their teams to AI",
   },
 ];
 
@@ -66,9 +84,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 
+  <!-- Services -->
+  <section class="mb-16">
+    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-4">What I Do</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {services.map((s) => (
+        <div class="b-border p-5 bg-paper dark:bg-dark-surface flex flex-col">
+          <h3 class="font-mono text-sm font-bold mb-2">{s.title}</h3>
+          <p class="text-sm text-body leading-relaxed flex-1">{s.description}</p>
+          <p class="font-mono text-[0.65rem] text-accent font-bold mt-4">{s.audience}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- Projects -->
   <section class="mb-16">
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-4">Projects</h2>
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest">Projects</h2>
+      <a href={`${base}/portfolio`} class="font-mono text-xs text-muted hover:text-accent transition-colors">
+        full portfolio →
+      </a>
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       {projects.map((p) => (
         <Card
@@ -78,6 +115,64 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           tags={p.tags}
         />
       ))}
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="mb-16">
+    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-4">They Trust Me</h2>
+
+    <div class="b-border bg-paper dark:bg-dark-surface p-6 md:flex md:items-start gap-6 mb-4">
+      <img
+        src={`${base}/driveco-training.webp`}
+        alt="Corporate AI training session delivered at DRIVECO"
+        width="800"
+        height="800"
+        class="b-border w-full md:w-52 h-auto mb-4 md:mb-0 shrink-0"
+        loading="lazy"
+        decoding="async"
+      />
+      <div>
+        <p class="text-sm leading-relaxed text-body italic mb-4">
+          “Learning how to use AI effectively is becoming a real lever for efficiency and impact.
+          During our ChatGPT Workshop, ‘Make AI work for you’, we explored how AI can support us
+          from the very first question to the automation of a complete business process.”
+        </p>
+        <p class="font-mono text-xs font-bold">DRIVECO — HR Director</p>
+        <p class="font-mono text-[0.65rem] text-muted mb-3">on LinkedIn, after the corporate AI training I delivered</p>
+        <a
+          href="https://www.linkedin.com/posts/el-mahdi-moubarak_merci-%C3%A0-toute-l%C3%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/"
+          target="_blank"
+          class="font-mono text-xs underline underline-offset-2 hover:text-accent transition-colors"
+        >
+          Read the post on LinkedIn ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="b-border p-5 bg-paper dark:bg-dark-surface flex flex-col">
+        <h3 class="font-mono text-sm font-bold mb-2">Agency work — KSUR Services</h3>
+        <p class="text-sm text-body leading-relaxed flex-1 mb-3">
+          As CTO of KSUR Services, I own technical delivery for the agency's clients:
+          websites, e-commerce and web apps shipped for SMEs in France and Morocco.
+        </p>
+        <a
+          href="https://www.agence-ksur.com/realisations"
+          target="_blank"
+          class="font-mono text-xs underline underline-offset-2 hover:text-accent transition-colors"
+        >
+          See the agency portfolio ↗
+        </a>
+      </div>
+      <div class="b-border p-5 bg-paper dark:bg-dark-surface">
+        <h3 class="font-mono text-sm font-bold mb-3">Companies I've built for</h3>
+        <div class="flex flex-wrap gap-1.5">
+          {["DRIVECO", "Board of Cyber", "ALTAO Santé", "Worldline", "Deuspi", "KSUR Services"].map((c) => (
+            <span class="tag">{c}</span>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
