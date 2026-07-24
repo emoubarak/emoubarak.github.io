@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page not found — El Mahdi Moubarak" noindex={true}>
+  <script is:inline>
+    // Old project-site links (/my-cv/...) map to the same path at the root;
+    // anything else goes home.
+    (function () {
+      var path = window.location.pathname;
+      var target = path.indexOf('/my-cv') === 0 ? path.slice('/my-cv'.length) || '/' : '/';
+      window.location.replace(target + window.location.search + window.location.hash);
+    })();
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=/" />
+  </noscript>
+  <main class="mx-auto max-w-2xl px-6 py-24 text-center">
+    <p class="text-lg">Redirecting to <a href="/" class="underline">emoubarak.github.io</a>…</p>
+  </main>
+</Layout>
