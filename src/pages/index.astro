@@ -60,10 +60,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 <Layout title="El Mahdi Moubarak - Founder & Full-Stack Engineer">
   <!-- Intro -->
   <section class="mb-16">
-    <p class="font-mono text-xs text-muted mb-4">Founder & Full-Stack Engineer · Software, SaaS & AI</p>
-    <h1 class="text-3xl md:text-4xl leading-tight mb-6">
-      El Mahdi <span class="text-accent">Moubarak</span>
-    </h1>
+    <div class="flex items-start justify-between gap-6 mb-6">
+      <div>
+        <p class="font-mono text-xs text-muted mb-4">Founder & Full-Stack Engineer · Software, SaaS & AI</p>
+        <h1 class="text-3xl md:text-4xl leading-tight">
+          El Mahdi <span class="text-accent">Moubarak</span>
+        </h1>
+      </div>
+      <img
+        src={`${base}/profile-picture.webp`}
+        alt="Portrait of El Mahdi Moubarak"
+        width="400"
+        height="400"
+        class="w-24 h-24 md:w-32 md:h-32 rounded-full b-border object-cover shrink-0"
+        decoding="async"
+      />
+    </div>
     <p class="text-base leading-relaxed max-w-2xl mb-8 text-body">
       I build software and AI systems end-to-end: specs, architecture, code, deploy.
       6 years across cybersecurity, healthcare and fintech, mostly as the only engineer
