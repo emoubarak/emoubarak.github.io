@@ -10,6 +10,9 @@ interface Props {
 const { title, description = "El Mahdi Moubarak - Senior Software Engineer · SaaS & AI", noindex = false } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const site = Astro.site ?? new URL('https://moubarak.dev');
+const ogImage = new URL(`${base}/og.png`, site).href;
+const canonicalUrl = new URL(Astro.url.pathname, site).href;
 const navLinks = [
   { href: `${base}/`, label: "Home" },
   { href: `${base}/portfolio`, label: "Portfolio" },
@@ -26,6 +29,19 @@ const navLinks = [
   <meta name="description" content={description} />
   <meta name="generator" content={Astro.generator} />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
+  <link rel="canonical" href={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="El Mahdi Moubarak - Founder & Full-Stack Engineer · Software, SaaS & AI" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
   <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
   <title>{title}</title>
   <script is:inline>
