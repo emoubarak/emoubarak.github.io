@@ -1,0 +1,343 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const categories = [
+  { key: 'all', label: 'All' },
+  { key: 'saas', label: 'SaaS' },
+  { key: 'web-app', label: 'Web Apps' },
+  { key: 'e-commerce', label: 'E-commerce' },
+  { key: 'website', label: 'Websites' },
+  { key: 'mobile', label: 'Mobile' },
+];
+
+const projects = [
+  {
+    title: 'Piktechs',
+    subtitle: 'piktechs.com',
+    category: 'saas',
+    categoryLabel: 'SaaS',
+    role: 'Founder',
+    description: 'B2B SaaS platform for digital business cards at professional events: connection, lead capture and attendee tracking. Designed, built and operated end to end.',
+    image: `${base}/portfolio/piktechs-og.webp`,
+    imageCentered: true,
+    demo: 'https://piktechs.com',
+    url: 'https://piktechs.com',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Stripe'],
+  },
+  {
+    title: 'PDFold',
+    subtitle: 'pdfold.com',
+    category: 'saas',
+    categoryLabel: 'SaaS',
+    role: 'Founder',
+    description: 'SaaS converting PDFs to structured Markdown through a multi-pass OCR pipeline combined with Gemini. Understands and transforms documents of any size, in 11 languages.',
+    image: `${base}/portfolio/pdfold-og.webp`,
+    imageCentered: true,
+    demo: `${base}/portfolio/pdfold.png`,
+    url: 'https://pdfold.com',
+    tags: ['Next.js', 'TypeScript', 'Gemini API', 'Stripe'],
+  },
+  {
+    title: 'Atandem Agency',
+    subtitle: 'atandemagency.com',
+    category: 'website',
+    categoryLabel: 'Website',
+    role: 'Client work',
+    description: 'Immersive landing page for T&EM, a new-generation integrated agency balancing transformation and empathy. Kinetic, scroll-led design.',
+    image: `${base}/portfolio/atandemagency.webp`,
+    demo: 'https://atandemagency.com',
+    url: 'https://atandemagency.com',
+    tags: ['Landing page', 'Kinetic design'],
+  },
+  {
+    title: 'Mon Jouet Montessori',
+    subtitle: 'mon-jouet-montessori.com',
+    category: 'e-commerce',
+    categoryLabel: 'E-commerce',
+    role: 'Founder & operator',
+    description: 'Online store of Montessori educational toys and games, built and operated end to end with real revenue — SEO, marketing and custom Liquid themes.',
+    image: `${base}/portfolio/montessori.png`,
+    demo: `${base}/portfolio/montessori.png`,
+    url: 'https://mon-jouet-montessori.com',
+    tags: ['Shopify', 'Liquid', 'SEO'],
+  },
+  {
+    title: 'Deuspi',
+    subtitle: 'Confidential project',
+    category: 'mobile',
+    categoryLabel: 'Mobile App',
+    role: 'Mobile Software Engineer',
+    description: 'Grocery delivery mobile app with real-time geolocation, on the Uber model. Sole mobile engineer on the first version, from wireframes to production-ready interface.',
+    image: `${base}/portfolio/deuspi.png`,
+    demo: `${base}/portfolio/deuspi.png`,
+    url: null,
+    tags: ['React Native', 'JavaScript'],
+  },
+  {
+    title: 'Altao RSS Tool',
+    subtitle: 'Confidential project',
+    category: 'web-app',
+    categoryLabel: 'Web App',
+    role: 'Full-Stack Engineer',
+    description: 'AI web application for automatic correction of hospital discharge summaries for French hospitals. Built solo, 5,000+ documents processed, €700,000 saved.',
+    image: `${base}/portfolio/altao-thumb.webp`,
+    demo: `${base}/portfolio/altao-mockup.webp`,
+    url: null,
+    tags: ['Vue.js', 'Django', 'PostgreSQL', 'AWS'],
+  },
+  {
+    title: 'Worldline MQTT Tool',
+    subtitle: 'Confidential project',
+    category: 'web-app',
+    categoryLabel: 'Web App',
+    role: 'Full-Stack Engineer',
+    description: 'MQTT debugging web tool for an R&D team: message visualization, payload publishing and logging. Improved team development speed by 70%.',
+    image: `${base}/portfolio/worldline-thumb.webp`,
+    demo: `${base}/portfolio/worldline-mockup.webp`,
+    url: null,
+    tags: ['Vue.js', 'Spring Boot', 'MQTT'],
+  },
+];
+---
+
+<Layout
+  title="Portfolio — El Mahdi Moubarak"
+  description="Selected work — SaaS products, web apps, e-commerce and mobile applications built by El Mahdi Moubarak."
+>
+  <!-- Header -->
+  <section class="mb-10">
+    <h1 class="text-2xl font-extrabold mb-1">Portfolio</h1>
+    <p class="text-sm leading-relaxed text-body max-w-xl">
+      Every project is unique. A selection of SaaS products, web apps, e-commerce stores and
+      mobile applications I designed, built and shipped — click a card to preview it.
+    </p>
+  </section>
+
+  <!-- Filters -->
+  <div class="flex flex-wrap gap-2 mb-10">
+    {categories.map((c) => (
+      <button
+        class:list={['filter-btn font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors', { 'filter-active': c.key === 'all' }]}
+        data-filter={c.key}
+      >
+        {c.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- Grid -->
+  <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    {projects.map((p) => (
+      <div
+        class="portfolio-card b-border b-lift bg-paper dark:bg-dark-surface cursor-pointer flex flex-col"
+        data-demo={p.demo}
+        data-url={p.url}
+        data-title={p.title}
+        data-category={p.category}
+        role="button"
+        tabindex="0"
+        aria-label={`Preview ${p.title}`}
+      >
+        <div class="relative h-52 overflow-hidden border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper shrink-0">
+          <img
+            src={p.image}
+            alt={`Preview of ${p.title}`}
+            class:list={['absolute inset-0 w-full h-full object-cover', p.imageCentered ? 'object-center' : 'object-top']}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="tag">{p.categoryLabel}</span>
+            <span class="font-mono text-[0.65rem] text-muted shrink-0">{p.role}</span>
+          </div>
+          <h2 class="font-mono text-sm font-bold mb-0.5">{p.title}</h2>
+          <p class:list={['font-mono text-[0.65rem] text-muted mb-2', { italic: !p.url }]}>{p.subtitle}</p>
+          <p class="text-sm text-body flex-1">{p.description}</p>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            {p.tags.map((t) => (
+              <span class="tag">{t}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  <p id="no-results" class="hidden text-center text-muted font-mono text-sm py-16">No project in this category.</p>
+
+  <!-- Preview modal -->
+  <div id="demo-modal" class="fixed inset-0 z-[60] bg-black/70 hidden overflow-y-auto" style="overscroll-behavior:contain;-webkit-overflow-scrolling:touch;">
+    <div class="flex min-h-full items-center justify-center p-0 md:p-6">
+      <div id="demo-modal-dialog" class="bg-paper dark:bg-dark-paper b-border w-full md:w-[90vw] max-h-[100dvh] md:max-h-[90vh] flex flex-col overflow-hidden">
+        <div class="flex items-center justify-between gap-3 px-4 py-3 border-b-2 border-ink dark:border-dark-border shrink-0">
+          <span id="demo-modal-title" class="font-mono text-xs font-bold truncate">Preview</span>
+          <div class="flex items-center gap-2 shrink-0">
+            <a
+              id="demo-visit-link"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hidden font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 bg-accent text-white border-ink hover:bg-accent-alt transition-colors"
+            >
+              Visit site ↗
+            </a>
+            <button
+              id="close-demo-modal"
+              type="button"
+              class="font-mono text-xs font-bold b-border w-8 h-8 flex items-center justify-center cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors"
+              aria-label="Close preview"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+        <div id="demo-modal-body" class="flex-1 min-h-0 overflow-y-auto bg-paper-alt dark:bg-dark-surface" style="overscroll-behavior:contain;-webkit-overflow-scrolling:touch;">
+          <iframe id="demo-iframe" src="" class="w-full block hidden" style="height:80vh;border:0;" allowfullscreen></iframe>
+          <!-- Image preview: full width, natural height → vertical scroll for long captures -->
+          <img id="demo-img" src="" alt="Preview" class="w-full block hidden" style="height:auto;" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .filter-btn.filter-active {
+      background: var(--color-accent);
+      color: #fff;
+      border-color: var(--color-accent);
+    }
+  </style>
+
+  <script is:inline>
+    // ===== Filters =====
+    document.querySelectorAll('.filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.filter-btn').forEach((b) => {
+          b.classList.toggle('filter-active', b === btn);
+        });
+        let visible = 0;
+        document.querySelectorAll('#cards-grid > [data-category]').forEach((card) => {
+          const show = filter === 'all' || card.dataset.category === filter;
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+      });
+    });
+
+    // ===== Preview modal =====
+    (function () {
+      const modal = document.getElementById('demo-modal');
+      const dialog = document.getElementById('demo-modal-dialog');
+      const iframe = document.getElementById('demo-iframe');
+      const demoImg = document.getElementById('demo-img');
+      const modalBody = document.getElementById('demo-modal-body');
+      const modalTitle = document.getElementById('demo-modal-title');
+      const visitLink = document.getElementById('demo-visit-link');
+      const closeBtn = document.getElementById('close-demo-modal');
+      if (!modal) return;
+
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('tabindex', '-1');
+
+      let lastFocusedElement = null;
+      let savedScrollY = 0;
+
+      const isImageUrl = (url) => /\.(webp|png|jpg|jpeg|gif|svg)(\?.*)?$/i.test(url);
+
+      function lockBodyScroll() {
+        savedScrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = '-' + savedScrollY + 'px';
+        document.body.style.width = '100%';
+      }
+
+      function unlockBodyScroll() {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        // Bypass the site's `scroll-behavior: smooth` so the restore is instant,
+        // otherwise closing the modal visibly scrolls down from the top.
+        const html = document.documentElement;
+        const prev = html.style.scrollBehavior;
+        html.style.scrollBehavior = 'auto';
+        window.scrollTo(0, savedScrollY);
+        html.style.scrollBehavior = prev;
+      }
+
+      function openModal(url, externalUrl, title) {
+        lastFocusedElement = document.activeElement;
+        modalTitle.textContent = title || 'Preview';
+        const linkUrl = externalUrl || (/^https?:\/\//i.test(url) ? url : null);
+        if (linkUrl) {
+          visitLink.href = linkUrl;
+          visitLink.classList.remove('hidden');
+        } else {
+          visitLink.classList.add('hidden');
+        }
+        if (isImageUrl(url)) {
+          iframe.classList.add('hidden');
+          demoImg.src = url;
+          demoImg.classList.remove('hidden');
+        } else {
+          demoImg.classList.add('hidden');
+          iframe.src = url;
+          iframe.classList.remove('hidden');
+        }
+        modal.scrollTop = 0;
+        modalBody.scrollTop = 0;
+        modal.classList.remove('hidden');
+        lockBodyScroll();
+        modal.focus();
+      }
+
+      function closeModal() {
+        modal.classList.add('hidden');
+        iframe.src = '';
+        iframe.classList.add('hidden');
+        demoImg.src = '';
+        demoImg.classList.add('hidden');
+        visitLink.href = '#';
+        visitLink.classList.add('hidden');
+        unlockBodyScroll();
+        if (lastFocusedElement) lastFocusedElement.focus();
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (!dialog.contains(e.target)) closeModal();
+      });
+
+      // Focus trap + Escape (document-level so the iframe doesn't block it)
+      document.addEventListener('keydown', (e) => {
+        if (modal.classList.contains('hidden')) return;
+        if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
+        if (e.key !== 'Tab') return;
+        const focusable = modal.querySelectorAll(
+          "button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])"
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+
+      // Card triggers (click + keyboard)
+      function trigger(el) {
+        openModal(el.dataset.demo, el.dataset.url || null, el.dataset.title || null);
+      }
+      document.querySelectorAll('.portfolio-card[data-demo]').forEach((card) => {
+        card.addEventListener('click', () => trigger(card));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(card); }
+        });
+      });
+    })();
+  </script>
+</Layout>
