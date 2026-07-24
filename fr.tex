@@ -1,0 +1,170 @@
+% CV El Mahdi Moubarak - Overleaf Template compatible with pdfLaTeX
+\documentclass[a4paper,11pt]{article}
+
+% Required packages
+\usepackage[a4paper,margin=1cm]{geometry}
+\usepackage{fontawesome}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage[french]{babel}
+
+% Color definitions
+\definecolor{primary}{RGB}{0, 112, 192}
+\definecolor{light}{RGB}{240, 240, 240}
+\definecolor{dark}{RGB}{50, 50, 50}
+
+\hypersetup{colorlinks=true, linkcolor=primary, urlcolor=primary}
+
+\titleformat{\section}
+    {\normalfont\large\bfseries}
+    {}
+    {0em}
+    {\color{primary}\titlerule\vspace{.2em}\MakeUppercase}
+    []
+
+\pagestyle{empty}
+\setlist[itemize]{leftmargin=*,label=\textbullet}
+
+% Light gray divider between experiences
+\newcommand{\expdivider}{\vspace{0.01cm}\noindent{\color{light!60!gray}\rule{\linewidth}{0.4pt}}\vspace{0.01cm}}
+
+\begin{document}
+
+% Header
+\begin{center}
+    {\Huge\textbf{EL MAHDI MOUBARAK}} \\
+    \vspace{0.3cm}
+    {\large Fondateur \& Ingénieur Full-Stack · Logiciel, SaaS \& IA} \\
+    \vspace{0.3cm}
+    \begin{tabular}{ccccccccc}
+        \faMapMarker\ France & $\cdot$ &
+        \faEnvelope\ \href{mailto:elmahdi@moubarak.dev}{elmahdi@moubarak.dev} & $\cdot$ &
+        \faGlobe\ \href{https://moubarak.dev}{moubarak.dev} & $\cdot$ &
+        \faLinkedin\ \href{https://www.linkedin.com/in/el-mahdi-moubarak}{LinkedIn} & $\cdot$ &
+        \faGithub\ \href{https://github.com/emoubarak}{GitHub}
+    \end{tabular}
+\end{center}
+
+\vspace{0.01cm}
+
+\section*{PROFIL}
+Je conçois et livre des logiciels et des systèmes IA de bout en bout : specs, architecture, code, déploiement. 6 ans d'expérience en cybersécurité, santé et fintech, le plus souvent comme seul ingénieur sur le projet. Je travaille avec des fondateurs et des agences qui ont besoin de quelque chose de bien construit et livré vite.
+
+\vspace{0.01cm}
+
+\section*{EXPÉRIENCE PROFESSIONNELLE}
+
+\noindent\textbf{Fondateur \& Ingénieur Logiciel} \hfill \textbf{EMM · France} \\
+\textit{Mars 2026 – Aujourd'hui}
+\begin{itemize}[nosep]
+    \item Activité indépendante de conception logicielle : applications web, SaaS et automatisation IA pour fondateurs et agences, de bout en bout
+    \item Animation de formations IA en entreprise pour DRIVECO : deux sessions FR/EN sur mesure, avec cas d'usage en direct sur les workflows réels et l'écosystème OpenAI
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Fondateur} \hfill \textbf{Piktechs} \\
+\textit{Mars 2026 – Aujourd'hui}
+\begin{itemize}[nosep]
+    \item SaaS B2B pour l'événementiel \& le networking : cartes de visite digitales, capture de leads, suivi des participants (Next.js, TypeScript, Supabase)
+    \item Conception, développement et exploitation du produit complet : architecture, frontend, backend, infrastructure
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{CTO} \hfill \textbf{KSUR Services · France · Maroc} \\
+\textit{Mars 2026 – Aujourd'hui}
+\begin{itemize}[nosep]
+    \item Agence digitale : applications web \& mobiles sur mesure, plateformes e-commerce et workflows d'automatisation IA pour PME et entreprises
+    \item Responsable de l'ensemble de la stack technique et des livraisons de l'agence, de l'architecture à la production
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Ingénieur Full-Stack} \hfill \textbf{Board of Cyber · Paris (remote)} \\
+\textit{Mars 2023 – Février 2026}
+\begin{itemize}[nosep]
+    \item Contributeur clé de \textit{Security Rating®}, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations (Angular, TypeScript, Python)
+    \item Résolution de plus de 700 tickets sur la plateforme, le back office et le manager office, à cadence de release élevée
+    \item Conception d'une sonde Python de scan de vulnérabilités (nmap) automatisant la collecte des données
+    \item Mise en place de la couverture de tests (Spectator), optimisation des pipelines CI/CD et contribution à la migration Angular, réduisant la dette technique
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Ingénieur Full-Stack} \hfill \textbf{ALTAO Santé · Lille} \\
+\textit{Sept. 2021 – Sept. 2022}
+\begin{itemize}[nosep]
+    \item Seul ingénieur sur une plateforme médicale greenfield de correction des comptes-rendus de sortie hospitaliers (Vue.js, Django, PostgreSQL)
+    \item Traitement de plus de 5 000 documents via la plateforme, économisant 700 000 € aux hôpitaux
+    \item Sessions de recueil de besoins directement avec les médecins, rédaction des specs, intégration des algorithmes ML de l'équipe Data Science
+    \item Déploiement et monitoring autonome de toute l'infrastructure AWS (EC2, Route53, Amplify)
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Ingénieur Logiciel Mobile} \hfill \textbf{Deuspi · Lille} \\
+\textit{Mars 2021 – Juin 2021}
+\begin{itemize}[nosep]
+    \item Seul ingénieur mobile sur la première version d'une application de livraison de courses en React Native
+    \item Prise en charge complète du frontend, des maquettes du designer à l'interface prête pour la production
+\end{itemize}
+
+\expdivider
+
+\noindent\textbf{Ingénieur Full-Stack} \hfill \textbf{Worldline · Seclin} \\
+\textit{Avril 2019 – Août 2019}
+\begin{itemize}[nosep]
+    \item Développement d'un outil interne de debugging R\&D (Vue.js, Spring Boot, MQTT) améliorant la vitesse de développement de l'équipe de 70\%
+\end{itemize}
+
+\section*{PROJETS CLÉS}
+\noindent\begin{tabularx}{\linewidth}{@{}l X@{}}
+\faRocket\ \textbf{Piktechs} & SaaS de cartes NFC \& événementiel B2B (Next.js, TypeScript, Supabase, Stripe) · \href{https://piktechs.com}{piktechs.com} \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+\faFileTextO\ \textbf{PDFold} & Pipeline IA OCR + Vision convertissant les PDF en Markdown structuré, 11 langues (Next.js, Gemini API, Stripe) · \href{https://pdfold.com}{pdfold.com} \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+\faFilm\ \textbf{Text-to-Short-Video} & Pipeline IA de génération de vidéos (GPT, ElevenLabs, FFmpeg) · \href{https://github.com/emoubarak/prompt-to-short-video-generator}{GitHub} \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+\faShoppingCart\ \textbf{Mon Jouet Montessori} & Boutique Shopify conçue de bout en bout, revenus réels, puis revendue · \href{https://mon-jouet-montessori.com}{mon-jouet-montessori.com} \\
+\end{tabularx}
+\vspace{0.3cm}
+
+\section*{COMPÉTENCES}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries}l X@{}}
+Dév Web \& Mobile & TypeScript, JavaScript · Next.js, React, React Native · Angular, Vue.js · Python, Django, Flask · PostgreSQL, Supabase \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+Cloud \& DevOps & AWS (EC2, Route53, Amplify) · Docker, Git, CI/CD · Vercel \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+IA \& Automatisation & AI Agents, Agentic Dev · LLM APIs, Local LLMs · RAG, Vectorisation · Pipelines OCR \& Vision · ElevenLabs, Voice AI \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+E-commerce & Shopify API, Liquid · Stripe · SEO \\
+\multicolumn{2}{@{}l}{\color{light!60!gray}\rule{0.2\linewidth}{0.4pt}} \\
+Langues & \faFlag\ Français (natif) · \faGlobe\ Anglais (C1) · \faGlobe\ Espagnol \\
+\end{tabularx}
+
+\vspace{0.3cm}
+
+\section*{FORMATION}
+
+\noindent\textbf{IMT Nord Europe} \hfill \textbf{Diplôme d'Ingénieur en Informatique, Réseaux \& Télécoms} \\
+\textit{Lille · 2017 – 2022}
+
+\vspace{0.1cm}
+
+\noindent\textbf{Lycée Français Louis-Massignon} \hfill \textbf{Baccalauréat Scientifique, spécialité Mathématiques} \\
+\textit{Casablanca · 2017}
+
+\vspace{0.3cm}
+
+\section*{DISPONIBILITÉ}
+
+\noindent\textbf{Disponible pour :} missions freelance · développement SaaS \& IA · automatisation · conseil tech
+
+\end{document}
