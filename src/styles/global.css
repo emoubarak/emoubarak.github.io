@@ -67,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 5px 5px 0 var(--color-dark-border);
 }
 
-/* Body text — slightly muted but always readable */
+/* Body text - slightly muted but always readable */
 .text-body {
   color: #333333;
 }

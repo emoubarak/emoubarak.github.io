@@ -1,5 +1,5 @@
 ---
-title: "The Five Stages of AI Grief — A Developer's Obituary"
+title: "The Five Stages of AI Grief: A Developer's Obituary"
 description: "Denial, anger, bargaining, depression, acceptance. Kübler-Ross described the death of loved ones. Developers used it to describe a GitHub Copilot subscription."
 pubDate: 2026-03-18
 tags: ["AI", "Career", "Satire", "Engineering"]
@@ -39,12 +39,12 @@ This is the **"Middle Management" maneuver.** It's an attempt to negotiate a pea
 
 This is the quietest, most honest part of the cycle. It's the realization that your **Economic Value** was tied to a skill that just became a commodity. 
 
-It's a "Dark Night of the Soul" for people who use Jira. You realize you aren't the "Architect of the Future"—you're a translator for a language that's becoming obsolete. If the "What" is automated and the "How" is instant, then "Who" are you? If you don't have an answer that isn't "I write React," you're going to stay in this loop for a long time.
+It's a "Dark Night of the Soul" for people who use Jira. You realize you aren't the "Architect of the Future". You're a translator for a language that's becoming obsolete. If the "What" is automated and the "How" is instant, then "Who" are you? If you don't have an answer that isn't "I write React," you're going to stay in this loop for a long time.
 
 ## 5. Acceptance: Becoming the Ghost in the Machine
 > *"I'm not a dev. I'm a Problem-Solver using the highest-leverage tools available. Next question."*
 
-Acceptance isn't "giving up." It's **System Optimization.** The devs who make it through aren't "AI-augmented"—they're **Identity-Agnostic.** They realize that "Developer" was just a temporary skin. They stop caring about the *purity* of the process and start caring about the *vibration* of the output.
+Acceptance isn't "giving up." It's **System Optimization.** The devs who make it through aren't "AI-augmented", they're **Identity-Agnostic.** They realize that "Developer" was just a temporary skin. They stop caring about the *purity* of the process and start caring about the *vibration* of the output.
 
 They treat code like the supermarket chicken in your essay: a pre-packaged utility. You don't need to know how to slaughter the bird to make a 5-star meal. 
 

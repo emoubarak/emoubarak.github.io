@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-// ————— Identity —————
+// ===== Identity =====
 const identity = {
   en: `Name: El Mahdi Moubarak
 Title: Founder & Full-Stack Engineer · Software, SaaS & AI
@@ -29,7 +29,7 @@ Langues : Français (natif) · Anglais (C1, TOEIC) · Espagnol (professionnel)
 Disponible pour : missions freelance · développement SaaS & IA · automatisation · conseil tech`,
 };
 
-// ————— Bios —————
+// ===== Bios =====
 const bios = [
   {
     label: 'Headline (one-liner)',
@@ -45,30 +45,30 @@ const bios = [
     label: 'Long bio',
     en: `I'm El Mahdi Moubarak, founder and full-stack engineer based in France. I build software and AI systems end-to-end: specs, architecture, code, deploy.
 
-Over 6 years I've shipped across cybersecurity, healthcare and fintech — most of the time as the only engineer on the project. At Board of Cyber I was a core contributor to Security Rating®, a SaaS cyber-rating platform used by 200+ organizations, solving 700+ tickets in a high-cadence release cycle. At ALTAO Santé I built a greenfield medical platform solo that processed 5,000+ hospital documents and saved hospitals €700,000.
+Over 6 years I've shipped across cybersecurity, healthcare and fintech, most of the time as the only engineer on the project. At Board of Cyber I was a core contributor to Security Rating®, a SaaS cyber-rating platform used by 200+ organizations, solving 700+ tickets in a high-cadence release cycle. At ALTAO Santé I built a greenfield medical platform solo that processed 5,000+ hospital documents and saved hospitals €700,000.
 
 Today I run EMM, my independent software engineering practice, I'm the founder of Piktechs (B2B SaaS for events & networking: digital business cards, lead capture, attendee tracking) and CTO of KSUR Services, where I own the agency's full technical stack from architecture to production. I also deliver corporate AI training (two tailored FR/EN sessions for DRIVECO, with live use cases).
 
-Stack: TypeScript, Next.js, React, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker — plus AI agents, LLM APIs, RAG and OCR/Vision pipelines.
+Stack: TypeScript, Next.js, React, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker, plus AI agents, LLM APIs, RAG and OCR/Vision pipelines.
 
 Engineering degree from IMT Nord Europe (CS, Networks & Telecoms). French (native), English (C1), Spanish. Available for freelance missions, SaaS & AI development, automation and tech consulting. If you need something shipped, get in touch.`,
     fr: `Je suis El Mahdi Moubarak, fondateur et ingénieur full-stack basé en France. Je conçois et livre des logiciels et des systèmes IA de bout en bout : specs, architecture, code, déploiement.
 
-En 6 ans, j'ai livré des projets en cybersécurité, santé et fintech — le plus souvent comme seul ingénieur sur le projet. Chez Board of Cyber, j'ai été un contributeur clé de Security Rating®, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations, avec plus de 700 tickets résolus à cadence de release élevée. Chez ALTAO Santé, j'ai construit seul une plateforme médicale greenfield qui a traité plus de 5 000 documents hospitaliers et économisé 700 000 € aux hôpitaux.
+En 6 ans, j'ai livré des projets en cybersécurité, santé et fintech, le plus souvent comme seul ingénieur sur le projet. Chez Board of Cyber, j'ai été un contributeur clé de Security Rating®, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations, avec plus de 700 tickets résolus à cadence de release élevée. Chez ALTAO Santé, j'ai construit seul une plateforme médicale greenfield qui a traité plus de 5 000 documents hospitaliers et économisé 700 000 € aux hôpitaux.
 
 Aujourd'hui, je dirige EMM, mon activité indépendante de conception logicielle, je suis fondateur de Piktechs (SaaS B2B pour l'événementiel & le networking : cartes de visite digitales, capture de leads, suivi des participants) et CTO de KSUR Services, où je suis responsable de toute la stack technique, de l'architecture à la production. J'anime également des formations IA en entreprise (deux sessions FR/EN sur mesure pour DRIVECO, avec cas d'usage en direct).
 
-Stack : TypeScript, Next.js, React, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker — ainsi que agents IA, APIs LLM, RAG et pipelines OCR/Vision.
+Stack : TypeScript, Next.js, React, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker, ainsi que agents IA, APIs LLM, RAG et pipelines OCR/Vision.
 
 Diplôme d'ingénieur de l'IMT Nord Europe (Informatique, Réseaux & Télécoms). Français (natif), Anglais (C1), Espagnol. Disponible pour missions freelance, développement SaaS & IA, automatisation et conseil tech. Besoin de livrer quelque chose ? Contactez-moi.`,
   },
 ];
 
-// ————— Experiences —————
+// ===== Experiences =====
 const experiences = [
   {
-    label: 'EMM — Founder & Software Engineer',
-    en: `Founder & Software Engineer — EMM
+    label: 'EMM - Founder & Software Engineer',
+    en: `Founder & Software Engineer - EMM
 March 2026 – Present · France
 
 Independent software engineering practice: web apps, SaaS and AI automation for founders and agencies, end to end.
@@ -76,7 +76,7 @@ Independent software engineering practice: web apps, SaaS and AI automation for 
 • Delivered corporate AI training for DRIVECO (two tailored FR/EN sessions with live use cases).
 
 Skills: Web Development · Full-Stack Development · AI Agents · Large Language Models (LLM) · Software as a Service (SaaS) · Software Architecture · Artificial Intelligence (AI) · Automation`,
-    fr: `Fondateur & Ingénieur Logiciel — EMM
+    fr: `Fondateur & Ingénieur Logiciel - EMM
 Mars 2026 – Aujourd'hui · France
 
 Activité indépendante de conception logicielle : applications web, SaaS et automatisation IA pour fondateurs et agences, de bout en bout.
@@ -86,8 +86,8 @@ Activité indépendante de conception logicielle : applications web, SaaS et aut
 Compétences : Web Development · Full-Stack Development · AI Agents · Large Language Models (LLM) · Software as a Service (SaaS) · Software Architecture · Artificial Intelligence (AI) · Automation`,
   },
   {
-    label: 'Piktechs — Founder',
-    en: `Founder — Piktechs
+    label: 'Piktechs - Founder',
+    en: `Founder - Piktechs
 March 2026 – Present · France
 
 B2B SaaS for events & networking: digital business cards, lead capture, attendee tracking.
@@ -97,7 +97,7 @@ B2B SaaS for events & networking: digital business cards, lead capture, attendee
 Stack: Next.js, TypeScript, Supabase, Stripe
 
 Skills: Product Development · Supabase · DevOps · TypeScript · Web Development · Full-Stack Development · Software as a Service (SaaS) · Software Architecture · Stripe (Software) · Next.js`,
-    fr: `Fondateur — Piktechs
+    fr: `Fondateur - Piktechs
 Mars 2026 – Aujourd'hui · France
 
 SaaS B2B pour l'événementiel & le networking : cartes de visite digitales, capture de leads, suivi des participants.
@@ -109,8 +109,8 @@ Stack : Next.js, TypeScript, Supabase, Stripe
 Compétences : Product Development · Supabase · DevOps · TypeScript · Web Development · Full-Stack Development · Software as a Service (SaaS) · Software Architecture · Stripe (Software) · Next.js`,
   },
   {
-    label: 'KSUR Services — CTO',
-    en: `CTO — KSUR Services
+    label: 'KSUR Services - CTO',
+    en: `CTO - KSUR Services
 March 2026 – Present · France · Morocco
 
 Agence-KSUR is a digital agency specialized in building tailor-made web and mobile applications, e-commerce platforms, and AI-driven automation workflows to accelerate growth for SMEs and enterprises.
@@ -120,7 +120,7 @@ Agence-KSUR is a digital agency specialized in building tailor-made web and mobi
 • Architect and deploy AI-powered automation workflows to streamline internal and client operations.
 
 Skills: DevOps · Search Engine Optimization (SEO) · Web Development · Full-Stack Development · Cloud Computing · AI Agents · Large Language Models (LLM) · Software Architecture · Artificial Intelligence (AI) · Automation · Mobile Application Development`,
-    fr: `CTO — KSUR Services
+    fr: `CTO - KSUR Services
 Mars 2026 – Aujourd'hui · France · Maroc
 
 Agence-KSUR est une agence digitale spécialisée dans la création d'applications web et mobiles sur mesure, de plateformes e-commerce et de workflows d'automatisation IA pour accélérer la croissance des PME et des entreprises.
@@ -132,8 +132,8 @@ Agence-KSUR est une agence digitale spécialisée dans la création d'applicatio
 Compétences : DevOps · Search Engine Optimization (SEO) · Web Development · Full-Stack Development · Cloud Computing · AI Agents · Large Language Models (LLM) · Software Architecture · Artificial Intelligence (AI) · Automation · Mobile Application Development`,
   },
   {
-    label: 'DRIVECO — AI Trainer',
-    en: `AI Trainer — DRIVECO
+    label: 'DRIVECO - AI Trainer',
+    en: `AI Trainer - DRIVECO
 July 2026 · Paris
 
 Corporate AI training for DRIVECO teams.
@@ -141,7 +141,7 @@ Corporate AI training for DRIVECO teams.
 • Designed and delivered two tailored AI training sessions (FR/EN), with live hands-on use cases built on the company's real workflows and OpenAI ecosystem.
 
 Skills: AI Agents · Large Language Models (LLM) · Artificial Intelligence (AI) · Automation · Employee Training · Prompt Engineering`,
-    fr: `Formateur IA — DRIVECO
+    fr: `Formateur IA - DRIVECO
 Juillet 2026 · Paris
 
 Formation IA en entreprise pour les équipes DRIVECO.
@@ -151,8 +151,8 @@ Formation IA en entreprise pour les équipes DRIVECO.
 Compétences : AI Agents · Large Language Models (LLM) · Artificial Intelligence (AI) · Automation · Employee Training · Prompt Engineering`,
   },
   {
-    label: 'Board of Cyber — Full-Stack Engineer',
-    en: `Full-Stack Engineer — Board of Cyber
+    label: 'Board of Cyber - Full-Stack Engineer',
+    en: `Full-Stack Engineer - Board of Cyber
 March 2023 – February 2026 · Paris (remote)
 
 Core contributor to Security Rating®, a SaaS cyber-rating platform used by 200+ organizations. Worked across the platform, back office and manager office in an agile, fast-release environment.
@@ -165,7 +165,7 @@ Core contributor to Security Rating®, a SaaS cyber-rating platform used by 200+
 Stack: Angular, TypeScript, Python, AngularJS, Grav CMS, Docker, CI/CD
 
 Skills: Front-End Development · TypeScript · Python · Web Development · Angular · Full-Stack Development · Continuous Integration and Continuous Delivery (CI/CD) · Docker · Web Applications · Cybersecurity`,
-    fr: `Ingénieur Full-Stack — Board of Cyber
+    fr: `Ingénieur Full-Stack - Board of Cyber
 Mars 2023 – Février 2026 · Paris (remote)
 
 Contributeur clé de Security Rating®, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations. Travail sur la plateforme, le back office et le manager office en environnement agile à cadence de release élevée.
@@ -180,8 +180,8 @@ Stack : Angular, TypeScript, Python, AngularJS, Grav CMS, Docker, CI/CD
 Compétences : Front-End Development · TypeScript · Python · Web Development · Angular · Full-Stack Development · Continuous Integration and Continuous Delivery (CI/CD) · Docker · Web Applications · Cybersecurity`,
   },
   {
-    label: 'ALTAO Santé — Full-Stack Engineer',
-    en: `Full-Stack Engineer — ALTAO Santé
+    label: 'ALTAO Santé - Full-Stack Engineer',
+    en: `Full-Stack Engineer - ALTAO Santé
 September 2021 – September 2022 · Lille
 
 Sole engineer on a greenfield medical platform for hospital discharge summary correction, replacing a fragmented multi-tool legacy workflow with a single production system.
@@ -194,7 +194,7 @@ Sole engineer on a greenfield medical platform for hospital discharge summary co
 Stack: Vue.js, Django, PostgreSQL, AWS (EC2, Route53, Amplify)
 
 Skills: Vue.js · DevOps · Amazon Web Services (AWS) · PostgreSQL · Python · Web Development · Machine Learning · Full-Stack Development · Cloud Computing · Software Architecture · Django`,
-    fr: `Ingénieur Full-Stack — ALTAO Santé
+    fr: `Ingénieur Full-Stack - ALTAO Santé
 Septembre 2021 – Septembre 2022 · Lille
 
 Seul ingénieur sur une plateforme médicale greenfield de correction des comptes-rendus de sortie hospitaliers, remplaçant un workflow legacy fragmenté par un système unique en production.
@@ -209,8 +209,8 @@ Stack : Vue.js, Django, PostgreSQL, AWS (EC2, Route53, Amplify)
 Compétences : Vue.js · DevOps · Amazon Web Services (AWS) · PostgreSQL · Python · Web Development · Machine Learning · Full-Stack Development · Cloud Computing · Software Architecture · Django`,
   },
   {
-    label: 'Deuspi — Mobile Software Engineer',
-    en: `Mobile Software Engineer — Deuspi
+    label: 'Deuspi - Mobile Software Engineer',
+    en: `Mobile Software Engineer - Deuspi
 March 2021 – June 2021 · Lille
 
 Sole mobile engineer on the first version of a React Native grocery delivery app, transitioning the product from web-only to native mobile.
@@ -222,7 +222,7 @@ Sole mobile engineer on the first version of a React Native grocery delivery app
 Stack: React Native, JavaScript
 
 Skills: Front-End Development · React Native · JavaScript · REST APIs · Mobile Applications · Postman API · Mobile Application Development`,
-    fr: `Ingénieur Logiciel Mobile — Deuspi
+    fr: `Ingénieur Logiciel Mobile - Deuspi
 Mars 2021 – Juin 2021 · Lille
 
 Seul ingénieur mobile sur la première version d'une application de livraison de courses en React Native, faisant passer le produit du web au mobile natif.
@@ -236,8 +236,8 @@ Stack : React Native, JavaScript
 Compétences : Front-End Development · React Native · JavaScript · REST APIs · Mobile Applications · Postman API · Mobile Application Development`,
   },
   {
-    label: 'Worldline — Full-Stack Engineer',
-    en: `Full-Stack Engineer — Worldline
+    label: 'Worldline - Full-Stack Engineer',
+    en: `Full-Stack Engineer - Worldline
 April 2019 – August 2019 · Seclin
 
 Sole engineer on an internal R&D tooling project to eliminate manual debugging of MQTT-based interactive payment demos.
@@ -248,7 +248,7 @@ Sole engineer on an internal R&D tooling project to eliminate manual debugging o
 Stack: Vue.js, Spring Boot, Java Android, Docker, MQTT
 
 Skills: Vue.js · Spring Boot · Web Development · Full-Stack Development · MQTT · Java · Docker · Software Infrastructure`,
-    fr: `Ingénieur Full-Stack — Worldline
+    fr: `Ingénieur Full-Stack - Worldline
 Avril 2019 – Août 2019 · Seclin
 
 Seul ingénieur sur un outil interne de R&D visant à éliminer le debugging manuel des démos de paiement interactives basées sur MQTT.
@@ -262,18 +262,18 @@ Compétences : Vue.js · Spring Boot · Web Development · Full-Stack Developmen
   },
 ];
 
-// ————— Projects —————
+// ===== Projects =====
 const projects = [
   {
     label: 'Piktechs',
     link: 'https://piktechs.com/',
-    en: `Piktechs — https://piktechs.com/
+    en: `Piktechs - https://piktechs.com/
 B2B NFC cards & event SaaS: digital business cards, lead capture and attendee tracking for professional networking. Designed, built and operated end to end: architecture, frontend, backend, infrastructure.
 
 Stack: Next.js, TypeScript, Supabase, Stripe
 
 Skills: Stripe (Software) · Next.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Web Development · TypeScript · Supabase`,
-    fr: `Piktechs — https://piktechs.com/
+    fr: `Piktechs - https://piktechs.com/
 SaaS de cartes NFC & événementiel B2B : cartes de visite digitales, capture de leads et suivi des participants pour le networking professionnel. Conçu, développé et opéré de bout en bout : architecture, frontend, backend, infrastructure.
 
 Stack : Next.js, TypeScript, Supabase, Stripe
@@ -283,11 +283,11 @@ Compétences : Stripe (Software) · Next.js · Software as a Service (SaaS) · F
   {
     label: 'PDFold',
     link: 'https://pdfold.com/',
-    en: `PDFold — https://pdfold.com/
+    en: `PDFold - https://pdfold.com/
 AI OCR + Vision pipeline converting PDFs to structured Markdown in 11 languages, with Stripe billing.
 
 Stack: Next.js, TypeScript, Gemini API, Stripe, Supabase, Vercel, Resend`,
-    fr: `PDFold — https://pdfold.com/
+    fr: `PDFold - https://pdfold.com/
 Pipeline IA OCR + Vision convertissant les PDF en Markdown structuré, 11 langues, facturation Stripe.
 
 Stack : Next.js, TypeScript, Gemini API, Stripe, Supabase, Vercel, Resend`,
@@ -295,13 +295,13 @@ Stack : Next.js, TypeScript, Gemini API, Stripe, Supabase, Vercel, Resend`,
   {
     label: 'Text-to-Short-Video',
     link: 'https://github.com/emoubarak/prompt-to-short-video-generator',
-    en: `Text-to-Short-Video — https://github.com/emoubarak/prompt-to-short-video-generator
+    en: `Text-to-Short-Video - https://github.com/emoubarak/prompt-to-short-video-generator
 AI video generation pipeline orchestrating GPT, ElevenLabs and FFmpeg for automated video creation from text scripts. Listed on LinkedIn as "Video Generator Application".
 
 Stack: Python, Flask, OpenAI API, ElevenLabs, FFmpeg
 
 Skills: Automation · Large Language Models (LLM) · Python`,
-    fr: `Text-to-Short-Video — https://github.com/emoubarak/prompt-to-short-video-generator
+    fr: `Text-to-Short-Video - https://github.com/emoubarak/prompt-to-short-video-generator
 Pipeline IA de génération de vidéos orchestrant GPT, ElevenLabs et FFmpeg pour créer automatiquement des vidéos à partir de scripts texte. Référencé sur LinkedIn comme « Video Generator Application ».
 
 Stack : Python, Flask, OpenAI API, ElevenLabs, FFmpeg
@@ -311,14 +311,14 @@ Compétences : Automation · Large Language Models (LLM) · Python`,
   {
     label: 'E-commerce Store (Shopify)',
     link: 'https://mon-jouet-montessori.com/',
-    en: `E-commerce Store — https://mon-jouet-montessori.com/
-Shopify store built and operated end to end with real revenue — SEO, marketing and custom Liquid themes.
+    en: `E-commerce Store - https://mon-jouet-montessori.com/
+Shopify store built and operated end to end with real revenue: SEO, marketing and custom Liquid themes.
 
 Stack: Shopify, Liquid, SEO, Shopify API, Shopify CLI, Gadget.dev
 
 Skills: Web Development · E-Commerce · Search Engine Optimization (SEO)`,
-    fr: `Boutique E-commerce — https://mon-jouet-montessori.com/
-Boutique Shopify conçue et opérée de bout en bout, avec revenus réels — SEO, marketing et thèmes Liquid sur mesure.
+    fr: `Boutique E-commerce - https://mon-jouet-montessori.com/
+Boutique Shopify conçue et opérée de bout en bout, avec revenus réels : SEO, marketing et thèmes Liquid sur mesure.
 
 Stack : Shopify, Liquid, SEO, Shopify API, Shopify CLI, Gadget.dev
 
@@ -326,7 +326,7 @@ Compétences : Web Development · E-Commerce · Search Engine Optimization (SEO)
   },
 ];
 
-// ————— Skills & education —————
+// ===== Skills & education =====
 const skills = {
   en: `Web & Mobile Dev: TypeScript, JavaScript, Next.js, React, React Native, Angular, Vue.js, Python, Django, Flask, PostgreSQL, Supabase
 Cloud & DevOps: AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
@@ -341,11 +341,11 @@ Langues : Français (natif), Anglais (C1), Espagnol`,
 };
 
 const education = {
-  en: `IMT Nord Europe — Engineering Degree (Master's) in CS, Networks & Telecoms — Lille, 2017–2022
-Lycée Français International Louis-Massignon — Scientific Baccalaureate, Math Major — Casablanca, 2017
+  en: `IMT Nord Europe - Engineering Degree (Master's) in CS, Networks & Telecoms - Lille, 2017–2022
+Lycée Français International Louis-Massignon - Scientific Baccalaureate, Math Major - Casablanca, 2017
 Certification: TOEIC`,
-  fr: `IMT Nord Europe — Diplôme d'Ingénieur en Informatique, Réseaux & Télécoms — Lille, 2017–2022
-Lycée Français International Louis-Massignon — Baccalauréat Scientifique, spécialité Mathématiques — Casablanca, 2017
+  fr: `IMT Nord Europe - Diplôme d'Ingénieur en Informatique, Réseaux & Télécoms - Lille, 2017–2022
+Lycée Français International Louis-Massignon - Baccalauréat Scientifique, spécialité Mathématiques - Casablanca, 2017
 Certification : TOEIC`,
 };
 
@@ -357,7 +357,7 @@ const pair = (item) => [
   { id: uid(), lang: 'FR', text: item.fr },
 ];
 
-// ————— LinkedIn skill lists (canonical LinkedIn names — same in FR/EN) —————
+// ===== LinkedIn skill lists (canonical LinkedIn names - same in FR/EN) =====
 const linkedinSkills = [
   {
     label: 'Top Skills',
@@ -373,10 +373,10 @@ const linkedinSkills = [
   },
 ].map((s) => ({ ...s, id: uid() }));
 
-// ————— Downloadable assets —————
+// ===== Downloadable assets =====
 const assets = [
-  { label: 'CV — English (PDF)', file: 'cv-en.pdf' },
-  { label: 'CV — Français (PDF)', file: 'cv-fr.pdf' },
+  { label: 'CV - English (PDF)', file: 'cv-en.pdf' },
+  { label: 'CV - Français (PDF)', file: 'cv-fr.pdf' },
   { label: 'LinkedIn profile export (PDF)', file: 'linkedin.pdf' },
   { label: 'Favicon / logo (SVG)', file: 'favicon.svg' },
 ];
@@ -411,19 +411,19 @@ const eduBlocks = pair(education);
 ---
 
 <Layout
-  title="Profile Kit — El Mahdi Moubarak"
-  description="Canonical profile content — bios, experience and projects in EN/FR."
+  title="Profile Kit - El Mahdi Moubarak"
+  description="Canonical profile content - bios, experience and projects in EN/FR."
   noindex
 >
   <!-- Header -->
   <section class="mb-12">
     <h1 class="text-2xl font-extrabold mb-1">Profile Kit</h1>
     <p class="font-mono text-xs text-muted mb-4">
-      Canonical, copy-paste-ready versions of my bio, experience and projects — EN & FR.
+      Canonical, copy-paste-ready versions of my bio, experience and projects - EN & FR.
       Single source of truth for freelance platforms (Malt, Upwork, LinkedIn…).
     </p>
     <p class="font-mono text-[0.65rem] text-muted">
-      Hidden page — not linked in the nav, not indexed.
+      Hidden page - not linked in the nav, not indexed.
     </p>
   </section>
 
