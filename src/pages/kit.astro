@@ -374,12 +374,55 @@ const linkedinSkills = [
 ].map((s) => ({ ...s, id: uid() }));
 
 // ===== Downloadable assets =====
-const assets = [
+const docAssets = [
   { label: 'CV - English (PDF)', file: 'cv-en.pdf' },
   { label: 'CV - Français (PDF)', file: 'cv-fr.pdf' },
   { label: 'LinkedIn profile export (PDF)', file: 'linkedin.pdf' },
-  { label: 'Favicon / logo (SVG)', file: 'favicon.svg' },
 ];
+
+const imageAssets = [
+  { label: 'Profile picture (400×400)', file: 'profile-picture.webp' },
+  { label: 'OG image · site (1200×630)', file: 'og.png' },
+  { label: 'Favicon / logo (SVG)', file: 'favicon.svg' },
+  { label: 'DRIVECO training photo', file: 'driveco-training.webp' },
+  { label: 'Piktechs · OG image', file: 'portfolio/piktechs-og.webp' },
+  { label: 'PDFold · OG image', file: 'portfolio/pdfold-og.webp' },
+  { label: 'PDFold · full screenshot', file: 'portfolio/pdfold.png' },
+  { label: 'Atandem Agency · screenshot', file: 'portfolio/atandemagency.webp' },
+  { label: 'Mon Jouet Montessori · screenshot', file: 'portfolio/montessori.png' },
+  { label: 'Deuspi · app screenshot', file: 'portfolio/deuspi.png' },
+  { label: 'Altao RSS Tool · thumbnail', file: 'portfolio/altao-thumb.webp' },
+  { label: 'Altao RSS Tool · mockup', file: 'portfolio/altao-mockup.webp' },
+  { label: 'Worldline MQTT Tool · thumbnail', file: 'portfolio/worldline-thumb.webp' },
+  { label: 'Worldline MQTT Tool · mockup', file: 'portfolio/worldline-mockup.webp' },
+];
+
+const linkBlocks = [
+  {
+    label: 'Projects & profiles',
+    text: `Website: https://moubarak.dev/
+Portfolio: https://moubarak.dev/portfolio/
+CV (EN): https://moubarak.dev/cv-en.pdf
+CV (FR): https://moubarak.dev/cv-fr.pdf
+LinkedIn: https://linkedin.com/in/el-mahdi-moubarak
+GitHub: https://github.com/emoubarak
+Calendly: https://calendly.com/moubarakelmahdipro/
+Piktechs: https://piktechs.com/
+PDFold: https://pdfold.com/
+Text-to-Short-Video: https://github.com/emoubarak/prompt-to-short-video-generator
+Mon Jouet Montessori: https://mon-jouet-montessori.com/
+Atandem Agency: https://atandemagency.com/`,
+  },
+  {
+    label: 'Companies & references',
+    text: `KSUR Services (agency): https://www.agence-ksur.com/
+KSUR portfolio: https://www.agence-ksur.com/realisations
+DRIVECO: https://www.driveco.com/
+DRIVECO training post (LinkedIn): https://www.linkedin.com/posts/el-mahdi-moubarak_merci-%C3%A0-toute-l%C3%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/
+Board of Cyber: https://www.boardofcyber.io/
+Worldline: https://worldline.com/`,
+  },
+].map((b) => ({ ...b, id: uid() }));
 
 // Flatten everything into copy blocks
 const identityBlocks = pair(identity);
@@ -451,8 +494,10 @@ const eduBlocks = pair(education);
   <!-- Assets -->
   <section class="mb-12" data-section="assets">
     <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Assets</h2>
-    <div class="flex flex-wrap gap-3">
-      {assets.map((a) => (
+
+    <p class="font-mono text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-3">Documents</p>
+    <div class="flex flex-wrap gap-3 mb-8">
+      {docAssets.map((a) => (
         <a
           href={`${base}/${a.file}`}
           download
@@ -460,6 +505,46 @@ const eduBlocks = pair(education);
         >
           {a.label} ↓
         </a>
+      ))}
+    </div>
+
+    <p class="font-mono text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-3">Images</p>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+      {imageAssets.map((a) => (
+        <div class="b-border bg-paper dark:bg-dark-surface flex flex-col">
+          <div class="relative h-28 overflow-hidden border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper shrink-0">
+            <img
+              src={`${base}/${a.file}`}
+              alt={a.label}
+              class="absolute inset-0 w-full h-full object-cover object-top"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="flex items-center justify-between gap-2 px-3 py-2 flex-1">
+            <span class="font-mono text-[0.65rem] leading-snug">{a.label}</span>
+            <a
+              href={`${base}/${a.file}`}
+              download
+              class="font-mono text-[0.65rem] font-bold b-border px-2 py-1 shrink-0 bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors"
+            >
+              ↓
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="font-mono text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-3">Links</p>
+    <div class="space-y-4">
+      {linkBlocks.map((b) => (
+        <div class="b-border bg-paper dark:bg-dark-surface">
+          <div class="flex items-center justify-between px-3 py-2 border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper">
+            <span class="font-mono text-[0.65rem] font-bold uppercase tracking-widest">{b.label}</span>
+            <button class="copy-btn font-mono text-[0.65rem] font-bold b-border px-2 py-1 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors" data-target={b.id}>Copy</button>
+          </div>
+          <pre id={b.id} class="whitespace-pre-wrap font-mono text-xs leading-relaxed p-3 text-body overflow-x-auto">{b.text}</pre>
+        </div>
       ))}
     </div>
   </section>
