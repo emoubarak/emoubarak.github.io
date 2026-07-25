@@ -68,6 +68,7 @@ Diplôme d'ingénieur de l'IMT Nord Europe (Informatique, Réseaux & Télécoms)
 const experiences = [
   {
     label: 'EMM - Founder & Software Engineer',
+    project: 'emm',
     en: `Founder & Software Engineer - EMM
 March 2026 – Present · France
 
@@ -87,6 +88,7 @@ Compétences : Web Development · Full-Stack Development · AI Agents · Large L
   },
   {
     label: 'Piktechs - Founder',
+    project: 'piktechs',
     en: `Founder - Piktechs
 March 2026 – Present · France
 
@@ -110,6 +112,7 @@ Compétences : Product Development · Supabase · DevOps · TypeScript · Web De
   },
   {
     label: 'KSUR Services - CTO',
+    project: 'ksur',
     en: `CTO - KSUR Services
 March 2026 – Present · France · Morocco
 
@@ -133,6 +136,7 @@ Compétences : DevOps · Search Engine Optimization (SEO) · Web Development · 
   },
   {
     label: 'DRIVECO - AI Trainer',
+    project: 'driveco',
     en: `AI Trainer - DRIVECO
 July 2026 · Paris
 
@@ -152,6 +156,7 @@ Compétences : AI Agents · Large Language Models (LLM) · Artificial Intelligen
   },
   {
     label: 'Board of Cyber - Full-Stack Engineer',
+    project: 'boardofcyber',
     en: `Full-Stack Engineer - Board of Cyber
 March 2023 – February 2026 · Paris (remote)
 
@@ -181,6 +186,7 @@ Compétences : Front-End Development · TypeScript · Python · Web Development 
   },
   {
     label: 'ALTAO Santé - Full-Stack Engineer',
+    project: 'altao',
     en: `Full-Stack Engineer - ALTAO Santé
 September 2021 – September 2022 · Lille
 
@@ -210,6 +216,7 @@ Compétences : Vue.js · DevOps · Amazon Web Services (AWS) · PostgreSQL · Py
   },
   {
     label: 'Deuspi - Mobile Software Engineer',
+    project: 'deuspi',
     en: `Mobile Software Engineer - Deuspi
 March 2021 – June 2021 · Lille
 
@@ -237,6 +244,7 @@ Compétences : Front-End Development · React Native · JavaScript · REST APIs 
   },
   {
     label: 'Worldline - Full-Stack Engineer',
+    project: 'worldline',
     en: `Full-Stack Engineer - Worldline
 April 2019 – August 2019 · Seclin
 
@@ -266,6 +274,7 @@ Compétences : Vue.js · Spring Boot · Web Development · Full-Stack Developmen
 const projects = [
   {
     label: 'Piktechs',
+    project: 'piktechs',
     link: 'https://piktechs.com/',
     en: `Piktechs - https://piktechs.com/
 B2B NFC cards & event SaaS: digital business cards, lead capture and attendee tracking for professional networking. Designed, built and operated end to end: architecture, frontend, backend, infrastructure.
@@ -282,6 +291,7 @@ Compétences : Stripe (Software) · Next.js · Software as a Service (SaaS) · F
   },
   {
     label: 'PDFold',
+    project: 'pdfold',
     link: 'https://pdfold.com/',
     en: `PDFold - https://pdfold.com/
 AI OCR + Vision pipeline converting PDFs to structured Markdown in 11 languages, with Stripe billing.
@@ -294,6 +304,7 @@ Stack : Next.js, TypeScript, Gemini API, Stripe, Supabase, Vercel, Resend`,
   },
   {
     label: 'Text-to-Short-Video',
+    project: 'text-to-video',
     link: 'https://github.com/emoubarak/prompt-to-short-video-generator',
     en: `Text-to-Short-Video - https://github.com/emoubarak/prompt-to-short-video-generator
 AI video generation pipeline orchestrating GPT, ElevenLabs and FFmpeg for automated video creation from text scripts. Listed on LinkedIn as "Video Generator Application".
@@ -310,6 +321,7 @@ Compétences : Automation · Large Language Models (LLM) · Python`,
   },
   {
     label: 'E-commerce Store (Shopify)',
+    project: 'montessori',
     link: 'https://mon-jouet-montessori.com/',
     en: `E-commerce Store - https://mon-jouet-montessori.com/
 Shopify store built end to end, grown to real revenue, and successfully sold: SEO, marketing and custom Liquid themes.
@@ -373,31 +385,130 @@ const linkedinSkills = [
   },
 ].map((s) => ({ ...s, id: uid() }));
 
-// ===== Downloadable assets =====
+// ===== Downloadable assets (grouped by project, typed) =====
 const docAssets = [
   { label: 'CV - English (PDF)', file: 'cv-en.pdf' },
   { label: 'CV - Français (PDF)', file: 'cv-fr.pdf' },
 ];
 
-const imageAssets = [
-  { label: 'Profile picture (400×400)', file: 'profile-picture.webp' },
-  { label: 'OG image · site (1200×630)', file: 'og.png' },
-  { label: 'Favicon / logo (SVG)', file: 'favicon.svg' },
-  { label: 'DRIVECO training photo', file: 'driveco-training.webp' },
-  { label: 'Piktechs · OG image', file: 'portfolio/piktechs-og.webp' },
-  { label: 'PDFold · OG image', file: 'portfolio/pdfold-og.webp' },
-  { label: 'Mon Jouet Montessori · OG image', file: 'portfolio/montessori-og.webp' },
-  { label: 'Altao RSS Tool · OG image', file: 'portfolio/altao-og.webp' },
-  { label: 'Worldline MQTT Tool · OG image', file: 'portfolio/worldline-og.webp' },
-  { label: 'Deuspi · OG image', file: 'portfolio/deuspi-og.webp' },
-  { label: 'PDFold · full screenshot', file: 'portfolio/pdfold.png' },
-  { label: 'Atandem Agency · screenshot', file: 'portfolio/atandemagency.webp' },
-  { label: 'Mon Jouet Montessori · screenshot', file: 'portfolio/montessori.png' },
-  { label: 'Deuspi · app screenshot', file: 'portfolio/deuspi.png' },
-  { label: 'Altao RSS Tool · thumbnail', file: 'portfolio/altao-thumb.webp' },
-  { label: 'Altao RSS Tool · mockup', file: 'portfolio/altao-mockup.webp' },
-  { label: 'Worldline MQTT Tool · thumbnail', file: 'portfolio/worldline-thumb.webp' },
-  { label: 'Worldline MQTT Tool · mockup', file: 'portfolio/worldline-mockup.webp' },
+// Display order of asset types inside each project group
+const assetTypeOrder = ['Logo', 'Photo', 'Thumbnail', 'OG image', 'Devices', 'Landing page', 'Screenshot', 'Mockup', 'Motion'];
+
+const assetGroups = [
+  {
+    key: 'brand',
+    name: 'Personal brand',
+    link: 'https://moubarak.dev/',
+    assets: [
+      { label: 'Favicon / logo (SVG)', file: 'favicon.svg', type: 'Logo' },
+      { label: 'Profile picture (400×400)', file: 'profile-picture.webp', type: 'Photo' },
+      { label: 'OG image · site (1200×630)', file: 'og.png', type: 'OG image' },
+    ],
+  },
+  {
+    key: 'piktechs',
+    name: 'Piktechs',
+    link: 'https://piktechs.com/',
+    assets: [
+      { label: 'OG image', file: 'portfolio/piktechs-og.webp', type: 'OG image' },
+      { label: 'Dashboard · desktop & mobile', file: 'portfolio/piktechs-devices.webp', type: 'Devices' },
+    ],
+  },
+  {
+    key: 'pdfold',
+    name: 'PDFold',
+    link: 'https://pdfold.com/',
+    assets: [
+      { label: 'OG image', file: 'portfolio/pdfold-og.webp', type: 'OG image' },
+      { label: 'Landing page (full)', file: 'portfolio/pdfold.png', type: 'Landing page' },
+      { label: 'Motion design (45s, MP4)', file: 'portfolio/pdfold-motion.mp4', poster: 'portfolio/pdfold-motion-poster.webp', type: 'Motion' },
+    ],
+  },
+  {
+    key: 'montessori',
+    name: 'Mon Jouet Montessori',
+    link: 'https://mon-jouet-montessori.com/',
+    assets: [
+      { label: 'OG image', file: 'portfolio/montessori-og.webp', type: 'OG image' },
+      { label: 'Landing page', file: 'portfolio/montessori.png', type: 'Landing page' },
+    ],
+  },
+  {
+    key: 'altao',
+    name: 'Altao RSS Tool',
+    link: null,
+    assets: [
+      { label: 'Thumbnail', file: 'portfolio/altao-thumb.webp', type: 'Thumbnail' },
+      { label: 'OG image', file: 'portfolio/altao-og.webp', type: 'OG image' },
+      { label: 'Recoding tool · desktop & mobile', file: 'portfolio/altao-devices.webp', type: 'Devices' },
+      { label: 'Full app screenshot', file: 'portfolio/altao-mockup.webp', type: 'Mockup' },
+    ],
+  },
+  {
+    key: 'worldline',
+    name: 'Worldline MQTT Tool',
+    link: 'https://worldline.com/',
+    assets: [
+      { label: 'Thumbnail', file: 'portfolio/worldline-thumb.webp', type: 'Thumbnail' },
+      { label: 'OG image', file: 'portfolio/worldline-og.webp', type: 'OG image' },
+      { label: 'MQTT debugger · desktop & mobile', file: 'portfolio/worldline-devices.webp', type: 'Devices' },
+      { label: 'Full app screenshot', file: 'portfolio/worldline-mockup.webp', type: 'Mockup' },
+    ],
+  },
+  {
+    key: 'deuspi',
+    name: 'Deuspi',
+    link: null,
+    assets: [
+      { label: 'OG image', file: 'portfolio/deuspi-og.webp', type: 'OG image' },
+      { label: 'App screenshot', file: 'portfolio/deuspi.png', type: 'Screenshot' },
+    ],
+  },
+  {
+    key: 'ksur',
+    name: 'Agence KSUR',
+    link: 'https://www.agence-ksur.com/',
+    assets: [
+      { label: 'Showreel (18s, MP4)', file: 'portfolio/ksur-showreel.mp4', poster: 'portfolio/ksur-showreel-poster.webp', type: 'Motion' },
+    ],
+  },
+  {
+    key: 'atandem',
+    name: 'Atandem Agency',
+    link: 'https://atandemagency.com/',
+    assets: [
+      { label: 'Landing page', file: 'portfolio/atandemagency.webp', type: 'Landing page' },
+    ],
+  },
+  {
+    key: 'driveco',
+    name: 'DRIVECO',
+    link: 'https://www.driveco.com/',
+    assets: [
+      { label: 'Training photo', file: 'driveco-training.webp', type: 'Photo' },
+    ],
+  },
+].map((g) => ({
+  ...g,
+  assets: [...g.assets].sort((a, b) => assetTypeOrder.indexOf(a.type) - assetTypeOrder.indexOf(b.type)),
+}));
+
+// ===== Project filter (cross-section: assets + bios + experience + links) =====
+const projectFilters = [
+  { key: 'all', label: 'All' },
+  { key: 'brand', label: 'Personal brand' },
+  { key: 'emm', label: 'EMM' },
+  { key: 'piktechs', label: 'Piktechs' },
+  { key: 'pdfold', label: 'PDFold' },
+  { key: 'text-to-video', label: 'Text-to-Video' },
+  { key: 'montessori', label: 'Montessori' },
+  { key: 'ksur', label: 'KSUR' },
+  { key: 'driveco', label: 'DRIVECO' },
+  { key: 'boardofcyber', label: 'Board of Cyber' },
+  { key: 'altao', label: 'ALTAO' },
+  { key: 'deuspi', label: 'Deuspi' },
+  { key: 'worldline', label: 'Worldline' },
+  { key: 'atandem', label: 'Atandem' },
 ];
 
 const linkBlocks = [
@@ -450,8 +561,8 @@ const identityCards = [
   { lang: 'FR', langKey: 'fr', idKey: 'idFr', copyAllId: identityBlocks[1].id, copyAllText: identityBlocks[1].text },
 ];
 const bioSections = bios.map((b) => ({ label: b.label, blocks: pair(b) }));
-const expSections = experiences.map((e) => ({ label: e.label, blocks: pair(e) }));
-const projSections = projects.map((p) => ({ label: p.label, link: p.link, blocks: pair(p) }));
+const expSections = experiences.map((e) => ({ label: e.label, project: e.project, blocks: pair(e) }));
+const projSections = projects.map((p) => ({ label: p.label, project: p.project, link: p.link, blocks: pair(p) }));
 const skillBlocks = pair(skills);
 const eduBlocks = pair(education);
 ---
@@ -474,81 +585,109 @@ const eduBlocks = pair(education);
   </section>
 
   <!-- Filters -->
-  <div class="sticky top-[66px] z-40 bg-paper dark:bg-dark-paper py-3 mb-9 border-b-2 border-ink dark:border-dark-border flex flex-wrap gap-2">
-    {[
-      { key: 'all', label: 'All' },
-      { key: 'assets', label: 'Assets' },
-      { key: 'identity', label: 'Identity' },
-      { key: 'bios', label: 'Bios' },
-      { key: 'experience', label: 'Experience' },
-      { key: 'projects', label: 'Projects' },
-      { key: 'skills', label: 'Skills' },
-      { key: 'education', label: 'Education' },
-    ].map((f) => (
-      <button
-        class:list={['filter-btn font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors', { 'filter-active': f.key === 'all' }]}
-        data-filter={f.key}
-      >
-        {f.label}
-      </button>
-    ))}
+  <div class="sticky top-[66px] z-40 bg-paper dark:bg-dark-paper py-3 mb-9 border-b-2 border-ink dark:border-dark-border space-y-2">
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="font-mono text-[0.6rem] text-muted uppercase tracking-widest w-14 shrink-0">Section</span>
+      {[
+        { key: 'all', label: 'All' },
+        { key: 'assets', label: 'Assets' },
+        { key: 'identity', label: 'Identity' },
+        { key: 'bios', label: 'Bios' },
+        { key: 'experience', label: 'Experience' },
+        { key: 'projects', label: 'Projects' },
+        { key: 'skills', label: 'Skills' },
+        { key: 'education', label: 'Education' },
+      ].map((f) => (
+        <button
+          class:list={['section-filter-btn font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors', { 'filter-active': f.key === 'all' }]}
+          data-section-filter={f.key}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="font-mono text-[0.6rem] text-muted uppercase tracking-widest w-14 shrink-0">Project</span>
+      {projectFilters.map((f) => (
+        <button
+          class:list={['project-filter-btn font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors', { 'filter-active': f.key === 'all' }]}
+          data-project-filter={f.key}
+        >
+          {f.label}
+        </button>
+      ))}
+    </div>
   </div>
 
   <!-- Assets -->
   <section class="mb-12" data-section="assets">
     <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Assets</h2>
 
-    <p class="font-mono text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-3">Documents</p>
-    <div class="flex flex-wrap gap-3 mb-8">
-      {docAssets.map((a) => (
-        <a
-          href={`${base}/${a.file}`}
-          download
-          class="font-mono text-xs font-bold b-border px-4 py-2 b-lift bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors inline-block"
-        >
-          {a.label} ↓
-        </a>
-      ))}
+    <div class="mb-8" data-project="brand">
+      <p class="font-mono text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-3">Documents</p>
+      <div class="flex flex-wrap gap-3">
+        {docAssets.map((a) => (
+          <a
+            href={`${base}/${a.file}`}
+            download
+            class="font-mono text-xs font-bold b-border px-4 py-2 b-lift bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors inline-block"
+          >
+            {a.label} ↓
+          </a>
+        ))}
+      </div>
     </div>
 
-    <p class="font-mono text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-3">Images</p>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-      {imageAssets.map((a) => (
-        <div class="b-border bg-paper dark:bg-dark-surface flex flex-col">
-          <div class="relative h-28 overflow-hidden border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper shrink-0">
-            <img
-              src={`${base}/${a.file}`}
-              alt={a.label}
-              class="absolute inset-0 w-full h-full object-cover object-top"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-          <div class="flex items-center justify-between gap-2 px-3 py-2 flex-1">
-            <span class="font-mono text-[0.65rem] leading-snug">{a.label}</span>
-            <a
-              href={`${base}/${a.file}`}
-              download
-              class="font-mono text-[0.65rem] font-bold b-border px-2 py-1 shrink-0 bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors"
-            >
-              ↓
-            </a>
-          </div>
+    {assetGroups.map((g) => (
+      <div class="mb-8" data-project={g.key}>
+        <p class="font-mono text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-3">
+          {g.name}
+          {g.link && (
+            <a href={g.link} target="_blank" class="font-normal normal-case tracking-normal text-accent hover:text-accent-alt ml-2">{g.link.replace(/^https?:\/\//, '').replace(/\/$/, '')} ↗</a>
+          )}
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {g.assets.map((a) => (
+            <div class="b-border bg-paper dark:bg-dark-surface flex flex-col">
+              <div class="relative h-28 overflow-hidden border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper shrink-0">
+                <img
+                  src={`${base}/${a.poster ?? a.file}`}
+                  alt={`${g.name} - ${a.label}`}
+                  class="absolute inset-0 w-full h-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="absolute top-1.5 left-1.5 font-mono text-[0.55rem] font-bold uppercase tracking-wider px-1.5 py-0.5 bg-paper dark:bg-dark-surface b-border">{a.type}</span>
+              </div>
+              <div class="flex items-center justify-between gap-2 px-3 py-2 flex-1">
+                <span class="font-mono text-[0.65rem] leading-snug">{a.label}</span>
+                <a
+                  href={`${base}/${a.file}`}
+                  download
+                  class="font-mono text-[0.65rem] font-bold b-border px-2 py-1 shrink-0 bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors"
+                >
+                  ↓
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
 
-    <p class="font-mono text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-3">Links</p>
-    <div class="space-y-4">
-      {linkBlocks.map((b) => (
-        <div class="b-border bg-paper dark:bg-dark-surface">
-          <div class="flex items-center justify-between px-3 py-2 border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper">
-            <span class="font-mono text-[0.65rem] font-bold uppercase tracking-widest">{b.label}</span>
-            <button class="copy-btn font-mono text-[0.65rem] font-bold b-border px-2 py-1 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors" data-target={b.id}>Copy</button>
+    <div data-project="brand">
+      <p class="font-mono text-[0.65rem] font-bold text-muted uppercase tracking-widest mb-3">Links</p>
+      <div class="space-y-4">
+        {linkBlocks.map((b) => (
+          <div class="b-border bg-paper dark:bg-dark-surface">
+            <div class="flex items-center justify-between px-3 py-2 border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper">
+              <span class="font-mono text-[0.65rem] font-bold uppercase tracking-widest">{b.label}</span>
+              <button class="copy-btn font-mono text-[0.65rem] font-bold b-border px-2 py-1 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors" data-target={b.id}>Copy</button>
+            </div>
+            <pre id={b.id} class="whitespace-pre-wrap font-mono text-xs leading-relaxed p-3 text-body overflow-x-auto">{b.text}</pre>
           </div>
-          <pre id={b.id} class="whitespace-pre-wrap font-mono text-xs leading-relaxed p-3 text-body overflow-x-auto">{b.text}</pre>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 
@@ -607,7 +746,7 @@ const eduBlocks = pair(education);
     <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Experience</h2>
     <div class="space-y-8">
       {expSections.map((s) => (
-        <div>
+        <div data-project={s.project}>
           <h3 class="font-mono text-sm font-bold mb-3">{s.label}</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {s.blocks.map((b) => (
@@ -630,7 +769,7 @@ const eduBlocks = pair(education);
     <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Projects</h2>
     <div class="space-y-8">
       {projSections.map((s) => (
-        <div>
+        <div data-project={s.project}>
           <h3 class="font-mono text-sm font-bold mb-3">
             {s.label}
             <a href={s.link} target="_blank" class="font-normal text-accent hover:text-accent-alt text-xs ml-2">↗</a>
@@ -695,23 +834,54 @@ const eduBlocks = pair(education);
   </section>
 
   <style>
-    .filter-btn.filter-active {
+    .filter-active {
       background: var(--color-accent);
       color: #fff;
       border-color: var(--color-accent);
     }
+    .filter-empty {
+      opacity: 0.35;
+    }
   </style>
 
   <script is:inline>
-    document.querySelectorAll('.filter-btn').forEach((btn) => {
+    const filterState = { section: 'all', project: 'all' };
+
+    function applyFilters() {
+      // Per-item project visibility
+      document.querySelectorAll('[data-project]').forEach((el) => {
+        el.style.display = (filterState.project === 'all' || el.dataset.project === filterState.project) ? '' : 'none';
+      });
+      // Section visibility: matches the section filter AND has content for the active project
+      document.querySelectorAll('[data-section]').forEach((section) => {
+        const sectionOk = filterState.section === 'all' || section.dataset.section === filterState.section;
+        const projectOk = filterState.project === 'all' || !!section.querySelector(`[data-project="${filterState.project}"]`);
+        section.style.display = sectionOk && projectOk ? '' : 'none';
+      });
+      document.querySelectorAll('.section-filter-btn').forEach((b) => {
+        const key = b.dataset.sectionFilter;
+        b.classList.toggle('filter-active', key === filterState.section);
+        const empty = key !== 'all' && filterState.project !== 'all'
+          && !document.querySelector(`[data-section="${key}"] [data-project="${filterState.project}"]`);
+        b.classList.toggle('filter-empty', empty);
+      });
+      document.querySelectorAll('.project-filter-btn').forEach((b) => {
+        b.classList.toggle('filter-active', b.dataset.projectFilter === filterState.project);
+      });
+    }
+
+    document.querySelectorAll('.section-filter-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.filter-btn').forEach((b) => {
-          b.classList.toggle('filter-active', b === btn);
-        });
-        document.querySelectorAll('[data-section]').forEach((section) => {
-          section.style.display = (filter === 'all' || section.dataset.section === filter) ? '' : 'none';
-        });
+        filterState.section = btn.dataset.sectionFilter;
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('.project-filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterState.project = btn.dataset.projectFilter;
+        filterState.section = 'all';
+        applyFilters();
       });
     });
 

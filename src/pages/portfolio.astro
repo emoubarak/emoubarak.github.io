@@ -9,6 +9,7 @@ const categories = [
   { key: 'web-app', label: 'Web Apps' },
   { key: 'e-commerce', label: 'E-commerce' },
   { key: 'website', label: 'Websites' },
+  { key: 'agency', label: 'Agency' },
   { key: 'mobile', label: 'Mobile' },
 ];
 
@@ -22,7 +23,10 @@ const projects = [
     description: 'B2B SaaS platform for digital business cards at professional events: connection, lead capture and attendee tracking. Designed, built and operated end to end.',
     image: `${base}/portfolio/piktechs-og.webp`,
     imageCentered: true,
-    demo: 'https://piktechs.com',
+    previews: [
+      { label: 'Dashboard', src: `${base}/portfolio/piktechs-devices.webp` },
+      { label: 'Live site', src: 'https://piktechs.com' },
+    ],
     url: 'https://piktechs.com',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'Stripe'],
   },
@@ -35,9 +39,28 @@ const projects = [
     description: 'SaaS converting PDFs to structured Markdown through a multi-pass OCR pipeline combined with Gemini. Understands and transforms documents of any size, in 11 languages.',
     image: `${base}/portfolio/pdfold-og.webp`,
     imageCentered: true,
-    demo: `${base}/portfolio/pdfold.png`,
+    previews: [
+      { label: 'Motion design', src: `${base}/portfolio/pdfold-motion.mp4`, poster: `${base}/portfolio/pdfold-motion-poster.webp` },
+      { label: 'Landing page', src: `${base}/portfolio/pdfold.png` },
+    ],
     url: 'https://pdfold.com',
     tags: ['Next.js', 'TypeScript', 'Gemini API', 'Stripe'],
+  },
+  {
+    title: 'Agence KSUR',
+    subtitle: 'agence-ksur.com',
+    category: 'agency',
+    categoryLabel: 'Agency',
+    role: 'CTO',
+    description: 'Digital agency building tailor-made web & mobile applications, e-commerce platforms and AI automation workflows for SMEs. I own the full technical stack, from architecture to production.',
+    image: `${base}/portfolio/ksur-showreel-poster.webp`,
+    imageCentered: true,
+    // agence-ksur.com sets frame-ancestors 'self', so it cannot be previewed in an iframe.
+    previews: [
+      { label: 'Showreel', src: `${base}/portfolio/ksur-showreel.mp4`, poster: `${base}/portfolio/ksur-showreel-poster.webp` },
+    ],
+    url: 'https://www.agence-ksur.com/',
+    tags: ['Web', 'E-commerce', 'AI Automation', 'SEO'],
   },
   {
     title: 'Atandem Agency',
@@ -47,7 +70,7 @@ const projects = [
     role: 'Client work',
     description: 'Immersive landing page for T&EM, a new-generation integrated agency balancing transformation and empathy. Kinetic, scroll-led design.',
     image: `${base}/portfolio/atandemagency.webp`,
-    demo: 'https://atandemagency.com',
+    previews: [{ label: 'Live site', src: 'https://atandemagency.com' }],
     url: 'https://atandemagency.com',
     tags: ['Landing page', 'Kinetic design'],
   },
@@ -60,7 +83,7 @@ const projects = [
     description: 'Online store of Montessori educational toys and games, built end to end, grown to real revenue, and successfully sold: SEO, marketing and custom Liquid themes.',
     image: `${base}/portfolio/montessori-og.webp`,
     imageCentered: true,
-    demo: `${base}/portfolio/montessori.png`,
+    previews: [{ label: 'Landing page', src: `${base}/portfolio/montessori.png` }],
     url: 'https://mon-jouet-montessori.com',
     tags: ['Shopify', 'Liquid', 'SEO'],
   },
@@ -73,7 +96,7 @@ const projects = [
     description: 'Grocery delivery mobile app with real-time geolocation, on the Uber model. Sole mobile engineer on the first version, from wireframes to production-ready interface.',
     image: `${base}/portfolio/deuspi-og.webp`,
     imageCentered: true,
-    demo: `${base}/portfolio/deuspi.png`,
+    previews: [{ label: 'App screenshot', src: `${base}/portfolio/deuspi.png` }],
     url: null,
     tags: ['React Native', 'JavaScript'],
   },
@@ -86,7 +109,10 @@ const projects = [
     description: 'AI web application for automatic correction of hospital discharge summaries for French hospitals. Built solo, 5,000+ documents processed, €700,000 saved.',
     image: `${base}/portfolio/altao-og.webp`,
     imageCentered: true,
-    demo: `${base}/portfolio/altao-mockup.webp`,
+    previews: [
+      { label: 'Recoding tool', src: `${base}/portfolio/altao-devices.webp` },
+      { label: 'Full app', src: `${base}/portfolio/altao-mockup.webp` },
+    ],
     url: null,
     tags: ['Vue.js', 'Django', 'PostgreSQL', 'AWS'],
   },
@@ -99,7 +125,10 @@ const projects = [
     description: 'MQTT debugging web tool for an R&D team: message visualization, payload publishing and logging. Improved team development speed by 70%.',
     image: `${base}/portfolio/worldline-og.webp`,
     imageCentered: true,
-    demo: `${base}/portfolio/worldline-mockup.webp`,
+    previews: [
+      { label: 'MQTT debugger', src: `${base}/portfolio/worldline-devices.webp` },
+      { label: 'Full app', src: `${base}/portfolio/worldline-mockup.webp` },
+    ],
     url: null,
     tags: ['Vue.js', 'Spring Boot', 'MQTT'],
   },
@@ -136,7 +165,7 @@ const projects = [
     {projects.map((p) => (
       <div
         class="portfolio-card b-border b-lift bg-paper dark:bg-dark-surface cursor-pointer flex flex-col"
-        data-demo={p.demo}
+        data-previews={JSON.stringify(p.previews)}
         data-url={p.url}
         data-title={p.title}
         data-category={p.category}
@@ -198,10 +227,23 @@ const projects = [
             </button>
           </div>
         </div>
+        <!-- Preview tabs: only rendered when a project has more than one preview -->
+        <div id="demo-tabs" class="hidden flex-wrap gap-2 px-4 py-2 border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-surface shrink-0"></div>
         <div id="demo-modal-body" class="flex-1 min-h-0 overflow-y-auto bg-paper-alt dark:bg-dark-surface" style="overscroll-behavior:contain;-webkit-overflow-scrolling:touch;">
           <iframe id="demo-iframe" src="" class="w-full block hidden" style="height:80vh;border:0;" allowfullscreen></iframe>
           <!-- Image preview: full width, natural height → vertical scroll for long captures -->
           <img id="demo-img" src="" alt="Preview" class="w-full block hidden" style="height:auto;" />
+          <video
+            id="demo-video"
+            class="w-full block hidden bg-black"
+            style="height:auto;"
+            muted
+            loop
+            playsinline
+            autoplay
+            controls
+            preload="metadata"
+          ></video>
         </div>
       </div>
     </div>
@@ -209,6 +251,15 @@ const projects = [
 
   <style>
     .filter-btn.filter-active {
+      background: var(--color-accent);
+      color: #fff;
+      border-color: var(--color-accent);
+    }
+  </style>
+
+  <!-- Global: tabs are created in JS, so they never carry Astro's scope attribute. -->
+  <style is:global>
+    #demo-tabs .preview-tab.preview-tab-active {
       background: var(--color-accent);
       color: #fff;
       border-color: var(--color-accent);
@@ -239,6 +290,8 @@ const projects = [
       const dialog = document.getElementById('demo-modal-dialog');
       const iframe = document.getElementById('demo-iframe');
       const demoImg = document.getElementById('demo-img');
+      const demoVideo = document.getElementById('demo-video');
+      const tabsBar = document.getElementById('demo-tabs');
       const modalBody = document.getElementById('demo-modal-body');
       const modalTitle = document.getElementById('demo-modal-title');
       const visitLink = document.getElementById('demo-visit-link');
@@ -253,6 +306,7 @@ const projects = [
       let savedScrollY = 0;
 
       const isImageUrl = (url) => /\.(webp|png|jpg|jpeg|gif|svg)(\?.*)?$/i.test(url);
+      const isVideoUrl = (url) => /\.(mp4|webm|mov)(\?.*)?$/i.test(url);
 
       function lockBodyScroll() {
         savedScrollY = window.scrollY;
@@ -274,27 +328,82 @@ const projects = [
         html.style.scrollBehavior = prev;
       }
 
-      function openModal(url, externalUrl, title) {
+      // Tear down every media slot so a closed/switched preview stops loading and decoding.
+      function resetMedia() {
+        // about:blank, not '' — an empty src resolves against the page URL and reloads
+        // this whole page into the hidden iframe on every open and tab switch.
+        iframe.src = 'about:blank';
+        iframe.classList.add('hidden');
+        demoImg.removeAttribute('src');
+        demoImg.classList.add('hidden');
+        demoVideo.pause();
+        demoVideo.removeAttribute('src');
+        demoVideo.removeAttribute('poster');
+        demoVideo.load();
+        demoVideo.classList.add('hidden');
+      }
+
+      function showPreview(preview) {
+        resetMedia();
+        const url = preview.src;
+        if (isVideoUrl(url)) {
+          if (preview.poster) demoVideo.poster = preview.poster;
+          demoVideo.src = url;
+          demoVideo.classList.remove('hidden');
+          demoVideo.play().catch(() => {});
+        } else if (isImageUrl(url)) {
+          demoImg.src = url;
+          demoImg.classList.remove('hidden');
+        } else {
+          iframe.src = url;
+          iframe.classList.remove('hidden');
+        }
+        modalBody.scrollTop = 0;
+      }
+
+      function clearTabs() {
+        tabsBar.replaceChildren();
+        tabsBar.classList.add('hidden');
+        tabsBar.classList.remove('flex');
+      }
+
+      function buildTabs(previews) {
+        clearTabs();
+        if (previews.length < 2) return;
+        tabsBar.classList.remove('hidden');
+        tabsBar.classList.add('flex');
+        previews.forEach((preview, i) => {
+          const tab = document.createElement('button');
+          tab.type = 'button';
+          tab.textContent = preview.label;
+          tab.className =
+            'preview-tab font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors';
+          if (i === 0) tab.classList.add('preview-tab-active');
+          tab.addEventListener('click', () => {
+            tabsBar.querySelectorAll('.preview-tab').forEach((t) => {
+              t.classList.toggle('preview-tab-active', t === tab);
+            });
+            showPreview(preview);
+          });
+          tabsBar.appendChild(tab);
+        });
+      }
+
+      function openModal(previews, externalUrl, title) {
+        if (!previews || previews.length === 0) return;
         lastFocusedElement = document.activeElement;
         modalTitle.textContent = title || 'Preview';
-        const linkUrl = externalUrl || (/^https?:\/\//i.test(url) ? url : null);
+        const first = previews[0];
+        const linkUrl = externalUrl || (/^https?:\/\//i.test(first.src) ? first.src : null);
         if (linkUrl) {
           visitLink.href = linkUrl;
           visitLink.classList.remove('hidden');
         } else {
           visitLink.classList.add('hidden');
         }
-        if (isImageUrl(url)) {
-          iframe.classList.add('hidden');
-          demoImg.src = url;
-          demoImg.classList.remove('hidden');
-        } else {
-          demoImg.classList.add('hidden');
-          iframe.src = url;
-          iframe.classList.remove('hidden');
-        }
+        buildTabs(previews);
+        showPreview(first);
         modal.scrollTop = 0;
-        modalBody.scrollTop = 0;
         modal.classList.remove('hidden');
         lockBodyScroll();
         modal.focus();
@@ -302,10 +411,8 @@ const projects = [
 
       function closeModal() {
         modal.classList.add('hidden');
-        iframe.src = '';
-        iframe.classList.add('hidden');
-        demoImg.src = '';
-        demoImg.classList.add('hidden');
+        resetMedia();
+        clearTabs();
         visitLink.href = '#';
         visitLink.classList.add('hidden');
         unlockBodyScroll();
@@ -334,9 +441,15 @@ const projects = [
 
       // Card triggers (click + keyboard)
       function trigger(el) {
-        openModal(el.dataset.demo, el.dataset.url || null, el.dataset.title || null);
+        let previews;
+        try {
+          previews = JSON.parse(el.dataset.previews);
+        } catch {
+          return;
+        }
+        openModal(previews, el.dataset.url || null, el.dataset.title || null);
       }
-      document.querySelectorAll('.portfolio-card[data-demo]').forEach((card) => {
+      document.querySelectorAll('.portfolio-card[data-previews]').forEach((card) => {
         card.addEventListener('click', () => trigger(card));
         card.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(card); }

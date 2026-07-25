@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# raw source assets, optimized copies live in public/
+draft/
+
 # generated types
 .astro/
 
