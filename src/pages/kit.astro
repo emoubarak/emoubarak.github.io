@@ -303,6 +303,23 @@ Pipeline IA OCR + Vision convertissant les PDF en Markdown structuré, 11 langue
 Stack : Next.js, TypeScript, Gemini API, Stripe, Supabase, Vercel, Resend`,
   },
   {
+    label: 'AI Search Visibility Tracker',
+    project: 'ai-visibility',
+    link: 'https://apify.com/emoubarak/ai-search-visibility-tracker',
+    en: `AI Search Visibility Tracker - https://apify.com/emoubarak/ai-search-visibility-tracker
+Self-service tool measuring how AI answer engines describe a brand across ChatGPT, Perplexity, Gemini and Google AI Overviews. Every prompt is sampled several times per engine for real mention rates, with genuinely localized results and week-over-week deltas. Callable by AI agents through MCP.
+
+Stack: TypeScript, Node.js, Apify, MCP, OpenRouter
+
+Skills: Generative Engine Optimization · Answer Engine Optimization · Search Engine Optimization (SEO) · Large Language Models (LLM) · AI Agents · Model Context Protocol (MCP) · TypeScript · Node.js`,
+    fr: `AI Search Visibility Tracker - https://apify.com/emoubarak/ai-search-visibility-tracker
+Outil self-service mesurant la façon dont les moteurs de réponse IA décrivent une marque sur ChatGPT, Perplexity, Gemini et Google AI Overviews. Chaque prompt est échantillonné plusieurs fois par moteur pour obtenir de vrais taux de mention, avec des résultats réellement localisés et des écarts semaine après semaine. Appelable par un agent IA via MCP.
+
+Stack : TypeScript, Node.js, Apify, MCP, OpenRouter
+
+Compétences : Generative Engine Optimization · Answer Engine Optimization · Search Engine Optimization (SEO) · Large Language Models (LLM) · AI Agents · Model Context Protocol (MCP) · TypeScript · Node.js`,
+  },
+  {
     label: 'Text-to-Short-Video',
     project: 'text-to-video',
     link: 'https://github.com/emoubarak/prompt-to-short-video-generator',
@@ -342,12 +359,12 @@ Compétences : Web Development · E-Commerce · Search Engine Optimization (SEO)
 const skills = {
   en: `Web & Mobile Dev: TypeScript, JavaScript, Next.js, React, React Native, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
 Cloud & DevOps: AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
-AI & Automation: AI Agents, Agentic Dev, Claude Code, LLM APIs (OpenAI, Gemini, OpenRouter), Local LLMs, RAG, Vectorization, OCR & Vision pipelines, ElevenLabs, Voice AI
+AI & Automation: AI Agents, Agentic Dev, Claude Code, MCP, LLM APIs (OpenAI, Gemini, OpenRouter), Local LLMs, RAG, Vectorization, OCR & Vision pipelines, ElevenLabs, Voice AI, GEO/AEO
 E-commerce: Shopify API, Liquid, Stripe, SEO
 Languages: French (native), English (C1, TOEIC), Spanish`,
   fr: `Dév Web & Mobile : TypeScript, JavaScript, Next.js, React, React Native, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
 Cloud & DevOps : AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
-IA & Automatisation : AI Agents, Agentic Dev, Claude Code, APIs LLM (OpenAI, Gemini, OpenRouter), LLMs locaux, RAG, Vectorisation, Pipelines OCR & Vision, ElevenLabs, Voice AI
+IA & Automatisation : AI Agents, Agentic Dev, Claude Code, MCP, APIs LLM (OpenAI, Gemini, OpenRouter), LLMs locaux, RAG, Vectorisation, Pipelines OCR & Vision, ElevenLabs, Voice AI, GEO/AEO
 E-commerce : Shopify API, Liquid, Stripe, SEO
 Langues : Français (natif), Anglais (C1, TOEIC), Espagnol`,
 };
@@ -377,7 +394,7 @@ const linkedinSkills = [
   },
   {
     label: 'Full skills list',
-    text: `AI Agents, Amazon Web Services (AWS), Angular, Artificial Intelligence (AI), Automation, Back-End Web Development, Claude Code, Cloud Computing, Continuous Integration and Continuous Delivery (CI/CD), Cybersecurity, DevOps, Django, Docker, E-Commerce, Employee Training, Front-End Development, Full-Stack Development, Java, JavaScript, Large Language Models (LLM), Machine Learning, Mobile Application Development, Mobile Applications, MQTT, Next.js, Node.js, PostgreSQL, Postman API, Product Development, Prompt Engineering, Python, React Native, React.js, REST APIs, Search Engine Optimization (SEO), Software Architecture, Software as a Service (SaaS), Software Infrastructure, Spring Boot, Stripe (Software), Supabase, TypeScript, Vue.js, Web Applications, Web Development, Website Building`,
+    text: `AI Agents, Amazon Web Services (AWS), Angular, Answer Engine Optimization, Artificial Intelligence (AI), Automation, Back-End Web Development, Claude Code, Cloud Computing, Continuous Integration and Continuous Delivery (CI/CD), Cybersecurity, DevOps, Django, Docker, E-Commerce, Employee Training, Front-End Development, Full-Stack Development, Generative Engine Optimization, Java, JavaScript, Large Language Models (LLM), LLM Integration, Machine Learning, Mobile Application Development, Mobile Applications, Model Context Protocol (MCP), MQTT, Next.js, Node.js, PostgreSQL, Postman API, Product Development, Prompt Engineering, Python, React Native, React.js, REST APIs, Search Engine Optimization (SEO), Software Architecture, Software as a Service (SaaS), Software Infrastructure, Spring Boot, Stripe (Software), Supabase, TypeScript, Vue.js, Web Applications, Web Development, Website Building`,
   },
   {
     label: 'LinkedIn Skill Assessments passed',
@@ -422,6 +439,15 @@ const assetGroups = [
       { label: 'OG image', file: 'portfolio/pdfold-og.webp', type: 'OG image' },
       { label: 'Landing page (full)', file: 'portfolio/pdfold.png', type: 'Landing page' },
       { label: 'Motion design (45s, MP4)', file: 'portfolio/pdfold-motion.mp4', poster: 'portfolio/pdfold-motion-poster.webp', type: 'Motion' },
+    ],
+  },
+  {
+    key: 'ai-visibility',
+    name: 'AI Search Visibility Tracker',
+    link: 'https://apify.com/emoubarak/ai-search-visibility-tracker',
+    assets: [
+      { label: 'OG image', file: 'portfolio/ai-visibility-og.webp', type: 'OG image' },
+      { label: 'Store page (full)', file: 'portfolio/ai-visibility.webp', type: 'Landing page' },
     ],
   },
   {
@@ -500,6 +526,7 @@ const projectFilters = [
   { key: 'emm', label: 'EMM' },
   { key: 'piktechs', label: 'Piktechs' },
   { key: 'pdfold', label: 'PDFold' },
+  { key: 'ai-visibility', label: 'AI Visibility' },
   { key: 'text-to-video', label: 'Text-to-Video' },
   { key: 'montessori', label: 'Montessori' },
   { key: 'ksur', label: 'KSUR' },
@@ -523,6 +550,7 @@ GitHub: https://github.com/emoubarak
 Calendly: https://calendly.com/moubarakelmahdipro/
 Piktechs: https://piktechs.com/
 PDFold: https://pdfold.com/
+AI Search Visibility Tracker: https://apify.com/emoubarak/ai-search-visibility-tracker
 Text-to-Short-Video: https://github.com/emoubarak/prompt-to-short-video-generator
 Mon Jouet Montessori: https://mon-jouet-montessori.com/
 Atandem Agency: https://atandemagency.com/`,
