@@ -7,6 +7,7 @@ const categories = [
   { key: 'all', label: 'All' },
   { key: 'saas', label: 'SaaS' },
   { key: 'web-app', label: 'Web Apps' },
+  { key: 'research', label: 'R&D' },
   { key: 'e-commerce', label: 'E-commerce' },
   { key: 'website', label: 'Websites' },
   { key: 'agency', label: 'Agency' },
@@ -75,6 +76,20 @@ const projects = [
     ],
     url: 'https://www.agence-ksur.com/',
     tags: ['Web', 'E-commerce', 'AI Automation', 'SEO'],
+  },
+  {
+    title: 'Polymarket Up/Down Lab',
+    subtitle: 'github.com/emoubarak/polymarket-updown-lab',
+    category: 'research',
+    categoryLabel: 'Research',
+    role: 'Solo research',
+    description: 'An honest hunt for a trading edge on Polymarket 5 and 15 minute binary crypto markets: hypothesis, out-of-sample backtest, live paper trading, then falsification. ~12,000 paper trades across 60 concurrent runners, settled against the Chainlink oracle. The verdict: the market is efficient and nearly every edge turns out to be a measurement artifact.',
+    image: `${base}/portfolio/polymarket-dashboard.webp`,
+    imageCentered: true,
+    // github.com sets X-Frame-Options: DENY, so the repo cannot be previewed in an iframe.
+    previews: [{ label: 'Live dashboard', src: `${base}/portfolio/polymarket-dashboard.webp` }],
+    url: 'https://github.com/emoubarak/polymarket-updown-lab',
+    tags: ['Python', 'Go', 'Backtesting', 'Market making'],
   },
   {
     title: 'Atandem Agency',
