@@ -274,7 +274,6 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);font-si
   <div class="kicker">Proposition · César Fertility</div>
   <h1>Proposition pour le développement de l'application César Fertility</h1>
   <div class="date">El Mahdi Moubarak · EMM (SASU) · septembre 2026</div>
-  <div class="aside" style="margin-top:18px"><span class="tag">À propos de ce document</span><br>Cette proposition répond à votre demande de devis de septembre 2026. Les renvois « §2 », « §3.1 », etc. désignent les sections de votre brief.</div>
 </header>
 
 <!-- ========== REPONSE ========== -->
@@ -325,7 +324,7 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="reply-head">
   <div class="kicker">Proposition · Canal avec les laboratoires</div>
   <h2 style="margin-top:6px">Import des résultats d'analyse : upload, extraction, validation par l'utilisateur</h2>
-  <p class="lead" style="margin:0">Réponse aux trois questions du brief sur le canal laboratoire (§2) : l'upload par l'utilisateur, le QR code sur les comptes-rendus et la transmission directe par le laboratoire.</p>
+  <p class="lead" style="margin:0">Vous envisagez trois temps pour le canal avec les laboratoires : d'abord, l'utilisateur importe lui-même son compte-rendu « (upload d'un fichier ou d'une photo) » ; ensuite, un « système de QR code apposé sur les comptes-rendus de laboratoire » ; enfin, à plus long terme, qu'« un laboratoire transmette lui-même, directement, un compte-rendu dans le dossier de l'utilisateur ». Voici mon avis sur chacun.</p>
 </div>
 
 <div class="box accent">
@@ -358,17 +357,17 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);font-si
       <li>les unités sont converties automatiquement.</li>
     </ul>
     L'utilisateur corrige si besoin, puis <b>confirme</b>. Contrôler quelques valeurs prend peu de temps.</li>
-  <li><span class="label">Intégration au dossier</span> — une fois validées, les données alimentent le dashboard, l'historique et le moteur d'interprétation. Le <b>document d'origine est conservé</b>, et l'on enregistre qui a validé quelles valeurs et quand, ce qui répond aussi aux exigences de traçabilité de l'hébergement HDS (§4).</li>
+  <li><span class="label">Intégration au dossier</span> — une fois validées, les données alimentent le dashboard, l'historique et le moteur d'interprétation. Le <b>document d'origine est conservé</b>, et l'on enregistre qui a validé quelles valeurs et quand, ce qui répond aussi aux exigences de traçabilité de l'hébergement HDS.</li>
 </ol>
 <div class="aside"><span class="tag">Pourquoi c'est la bonne option pour le MVP</span><br>
-C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des données structurées exploitables par le moteur d'interprétation, et aucune dépendance aux laboratoires. Ça marche dès le premier jour avec n'importe quel labo, partenaire ou non.</div>
+C'est le premier temps que vous envisagez (« l'utilisateur importe lui-même son compte-rendu de laboratoire dans son dossier »), en plus complet : pas de saisie manuelle, des données structurées exploitables par le moteur d'interprétation, et aucune dépendance aux laboratoires. Ça marche dès le premier jour avec n'importe quel labo, partenaire ou non.</div>
 
 <h3 id="r-resp">3. La question de la responsabilité</h3>
 <p>Aucune extraction automatique n'est infaillible. Si les résultats étaient intégrés sans contrôle et qu'une valeur était mal lue, <b>l'erreur serait de la responsabilité de César</b>, et elle se répercuterait sur la lecture augmentée.</p>
 <p>Faire vérifier et valider les données par l'utilisateur <b>coupe la poire en deux</b> : l'automatisation lui évite la saisie, et c'est lui qui confirme que les valeurs correspondent à son document. Cette validation, inscrite dans les CGU, <b>réduit fortement le risque pour César</b>.</p>
 <p>Elle ne suffit pas forcément à décharger César de toute responsabilité, puisque César interprète ensuite ces valeurs médicalement. Je recommande donc :</p>
 <ul>
-  <li><b>un double contrôle :</b> en V0, la lecture augmentée est déjà validée par un référent médical avant d'être envoyée à l'utilisateur (§3.1). Il suffit de lui donner accès au document d'origine pour repérer une valeur mal lue qui aurait échappé à l'utilisateur ;</li>
+  <li><b>un double contrôle :</b> en V0, la lecture augmentée est déjà validée par un référent médical avant d'être envoyée à l'utilisateur, comme vous le prévoyez. Il suffit de lui donner accès au document d'origine pour repérer une valeur mal lue qui aurait échappé à l'utilisateur ;</li>
   <li><b>une validation juridique :</b> faire relire le dispositif (CGU, parcours de validation) par un juriste. Il faudrait en profiter pour clarifier le statut réglementaire du moteur d'interprétation, qui est un logiciel à finalité médicale.</li>
 </ul>
 
@@ -398,12 +397,12 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <!-- ========== REPONSE MOTEUR ========== -->
 <section id="r-moteur" class="reply" style="margin-top:56px">
 <div class="reply-head">
-  <div class="kicker">Proposition · Moteur d'interprétation (§3.1)</div>
+  <div class="kicker">Proposition · Moteur d'interprétation</div>
   <h2 style="margin-top:6px">Moteur d'interprétation : V0 et V1 sans basculer dans le dispositif médical</h2>
 </div>
 
 <div class="box accent">
-<p style="margin:0"><span class="label">En résumé :</span> vous souhaitez rester en dehors du statut de dispositif médical. C'est la contrainte qui dicte la conception du moteur. La V0 peut être conçue pour rester du bon côté de la frontière. La V1 telle que décrite dans le brief (une pondération automatique qui produit une hiérarchisation personnalisée) <b>la franchirait très probablement</b>. Je propose donc une V1 qui personnalise l'<b>accompagnement</b>, et non l'<b>interprétation médicale</b>, et qui laisse toute hiérarchisation au médecin.</p>
+<p style="margin:0"><span class="label">En résumé :</span> vous souhaitez rester en dehors du statut de dispositif médical. C'est la contrainte qui dicte la conception du moteur. La V0 peut être conçue pour rester du bon côté de la frontière. La V1 telle que vous la décrivez, qui « introduira une pondération des paramètres entre eux, pour produire une hiérarchisation réellement personnalisée », <b>la franchirait très probablement</b>. Je propose donc une V1 qui personnalise l'<b>accompagnement</b>, et non l'<b>interprétation médicale</b>, et qui laisse toute hiérarchisation au médecin.</p>
 </div>
 
 <h3 id="r-moteur-dm">1. Où passe la frontière</h3>
@@ -428,7 +427,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <ul>
   <li><b>Pas d'IA générative et pas de calcul :</b> les valeurs du spermogramme sont placées à côté des <b>valeurs de référence indiquées sur le compte-rendu</b> du laboratoire, ou des références OMS affichées comme telles. Le logiciel ne produit pas de verdict.</li>
   <li><b>Des textes d'explication rédigés par les médecins,</b> un par paramètre, pour vulgariser. Ils restent génériques (« la mobilité, c'est… ; une valeur inférieure à la référence peut avoir plusieurs causes, dont… ») et sont modifiables dans le back-office.</li>
-  <li><b>Une validation par le référent médical avant l'envoi,</b> comme prévu dans le brief. Le référent peut ajouter un commentaire personnel. <b>L'interprétation individuelle vient donc du médecin</b>, et le logiciel sert d'outil de mise en forme.</li>
+  <li><b>Une validation par le référent médical avant l'envoi,</b> comme vous le prévoyez. Le référent peut ajouter un commentaire personnel. <b>L'interprétation individuelle vient donc du médecin</b>, et le logiciel sert d'outil de mise en forme.</li>
   <li><b>Un vocabulaire maîtrisé :</b> jamais de « diagnostic », de « risque d'infertilité » ou de « score de fertilité », que ce soit dans l'application, les CGU ou le marketing. On parle de « comprendre son compte-rendu ».</li>
 </ul>
 
@@ -436,7 +435,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <p><b>Je recommande de ne pas développer de pondération automatique</b> entre les paramètres, et de faire porter la V1 sur trois axes à la place :</p>
 <div class="versions">
   <div class="box"><h4><span class="pill g">Axe 1</span> Une hiérarchisation faite par le médecin, avec l'aide de l'outil</h4>
-    <p>L'outil prépare au référent une vue claire du dossier : les paramètres hors des références, l'historique, le questionnaire. Il lui propose aussi une bibliothèque de textes rédigés par les médecins. <b>Le médecin choisit</b> les points à mettre en avant et leur ordre. On obtient une lecture réellement personnalisée, comme le souhaite le brief, mais la hiérarchisation est un acte médical, pas un calcul du logiciel.</p></div>
+    <p>L'outil prépare au référent une vue claire du dossier : les paramètres hors des références, l'historique, le questionnaire. Il lui propose aussi une bibliothèque de textes rédigés par les médecins. <b>Le médecin choisit</b> les points à mettre en avant et leur ordre. On obtient une lecture réellement personnalisée, comme vous le souhaitez, mais la hiérarchisation est un acte médical, pas un calcul du logiciel.</p></div>
   <div class="box"><h4><span class="pill g">Axe 2</span> Un accompagnement personnalisé</h4>
     <p>Des règles définies avec les médecins adaptent les <b>contenus, le programme, les rappels et les conseils d'hygiène de vie</b> au profil de l'utilisateur. Exemples : le rappel des consignes avant un spermogramme de contrôle, ou des contenus sur le tabac si l'utilisateur est fumeur. C'est là que se trouve la plus grande partie de la valeur perçue, et cela reste hors dispositif médical.</p></div>
   <div class="box"><h4><span class="pill g">Axe 3</span> Le suivi dans le temps</h4>
@@ -446,7 +445,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 </div>
 <p><b>Pourquoi cette approche :</b></p>
 <ul>
-  <li><b>Elle respecte votre choix de rester hors dispositif médical,</b> alors que la V1 du brief le remettrait en cause.</li>
+  <li><b>Elle respecte votre choix de rester hors dispositif médical,</b> alors que la V1 envisagée initialement le remettrait en cause.</li>
   <li><b>Il n'y a pas de données pour entraîner un modèle :</b> au lancement, César n'aura pas de base de spermogrammes suivis dans le temps. Une pondération « intelligente » reposerait sur des hypothèses, ce qui est risqué médicalement et juridiquement.</li>
   <li><b>Tout est explicable et vérifiable :</b> chaque texte et chaque règle a été écrit et validé par un médecin. En cas de question, on sait d'où vient chaque phrase.</li>
   <li><b>La porte reste ouverte :</b> les choix faits par les médecins au fil du temps (quels points ils mettent en avant, et pour quels profils) constituent la base de connaissances qui permettrait, plus tard, de construire une vraie pondération, si César décide un jour de passer en dispositif médical.</li>
@@ -463,7 +462,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <!-- ========== REPONSE CHATBOT ========== -->
 <section id="r-chatbot" class="reply" style="margin-top:56px">
 <div class="reply-head">
-  <div class="kicker">Proposition · Chatbot compagnon (§3.2)</div>
+  <div class="kicker">Proposition · Chatbot compagnon</div>
   <h2 style="margin-top:6px">Chatbot : approche recommandée, choix du modèle d'IA et données de santé</h2>
 </div>
 
@@ -478,7 +477,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
   <li><b>Assistants intégrés à une application</b> (par exemple Premom Ask AI) : ils sont réservés à leur propre application et ne se revendent pas en marque blanche.</li>
   <li><b>Plateformes françaises de RAG souverain</b> (par exemple BADIS AI ou BT Blue) : elles savent héberger un chatbot sur une base documentaire en France, parfois en HDS. Mais elles sont généralistes, et vous resteriez dépendants de leur outil pour le circuit de revue médicale, les garde-fous et l'intégration dans l'application.</li>
 </ul>
-<p>Le brief demande des éléments très spécifiques : des sources citées et un corpus validé par vos médecins, des garde-fous contre le diagnostic, le signalement des questions sensibles, une revue médicale sous 24 h, un back-office de validation, une version gratuite limitée et une version payante illimitée, et des réponses nourries par le moteur d'interprétation. Aucune solution du marché ne couvre tout cela. <b>Un développement sur mesure est le plus adapté</b>, et il reste raisonnable parce qu'il s'appuie sur des briques existantes :</p>
+<p>Votre besoin comporte des éléments très spécifiques : des sources citées et un corpus validé par vos médecins, des garde-fous contre le diagnostic, le signalement des questions sensibles, une revue médicale sous 24 h, un back-office de validation, une version gratuite limitée et une version payante illimitée, et des réponses nourries par le moteur d'interprétation. Aucune solution du marché ne couvre tout cela. <b>Un développement sur mesure est le plus adapté</b>, et il reste raisonnable parce qu'il s'appuie sur des briques existantes :</p>
 <div class="two">
   <div class="box"><h4>Ce qui est standard (briques existantes)</h4><ul>
     <li>Le modèle d'IA, appelé par API</li>
@@ -493,7 +492,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
     <li>La limite du gratuit et l'illimité du premium</li>
   </ul></div>
 </div>
-<p>Techniquement, un RAG n'est pas compliqué à construire. Ce qui demande du soin, c'est la qualité : un corpus bien découpé et à jour, des garde-fous qui tiennent face à des questions inattendues, et une qualité mesurée à chaque évolution. Ce travail se fait dans la durée, avec les médecins. C'est ce que le brief appelle un « développement continu ».</p>
+<p>Techniquement, un RAG n'est pas compliqué à construire. Ce qui demande du soin, c'est la qualité : un corpus bien découpé et à jour, des garde-fous qui tiennent face à des questions inattendues, et une qualité mesurée à chaque évolution. Ce travail se fait dans la durée, avec les médecins. C'est ce que vous appelez un « développement continu » du chatbot.</p>
 
 <h3 id="r-chat-modele">2. Le choix du modèle d'IA</h3>
 <p>Ma préférence de départ est <b>GPT-5.6 Luna</b>. C'est le modèle avec le meilleur ratio intelligence/prix : environ 0,20 $ par million de tokens en entrée et 1,20 $ en sortie. Il est conçu pour la conversation à gros volume, ce qui en fait un bon candidat pour un chatbot utilisé tous les jours.</p>
@@ -543,7 +542,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <!-- ========== REPONSE CHAT MEDECIN ========== -->
 <section id="r-chatdoc" class="reply" style="margin-top:56px">
 <div class="reply-head">
-  <div class="kicker">Proposition · Chat asynchrone avec un médecin (§3.3)</div>
+  <div class="kicker">Proposition · Chat asynchrone avec un médecin</div>
   <h2 style="margin-top:6px">Chat asynchrone avec un médecin : fonctionnement, hébergement et cadre réglementaire</h2>
 </div>
 
@@ -569,7 +568,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <ul>
   <li><b>Quel statut pour cet échange ?</b> Un échange écrit en différé n'est pas une téléconsultation au sens de l'Assurance Maladie, qui suppose une vidéo en direct pour être remboursée. Il ne sera donc <b>pas remboursé</b>. Il s'agit plutôt d'un conseil médical à distance, comme chez Alan. Cela limite aussi ce que le médecin peut faire par écrit : il peut orienter et expliquer, mais s'il faut un examen ou une prescription, il oriente vers une vraie consultation.</li>
   <li><b>Vérification des médecins :</b> seuls des médecins inscrits à l'Ordre peuvent répondre. Leur inscription doit être vérifiée, à partir de leur numéro RPPS dans l'annuaire santé, et leur connexion doit être sécurisée. Pro Santé Connect, le service d'authentification des professionnels de santé de l'État, est la solution de référence. C'est une intégration à prévoir.</li>
-  <li><b>Contrat et rémunération des médecins :</b> les contrats liant les médecins à César doivent être communiqués au Conseil de l'Ordre (article L4113-9 du Code de la santé publique). La rémunération ne doit pas porter atteinte à leur indépendance. Par exemple, un médecin salarié ne peut pas être payé au rendement. C'est aussi à articuler avec la position du brief sur l'annuaire (« pas de mise en relation rémunérée ni de compérage ») : ici, César organiserait lui-même une activité médicale rémunérée. Ce montage est un choix structurant, à arbitrer avec l'avocat <b>avant</b> le développement.</li>
+  <li><b>Contrat et rémunération des médecins :</b> les contrats liant les médecins à César doivent être communiqués au Conseil de l'Ordre (article L4113-9 du Code de la santé publique). La rémunération ne doit pas porter atteinte à leur indépendance. Par exemple, un médecin salarié ne peut pas être payé au rendement. C'est aussi à articuler avec votre position sur l'annuaire (« Il ne s'agit pas d'un dispositif de mise en relation rémunérée ou de type compérage ») : ici, César organiserait lui-même une activité médicale rémunérée. Ce montage est un choix structurant, à arbitrer avec l'avocat <b>avant</b> le développement.</li>
   <li><b>Secret médical :</b> seul le médecin en charge (et ses confrères, si la question leur est transmise) accède aux échanges. Ni l'équipe César ni le prestataire technique ne doivent pouvoir les lire. Cela passe par des droits d'accès stricts, un chiffrement et la journalisation de chaque accès.</li>
   <li><b>Consentement et identification du patient :</b> le patient est informé et donne son accord au partage des éléments de son dossier. Le médecin doit savoir à qui il répond.</li>
   <li><b>Traçabilité et conservation :</b> les échanges font partie du suivi médical. Ils sont conservés et exportables, avec une durée de conservation à définir avec l'avocat.</li>
@@ -592,7 +591,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <!-- ========== REPONSE TECHNO ========== -->
 <section id="r-techno" class="reply" style="margin-top:56px">
 <div class="reply-head">
-  <div class="kicker">Proposition · Technologies (§6)</div>
+  <div class="kicker">Proposition · Technologies</div>
   <h2 style="margin-top:6px">Une application mobile en React Native pour les patients, une web app pour les médecins et César</h2>
 </div>
 
@@ -654,7 +653,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <!-- ========== REPONSE ARCHI ========== -->
 <section id="r-archi" class="reply" style="margin-top:56px">
 <div class="reply-head">
-  <div class="kicker">Proposition · Architecture et hébergement HDS (§4)</div>
+  <div class="kicker">Proposition · Architecture et hébergement HDS</div>
   <h2 style="margin-top:6px">Architecture technique et hébergement des données de santé</h2>
 </div>
 
@@ -720,7 +719,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <section id="plan" class="reply planwrap" style="margin-top:56px">
   <div class="reply-head"><div class="kicker">Proposition · Plan du MVP</div><h2 style="margin-top:6px">Du 12 octobre au 23 décembre : 11 semaines, 50 jours de développement</h2></div>
   <p class="lede">Démarrage le lundi 12 octobre, mise en production le vendredi 18 décembre, livraison et passage en garantie le mercredi 23 décembre, avant les fêtes. Les deux briques de R&amp;D (moteur et chatbot) sont développées au cœur du calendrier, pour laisser à vos médecins le temps de fournir et de valider les contenus.</p>
-  <div class="callout"><span class="k">Planning indicatif</span>Ce planning repose sur ma compréhension du brief à ce jour et n'est pas exhaustif. Nous le préciserons ensemble au cadrage (S42), puis nous l'ajusterons ensemble en cas de changement de périmètre, de priorités ou de calendrier.</div>
+  <div class="callout"><span class="k">Planning indicatif</span>Ce planning repose sur ma compréhension de votre besoin à ce jour et n'est pas exhaustif. Nous le préciserons ensemble au cadrage (S42), puis nous l'ajusterons ensemble en cas de changement de périmètre, de priorités ou de calendrier.</div>
   <figure>
     <div class="fh"><span class="fn">FIG. 12</span><span class="ft">Planning semaine par semaine, côté EMM et côté César</span></div>
     <div class="scroll"><div class="wk">
@@ -789,7 +788,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
 <!-- 13 CHIFFRAGE -->
 <section id="chiffrage" class="reply planwrap" style="margin-top:56px">
   <div class="reply-head"><div class="kicker">Proposition · Chiffrage</div><h2 style="margin-top:6px">MVP au forfait : 25 000 € HT, tarif de lancement</h2></div>
-  <p class="lede">50 jours de travail à un <b>tarif de lancement de 500 € HT par jour</b> au lieu de 600 €, découpés selon les blocs demandés dans le brief. Cette remise s'applique au forfait MVP ; la régie qui suit est facturée au tarif standard de 600 € HT par jour. Le forfait inclut la conception, le développement, la mise en production, la publication sur les stores et une garantie de 3 mois.</p>
+  <p class="lede">50 jours de travail à un <b>tarif de lancement de 500 € HT par jour</b> au lieu de 600 €, découpés selon les grands blocs de votre demande. Cette remise s'applique au forfait MVP ; la régie qui suit est facturée au tarif standard de 600 € HT par jour. Le forfait inclut la conception, le développement, la mise en production, la publication sur les stores et une garantie de 3 mois.</p>
   <div class="callout"><span class="k">Chiffrage indicatif</span>Ce chiffrage couvre les éléments identifiés à ce stade et n'est pas exhaustif. Nous l'affinerons ensemble pendant le cadrage, et le montant du forfait sera confirmé à la validation du périmètre (J1). Si le périmètre évolue ensuite, nous revoyons le chiffrage ensemble.</div>
   <figure>
     <div class="fh"><span class="fn">FIG. 13</span><span class="ft">Répartition du forfait</span></div>
@@ -812,7 +811,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
       </tbody>
       <tfoot><tr><td colspan="2" style="font-weight:500;border-top:2px solid var(--line)">Valeur au tarif standard (50 j × 600 €)</td><td class="money" style="font-weight:500;border-top:2px solid var(--line)"></td><td class="money" style="font-weight:500;border-top:2px solid var(--line)"><s>30 000 € HT</s></td></tr><tr><td colspan="2" style="font-weight:500;border-top:none">Remise de lancement (100 € par jour)</td><td class="money" style="border-top:none"></td><td class="money" style="font-weight:500;border-top:none">− 5 000 €</td></tr><tr><td colspan="2">Total MVP au forfait · garantie de 3 mois incluse</td><td class="money">50 j</td><td class="money">25 000 € HT</td></tr></tfoot>
     </table></div>
-    <figcaption><b>Selon les 4 blocs du brief :</b> parcours utilisateur et architecture générale 29 j (14 500 €) · moteur d'interprétation 4 j (2 000 €) · chatbot compagnon 11 j (5 500 €) · hébergement HDS 6 j (3 000 €). <b>La part R&amp;D (moteur et chatbot) représente 15 j, soit 7 500 € HT</b>, isolés pour faciliter le suivi du financement Bpifrance. La TVA de 20 % s'ajoute aux montants HT.</figcaption>
+    <figcaption><b>Selon les 4 blocs de votre demande :</b> parcours utilisateur et architecture générale 29 j (14 500 €) · moteur d'interprétation 4 j (2 000 €) · chatbot compagnon 11 j (5 500 €) · hébergement HDS 6 j (3 000 €). <b>La part R&amp;D (moteur et chatbot) représente 15 j, soit 7 500 € HT</b>, isolés pour faciliter le suivi du financement Bpifrance. La TVA de 20 % s'ajoute aux montants HT.</figcaption>
   </figure>
 
   <h3>Échéancier de paiement</h3>
@@ -823,7 +822,7 @@ C'est le « temps 1 » du brief, en plus complet : pas de saisie manuelle, des d
   </div></div>
 
   <h3>Ce que je propose de reporter après le MVP</h3>
-  <p>Pour tenir le 18 décembre avec un MVP solide, ces éléments sont reportés en V1, conformément à la possibilité d'arbitrage prévue dans le brief. Ils peuvent être chiffrés dès maintenant, au tarif de régie de 600 € HT par jour :</p>
+  <p>Pour tenir le 18 décembre avec un MVP solide, ces éléments sont reportés en V1, comme vous l'avez envisagé si le périmètre global s'avérait trop important pour un MVP raisonnable. Ils peuvent être chiffrés dès maintenant, au tarif de régie de 600 € HT par jour :</p>
   <div class="scroll"><table class="tbl">
     <thead><tr><th>Élément</th><th>Détail</th><th class="money">Estimation</th><th>Quand</th></tr></thead>
     <tbody>
