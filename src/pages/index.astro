@@ -2,9 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import { services as allServices, projects as allProjects } from '../data/profile.js';
-// the homepage shows every line except Shopify, which is the cheapest segment and would
-// re-anchor the positioning; the full list lives in the mother source and on /kit
-const services = allServices.filter((s) => s.title !== 'Shopify Where It Gets Technical');
+// The homepage shows three headline lines only. The other four (MVP rescue, self-hosted
+// agents, corporate AI training, technical Shopify) stay in the mother source and on /kit,
+// where they feed Malt and Upwork.
+const homeServices = ['SaaS & Web Apps', 'AI Automation & Agents', 'LLM & RAG Integration'];
+const services = homeServices.map((t) => allServices.find((s) => s.title === t)).filter(Boolean);
 const featured = ['Piktechs', 'PDFold', 'AI Search Visibility Tracker', 'Mon Jouet Montessori'];
 const projects = featured.map((t) => allProjects.find((p) => p.title === t)).filter(Boolean);
 import { getCollection } from 'astro:content';
