@@ -689,13 +689,28 @@ const eduBlocks = pair(education);
               </div>
               <div class="flex items-center justify-between gap-2 px-3 py-2 flex-1">
                 <span class="font-mono text-[0.65rem] leading-snug">{a.label}</span>
-                <a
-                  href={`${base}/${a.file}`}
-                  download
-                  class="font-mono text-[0.65rem] font-bold b-border px-2 py-1 shrink-0 bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors"
-                >
-                  ↓
-                </a>
+                {a.type === 'Motion' ? (
+                  <a
+                    href={`${base}/${a.file}`}
+                    download
+                    class="font-mono text-[0.65rem] font-bold b-border px-2 py-1 shrink-0 bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors"
+                  >
+                    MP4 ↓
+                  </a>
+                ) : (
+                  <div class="flex gap-1 shrink-0">
+                    {['webp', 'png'].map((fmt) => (
+                      <button
+                        type="button"
+                        class="img-dl-btn font-mono text-[0.65rem] font-bold b-border px-2 py-1 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors uppercase"
+                        data-src={`${base}/${a.file}`}
+                        data-format={fmt}
+                      >
+                        {fmt} ↓
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -910,6 +925,49 @@ const eduBlocks = pair(education);
         filterState.project = btn.dataset.projectFilter;
         filterState.section = 'all';
         applyFilters();
+      });
+    });
+
+    // Download an image asset in the requested format (served as-is if it already matches, else converted via canvas)
+    async function downloadImage(src, format) {
+      const name = src.split('/').pop().replace(/\.[^.]+$/, '') + '.' + format;
+      const ext = src.split('.').pop().toLowerCase();
+      let href = src;
+      let objectUrl = null;
+      if (ext !== format) {
+        const img = new Image();
+        img.src = src;
+        await img.decode();
+        // SVGs have no intrinsic raster size worth keeping: render them at 1024px minimum
+        const scale = ext === 'svg' ? Math.max(1, 1024 / (img.naturalWidth || 1024)) : 1;
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round((img.naturalWidth || 1024) * scale);
+        canvas.height = Math.round((img.naturalHeight || 1024) * scale);
+        canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+        const blob = await new Promise((resolve) => canvas.toBlob(resolve, `image/${format}`, 0.92));
+        href = objectUrl = URL.createObjectURL(blob);
+      }
+      const link = document.createElement('a');
+      link.href = href;
+      link.download = name;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      if (objectUrl) setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+    }
+
+    document.querySelectorAll('.img-dl-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const original = btn.textContent;
+        btn.textContent = '…';
+        btn.disabled = true;
+        try {
+          await downloadImage(btn.dataset.src, btn.dataset.format);
+        } catch (e) {
+          console.error(e);
+        }
+        btn.textContent = original;
+        btn.disabled = false;
       });
     });
 
