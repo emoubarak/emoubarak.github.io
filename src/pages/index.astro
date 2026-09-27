@@ -1,57 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import { services as allServices, projects as allProjects } from '../data/profile.js';
+// the homepage shows every line except Shopify, which is the cheapest segment and would
+// re-anchor the positioning; the full list lives in the mother source and on /kit
+const services = allServices.filter((s) => s.title !== 'Shopify Where It Gets Technical');
+const featured = ['Piktechs', 'PDFold', 'AI Search Visibility Tracker', 'Mon Jouet Montessori'];
+const projects = featured.map((t) => allProjects.find((p) => p.title === t)).filter(Boolean);
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const latestPosts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
-
-const projects = [
-  {
-    title: "Piktechs",
-    description: "B2B NFC cards & event SaaS: digital business cards, lead capture, and attendee tracking for professional networking.",
-    tags: ["Next.js", "TypeScript", "Supabase", "SaaS", "NFC", "Stripe"],
-    href: "https://piktechs.com/",
-  },
-  {
-    title: "PDFold",
-    description: "AI OCR + Vision pipeline converting PDFs to structured Markdown in 11 languages. Next.js, Gemini API, Stripe billing.",
-    tags: ["Next.js", "TypeScript", "Gemini", "Stripe", "Supabase", "Replit", "Vercel", "Vapid", "Resend"],
-    href: "https://pdfold.com/",
-  },
-  {
-    title: "AI Search Visibility Tracker",
-    description: "Brand visibility tracking in AI answers across ChatGPT, Perplexity, Gemini and Google AI Overviews. Statistical sampling per prompt, real geo-localization, week-over-week deltas.",
-    tags: ["TypeScript", "Node.js", "Apify", "MCP", "OpenRouter", "GEO / AEO"],
-    href: "https://apify.com/emoubarak/ai-search-visibility-tracker",
-  },
-  {
-    title: "Mon Jouet Montessori",
-    description: "Shopify store built end to end, grown to real revenue, and successfully sold: SEO, marketing, and custom Liquid themes.",
-    tags: ["Shopify", "Liquid", "SEO", "Gadget.dev", "Shopify API", "Shopify CLI"],
-    href: "https://mon-jouet-montessori.com/",
-  },
-];
-
-const services = [
-  {
-    title: "SaaS & Web Apps",
-    description: "Your product built end-to-end: specs, architecture, code, deploy. From idea to a production v1 your users can actually use. I handle the whole stack.",
-    audience: "For founders who need a v1 shipped properly",
-  },
-  {
-    title: "AI Automation & Agents",
-    description: "LLM-powered workflows, AI agents, RAG and OCR/Vision pipelines that remove manual work from your operations, built on your real processes, not demos.",
-    audience: "For teams drowning in repetitive work",
-  },
-  {
-    title: "Corporate AI Training",
-    description: "Hands-on AI sessions (FR/EN) built on your company's real workflows, from the first prompt to automating a complete business process.",
-    audience: "For companies onboarding their teams to AI",
-  },
-];
 
 const stack = ["TypeScript", "Python", "Angular", "Vue.js", "React Native", "Next.js", "Django", "Node.js", "AWS", "Docker", "PostgreSQL", "CI/CD"];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -81,6 +42,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       6 years across cybersecurity, healthcare and fintech, mostly as the only engineer
       on the project. I work with founders and agencies who need something built
       properly and shipped fast.
+    </p>
+    <p class="font-mono text-xs text-muted mb-8">
+      Based in Lille, France · Remote across Europe · French (native) &amp; English
     </p>
 
     <div class="flex flex-wrap gap-3">

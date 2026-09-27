@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { identity as canon, education as canonEducation, certifications as canonCerts } from '../data/profile.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -8,7 +9,7 @@ const identity = {
   en: `Name: El Mahdi Moubarak
 Title: Founder & Full-Stack Engineer · Software, SaaS & AI
 Headline: I ship software & AI products to production
-Location: France (Greater Paris) · Remote
+Location: Lille, France · Remote
 Email: elmahdi@moubarak.dev
 Website: https://moubarak.dev/
 LinkedIn: https://linkedin.com/in/el-mahdi-moubarak
@@ -19,7 +20,7 @@ Available for: freelance missions · SaaS & AI development · automation · tech
   fr: `Nom : El Mahdi Moubarak
 Titre : Fondateur & Ingénieur Full-Stack · Logiciel, SaaS & IA
 Accroche : Je livre des logiciels et des produits IA en production
-Localisation : France (région parisienne) · Remote
+Localisation : Lille, France · Remote
 Email : elmahdi@moubarak.dev
 Site : https://moubarak.dev/
 LinkedIn : https://linkedin.com/in/el-mahdi-moubarak
@@ -67,29 +68,41 @@ Diplôme d'ingénieur de l'IMT Nord Europe (Informatique, Réseaux & Télécoms)
 // ===== Experiences =====
 const experiences = [
   {
-    label: 'EMM - Founder & Software Engineer',
+    label: 'EMM - Founder & AI / Full-Stack Engineer',
     project: 'emm',
-    en: `Founder & Software Engineer - EMM
+    en: `Founder & AI / Full-Stack Engineer - EMM
 March 2026 – Present · France
 
-Independent software engineering practice: web apps, SaaS and AI automation for founders and agencies, end to end.
+Independent software engineering practice: web apps, SaaS and AI automation for founders, SMEs and agencies, from requirements to production.
 
-• Delivered corporate AI training for DRIVECO (two tailored FR/EN sessions with live use cases).
+• Self-hosted AI agents: installing, configuring and securing OpenClaw and Hermes Agent on a client's server or VPS, connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.
+• AI browser automation with Jev (Browser Use x TypeSafe): agents that drive a real browser to enter, extract and update data in back-offices that have no API, verifying every action.
+• Rescuing AI-generated MVPs (Lovable, Bolt, Cursor, Claude Code): code audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests and deployment.
+• LLM and RAG integration into existing products: OCR + LLM pipelines, chatbots over documents, OpenAI / Claude / Gemini in production.
+• Corporate AI training: two tailored FR/EN sessions for DRIVECO, with live use cases built on their real workflows.
 
-Skills: Web Development · Full-Stack Development · AI Agents · Large Language Models (LLM) · Software as a Service (SaaS) · Software Architecture · Artificial Intelligence (AI) · Automation`,
-    fr: `Fondateur & Ingénieur Logiciel - EMM
+Stack: TypeScript · Python · Next.js · Node.js · Supabase · Docker · Claude Code · MCP
+
+Skills: AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Software Architecture · Full-Stack Development · Software as a Service (SaaS) · Web Development`,
+    fr: `Fondateur & Ingénieur IA / Full-Stack - EMM
 Mars 2026 – Aujourd'hui · France
 
-Activité indépendante de conception logicielle : applications web, SaaS et automatisation IA pour fondateurs et agences, de bout en bout.
+Activité indépendante de conception logicielle : applications web, SaaS et automatisation IA pour fondateurs, PME et agences, du besoin à la mise en production.
 
-• Animation de formations IA en entreprise pour DRIVECO (deux sessions FR/EN avec cas d'usage en direct).
+• Agents IA self-hosted : installation, configuration et sécurisation d'OpenClaw et Hermes Agent sur serveur ou VPS client, connectés à leurs outils (Slack, WhatsApp, Telegram, CRM, Google Workspace), avec skills et MCP sur mesure.
+• Automatisation navigateur par IA avec Jev (Browser Use x TypeSafe) : des agents qui pilotent un vrai navigateur pour saisir, extraire et mettre à jour des données dans des back-offices sans API, en vérifiant chaque action.
+• Reprise de MVP générés par IA (Lovable, Bolt, Cursor, Claude Code) : audit du code, sécurité (auth, RLS Supabase, clés API exposées), refactoring, tests et mise en production.
+• Intégration LLM et RAG dans des produits existants : pipelines OCR + LLM, chatbots sur documents, OpenAI / Claude / Gemini en production.
+• Formation IA en entreprise : deux sessions FR/EN sur mesure pour DRIVECO, avec cas d'usage en direct sur leurs propres workflows.
 
-Compétences : Web Development · Full-Stack Development · AI Agents · Large Language Models (LLM) · Software as a Service (SaaS) · Software Architecture · Artificial Intelligence (AI) · Automation`,
+Stack : TypeScript · Python · Next.js · Node.js · Supabase · Docker · Claude Code · MCP
+
+Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Software Architecture · Full-Stack Development · Software as a Service (SaaS) · Web Development`,
   },
   {
-    label: 'Piktechs - Founder',
+    label: 'Piktechs - Co-Founder & CTO',
     project: 'piktechs',
-    en: `Founder - Piktechs
+    en: `Co-Founder & CTO - Piktechs
 March 2026 – Present · France
 
 B2B SaaS for events & networking: digital business cards, lead capture, attendee tracking.
@@ -99,7 +112,7 @@ B2B SaaS for events & networking: digital business cards, lead capture, attendee
 Stack: Next.js, TypeScript, Supabase, Stripe
 
 Skills: Product Development · Supabase · DevOps · TypeScript · Web Development · Full-Stack Development · Software as a Service (SaaS) · Software Architecture · Stripe (Software) · Next.js`,
-    fr: `Fondateur - Piktechs
+    fr: `Co-fondateur & CTO - Piktechs
 Mars 2026 – Aujourd'hui · France
 
 SaaS B2B pour l'événementiel & le networking : cartes de visite digitales, capture de leads, suivi des participants.
@@ -122,7 +135,7 @@ Agence-KSUR is a digital agency specialized in building tailor-made web and mobi
 • Design and build tailored web & mobile applications from the ground up.
 • Architect and deploy AI-powered automation workflows to streamline internal and client operations.
 
-Skills: DevOps · Search Engine Optimization (SEO) · Web Development · Full-Stack Development · Cloud Computing · AI Agents · Large Language Models (LLM) · Software Architecture · Artificial Intelligence (AI) · Automation · Mobile Application Development`,
+Skills: AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Full-Stack Development · Mobile Application Development · Software Architecture · Web Development · Cloud Computing · DevOps · Search Engine Optimization (SEO)`,
     fr: `CTO - KSUR Services
 Mars 2026 – Aujourd'hui · France · Maroc
 
@@ -132,7 +145,7 @@ Agence-KSUR est une agence digitale spécialisée dans la création d'applicatio
 • Conception et développement d'applications web & mobiles sur mesure.
 • Architecture et déploiement de workflows d'automatisation IA pour fluidifier les opérations internes et clients.
 
-Compétences : DevOps · Search Engine Optimization (SEO) · Web Development · Full-Stack Development · Cloud Computing · AI Agents · Large Language Models (LLM) · Software Architecture · Artificial Intelligence (AI) · Automation · Mobile Application Development`,
+Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Full-Stack Development · Mobile Application Development · Software Architecture · Web Development · Cloud Computing · DevOps · Search Engine Optimization (SEO)`,
   },
   {
     label: 'DRIVECO - AI Trainer',
@@ -167,7 +180,7 @@ Core contributor to Security Rating®, a SaaS cyber-rating platform used by 200+
 • Implemented test coverage with Spectator and optimized CI/CD pipelines for regression-free deployments.
 • Contributed to Angular migration and major library upgrades, reducing technical debt incrementally.
 
-Stack: Angular, TypeScript, Python, AngularJS, Grav CMS, Docker, CI/CD
+Stack: Angular, TypeScript, Python, Docker, CI/CD
 
 Skills: Front-End Development · TypeScript · Python · Web Development · Angular · Full-Stack Development · Continuous Integration and Continuous Delivery (CI/CD) · Docker · Web Applications · Cybersecurity`,
     fr: `Ingénieur Full-Stack - Board of Cyber
@@ -185,9 +198,9 @@ Stack : Angular, TypeScript, Python, AngularJS, Grav CMS, Docker, CI/CD
 Compétences : Front-End Development · TypeScript · Python · Web Development · Angular · Full-Stack Development · Continuous Integration and Continuous Delivery (CI/CD) · Docker · Web Applications · Cybersecurity`,
   },
   {
-    label: 'ALTAO Santé - Full-Stack Engineer',
+    label: 'ALTAO Santé - Full-Stack & AI Engineer',
     project: 'altao',
-    en: `Full-Stack Engineer - ALTAO Santé
+    en: `Full-Stack & AI Engineer - ALTAO Santé
 September 2021 – September 2022 · Lille
 
 Sole engineer on a greenfield medical platform for hospital discharge summary correction, replacing a fragmented multi-tool legacy workflow with a single production system.
@@ -200,7 +213,7 @@ Sole engineer on a greenfield medical platform for hospital discharge summary co
 Stack: Vue.js, Django, PostgreSQL, AWS (EC2, Route53, Amplify)
 
 Skills: Vue.js · DevOps · Amazon Web Services (AWS) · PostgreSQL · Python · Web Development · Machine Learning · Full-Stack Development · Cloud Computing · Software Architecture · Django`,
-    fr: `Ingénieur Full-Stack - ALTAO Santé
+    fr: `Ingénieur Full-Stack & IA - ALTAO Santé
 Septembre 2021 – Septembre 2022 · Lille
 
 Seul ingénieur sur une plateforme médicale greenfield de correction des comptes-rendus de sortie hospitaliers, remplaçant un workflow legacy fragmenté par un système unique en production.
@@ -317,7 +330,7 @@ Outil self-service mesurant la façon dont les moteurs de réponse IA décrivent
 
 Stack : TypeScript, Node.js, Apify, MCP, OpenRouter
 
-Compétences : Generative Engine Optimization · Answer Engine Optimization · Search Engine Optimization (SEO) · Large Language Models (LLM) · AI Agents · Model Context Protocol (MCP) · TypeScript · Node.js`,
+Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Full-Stack Development · Mobile Application Development · Software Architecture · Web Development · Cloud Computing · DevOps · Search Engine Optimization (SEO)`,
   },
   {
     label: 'Text-to-Short-Video',
@@ -337,6 +350,60 @@ Stack : Python, Flask, OpenAI API, ElevenLabs, FFmpeg
 Compétences : Automation · Large Language Models (LLM) · Python`,
   },
   {
+    label: 'Polymarket Up/Down Lab',
+    project: 'polymarket',
+    link: 'https://github.com/emoubarak/polymarket-updown-lab',
+    en: `Polymarket Up/Down Lab - Algorithmic Edge Research on Prediction Markets
+June 2026
+
+An engineering case study: an honest hunt for a trading edge on Polymarket's binary crypto markets (5 and 15 minute "Up or Down" windows).
+
+Scientific method end to end: hypothesis, in-sample and out-of-sample backtest, live paper trading, then falsification. Around 12,000 trades journaled across 60 concurrent runners, settled against the Chainlink oracle. Two full engines built: a Python paper-trading framework (stdlib only, zero dependencies) and a low-latency Go HFT market maker.
+
+The measured verdict: the market is remarkably efficient, and nearly every "edge" you think you have found turns out to be a measurement artifact. The real deliverable is the method, and how not to lie to yourself when the data disagrees with you.
+
+Stack: Python (stdlib only) · Go · real-time WebSockets · Preact · Polymarket CLOB & Gamma APIs · Binance / Bitstamp / Chainlink feeds · EIP-712 on-chain signing · backtesting & OOS validation · market making (Avellaneda-Stoikov) · two-host VPS architecture
+
+Skills: System Architecture · Algorithmic Trading · Quantitative Analytics · Data Analysis · Blockchain · WebSocket · Python · Go`,
+    fr: `Polymarket Up/Down Lab - Recherche d'edge algorithmique sur les marchés de prédiction
+Juin 2026
+
+Une étude de cas d'ingénierie : la recherche honnête d'un edge de trading sur les marchés crypto binaires de Polymarket (fenêtres « Up or Down » de 5 et 15 minutes).
+
+Méthode scientifique de bout en bout : hypothèse, backtest in-sample et out-of-sample, paper trading en direct, puis falsification. Environ 12 000 trades journalisés sur 60 runners concurrents, réglés contre l'oracle Chainlink. Deux moteurs complets : un framework de paper trading en Python (stdlib uniquement, zéro dépendance) et un market maker HFT en Go à faible latence.
+
+Le verdict mesuré : le marché est remarquablement efficient, et presque tout « edge » que l'on croit trouver se révèle être un artefact de mesure. Le vrai livrable, c'est la méthode — et l'art de ne pas se mentir quand les données vous contredisent.
+
+Stack : Python (stdlib uniquement) · Go · WebSockets temps réel · Preact · APIs Polymarket CLOB & Gamma · flux Binance / Bitstamp / Chainlink · signature on-chain EIP-712 · backtesting & validation OOS · market making (Avellaneda-Stoikov) · architecture deux VPS
+
+Compétences : System Architecture · Algorithmic Trading · Quantitative Analytics · Data Analysis · Blockchain · WebSocket · Python · Go`,
+  },
+  {
+    label: 'Worldline MQTT Debugger',
+    project: 'worldline',
+    link: '',
+    en: `Worldline MQTT Debugger Tool
+April - August 2019 · Seclin, France
+
+Internal R&D tool built to eliminate the manual debugging of MQTT-based interactive payment demos.
+
+A centralised dashboard automating the creation, storage and replay of complex payment test sets, which improved the team's development speed by 70%.
+
+Stack: Vue.js · Spring Boot · MQTT · Java
+
+Skills: Vue.js · Spring Boot · MQTT · Java · Web Development · Software Infrastructure`,
+    fr: `Worldline MQTT Debugger Tool
+Avril - août 2019 · Seclin, France
+
+Outil interne de R&D conçu pour éliminer le debugging manuel des démos de paiement interactives basées sur MQTT.
+
+Un dashboard centralisé automatisant la création, le stockage et le rejeu de jeux de tests de paiement complexes, qui a amélioré la vitesse de développement de l'équipe de 70 %.
+
+Stack : Vue.js · Spring Boot · MQTT · Java
+
+Compétences : Vue.js · Spring Boot · MQTT · Java · Web Development · Software Infrastructure`,
+  },
+  {
     label: 'E-commerce Store (Shopify)',
     project: 'montessori',
     link: 'https://mon-jouet-montessori.com/',
@@ -351,7 +418,7 @@ Boutique Shopify conçue et opérée de bout en bout, avec revenus réels, puis 
 
 Stack : Shopify, Liquid, SEO, Shopify API, Shopify CLI, Gadget.dev
 
-Compétences : Web Development · E-Commerce · Search Engine Optimization (SEO)`,
+Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Full-Stack Development · Mobile Application Development · Software Architecture · Web Development · Cloud Computing · DevOps · Search Engine Optimization (SEO)`,
   },
 ];
 
@@ -378,6 +445,64 @@ Lycée Français International Louis-Massignon - Baccalauréat Scientifique, sp�
 Certification : TOEIC`,
 };
 
+// ===== Service lines (the offer, as stated on Malt and Upwork) =====
+const services = {
+  en: `What I deliver:
+- Full-stack and SaaS apps, web and mobile: MVP, V1 and iterations, from idea to production.
+- AI automation and agents: n8n and API workflows, agents wired into Slack, WhatsApp, CRMs and Google Workspace, browser automation (Jev, Browser Use, Playwright) for back-offices with no API.
+- LLM and RAG integration: chat over your documents, OCR + LLM pipelines, OpenAI / Claude / Gemini inside your existing product, with rate limits, fallbacks and evaluation handled.
+- AI-generated MVP rescue: an app built with Lovable, Bolt, Cursor or Claude Code that breaks in production — audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests, deployment.
+- Self-hosted AI agents: installing and securing OpenClaw and Hermes Agent on your own server or VPS, with custom skills and MCP.
+- Corporate AI training: hands-on FR/EN sessions built on your real workflows, from the first prompt to automating a whole business process.
+- Shopify where it gets technical: custom apps, Liquid, checkout, order-to-fulfilment automation into your factory, ERP or CRM.
+
+To get started: a paid audit or a 5-10 day proof of concept with one measurable deliverable.`,
+  fr: `Ce que je livre :
+- Applications full-stack et SaaS, web et mobile : MVP, V1 et évolutions, de l'idée à la production.
+- Automatisation et agents IA : workflows n8n et API, agents connectés à Slack, WhatsApp, CRM et Google Workspace, automatisation navigateur (Jev, Browser Use, Playwright) pour les back-offices sans API.
+- Intégration LLM et RAG : chatbot sur vos documents, pipelines OCR + LLM, OpenAI / Claude / Gemini dans votre produit existant, avec gestion des quotas, des fallbacks et de l'évaluation.
+- Reprise de MVP généré par IA : votre app faite avec Lovable, Bolt, Cursor ou Claude Code ne tient pas en production — audit, sécurité (auth, RLS Supabase, clés API exposées), refactoring, tests, déploiement.
+- Agents IA self-hosted : installation et sécurisation d'OpenClaw et Hermes Agent sur votre serveur ou VPS, avec skills et MCP sur mesure.
+- Formation IA en entreprise : sessions pratiques FR/EN construites sur vos propres workflows, du premier prompt à l'automatisation d'un processus métier complet.
+- Shopify là où c'est technique : apps custom, Liquid, checkout, automatisation commande → usine, ERP ou CRM.
+
+Pour démarrer : un audit ou un POC de 5 à 10 jours, avec un livrable mesurable.`,
+};
+
+// ===== Measured proof (every number is verifiable; no rounding up) =====
+const proof = {
+  en: `- Medical AI platform for hospitals (ALTAO Santé), sole engineer: 5,000+ documents processed, €700,000 saved.
+- Security Rating®, a cyber-rating SaaS used by 200+ organisations (Board of Cyber): 700+ tickets delivered over 3 years.
+- Worldline internal R&D tool: team development speed improved by 70%.
+- Polymarket Up/Down Lab: ~12,000 trades journaled across 60 concurrent runners, settled against the Chainlink oracle.
+- PDFold: any PDF into structured Markdown, in 11 languages.
+- Shopify store (Mon Jouet Montessori) built, grown to real revenue, and sold.
+- Corporate AI training delivered for DRIVECO: two tailored FR/EN sessions.
+- 6 years shipping across healthcare, fintech and cybersecurity. Engineering degree, IMT Nord Europe.`,
+  fr: `- Plateforme médicale IA pour hôpitaux (ALTAO Santé), seul ingénieur : 5 000+ documents traités, 700 000 € économisés.
+- Security Rating®, SaaS de cyber-notation utilisé par 200+ organisations (Board of Cyber) : 700+ tickets livrés en 3 ans.
+- Outil interne de R&D Worldline : vitesse de développement de l'équipe améliorée de 70 %.
+- Polymarket Up/Down Lab : ~12 000 trades journalisés sur 60 runners concurrents, réglés contre l'oracle Chainlink.
+- PDFold : n'importe quel PDF en Markdown structuré, en 11 langues.
+- Boutique Shopify (Mon Jouet Montessori) créée, montée jusqu'à un vrai chiffre d'affaires, puis vendue.
+- Formation IA en entreprise livrée pour DRIVECO : deux sessions FR/EN sur mesure.
+- 6 ans de mise en production en santé, fintech et cybersécurité. Diplôme d'ingénieur, IMT Nord Europe.`,
+};
+
+// ===== Client words (published publicly by the people quoted) =====
+const testimonials = {
+  en: `"Learning how to use AI effectively is becoming a real lever for efficiency and impact. During our ChatGPT Workshop, 'Make AI work for you', we explored how AI can support us from the very first question to the automation of a complete business process. A big thank you to El Mahdi MOUBARAK for leading this insightful and energizing session. He brought both technical depth and a very practical mindset."
+— Bérénice Harfouf-Ponthus, Chief People Officer, DRIVECO (published on LinkedIn)
+
+"We trusted El Mahdi with the mobile app for our delivery service. He taught himself what he needed and built the app autonomously. I recommend him strongly."
+— Leo Durfort, CEO, Deuspi (recommendation on Malt)`,
+  fr: `« Learning how to use AI effectively is becoming a real lever for efficiency and impact. During our ChatGPT Workshop, "Make AI work for you", we explored how AI can support us from the very first question to the automation of a complete business process. A big thank you to El Mahdi MOUBARAK for leading this insightful and energizing session. He brought both technical depth and a very practical mindset. »
+— Bérénice Harfouf-Ponthus, DRH, DRIVECO (publié sur LinkedIn)
+
+« Nous avons fait confiance à El Mahdi pour notre projet de développement de l'application mobile d'un service de livraison. Il a su se former et développer l'application mobile en autonomie. Je vous le recommande fortement ! »
+— Leo Durfort, CEO, Deuspi (recommandation sur Malt)`,
+};
+
 // Unique ids for copy blocks
 let blockId = 0;
 const uid = () => `copy-block-${blockId++}`;
@@ -394,7 +519,7 @@ const linkedinSkills = [
   },
   {
     label: 'Full skills list',
-    text: `AI Agents, Amazon Web Services (AWS), Angular, Answer Engine Optimization, Artificial Intelligence (AI), Automation, Back-End Web Development, Claude Code, Cloud Computing, Continuous Integration and Continuous Delivery (CI/CD), Cybersecurity, DevOps, Django, Docker, E-Commerce, Employee Training, Front-End Development, Full-Stack Development, Generative Engine Optimization, Java, JavaScript, Large Language Models (LLM), LLM Integration, Machine Learning, Mobile Application Development, Mobile Applications, Model Context Protocol (MCP), MQTT, Next.js, Node.js, PostgreSQL, Postman API, Product Development, Prompt Engineering, Python, React Native, React.js, REST APIs, Search Engine Optimization (SEO), Software Architecture, Software as a Service (SaaS), Software Infrastructure, Spring Boot, Stripe (Software), Supabase, TypeScript, Vue.js, Web Applications, Web Development, Website Building`,
+    text: `AI Agents, Algorithmic Trading, Amazon Web Services (AWS), Angular, Answer Engine Optimization, Artificial Intelligence (AI), Automation, Back-End Web Development, Blockchain, Claude Code, Cloud Computing, Continuous Integration and Continuous Delivery (CI/CD), Cybersecurity, Data Analysis, DevOps, Django, Docker, E-Commerce, Employee Training, Front-End Development, Full-Stack Development, Generative Engine Optimization, Java, JavaScript, Large Language Models (LLM), LLM Integration, Machine Learning, Mobile Application Development, Mobile Applications, Model Context Protocol (MCP), MQTT, Next.js, Node.js, PostgreSQL, Postman API, Product Development, Prompt Engineering, Python, Quantitative Analytics, React Native, React.js, REST APIs, Search Engine Optimization (SEO), Software Architecture, Software as a Service (SaaS), Software Infrastructure, Spring Boot, Stripe (Software), Supabase, System Architecture, TypeScript, Vue.js, Web Applications, Web Development, WebSocket, Website Building`,
   },
   {
     label: 'LinkedIn Skill Assessments passed',
@@ -528,6 +653,7 @@ const projectFilters = [
   { key: 'pdfold', label: 'PDFold' },
   { key: 'ai-visibility', label: 'AI Visibility' },
   { key: 'text-to-video', label: 'Text-to-Video' },
+  { key: 'polymarket', label: 'Polymarket Lab' },
   { key: 'montessori', label: 'Montessori' },
   { key: 'ksur', label: 'KSUR' },
   { key: 'driveco', label: 'DRIVECO' },
@@ -571,17 +697,21 @@ const identityBlocks = pair(identity);
 
 // Per-field identity rows, each individually copyable
 const identityFields = [
-  { label: { en: 'Name', fr: 'Nom' }, value: { en: 'El Mahdi Moubarak', fr: 'El Mahdi Moubarak' } },
-  { label: { en: 'Title', fr: 'Titre' }, value: { en: 'Founder & Full-Stack Engineer · Software, SaaS & AI', fr: 'Fondateur & Ingénieur Full-Stack · Logiciel, SaaS & IA' } },
-  { label: { en: 'Headline', fr: 'Accroche' }, value: { en: 'I ship software & AI products to production', fr: 'Je livre des logiciels et des produits IA en production' } },
-  { label: { en: 'Location', fr: 'Localisation' }, value: { en: 'France (Greater Paris) · Remote', fr: 'France (région parisienne) · Remote' } },
-  { label: { en: 'Email', fr: 'Email' }, value: { en: 'elmahdi@moubarak.dev', fr: 'elmahdi@moubarak.dev' } },
-  { label: { en: 'Website', fr: 'Site' }, value: { en: 'https://moubarak.dev/', fr: 'https://moubarak.dev/' } },
-  { label: { en: 'LinkedIn', fr: 'LinkedIn' }, value: { en: 'https://linkedin.com/in/el-mahdi-moubarak', fr: 'https://linkedin.com/in/el-mahdi-moubarak' } },
-  { label: { en: 'GitHub', fr: 'GitHub' }, value: { en: 'https://github.com/emoubarak', fr: 'https://github.com/emoubarak' } },
-  { label: { en: 'Calendly', fr: 'Calendly' }, value: { en: 'https://calendly.com/moubarakelmahdipro/', fr: 'https://calendly.com/moubarakelmahdipro/' } },
-  { label: { en: 'Languages', fr: 'Langues' }, value: { en: 'French (native) · English (C1, TOEIC) · Spanish (professional)', fr: 'Français (natif) · Anglais (C1, TOEIC) · Espagnol (professionnel)' } },
+  { label: { en: 'Name', fr: 'Nom' }, value: { en: canon.name, fr: canon.name } },
+  { label: { en: 'Title', fr: 'Titre' }, value: canon.title },
+  { label: { en: 'Headline', fr: 'Accroche' }, value: canon.headline },
+  { label: { en: 'Location', fr: 'Localisation' }, value: canon.location },
+  { label: { en: 'Email', fr: 'Email' }, value: { en: canon.email, fr: canon.email } },
+  { label: { en: 'Website', fr: 'Site' }, value: { en: canon.website, fr: canon.website } },
+  { label: { en: 'LinkedIn', fr: 'LinkedIn' }, value: { en: canon.linkedin, fr: canon.linkedin } },
+  { label: { en: 'GitHub', fr: 'GitHub' }, value: { en: canon.github, fr: canon.github } },
+  { label: { en: 'Calendly', fr: 'Calendly' }, value: { en: canon.calendly, fr: canon.calendly } },
+  { label: { en: 'Languages', fr: 'Langues' }, value: canon.languages },
   { label: { en: 'Available for', fr: 'Disponible pour' }, value: { en: 'freelance missions · SaaS & AI development · automation · tech consulting', fr: 'missions freelance · développement SaaS & IA · automatisation · conseil tech' } },
+  { label: { en: 'Rate', fr: 'Tarif' }, value: { en: `${canon.rates.maltDaily} (Malt) · ${canon.rates.upworkHourly} (Upwork)`, fr: `550 €/jour (Malt) · 55 $/h (Upwork)` } },
+  { label: { en: 'Availability', fr: 'Disponibilité' }, value: canon.availability },
+  { label: { en: 'Client sectors', fr: 'Secteurs clients' }, value: canon.clientSectors },
+  { label: { en: 'Entry offer', fr: "Offre d'entrée" }, value: canon.entryOffer },
 ].map((f) => ({ ...f, idEn: uid(), idFr: uid() }));
 
 const identityCards = [
@@ -591,6 +721,9 @@ const identityCards = [
 const bioSections = bios.map((b) => ({ label: b.label, blocks: pair(b) }));
 const expSections = experiences.map((e) => ({ label: e.label, project: e.project, blocks: pair(e) }));
 const projSections = projects.map((p) => ({ label: p.label, project: p.project, link: p.link, blocks: pair(p) }));
+const serviceBlocks = pair(services);
+const proofBlocks = pair(proof);
+const testimonialBlocks = pair(testimonials);
 const skillBlocks = pair(skills);
 const eduBlocks = pair(education);
 ---
@@ -828,6 +961,54 @@ const eduBlocks = pair(education);
               </div>
             ))}
           </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Service lines -->
+  <section class="mb-12" data-section="services">
+    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Service lines</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {serviceBlocks.map((b) => (
+        <div class="b-border bg-paper dark:bg-dark-surface">
+          <div class="flex items-center justify-between px-3 py-2 border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper">
+            <span class="font-mono text-[0.65rem] font-bold uppercase tracking-widest">{b.lang}</span>
+            <button class="copy-btn font-mono text-[0.65rem] font-bold b-border px-2 py-1 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors" data-target={b.id}>Copy</button>
+          </div>
+          <pre id={b.id} class="whitespace-pre-wrap font-sans text-xs leading-relaxed p-3 text-body overflow-x-auto">{b.text}</pre>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Measured proof -->
+  <section class="mb-12" data-section="proof">
+    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Measured proof</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {proofBlocks.map((b) => (
+        <div class="b-border bg-paper dark:bg-dark-surface">
+          <div class="flex items-center justify-between px-3 py-2 border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper">
+            <span class="font-mono text-[0.65rem] font-bold uppercase tracking-widest">{b.lang}</span>
+            <button class="copy-btn font-mono text-[0.65rem] font-bold b-border px-2 py-1 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors" data-target={b.id}>Copy</button>
+          </div>
+          <pre id={b.id} class="whitespace-pre-wrap font-sans text-xs leading-relaxed p-3 text-body overflow-x-auto">{b.text}</pre>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Client words -->
+  <section class="mb-12" data-section="testimonials">
+    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Client words</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {testimonialBlocks.map((b) => (
+        <div class="b-border bg-paper dark:bg-dark-surface">
+          <div class="flex items-center justify-between px-3 py-2 border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper">
+            <span class="font-mono text-[0.65rem] font-bold uppercase tracking-widest">{b.lang}</span>
+            <button class="copy-btn font-mono text-[0.65rem] font-bold b-border px-2 py-1 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors" data-target={b.id}>Copy</button>
+          </div>
+          <pre id={b.id} class="whitespace-pre-wrap font-sans text-xs leading-relaxed p-3 text-body overflow-x-auto">{b.text}</pre>
         </div>
       ))}
     </div>
