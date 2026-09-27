@@ -79,7 +79,7 @@ export const services = [
   },
   {
     title: "Self-Hosted AI Agents",
-    description: "Installing and securing OpenClaw and Hermes Agent on your own server or VPS, wired into Slack, WhatsApp, Telegram, your CRM and Google Workspace, with custom skills and MCP.",
+    description: "Installing and securing agent runtimes on your own server or VPS — OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack — wired into Slack, WhatsApp, Telegram, your CRM and Google Workspace, with custom skills and MCP.",
     audience: "For teams who want their agents on their own infrastructure",
   },
   {
@@ -102,7 +102,7 @@ export const experiences = [
     location: "Lille, France · Remote",
     summary: "Independent software engineering practice: web apps, SaaS and AI automation for founders, SMEs and agencies, from requirements to production.",
     achievements: [
-      "Self-hosted AI agents: installing, configuring and securing OpenClaw and Hermes Agent on a client's server or VPS, connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.",
+      "Self-hosted AI agents: installing, configuring and securing agent runtimes on a client's own server or VPS — OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack — connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.",
       "AI browser automation with Jev (Browser Use × TypeSafe): agents that drive a real browser to enter, extract and update data in back-offices that have no API, verifying every action.",
       "Rescuing AI-generated MVPs (Lovable, Bolt, Cursor, Claude Code): code audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests and deployment.",
       "LLM and RAG integration into existing products: OCR + LLM pipelines, chatbots over documents, OpenAI / Claude / Gemini in production.",
