@@ -2,18 +2,13 @@
 title: "Case Study: jev-check, Browser-Agent QA Where the Database Gives the Verdict"
 description: "Unit tests and mocked end-to-end suites miss the bugs where the deployed front, the backend and the permissions disagree. I built a browser-agent harness that signs in as a real account state and lets the database decide, then open-sourced it as an agent skill."
 pubDate: 2026-10-03
-tags: ["Case Study", "AI", "Browser Agents", "QA", "Open Source"]
+tags: ["Case Study", "AI", "QA"]
 cover: "/blog/jev-check-audit.svg"
 coverAlt: "Terminal output of jevcheck audit: the agent clicked Publish and said done, the database check failed"
 tldr:
   - "An agent's \"done\" is a claim. The verdict comes from a SQL query on the real database."
   - "Accounts are created in exact states (free, paid, lapsed, team member, stranger), used once, and deleted, even when a run fails."
   - "It runs on demand as the coding agent's eyes, never in CI: browser agents are non-deterministic and billed per decision."
-stats:
-  - { value: "16", label: "standing checks on Piktechs plans and workspaces" }
-  - { value: "6", label: "account states, built on demand" }
-  - { value: "1", label: "command to reproduce a ticket as a given account" }
-  - { value: "MIT", label: "open source, as a Claude Code / Codex skill" }
 ---
 
 ## Context
@@ -49,12 +44,12 @@ The harness is mostly the fixes nobody tells you about:
 - **Treat "0 actions" as proof of nothing.**
 - **One narrow goal per run.** Long goals loop.
 
-## Results
+## What it changed
 
-- **16 standing checks** on plan gates and workspace permissions, run on demand against the test environment.
-- Tickets now start with a **one-line reproduction as a given account**, and close with a **before/after pair**.
-- Taking the "after" shots of a batch of closed tickets **surfaced three real follow-up bugs**.
-- Open-sourced as **[jev-check](https://github.com/emoubarak/jev-check)** under MIT: an agent skill for Claude Code, Codex and OpenClaw. It ships with a tiny demo app with a free-plan gate, and the same app with a silent billing regression, so you can watch the agent say "done" and the database say no.
+- Plan gates and workspace permissions have standing checks, run on demand against the test environment rather than in CI.
+- A bug ticket starts with a one-line reproduction as a given account, and closes with a before/after pair of screenshots.
+- Taking the "after" shots for a batch of closed tickets surfaced three follow-up bugs that the fixes had introduced or missed.
+- I open-sourced it as [jev-check](https://github.com/emoubarak/jev-check) (MIT), an agent skill for Claude Code, Codex and OpenClaw. It ships with a tiny demo app with a free-plan gate, plus the same app with a silent billing regression, so you can watch the agent say "done" and the database say no:
 
 ```text
 FAIL  free_publish_blocked   as free   1 act   2 calls   1.3s  ← draft_still_unpublished,

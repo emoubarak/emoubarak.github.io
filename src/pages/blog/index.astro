@@ -33,17 +33,7 @@ const shortTitle = (t: string) => t.replace(/^Case Study:\s*/, '');
           )}
           <div class="p-5">
             <h3 class="font-mono text-base font-bold leading-snug mb-2 group-hover:text-accent transition-colors">{shortTitle(featured.data.title)}</h3>
-            <p class="text-sm text-body mb-4">{featured.data.description}</p>
-            {featured.data.stats.length > 0 && (
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {featured.data.stats.map((st) => (
-                  <div class="b-border bg-paper-alt dark:bg-dark-paper px-3 py-2">
-                    <div class="font-mono text-lg font-extrabold text-accent leading-none mb-1">{st.value}</div>
-                    <div class="text-[0.7rem] text-body leading-snug">{st.label}</div>
-                  </div>
-                ))}
-              </div>
-            )}
+            <p class="text-sm text-body">{featured.data.description}</p>
           </div>
         </a>
       )}
@@ -59,11 +49,6 @@ const shortTitle = (t: string) => t.replace(/^Case Study:\s*/, '');
             <div class="p-4 flex flex-col flex-1">
               <h3 class="font-mono text-sm font-bold leading-snug mb-2 group-hover:text-accent transition-colors">{shortTitle(p.data.title)}</h3>
               <p class="text-xs text-body mb-3 line-clamp-3">{p.data.description}</p>
-              {p.data.stats.length > 0 && (
-                <p class="mt-auto font-mono text-[0.7rem] text-muted">
-                  <span class="font-extrabold text-accent text-sm">{p.data.stats[0].value}</span> {p.data.stats[0].label}
-                </p>
-              )}
             </div>
           </a>
         ))}

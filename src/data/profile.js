@@ -41,76 +41,41 @@ export const proof = [
   { claim: { en: 'Corporate AI training delivered: two tailored FR/EN sessions.', fr: 'Formation IA en entreprise livrée : deux sessions FR/EN sur mesure.' }, source: 'DRIVECO' },
 ];
 
-// AI engineering, as practised. Every point is backed by a repo, a shipped feature or a measurement.
-// Counts are git / GitHub facts (Piktechs: since the April 2026 takeover), nothing estimated.
-// /cv renders it; /kit holds the matching copy-paste blocks.
-export const aiEngineering = {
-  highlights: [
-    { value: '~4,000', label: 'prompts to Claude Code since May 2026' },
-    { value: '298', label: 'Piktechs issues closed in under six months' },
-    { value: '€700k', label: 'saved for hospitals with medical AI' },
-    { value: '12,000', label: 'paper trades journaled to test a trading edge' },
-  ],
-  intro: { en: "I build AI products, and I build with AI as my main engineering environment. What that means in practice, with the evidence:" },
-  capabilities: [
+// How I work with AI: principles, each with the place where a reader can check it.
+// No vanity numbers here on purpose: the proof is the linked work, not a count.
+// /cv renders it; /kit generates its EN copy block from it.
+export const aiApproach = {
+  intro: { en: "I build AI into products, and I build with AI every day. These are the principles I work by, each with a place where you can check it." },
+  principles: [
     {
-      title: 'Agentic software engineering',
-      points: [
-        "Claude Code as my main environment: ~4,000 prompts, parallel worktrees, autonomous runs bound to an end condition.",
-        "Piktechs, as sole engineer: Lovable prototype to production SaaS in under six months (298 issues, 119 migrations, 27 Edge Functions).",
-        "I engineer the workflow itself: skills, a reviewer agent on a different model, hooks that enforce rules, a weekly self-learning pass.",
-      ],
-      evidence: 'Piktechs · PDFold · my Claude Code workspace',
-      link: { label: 'Case study: Piktechs', href: '/blog/case-study-piktechs' },
+      title: 'Done means observed, not claimed',
+      text: "An agent saying \"done\" is a claim. I give it ways to check its work against reality: screenshots at real screen widths, a browser agent that uses the deployed app as a given kind of user, and a database query as the final judge.",
+      proof: { label: 'Case study: jev-check', href: '/blog/case-study-jev-check' },
     },
     {
-      title: 'LLM features in production',
-      points: [
-        "Card scanner: vision model, cross-provider fallback chosen by prompt-injection testing, strict schema, quota before spend.",
-        "PDFold: multi-pass OCR and vision pipeline with failover, any PDF to Markdown in 11 languages.",
-        "ALTAO Santé: medical AI, 5,000+ documents processed, €700,000 saved. Generative pipelines since early 2024.",
-      ],
-      evidence: 'piktechs.com · pdfold.com · ALTAO Santé',
-      link: { label: 'Case study: the AI card scanner', href: '/blog/case-study-ai-card-scanner' },
+      title: 'An AI feature starts with its threat model',
+      text: "Anything a model reads can be written by an attacker. Before writing the prompt, I decide what the feature must never do, then choose models by testing them against that, not by price or reputation.",
+      proof: { label: 'Case study: the AI card scanner', href: '/blog/case-study-ai-card-scanner' },
     },
     {
-      title: 'Browser agents',
-      points: [
-        "My own task runner on jev-ultrafast (Browser Use): dedicated browsers, human hand-off for logins and 2FA, every step logged with its cost.",
-        "jev-check, open source: QA as real account states, with the verdict taken from the database, not from the agent.",
-        "Extended jev-ultrafast: a Cloudflare Workers AI decision provider, iframe and shadow-DOM support.",
-      ],
-      evidence: 'github.com/emoubarak/jev-check · github.com/emoubarak/jev-ultrafast',
-      link: { label: 'Case study: jev-check', href: '/blog/case-study-jev-check' },
+      title: 'Fast where it is safe, strict where failures are silent',
+      text: "Most changes ship without ceremony. Billing, permissions and anything touching money or another account's data get mandatory checks, and a review by a different model from the one that wrote the code.",
+      proof: { label: 'Case study: Piktechs', href: '/blog/case-study-piktechs' },
     },
     {
-      title: 'Measurement over intuition',
-      points: [
-        "AI Search Visibility Tracker: samples ChatGPT, Perplexity, Gemini and AI Overviews repeatedly. On Apify, callable over MCP.",
-        "Polymarket Up/Down Lab: ~12,000 paper trades across 60 runners, out-of-sample tests, then falsification.",
-        "Models picked by test, not reputation: a head-to-head on the same photos, including an injection attack.",
-      ],
-      evidence: 'Apify · GitHub',
-      link: { label: 'Article: what 4,000 prompts taught me', href: '/blog/what-i-kept-telling-claude' },
+      title: 'Measure before believing',
+      text: "Models are non-deterministic and backtests flatter. I ask the same question many times, test out of sample, and try to break my own results before I trust them. Sometimes the honest verdict is that there was nothing there.",
+      proof: { label: 'Polymarket Up/Down Lab', href: 'https://github.com/emoubarak/polymarket-updown-lab' },
     },
     {
-      title: 'Local and self-hosted AI',
-      points: [
-        "Local inference on an OCuLink eGPU: llama.cpp (Vulkan, CUDA with multi-token prediction) and ExLlamaV2, benchmarked per model.",
-        "Qwen3.6 35B-A3B at 50 tokens/s, Llama 3 8B at 73 tokens/s on my own hardware.",
-        "Self-hosted agent runtimes on a client's own server, wired to their tools with custom skills and MCP.",
-      ],
-      evidence: 'Benchmarks · client work',
-      link: { label: 'Article: lazy by design', href: '/blog/lazy-by-design' },
+      title: 'Correct the workspace, not the chat',
+      text: "When an agent gets something wrong, the fix goes where the next session will find it, in the narrowest place that works. A rule that fails twice stops being a sentence and becomes a check the tooling enforces.",
+      proof: { label: 'Article: what I kept correcting', href: '/blog/what-i-kept-telling-claude' },
     },
     {
-      title: 'Teaching it',
-      points: [
-        "Corporate AI training for DRIVECO (FR/EN), built on the company's real workflows.",
-        "From the first prompt to automating a complete business process, hands-on.",
-        "\"Technical depth and a very practical mindset\" (their Chief People Officer, on LinkedIn).",
-      ],
-      evidence: 'DRIVECO · public testimonial',
+      title: 'Lazy, on purpose',
+      text: "If I do something twice, a machine does it the third time. An agent can work alone when it has an end condition, a budget, a way to check itself and a way to call me. The work is making it safe to walk away.",
+      proof: { label: 'Article: lazy by design', href: '/blog/lazy-by-design' },
     },
   ],
 };
@@ -190,11 +155,11 @@ export const experiences = [
     location: "France",
     summary: "B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces (React, TypeScript, Supabase, Stripe).",
     achievements: [
-      "Sole engineer: took the product over from a two-week Lovable prototype in April 2026 and turned it into a production SaaS, with Claude Code as the main engineering environment: 298 issues closed, 119 database migrations and 27 Supabase Edge Functions in under six months.",
+      "Sole engineer: took the product over from a two-week Lovable prototype in April 2026 and turned it into a production SaaS in under six months, with Claude Code as the main engineering environment.",
       "Shipped an AI business-card scanner: vision model with a cross-provider fallback selected by prompt-injection testing, strict JSON output, a per-user quota and on-device OCR as the last resort.",
       "Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured with Postgres row-level security and role-based permissions.",
       "Android and iOS apps from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.",
-      "A quality system sized for an AI-written codebase: 167 unit test files, 23 Playwright specs, a browser agent that audits the deployed app as each account state, and CI/CD with separate test and production environments.",
+      "A quality system sized for an AI-written codebase: unit and Playwright tests, a browser agent that audits the deployed app as each account state, and CI/CD with separate test and production environments.",
     ],
   },
   {

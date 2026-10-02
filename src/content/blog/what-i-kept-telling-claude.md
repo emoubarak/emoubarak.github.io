@@ -1,19 +1,14 @@
 ---
-title: "I Read 4,000 of My Own Prompts to Claude Code. Here's What I Kept Repeating."
+title: "What I Kept Telling Claude: Four Months of My Own Corrections"
 description: "Four months, two machines, about 4,000 prompts. The same few corrections came back in every project. What they were, why writing them down was not enough, and where each fix actually belongs."
 pubDate: 2026-10-03
-tags: ["AI", "Claude", "Engineering", "Workflow"]
+tags: ["AI", "Claude", "Workflow"]
 cover: "/blog/fix-ladder.svg"
 coverAlt: "Where each fix belongs: hook, skill, global instructions, project instructions, and the weekly loop"
 tldr:
   - "The corrections I repeated were the same handful in every project: check it, do it yourself, use the tool I named, be clear, look it up, don't sound like AI."
   - "My workspace leaked: lessons trapped in one project, stale contradictory memories, and prose rules where a hook was needed."
   - "Now each lesson goes in the narrowest place that works, and a weekly pass promotes or strengthens rules instead of piling them up."
-stats:
-  - { value: "~4,000", label: "of my prompts read, May to October 2026" }
-  - { value: "118", label: "full sessions in the last month, two machines" }
-  - { value: "~5%", label: "of my messages correct the agent (rough filter)" }
-  - { value: "6", label: "corrections that kept coming back" }
 ---
 
 In [the PDFold post](/blog/how-i-built-pdfold) I wrote that the value of an AI workspace compounds: correct the workspace, not the chat. Four months later I wanted to know whether that was actually working. So I had Claude read my entire history: every prompt I typed into Claude Code since May on my two machines, about 4,000 of them, plus the full transcripts of the last month, 118 sessions across a dozen projects.

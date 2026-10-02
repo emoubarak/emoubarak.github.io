@@ -2,18 +2,13 @@
 title: "Lazy by Design: How I Make My Computers Work While I'm Away"
 description: "My engineering philosophy fits in one sentence: if I do something twice, a machine does it the third time. How that turns into autonomous agent runs, scheduled jobs and single sources of truth, and what it takes for an agent to work safely while nobody is watching."
 pubDate: 2026-10-03
-tags: ["AI", "Claude", "Workflow", "Philosophy"]
+tags: ["AI", "Workflow"]
 cover: "/blog/lazy-autonomy.svg"
 coverAlt: "Six things an agent needs to work alone: end condition, budget, eyes, stop points, a way to call me, reversibility"
 tldr:
   - "If I do something twice, a machine does it the third time: autonomous runs, scheduled jobs, single sources of truth."
   - "Autonomy is safe when \"done\" is checkable, spending is capped, and the stop points are written down."
   - "The work is not starting the agent. It's making it safe to walk away."
-stats:
-  - { value: "$0.64", label: "spent of a $5 cap by an autonomous video run" }
-  - { value: "3-4", label: "Claude Code sessions running in parallel" }
-  - { value: "60", label: "paper-trading runners left working for weeks" }
-  - { value: "6", label: "things an agent needs to work alone" }
 ---
 
 Larry Wall listed laziness as the first virtue of a programmer: the drive to write the thing that saves you from doing the work again. I take it literally. If I do something twice, a machine does it the third time. With AI agents, the definition of "something a machine can do" has moved a long way, and my working day has changed with it. Most of the time, at least one of my computers is working on something I'm not watching.

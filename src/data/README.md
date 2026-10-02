@@ -10,9 +10,9 @@ les blocs copiables de `/kit`, puis LinkedIn, Malt, Upwork et Fiverr.
 | Page | Importe |
 |---|---|
 | `pages/index.astro` | `services` (toutes sauf Shopify), `projects` (4 en vedette) |
-| `pages/cv.astro` | `aiEngineering` (bandeau de chiffres + cartes), `experiences`, `education`, `techGroups`, `interests`, `projects` |
+| `pages/cv.astro` | `aiApproach` (principes, chacun avec sa preuve), `experiences`, `education`, `techGroups`, `interests`, `projects` |
 | `pages/portfolio.astro` | `projects`, `projectCategories` |
-| `pages/kit.astro` | `identity`, `education`, `certifications`, `aiEngineering` (bloc EN « AI engineering highlights » généré) — et garde sa prose EN/FR propre |
+| `pages/kit.astro` | `identity`, `education`, `certifications`, `aiApproach` (bloc EN « How I work with AI » généré) — et garde sa prose EN/FR propre |
 
 `kit.astro` conserve les textes rédigés à la main (EN + FR) destinés au copier-coller sur chaque
 plateforme : ils ne sont pas dérivables des données. En revanche ils **doivent s'accorder** avec les
@@ -32,7 +32,8 @@ faits structurés ci-dessus. Quand les deux divergent, c'est `profile.js` qui a 
 
 ## Articles et études de cas
 
-Le blog (`src/content/blog/`) accepte en frontmatter `cover`, `tldr`, `stats` et `featured` : l'en-tête visuel
-(couverture, chiffres clés, trois points à retenir) s'affiche avant le texte. Le tag `Case Study` range un
+Le blog (`src/content/blog/`) accepte en frontmatter `cover`, `tldr` et `featured` : une couverture qui
+explique (schéma ou vraie capture) et trois lignes « In short » s'affichent avant le texte. Pas de tuiles de
+chiffres : un chiffre n'entre dans le texte que s'il change ce que le lecteur comprend. Le tag `Case Study` range un
 article dans la section « Case studies » de `/blog` ; `featured: true` la met en grand. Les schémas des
 couvertures sont des SVG dans `public/blog/`.

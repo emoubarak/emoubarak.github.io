@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { identity as canon, education as canonEducation, certifications as canonCerts, aiEngineering } from '../data/profile.js';
+import { identity as canon, education as canonEducation, certifications as canonCerts, aiApproach } from '../data/profile.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -64,72 +64,57 @@ Stack : TypeScript, Next.js, React, React Native, Angular, Vue.js, Python/Django
 Diplôme d'ingénieur de l'IMT Nord Europe (Informatique, Réseaux & Télécoms). Français (natif), Anglais (C1), Espagnol. Disponible pour missions freelance, développement SaaS & IA, automatisation et conseil tech. Besoin de livrer quelque chose ? Contactez-moi.`,
   },
   {
-    label: 'LinkedIn About · AI-first (≤ 2,600 characters)',
-    en: `I build AI products, and I build with AI.
+    label: 'LinkedIn About (≤ 2,600 characters)',
+    en: `I build AI into products, and I build with AI every day.
 
-Since April 2026, Claude Code has been my main engineering environment. As the only engineer on Piktechs, a B2B SaaS for digital business cards, I took it from a two-week Lovable prototype to a production product: live Stripe billing, multi-tenant workspaces secured with row-level security, Android and iOS apps, and 298 issues closed in under six months. Agents write most of the code; tests, a dedicated reviewer agent for billing and security, and a browser agent that checks the deployed app as each kind of account keep it shippable.
+Most of my recent work happens with Claude Code as my main engineering environment. As the only engineer on Piktechs, a B2B SaaS for digital business cards, I took it from a two-week Lovable prototype to a production product with live billing, multi-tenant workspaces and mobile apps. Doing that alone taught me more about working with AI agents than any tutorial, mostly through what went wrong.
 
-What I bring to AI work:
-• LLM features that survive production. The Piktechs card scanner reads business cards with a vision model, falls back to a different provider chosen by prompt-injection testing, pins its output to a strict schema and meters every user before spending a cent. PDFold turns any PDF into structured Markdown in 11 languages through a multi-pass OCR and vision pipeline.
-• Browser agents. My own tooling around jev-ultrafast (Browser Use) runs dedicated browsers from the terminal, hands over to a human for logins and 2FA, and logs each step with its screenshot and its cost.
-• Measurement over intuition. I sample non-deterministic models instead of trusting one answer (AI Search Visibility Tracker, on Apify and over MCP), and I try to falsify my own results (12,000 paper trades in the Polymarket Up/Down Lab).
-• A workflow, not prompts. Skills, hooks, model routing by risk, and a weekly pass over my own session history that turns repeated corrections into rules.
+A few things I hold to:
+• An agent saying "done" is a claim. I give it ways to check its work against reality, and the database has the last word. I open-sourced that approach as jev-check.
+• An AI feature starts with its threat model. Our card scanner reads text written by strangers, so its fallback model was chosen by testing prompt injection, not by price.
+• Measure before believing. I'd rather publish an honest "there is no edge here" (my Polymarket research) than a flattering backtest.
+• Correct the workspace, not the chat. Lessons go where the next session will find them, and rules that keep failing become checks.
 
-Before that: 6 years shipping software in cybersecurity, healthcare and fintech, mostly as the only engineer. At ALTAO Santé I built a medical AI platform alone that processed 5,000+ documents and saved hospitals €700,000. At Board of Cyber I delivered 700+ tickets on Security Rating®, used by 200+ organisations.
+Before that: six years shipping software in cybersecurity, healthcare and fintech, often as the only engineer. At ALTAO Santé I built a medical platform that processed 5,000+ discharge summaries and saved hospitals €700,000; at Board of Cyber I spent three years on Security Rating®. I also run hands-on AI training for teams, most recently at DRIVECO.
 
-I also teach it: corporate AI training for DRIVECO's teams, in French and English.
+I write about all of this, mistakes included, on moubarak.dev. Based in Lille, working remotely across Europe.`,
+    fr: `Je construis des produits qui embarquent de l'IA, et je construis avec l'IA tous les jours.
 
-Engineering degree from IMT Nord Europe. Based in Lille, working remotely across Europe. If you need AI that holds in production, let's talk.`,
-    fr: `Je construis des produits IA, et je construis avec l'IA.
+L'essentiel de mon travail récent se fait avec Claude Code comme environnement d'ingénierie principal. Seul ingénieur sur Piktechs, un SaaS B2B de cartes de visite digitales, je l'ai fait passer d'un prototype Lovable de deux semaines à un produit en production : facturation en live, espaces de travail multi-clients, applications mobiles. Le faire seul m'a plus appris sur le travail avec des agents IA que n'importe quel tutoriel, surtout à travers ce qui a raté.
 
-Depuis avril 2026, Claude Code est mon environnement d'ingénierie principal. Avec lui, seul ingénieur, j'ai fait passer Piktechs, un SaaS B2B de cartes de visite digitales, d'un prototype Lovable de deux semaines à un produit en production : facturation Stripe en live, espaces de travail multi-clients sécurisés par row-level security, applications Android et iOS, et 298 tickets fermés en moins de six mois. Les agents écrivent l'essentiel du code ; les tests, un agent relecteur dédié à la facturation et à la sécurité, et un agent navigateur qui vérifie l'app déployée sous chaque type de compte la gardent livrable.
+Quelques principes auxquels je tiens :
+• Un agent qui dit « fini » fait une affirmation. Je lui donne de quoi vérifier son travail face au réel, et c'est la base de données qui tranche. J'ai publié cette approche en open source : jev-check.
+• Une fonctionnalité IA commence par son modèle de menace. Notre scanner de cartes lit du texte écrit par des inconnus, alors son modèle de repli a été choisi en testant l'injection de prompt, pas sur le prix.
+• Mesurer avant de croire. Je préfère publier un « il n'y a rien ici » honnête (ma recherche sur Polymarket) qu'un backtest flatteur.
+• Corriger l'espace de travail, pas la conversation. Les leçons vont là où la session suivante les trouvera, et les règles qui échouent deviennent des vérifications.
 
-Ce que j'apporte sur l'IA :
-• Des fonctionnalités LLM qui tiennent en production. Le scanner de cartes de Piktechs lit les cartes de visite avec un modèle de vision, bascule sur un autre fournisseur choisi par des tests d'injection de prompt, contraint sa sortie à un schéma strict et décompte chaque utilisateur avant de dépenser un centime. PDFold transforme n'importe quel PDF en Markdown structuré, en 11 langues, avec un pipeline OCR et vision multi-passes.
-• Des agents navigateur. Mon outillage autour de jev-ultrafast (Browser Use) pilote des navigateurs dédiés depuis le terminal, passe la main à un humain pour les connexions et la 2FA, et journalise chaque étape avec sa capture et son coût.
-• Mesurer plutôt que deviner. J'échantillonne des modèles non déterministes au lieu de croire une seule réponse (AI Search Visibility Tracker, sur Apify et via MCP), et je cherche à réfuter mes propres résultats (12 000 trades papier dans le Polymarket Up/Down Lab).
-• Un workflow, pas des prompts. Skills, hooks, choix du modèle selon le risque, et une passe hebdomadaire sur mon propre historique de sessions qui transforme les corrections répétées en règles.
+Avant cela : six ans à livrer du logiciel en cybersécurité, santé et fintech, souvent comme seul ingénieur. Chez ALTAO Santé, j'ai construit une plateforme médicale qui a traité 5 000+ comptes rendus d'hospitalisation et fait économiser 700 000 € aux hôpitaux ; chez Board of Cyber, trois ans sur Security Rating®. J'anime aussi des formations IA pratiques pour des équipes, dernièrement chez DRIVECO.
 
-Avant cela : 6 ans à livrer du logiciel en cybersécurité, santé et fintech, le plus souvent comme seul ingénieur. Chez ALTAO Santé, j'ai construit seul une plateforme médicale IA qui a traité 5 000+ documents et fait économiser 700 000 € aux hôpitaux. Chez Board of Cyber, j'ai livré 700+ tickets sur Security Rating®, utilisé par plus de 200 organisations.
-
-Je le transmets aussi : formations IA en entreprise pour les équipes de DRIVECO, en français et en anglais.
-
-Diplôme d'ingénieur de l'IMT Nord Europe. Basé à Lille, en remote partout en Europe. Si vous avez besoin d'une IA qui tient en production, parlons-en.`,
+J'écris sur tout cela, erreurs comprises, sur moubarak.dev. Basé à Lille, en remote partout en Europe.`,
   },
   {
-    label: 'AI engineering highlights (CV, LinkedIn Featured, proposals)',
-    // EN is generated from profile.js (aiEngineering), so the CV page and this block can't drift apart
-    en: aiEngineering.capabilities.map((c) => `${c.title}\n` + c.points.map((pt) => `• ${pt}`).join('\n')).join('\n\n'),
-    fr: `Ingénierie logicielle agentique
-• Claude Code comme environnement principal : ~4 000 prompts, worktrees en parallèle, exécutions autonomes bornées par une condition d'arrivée.
-• Piktechs, seul ingénieur : d'un prototype Lovable à un SaaS en production en moins de six mois (298 tickets, 119 migrations, 27 Edge Functions).
-• Je conçois le workflow lui-même : skills, un agent relecteur sur un autre modèle, des hooks qui imposent les règles, une passe hebdomadaire d'auto-apprentissage.
+    label: 'How I work with AI (CV, LinkedIn Featured, proposals)',
+    // EN is generated from profile.js (aiApproach), so the CV page and this block can't drift apart
+    en: 'How I work with AI\n\n' + aiApproach.principles.map((pr) => `${pr.title}\n${pr.text}\nSee: ${pr.proof.href.startsWith('/') ? 'https://moubarak.dev' + pr.proof.href : pr.proof.href}`).join('\n\n'),
+    fr: `Ma façon de travailler avec l'IA
 
-Des fonctionnalités LLM en production
-• Scanner de cartes : modèle de vision, repli sur un autre fournisseur choisi par test d'injection de prompt, schéma strict, quota avant toute dépense.
-• PDFold : pipeline OCR et vision multi-passes avec bascule, n'importe quel PDF en Markdown en 11 langues.
-• ALTAO Santé : IA médicale, 5 000+ documents traités, 700 000 € économisés. Pipelines génératifs depuis début 2024.
+Fini veut dire observé, pas affirmé
+Un agent qui dit « fini » fait une affirmation. Je lui donne de quoi vérifier son travail face au réel : des captures aux vraies largeurs d'écran, un agent navigateur qui utilise l'app déployée comme un type d'utilisateur donné, et une requête en base comme juge final.
 
-Agents navigateur
-• Mon propre exécuteur de tâches sur jev-ultrafast (Browser Use) : navigateurs dédiés, passage de main humain pour les connexions et la 2FA, chaque étape journalisée avec son coût.
-• jev-check, open source : QA sous de vrais états de compte, verdict rendu par la base de données, pas par l'agent.
-• Extensions de jev-ultrafast : fournisseur de décision Cloudflare Workers AI, support des iframes et du shadow DOM.
+Une fonctionnalité IA commence par son modèle de menace
+Tout ce qu'un modèle lit peut avoir été écrit par un attaquant. Avant le prompt, je décide ce que la fonctionnalité ne doit jamais faire, puis je choisis les modèles en les testant contre ça, pas sur leur prix ou leur réputation.
 
-Mesurer plutôt que deviner
-• AI Search Visibility Tracker : interroge ChatGPT, Perplexity, Gemini et les AI Overviews à répétition. Sur Apify, appelable via MCP.
-• Polymarket Up/Down Lab : ~12 000 trades papier sur 60 runners, tests hors échantillon, puis réfutation.
-• Des modèles choisis à l'épreuve, pas à la réputation : un face-à-face sur les mêmes photos, attaque par injection comprise.
+Rapide là où c'est sûr, strict là où les erreurs sont silencieuses
+La plupart des changements partent sans cérémonie. La facturation, les permissions et tout ce qui touche à l'argent ou aux données d'un autre compte ont des vérifications obligatoires, et une relecture par un autre modèle que celui qui a écrit le code.
 
-IA locale et auto-hébergée
-• Inférence locale sur eGPU OCuLink : llama.cpp (Vulkan, CUDA avec prédiction multi-tokens) et ExLlamaV2, mesurés modèle par modèle.
-• Qwen3.6 35B-A3B à 50 tokens/s, Llama 3 8B à 73 tokens/s sur mon propre matériel.
-• Runtimes d'agents auto-hébergés sur le serveur du client, branchés à ses outils avec skills et MCP sur mesure.
+Mesurer avant de croire
+Les modèles ne sont pas déterministes et les backtests flattent. Je pose la même question plusieurs fois, je teste hors échantillon, et j'essaie de casser mes propres résultats avant d'y croire. Parfois, le verdict honnête est qu'il n'y avait rien.
 
-Le transmettre
-• Formation IA en entreprise pour DRIVECO (FR/EN), construite sur les vrais workflows de l'entreprise.
-• Du premier prompt à l'automatisation d'un processus métier complet, en pratique.
-• « Une vraie profondeur technique et un état d'esprit très pratique » (leur DRH, sur LinkedIn, traduit de l'anglais).`,
+Corriger l'espace de travail, pas la conversation
+Quand un agent se trompe, la correction va là où la session suivante la trouvera, à l'endroit le plus étroit qui marche. Une règle qui échoue deux fois cesse d'être une phrase et devient une vérification de l'outillage.
 
+La flemme, assumée
+Si je fais une chose deux fois, une machine la fait la troisième. Un agent peut travailler seul quand il a une condition d'arrivée, un budget, un moyen de se vérifier et un moyen de m'appeler. Le travail, c'est de rendre sûr le fait de s'éloigner.`,
   },
 ];
 
@@ -175,11 +160,11 @@ March 2026 – Present · France
 
 B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.
 
-• Sole engineer: took the product over from a two-week Lovable prototype in April 2026 and turned it into a production SaaS, with Claude Code as the main engineering environment: 298 issues closed, 119 database migrations and 27 Supabase Edge Functions in under six months.
+• Sole engineer: took the product over from a two-week Lovable prototype in April 2026 and turned it into a production SaaS in under six months, with Claude Code as the main engineering environment.
 • Shipped an AI business-card scanner: vision model with a cross-provider fallback selected by prompt-injection testing, strict JSON output, a per-user quota and on-device OCR as the last resort.
 • Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured with Postgres row-level security and role-based permissions.
 • Android and iOS apps from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.
-• A quality system sized for an AI-written codebase: 167 unit test files, 23 Playwright specs, a browser agent that audits the deployed app as each account state, and CI/CD with separate test and production environments.
+• A quality system sized for an AI-written codebase: unit and Playwright tests, a browser agent that audits the deployed app as each account state, and CI/CD with separate test and production environments.
 
 Stack: React · TypeScript · Vite · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Claude Code
 
@@ -189,11 +174,11 @@ Mars 2026 – Aujourd'hui · France
 
 SaaS B2B pour l'événementiel & le networking : cartes de visite digitales (NFC/QR), capture de leads et CRM, espaces d'équipe.
 
-• Seul ingénieur : reprise du produit depuis un prototype Lovable de deux semaines en avril 2026, transformé en SaaS en production avec Claude Code comme environnement d'ingénierie principal : 298 tickets fermés, 119 migrations de base de données et 27 Edge Functions Supabase en moins de six mois.
+• Seul ingénieur : reprise du produit depuis un prototype Lovable de deux semaines en avril 2026, transformé en SaaS en production en moins de six mois, avec Claude Code comme environnement d'ingénierie principal.
 • Scanner de cartes de visite IA : modèle de vision avec repli sur un autre fournisseur choisi par des tests d'injection de prompt, sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours.
 • Facturation Stripe en live (checkout, portail client, webhooks, offres d'équipe au siège, réconciliation planifiée) et espaces de travail multi-clients sécurisés par row-level security Postgres et permissions par rôle.
 • Applications Android et iOS depuis le même code (Capacitor), passes Apple et Google Wallet, synchronisation CRM et intégration Zapier.
-• Un dispositif qualité à la mesure d'un code écrit par IA : 167 fichiers de tests unitaires, 23 specs Playwright, un agent navigateur qui audite l'app déployée sous chaque état de compte, et une CI/CD avec environnements de test et de production séparés.
+• Un dispositif qualité à la mesure d'un code écrit par IA : tests unitaires et Playwright, un agent navigateur qui audite l'app déployée sous chaque état de compte, et une CI/CD avec environnements de test et de production séparés.
 
 Stack : React · TypeScript · Vite · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Claude Code
 

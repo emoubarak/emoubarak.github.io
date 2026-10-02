@@ -2,18 +2,13 @@
 title: "Browser Agents at Work: What Running jev Every Day Taught Me"
 description: "I use a browser agent daily: to QA my own SaaS as real account states, to work inside web consoles that have no API, and to hand me the keyboard only when a password is needed. The use cases, the architecture, and the gotchas nobody tells you."
 pubDate: 2026-10-03
-tags: ["AI", "Browser Agents", "Claude", "Engineering"]
+tags: ["AI", "Browser Agents"]
 cover: "/blog/piktechs-ticket-326-before-after.webp"
 coverAlt: "A real ticket shot by the browser agent: raw translation keys on the homepage before the fix, real content after"
 tldr:
   - "Use a browser agent first to QA your own app as each kind of account, with the database as the judge."
   - "Humans type passwords. Design the hand-off on purpose: injected sessions, a tab left open, or a WebRTC takeover."
   - "Most \"the agent is slow\" or \"the agent can't\" moments were my setup: narrow goals, the right profile, one tab, the real viewport."
-stats:
-  - { value: "16", label: "standing QA checks, as real account states" }
-  - { value: "23", label: "mobile defects caught in one audit ticket" }
-  - { value: "0", label: "passwords ever typed by the agent" }
-  - { value: "10", label: "gotchas nobody tells you" }
 ---
 
 My coding agent writes UI it cannot see, and half of my admin work happens in web consoles that have no API. Both problems have the same answer: a browser agent. Mine is [jev-ultrafast](https://github.com/browser-use/jev-ultrafast), Browser Use's agent built for speed. It reads the page as a table of elements plus text, makes one model call per decision, acts, and returns a status, the final URL, the actions it took and the page text. Here is how I actually use it, after months of daily runs.
@@ -22,7 +17,7 @@ My coding agent writes UI it cannot see, and half of my admin work happens in we
 
 **QA of my own app, as real users.** On [Piktechs](https://piktechs.com), a browser agent signs in to the test environment as a specific account state (free, Pro, lapsed, team member, frozen team), follows a one-line goal, and then the database says whether the result is correct. The agent's "done" is only a claim. Sixteen standing checks cover plan gates and workspace permissions. I open-sourced the approach as [jev-check](https://github.com/emoubarak/jev-check), and it gets [its own case study](/blog/case-study-jev-check).
 
-**Screenshots that prove things.** A visible bug gets a screenshot in its ticket. A fixed one gets a before/after pair in the closing comment, so I can check the fix at a glance without running anything. One responsive audit produced a single ticket listing 23 mobile layout defects with 29 screenshots, ready to fix in one pass. Taking the "after" shots of a batch of closed tickets also found three real follow-up bugs. A screenshot is a claim about the product, so it gets looked at before it gets published.
+**Screenshots that prove things.** A visible bug gets a screenshot in its ticket. A fixed one gets a before/after pair in the closing comment, so I can check the fix at a glance without running anything. One responsive audit produced a single ticket listing every mobile layout defect with its screenshot, ready to fix in one pass. Taking the "after" shots of a batch of closed tickets also found three real follow-up bugs. A screenshot is a claim about the product, so it gets looked at before it gets published.
 
 **Admin in my own logged-in browser.** Adding an administrator in the OVHcloud manager, configuring GA4 and Google Tag Manager, filling Play Console declarations, moving a domain's mail between providers, editing my own Malt and Upwork profiles field by field. The agent attaches to my running Brave through the DevTools protocol, works in the profile that already has the site open, and stops where I have to act.
 

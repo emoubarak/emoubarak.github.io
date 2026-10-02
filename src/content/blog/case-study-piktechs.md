@@ -1,8 +1,8 @@
 ---
 title: "Case Study: Piktechs, from a Two-Week Prototype to a Production SaaS with Claude Code"
-description: "How I took a Lovable prototype to a production B2B SaaS as the only engineer: multi-tenant workspaces, live billing, mobile apps and an AI feature, with Claude Code as the main engineering environment. The workflow, the numbers, the lessons."
+description: "How I took a Lovable prototype to a production B2B SaaS as the only engineer: multi-tenant workspaces, live billing, mobile apps and an AI feature, with Claude Code as the main engineering environment. The workflow, the mistakes, the lessons."
 pubDate: 2026-10-03
-tags: ["Case Study", "SaaS", "Claude", "Engineering"]
+tags: ["Case Study", "SaaS", "Claude"]
 featured: true
 cover: "/portfolio/piktechs-devices.webp"
 coverAlt: "Piktechs on desktop and mobile"
@@ -10,11 +10,6 @@ tldr:
   - "As the only engineer, I took a two-week Lovable prototype to a production B2B SaaS with Claude Code as the main engineering environment."
   - "Fast by default, strict in the silent-failure zone (billing, row-level security, webhooks), reviewed by a different model."
   - "Done means the whole chain: migration applied, function deployed, ticket closed with before/after proof."
-stats:
-  - { value: "298", label: "issues closed in under six months" }
-  - { value: "119", label: "database migrations" }
-  - { value: "27", label: "Supabase Edge Functions written" }
-  - { value: "167 + 23", label: "unit test files + Playwright specs" }
 ---
 
 ## Context
@@ -52,12 +47,16 @@ A prototype that demos well is not a product that bills. Piktechs needed multi-t
 
 **The agent gets eyes.** A browser agent signs in to the deployed test app as a specific account state and the database gives the verdict. I open-sourced it as [jev-check](/blog/case-study-jev-check).
 
-## Results
+## Where it stands, honestly
 
-- **298** GitHub issues closed and **70** pull requests merged since the takeover
-- **119** database migrations and **27** of the **30** Edge Functions written after the takeover
-- **167** unit test files and **23** Playwright end-to-end specs
-- Live billing, Android and iOS release pipelines, an AI feature in production
+The product is in production with live billing, team workspaces, the AI scanner and CRM integrations. The Android app builds and releases from CI, and its first store release is going through review; iOS comes after.
+
+It didn't go smoothly, and the mistakes are the useful part:
+
+- **I accepted "done" too early.** Changes to what a screen shows reached production verified only by unit and database tests, and visual bugs got through. Since then, any visible change gets a real browser check before it counts as done.
+- **Pushing after every small fix had a cost.** CI minutes are a budget, and running out once blocked a production deploy. Commits are batched now, and documentation-only changes skip the pipeline.
+- **Two components for one thing.** The card preview in the editor and the public card were separate. Every change had to be made twice, and they drifted until I merged them into one shared component. The agent will happily copy-paste between them for weeks if you let it.
+- **The same rule, asked for three times.** A navigation rule kept coming back because each fix patched one caller. It only stopped when it moved to one central place with an end-to-end test.
 
 ## What I'd tell anyone taking over an AI-generated prototype
 
