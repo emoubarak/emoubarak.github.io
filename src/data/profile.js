@@ -41,6 +41,80 @@ export const proof = [
   { claim: { en: 'Corporate AI training delivered: two tailored FR/EN sessions.', fr: 'Formation IA en entreprise livrée : deux sessions FR/EN sur mesure.' }, source: 'DRIVECO' },
 ];
 
+// AI engineering, as practised. Every point is backed by a repo, a shipped feature or a measurement.
+// Counts are git / GitHub facts (Piktechs: since the April 2026 takeover), nothing estimated.
+// /cv renders it; /kit holds the matching copy-paste blocks.
+export const aiEngineering = {
+  highlights: [
+    { value: '~4,000', label: 'prompts to Claude Code since May 2026' },
+    { value: '298', label: 'Piktechs issues closed in under six months' },
+    { value: '€700k', label: 'saved for hospitals with medical AI' },
+    { value: '12,000', label: 'paper trades journaled to test a trading edge' },
+  ],
+  intro: { en: "I build AI products, and I build with AI as my main engineering environment. What that means in practice, with the evidence:" },
+  capabilities: [
+    {
+      title: 'Agentic software engineering',
+      points: [
+        "Claude Code as my main environment: ~4,000 prompts, parallel worktrees, autonomous runs bound to an end condition.",
+        "Piktechs, as sole engineer: Lovable prototype to production SaaS in under six months (298 issues, 119 migrations, 27 Edge Functions).",
+        "I engineer the workflow itself: skills, a reviewer agent on a different model, hooks that enforce rules, a weekly self-learning pass.",
+      ],
+      evidence: 'Piktechs · PDFold · my Claude Code workspace',
+      link: { label: 'Case study: Piktechs', href: '/blog/case-study-piktechs' },
+    },
+    {
+      title: 'LLM features in production',
+      points: [
+        "Card scanner: vision model, cross-provider fallback chosen by prompt-injection testing, strict schema, quota before spend.",
+        "PDFold: multi-pass OCR and vision pipeline with failover, any PDF to Markdown in 11 languages.",
+        "ALTAO Santé: medical AI, 5,000+ documents processed, €700,000 saved. Generative pipelines since early 2024.",
+      ],
+      evidence: 'piktechs.com · pdfold.com · ALTAO Santé',
+      link: { label: 'Case study: the AI card scanner', href: '/blog/case-study-ai-card-scanner' },
+    },
+    {
+      title: 'Browser agents',
+      points: [
+        "My own task runner on jev-ultrafast (Browser Use): dedicated browsers, human hand-off for logins and 2FA, every step logged with its cost.",
+        "jev-check, open source: QA as real account states, with the verdict taken from the database, not from the agent.",
+        "Extended jev-ultrafast: a Cloudflare Workers AI decision provider, iframe and shadow-DOM support.",
+      ],
+      evidence: 'github.com/emoubarak/jev-check · github.com/emoubarak/jev-ultrafast',
+      link: { label: 'Case study: jev-check', href: '/blog/case-study-jev-check' },
+    },
+    {
+      title: 'Measurement over intuition',
+      points: [
+        "AI Search Visibility Tracker: samples ChatGPT, Perplexity, Gemini and AI Overviews repeatedly. On Apify, callable over MCP.",
+        "Polymarket Up/Down Lab: ~12,000 paper trades across 60 runners, out-of-sample tests, then falsification.",
+        "Models picked by test, not reputation: a head-to-head on the same photos, including an injection attack.",
+      ],
+      evidence: 'Apify · GitHub',
+      link: { label: 'Article: what 4,000 prompts taught me', href: '/blog/what-i-kept-telling-claude' },
+    },
+    {
+      title: 'Local and self-hosted AI',
+      points: [
+        "Local inference on an OCuLink eGPU: llama.cpp (Vulkan, CUDA with multi-token prediction) and ExLlamaV2, benchmarked per model.",
+        "Qwen3.6 35B-A3B at 50 tokens/s, Llama 3 8B at 73 tokens/s on my own hardware.",
+        "Self-hosted agent runtimes on a client's own server, wired to their tools with custom skills and MCP.",
+      ],
+      evidence: 'Benchmarks · client work',
+      link: { label: 'Article: lazy by design', href: '/blog/lazy-by-design' },
+    },
+    {
+      title: 'Teaching it',
+      points: [
+        "Corporate AI training for DRIVECO (FR/EN), built on the company's real workflows.",
+        "From the first prompt to automating a complete business process, hands-on.",
+        "\"Technical depth and a very practical mindset\" (their Chief People Officer, on LinkedIn).",
+      ],
+      evidence: 'DRIVECO · public testimonial',
+    },
+  ],
+};
+
 // Published publicly by the people quoted. Never paraphrased, never anonymised upward.
 export const testimonials = [
   {
@@ -102,8 +176,8 @@ export const experiences = [
     location: "Lille, France · Remote",
     summary: "Independent software engineering practice: web apps, SaaS and AI automation for founders, SMEs and agencies, from requirements to production.",
     achievements: [
-      "Self-hosted AI agents: installing, configuring and securing agent runtimes on a client's own server or VPS — OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack — connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.",
-      "AI browser automation with Jev (Browser Use × TypeSafe): agents that drive a real browser to enter, extract and update data in back-offices that have no API, verifying every action.",
+      "Self-hosted AI agents: installing, configuring and securing agent runtimes on a client's own server or VPS (OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack), connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.",
+      "AI browser automation on jev-ultrafast (Browser Use): my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.",
       "Rescuing AI-generated MVPs (Lovable, Bolt, Cursor, Claude Code): code audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests and deployment.",
       "LLM and RAG integration into existing products: OCR + LLM pipelines, chatbots over documents, OpenAI / Claude / Gemini in production.",
       "Corporate AI training for DRIVECO: two tailored FR/EN sessions with live use cases built on the company's real workflows and OpenAI ecosystem.",
@@ -114,9 +188,13 @@ export const experiences = [
     role: "Co-Founder & CTO",
     period: "Mar 2026 – Present",
     location: "France",
-    summary: "B2B SaaS for events & networking: digital business cards, lead capture, attendee tracking (Next.js, TypeScript, Supabase, Stripe).",
+    summary: "B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces (React, TypeScript, Supabase, Stripe).",
     achievements: [
-      "Design, build and run the whole product: architecture, frontend, backend, infrastructure.",
+      "Sole engineer: took the product over from a two-week Lovable prototype in April 2026 and turned it into a production SaaS, with Claude Code as the main engineering environment: 298 issues closed, 119 database migrations and 27 Supabase Edge Functions in under six months.",
+      "Shipped an AI business-card scanner: vision model with a cross-provider fallback selected by prompt-injection testing, strict JSON output, a per-user quota and on-device OCR as the last resort.",
+      "Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured with Postgres row-level security and role-based permissions.",
+      "Android and iOS apps from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.",
+      "A quality system sized for an AI-written codebase: 167 unit test files, 23 Playwright specs, a browser agent that audits the deployed app as each account state, and CI/CD with separate test and production environments.",
     ],
   },
   {
@@ -210,9 +288,9 @@ export const certifications = [
 ];
 
 export const techGroups = [
-  { label: "Web & Mobile Dev", items: ["TypeScript", "JavaScript", "Next.js", "React", "React Native", "Angular", "Vue.js", "Node.js", "Python", "Django", "Flask", "PostgreSQL", "Supabase"] },
+  { label: "Web & Mobile Dev", items: ["TypeScript", "JavaScript", "Next.js", "React", "React Native", "Capacitor", "Angular", "Vue.js", "Node.js", "Python", "Django", "Flask", "PostgreSQL", "Supabase"] },
   { label: "Cloud & DevOps", items: ["AWS (EC2, Route53, Amplify)", "Docker", "Git", "CI/CD", "Vercel"] },
-  { label: "AI & Automation", items: ["AI Agents", "Agentic Dev", "Claude Code", "LLM APIs (OpenAI, Gemini, OpenRouter)", "Local LLMs", "RAG", "Vectorization", "OCR & Vision pipelines", "ElevenLabs", "Voice AI"] },
+  { label: "AI & Automation", items: ["AI Agents", "Agentic Dev", "Claude Code (skills, hooks, subagents)", "MCP", "Browser agents (Browser Use)", "LLM APIs (OpenAI, Claude, Gemini, OpenRouter)", "LLM evaluation & prompt-injection testing", "Local LLMs (llama.cpp, ExLlamaV2)", "RAG", "Vectorization", "OCR & Vision pipelines", "ElevenLabs", "Voice AI"] },
   { label: "E-commerce", items: ["Shopify API", "Liquid", "Stripe", "SEO"] },
   { label: "Languages", items: ["French (Native)", "English (C1, TOEIC)", "Spanish"] },
 ];
@@ -241,7 +319,7 @@ export const projects = [
     category: 'saas',
     categoryLabel: 'SaaS',
     role: 'Founder',
-    description: 'B2B SaaS platform for digital business cards at professional events: connection, lead capture and attendee tracking. Designed, built and operated end to end.',
+    description: 'B2B SaaS platform for digital business cards at professional events: connection, lead capture with an AI card scanner, CRM and team workspaces. Designed, built and operated end to end.',
     image: `${base}/portfolio/piktechs-og.webp`,
     imageCentered: true,
     previews: [
@@ -249,7 +327,7 @@ export const projects = [
       { label: 'Live site', src: 'https://piktechs.com' },
     ],
     url: 'https://piktechs.com',
-    tags: ['Next.js', 'TypeScript', 'Supabase', 'Stripe'],
+    tags: ['React', 'TypeScript', 'Supabase', 'Stripe', 'Vision LLM'],
   },
   {
     title: 'PDFold',
@@ -280,6 +358,22 @@ export const projects = [
     previews: [{ label: 'Store page', src: `${base}/portfolio/ai-visibility.webp` }],
     url: 'https://apify.com/emoubarak/ai-search-visibility-tracker',
     tags: ['TypeScript', 'Node.js', 'Apify Actor', 'GEO / AEO'],
+  },
+  {
+    title: 'jev-check',
+    subtitle: 'github.com/emoubarak/jev-check',
+    category: 'research',
+    categoryLabel: 'Open source',
+    role: 'Author · MIT',
+    description: 'Open-source agent skill for Claude Code, Codex and OpenClaw: an AI browser agent signs in to a staging app as a real account state (free, paid, lapsed, team member, stranger) and follows a plain-English goal, then the database gives the verdict. Built to catch what mocks miss: paywalls, roles and cross-account isolation disagreeing on a deployed app.',
+    image: `${base}/blog/jev-check-audit.svg`,
+    imageCentered: true,
+    previews: [
+      { label: 'What it catches', src: `${base}/blog/jev-check-audit.svg` },
+      { label: 'Repository', src: `${base}/portfolio/jev-check.webp` },
+    ],
+    url: 'https://github.com/emoubarak/jev-check',
+    tags: ['Python', 'Browser agents', 'Agent skill', 'QA'],
   },
   {
     title: 'Agence KSUR',

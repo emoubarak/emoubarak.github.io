@@ -41,6 +41,40 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
     </header>
 
+    {post.data.cover && (
+      <figure class="mb-8 b-border b-shadow bg-paper dark:bg-dark-surface overflow-hidden">
+        <a href={post.data.cover.startsWith('/') ? `${base}${post.data.cover}` : post.data.cover} target="_blank" rel="noopener" title="Open full size">
+          <img src={post.data.cover.startsWith('/') ? `${base}${post.data.cover}` : post.data.cover} alt={post.data.coverAlt ?? post.data.title} class="w-full h-auto block" loading="eager" />
+        </a>
+      </figure>
+    )}
+
+    {(post.data.stats.length > 0 || post.data.tldr.length > 0) && (
+      <aside class="mb-10 b-border bg-paper-alt dark:bg-dark-surface p-5" aria-label="At a glance">
+        <p class="font-mono text-[0.65rem] font-bold uppercase tracking-widest text-muted mb-4">At a glance</p>
+        {post.data.stats.length > 0 && (
+          <div class:list={['grid gap-3 mb-5', post.data.stats.length >= 4 ? 'grid-cols-2 md:grid-cols-4' : 'grid-cols-2 md:grid-cols-3']}>
+            {post.data.stats.map((st) => (
+              <div class="b-border bg-paper dark:bg-dark-paper p-3">
+                <div class="font-mono text-xl md:text-2xl font-extrabold text-accent leading-none mb-1.5">{st.value}</div>
+                <div class="text-xs text-body leading-snug">{st.label}</div>
+              </div>
+            ))}
+          </div>
+        )}
+        {post.data.tldr.length > 0 && (
+          <ul class="space-y-2">
+            {post.data.tldr.map((t) => (
+              <li class="text-sm flex items-start gap-2">
+                <span class="text-accent font-mono text-xs mt-0.5 shrink-0">▪</span>
+                <span class="text-body">{t}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </aside>
+    )}
+
     <div class="prose-content">
       <Content />
     </div>

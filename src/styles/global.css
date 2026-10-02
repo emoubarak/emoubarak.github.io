@@ -118,7 +118,10 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 1.5rem;
   margin-bottom: 1.25rem;
 }
+.prose-content ul { list-style: square; }
+.prose-content ol { list-style: decimal; }
 .prose-content li { margin-bottom: 0.4rem; }
+.prose-content li::marker { color: var(--color-accent); font-family: var(--font-mono); font-weight: 700; }
 
 .prose-content code {
   font-family: var(--font-mono);
@@ -167,6 +170,52 @@ h1, h2, h3, h4, h5, h6 {
 }
 .prose-content a:hover {
   color: var(--color-accent-alt);
+}
+
+.prose-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--color-ink);
+  margin: 0.5rem 0 0.4rem;
+}
+.dark .prose-content img {
+  border-color: var(--color-dark-border);
+}
+.prose-content img + em {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+
+.prose-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.prose-content th,
+.prose-content td {
+  border: 2px solid var(--color-ink);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-content th {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--color-paper-alt);
+}
+.dark .prose-content th,
+.dark .prose-content td {
+  border-color: var(--color-dark-border);
+}
+.dark .prose-content th {
+  background: var(--color-dark-surface);
 }
 
 .prose-content hr {

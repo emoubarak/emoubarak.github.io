@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" font-family="'JetBrains Mono', ui-monospace, monospace">
+  <rect width="1200" height="630" fill="#faf9f6"/>
+  <text x="60" y="70" font-size="30" font-weight="800" fill="#111">Where each fix belongs</text>
+  <text x="60" y="104" font-size="17" fill="#555">Put every correction in the narrowest place that actually works</text>
+  <g font-size="16">
+    <!-- row 1 -->
+    <rect x="60" y="140" width="700" height="88" fill="#111" stroke="#111" stroke-width="3"/>
+    <text x="84" y="176" font-weight="800" fill="#ff5c00" font-size="15">1 · CHECKABLE BY A MACHINE</text>
+    <text x="84" y="206" fill="#faf9f6">→ a hook or a script</text>
+    <text x="736" y="206" fill="#aaa" text-anchor="end" font-size="14">e.g. deny the wrong browser tool</text>
+    <!-- row 2 -->
+    <rect x="60" y="244" width="700" height="88" fill="#fff" stroke="#111" stroke-width="3"/>
+    <text x="84" y="280" font-weight="800" fill="#ff5c00" font-size="15">2 · ONE KIND OF TASK</text>
+    <text x="84" y="310" fill="#111">→ a skill</text>
+    <text x="736" y="310" fill="#888" text-anchor="end" font-size="14">e.g. client sites, admin forms</text>
+    <!-- row 3 -->
+    <rect x="60" y="348" width="700" height="88" fill="#fff" stroke="#111" stroke-width="3"/>
+    <text x="84" y="384" font-weight="800" fill="#ff5c00" font-size="15">3 · TRUE IN EVERY SESSION</text>
+    <text x="84" y="414" fill="#111">→ global instructions, under 120 lines</text>
+    <text x="736" y="414" fill="#888" text-anchor="end" font-size="14">e.g. autonomy + stop points</text>
+    <!-- row 4 -->
+    <rect x="60" y="452" width="700" height="88" fill="#fff" stroke="#111" stroke-width="3"/>
+    <text x="84" y="488" font-weight="800" fill="#ff5c00" font-size="15">4 · ONE PROJECT</text>
+    <text x="84" y="518" fill="#111">→ that project's instructions</text>
+    <text x="736" y="518" fill="#888" text-anchor="end" font-size="14">e.g. how it deploys</text>
+  </g>
+  <!-- escalation arrow -->
+  <path d="M790 520V170" stroke="#ff5c00" stroke-width="4"/><path d="M780 172l10-18 10 18z" fill="#ff5c00"/>
+  <text x="808" y="330" font-size="14" fill="#ff5c00" font-weight="700" transform="rotate(-90 808 330)" text-anchor="middle">a rule that failed twice moves up</text>
+  <!-- loop -->
+  <rect x="850" y="140" width="290" height="400" fill="#f0eeeb" stroke="#111" stroke-width="3"/>
+  <text x="995" y="176" font-size="15" font-weight="800" fill="#111" text-anchor="middle">THE LOOP</text>
+  <g font-size="14" fill="#111" text-anchor="middle">
+    <text x="995" y="222">I correct the agent</text>
+    <text x="995" y="250" fill="#ff5c00">↓</text>
+    <text x="995" y="278">a hook flags it</text>
+    <text x="995" y="306" fill="#ff5c00">↓</text>
+    <text x="995" y="334">lesson stored with its scope</text>
+    <text x="995" y="362" fill="#ff5c00">↓</text>
+    <text x="995" y="390">weekly pass, both machines:</text>
+    <text x="995" y="412">promote or strengthen</text>
+    <text x="995" y="440" fill="#ff5c00">↓</text>
+    <text x="995" y="468">a git commit I can revert</text>
+    <text x="995" y="500" fill="#0055ff" font-weight="700">metric: % of my messages</text>
+    <text x="995" y="520" fill="#0055ff" font-weight="700">that correct the agent</text>
+  </g>
+  <text x="60" y="590" font-size="14" fill="#888">moubarak.dev · what 4,000 prompts to Claude Code taught me</text>
+</svg>

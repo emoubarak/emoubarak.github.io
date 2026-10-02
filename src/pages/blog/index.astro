@@ -1,38 +1,101 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Card from '../../components/Card.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const caseStudies = sortedPosts.filter((p) => p.data.tags.includes('Case Study')).sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
+const articles = sortedPosts.filter((p) => !p.data.tags.includes('Case Study'));
+const [featured, ...others] = caseStudies;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const src = (c: string) => (c.startsWith('/') ? `${base}${c}` : c);
+const shortTitle = (t: string) => t.replace(/^Case Study:\s*/, '');
 ---
 
-<Layout title="Blog - El Mahdi Moubarak" description="Articles on engineering, SaaS, AI, and shipping products.">
-  <section class="mb-8">
+<Layout title="Blog - El Mahdi Moubarak" description="Case studies and articles on AI engineering, Claude Code, browser agents and shipping products.">
+  <section class="mb-10">
     <h1 class="text-2xl font-extrabold mb-1">Blog</h1>
     <p class="font-mono text-xs text-muted">
-      Metaphysics of code, life, and everything in between.
+      Case studies from real projects, and what building with AI every day taught me.
     </p>
   </section>
 
-  {sortedPosts.length === 0 ? (
-    <div class="b-border p-8 text-center bg-paper dark:bg-dark-surface">
-      <p class="font-mono text-sm text-muted">Nothing here yet.</p>
-    </div>
-  ) : (
-    <div class="space-y-3">
-      {sortedPosts.map((post) => (
-        <a href={`${base}/blog/${post.id}`} class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 py-3 border-b border-ink/10 dark:border-dark-border group">
-          <div class="flex-1 min-w-0">
-            <span class="font-mono text-sm font-bold group-hover:text-accent transition-colors block truncate">{post.data.title}</span>
-            <span class="text-xs text-muted line-clamp-1">{post.data.description}</span>
+  {caseStudies.length > 0 && (
+    <section class="mb-14 scroll-mt-24" id="case-studies">
+      <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-5">Case studies</h2>
+
+      {featured && (
+        <a href={`${base}/blog/${featured.id}`} class="block b-border b-shadow b-lift bg-paper dark:bg-dark-surface mb-4 group">
+          {featured.data.cover && (
+            <div class="border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper">
+              <img src={src(featured.data.cover)} alt={featured.data.coverAlt ?? ''} class="w-full h-auto block" loading="eager" />
+            </div>
+          )}
+          <div class="p-5">
+            <h3 class="font-mono text-base font-bold leading-snug mb-2 group-hover:text-accent transition-colors">{shortTitle(featured.data.title)}</h3>
+            <p class="text-sm text-body mb-4">{featured.data.description}</p>
+            {featured.data.stats.length > 0 && (
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {featured.data.stats.map((st) => (
+                  <div class="b-border bg-paper-alt dark:bg-dark-paper px-3 py-2">
+                    <div class="font-mono text-lg font-extrabold text-accent leading-none mb-1">{st.value}</div>
+                    <div class="text-[0.7rem] text-body leading-snug">{st.label}</div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-          <span class="font-mono text-[0.65rem] text-muted shrink-0">
-            {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-          </span>
         </a>
-      ))}
-    </div>
+      )}
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {others.map((p) => (
+          <a href={`${base}/blog/${p.id}`} class="flex flex-col b-border b-shadow b-lift bg-paper dark:bg-dark-surface group">
+            {p.data.cover && (
+              <div class="border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper aspect-[16/9] overflow-hidden">
+                <img src={src(p.data.cover)} alt={p.data.coverAlt ?? ''} class="w-full h-full object-cover object-top block" loading="lazy" />
+              </div>
+            )}
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-mono text-sm font-bold leading-snug mb-2 group-hover:text-accent transition-colors">{shortTitle(p.data.title)}</h3>
+              <p class="text-xs text-body mb-3 line-clamp-3">{p.data.description}</p>
+              {p.data.stats.length > 0 && (
+                <p class="mt-auto font-mono text-[0.7rem] text-muted">
+                  <span class="font-extrabold text-accent text-sm">{p.data.stats[0].value}</span> {p.data.stats[0].label}
+                </p>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
   )}
+
+  <section>
+    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-3">Articles</h2>
+    {articles.length === 0 ? (
+      <div class="b-border p-8 text-center bg-paper dark:bg-dark-surface">
+        <p class="font-mono text-sm text-muted">Nothing here yet.</p>
+      </div>
+    ) : (
+      <div class="space-y-3">
+        {articles.map((post) => (
+          <a href={`${base}/blog/${post.id}`} class="flex gap-4 py-3 border-b border-ink/10 dark:border-dark-border group items-start">
+            {post.data.cover && (
+              <img src={src(post.data.cover)} alt="" class="hidden sm:block w-28 aspect-[16/10] object-cover object-top b-border shrink-0" loading="lazy" />
+            )}
+            <div class="flex-1 min-w-0">
+              <div class="flex items-baseline justify-between gap-4">
+                <span class="font-mono text-sm font-bold group-hover:text-accent transition-colors">{post.data.title}</span>
+                <span class="font-mono text-[0.65rem] text-muted shrink-0">
+                  {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
+              </div>
+              <span class="text-xs text-muted line-clamp-2">{post.data.description}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
 </Layout>

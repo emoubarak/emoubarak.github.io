@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-import { experiences, education, techGroups, interests, projects } from '../data/profile.js';
+import { experiences, education, techGroups, interests, projects, aiEngineering } from '../data/profile.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -44,6 +44,42 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       6 years across cybersecurity, healthcare and fintech, mostly as the only engineer on the project.
       I work with founders and agencies who need something built properly and shipped fast.
     </p>
+  </section>
+
+  <!-- AI Engineering -->
+  <section class="mb-12 scroll-mt-24" id="ai-engineering">
+    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-3">AI Engineering</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      {aiEngineering.highlights.map((h) => (
+        <div class="b-border b-shadow bg-paper dark:bg-dark-surface p-3">
+          <div class="font-mono text-xl md:text-2xl font-extrabold text-accent leading-none mb-1.5">{h.value}</div>
+          <div class="text-xs text-body leading-snug">{h.label}</div>
+        </div>
+      ))}
+    </div>
+    <p class="text-sm leading-relaxed text-body mb-6">
+      {aiEngineering.intro.en}
+      <a href={`${base}/blog#case-studies`} class="font-mono text-xs font-bold text-accent hover:text-accent-alt whitespace-nowrap ml-1">Read the case studies →</a>
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {aiEngineering.capabilities.map((c) => (
+        <div class="b-border bg-paper dark:bg-dark-surface p-5 flex flex-col">
+          <h3 class="font-mono text-sm font-bold mb-3 leading-snug">{c.title}</h3>
+          <ul class="space-y-2 mb-4">
+            {c.points.map((pt) => (
+              <li class="text-sm flex items-start gap-2">
+                <span class="text-accent font-mono text-xs mt-0.5 shrink-0">▪</span>
+                <span class="text-body">{pt}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-auto pt-3 border-t border-ink/10 dark:border-dark-border flex flex-wrap items-baseline justify-between gap-2">
+            <span class="font-mono text-[0.65rem] text-muted">{c.evidence}</span>
+            {c.link && <a href={`${base}${c.link.href}`} class="font-mono text-[0.7rem] font-bold text-accent hover:text-accent-alt">{c.link.label} →</a>}
+          </div>
+        </div>
+      ))}
+    </div>
   </section>
 
   <!-- Experience -->
@@ -115,7 +151,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <Card
           title={p.title}
           description={p.description}
-          href={p.href}
+          href={p.url}
           tags={p.tags}
         />
       ))}

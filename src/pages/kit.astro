@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { identity as canon, education as canonEducation, certifications as canonCerts } from '../data/profile.js';
+import { identity as canon, education as canonEducation, certifications as canonCerts, aiEngineering } from '../data/profile.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -63,6 +63,74 @@ Stack : TypeScript, Next.js, React, React Native, Angular, Vue.js, Python/Django
 
 Diplôme d'ingénieur de l'IMT Nord Europe (Informatique, Réseaux & Télécoms). Français (natif), Anglais (C1), Espagnol. Disponible pour missions freelance, développement SaaS & IA, automatisation et conseil tech. Besoin de livrer quelque chose ? Contactez-moi.`,
   },
+  {
+    label: 'LinkedIn About · AI-first (≤ 2,600 characters)',
+    en: `I build AI products, and I build with AI.
+
+Since April 2026, Claude Code has been my main engineering environment. As the only engineer on Piktechs, a B2B SaaS for digital business cards, I took it from a two-week Lovable prototype to a production product: live Stripe billing, multi-tenant workspaces secured with row-level security, Android and iOS apps, and 298 issues closed in under six months. Agents write most of the code; tests, a dedicated reviewer agent for billing and security, and a browser agent that checks the deployed app as each kind of account keep it shippable.
+
+What I bring to AI work:
+• LLM features that survive production. The Piktechs card scanner reads business cards with a vision model, falls back to a different provider chosen by prompt-injection testing, pins its output to a strict schema and meters every user before spending a cent. PDFold turns any PDF into structured Markdown in 11 languages through a multi-pass OCR and vision pipeline.
+• Browser agents. My own tooling around jev-ultrafast (Browser Use) runs dedicated browsers from the terminal, hands over to a human for logins and 2FA, and logs each step with its screenshot and its cost.
+• Measurement over intuition. I sample non-deterministic models instead of trusting one answer (AI Search Visibility Tracker, on Apify and over MCP), and I try to falsify my own results (12,000 paper trades in the Polymarket Up/Down Lab).
+• A workflow, not prompts. Skills, hooks, model routing by risk, and a weekly pass over my own session history that turns repeated corrections into rules.
+
+Before that: 6 years shipping software in cybersecurity, healthcare and fintech, mostly as the only engineer. At ALTAO Santé I built a medical AI platform alone that processed 5,000+ documents and saved hospitals €700,000. At Board of Cyber I delivered 700+ tickets on Security Rating®, used by 200+ organisations.
+
+I also teach it: corporate AI training for DRIVECO's teams, in French and English.
+
+Engineering degree from IMT Nord Europe. Based in Lille, working remotely across Europe. If you need AI that holds in production, let's talk.`,
+    fr: `Je construis des produits IA, et je construis avec l'IA.
+
+Depuis avril 2026, Claude Code est mon environnement d'ingénierie principal. Avec lui, seul ingénieur, j'ai fait passer Piktechs, un SaaS B2B de cartes de visite digitales, d'un prototype Lovable de deux semaines à un produit en production : facturation Stripe en live, espaces de travail multi-clients sécurisés par row-level security, applications Android et iOS, et 298 tickets fermés en moins de six mois. Les agents écrivent l'essentiel du code ; les tests, un agent relecteur dédié à la facturation et à la sécurité, et un agent navigateur qui vérifie l'app déployée sous chaque type de compte la gardent livrable.
+
+Ce que j'apporte sur l'IA :
+• Des fonctionnalités LLM qui tiennent en production. Le scanner de cartes de Piktechs lit les cartes de visite avec un modèle de vision, bascule sur un autre fournisseur choisi par des tests d'injection de prompt, contraint sa sortie à un schéma strict et décompte chaque utilisateur avant de dépenser un centime. PDFold transforme n'importe quel PDF en Markdown structuré, en 11 langues, avec un pipeline OCR et vision multi-passes.
+• Des agents navigateur. Mon outillage autour de jev-ultrafast (Browser Use) pilote des navigateurs dédiés depuis le terminal, passe la main à un humain pour les connexions et la 2FA, et journalise chaque étape avec sa capture et son coût.
+• Mesurer plutôt que deviner. J'échantillonne des modèles non déterministes au lieu de croire une seule réponse (AI Search Visibility Tracker, sur Apify et via MCP), et je cherche à réfuter mes propres résultats (12 000 trades papier dans le Polymarket Up/Down Lab).
+• Un workflow, pas des prompts. Skills, hooks, choix du modèle selon le risque, et une passe hebdomadaire sur mon propre historique de sessions qui transforme les corrections répétées en règles.
+
+Avant cela : 6 ans à livrer du logiciel en cybersécurité, santé et fintech, le plus souvent comme seul ingénieur. Chez ALTAO Santé, j'ai construit seul une plateforme médicale IA qui a traité 5 000+ documents et fait économiser 700 000 € aux hôpitaux. Chez Board of Cyber, j'ai livré 700+ tickets sur Security Rating®, utilisé par plus de 200 organisations.
+
+Je le transmets aussi : formations IA en entreprise pour les équipes de DRIVECO, en français et en anglais.
+
+Diplôme d'ingénieur de l'IMT Nord Europe. Basé à Lille, en remote partout en Europe. Si vous avez besoin d'une IA qui tient en production, parlons-en.`,
+  },
+  {
+    label: 'AI engineering highlights (CV, LinkedIn Featured, proposals)',
+    // EN is generated from profile.js (aiEngineering), so the CV page and this block can't drift apart
+    en: aiEngineering.capabilities.map((c) => `${c.title}\n` + c.points.map((pt) => `• ${pt}`).join('\n')).join('\n\n'),
+    fr: `Ingénierie logicielle agentique
+• Claude Code comme environnement principal : ~4 000 prompts, worktrees en parallèle, exécutions autonomes bornées par une condition d'arrivée.
+• Piktechs, seul ingénieur : d'un prototype Lovable à un SaaS en production en moins de six mois (298 tickets, 119 migrations, 27 Edge Functions).
+• Je conçois le workflow lui-même : skills, un agent relecteur sur un autre modèle, des hooks qui imposent les règles, une passe hebdomadaire d'auto-apprentissage.
+
+Des fonctionnalités LLM en production
+• Scanner de cartes : modèle de vision, repli sur un autre fournisseur choisi par test d'injection de prompt, schéma strict, quota avant toute dépense.
+• PDFold : pipeline OCR et vision multi-passes avec bascule, n'importe quel PDF en Markdown en 11 langues.
+• ALTAO Santé : IA médicale, 5 000+ documents traités, 700 000 € économisés. Pipelines génératifs depuis début 2024.
+
+Agents navigateur
+• Mon propre exécuteur de tâches sur jev-ultrafast (Browser Use) : navigateurs dédiés, passage de main humain pour les connexions et la 2FA, chaque étape journalisée avec son coût.
+• jev-check, open source : QA sous de vrais états de compte, verdict rendu par la base de données, pas par l'agent.
+• Extensions de jev-ultrafast : fournisseur de décision Cloudflare Workers AI, support des iframes et du shadow DOM.
+
+Mesurer plutôt que deviner
+• AI Search Visibility Tracker : interroge ChatGPT, Perplexity, Gemini et les AI Overviews à répétition. Sur Apify, appelable via MCP.
+• Polymarket Up/Down Lab : ~12 000 trades papier sur 60 runners, tests hors échantillon, puis réfutation.
+• Des modèles choisis à l'épreuve, pas à la réputation : un face-à-face sur les mêmes photos, attaque par injection comprise.
+
+IA locale et auto-hébergée
+• Inférence locale sur eGPU OCuLink : llama.cpp (Vulkan, CUDA avec prédiction multi-tokens) et ExLlamaV2, mesurés modèle par modèle.
+• Qwen3.6 35B-A3B à 50 tokens/s, Llama 3 8B à 73 tokens/s sur mon propre matériel.
+• Runtimes d'agents auto-hébergés sur le serveur du client, branchés à ses outils avec skills et MCP sur mesure.
+
+Le transmettre
+• Formation IA en entreprise pour DRIVECO (FR/EN), construite sur les vrais workflows de l'entreprise.
+• Du premier prompt à l'automatisation d'un processus métier complet, en pratique.
+• « Une vraie profondeur technique et un état d'esprit très pratique » (leur DRH, sur LinkedIn, traduit de l'anglais).`,
+
+  },
 ];
 
 // ===== Experiences =====
@@ -75,8 +143,8 @@ March 2026 – Present · France
 
 Independent software engineering practice: web apps, SaaS and AI automation for founders, SMEs and agencies, from requirements to production.
 
-• Self-hosted AI agents: installing, configuring and securing agent runtimes on a client's own server or VPS — OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack — connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.
-• AI browser automation with Jev (Browser Use x TypeSafe): agents that drive a real browser to enter, extract and update data in back-offices that have no API, verifying every action.
+• Self-hosted AI agents: installing, configuring and securing agent runtimes on a client's own server or VPS (OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack), connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.
+• AI browser automation on jev-ultrafast (Browser Use): my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.
 • Rescuing AI-generated MVPs (Lovable, Bolt, Cursor, Claude Code): code audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests and deployment.
 • LLM and RAG integration into existing products: OCR + LLM pipelines, chatbots over documents, OpenAI / Claude / Gemini in production.
 • Corporate AI training: two tailored FR/EN sessions for DRIVECO, with live use cases built on their real workflows.
@@ -89,8 +157,8 @@ Mars 2026 – Aujourd'hui · France
 
 Activité indépendante de conception logicielle : applications web, SaaS et automatisation IA pour fondateurs, PME et agences, du besoin à la mise en production.
 
-• Agents IA self-hosted : installation, configuration et sécurisation de runtimes d'agents sur le serveur ou VPS du client — OpenClaw, Hermes Agent, agents GPT et Claude, ou une stack sur mesure — connectés à ses outils (Slack, WhatsApp, Telegram, CRM, Google Workspace), avec skills et MCP sur mesure.
-• Automatisation navigateur par IA avec Jev (Browser Use x TypeSafe) : des agents qui pilotent un vrai navigateur pour saisir, extraire et mettre à jour des données dans des back-offices sans API, en vérifiant chaque action.
+• Agents IA self-hosted : installation, configuration et sécurisation de runtimes d'agents sur le serveur ou VPS du client (OpenClaw, Hermes Agent, agents GPT et Claude, ou une stack sur mesure), connectés à ses outils (Slack, WhatsApp, Telegram, CRM, Google Workspace), avec skills et MCP sur mesure.
+• Automatisation navigateur par IA sur jev-ultrafast (Browser Use) : mon propre exécuteur de tâches pilote des navigateurs dédiés depuis le terminal pour saisir, extraire et mettre à jour des données dans des back-offices sans API, passe la main à un humain pour les connexions, captchas et 2FA, et journalise chaque étape avec sa capture et son coût.
 • Reprise de MVP générés par IA (Lovable, Bolt, Cursor, Claude Code) : audit du code, sécurité (auth, RLS Supabase, clés API exposées), refactoring, tests et mise en production.
 • Intégration LLM et RAG dans des produits existants : pipelines OCR + LLM, chatbots sur documents, OpenAI / Claude / Gemini en production.
 • Formation IA en entreprise : deux sessions FR/EN sur mesure pour DRIVECO, avec cas d'usage en direct sur leurs propres workflows.
@@ -105,23 +173,31 @@ Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large 
     en: `Co-Founder & CTO - Piktechs
 March 2026 – Present · France
 
-B2B SaaS for events & networking: digital business cards, lead capture, attendee tracking.
+B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.
 
-• Design, build and run the whole product: architecture, frontend, backend, infrastructure.
+• Sole engineer: took the product over from a two-week Lovable prototype in April 2026 and turned it into a production SaaS, with Claude Code as the main engineering environment: 298 issues closed, 119 database migrations and 27 Supabase Edge Functions in under six months.
+• Shipped an AI business-card scanner: vision model with a cross-provider fallback selected by prompt-injection testing, strict JSON output, a per-user quota and on-device OCR as the last resort.
+• Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured with Postgres row-level security and role-based permissions.
+• Android and iOS apps from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.
+• A quality system sized for an AI-written codebase: 167 unit test files, 23 Playwright specs, a browser agent that audits the deployed app as each account state, and CI/CD with separate test and production environments.
 
-Stack: Next.js, TypeScript, Supabase, Stripe
+Stack: React · TypeScript · Vite · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Claude Code
 
-Skills: Product Development · Supabase · DevOps · TypeScript · Web Development · Full-Stack Development · Software as a Service (SaaS) · Software Architecture · Stripe (Software) · Next.js`,
+Skills: Artificial Intelligence (AI) · Large Language Models (LLM) · Software as a Service (SaaS) · Software Architecture · Full-Stack Development · Supabase · Stripe (Software) · TypeScript · React.js · DevOps`,
     fr: `Co-fondateur & CTO - Piktechs
 Mars 2026 – Aujourd'hui · France
 
-SaaS B2B pour l'événementiel & le networking : cartes de visite digitales, capture de leads, suivi des participants.
+SaaS B2B pour l'événementiel & le networking : cartes de visite digitales (NFC/QR), capture de leads et CRM, espaces d'équipe.
 
-• Conception, développement et exploitation du produit complet : architecture, frontend, backend, infrastructure.
+• Seul ingénieur : reprise du produit depuis un prototype Lovable de deux semaines en avril 2026, transformé en SaaS en production avec Claude Code comme environnement d'ingénierie principal : 298 tickets fermés, 119 migrations de base de données et 27 Edge Functions Supabase en moins de six mois.
+• Scanner de cartes de visite IA : modèle de vision avec repli sur un autre fournisseur choisi par des tests d'injection de prompt, sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours.
+• Facturation Stripe en live (checkout, portail client, webhooks, offres d'équipe au siège, réconciliation planifiée) et espaces de travail multi-clients sécurisés par row-level security Postgres et permissions par rôle.
+• Applications Android et iOS depuis le même code (Capacitor), passes Apple et Google Wallet, synchronisation CRM et intégration Zapier.
+• Un dispositif qualité à la mesure d'un code écrit par IA : 167 fichiers de tests unitaires, 23 specs Playwright, un agent navigateur qui audite l'app déployée sous chaque état de compte, et une CI/CD avec environnements de test et de production séparés.
 
-Stack : Next.js, TypeScript, Supabase, Stripe
+Stack : React · TypeScript · Vite · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Claude Code
 
-Compétences : Product Development · Supabase · DevOps · TypeScript · Web Development · Full-Stack Development · Software as a Service (SaaS) · Software Architecture · Stripe (Software) · Next.js`,
+Compétences : Artificial Intelligence (AI) · Large Language Models (LLM) · Software as a Service (SaaS) · Software Architecture · Full-Stack Development · Supabase · Stripe (Software) · TypeScript · React.js · DevOps`,
   },
   {
     label: 'KSUR Services - CTO',
@@ -290,17 +366,17 @@ const projects = [
     project: 'piktechs',
     link: 'https://piktechs.com/',
     en: `Piktechs - https://piktechs.com/
-B2B NFC cards & event SaaS: digital business cards, lead capture and attendee tracking for professional networking. Designed, built and operated end to end: architecture, frontend, backend, infrastructure.
+B2B NFC cards & event SaaS: digital business cards, lead capture with an AI card scanner, CRM and team workspaces for professional networking. Designed, built and operated end to end: architecture, frontend, backend, infrastructure, Android and iOS apps.
 
-Stack: Next.js, TypeScript, Supabase, Stripe
+Stack: React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter
 
-Skills: Stripe (Software) · Next.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Web Development · TypeScript · Supabase`,
+Skills: Stripe (Software) · React.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Large Language Models (LLM) · TypeScript · Supabase`,
     fr: `Piktechs - https://piktechs.com/
-SaaS de cartes NFC & événementiel B2B : cartes de visite digitales, capture de leads et suivi des participants pour le networking professionnel. Conçu, développé et opéré de bout en bout : architecture, frontend, backend, infrastructure.
+SaaS de cartes NFC & événementiel B2B : cartes de visite digitales, capture de leads avec un scanner de cartes IA, CRM et espaces d'équipe pour le networking professionnel. Conçu, développé et opéré de bout en bout : architecture, frontend, backend, infrastructure, applications Android et iOS.
 
-Stack : Next.js, TypeScript, Supabase, Stripe
+Stack : React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter
 
-Compétences : Stripe (Software) · Next.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Web Development · TypeScript · Supabase`,
+Compétences : Stripe (Software) · React.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Large Language Models (LLM) · TypeScript · Supabase`,
   },
   {
     label: 'PDFold',
@@ -678,6 +754,9 @@ Piktechs: https://piktechs.com/
 PDFold: https://pdfold.com/
 AI Search Visibility Tracker: https://apify.com/emoubarak/ai-search-visibility-tracker
 Text-to-Short-Video: https://github.com/emoubarak/prompt-to-short-video-generator
+jev-check (open source): https://github.com/emoubarak/jev-check
+jev-ultrafast fork: https://github.com/emoubarak/jev-ultrafast
+Case studies: https://moubarak.dev/blog#case-studies
 Mon Jouet Montessori: https://mon-jouet-montessori.com/
 Atandem Agency: https://atandemagency.com/`,
   },

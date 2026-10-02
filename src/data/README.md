@@ -10,9 +10,9 @@ les blocs copiables de `/kit`, puis LinkedIn, Malt, Upwork et Fiverr.
 | Page | Importe |
 |---|---|
 | `pages/index.astro` | `services` (toutes sauf Shopify), `projects` (4 en vedette) |
-| `pages/cv.astro` | `experiences`, `education`, `techGroups`, `interests`, `projects` |
+| `pages/cv.astro` | `aiEngineering` (bandeau de chiffres + cartes), `experiences`, `education`, `techGroups`, `interests`, `projects` |
 | `pages/portfolio.astro` | `projects`, `projectCategories` |
-| `pages/kit.astro` | `identity`, `education`, `certifications` — et garde sa prose EN/FR propre |
+| `pages/kit.astro` | `identity`, `education`, `certifications`, `aiEngineering` (bloc EN « AI engineering highlights » généré) — et garde sa prose EN/FR propre |
 
 `kit.astro` conserve les textes rédigés à la main (EN + FR) destinés au copier-coller sur chaque
 plateforme : ils ne sont pas dérivables des données. En revanche ils **doivent s'accorder** avec les
@@ -29,3 +29,10 @@ faits structurés ci-dessus. Quand les deux divergent, c'est `profile.js` qui a 
   du travail CMS.
 - **Shopify** est hors de la page d'accueil et hors des titres : segmenté, c'est le pool le moins
   rémunérateur ($22-32/h de médiane contre $120 pour le SaaS full-stack).
+
+## Articles et études de cas
+
+Le blog (`src/content/blog/`) accepte en frontmatter `cover`, `tldr`, `stats` et `featured` : l'en-tête visuel
+(couverture, chiffres clés, trois points à retenir) s'affiche avant le texte. Le tag `Case Study` range un
+article dans la section « Case studies » de `/blog` ; `featured: true` la met en grand. Les schémas des
+couvertures sont des SVG dans `public/blog/`.
