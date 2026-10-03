@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 import { identity as canon, education as canonEducation, certifications as canonCerts, aiApproach } from '../data/profile.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -50,7 +51,9 @@ Over 6 years I've shipped across cybersecurity, healthcare and fintech, most of 
 
 Today I run EMM, my independent software engineering practice, I'm the founder of Piktechs (B2B SaaS for events & networking: digital business cards, lead capture, attendee tracking) and CTO of KSUR Services, where I own the agency's full technical stack from architecture to production. I also deliver corporate AI training (two tailored FR/EN sessions for DRIVECO, with live use cases).
 
-Stack: TypeScript, Next.js, React, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker, plus AI agents, LLM APIs, RAG and OCR/Vision pipelines.
+How I work with AI: Claude Code is my main engineering environment, a browser agent (jev) checks what I ship as real users would, and the database, not the agent, decides whether it works. I write about the approach, mistakes included, on moubarak.dev.
+
+Stack: TypeScript, React, Next.js, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker, plus AI agents, browser agents, LLM APIs, RAG and OCR/Vision pipelines.
 
 Engineering degree from IMT Nord Europe (CS, Networks & Telecoms). French (native), English (C1), Spanish. Available for freelance missions, SaaS & AI development, automation and tech consulting. If you need something shipped, get in touch.`,
     fr: `Je suis El Mahdi Moubarak, fondateur et ingénieur full-stack basé en France. Je conçois et livre des logiciels et des systèmes IA de bout en bout : specs, architecture, code, déploiement.
@@ -59,7 +62,9 @@ En 6 ans, j'ai livré des projets en cybersécurité, santé et fintech, le plus
 
 Aujourd'hui, je dirige EMM, mon activité indépendante de conception logicielle, je suis fondateur de Piktechs (SaaS B2B pour l'événementiel & le networking : cartes de visite digitales, capture de leads, suivi des participants) et CTO de KSUR Services, où je suis responsable de toute la stack technique, de l'architecture à la production. J'anime également des formations IA en entreprise (deux sessions FR/EN sur mesure pour DRIVECO, avec cas d'usage en direct).
 
-Stack : TypeScript, Next.js, React, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker, ainsi que agents IA, APIs LLM, RAG et pipelines OCR/Vision.
+Ma façon de travailler avec l'IA : Claude Code est mon environnement d'ingénierie principal, un agent navigateur (jev) vérifie ce que je livre comme le ferait un vrai utilisateur, et c'est la base de données, pas l'agent, qui dit si ça marche. J'écris sur cette approche, erreurs comprises, sur moubarak.dev.
+
+Stack : TypeScript, React, Next.js, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker, ainsi que agents IA, agents navigateur, APIs LLM, RAG et pipelines OCR/Vision.
 
 Diplôme d'ingénieur de l'IMT Nord Europe (Informatique, Réseaux & Télécoms). Français (natif), Anglais (C1), Espagnol. Disponible pour missions freelance, développement SaaS & IA, automatisation et conseil tech. Besoin de livrer quelque chose ? Contactez-moi.`,
   },
@@ -164,7 +169,8 @@ B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture 
 • Shipped an AI business-card scanner: vision model with a cross-provider fallback selected by prompt-injection testing, strict JSON output, a per-user quota and on-device OCR as the last resort.
 • Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured with Postgres row-level security and role-based permissions.
 • Android and iOS apps from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.
-• A quality system sized for an AI-written codebase: unit and Playwright tests, a browser agent that audits the deployed app as each account state, and CI/CD with separate test and production environments.
+• Agentic QA with jev (Browser Use's jev-ultrafast): a browser agent signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team), follows a plain-English goal, and the database gives the verdict. Bug tickets get a one-command reproduction and before/after screenshots taken by the agent. Open-sourced as jev-check.
+• Unit and Playwright tests as the deterministic gate, CI/CD with separate test and production environments, and a reviewer agent on a different model for billing and permission code.
 
 Stack: React · TypeScript · Vite · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Claude Code
 
@@ -178,7 +184,8 @@ SaaS B2B pour l'événementiel & le networking : cartes de visite digitales (NFC
 • Scanner de cartes de visite IA : modèle de vision avec repli sur un autre fournisseur choisi par des tests d'injection de prompt, sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours.
 • Facturation Stripe en live (checkout, portail client, webhooks, offres d'équipe au siège, réconciliation planifiée) et espaces de travail multi-clients sécurisés par row-level security Postgres et permissions par rôle.
 • Applications Android et iOS depuis le même code (Capacitor), passes Apple et Google Wallet, synchronisation CRM et intégration Zapier.
-• Un dispositif qualité à la mesure d'un code écrit par IA : tests unitaires et Playwright, un agent navigateur qui audite l'app déployée sous chaque état de compte, et une CI/CD avec environnements de test et de production séparés.
+• QA agentique avec jev (jev-ultrafast de Browser Use) : un agent navigateur se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe, équipe gelée), suit un objectif en langage naturel, et c'est la base de données qui rend le verdict. Chaque ticket de bug a sa reproduction en une commande et ses captures avant/après prises par l'agent. Publié en open source : jev-check.
+• Tests unitaires et Playwright comme garde-fou déterministe, CI/CD avec environnements de test et de production séparés, et un agent relecteur sur un autre modèle pour le code de facturation et de permissions.
 
 Stack : React · TypeScript · Vite · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Claude Code
 
@@ -364,6 +371,23 @@ Stack : React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter
 Compétences : Stripe (Software) · React.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Large Language Models (LLM) · TypeScript · Supabase`,
   },
   {
+    label: 'jev-check',
+    project: 'jev',
+    link: 'https://github.com/emoubarak/jev-check',
+    en: `jev-check - https://github.com/emoubarak/jev-check
+Open-source agent skill (MIT) for Claude Code, Codex and OpenClaw. An AI browser agent (jev-ultrafast, by Browser Use) signs in to a staging app as a real account state (free, paid, lapsed, team member, stranger) and follows a plain-English goal; then a SQL query on the database gives the verdict, not the agent. Built from the QA harness of Piktechs to catch what mocks miss: paywalls, roles and cross-account isolation disagreeing on a deployed app. Throw-away accounts in exact states, deleted after every run, sessions injected so no password is ever typed, before/after screenshots for tickets.
+
+Stack: Python, jev-ultrafast, browser-harness (CDP), SQL (Postgres, Supabase, SQLite)
+
+Skills: AI Agents · Test Automation · Software Testing · Large Language Models (LLM) · Python · Open-Source Software`,
+    fr: `jev-check - https://github.com/emoubarak/jev-check
+Skill d'agent open source (MIT) pour Claude Code, Codex et OpenClaw. Un agent navigateur IA (jev-ultrafast, de Browser Use) se connecte à une app de staging sous un vrai état de compte (gratuit, payant, expiré, membre d'équipe, inconnu) et suit un objectif en langage naturel ; puis une requête SQL sur la base rend le verdict, pas l'agent. Issu du harnais de QA de Piktechs, pour attraper ce que les mocks ratent : paywalls, rôles et isolation entre comptes qui se contredisent sur une app déployée. Comptes jetables dans des états exacts, supprimés après chaque exécution, sessions injectées pour qu'aucun mot de passe ne soit jamais tapé, captures avant/après pour les tickets.
+
+Stack : Python, jev-ultrafast, browser-harness (CDP), SQL (Postgres, Supabase, SQLite)
+
+Compétences : AI Agents · Test Automation · Software Testing · Large Language Models (LLM) · Python · Open-Source Software`,
+  },
+  {
     label: 'PDFold',
     project: 'pdfold',
     link: 'https://pdfold.com/',
@@ -485,14 +509,14 @@ Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large 
 
 // ===== Skills & education =====
 const skills = {
-  en: `Web & Mobile Dev: TypeScript, JavaScript, Next.js, React, React Native, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
+  en: `Web & Mobile Dev: TypeScript, JavaScript, Next.js, React, React Native, Capacitor, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
 Cloud & DevOps: AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
-AI & Automation: AI Agents, Agentic Dev, Claude Code, MCP, LLM APIs (OpenAI, Gemini, OpenRouter), Local LLMs, RAG, Vectorization, OCR & Vision pipelines, ElevenLabs, Voice AI, GEO/AEO
+AI & Automation: AI Agents, Agentic Dev, Claude Code (skills, hooks, subagents), MCP, Browser agents (Browser Use, jev), Agentic QA, LLM APIs (OpenAI, Claude, Gemini, OpenRouter), LLM evaluation & prompt-injection testing, Local LLMs (llama.cpp, ExLlamaV2), RAG, Vectorization, OCR & Vision pipelines, ElevenLabs, Voice AI, GEO/AEO
 E-commerce: Shopify API, Liquid, Stripe, SEO
 Languages: French (native), English (C1, TOEIC), Spanish`,
-  fr: `Dév Web & Mobile : TypeScript, JavaScript, Next.js, React, React Native, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
+  fr: `Dév Web & Mobile : TypeScript, JavaScript, Next.js, React, React Native, Capacitor, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
 Cloud & DevOps : AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
-IA & Automatisation : AI Agents, Agentic Dev, Claude Code, MCP, APIs LLM (OpenAI, Gemini, OpenRouter), LLMs locaux, RAG, Vectorisation, Pipelines OCR & Vision, ElevenLabs, Voice AI, GEO/AEO
+IA & Automatisation : AI Agents, Agentic Dev, Claude Code (skills, hooks, sous-agents), MCP, Agents navigateur (Browser Use, jev), QA agentique, APIs LLM (OpenAI, Claude, Gemini, OpenRouter), Évaluation de LLM & tests d'injection de prompt, LLMs locaux (llama.cpp, ExLlamaV2), RAG, Vectorisation, Pipelines OCR & Vision, ElevenLabs, Voice AI, GEO/AEO
 E-commerce : Shopify API, Liquid, Stripe, SEO
 Langues : Français (natif), Anglais (C1, TOEIC), Espagnol`,
 };
@@ -510,20 +534,20 @@ Certification : TOEIC`,
 const services = {
   en: `What I deliver:
 - Full-stack and SaaS apps, web and mobile: MVP, V1 and iterations, from idea to production.
-- AI automation and agents: n8n and API workflows, agents wired into Slack, WhatsApp, CRMs and Google Workspace, browser automation (Jev, Browser Use, Playwright) for back-offices with no API.
+- AI automation and agents: n8n and API workflows, agents wired into Slack, WhatsApp, CRMs and Google Workspace, browser automation (jev, Browser Use, Playwright) for back-offices with no API, and agentic QA: a browser agent that checks your staging app as each kind of user, verified against your database.
 - LLM and RAG integration: chat over your documents, OCR + LLM pipelines, OpenAI / Claude / Gemini inside your existing product, with rate limits, fallbacks and evaluation handled.
-- AI-generated MVP rescue: an app built with Lovable, Bolt, Cursor or Claude Code that breaks in production — audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests, deployment.
-- Self-hosted AI agents: installing and securing agent runtimes on your own server or VPS — OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack — with custom skills and MCP.
+- AI-generated MVP rescue: an app built with Lovable, Bolt, Cursor or Claude Code that breaks in production: audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests, deployment.
+- Self-hosted AI agents: installing and securing agent runtimes on your own server or VPS (OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack), with custom skills and MCP.
 - Corporate AI training: hands-on FR/EN sessions built on your real workflows, from the first prompt to automating a whole business process.
 - Shopify where it gets technical: custom apps, Liquid, checkout, order-to-fulfilment automation into your factory, ERP or CRM.
 
 To get started: a paid audit or a 5-10 day proof of concept with one measurable deliverable.`,
   fr: `Ce que je livre :
 - Applications full-stack et SaaS, web et mobile : MVP, V1 et évolutions, de l'idée à la production.
-- Automatisation et agents IA : workflows n8n et API, agents connectés à Slack, WhatsApp, CRM et Google Workspace, automatisation navigateur (Jev, Browser Use, Playwright) pour les back-offices sans API.
+- Automatisation et agents IA : workflows n8n et API, agents connectés à Slack, WhatsApp, CRM et Google Workspace, automatisation navigateur (jev, Browser Use, Playwright) pour les back-offices sans API, et QA agentique : un agent navigateur qui vérifie votre app de staging sous chaque type d'utilisateur, contrôlé contre votre base de données.
 - Intégration LLM et RAG : chatbot sur vos documents, pipelines OCR + LLM, OpenAI / Claude / Gemini dans votre produit existant, avec gestion des quotas, des fallbacks et de l'évaluation.
-- Reprise de MVP généré par IA : votre app faite avec Lovable, Bolt, Cursor ou Claude Code ne tient pas en production — audit, sécurité (auth, RLS Supabase, clés API exposées), refactoring, tests, déploiement.
-- Agents IA self-hosted : installation et sécurisation de runtimes d'agents sur votre serveur ou VPS — OpenClaw, Hermes Agent, agents GPT et Claude, ou une stack sur mesure — avec skills et MCP sur mesure.
+- Reprise de MVP généré par IA : votre app faite avec Lovable, Bolt, Cursor ou Claude Code ne tient pas en production : audit, sécurité (auth, RLS Supabase, clés API exposées), refactoring, tests, déploiement.
+- Agents IA self-hosted : installation et sécurisation de runtimes d'agents sur votre serveur ou VPS (OpenClaw, Hermes Agent, agents GPT et Claude, ou une stack sur mesure), avec skills et MCP sur mesure.
 - Formation IA en entreprise : sessions pratiques FR/EN construites sur vos propres workflows, du premier prompt à l'automatisation d'un processus métier complet.
 - Shopify là où c'est technique : apps custom, Liquid, checkout, automatisation commande → usine, ERP ou CRM.
 
@@ -537,6 +561,8 @@ const proof = {
 - Worldline internal R&D tool: team development speed improved by 70%.
 - Polymarket Up/Down Lab: ~12,000 trades journaled across 60 concurrent runners, settled against the Chainlink oracle.
 - PDFold: any PDF into structured Markdown, in 11 languages.
+- Piktechs AI card scanner: of four cheap vision models tested on the same photos, two obeyed a prompt-injection card; the fallback was chosen among those that resisted.
+- jev-check, open source (MIT): browser-agent QA where the database, not the agent, gives the verdict.
 - Shopify store (Mon Jouet Montessori) built, grown to real revenue, and sold.
 - Corporate AI training delivered for DRIVECO: two tailored FR/EN sessions.
 - 6 years shipping across healthcare, fintech and cybersecurity. Engineering degree, IMT Nord Europe.`,
@@ -545,6 +571,8 @@ const proof = {
 - Outil interne de R&D Worldline : vitesse de développement de l'équipe améliorée de 70 %.
 - Polymarket Up/Down Lab : ~12 000 trades journalisés sur 60 runners concurrents, réglés contre l'oracle Chainlink.
 - PDFold : n'importe quel PDF en Markdown structuré, en 11 langues.
+- Scanner de cartes IA de Piktechs : sur quatre modèles de vision bon marché testés sur les mêmes photos, deux ont obéi à une carte piégée par injection de prompt ; le modèle de repli a été choisi parmi ceux qui ont résisté.
+- jev-check, open source (MIT) : QA par agent navigateur où c'est la base de données, pas l'agent, qui rend le verdict.
 - Boutique Shopify (Mon Jouet Montessori) créée, montée jusqu'à un vrai chiffre d'affaires, puis vendue.
 - Formation IA en entreprise livrée pour DRIVECO : deux sessions FR/EN sur mesure.
 - 6 ans de mise en production en santé, fintech et cybersécurité. Diplôme d'ingénieur, IMT Nord Europe.`,
@@ -580,7 +608,7 @@ const linkedinSkills = [
   },
   {
     label: 'Full skills list',
-    text: `AI Agents, Algorithmic Trading, Amazon Web Services (AWS), Angular, Answer Engine Optimization, Artificial Intelligence (AI), Automation, Back-End Web Development, Blockchain, Claude Code, Cloud Computing, Continuous Integration and Continuous Delivery (CI/CD), Cybersecurity, Data Analysis, DevOps, Django, Docker, E-Commerce, Employee Training, Front-End Development, Full-Stack Development, Generative Engine Optimization, Java, JavaScript, Large Language Models (LLM), LLM Integration, Machine Learning, Mobile Application Development, Mobile Applications, Model Context Protocol (MCP), MQTT, Next.js, Node.js, PostgreSQL, Postman API, Product Development, Prompt Engineering, Python, Quantitative Analytics, React Native, React.js, REST APIs, Search Engine Optimization (SEO), Software Architecture, Software as a Service (SaaS), Software Infrastructure, Spring Boot, Stripe (Software), Supabase, System Architecture, TypeScript, Vue.js, Web Applications, Web Development, WebSocket, Website Building`,
+    text: `AI Agents, Algorithmic Trading, Amazon Web Services (AWS), Angular, Answer Engine Optimization, Artificial Intelligence (AI), Automation, Back-End Web Development, Blockchain, Claude Code, Cloud Computing, Continuous Integration and Continuous Delivery (CI/CD), Cybersecurity, Data Analysis, DevOps, Django, Docker, E-Commerce, Employee Training, Front-End Development, Full-Stack Development, Generative AI, Generative Engine Optimization, Java, JavaScript, Large Language Models (LLM), LLM Integration, Machine Learning, Mobile Application Development, Mobile Applications, Model Context Protocol (MCP), MQTT, Next.js, Node.js, Open-Source Software, PostgreSQL, Postman API, Product Development, Prompt Engineering, Python, Quantitative Analytics, React Native, React.js, REST APIs, Search Engine Optimization (SEO), Software Architecture, Software as a Service (SaaS), Software Infrastructure, Software Testing, Spring Boot, Stripe (Software), Supabase, System Architecture, Test Automation, TypeScript, Vue.js, Web Applications, Web Development, Website Building, WebSocket`,
   },
   {
     label: 'LinkedIn Skill Assessments passed',
@@ -595,7 +623,7 @@ const docAssets = [
 ];
 
 // Display order of asset types inside each project group
-const assetTypeOrder = ['Logo', 'Photo', 'Thumbnail', 'OG image', 'Devices', 'Landing page', 'Screenshot', 'Mockup', 'Motion'];
+const assetTypeOrder = ['Logo', 'Photo', 'Thumbnail', 'OG image', 'Devices', 'Landing page', 'Screenshot', 'Diagram', 'Mockup', 'Motion'];
 
 const assetGroups = [
   {
@@ -615,6 +643,27 @@ const assetGroups = [
     assets: [
       { label: 'OG image', file: 'portfolio/piktechs-og.webp', type: 'OG image' },
       { label: 'Dashboard · desktop & mobile', file: 'portfolio/piktechs-devices.webp', type: 'Devices' },
+      { label: 'Bug ticket · before/after, shot by the browser agent', file: 'blog/piktechs-ticket-326-before-after.webp', type: 'Screenshot' },
+      { label: 'AI card scanner · guard rails and fallbacks', file: 'blog/scanner-pipeline.svg', type: 'Diagram' },
+    ],
+  },
+  {
+    key: 'jev',
+    name: 'jev · browser agents',
+    link: 'https://github.com/emoubarak/jev-check',
+    assets: [
+      { label: 'jev-check · the agent says done, the database says no', file: 'blog/jev-check-audit.svg', type: 'Diagram' },
+      { label: 'jev-check · repository', file: 'portfolio/jev-check.webp', type: 'Screenshot' },
+      { label: 'Task runner · architecture', file: 'blog/jev-administrator-architecture.webp', type: 'Diagram' },
+    ],
+  },
+  {
+    key: 'writing',
+    name: 'Writing · diagrams',
+    link: 'https://moubarak.dev/blog',
+    assets: [
+      { label: 'Where each fix belongs', file: 'blog/fix-ladder.svg', type: 'Diagram' },
+      { label: 'Safe to walk away', file: 'blog/lazy-autonomy.svg', type: 'Diagram' },
     ],
   },
   {
@@ -711,6 +760,8 @@ const projectFilters = [
   { key: 'brand', label: 'Personal brand' },
   { key: 'emm', label: 'EMM' },
   { key: 'piktechs', label: 'Piktechs' },
+  { key: 'jev', label: 'jev · browser agents' },
+  { key: 'writing', label: 'Writing' },
   { key: 'pdfold', label: 'PDFold' },
   { key: 'ai-visibility', label: 'AI Visibility' },
   { key: 'text-to-video', label: 'Text-to-Video' },
@@ -783,6 +834,29 @@ const identityCards = [
   { lang: 'FR', langKey: 'fr', idKey: 'idFr', copyAllId: identityBlocks[1].id, copyAllText: identityBlocks[1].text },
 ];
 const bioSections = bios.map((b) => ({ label: b.label, blocks: pair(b) }));
+// ===== Featured (case studies & articles), generated from the blog so it never drifts =====
+const featuredIds = ['case-study-piktechs', 'case-study-ai-card-scanner', 'case-study-jev-check', 'what-i-kept-telling-claude', 'browser-agents-at-work-jev', 'lazy-by-design', 'how-i-built-pdfold'];
+const featuredFr = {
+  'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment j'ai fait passer un prototype Lovable en production, seul ingénieur : le workflow, les erreurs, les leçons."],
+  'case-study-ai-card-scanner': ["Étude de cas : choisir le modèle de repli d'un LLM en l'attaquant", "Le scanner de cartes de Piktechs lit du texte écrit par des inconnus : comment j'ai choisi son modèle de repli en testant l'injection de prompt plutôt que le prix, et les garde-fous d'un endpoint LLM payant."],
+  'case-study-jev-check': ["Étude de cas : jev-check, une QA par agent navigateur où la base de données rend le verdict", "Les tests unitaires et les suites mockées ratent les bugs où le front, le back et les permissions se contredisent. Un agent navigateur connecté sous de vrais états de compte, et la base qui tranche."],
+  'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "Les mêmes corrections revenaient dans chaque projet. Lesquelles, pourquoi les écrire ne suffisait pas, et où chaque correction doit vraiment vivre."],
+  'browser-agents-at-work-jev': ["Des agents navigateur au travail : ce que jev m'a appris au quotidien", "QA de mon propre SaaS sous de vrais comptes, consoles web sans API, passage de main pour les mots de passe : les cas d'usage, l'architecture et les pièges."],
+  'lazy-by-design': ["La flemme comme méthode : faire travailler mes machines quand je ne suis pas là", "Si je fais une chose deux fois, une machine la fait la troisième : exécutions autonomes, tâches planifiées, sources uniques, et ce qu'il faut à un agent pour travailler seul sans risque."],
+  'how-i-built-pdfold': ["Comment j'ai construit PDFold seul : un workspace IA qui apprend, des tests et une infra sans surprise", "Le vrai setup derrière PDFold : une boucle de correction du workspace, des tests qui grandissent avec le code, et un pipeline OCR multi-passes sur Gemini avec bascule OpenRouter."],
+};
+const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
+const featuredSections = featuredIds
+  .map((id) => blogPosts.find((p) => p.id === id))
+  .filter(Boolean)
+  .map((p) => {
+    const url = `https://moubarak.dev/blog/${p.id}`;
+    const [frTitle, frDesc] = featuredFr[p.id] ?? [p.data.title, p.data.description];
+    return {
+      label: p.data.title,
+      blocks: pair({ en: `${p.data.title}\n${url}\n${p.data.description}`, fr: `${frTitle} (en anglais)\n${url}\n${frDesc}` }),
+    };
+  });
 const expSections = experiences.map((e) => ({ label: e.label, project: e.project, blocks: pair(e) }));
 const projSections = projects.map((p) => ({ label: p.label, project: p.project, link: p.link, blocks: pair(p) }));
 const serviceBlocks = pair(services);
@@ -818,6 +892,7 @@ const eduBlocks = pair(education);
         { key: 'assets', label: 'Assets' },
         { key: 'identity', label: 'Identity' },
         { key: 'bios', label: 'Bios' },
+        { key: 'featured', label: 'Featured' },
         { key: 'experience', label: 'Experience' },
         { key: 'projects', label: 'Projects' },
         { key: 'skills', label: 'Skills' },
@@ -963,6 +1038,30 @@ const eduBlocks = pair(education);
     <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Bios</h2>
     <div class="space-y-8">
       {bioSections.map((s) => (
+        <div>
+          <h3 class="font-mono text-sm font-bold mb-3">{s.label}</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {s.blocks.map((b) => (
+              <div class="b-border bg-paper dark:bg-dark-surface">
+                <div class="flex items-center justify-between px-3 py-2 border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper">
+                  <span class="font-mono text-[0.65rem] font-bold uppercase tracking-widest">{b.lang}</span>
+                  <button class="copy-btn font-mono text-[0.65rem] font-bold b-border px-2 py-1 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors" data-target={b.id}>Copy</button>
+                </div>
+                <pre id={b.id} class="whitespace-pre-wrap font-sans text-xs leading-relaxed p-3 text-body overflow-x-auto">{b.text}</pre>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="mb-12 scroll-mt-56" id="featured" data-section="featured" data-project="writing">
+    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-2">Featured · case studies & articles</h2>
+    <p class="text-xs text-muted mb-6">For LinkedIn Featured, Malt and proposals: title, link, one-line summary.</p>
+    <div class="space-y-8">
+      {featuredSections.map((s) => (
         <div>
           <h3 class="font-mono text-sm font-bold mb-3">{s.label}</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

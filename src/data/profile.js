@@ -159,7 +159,8 @@ export const experiences = [
       "Shipped an AI business-card scanner: vision model with a cross-provider fallback selected by prompt-injection testing, strict JSON output, a per-user quota and on-device OCR as the last resort.",
       "Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured with Postgres row-level security and role-based permissions.",
       "Android and iOS apps from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.",
-      "A quality system sized for an AI-written codebase: unit and Playwright tests, a browser agent that audits the deployed app as each account state, and CI/CD with separate test and production environments.",
+      "Agentic QA with jev (Browser Use's jev-ultrafast): a browser agent signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team), follows a plain-English goal, and the database gives the verdict. Bug tickets get a one-command reproduction and before/after screenshots taken by the agent. Open-sourced as jev-check.",
+      "Unit and Playwright tests as the deterministic gate, CI/CD with separate test and production environments, and a reviewer agent on a different model for billing and permission code.",
     ],
   },
   {
