@@ -1,10 +1,8 @@
 ---
 title: "Browser Agents at Work: What Running jev Every Day Taught Me"
 description: "I use a browser agent daily: to QA my own SaaS as real account states, to work inside web consoles that have no API, and to hand me the keyboard only when a password is needed. The use cases, the architecture, and the gotchas nobody tells you."
-pubDate: 2026-10-03
+pubDate: 2026-09-26
 tags: ["AI", "Browser Agents"]
-cover: "/blog/piktechs-ticket-326-before-after.webp"
-coverAlt: "A real ticket shot by the browser agent: raw translation keys on the homepage before the fix, real content after"
 tldr:
   - "Use a browser agent first to QA your own app as each kind of account, with the database as the judge."
   - "Humans type passwords. Design the hand-off on purpose: injected sessions, a tab left open, or a WebRTC takeover."

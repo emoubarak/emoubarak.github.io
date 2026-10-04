@@ -1,7 +1,7 @@
 ---
 title: "Case Study: Choosing an LLM Fallback by Attacking It"
 description: "The Piktechs business-card scanner reads a stranger's card with a vision model. How I picked its fallback by testing prompt injection instead of price, and the guard rails that make a paid LLM endpoint safe to expose."
-pubDate: 2026-10-03
+pubDate: 2026-08-29
 tags: ["Case Study", "AI", "Security"]
 cover: "/blog/scanner-pipeline.svg"
 coverAlt: "Three tiers: primary vision model, a fallback on a different provider, then on-device OCR, behind auth, quota and a strict JSON schema"

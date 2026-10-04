@@ -1,7 +1,7 @@
 ---
 title: "Case Study: Piktechs, from a Two-Week Prototype to a Production SaaS with Claude Code"
 description: "How I took a Lovable prototype to a production B2B SaaS as the only engineer: multi-tenant workspaces, live billing, mobile apps and an AI feature, with Claude Code as the main engineering environment. The workflow, the mistakes, the lessons."
-pubDate: 2026-10-03
+pubDate: 2026-09-12
 tags: ["Case Study", "SaaS", "Claude"]
 featured: true
 cover: "/portfolio/piktechs-devices.webp"

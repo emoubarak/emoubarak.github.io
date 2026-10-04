@@ -1,7 +1,7 @@
 ---
 title: "What I Kept Telling Claude: Four Months of My Own Corrections"
 description: "Four months, two machines, about 4,000 prompts. The same few corrections came back in every project. What they were, why writing them down was not enough, and where each fix actually belongs."
-pubDate: 2026-10-03
+pubDate: 2026-09-05
 tags: ["AI", "Claude", "Workflow"]
 cover: "/blog/fix-ladder.svg"
 coverAlt: "Where each fix belongs: hook, skill, global instructions, project instructions, and the weekly loop"
