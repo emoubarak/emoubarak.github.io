@@ -56,6 +56,8 @@ Refonte du 2026-10-04. Ce fichier dit ce qui est voulu, pour qu'une retouche res
   `scripts/og-card.html`. À relancer après un nouvel article. La carte de l'accueil (`public/og/home.png`) vient de
   `scripts/og.html`. Une image modifiée prend un nouveau nom de fichier : les plateformes la gardent en cache par URL. Chaque page passe la sienne au layout (`ogImage`). LinkedIn garde l'ancienne en cache :
   la rafraîchir dans le Post Inspector (https://www.linkedin.com/post-inspector/).
+- Bannière LinkedIn : `./scripts/banner.py` rend `scripts/banner.html` en 3168×792 (2× de la taille recommandée par
+  LinkedIn, 1584×396) vers `public/linkedin-banner.png`. Le quart gauche du bas reste vide : la photo de profil le couvre.
 - Couvertures d'articles : un schéma qui explique l'article, SVG 1200×630 dans `public/blog/`, même style pour
   toutes (JetBrains Mono, encre `#111`, orange `#ff5c00`, papier `#faf9f6`).
 - Le rendu HTML vers PNG (images de partage, illustrations) passe par `scripts/shoot.py` (Chrome headless).
