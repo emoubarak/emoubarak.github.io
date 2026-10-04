@@ -513,7 +513,7 @@
   .fan__tag svg { width: 1em; height: 1em; }
   .fan__item--link:hover .fan__tag, .fan__item--link:focus-visible .fan__tag { opacity: 1; translate: -50% 0; }
 
-  /* Blog hero: the latest posts, readable and clickable */
+  /* Blog hero: the latest post, readable and clickable */
   .hero-feature { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-top: var(--header-h); }
   .latest { width: 100%; max-width: 34rem; background: var(--surface, #fff); color: #14161a; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: 0 30px 60px -18px rgb(70 25 5 / 0.45), 0 0 0 1px rgb(20 22 26 / 0.06); }
   .latest a { display: block; color: #14161a; }
@@ -524,10 +524,6 @@
   .latest__body .t-meta { color: #6b7079; }
   .latest__title { display: block; margin-top: 0.55rem; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.65rem); line-height: 1.15; letter-spacing: -0.025em; transition: color 0.25s; }
   .latest__main:hover .latest__title { color: #c2410c; }
-  .latest__row { display: flex !important; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.95rem 1.5rem; border-top: 1px solid #ece8e2; }
-  .latest__row .t-meta { color: #6b7079; }
-  .latest__row-title { font-weight: 600; line-height: 1.3; transition: color 0.25s; }
-  .latest__row:hover .latest__row-title { color: #c2410c; }
   @media (max-width: 899px) {
     .hero-feature { padding-top: 0; justify-content: stretch; }
     .latest { max-width: none; }
