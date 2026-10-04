@@ -1,0 +1,79 @@
+<!doctype html>
+<!-- Polymarket Up/Down Lab: the market it bets on, and the real equity curves of the archived paper runs
+     (polymarket-runs.json, extracted by polymarket_runs.py from the project's docs/results/runs.json). -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { --field: #eef2fb; }
+  .market { left: 80px; top: 96px; width: 500px; height: 486px; padding: 40px 40px 0; }
+  .kicker { font-size: 22px; }
+  .q { font-size: 64px; margin-top: 26px; }
+  .bets { display: flex; gap: 16px; margin-top: 40px; }
+  .bet { flex: 1; height: 96px; border-radius: 20px; border: 3px solid #14161a; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 20px; font-size: 31px; font-weight: 700; color: #fff; }
+  .up { background: #1f9d6b; } .down { background: #e5484d; }
+  .settle { display: flex; align-items: center; gap: 12px; margin-top: 34px; font-size: 22px; }
+  .verdict { left: 80px; top: 640px; width: 520px; }
+  .verdict h2 { font-size: 50px; }
+  .verdict p { font-size: 25px; margin-top: 16px; line-height: 1.35; }
+  .chart { left: 640px; top: 96px; width: 720px; height: 708px; padding: 30px 34px; }
+  .chart .head { display: flex; justify-content: space-between; font-size: 20px; }
+  svg { position: absolute; left: 34px; top: 84px; }
+</style>
+</head>
+<body>
+  <div class="card market">
+    <p class="kicker mono muted">Polymarket · BTC · 5 minutes</p>
+    <p class="q display">Bitcoin Up<br>or Down?</p>
+    <div class="bets"><div class="bet up"><span>Up</span><span>51¢</span></div><div class="bet down"><span>Down</span><span>49¢</span></div></div>
+    <p class="settle muted">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2.2" style="position:static"><path d="M9 15l6-6M7.5 12.5l-2 2a3.5 3.5 0 0 0 5 5l2-2M16.5 11.5l2-2a3.5 3.5 0 0 0-5-5l-2 2"/></svg>
+      settles on the Chainlink oracle price
+    </p>
+  </div>
+
+  <div class="abs verdict">
+    <h2 class="display">The market is efficient.</h2>
+    <p class="muted">Hypothesis, backtest, live paper trading, falsification. Almost every edge was a measurement artifact.</p>
+  </div>
+
+  <div class="card chart">
+    <div class="head mono muted"><span>each line: one real paper run, settled on the oracle</span></div>
+    <svg id="plot" width="652" height="590" viewBox="0 0 652 590"></svg>
+  </div>
+
+  <script>
+    const W = 652, H = 590, yTop = 0.45, yBottom = -0.2; // not `top`: a reserved window property
+    const x = (t) => 10 + t * (W - 30);
+    const y = (v) => 20 + (yTop - v) / (yTop - yBottom) * (H - 70);
+    const svg = document.getElementById('plot');
+    const ns = 'http://www.w3.org/2000/svg';
+    const el = (tag, attrs, parent = svg) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+    // grid and the starting stake
+    for (const v of [0.4, 0.2, -0.2 + 0.0001]) el('line', { x1: x(0), x2: x(1), y1: y(v), y2: y(v), stroke: '#ebe6e0', 'stroke-width': 2 });
+    el('line', { x1: x(0), x2: x(1), y1: y(0), y2: y(0), stroke: '#14161a', 'stroke-width': 2.5, 'stroke-dasharray': '10 8' });
+    // legend for the dashed line, under the plot where no curve runs
+    el('line', { x1: W / 2 - 120, x2: W / 2 - 76, y1: H - 14, y2: H - 14, stroke: '#14161a', 'stroke-width': 2.5, 'stroke-dasharray': '10 8' });
+    const lab = el('text', { x: W / 2 - 64, y: H - 8, 'font-family': 'JetBrains Mono', 'font-size': 18, fill: '#14161a' }); lab.textContent = 'starting stake';
+    const t2 = el('text', { x: x(0), y: H - 8, 'font-family': 'JetBrains Mono', 'font-size': 18, fill: '#5b6068' }); t2.textContent = 'start of the run';
+    const t3 = el('text', { x: x(1), y: H - 8, 'text-anchor': 'end', 'font-family': 'JetBrains Mono', 'font-size': 18, fill: '#5b6068' }); t3.textContent = 'end';
+    fetch('polymarket-runs.json').then((r) => r.json()).then((runs) => {
+      const hl = runs.reduce((a, b) => (b.peak - b.final > a.peak - a.final ? b : a));
+      const path = (pts) => pts.map(([t, v], i) => (i ? 'L' : 'M') + x(t).toFixed(1) + ' ' + y(Math.max(yBottom, Math.min(yTop, v))).toFixed(1)).join('');
+      for (const r of runs) {
+        if (r === hl) continue;
+        el('path', { d: path(r.pts), fill: 'none', stroke: '#14161a', 'stroke-opacity': 0.24, 'stroke-width': 2.2, 'stroke-linejoin': 'round' });
+        const [t, v] = r.pts[r.pts.length - 1];
+        el('circle', { cx: x(t), cy: y(Math.max(yBottom, v)), r: 4.5, fill: v < 0 ? '#e5484d' : '#1f9d6b' });
+      }
+      el('path', { d: path(hl.pts), fill: 'none', stroke: '#fc7b42', 'stroke-width': 5, 'stroke-linejoin': 'round' });
+      const peak = hl.pts.reduce((a, b) => (b[1] > a[1] ? b : a));
+      el('circle', { cx: x(peak[0]), cy: y(peak[1]), r: 8, fill: '#fc7b42', stroke: '#14161a', 'stroke-width': 3 });
+      const note = el('text', { x: x(peak[0]) - 18, y: y(peak[1]) + 8, 'text-anchor': 'end', 'font-family': 'Geist', 'font-weight': 700, 'font-size': 24, fill: '#c2410c', stroke: '#fff', 'stroke-width': 7, 'paint-order': 'stroke' });
+      note.textContent = 'looked like an edge';
+      window.ready = true;
+    });
+  </script>
+</body>
+</html>

@@ -11,24 +11,17 @@ Each card is scripts/og-card.html filled with the page's title and its real imag
 article's cover), rendered in headless Chrome. The home card (public/og.png) comes from scripts/og.html.
 Run it again after adding or renaming an article.
 """
-import asyncio, base64, functools, glob, http.server, json, os, re, shutil, subprocess, sys, tempfile, threading, time
+import json, re, sys
 from pathlib import Path
 from urllib.parse import quote
 
-import websockets
 from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).parent))
+from shoot import shoot
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "public" / "og"
-
-
-def chrome():
-    for c in sorted(glob.glob(os.path.expanduser("~/.cache/ms-playwright/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell"))) or []:
-        return c
-    for b in ("google-chrome-stable", "google-chrome", "chromium", "chromium-browser"):
-        if shutil.which(b):
-            return shutil.which(b)
-    sys.exit("no Chrome found (set CHROME=/path)")
 
 
 def aspect(public_path):
@@ -55,8 +48,8 @@ def cards():
         "sub": "SaaS products, web apps, e-commerce stores and mobile apps I designed, built and shipped.",
         "foot": "El Mahdi Moubarak",
         "images": [
-            {"src": f"{p}/portfolio/ai-visibility-store.webp", "w": 400, "x": 760, "y": 70, "r": 5},
-            {"src": f"{p}/portfolio/pdfold-home.webp", "w": 400, "x": 660, "y": 150, "r": -5},
+            {"src": f"{p}/portfolio/polymarket-illustration.webp", "w": 400, "x": 760, "y": 70, "r": 5},
+            {"src": f"{p}/portfolio/pdfold-illustration.webp", "w": 400, "x": 660, "y": 150, "r": -5},
             {"src": f"{p}/portfolio/piktechs-home.webp", "w": 420, "x": 730, "y": 300, "r": 2},
         ],
     }
@@ -98,67 +91,15 @@ def cards():
         yield f"blog/{f.stem}", card
 
 
-async def render(items, port):
-    prof = tempfile.mkdtemp()
-    proc = subprocess.Popen([os.environ.get("CHROME") or chrome(), "--headless=new", "--remote-debugging-port=0", f"--user-data-dir={prof}",
-                             "--no-first-run", "--hide-scrollbars", "about:blank"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    try:
-        pf = Path(prof) / "DevToolsActivePort"
-        for _ in range(100):
-            if pf.exists() and pf.read_text().strip():
-                break
-            time.sleep(0.1)
-        dport, path = pf.read_text().split()[:2]
-        async with websockets.connect(f"ws://127.0.0.1:{dport}{path}", max_size=None) as ws:
-            n = 0
-
-            async def call(method, params=None, session=None):
-                nonlocal n
-                n += 1
-                msg = {"id": n, "method": method, "params": params or {}}
-                if session:
-                    msg["sessionId"] = session
-                await ws.send(json.dumps(msg))
-                while True:
-                    d = json.loads(await ws.recv())
-                    if d.get("id") == n:
-                        if "error" in d:
-                            raise RuntimeError(d["error"])
-                        return d.get("result", {})
-
-            target = (await call("Target.createTarget", {"url": "about:blank"}))["targetId"]
-            s = (await call("Target.attachToTarget", {"targetId": target, "flatten": True}))["sessionId"]
-            await call("Emulation.setDeviceMetricsOverride", {"width": 1200, "height": 630, "deviceScaleFactor": 1, "mobile": False}, s)
-            await call("Page.enable", {}, s)
-            for name, card in items:
-                url = f"http://127.0.0.1:{port}/scripts/og-card.html?{time.time()}#" + quote(json.dumps(card))
-                await call("Page.navigate", {"url": url}, s)
-                await asyncio.sleep(0.4)
-                await call("Runtime.evaluate", {"expression": "document.fonts.ready.then(() => Promise.all([...document.images].map(i => i.decode().catch(() => 0))))", "awaitPromise": True}, s)
-                size = (await call("Runtime.evaluate", {"expression": "fit()", "returnByValue": True}, s))["result"]["value"]
-                await asyncio.sleep(0.2)
-                shot = await call("Page.captureScreenshot", {"format": "png"}, s)
-                dst = OUT / f"{name}.png"
-                dst.parent.mkdir(parents=True, exist_ok=True)
-                dst.write_bytes(base64.b64decode(shot["data"]))
-                print(f"{name:42} title {size}px  {dst.stat().st_size // 1024} KB")
-    finally:
-        proc.terminate()
-        shutil.rmtree(prof, ignore_errors=True)
+def render(items):
+    jobs = [(f"/scripts/og-card.html#" + quote(json.dumps(card)), OUT / f"{name}.png", "fit()") for name, card in items]
+    for (name, _), size in zip(items, shoot(jobs, 1200, 630)):
+        dst = OUT / f"{name}.png"
+        print(f"{name:42} title {size}px  {dst.stat().st_size // 1024} KB")
 
 
 def main():
-    class Quiet(http.server.SimpleHTTPRequestHandler):
-        def log_message(self, *a):
-            pass
-
-    handler = functools.partial(Quiet, directory=str(ROOT))
-    server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), handler)
-    threading.Thread(target=server.serve_forever, daemon=True).start()
-    try:
-        asyncio.run(render(list(cards()), server.server_address[1]))
-    finally:
-        server.shutdown()
+    render(list(cards()))
 
 
 if __name__ == "__main__":

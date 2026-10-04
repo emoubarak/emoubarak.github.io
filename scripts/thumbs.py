@@ -14,14 +14,14 @@ SRC = os.environ.get("THUMB_SRC", os.path.join(ROOT, "public"))
 OUT = os.path.join(ROOT, "public", "work")
 W, H = 1600, 1000  # 16:10, shown at most ~800 CSS px wide
 
-# slug -> source image (relative to SRC, or absolute)
+# slug -> source image (relative to SRC, or absolute). *-illustration.webp come from scripts/illustrate.py
 SOURCES = {
     "piktechs": "portfolio/piktechs-devices.webp",
-    "pdfold": "portfolio/pdfold-home.webp",
-    "ai-visibility": "portfolio/ai-visibility-store.webp",
+    "pdfold": "portfolio/pdfold-illustration.webp",
+    "ai-visibility": "portfolio/ai-visibility-illustration.webp",
     "jev-check": "portfolio/jev-check-audit.webp",
     "ksur": "portfolio/ksur-home.webp",
-    "polymarket": "portfolio/polymarket-dashboard.webp",
+    "polymarket": "portfolio/polymarket-illustration.webp",
     "atandem": "portfolio/atandem-home.webp",
     "montessori": "portfolio/montessori-og.webp",
     "deuspi": "portfolio/deuspi-og.webp",

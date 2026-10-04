@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- AI Search Visibility Tracker (an Apify Actor): one buyer question, asked several times to each AI answer
+     engine; the mention rate of the brand per engine, then tracked week over week. "Acme" is an example brand. -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { --field: #edf6f0; }
+  .prompt { left: 80px; top: 64px; width: 1280px; height: 108px; border-radius: 54px; display: flex; align-items: center; gap: 22px; padding: 0 22px 0 36px; }
+  .prompt .q { font-size: 38px; flex: 1; }
+  .pill { font-size: 22px; padding: 14px 22px; border-radius: 30px; background: #14161a; color: #fff; white-space: nowrap; }
+  .engine { top: 214px; width: 302px; height: 420px; padding: 28px 26px; }
+  .engine h3 { font-size: 32px; }
+  .line { height: 13px; border-radius: 7px; background: #dcd8d2; margin-top: 16px; }
+  .brand { display: inline-block; margin-top: 14px; padding: 6px 14px; border-radius: 10px; background: #fc7b42; border: 2.5px solid #14161a; font-weight: 700; font-size: 22px; }
+  .dots { position: absolute; left: 26px; bottom: 74px; display: flex; gap: 12px; }
+  .dots i { width: 32px; height: 32px; border-radius: 50%; border: 3px solid #14161a; display: block; }
+  .dots i.on { background: #fc7b42; }
+  .rate { position: absolute; left: 26px; bottom: 28px; font-size: 22px; }
+  .week { left: 80px; top: 668px; width: 1280px; height: 168px; padding: 26px 36px; }
+  .week h3 { font-size: 30px; }
+  .week p { font-size: 20px; margin-top: 8px; }
+</style>
+</head>
+<body>
+  <div class="card prompt">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>
+    <span class="q">best CRM for a small agency?</span>
+    <span class="pill mono">asked 5× per engine</span>
+  </div>
+
+  <div id="engines"></div>
+
+  <div class="card week">
+    <h3 class="display">Acme, week over week</h3>
+    <p class="mono muted">mention rate, same prompts, same places</p>
+    <svg class="abs" style="right:40px;top:30px" width="560" height="110" viewBox="0 0 640 110" fill="none" preserveAspectRatio="none">
+      <path d="M10 92 L100 84 L190 88 L280 70 L370 64 L460 46 L550 40 L630 22" stroke="#14161a" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      <g fill="#fff" stroke="#14161a" stroke-width="3"><circle cx="10" cy="92" r="6"/><circle cx="100" cy="84" r="6"/><circle cx="190" cy="88" r="6"/><circle cx="280" cy="70" r="6"/><circle cx="370" cy="64" r="6"/><circle cx="460" cy="46" r="6"/><circle cx="550" cy="40" r="6"/></g>
+      <circle cx="630" cy="22" r="9" fill="#fc7b42" stroke="#14161a" stroke-width="3"/>
+    </svg>
+  </div>
+
+  <script>
+    const engines = [['ChatGPT', 4, [0, 1]], ['Perplexity', 2, [2]], ['Gemini', 5, [0]], ['AI Overviews', 1, []]];
+    const host = document.getElementById('engines');
+    engines.forEach(([name, hits, brandAt], i) => {
+      const c = document.createElement('div');
+      c.className = 'card engine';
+      c.style.left = 80 + i * 326 + 'px';
+      let body = `<h3 class="display">${name}</h3>`;
+      for (let k = 0; k < 4; k++) body += brandAt.includes(k) && k === brandAt[0] ? '<span class="brand">Acme</span>' : `<div class="line" style="width:${[96, 82, 90, 64][k]}%"></div>`;
+      body += '<div class="dots">' + [0, 1, 2, 3, 4].map((d) => `<i class="${d < hits ? 'on' : ''}"></i>`).join('') + '</div>';
+      body += `<p class="rate mono muted">mentioned ${hits} / 5</p>`;
+      c.innerHTML = body;
+      host.appendChild(c);
+    });
+    window.ready = true;
+  </script>
+</body>
+</html>

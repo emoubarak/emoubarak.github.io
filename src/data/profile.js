@@ -272,6 +272,7 @@ export const projectCategories = [
   { key: 'saas', label: 'SaaS' },
   { key: 'web-app', label: 'Web Apps' },
   { key: 'research', label: 'R&D' },
+  { key: 'tool', label: 'Tools' },
   { key: 'e-commerce', label: 'E-commerce' },
   { key: 'website', label: 'Websites' },
   { key: 'agency', label: 'Agency' },
@@ -308,6 +309,7 @@ export const projects = [
     image: `${base}/portfolio/pdfold-og.webp`,
     imageCentered: true,
     previews: [
+      { label: 'How it works', src: `${base}/portfolio/pdfold-illustration.webp` },
       { label: 'Motion design', src: `${base}/portfolio/pdfold-motion.mp4`, poster: `${base}/portfolio/pdfold-motion-poster.webp` },
       { label: 'Landing page', src: `${base}/portfolio/pdfold.png` },
     ],
@@ -318,16 +320,20 @@ export const projects = [
     title: 'AI Search Visibility Tracker',
     thumb: `${base}/work/ai-visibility.webp`,
     subtitle: 'apify.com/emoubarak',
-    category: 'saas',
-    categoryLabel: 'SaaS',
-    role: 'Founder',
+    // an Actor published on the Apify store, not a SaaS
+    category: 'tool',
+    categoryLabel: 'Apify Actor',
+    role: 'Author',
     description: 'Self-service tool measuring how AI answer engines describe a brand across ChatGPT, Perplexity, Gemini and Google AI Overviews. Statistical sampling per prompt, real geo-localization and week-over-week tracking.',
     image: `${base}/portfolio/ai-visibility-og.webp`,
     imageCentered: true,
     // apify.com sets frame-ancestors 'self', so it cannot be previewed in an iframe.
-    previews: [{ label: 'Store page', src: `${base}/portfolio/ai-visibility.webp` }],
+    previews: [
+      { label: 'How it works', src: `${base}/portfolio/ai-visibility-illustration.webp` },
+      { label: 'Store page', src: `${base}/portfolio/ai-visibility.webp` },
+    ],
     url: 'https://apify.com/emoubarak/ai-search-visibility-tracker',
-    tags: ['TypeScript', 'Node.js', 'Apify Actor', 'GEO / AEO'],
+    tags: ['TypeScript', 'Node.js', 'MCP', 'GEO / AEO'],
   },
   {
     title: 'jev-check',
@@ -375,7 +381,10 @@ export const projects = [
     image: `${base}/portfolio/polymarket-dashboard.webp`,
     imageCentered: true,
     // github.com sets X-Frame-Options: DENY, so the repo cannot be previewed in an iframe.
-    previews: [{ label: 'Live dashboard', src: `${base}/portfolio/polymarket-dashboard.webp` }],
+    previews: [
+      { label: 'What it found', src: `${base}/portfolio/polymarket-illustration.webp` },
+      { label: 'Live dashboard', src: `${base}/portfolio/polymarket-dashboard.webp` },
+    ],
     url: 'https://github.com/emoubarak/polymarket-updown-lab',
     tags: ['Python', 'Go', 'Backtesting', 'Market making'],
   },

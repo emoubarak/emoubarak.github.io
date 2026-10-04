@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- PDFold: a messy PDF goes through the passes and comes out as structured Markdown. -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { --field: #f1effb; }
+  .label h2 { font-size: 46px; }
+  .label p { font-size: 22px; margin-top: 10px; }
+  .pdf { left: 86px; top: 196px; width: 400px; height: 560px; background: #fbf8f3; border-radius: 12px; transform: rotate(-4deg); overflow: hidden; padding: 34px 32px; }
+  .bar { height: 12px; border-radius: 6px; background: #c9c2b8; margin-bottom: 13px; }
+  .cols { display: flex; gap: 22px; margin-top: 22px; }
+  .cols > div { flex: 1; }
+  .tbl { margin-top: 18px; border: 2.5px solid #8d867c; transform: skew(-3deg) rotate(1.5deg); }
+  .tbl div { display: flex; border-top: 2px solid #b5aea4; height: 30px; }
+  .tbl div:first-child { border-top: 0; background: #e8e2d8; }
+  .tbl span { flex: 1; border-left: 2px solid #b5aea4; }
+  .tbl span:first-child { border-left: 0; }
+  .noise { position: absolute; inset: 0; opacity: 0.16; mix-blend-mode: multiply; }
+  .scribble { position: absolute; right: 22px; top: 210px; }
+  .step { left: 590px; width: 270px; height: 104px; padding: 18px 24px; border-radius: 20px; }
+  .step b { font-size: 30px; display: block; }
+  .step span { font-size: 19px; }
+  .md { left: 954px; top: 196px; width: 410px; height: 560px; border-radius: 22px; padding: 34px 32px; font-size: 22px; line-height: 1.62; white-space: pre; }
+  .md .h { color: #fc7b42; font-weight: 700; }
+  .md .t { color: #9db4ff; }
+  .md .d { color: #8f949c; }
+</style>
+</head>
+<body>
+  <div class="abs label" style="left:86px;top:70px"><h2 class="display">Any PDF</h2><p class="muted">scans, columns, tables, 11 languages</p></div>
+  <div class="abs label" style="left:954px;top:70px"><h2 class="display">Clean Markdown</h2><p class="muted">headings, tables, lists</p></div>
+
+  <div class="card pdf">
+    <div class="bar" style="width:70%;height:20px;background:#6f685f"></div>
+    <div class="bar" style="width:46%"></div>
+    <div class="cols">
+      <div><div class="bar" style="width:100%"></div><div class="bar" style="width:92%"></div><div class="bar" style="width:97%"></div><div class="bar" style="width:70%"></div><div class="bar" style="width:88%"></div></div>
+      <div><div class="bar" style="width:96%"></div><div class="bar" style="width:100%"></div><div class="bar" style="width:84%"></div><div class="bar" style="width:93%"></div><div class="bar" style="width:60%"></div></div>
+    </div>
+    <div class="tbl"><div><span></span><span></span><span></span></div><div><span></span><span></span><span></span></div><div><span></span><span></span><span></span></div><div><span></span><span></span><span></span></div></div>
+    <div class="cols"><div><div class="bar" style="width:94%"></div><div class="bar" style="width:76%"></div></div><div><div class="bar" style="width:88%"></div><div class="bar" style="width:98%"></div></div></div>
+    <svg class="scribble" width="120" height="60" viewBox="0 0 120 60"><path d="M6 40c14-22 22 12 34-6s18-20 28-2 20 10 30-10 14 6 16 12" fill="none" stroke="#3b5bdb" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <svg class="noise" width="400" height="560"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.4 -0.45"/></filter><rect width="400" height="560" filter="url(#n)"/></svg>
+  </div>
+
+  <div class="card step" style="top:250px"><b>1 · OCR</b><span class="mono muted">several passes</span></div>
+  <div class="card step" style="top:398px"><b>2 · Layout</b><span class="mono muted">reading order</span></div>
+  <div class="card step dark" style="top:546px"><b style="color:#fc7b42">3 · Gemini</b><span class="mono" style="color:#c3c6cc">structure</span></div>
+
+  <svg class="abs" style="left:0;top:0" width="1440" height="900" viewBox="0 0 1440 900" fill="none" stroke="#14161a" stroke-width="3" stroke-linecap="round">
+    <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14161a" stroke="none"/></marker></defs>
+    <path d="M500 450 C 540 450, 540 302, 584 302" marker-end="url(#a)"/>
+    <path d="M725 356 V 392" marker-end="url(#a)"/>
+    <path d="M725 504 V 540" marker-end="url(#a)"/>
+    <path d="M866 598 C 910 598, 900 470, 946 470" marker-end="url(#a)"/>
+  </svg>
+
+  <div class="card dark md mono"><span class="h"># Annual report</span>
+
+<span class="h">## Revenue by segment</span>
+
+<span class="t">| Segment | Q1  | Q2  |</span>
+<span class="d">|---------|-----|-----|</span>
+<span class="t">| Cloud   | 4.2 | 4.8 |</span>
+<span class="t">| Retail  | 2.1 | 2.3 |</span>
+
+<span class="h">## Highlights</span>
+- Margins held in Q2
+- Two new regions</div>
+  <script>window.ready = true;</script>
+</body>
+</html>

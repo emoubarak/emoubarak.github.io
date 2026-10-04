@@ -10,8 +10,8 @@ const categories = projectCategories
   .map((c) => ({ ...c, n: c.key === 'all' ? projects.length : projects.filter((p) => p.category === c.key).length }))
   .filter((c) => c.n > 0);
 const fan = [
-  { src: `${base}/portfolio/ai-visibility-store.webp`, w: 1440, h: 900, style: '--i:0;--r:5deg;--r0:9deg;width:62%;top:5%;right:1%' },
-  { src: `${base}/portfolio/pdfold-home.webp`, w: 1440, h: 900, style: '--i:1;--r:-6deg;--r0:-10deg;width:62%;top:18%;right:34%' },
+  { src: `${base}/portfolio/polymarket-illustration.webp`, w: 1440, h: 900, style: '--i:0;--r:5deg;--r0:9deg;width:62%;top:5%;right:1%' },
+  { src: `${base}/portfolio/pdfold-illustration.webp`, w: 1440, h: 900, style: '--i:1;--r:-6deg;--r0:-10deg;width:62%;top:18%;right:34%' },
   { src: `${base}/portfolio/piktechs-home.webp`, w: 1440, h: 900, style: '--i:2;--r:2deg;--r0:5deg;width:66%;top:40%;right:12%' },
 ];
 ---
