@@ -261,7 +261,7 @@ Contributeur clé de Security Rating®, plateforme SaaS d'évaluation cyber util
 • Mise en place de la couverture de tests (Spectator) et optimisation des pipelines CI/CD.
 • Contribution à la migration Angular et aux montées de version majeures, réduisant la dette technique.
 
-Stack : Angular, TypeScript, Python, AngularJS, Grav CMS, Docker, CI/CD
+Stack : Angular, TypeScript, Python, Docker, CI/CD
 
 Compétences : Front-End Development · TypeScript · Python · Web Development · Angular · Full-Stack Development · Continuous Integration and Continuous Delivery (CI/CD) · Docker · Web Applications · Cybersecurity`,
   },
@@ -418,17 +418,18 @@ Stack : TypeScript, Node.js, Apify, MCP, OpenRouter
 Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Full-Stack Development · Mobile Application Development · Software Architecture · Web Development · Cloud Computing · DevOps · Search Engine Optimization (SEO)`,
   },
   {
+    // named "Video Generator Application" on LinkedIn (keep that title there); this note stays out of the copy text
     label: 'Text-to-Short-Video',
     project: 'text-to-video',
     link: 'https://github.com/emoubarak/prompt-to-short-video-generator',
     en: `Text-to-Short-Video - https://github.com/emoubarak/prompt-to-short-video-generator
-AI video generation pipeline orchestrating GPT, ElevenLabs and FFmpeg for automated video creation from text scripts. Listed on LinkedIn as "Video Generator Application".
+AI video generation pipeline orchestrating GPT, ElevenLabs and FFmpeg for automated video creation from text scripts.
 
 Stack: Python, Flask, OpenAI API, ElevenLabs, FFmpeg
 
 Skills: Automation · Large Language Models (LLM) · Python`,
     fr: `Text-to-Short-Video - https://github.com/emoubarak/prompt-to-short-video-generator
-Pipeline IA de génération de vidéos orchestrant GPT, ElevenLabs et FFmpeg pour créer automatiquement des vidéos à partir de scripts texte. Référencé sur LinkedIn comme « Video Generator Application ».
+Pipeline IA de génération de vidéos orchestrant GPT, ElevenLabs et FFmpeg pour créer automatiquement des vidéos à partir de scripts texte.
 
 Stack : Python, Flask, OpenAI API, ElevenLabs, FFmpeg
 
@@ -898,7 +899,7 @@ const identityCards = [
 ];
 const bioSections = bios.map((b) => ({ label: b.label, blocks: pair(b) }));
 // ===== Featured (case studies & articles), generated from the blog so it never drifts =====
-const featuredIds = ['case-study-piktechs', 'case-study-ai-card-scanner', 'case-study-jev-check', 'what-i-kept-telling-claude', 'browser-agents-at-work-jev', 'lazy-by-design', 'how-i-built-pdfold'];
+const featuredIds = ['case-study-piktechs', 'case-study-ai-card-scanner', 'case-study-jev-check', 'what-i-kept-telling-claude', 'browser-agents-at-work-jev', 'lazy-by-design', 'how-i-built-pdfold', 'the-great-work-polymarket'];
 const featuredFr = {
   'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment j'ai fait passer un prototype Lovable en production, seul ingénieur : le workflow, les erreurs, les leçons."],
   'case-study-ai-card-scanner': ["Étude de cas : choisir le modèle de repli d'un LLM en l'attaquant", "Le scanner de cartes de Piktechs lit du texte écrit par des inconnus : comment j'ai choisi son modèle de repli en testant l'injection de prompt plutôt que le prix, et les garde-fous d'un endpoint LLM payant."],
@@ -906,6 +907,7 @@ const featuredFr = {
   'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "Les mêmes corrections revenaient dans chaque projet. Lesquelles, pourquoi les écrire ne suffisait pas, et où chaque correction doit vraiment vivre."],
   'browser-agents-at-work-jev': ["Des agents navigateur au travail : ce que jev m'a appris au quotidien", "QA de mon propre SaaS sous de vrais comptes, consoles web sans API, passage de main pour les mots de passe : les cas d'usage, l'architecture et les pièges."],
   'lazy-by-design': ["La flemme comme méthode : faire travailler mes machines quand je ne suis pas là", "Si je fais une chose deux fois, une machine la fait la troisième : exécutions autonomes, tâches planifiées, sources uniques, et ce qu'il faut à un agent pour travailler seul sans risque."],
+  'the-great-work-polymarket': ["Le Grand Œuvre : j'ai essayé de transformer des pile ou face sur le Bitcoin en or", "Des bots nommés d'après des mystiques et des alchimistes, les marchés Bitcoin à 5 minutes de Polymarket, et chaque avantage qui redevient du plomb. Un récit satirique du marché efficient."],
   'how-i-built-pdfold': ["Comment j'ai construit PDFold seul : un workspace IA qui apprend, des tests et une infra sans surprise", "Le vrai setup derrière PDFold : une boucle de correction du workspace, des tests qui grandissent avec le code, et un pipeline OCR multi-passes sur Gemini avec bascule OpenRouter."],
 };
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);

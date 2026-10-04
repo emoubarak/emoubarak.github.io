@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # python caches of the scripts/ tools
 __pycache__/
+
+# private audits (profile exports with personal data), never published
+my-cv-audits/
