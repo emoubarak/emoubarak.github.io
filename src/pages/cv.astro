@@ -29,9 +29,9 @@ const toc = [
       <a href={`${base}/cv-fr.pdf`} download class="btn btn--line" lang="fr">PDF en français <Icon name="down" /></a>
     </div>
     <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="link-arrow mt-6 fade-up" style="--i:3">Book a call <Icon name="arrow" /></a>
-    <div slot="visual" class="fan" aria-hidden="true">
-      <div class="fan__item" style="--i:0;--r:-7deg;--r0:-12deg;width:50%;top:7%;right:40%"><img src={`${base}/cv-fr-page.webp`} alt="" width="900" height="1272" /></div>
-      <div class="fan__item" style="--i:1;--r:4deg;--r0:9deg;width:54%;top:4%;right:4%"><img src={`${base}/cv-en-page.webp`} alt="" width="900" height="1272" /></div>
+    <div slot="visual" class="fan">
+      <a href={`${base}/cv-fr.pdf`} download class="fan__item fan__item--link" style="--i:0;--r:-7deg;--r0:-12deg;width:50%;top:7%;right:40%" aria-label="Download the CV in French (PDF)" lang="fr"><img src={`${base}/cv-fr-page.webp`} alt="" width="900" height="1272" /><span class="fan__tag">PDF en français <Icon name="down" /></span></a>
+      <a href={`${base}/cv-en.pdf`} download class="fan__item fan__item--link" style="--i:1;--r:4deg;--r0:9deg;width:54%;top:4%;right:4%" aria-label="Download the CV in English (PDF)"><img src={`${base}/cv-en-page.webp`} alt="" width="900" height="1272" /><span class="fan__tag">PDF in English <Icon name="down" /></span></a>
     </div>
   </PageHero>
 

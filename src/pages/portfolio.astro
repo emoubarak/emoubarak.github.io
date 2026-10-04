@@ -10,9 +10,9 @@ const categories = projectCategories
   .map((c) => ({ ...c, n: c.key === 'all' ? projects.length : projects.filter((p) => p.category === c.key).length }))
   .filter((c) => c.n > 0);
 const fan = [
-  { src: `${base}/portfolio/ksur-home.webp`, w: 1440, h: 900, style: '--i:0;--r:5deg;--r0:9deg;width:62%;top:5%;right:1%' },
-  { src: `${base}/portfolio/altao-og.webp`, w: 2500, h: 1314, style: '--i:1;--r:-6deg;--r0:-10deg;width:62%;top:18%;right:34%' },
-  { src: `${base}/portfolio/piktechs-og.webp`, w: 1200, h: 630, style: '--i:2;--r:2deg;--r0:5deg;width:66%;top:40%;right:12%' },
+  { project: 'Agence KSUR', src: `${base}/portfolio/ksur-home.webp`, w: 1440, h: 900, style: '--i:0;--r:5deg;--r0:9deg;width:62%;top:5%;right:1%' },
+  { project: 'Altao RSS Tool', src: `${base}/portfolio/altao-og.webp`, w: 2500, h: 1314, style: '--i:1;--r:-6deg;--r0:-10deg;width:62%;top:18%;right:34%' },
+  { project: 'Piktechs', src: `${base}/portfolio/piktechs-og.webp`, w: 1200, h: 630, style: '--i:2;--r:2deg;--r0:5deg;width:66%;top:40%;right:12%' },
 ];
 ---
 
@@ -30,9 +30,9 @@ const fan = [
       SaaS products, web apps, e-commerce stores and mobile apps I designed, built and shipped.
     </p>
     <p class="t-meta mt-6 fade-up" style="--i:2">Open a project to preview it.</p>
-    <div slot="visual" class="fan" aria-hidden="true">
+    <div slot="visual" class="fan">
       {fan.map((f) => (
-        <div class="fan__item" style={f.style}><img src={f.src} alt="" width={f.w} height={f.h} /></div>
+        <button type="button" class="fan__item fan__item--link" style={f.style} data-open-preview={f.project} aria-label={`Preview ${f.project}`}><img src={f.src} alt="" width={f.w} height={f.h} /></button>
       ))}
     </div>
   </PageHero>
@@ -322,6 +322,11 @@ const fan = [
         }
         openModal(previews, el.dataset.url || null, el.dataset.title || null);
       }
+      // the captures fanned in the hero open the same previews as their cards
+      document.querySelectorAll('[data-open-preview]').forEach((btn) => {
+        const card = [...document.querySelectorAll('.portfolio-card[data-previews]')].find((c) => c.dataset.title === btn.dataset.openPreview);
+        if (card) btn.addEventListener('click', () => trigger(card));
+      });
       document.querySelectorAll('.portfolio-card[data-previews]').forEach((card) => {
         card.addEventListener('click', () => trigger(card));
       });

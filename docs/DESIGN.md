@@ -8,7 +8,11 @@ Refonte du 2026-10-04. Ce fichier dit ce qui est voulu, pour qu'une retouche res
   texte à gauche, un vrai objet à droite. Encre `#14161a` sur l'orange (contraste 7:1), jamais de blanc.
 - Accueil : hero `100svh` collant, la page glisse par-dessus (son « parallax »). À droite, l'animation des trois
   services (`ServicesMotion.astro`) ; pas de photo de lui dans le hero (demande du 2026-10-04).
-- Pages intérieures : un éventail d'artefacts réels (captures des produits, pages du CV PDF, couvertures d'articles).
+- Pages intérieures : à droite, un objet réel qui sert à quelque chose. Portfolio : les captures Piktechs, KSUR et
+  Altao, chacune ouvre l'aperçu du projet. CV : les deux pages du PDF, chacune le télécharge. Blog : une carte lisible
+  avec le dernier article (couverture, titre) et les deux suivants, cliquables. Règle : rien qui soit trop petit pour
+  être lu sans rien faire au clic.
+- Tous les heros font 100svh. Sur mobile l'objet passe sous le texte.
 - Corps de page sur papier `#fafaf8`, mode sombre complet (`.dark` sur `<html>`, tokens dans `global.css`).
 
 ## Typographie

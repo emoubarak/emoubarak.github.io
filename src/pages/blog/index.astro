@@ -14,6 +14,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const src = (c: string) => (c.startsWith('/') ? `${base}${c}` : c);
 const shortTitle = (t: string) => t.replace(/^Case Study:\s*/, '');
 const minutes = (body = '') => Math.max(2, Math.round(body.split(/\s+/).length / 230));
+const date = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+// hero card: the newest post with its cover, then the next two as plain links
+const [latest, ...rest] = sortedPosts;
+const next = rest.slice(0, 2);
 ---
 
 <Layout title="Blog - El Mahdi Moubarak" description="Case studies and articles on AI engineering, Claude Code, browser agents and shipping products." ogImage="/og/blog.png">
@@ -27,9 +31,22 @@ const minutes = (body = '') => Math.max(2, Math.round(body.split(/\s+/).length /
       <a href="#case-studies" class="btn btn--solid">Case studies <Icon name="down" /></a>
       <a href="#articles" class="btn btn--line">Articles</a>
     </div>
-    <div slot="visual" class="fan" aria-hidden="true">
-      <div class="fan__item" style="--i:0;--r:-5deg;--r0:-10deg;width:74%;top:6%;right:24%"><img src={`${base}/blog/scanner-pipeline.svg`} alt="" width="1200" height="630" /></div>
-      <div class="fan__item" style="--i:1;--r:4deg;--r0:9deg;width:74%;top:38%;right:2%"><img src={`${base}/blog/fix-ladder.svg`} alt="" width="1200" height="630" /></div>
+    <div slot="visual" class="hero-feature fade-up" style="--i:2">
+      <div class="latest">
+        <a href={`${base}/blog/${latest.id}`} class="latest__main">
+          {latest.data.cover && <span class="latest__media"><img src={src(latest.data.cover)} alt={latest.data.coverAlt ?? ''} width="1200" height="630" /></span>}
+          <span class="latest__body">
+            <span class="t-meta">Latest · {date(latest.data.pubDate)} · {minutes(latest.body)} min read</span>
+            <span class="latest__title">{shortTitle(latest.data.title)}</span>
+          </span>
+        </a>
+        {next.map((p) => (
+          <a href={`${base}/blog/${p.id}`} class="latest__row">
+            <span class="latest__row-title">{shortTitle(p.data.title)}</span>
+            <span class="t-meta whitespace-nowrap">{date(p.data.pubDate)}</span>
+          </a>
+        ))}
+      </div>
     </div>
   </PageHero>
 
