@@ -338,7 +338,7 @@ export const projects = [
     role: 'Author · MIT',
     description: 'Open-source agent skill for Claude Code, Codex and OpenClaw: an AI browser agent signs in to a staging app as a real account state (free, paid, lapsed, team member, stranger) and follows a plain-English goal, then the database gives the verdict. Built to catch what mocks miss: paywalls, roles and cross-account isolation disagreeing on a deployed app.',
     previews: [
-      { label: 'What it catches', src: `${base}/blog/jev-check-audit.svg` },
+      { label: 'What it catches', src: `${base}/portfolio/jev-check-audit.webp` },
       { label: 'Repository', src: `${base}/portfolio/jev-check.webp` },
     ],
     url: 'https://github.com/emoubarak/jev-check',

@@ -1,0 +1,48 @@
+{
+  "model": "openai/gpt-image-2.5-sunburst",
+  "quality": "medium",
+  "aspect_ratio": "16:9",
+  "style": "Editorial flat vector illustration for a tech blog cover. Clean geometric shapes with confident uniform dark ink outlines (#14161a), flat color fills, no gradients, no texture, no glow, no 3D, no photorealism, no glossy highlights. Strict palette: warm off-white paper background (#faf9f6), ink (#14161a), signal orange (#fc7b42) as the one accent, pale peach (#ffe3d3), white, light warm grey (#e9e5df). One clear scene, centred, with generous empty paper around it; the subject fills about two thirds of the frame. People, if any, are simple and friendly with minimal facial features. Absolutely no text, letters, numbers, logos or labels anywhere: screens and paper show abstract blocks and lines instead of words. Calm, modern, slightly playful.",
+  "covers": {
+    "lazy-by-design": {
+      "scene": "A home office desk at night with nobody there: the desk chair is empty with a jacket hanging on its back, a half-finished coffee mug beside the keyboard. On the desk a laptop and a large monitor keep working by themselves: the monitor shows a terminal window with abstract lines scrolling and a progress bar almost full, plus three small check marks in orange. A smartphone lying on the desk lights up with a small notification bubble. Through the window behind, a crescent moon. The feeling: the computer works while its owner is away.",
+      "alt": "An empty desk at night: the chair is free, the monitor keeps running a task and the phone shows a notification."
+    },
+    "case-study-ai-card-scanner": {
+      "scene": "Seen from slightly above, a hand holds a smartphone over a paper business card lying on a desk. The phone screen shows the camera view with four orange corner brackets framing the card. The business card has a QR code and abstract lines, and a small handwritten sticky note is stuck on its corner, the suspicious part. On the phone screen, a small orange shield icon sits over the card. To the right of the phone, three small rounded boxes are stacked and joined by a line, the first one solid ink, the two below outlined, like a backup chain.",
+      "alt": "A phone scanning a business card that hides a sticky note, a shield on screen and a chain of three fallbacks beside it."
+    },
+    "browser-agents-at-work-jev": {
+      "scene": "A large browser window floating on the paper background. Inside it, a simple web form with three input fields and a button. A big orange mouse cursor with small motion lines clicks the button by itself, and a dotted orange path loops from the button back up to the top of the page, like a loop of observe, decide, act. The last field of the form shows a small padlock icon: a human hand enters from the bottom right edge, fingers on a small keyboard, taking over to type into that locked field. No robot anywhere, only the self-moving cursor.",
+      "alt": "A browser form filled by a cursor moving on its own, and a human hand taking over on the padlocked field."
+    },
+    "case-study-jev-check": {
+      "scene": "On the left, an open laptop whose screen shows a simple web page with a big orange check mark and a small burst of confetti, and next to the screen a cartoon pointer hand giving a thumbs up: the automated agent claiming the job is done. On the right, a tall database drawn as three stacked disks, with a large magnifying glass in front of it showing a bold ink cross. A dotted line links the laptop to the database. The contrast is the point: the screen says done, the database says no.",
+      "alt": "A laptop celebrating a finished task while the database beside it, under a magnifying glass, shows a cross."
+    },
+    "five-stages-of-ai-grief": {
+      "scene": "A rollercoaster track drawn as one long curve across the frame: from the left it dips, climbs a small bump, plunges into a deep valley, then rises high toward the right where a small sun shines. Five small flags of different shades stand along the track, without any writing. A single coaster cart sits at the bottom of the deep valley, carrying a small developer hugging a laptop, looking dismayed. Simple, funny, lots of paper around.",
+      "alt": "A developer with a laptop in a rollercoaster cart at the bottom of the curve, the track climbing back up toward the sun."
+    },
+    "seven-deadly-sins-of-software": {
+      "scene": "A large computer monitor on a desk shows a code editor with abstract lines. Seven small orange sticky notes are stuck around the monitor frame and on the screen, each carrying one tiny pictogram instead of words: a crown, a pile of hoarded boxes, a heart with a sparkle, a patch of green grass, an overflowing bowl, a lightning bolt, a snail. On the desk in front, a coffee mug and a yellow rubber duck. Humorous, clean.",
+      "alt": "A code editor covered in seven sticky notes, each with a pictogram for one sin: crown, hoarded boxes, heart, green grass, overflowing bowl, lightning bolt, snail."
+    },
+    "the-great-work-polymarket": {
+      "scene": "An alchemist's workbench reimagined for a developer: a glass alembic flask bubbling over a small burner, and an open laptop next to it showing a simple jagged price chart. Above the flask an orange coin flips in the air with small motion arcs. A glass tube runs from the flask down into a small dish where the coins come out dull grey, like lead, piled in a small heap.",
+      "alt": "A bearded alchemist at his bench, a laptop chart beside him: an orange coin flips above the flask and comes out as grey lead."
+    },
+    "what-i-kept-telling-claude": {
+      "scene": "On the left, a chat window where the same short speech bubble appears four times in a column, identical abstract lines with the same orange highlight each time. An orange curved arrow lifts the last bubble out of the chat and pins it with a pushpin onto an open ring-bound notebook on the right, where a few similar notes are already pinned in a neat list. A pencil rests on the notebook.",
+      "alt": "The same chat message repeated four times, the last one pinned into a notebook of rules."
+    },
+    "case-study-piktechs": {
+      "scene": "A workbench seen from the front. On the left, a rough prototype of an app made of paper and cardboard screens held together with tape and a paper clip, a bit wobbly. A curved orange arrow leads to the right, where the same app now runs solid and polished on an open laptop and a smartphone standing beside it: a dashboard with a sidebar, a list of event cards and a row of contact cards, all as abstract blocks. Between the two, a small terminal window floats with a few abstract lines and an orange check mark. Small tools on the bench: a roll of tape, a screwdriver, a coffee mug.",
+      "alt": "A taped-together paper prototype of an app on the left, the same app solid on a laptop and a phone on the right."
+    },
+    "how-i-built-pdfold": {
+      "scene": "A friendly flat machine with two rollers stands in the middle, like a small printing press. On the left, a messy scanned paper page goes in: crooked two-column text lines, a skewed table and a coffee ring stain. On the right, a clean neat page comes out, with a bold heading bar, tidy bullet lines and a perfectly aligned table grid, a few orange highlights. Above the machine, three small orange check marks pop out like a passing test suite. A small potted plant sits beside it.",
+      "alt": "A messy scanned page goes into a small press and comes out as a clean, structured page, with three check marks above it."
+    }
+  }
+}

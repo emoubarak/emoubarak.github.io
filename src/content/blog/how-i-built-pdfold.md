@@ -3,8 +3,8 @@ title: "How I Built PDFold Solo: a Self-Improving AI Workspace, Tests, and Borin
 description: "The actual setup behind PDFold: a Claude workspace with a feedback loop on every prompt, tests that grew with the code, and a multi-pass OCR pipeline on Gemini with OpenRouter as fallback."
 pubDate: 2026-07-24
 tags: ["Engineering", "AI", "SaaS", "Claude"]
-cover: "/portfolio/pdfold-illustration.webp"
-coverAlt: "How PDFold works: a messy PDF goes through OCR, layout and Gemini passes and comes out as structured Markdown"
+cover: "/blog/how-i-built-pdfold.webp"
+coverAlt: "A messy scanned page goes into a small press and comes out as a clean, structured page, with three check marks above it."
 ---
 
 PDFold converts PDFs into structured Markdown in 11 languages. I built it alone, and it's live in production at [pdfold.com](https://pdfold.com).

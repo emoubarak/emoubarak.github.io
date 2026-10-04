@@ -24,7 +24,7 @@ const others = (await getCollection('blog', ({ data }) => !data.draft))
   .slice(0, 2);
 ---
 
-<Layout title={`${post.data.title} - El Mahdi Moubarak`} description={post.data.description} ogImage={`/og/blog/${post.id}.png`} published={post.data.pubDate}>
+<Layout title={`${post.data.title} - El Mahdi Moubarak`} description={post.data.description} ogImage={`/og/blog/${post.id}.png?v=2`} published={post.data.pubDate}>
   <div class="progress" aria-hidden="true" data-progress></div>
   <article>
     <!-- the shared hero: title on the left, the cover on the right (under the title on phones) -->

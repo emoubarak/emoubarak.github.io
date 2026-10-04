@@ -33,7 +33,7 @@ faits structurés ci-dessus. Quand les deux divergent, c'est `profile.js` qui a 
 ## Articles et études de cas
 
 Le blog (`src/content/blog/`) accepte en frontmatter `cover`, `tldr` et `featured` : une couverture qui
-explique (schéma ou vraie capture) et trois lignes « In short » s'affichent avant le texte. Pas de tuiles de
+explique (illustration ou vraie capture) et trois lignes « In short » s'affichent avant le texte. Pas de tuiles de
 chiffres : un chiffre n'entre dans le texte que s'il change ce que le lecteur comprend. Le tag `Case Study` range un
-article dans la section « Case studies » de `/blog` ; `featured: true` la met en grand. Les schémas des
-couvertures sont des SVG dans `public/blog/`.
+article dans la section « Case studies » de `/blog` ; `featured: true` la met en grand. Les illustrations
+de couverture sont dans `public/blog/<slug>.webp`, générées par `scripts/covers.py` (voir `docs/DESIGN.md`).

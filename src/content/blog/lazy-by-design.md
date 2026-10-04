@@ -3,8 +3,8 @@ title: "Lazy by Design: How I Make My Computers Work While I'm Away"
 description: "My engineering philosophy fits in one sentence: if I do something twice, a machine does it the third time. How that turns into autonomous agent runs, scheduled jobs and single sources of truth, and what it takes for an agent to work safely while nobody is watching."
 pubDate: 2026-10-03
 tags: ["AI", "Workflow"]
-cover: "/blog/lazy-autonomy.svg"
-coverAlt: "Six things an agent needs to work alone: end condition, budget, eyes, stop points, a way to call me, reversibility"
+cover: "/blog/lazy-by-design.webp"
+coverAlt: "An empty desk at night: the chair is free, the monitor keeps running a task and the phone shows a notification."
 tldr:
   - "If I do something twice, a machine does it the third time: autonomous runs, scheduled jobs, single sources of truth."
   - "Autonomy is safe when \"done\" is checkable, spending is capped, and the stop points are written down."

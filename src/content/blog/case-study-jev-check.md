@@ -3,8 +3,8 @@ title: "Case Study: jev-check, Browser-Agent QA Where the Database Gives the Ver
 description: "Unit tests and mocked end-to-end suites miss the bugs where the deployed front, the backend and the permissions disagree. I built a browser-agent harness that signs in as a real account state and lets the database decide, then open-sourced it as an agent skill."
 pubDate: 2026-09-19
 tags: ["Case Study", "AI", "QA"]
-cover: "/blog/jev-check-audit.svg"
-coverAlt: "Terminal output of jevcheck audit: the agent clicked Publish and said done, the database check failed"
+cover: "/blog/case-study-jev-check.webp"
+coverAlt: "A laptop celebrating a finished task while the database beside it, under a magnifying glass, shows a cross."
 tldr:
   - "An agent's \"done\" is a claim. The verdict comes from a SQL query on the real database."
   - "Accounts are created in exact states (free, paid, lapsed, team member, stranger), used once, and deleted, even when a run fails."

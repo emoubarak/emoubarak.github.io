@@ -4,8 +4,8 @@ description: "How I took a Lovable prototype to a production B2B SaaS as the onl
 pubDate: 2026-09-12
 tags: ["Case Study", "SaaS", "Claude"]
 featured: true
-cover: "/portfolio/piktechs-devices.webp"
-coverAlt: "Piktechs on desktop and mobile"
+cover: "/blog/case-study-piktechs.webp"
+coverAlt: "A taped-together paper prototype of an app on the left, the same app solid on a laptop and a phone on the right."
 tldr:
   - "As the only engineer, I took a two-week Lovable prototype to a production B2B SaaS with Claude Code as the main engineering environment."
   - "Fast by default, strict in the silent-failure zone (billing, row-level security, webhooks), reviewed by a different model."

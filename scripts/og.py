@@ -68,8 +68,8 @@ def cards():
         "sub": "Case studies from real projects, and what building with AI every day taught me.",
         "foot": "El Mahdi Moubarak",
         "images": [
-            {"src": f"{p}/blog/scanner-pipeline.svg", "w": 480, "x": 670, "y": 90, "r": -5},
-            {"src": f"{p}/blog/fix-ladder.svg", "w": 480, "x": 700, "y": 300, "r": 4},
+            {"src": f"{p}/blog/case-study-ai-card-scanner.webp", "w": 480, "x": 670, "y": 70, "r": -5},
+            {"src": f"{p}/blog/lazy-by-design.webp", "w": 480, "x": 700, "y": 290, "r": 4},
         ],
     }
     for f in sorted((ROOT / "src/content/blog").glob("*.md")):

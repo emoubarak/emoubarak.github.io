@@ -624,7 +624,7 @@ const docAssets = [
 ];
 
 // Display order of asset types inside each project group
-const assetTypeOrder = ['Logo', 'Photo', 'Thumbnail', 'OG image', 'Devices', 'Landing page', 'Screenshot', 'Diagram', 'Mockup', 'Motion'];
+const assetTypeOrder = ['Logo', 'Photo', 'Thumbnail', 'OG image', 'Devices', 'Landing page', 'Screenshot', 'Diagram', 'Illustration', 'Mockup', 'Motion'];
 
 const assetGroups = [
   {
@@ -653,7 +653,8 @@ const assetGroups = [
       { label: 'OG image', file: 'portfolio/piktechs-og.webp', type: 'OG image' },
       { label: 'Dashboard · desktop & mobile', file: 'portfolio/piktechs-devices.webp', type: 'Devices' },
       { label: 'Bug ticket · a free account told its payment went through', file: 'blog/piktechs-ticket-353-free-account-billing.webp', type: 'Screenshot' },
-      { label: 'AI card scanner · guard rails and fallbacks', file: 'blog/scanner-pipeline.svg', type: 'Diagram' },
+      { label: 'Case study · cover illustration', file: 'blog/case-study-piktechs.webp', type: 'Illustration' },
+      { label: 'AI card scanner · cover illustration', file: 'blog/case-study-ai-card-scanner.webp', type: 'Illustration' },
       { label: 'Card thumbnail (portfolio)', file: 'work/piktechs.webp', type: 'Thumbnail' },
       { label: 'Share image · case study', file: 'og/blog/case-study-piktechs.png', type: 'OG image' },
       { label: 'Share image · AI card scanner case study', file: 'og/blog/case-study-ai-card-scanner.png', type: 'OG image' },
@@ -664,11 +665,11 @@ const assetGroups = [
     name: 'jev · browser agents',
     link: 'https://github.com/emoubarak/jev-check',
     assets: [
-      { label: 'jev-check · the agent says done, the database says no', file: 'blog/jev-check-audit.svg', type: 'Diagram' },
+      { label: 'jev-check · the agent says done, the database says no', file: 'blog/case-study-jev-check.webp', type: 'Illustration' },
       { label: 'jev-check · repository', file: 'portfolio/jev-check.webp', type: 'Screenshot' },
       { label: 'jev-check · the audit, raster (2400px)', file: 'portfolio/jev-check-audit.webp', type: 'Diagram' },
       { label: 'Task runner · architecture', file: 'blog/jev-administrator-architecture.webp', type: 'Diagram' },
-      { label: 'Browser agent · the loop and the hand-off', file: 'blog/browser-agent-loop.svg', type: 'Diagram' },
+      { label: 'Browser agent · the loop and the hand-off', file: 'blog/browser-agents-at-work-jev.webp', type: 'Illustration' },
       { label: 'Card thumbnail (portfolio)', file: 'work/jev-check.webp', type: 'Thumbnail' },
       { label: 'Share image · jev-check case study', file: 'og/blog/case-study-jev-check.png', type: 'OG image' },
       { label: 'Share image · browser agents article', file: 'og/blog/browser-agents-at-work-jev.png', type: 'OG image' },
@@ -676,13 +677,13 @@ const assetGroups = [
   },
   {
     key: 'writing',
-    name: 'Writing · diagrams',
+    name: 'Writing · illustrations',
     link: 'https://moubarak.dev/blog',
     assets: [
-      { label: 'Where each fix belongs', file: 'blog/fix-ladder.svg', type: 'Diagram' },
-      { label: 'Safe to walk away', file: 'blog/lazy-autonomy.svg', type: 'Diagram' },
-      { label: 'The five stages of AI grief', file: 'blog/five-stages-curve.svg', type: 'Diagram' },
-      { label: 'Seven deadly sins, as system failures', file: 'blog/seven-sins-audit.svg', type: 'Diagram' },
+      { label: 'What I kept telling Claude · cover illustration', file: 'blog/what-i-kept-telling-claude.webp', type: 'Illustration' },
+      { label: 'Lazy by design · cover illustration', file: 'blog/lazy-by-design.webp', type: 'Illustration' },
+      { label: 'The five stages of AI grief · cover illustration', file: 'blog/five-stages-of-ai-grief.webp', type: 'Illustration' },
+      { label: 'The seven deadly sins · cover illustration', file: 'blog/seven-deadly-sins-of-software.webp', type: 'Illustration' },
       { label: 'Share image · what I kept telling Claude', file: 'og/blog/what-i-kept-telling-claude.png', type: 'OG image' },
       { label: 'Share image · lazy by design', file: 'og/blog/lazy-by-design.png', type: 'OG image' },
       { label: 'Share image · the five stages of AI grief', file: 'og/blog/five-stages-of-ai-grief.png', type: 'OG image' },
@@ -699,6 +700,7 @@ const assetGroups = [
       { label: 'Motion design (45s, MP4)', file: 'portfolio/pdfold-motion.mp4', poster: 'portfolio/pdfold-motion-poster.webp', type: 'Motion' },
       { label: 'Card thumbnail (portfolio)', file: 'work/pdfold.webp', type: 'Thumbnail' },
       { label: 'How it works · illustration', file: 'portfolio/pdfold-illustration.webp', type: 'Diagram' },
+      { label: 'How I built PDFold · cover illustration', file: 'blog/how-i-built-pdfold.webp', type: 'Illustration' },
       { label: 'Homepage · first screen', file: 'portfolio/pdfold-home.webp', type: 'Landing page' },
       { label: 'Share image · how I built PDFold', file: 'og/blog/how-i-built-pdfold.png', type: 'OG image' },
     ],
@@ -722,7 +724,7 @@ const assetGroups = [
     assets: [
       { label: 'Card thumbnail (portfolio)', file: 'work/polymarket.webp', type: 'Thumbnail' },
       { label: 'What it found · illustration, real paper runs', file: 'portfolio/polymarket-illustration.webp', type: 'Diagram' },
-      { label: 'The Great Work · the research as alchemical stages', file: 'blog/great-work-stages.svg', type: 'Diagram' },
+      { label: 'The Great Work · cover illustration', file: 'blog/the-great-work-polymarket.webp', type: 'Illustration' },
       { label: 'Live dashboard', file: 'portfolio/polymarket-dashboard.webp', type: 'Screenshot' },
       { label: 'Share image · the Great Work article', file: 'og/blog/the-great-work-polymarket.png', type: 'OG image' },
     ],

@@ -3,8 +3,8 @@ title: "What I Kept Telling Claude: Four Months of My Own Corrections"
 description: "Four months, two machines, about 4,000 prompts. The same few corrections came back in every project. What they were, why writing them down was not enough, and where each fix actually belongs."
 pubDate: 2026-09-05
 tags: ["AI", "Claude", "Workflow"]
-cover: "/blog/fix-ladder.svg"
-coverAlt: "Where each fix belongs: hook, skill, global instructions, project instructions, and the weekly loop"
+cover: "/blog/what-i-kept-telling-claude.webp"
+coverAlt: "The same chat message repeated four times, the last one pinned into a notebook of rules."
 tldr:
   - "The corrections I repeated were the same handful in every project: check it, do it yourself, use the tool I named, be clear, look it up, don't sound like AI."
   - "My workspace leaked: lessons trapped in one project, stale contradictory memories, and prose rules where a hook was needed."

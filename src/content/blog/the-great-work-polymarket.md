@@ -3,8 +3,8 @@ title: "The Great Work: I Tried to Turn Bitcoin Coin Flips into Gold"
 description: "I named my trading bots after mystics and alchemists, pointed them at Polymarket's five-minute Bitcoin markets, and spent June watching every edge turn back into lead. A field report on the efficient market, in five alchemical stages."
 pubDate: 2026-07-15
 tags: ["Satire", "Engineering", "Research"]
-cover: "/blog/great-work-stages.svg"
-coverAlt: "The research as alchemical stages: mystic bots, a backtest that exposed a lookahead artifact, a favorite edge that was a cherry-pick, a survivor worth zero after fees, and the real gold in maker rebates"
+cover: "/blog/the-great-work-polymarket.webp"
+coverAlt: "A bearded alchemist at his bench, a laptop chart beside him: an orange coin flips above the flask and comes out as grey lead."
 tldr:
   - "Every edge I found on Polymarket's Bitcoin Up or Down markets was an artifact: stale data, a cherry-picked cell, or momentum that only works when Bitcoin trends."
   - "The favorite won 84.5% of the time when its price said 84.2%. That is what an efficient market looks like up close."

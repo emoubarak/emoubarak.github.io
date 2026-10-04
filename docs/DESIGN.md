@@ -55,12 +55,16 @@ Refonte du 2026-10-04. Ce fichier dit ce qui est voulu, pour qu'une retouche res
 - Images de partage (Open Graph 1200×630) : `./scripts/og.py` génère `public/og/portfolio.png`, `cv.png`, `blog.png`
   et `public/og/blog/<slug>.png` pour chaque article (titre, temps de lecture, sa couverture) à partir de
   `scripts/og-card.html`. À relancer après un nouvel article. La carte de l'accueil (`public/og/home.png`) vient de
-  `scripts/og.html`. Une image modifiée prend un nouveau nom de fichier : les plateformes la gardent en cache par URL. Chaque page passe la sienne au layout (`ogImage`). LinkedIn garde l'ancienne en cache :
+  `scripts/og.html`. Une image modifiée prend une nouvelle URL (nouveau nom de fichier, ou le `?v=` des pages blog incrémenté) : les plateformes la gardent en cache par URL. Chaque page passe la sienne au layout (`ogImage`). LinkedIn garde l'ancienne en cache :
   la rafraîchir dans le Post Inspector (https://www.linkedin.com/post-inspector/).
 - Bannière LinkedIn : `./scripts/banner.py` rend `scripts/banner.html` en 3168×792 (2× de la taille recommandée par
   LinkedIn, 1584×396) vers `public/linkedin-banner.png`. Le quart gauche du bas reste vide : la photo de profil le couvre.
-- Couvertures d'articles : un schéma qui explique l'article, SVG 1200×630 dans `public/blog/`, même style pour
-  toutes (JetBrains Mono, encre `#111`, orange `#ff5c00`, papier `#faf9f6`).
+- Couvertures d'articles : une illustration de la scène de l'article, sans aucun texte (les anciens schémas SVG
+  très écrits « piquaient les yeux », 2026-10-04). Aplats, contours encre, orange du site, fond papier, 16:9
+  (1536×864). `./scripts/covers.py <slug>` les génère sur OpenRouter (`openai/gpt-image-2.5-sunburst`, medium,
+  ≈ 0,01 $ l'image, une génération par image) vers `public/blog/<slug>.webp` ; style commun, scène et texte
+  alternatif de chaque article dans `docs/blog-covers.json`. Nouvel article : ajouter sa scène, lancer le script,
+  puis `./scripts/og.py`.
 - Le rendu HTML vers PNG (images de partage, illustrations) passe par `scripts/shoot.py` (Chrome headless).
 - Portrait HD (`public/portrait.webp`, 1024 px) : restauration OpenRouter `openai/gpt-image-2.5-sunburst`,
   qualité medium, 0,019 $, à partir de `profile-picture.webp`. Prompt : « Restore and upscale this exact
