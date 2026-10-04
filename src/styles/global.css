@@ -300,23 +300,6 @@
     letter-spacing: -0.02em;
     white-space: nowrap;
   }
-  .brand__mark {
-    width: 2.1rem;
-    height: 2.1rem;
-    border-radius: 10px;
-    display: inline-grid;
-    place-items: center;
-    flex-shrink: 0;
-    background: #14161a;
-    color: var(--orange);
-    font-family: var(--font-display);
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    transition: transform 0.5s var(--ease-out);
-  }
-  .brand:hover .brand__mark { transform: rotate(-8deg); }
-  .dark .brand__mark { box-shadow: 0 0 0 1px var(--line-strong); }
   .nav { display: flex; align-items: center; gap: 0.25rem; }
   .nav__link {
     position: relative;
