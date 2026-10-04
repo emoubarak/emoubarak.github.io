@@ -10,9 +10,10 @@ Refonte du 2026-10-04. Ce fichier dit ce qui est voulu, pour qu'une retouche res
   services (`ServicesMotion.astro`) ; pas de photo de lui dans le hero (demande du 2026-10-04).
 - Pages intérieures : à droite, un objet réel qui sert à quelque chose. Portfolio : les captures Piktechs, KSUR et
   Altao, chacune ouvre l'aperçu du projet. CV : les deux pages du PDF, chacune le télécharge. Blog : une carte cliquable
-  du dernier article, couverture et titre seulement. Règle : rien qui soit trop petit pour
-  être lu sans rien faire au clic.
-- Tous les heros font 100svh. Sur mobile l'objet passe sous le texte.
+  du dernier article, couverture et titre seulement. Article : sa couverture, moitié-moitié avec le titre, ouvre
+  l'image en grand. Règle : rien qui soit trop petit pour être lu sans rien faire au clic.
+- Tous les heros font 100svh. Sur mobile l'objet passe sous le texte ; le hero d'un article s'arrête alors à la
+  couverture au lieu de remplir l'écran (page plus courte, demande du 2026-10-04).
 - Corps de page sur papier `#fafaf8`, mode sombre complet (`.dark` sur `<html>`, tokens dans `global.css`).
 
 ## Typographie

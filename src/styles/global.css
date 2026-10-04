@@ -529,6 +529,20 @@
     .latest { max-width: none; }
   }
 
+  /* Article hero: the cover beside the title, half and half; titles run long, so a smaller scale than .t-page */
+  .post-title { font-size: clamp(2.1rem, 1.2rem + 2.3vw, 3.6rem); line-height: 1.03; letter-spacing: -0.035em; font-weight: 800; text-wrap: balance; }
+  .post-cover { display: block; width: 100%; border-radius: var(--radius); overflow: hidden; background: #fff; box-shadow: 0 30px 60px -18px rgb(70 25 5 / 0.45), 0 0 0 1px rgb(20 22 26 / 0.06); transition: translate 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out); }
+  .post-cover img { display: block; width: 100%; height: auto; }
+  .post-cover:hover, .post-cover:focus-visible { translate: 0 -6px; box-shadow: 0 40px 70px -20px rgb(70 25 5 / 0.55), 0 0 0 2px #14161a; }
+  @media (min-width: 900px) {
+    .hero--post .hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  }
+  /* Phones: title then cover, the hero ends with the cover instead of filling the screen */
+  @media (max-width: 899px) {
+    .hero--post, .hero--post .hero__inner { min-height: 0; }
+    .hero--post .hero__visual { flex: none; min-height: 0; margin-bottom: 2.5rem; }
+  }
+
   /* Hero load sequence: lines rise out of a mask, then the rest fades up */
   .rise { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
   .rise > span { display: block; animation: rise 1s var(--ease-out) both; animation-delay: calc(0.1s + var(--i, 0) * 0.09s); }

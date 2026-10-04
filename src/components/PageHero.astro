@@ -4,11 +4,13 @@
 interface Props {
   size?: 'full' | 'page';
   eyebrow?: string;
+  as?: 'section' | 'header';
+  class?: string;
 }
-const { size = 'page', eyebrow } = Astro.props;
+const { size = 'page', eyebrow, as: Tag = 'section', class: extra } = Astro.props;
 ---
 
-<section class:list={['hero on-orange', `hero--${size}`, { 'hero--sticky': size === 'full' }]} data-hero>
+<Tag class:list={['hero on-orange', `hero--${size}`, { 'hero--sticky': size === 'full' }, extra]} data-hero>
   <div class="wrap hero__inner">
     <div class="hero__text">
       {eyebrow && <p class="t-eyebrow hero__eyebrow fade-up" style="--i:0">{eyebrow}</p>}
@@ -18,4 +20,4 @@ const { size = 'page', eyebrow } = Astro.props;
       <slot name="visual" />
     </div>
   </div>
-</section>
+</Tag>

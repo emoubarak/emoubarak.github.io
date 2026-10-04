@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
 import Icon from '../../components/Icon.astro';
 import { getCollection, render } from 'astro:content';
 
@@ -26,36 +27,29 @@ const others = (await getCollection('blog', ({ data }) => !data.draft))
 <Layout title={`${post.data.title} - El Mahdi Moubarak`} description={post.data.description} ogImage={`/og/blog/${post.id}.png`} published={post.data.pubDate}>
   <div class="progress" aria-hidden="true" data-progress></div>
   <article>
-    <!-- full-height like every hero; the cover's top edge shows at the bottom of the first screen -->
-    <header class="hero on-orange min-h-[100svh]" data-hero>
-      <div class:list={['wrap min-h-[100svh] flex flex-col justify-center pt-[calc(var(--header-h)+clamp(2.5rem,7vh,4.5rem))]', post.data.cover ? 'pb-[clamp(9rem,18vw,15rem)]' : 'pb-[clamp(3rem,8vh,5rem)]']}>
-        <div class="max-w-[62rem]">
-          <a href={`${base}/blog`} class="link-arrow text-[0.95rem] fade-up" style="--i:0"><Icon name="back" /> Blog</a>
-          <h1 class="mt-8 text-[clamp(2.3rem,1.3rem+3.4vw,4.6rem)] leading-[1.02] tracking-[-0.035em] font-extrabold fade-up" style="--i:1">{post.data.title}</h1>
-          <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 fade-up" style="--i:2">
-            <time class="t-meta" datetime={post.data.pubDate.toISOString()}>
-              {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-            </time>
-            <span class="t-meta">{minutes} min read</span>
-            {post.data.tags.length > 0 && (
-              <div class="flex flex-wrap gap-1.5">
-                {post.data.tags.map((tag: string) => <span class="chip !bg-white/40 !border-black/10 !text-[#14161a]">{tag}</span>)}
-              </div>
-            )}
+    <!-- the shared hero: title on the left, the cover on the right (under the title on phones) -->
+    <PageHero as="header" class="hero--post">
+      <a href={`${base}/blog`} class="link-arrow text-[0.95rem] fade-up" style="--i:0"><Icon name="back" /> Blog</a>
+      <h1 class="post-title mt-7 fade-up" style="--i:1">{post.data.title}</h1>
+      <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 fade-up" style="--i:2">
+        <time class="t-meta" datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        <span class="t-meta">{minutes} min read</span>
+        {post.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-1.5">
+            {post.data.tags.map((tag: string) => <span class="chip !bg-white/40 !border-black/10 !text-[#14161a]">{tag}</span>)}
           </div>
-        </div>
+        )}
       </div>
-    </header>
-
-    {post.data.cover && (
-      <div class="wrap -mt-[clamp(7rem,15vw,12.5rem)] relative z-[2]">
-        <figure class="max-w-[66rem] mx-auto rounded-[var(--radius)] overflow-hidden border border-[var(--line)] bg-[var(--surface)] shadow-[var(--shadow-lg)] fade-up" style="--i:3">
-          <a href={src(post.data.cover)} target="_blank" rel="noopener" title="Open full size">
-            <img src={src(post.data.cover)} alt={post.data.coverAlt ?? post.data.title} class="w-full h-auto block" loading="eager" />
+      {post.data.cover && (
+        <div slot="visual" class="hero-feature fade-up" style="--i:3">
+          <a href={src(post.data.cover)} target="_blank" rel="noopener" title="Open full size" class="post-cover">
+            <img src={src(post.data.cover)} alt={post.data.coverAlt ?? post.data.title} loading="eager" />
           </a>
-        </figure>
-      </div>
-    )}
+        </div>
+      )}
+    </PageHero>
 
     <div class="wrap pt-[clamp(3rem,6vw,5rem)] pb-[var(--section)] xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,46rem)_minmax(0,1fr)] xl:gap-x-12">
       <aside class="hidden xl:block">
