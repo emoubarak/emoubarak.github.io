@@ -5,10 +5,11 @@
 # ///
 """Share images (Open Graph, 1200×630) for every page and article.
 
-    ./scripts/og.py            # rebuilds public/og/*.png and public/og/blog/<slug>.png
+    ./scripts/og.py            # rebuilds public/og/home.png, public/og/*.png and public/og/blog/<slug>.png
 
 Each card is scripts/og-card.html filled with the page's title and its real images (captures, CV pages, the
-article's cover), rendered in headless Chrome. The home card (public/og.png) comes from scripts/og.html.
+article's cover), rendered in headless Chrome. The home card (public/og/home.png) comes from scripts/og.html.
+A changed image should get a new file name: platforms cache share images by URL.
 Run it again after adding or renaming an article.
 """
 import json, re, sys
@@ -93,9 +94,12 @@ def cards():
 
 def render(items):
     jobs = [(f"/scripts/og-card.html#" + quote(json.dumps(card)), OUT / f"{name}.png", "fit()") for name, card in items]
+    # the home card has its own layout (name, headline, the services illustration)
+    jobs.append(("/scripts/og.html", OUT / "home.png", None))
+    items = items + [("home", None)]
     for (name, _), size in zip(items, shoot(jobs, 1200, 630)):
         dst = OUT / f"{name}.png"
-        print(f"{name:42} title {size}px  {dst.stat().st_size // 1024} KB")
+        print(f"{name:42} " + (f"title {size}px  " if size else "") + f"{dst.stat().st_size // 1024} KB")
 
 
 def main():

@@ -49,8 +49,8 @@ Refonte du 2026-10-04. Ce fichier dit ce qui est voulu, pour qu'une retouche res
 - Logos clients : `public/logos/*.png`, silhouettes en alpha affichées en `mask-image` (une seule couleur, suit le thème).
 - Images de partage (Open Graph 1200×630) : `./scripts/og.py` génère `public/og/portfolio.png`, `cv.png`, `blog.png`
   et `public/og/blog/<slug>.png` pour chaque article (titre, temps de lecture, sa couverture) à partir de
-  `scripts/og-card.html`. À relancer après un nouvel article. La carte de l'accueil (`public/og.png`) vient de
-  `scripts/og.html`. Chaque page passe la sienne au layout (`ogImage`). LinkedIn garde l'ancienne en cache :
+  `scripts/og-card.html`. À relancer après un nouvel article. La carte de l'accueil (`public/og/home.png`) vient de
+  `scripts/og.html`. Une image modifiée prend un nouveau nom de fichier : les plateformes la gardent en cache par URL. Chaque page passe la sienne au layout (`ogImage`). LinkedIn garde l'ancienne en cache :
   la rafraîchir dans le Post Inspector (https://www.linkedin.com/post-inspector/).
 - Couvertures d'articles : un schéma qui explique l'article, SVG 1200×630 dans `public/blog/`, même style pour
   toutes (JetBrains Mono, encre `#111`, orange `#ff5c00`, papier `#faf9f6`).
