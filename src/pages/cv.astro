@@ -1,177 +1,190 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import { experiences, education, techGroups, interests, projects, aiApproach } from '../data/profile.js';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { identity, experiences, education, techGroups, interests, projects, aiApproach } from '../data/profile.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const href = (h: string) => (h.startsWith('/') ? `${base}${h}` : h);
+const toc = [
+  { id: 'profile', label: 'Profile' },
+  { id: 'ai', label: 'How I work with AI' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+  { id: 'skills', label: 'Technical expertise' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'interests', label: 'Beyond code' },
+];
 ---
 
 <Layout title="CV - El Mahdi Moubarak" description="Full CV - El Mahdi Moubarak, Founder & Full-Stack Engineer.">
-  <!-- Header -->
-  <section class="mb-12">
-    <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
-      <div>
-        <h1 class="text-2xl font-extrabold mb-1">Curriculum Vitae</h1>
-        <p class="font-mono text-xs text-muted">El Mahdi Moubarak - Founder & Full-Stack Engineer · Software, SaaS & AI</p>
-      </div>
-      <div class="flex flex-wrap gap-3 shrink-0">
-        <a
-          href="https://calendly.com/moubarakelmahdipro/"
-          target="_blank"
-          class="font-mono text-xs font-bold b-border px-4 py-2 b-lift bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors inline-block"
-        >
-          Book a Call
-        </a>
-        <a
-          href={`${base}/cv-en.pdf`}
-          download
-          class="font-mono text-xs font-bold b-border px-4 py-2 b-shadow b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block"
-        >
-          PDF (EN) ↓
-        </a>
-        <a
-          href={`${base}/cv-fr.pdf`}
-          download
-          class="font-mono text-xs font-bold b-border px-4 py-2 b-shadow b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block"
-        >
-          PDF (FR) ↓
-        </a>
-      </div>
+  <PageHero eyebrow="El Mahdi Moubarak">
+    <h1 class="t-page">
+      <span class="rise"><span style="--i:0">Curriculum</span></span>
+      <span class="rise"><span style="--i:1">vitae</span></span>
+    </h1>
+    <p class="t-lede hero__lede fade-up" style="--i:1">{identity.title.en}</p>
+    <div class="hero__actions fade-up" style="--i:2">
+      <a href={`${base}/cv-en.pdf`} download class="btn btn--solid">PDF in English <Icon name="down" /></a>
+      <a href={`${base}/cv-fr.pdf`} download class="btn btn--line" lang="fr">PDF en français <Icon name="down" /></a>
     </div>
-
-    <p class="text-sm leading-relaxed text-body">
-      I build software and AI systems end-to-end: specs, architecture, code, deploy.
-      6 years across cybersecurity, healthcare and fintech, mostly as the only engineer on the project.
-      I work with founders and agencies who need something built properly and shipped fast.
-    </p>
-  </section>
-
-  <!-- How I work with AI -->
-  <section class="mb-12 scroll-mt-24" id="ai">
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-3">How I work with AI</h2>
-    <p class="text-sm leading-relaxed text-body mb-6">{aiApproach.intro.en}</p>
-    <div class="border-t-2 border-ink dark:border-dark-border">
-      {aiApproach.principles.map((pr) => (
-        <div class="py-4 border-b border-ink/15 dark:border-dark-border sm:grid sm:grid-cols-[13rem_1fr] sm:gap-6">
-          <h3 class="font-mono text-sm font-bold leading-snug mb-2 sm:mb-0">{pr.title}</h3>
-          <div>
-            <p class="text-sm text-body leading-relaxed mb-1.5">{pr.text}</p>
-            <a href={pr.proof.href.startsWith('/') ? `${base}${pr.proof.href}` : pr.proof.href} class="font-mono text-[0.7rem] font-bold text-accent hover:text-accent-alt">{pr.proof.label} →</a>
-          </div>
-        </div>
-      ))}
+    <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="link-arrow mt-6 fade-up" style="--i:3">Book a call <Icon name="arrow" /></a>
+    <div slot="visual" class="fan" aria-hidden="true">
+      <div class="fan__item" style="--i:0;--r:-7deg;--r0:-12deg;width:50%;top:7%;right:40%"><img src={`${base}/cv-fr-page.webp`} alt="" width="900" height="1272" /></div>
+      <div class="fan__item" style="--i:1;--r:4deg;--r0:9deg;width:54%;top:4%;right:4%"><img src={`${base}/cv-en-page.webp`} alt="" width="900" height="1272" /></div>
     </div>
-  </section>
+  </PageHero>
 
-  <!-- Experience -->
-  <section class="mb-12">
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Experience</h2>
-    <div class="space-y-8">
-      {experiences.map((exp) => (
-        <div class="relative pl-5 border-l-2 border-ink dark:border-dark-border">
-          <div class="absolute left-[-5px] top-1 w-2 h-2 bg-accent"></div>
-          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
-            <h3 class="font-mono text-sm font-bold">
-              {exp.company} <span class="font-normal text-muted">· {exp.role}</span>
-            </h3>
-            <span class="font-mono text-[0.65rem] text-muted shrink-0">{exp.period}</span>
-          </div>
-          <p class="text-xs text-muted mb-2">{exp.location}</p>
-          <p class="text-sm mb-3">{exp.summary}</p>
-          <ul class="space-y-1.5">
-            {exp.achievements.map((a) => (
-              <li class="text-sm flex items-start gap-2">
-                <span class="text-accent font-mono text-xs mt-0.5 shrink-0">▪</span>
-                <span class="text-body">{a}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </section>
+  <div class="wrap pt-[clamp(3.5rem,7vw,7rem)] pb-[var(--section)] lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-x-[clamp(3rem,6vw,7rem)]">
+    <aside class="hidden lg:block">
+      <nav class="toc sticky top-[calc(var(--header-h)+2.5rem)]" aria-label="On this page" data-toc>
+        <p class="t-eyebrow mb-4">On this page</p>
+        {toc.map((t) => <a href={`#${t.id}`} data-toc-link={t.id}>{t.label}</a>)}
+      </nav>
+    </aside>
 
-  <!-- Education -->
-  <section class="mb-12">
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Education</h2>
-    <div class="space-y-4">
-      {education.map((edu) => (
-        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pb-4 border-b border-ink/10 dark:border-dark-border">
-          <div>
-            <h3 class="font-mono text-sm font-bold">{edu.degree}</h3>
-            <p class="text-xs text-muted">{edu.school} - {edu.detail}</p>
-          </div>
-          <span class="font-mono text-[0.65rem] text-muted shrink-0">{edu.period}</span>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Technical Stack -->
-  <section class="mb-12">
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Technical Expertise</h2>
-    <div class="space-y-4">
-      {techGroups.map((g) => (
-        <div>
-          <p class="font-mono text-[0.65rem] text-muted mb-2">{g.label}</p>
-          <div class="flex flex-wrap gap-1.5">
-            {g.items.map((t) => (
-              <span class="tag">{t}</span>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="mb-12">
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {projects.map((p) => (
-        <Card
-          title={p.title}
-          description={p.description}
-          href={p.url}
-          tags={p.tags}
-        />
-      ))}
-    </div>
-  </section>
-
-  <!-- Interests -->
-  <section class="mb-12">
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-6">Beyond Code</h2>
-    <div class="space-y-2">
-      {interests.map((int) => (
-        <p class="text-sm">
-          <span class="font-mono font-bold">{int.title}</span>
-          <span class="text-muted"> - </span>
-          <span class="text-body">{int.detail}</span>
+    <div class="min-w-0 max-w-[58rem] space-y-[clamp(4.5rem,8vw,7.5rem)]">
+      <!-- Profile -->
+      <section id="profile" data-toc-section>
+        <p class="t-eyebrow mb-5">Profile</p>
+        <p class="t-statement !text-[clamp(1.45rem,1.1rem+1.3vw,2.25rem)] !font-medium">
+          I build software and AI systems end-to-end: specs, architecture, code, deploy.
+          6 years across cybersecurity, healthcare and fintech, mostly as the only engineer on the project.
+          I work with founders and agencies who need something built properly and shipped fast.
         </p>
-      ))}
-    </div>
-  </section>
+        <p class="t-meta mt-6">{identity.location.en} · {identity.languages.en}</p>
+      </section>
 
-  <!-- Download CTA -->
-  <section>
-    <div class="b-border p-6 bg-paper-alt dark:bg-dark-surface text-center">
-      <div class="flex flex-wrap justify-center gap-3">
-        <a
-          href={`${base}/cv-en.pdf`}
-          download
-          class="font-mono text-xs font-bold b-border px-6 py-3 b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block"
-        >
-          Download CV - English ↓
-        </a>
-        <a
-          href={`${base}/cv-fr.pdf`}
-          download
-          class="font-mono text-xs font-bold b-border px-6 py-3 b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block"
-        >
-          Télécharger le CV - Français ↓
-        </a>
-      </div>
+      <!-- How I work with AI -->
+      <section id="ai" data-toc-section>
+        <p class="t-eyebrow mb-3">Approach</p>
+        <h2 class="t-h2">How I work with AI</h2>
+        <p class="text-2 text-[1.12rem] leading-relaxed mt-5 max-w-[60ch]">{aiApproach.intro.en}</p>
+        <div class="grid md:grid-cols-2 gap-x-12 mt-12">
+          {aiApproach.principles.map((pr, i) => (
+            <div class="py-8 border-t border-[var(--line)]" data-reveal style={`--i:${i % 2}`}>
+              <h3 class="t-h4">{pr.title}</h3>
+              <p class="text-2 leading-relaxed mt-3">{pr.text}</p>
+              <a href={href(pr.proof.href)} class="link-arrow mt-5 text-[0.95rem] !text-[var(--accent)]">{pr.proof.label} <Icon name="arrow" /></a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" data-toc-section>
+        <p class="t-eyebrow mb-3">Career</p>
+        <h2 class="t-h2 mb-12">Experience</h2>
+        <div>
+          {experiences.map((exp) => (
+            <article class="grid md:grid-cols-[11rem_minmax(0,1fr)] gap-x-10 gap-y-3 py-10 border-t border-[var(--line)]" data-reveal>
+              <div>
+                <p class="t-meta !text-[var(--text)]">{exp.period}</p>
+                <p class="t-meta mt-1">{exp.location}</p>
+              </div>
+              <div>
+                <h3 class="t-h4">{exp.company}</h3>
+                <p class="font-medium text-2 mt-1">{exp.role}</p>
+                <p class="mt-4 leading-relaxed">{exp.summary}</p>
+                <ul class="bullet-list mt-5 text-2 leading-relaxed">
+                  {exp.achievements.map((a) => <li>{a}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" data-toc-section>
+        <p class="t-eyebrow mb-3">Studies</p>
+        <h2 class="t-h2 mb-10">Education</h2>
+        {education.map((edu) => (
+          <div class="grid md:grid-cols-[11rem_minmax(0,1fr)] gap-x-10 gap-y-2 py-7 border-t border-[var(--line)]" data-reveal>
+            <p class="t-meta !text-[var(--text)]">{edu.period}</p>
+            <div>
+              <h3 class="t-h4">{edu.degree}</h3>
+              <p class="text-2 mt-1">{edu.school} · {edu.detail}</p>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <!-- Technical Stack -->
+      <section id="skills" data-toc-section>
+        <p class="t-eyebrow mb-3">Stack</p>
+        <h2 class="t-h2 mb-10">Technical expertise</h2>
+        {techGroups.map((g) => (
+          <div class="grid md:grid-cols-[11rem_minmax(0,1fr)] gap-x-10 gap-y-3 py-6 border-t border-[var(--line)]" data-reveal>
+            <p class="font-semibold">{g.label}</p>
+            <div class="chips">{g.items.map((t) => <span class="chip">{t}</span>)}</div>
+          </div>
+        ))}
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" data-toc-section>
+        <div class="flex items-end justify-between gap-6 mb-10">
+          <div>
+            <p class="t-eyebrow mb-3">Work</p>
+            <h2 class="t-h2">Projects</h2>
+          </div>
+          <a href={`${base}/portfolio`} class="link-arrow mb-2 shrink-0">With previews <Icon name="arrow" /></a>
+        </div>
+        <div class="border-b border-[var(--line)]">
+          {projects.map((p) => {
+            const Tag = p.url ? 'a' : 'div';
+            return (
+              <Tag href={p.url ?? undefined} target={p.url ? '_blank' : undefined} rel={p.url ? 'noopener noreferrer' : undefined} class="group grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_auto] items-baseline gap-x-6 gap-y-1 py-5 border-t border-[var(--line)]">
+                <span class="font-[family-name:var(--font-display)] font-semibold text-[1.2rem] tracking-tight transition-colors group-hover:text-[var(--accent)]">{p.title}</span>
+                <span class="t-meta max-md:col-start-1 max-md:row-start-2">{p.categoryLabel} · {p.role}</span>
+                <span class="t-meta md:text-right max-md:row-span-2 max-md:self-center">{p.url ? '↗' : 'Confidential'}</span>
+              </Tag>
+            );
+          })}
+        </div>
+      </section>
+
+      <!-- Interests -->
+      <section id="interests" data-toc-section>
+        <p class="t-eyebrow mb-3">Off screen</p>
+        <h2 class="t-h2 mb-10">Beyond code</h2>
+        <div class="grid sm:grid-cols-3 gap-8">
+          {interests.map((int, i) => (
+            <div class="pt-6 border-t-2 border-[var(--orange)]" data-reveal style={`--i:${i}`}>
+              <h3 class="t-h4">{int.title}</h3>
+              <p class="text-2 mt-2 leading-relaxed">{int.detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Download -->
+      <section class="band-orange on-orange px-[clamp(1.5rem,4vw,3.5rem)] py-[clamp(2.5rem,5vw,4rem)] flex flex-col md:flex-row md:items-center justify-between gap-8" data-reveal>
+        <h2 class="t-h2">Take it with you</h2>
+        <div class="flex flex-wrap gap-3">
+          <a href={`${base}/cv-en.pdf`} download class="btn btn--solid">English PDF <Icon name="down" /></a>
+          <a href={`${base}/cv-fr.pdf`} download class="btn btn--line" lang="fr">PDF français <Icon name="down" /></a>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
+
+  <script is:inline>
+    // Table of contents follows the reading position
+    (function () {
+      var links = document.querySelectorAll('[data-toc-link]');
+      var sections = Array.prototype.slice.call(document.querySelectorAll('[data-toc-section]'));
+      if (!links.length) return;
+      var tick = false;
+      function update() {
+        tick = false;
+        var y = window.innerHeight * 0.35, current = sections[0].id;
+        sections.forEach(function (s) { if (s.getBoundingClientRect().top < y) current = s.id; });
+        links.forEach(function (l) { l.classList.toggle('is-active', l.dataset.tocLink === current); });
+      }
+      update();
+      window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+    })();
+  </script>
 </Layout>

@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Page not found - El Mahdi Moubarak" noindex={true}>
+<Layout title="Page not found - El Mahdi Moubarak" noindex={true} contained>
   <script is:inline>
     // Old project-site links (/my-cv/...) map to the same path at the root;
     // anything else goes home.
@@ -15,7 +15,7 @@ import Layout from '../layouts/Layout.astro';
   <noscript>
     <meta http-equiv="refresh" content="0; url=/" />
   </noscript>
-  <main class="mx-auto max-w-2xl px-6 py-24 text-center">
+  <div class="max-w-2xl mx-auto py-24 text-center">
     <p class="text-lg">Redirecting to <a href="/" class="underline">moubarak.dev</a>…</p>
-  </main>
+  </div>
 </Layout>

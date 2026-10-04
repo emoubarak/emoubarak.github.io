@@ -632,6 +632,7 @@ const assetGroups = [
     link: 'https://moubarak.dev/',
     assets: [
       { label: 'Favicon / logo (SVG)', file: 'favicon.svg', type: 'Logo' },
+      { label: 'Profile picture HD (1024×1024)', file: 'portrait.webp', type: 'Photo' },
       { label: 'Profile picture (400×400)', file: 'profile-picture.webp', type: 'Photo' },
       { label: 'OG image · site (1200×630)', file: 'og.png', type: 'OG image' },
     ],
@@ -870,6 +871,7 @@ const eduBlocks = pair(education);
   title="Profile Kit - El Mahdi Moubarak"
   description="Canonical profile content - bios, experience and projects in EN/FR."
   noindex
+  contained
 >
   <!-- Header -->
   <section class="mb-12">
@@ -884,7 +886,7 @@ const eduBlocks = pair(education);
   </section>
 
   <!-- Filters -->
-  <div class="sticky top-[66px] z-40 bg-paper dark:bg-dark-paper py-3 mb-9 border-b-2 border-ink dark:border-dark-border space-y-2">
+  <div class="sticky top-[var(--header-h)] z-40 bg-paper dark:bg-dark-paper py-3 mb-9 border-b-2 border-ink dark:border-dark-border space-y-2">
     <div class="flex flex-wrap items-center gap-2">
       <span class="font-mono text-[0.6rem] text-muted uppercase tracking-widest w-14 shrink-0">Section</span>
       {[

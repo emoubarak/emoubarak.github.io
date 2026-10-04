@@ -278,9 +278,11 @@ export const projectCategories = [
   { key: 'mobile', label: 'Mobile' },
 ];
 
+// `thumb` is the uniform card image (public/work/, built by scripts/thumbs.py); `image` and `previews` stay the originals.
 export const projects = [
   {
     title: 'Piktechs',
+    thumb: `${base}/work/piktechs.webp`,
     subtitle: 'piktechs.com',
     category: 'saas',
     categoryLabel: 'SaaS',
@@ -297,6 +299,7 @@ export const projects = [
   },
   {
     title: 'PDFold',
+    thumb: `${base}/work/pdfold.webp`,
     subtitle: 'pdfold.com',
     category: 'saas',
     categoryLabel: 'SaaS',
@@ -313,6 +316,7 @@ export const projects = [
   },
   {
     title: 'AI Search Visibility Tracker',
+    thumb: `${base}/work/ai-visibility.webp`,
     subtitle: 'apify.com/emoubarak',
     category: 'saas',
     categoryLabel: 'SaaS',
@@ -327,6 +331,7 @@ export const projects = [
   },
   {
     title: 'jev-check',
+    thumb: `${base}/work/jev-check.webp`,
     subtitle: 'github.com/emoubarak/jev-check',
     category: 'research',
     categoryLabel: 'Open source',
@@ -343,6 +348,7 @@ export const projects = [
   },
   {
     title: 'Agence KSUR',
+    thumb: `${base}/work/ksur.webp`,
     subtitle: 'agence-ksur.com',
     category: 'agency',
     categoryLabel: 'Agency',
@@ -352,6 +358,7 @@ export const projects = [
     imageCentered: true,
     // agence-ksur.com sets frame-ancestors 'self', so it cannot be previewed in an iframe.
     previews: [
+      { label: 'Homepage', src: `${base}/portfolio/ksur-home.webp` },
       { label: 'Showreel', src: `${base}/portfolio/ksur-showreel.mp4`, poster: `${base}/portfolio/ksur-showreel-poster.webp` },
     ],
     url: 'https://www.agence-ksur.com/',
@@ -359,6 +366,7 @@ export const projects = [
   },
   {
     title: 'Polymarket Up/Down Lab',
+    thumb: `${base}/work/polymarket.webp`,
     subtitle: 'github.com/emoubarak/polymarket-updown-lab',
     category: 'research',
     categoryLabel: 'Research',
@@ -373,6 +381,7 @@ export const projects = [
   },
   {
     title: 'Atandem Agency',
+    thumb: `${base}/work/atandem.webp`,
     subtitle: 'atandemagency.com',
     category: 'website',
     categoryLabel: 'Website',
@@ -385,6 +394,7 @@ export const projects = [
   },
   {
     title: 'Mon Jouet Montessori',
+    thumb: `${base}/work/montessori.webp`,
     subtitle: 'mon-jouet-montessori.com',
     category: 'e-commerce',
     categoryLabel: 'E-commerce',
@@ -398,6 +408,7 @@ export const projects = [
   },
   {
     title: 'Deuspi',
+    thumb: `${base}/work/deuspi.webp`,
     subtitle: 'Confidential project',
     category: 'mobile',
     categoryLabel: 'Mobile App',
@@ -411,6 +422,7 @@ export const projects = [
   },
   {
     title: 'Altao RSS Tool',
+    thumb: `${base}/work/altao.webp`,
     subtitle: 'Confidential project',
     category: 'web-app',
     categoryLabel: 'Web App',
@@ -427,6 +439,7 @@ export const projects = [
   },
   {
     title: 'Worldline MQTT Tool',
+    thumb: `${base}/work/worldline.webp`,
     subtitle: 'Confidential project',
     category: 'web-app',
     categoryLabel: 'Web App',

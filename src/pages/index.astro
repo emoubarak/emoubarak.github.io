@@ -1,7 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import { services as allServices, projects as allProjects } from '../data/profile.js';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import PostList from '../components/PostList.astro';
+import ServicesMotion from '../components/ServicesMotion.astro';
+import { identity, services as allServices, projects as allProjects, testimonials } from '../data/profile.js';
+import { getCollection } from 'astro:content';
+
 // The homepage shows three headline lines only. The other four (MVP rescue, self-hosted
 // agents, corporate AI training, technical Shopify) stay in the mother source and on /kit,
 // where they feed Malt and Upwork.
@@ -9,183 +14,184 @@ const homeServices = ['SaaS & Web Apps', 'AI Automation & Agents', 'LLM & RAG In
 const services = homeServices.map((t) => allServices.find((s) => s.title === t)).filter(Boolean);
 const featured = ['Piktechs', 'PDFold', 'AI Search Visibility Tracker', 'Mon Jouet Montessori'];
 const projects = featured.map((t) => allProjects.find((p) => p.title === t)).filter(Boolean);
-import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const latestPosts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-const stack = ["TypeScript", "Python", "Angular", "Vue.js", "React Native", "Next.js", "Django", "Node.js", "AWS", "Docker", "PostgreSQL", "CI/CD"];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const [driveco, deuspi] = testimonials;
+const logos = [
+  { name: 'DRIVECO', file: 'driveco', h: '1.75rem' },
+  { name: 'Board of Cyber', file: 'board-of-cyber', h: '2.6rem' },
+  { name: 'ALTAO Santé', file: 'altao', h: '2.7rem' },
+  { name: 'Worldline', file: 'worldline', h: '1.35rem' },
+  { name: 'Deuspi', file: 'deuspi', h: '1.9rem' },
+  { name: 'KSUR Services', file: 'ksur', h: '2.9rem' },
+];
 ---
 
 <Layout title="El Mahdi Moubarak - Founder & Full-Stack Engineer">
-  <!-- Intro -->
-  <section class="mb-16">
-    <div class="flex items-center gap-6 md:gap-10 mb-6">
-      <div>
-        <p class="font-mono text-xs text-muted mb-4">Founder & Full-Stack Engineer · Software, SaaS & AI</p>
-        <h1 class="text-3xl md:text-4xl leading-tight">
-          El Mahdi <span class="text-accent">Moubarak</span>
-        </h1>
-      </div>
-      <img
-        src={`${base}/profile-picture.webp`}
-        alt="Portrait of El Mahdi Moubarak"
-        width="400"
-        height="400"
-        class="w-32 h-32 md:w-44 md:h-44 rounded-full b-border object-cover shrink-0"
-        decoding="async"
-      />
+  <PageHero size="full" eyebrow={identity.title.en}>
+    <h1 class="t-display">
+      <span class="rise"><span style="--i:0">El Mahdi</span></span>
+      <span class="rise"><span style="--i:1">Moubarak</span></span>
+    </h1>
+    <p class="t-lede hero__lede fade-up" style="--i:1">{identity.headline.en}.</p>
+    <div class="hero__actions fade-up" style="--i:2">
+      <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="btn btn--solid">Book a call <Icon name="arrow" /></a>
+      <a href={`${base}/cv`} class="btn btn--line">View CV</a>
     </div>
-    <p class="text-base leading-relaxed max-w-2xl mb-8 text-body">
-      I build software and AI systems end-to-end: specs, architecture, code, deploy.
-      6 years across cybersecurity, healthcare and fintech, mostly as the only engineer
-      on the project. I work with founders and agencies who need something built
-      properly and shipped fast.
-    </p>
-    <p class="font-mono text-xs text-muted mb-8">
-      Based in Lille, France · Remote across Europe · French (native) &amp; English
-    </p>
+    <p class="t-meta mt-7 fade-up" style="--i:3">Based in Lille, France · Remote across Europe · French (native) &amp; English</p>
+    <div slot="visual" class="hero-motion fade-up" style="--i:2"><ServicesMotion /></div>
+  </PageHero>
 
-    <div class="flex flex-wrap gap-3">
-      <a href={`${base}/cv`} class="font-mono text-xs font-bold b-border px-4 py-2 b-lift bg-accent text-white border-ink hover:bg-accent-alt transition-colors inline-block">
-        View CV
-      </a>
-      <a href="https://calendly.com/moubarakelmahdipro/" target="_blank" class="font-mono text-xs font-bold b-border px-4 py-2 b-lift bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors inline-block">
-        Book a Call
-      </a>
-      <a href="mailto:elmahdi@moubarak.dev" class="font-mono text-xs font-bold b-border px-4 py-2 b-lift bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors inline-block">
-        Get in touch
-      </a>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section class="mb-16">
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-4">What I Do</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      {services.map((s) => (
-        <div class="b-border p-5 bg-paper dark:bg-dark-surface flex flex-col">
-          <h3 class="font-mono text-sm font-bold mb-2">{s.title}</h3>
-          <p class="text-sm text-body leading-relaxed flex-1">{s.description}</p>
-          <p class="font-mono text-[0.65rem] text-accent font-bold mt-4">{s.audience}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="mb-16">
-    <div class="flex items-center justify-between mb-4">
-      <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest">Projects</h2>
-      <a href={`${base}/portfolio`} class="font-mono text-xs text-muted hover:text-accent transition-colors">
-        full portfolio →
-      </a>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {projects.map((p) => (
-        <Card
-          title={p.title}
-          description={p.description}
-          href={p.href}
-          tags={p.tags}
-        />
-      ))}
-    </div>
-  </section>
-
-  <!-- Trust -->
-  <section class="mb-16">
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-4">They Trust Me</h2>
-
-    <div class="b-border bg-paper dark:bg-dark-surface p-6 md:flex md:items-start gap-6 mb-4">
-      <img
-        src={`${base}/driveco-training.webp`}
-        alt="Corporate AI training session delivered at DRIVECO"
-        width="800"
-        height="800"
-        class="b-border w-full md:w-52 h-auto mb-4 md:mb-0 shrink-0"
-        loading="lazy"
-        decoding="async"
-      />
-      <div>
-        <p class="text-sm leading-relaxed text-body italic mb-4">
-          “Learning how to use AI effectively is becoming a real lever for efficiency and impact.
-          During our ChatGPT Workshop, ‘Make AI work for you’, we explored how AI can support us
-          from the very first question to the automation of a complete business process.”
+  <div class="after-hero">
+    <!-- About -->
+    <section class="section wrap">
+      <div class="grid lg:grid-cols-12 gap-x-12 gap-y-6">
+        <p class="t-eyebrow lg:col-span-3 lg:pt-3">About</p>
+        <p class="t-statement scrub lg:col-span-9">
+          I build software and AI systems end-to-end: specs, architecture, code, deploy.
+          6 years across cybersecurity, healthcare and fintech, mostly as the only engineer
+          on the project. I work with founders and agencies who need something built
+          properly and shipped fast.
         </p>
-        <p class="font-mono text-xs font-bold">DRIVECO · HR Director</p>
-        <p class="font-mono text-[0.65rem] text-muted mb-3">on LinkedIn, after the corporate AI training I delivered</p>
-        <a
-          href="https://www.linkedin.com/posts/el-mahdi-moubarak_merci-%C3%A0-toute-l%C3%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/"
-          target="_blank"
-          class="font-mono text-xs underline underline-offset-2 hover:text-accent transition-colors"
-        >
-          Read the post on LinkedIn ↗
-        </a>
       </div>
-    </div>
+    </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="b-border p-5 bg-paper dark:bg-dark-surface flex flex-col">
-        <h3 class="font-mono text-sm font-bold mb-2">Agency work · KSUR Services</h3>
-        <p class="text-sm text-body leading-relaxed flex-1 mb-3">
-          As CTO of KSUR Services, I own technical delivery for the agency's clients:
-          websites, e-commerce and web apps shipped for SMEs in France and Morocco.
-        </p>
-        <a
-          href="https://www.agence-ksur.com/realisations"
-          target="_blank"
-          class="font-mono text-xs underline underline-offset-2 hover:text-accent transition-colors"
-        >
-          See the agency portfolio ↗
-        </a>
-      </div>
-      <div class="b-border p-5 bg-paper dark:bg-dark-surface">
-        <h3 class="font-mono text-sm font-bold mb-3">Companies I've built for</h3>
-        <div class="flex flex-wrap gap-1.5">
-          {["DRIVECO", "Board of Cyber", "ALTAO Santé", "Worldline", "Deuspi", "KSUR Services"].map((c) => (
-            <span class="tag">{c}</span>
-          ))}
+    <!-- Services -->
+    <section class="section wrap">
+      <div class="s-head">
+        <div>
+          <p class="t-eyebrow">What I do</p>
+          <h2 class="t-h2">Three things<br />I build</h2>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Latest Posts -->
-  <section class="mb-16">
-    <div class="flex items-center justify-between mb-4">
-      <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest">Writing</h2>
-      <a href={`${base}/blog`} class="font-mono text-xs text-muted hover:text-accent transition-colors">
-        all posts →
-      </a>
-    </div>
-    <div class="space-y-3">
-      {latestPosts.map((post) => (
-        <a href={`${base}/blog/${post.id}`} class="flex items-baseline justify-between gap-4 py-2 border-b border-ink/10 dark:border-dark-border group">
-          <span class="font-mono text-sm font-medium group-hover:text-accent transition-colors">{post.data.title}</span>
-          <span class="font-mono text-[0.65rem] text-muted shrink-0">
-            {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-          </span>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section>
-    <div class="b-border p-6 bg-paper-alt dark:bg-dark-surface">
-      <p class="font-mono text-sm font-bold mb-1">Let's connect</p>
-      <p class="text-sm text-muted mb-4">Open to interesting projects and conversations.</p>
-      <div class="flex flex-wrap gap-3 font-mono text-xs">
-        <a href="mailto:elmahdi@moubarak.dev" class="underline underline-offset-2 hover:text-accent transition-colors">elmahdi@moubarak.dev</a>
-        <span class="text-muted">·</span>
-        <a href="https://linkedin.com/in/el-mahdi-moubarak" target="_blank" class="underline underline-offset-2 hover:text-accent transition-colors">LinkedIn</a>
-        <span class="text-muted">·</span>
-        <a href="https://github.com/emoubarak" target="_blank" class="underline underline-offset-2 hover:text-accent transition-colors">GitHub</a>
+      <div class="services">
+        {services.map((s, i) => (
+          <div class="service" data-reveal style={`--i:${i}`}>
+            <h3 class="t-h3 service__title">{s.title}</h3>
+            <div>
+              <p class="text-2 text-[1.08rem] leading-relaxed max-w-[56ch]">{s.description}</p>
+              <p class="service__who">{s.audience}</p>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Selected work -->
+    <section class="section wrap">
+      <div class="s-head">
+        <div>
+          <p class="t-eyebrow">Projects</p>
+          <h2 class="t-h2">Selected work</h2>
+        </div>
+        <a href={`${base}/portfolio`} class="link-arrow shrink-0 mb-2">Full portfolio <Icon name="arrow" /></a>
+      </div>
+
+      {projects.map((p, i) => (
+        <article class:list={['work-row', { 'work-row--flip': i % 2 === 1 }]}>
+          <a href={p.url} target="_blank" rel="noopener noreferrer" class="work-row__media frame block" data-reveal aria-label={`Open ${p.title}`}>
+            <img src={p.thumb} alt={`${p.title}: ${p.subtitle}`} width="1600" height="1000" loading="lazy" decoding="async" />
+          </a>
+          <div class="work-row__body" data-reveal style="--i:2">
+            <p class="t-meta">{p.categoryLabel} · {p.role}</p>
+            <h3 class="t-h3 work-row__title"><a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a></h3>
+            <p class="text-2 leading-relaxed max-w-[52ch]">{p.description}</p>
+            <div class="chips mt-6">{p.tags.map((t) => <span class="chip">{t}</span>)}</div>
+            <a href={p.url} target="_blank" rel="noopener noreferrer" class="link-arrow mt-8">{p.subtitle} <Icon name="out" /></a>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <!-- Trust -->
+    <section class="section wrap">
+      <div class="band-ink px-[clamp(1.5rem,5vw,5rem)] py-[clamp(3rem,7vw,6.5rem)]">
+        <div class="grid lg:grid-cols-12 gap-x-16 gap-y-12 items-center">
+          <div class="lg:col-span-7" data-reveal>
+            <p class="t-eyebrow mb-8">They trust me</p>
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote class="font-[family-name:var(--font-display)] font-medium text-[clamp(1.3rem,1.05rem+0.9vw,1.85rem)] leading-[1.35] tracking-[-0.015em]">
+              {driveco.quote.en}
+            </blockquote>
+            <div class="mt-8 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <p class="font-semibold">{driveco.role.en} · {driveco.org}</p>
+              <a href="https://www.linkedin.com/posts/el-mahdi-moubarak_merci-%C3%A0-toute-l%C3%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/" target="_blank" rel="noopener noreferrer" class="link text-[0.95rem]">Read the post on LinkedIn ↗</a>
+            </div>
+            <p class="t-meta mt-1">On LinkedIn, after the corporate AI training I delivered</p>
+          </div>
+          <figure class="lg:col-span-5 frame !bg-transparent" data-reveal style="--i:1">
+            <img src={`${base}/driveco-training.webp`} alt="Corporate AI training session delivered at DRIVECO" width="800" height="800" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-x-16 gap-y-12 mt-[clamp(3.5rem,6vw,6rem)] pt-[clamp(3rem,5vw,4.5rem)] border-t border-[var(--line)]">
+          <div class="lg:col-span-7" data-reveal>
+            <blockquote class="font-[family-name:var(--font-display)] font-medium text-[clamp(1.2rem,1.05rem+0.5vw,1.5rem)] leading-[1.4] tracking-[-0.01em]">
+              “{deuspi.quote.en}”
+            </blockquote>
+            <p class="mt-5 font-semibold">{deuspi.role.en} · {deuspi.org} <span class="t-meta font-normal ml-2">on {deuspi.source}</span></p>
+          </div>
+          <div class="lg:col-span-5" data-reveal style="--i:1">
+            <h3 class="t-h4 mb-3">Agency work · KSUR Services</h3>
+            <p class="text-2 leading-relaxed">
+              As CTO of KSUR Services, I own technical delivery for the agency's clients:
+              websites, e-commerce and web apps shipped for SMEs in France and Morocco.
+            </p>
+            <a href="https://www.agence-ksur.com/realisations" target="_blank" rel="noopener noreferrer" class="link-arrow mt-5">See the agency portfolio <Icon name="out" /></a>
+          </div>
+        </div>
+
+        <div class="mt-[clamp(3.5rem,6vw,6rem)]">
+          <p class="t-eyebrow mb-10">Companies I've built for</p>
+          <div class="logos">
+            {logos.map((l, i) => (
+              <span class="logo" role="img" aria-label={l.name} title={l.name} data-reveal style={`--src:url(${base}/logos/${l.file}.png);--h:${l.h};--i:${i}`}></span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section class="section wrap">
+      <div class="s-head">
+        <div>
+          <p class="t-eyebrow">Writing</p>
+          <h2 class="t-h2">Latest posts</h2>
+        </div>
+        <a href={`${base}/blog`} class="link-arrow shrink-0 mb-2">All posts <Icon name="arrow" /></a>
+      </div>
+      <PostList posts={latestPosts} />
+    </section>
+
+    <!-- Contact -->
+    <section class="wrap pb-[var(--section)]">
+      <div class="band-orange on-orange px-[clamp(1.5rem,5vw,5rem)] py-[clamp(3rem,7vw,6rem)] grid lg:grid-cols-12 gap-10 items-end" data-reveal>
+        <div class="lg:col-span-7">
+          <p class="t-eyebrow mb-6">Contact</p>
+          <h2 class="t-page">Let's talk about your project</h2>
+          <p class="t-lede mt-6 max-w-[34ch]">Open to interesting projects and conversations.</p>
+        </div>
+        <div class="lg:col-span-5 flex flex-col items-start gap-4 lg:items-end">
+          <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="btn btn--solid">Book a call <Icon name="arrow" /></a>
+          <div class="flex items-center gap-2">
+            <a href={`mailto:${identity.email}`} class="btn btn--line">{identity.email}</a>
+            <button type="button" class="icon-btn relative !text-[#14161a] hover:!bg-black/10" data-copy={identity.email} aria-label="Copy the email address">
+              <Icon name="copy" /><span class="copied-tip">Copied</span>
+            </button>
+          </div>
+          <div class="flex gap-6 mt-2 font-semibold">
+            <a href={identity.linkedin} target="_blank" rel="noopener noreferrer" class="link">LinkedIn ↗</a>
+            <a href={identity.github} target="_blank" rel="noopener noreferrer" class="link">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
 </Layout>

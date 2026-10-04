@@ -1,4 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#fbbf24"/>
-  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-family="monospace" font-weight="900" font-size="20" fill="#1a1a1a">M</text>
+  <rect width="32" height="32" rx="9" fill="#fc7b42"/>
+  <text x="16" y="17" text-anchor="middle" dominant-baseline="central" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="15" letter-spacing="-1" fill="#14161a">EM</text>
 </svg>

@@ -9,9 +9,9 @@ les blocs copiables de `/kit`, puis LinkedIn, Malt, Upwork et Fiverr.
 
 | Page | Importe |
 |---|---|
-| `pages/index.astro` | `services` (toutes sauf Shopify), `projects` (4 en vedette) |
+| `pages/index.astro` | `identity`, `services` (les 3 lignes phares), `projects` (4 en vedette), `testimonials` |
 | `pages/cv.astro` | `aiApproach` (principes, chacun avec sa preuve), `experiences`, `education`, `techGroups`, `interests`, `projects` |
-| `pages/portfolio.astro` | `projects`, `projectCategories` |
+| `pages/portfolio.astro` | `projects` (`thumb` pour la carte, `previews` pour la modale), `projectCategories` |
 | `pages/kit.astro` | `identity`, `education`, `certifications`, `aiApproach` (bloc EN « How I work with AI » généré) — et garde sa prose EN/FR propre |
 
 `kit.astro` conserve les textes rédigés à la main (EN + FR) destinés au copier-coller sur chaque

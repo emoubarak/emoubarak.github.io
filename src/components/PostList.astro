@@ -1,0 +1,52 @@
+---
+// Article rows. On desktop the cover follows the cursor; on mobile it sits as a thumbnail on the left.
+// Posts without a cover get a plain row, never an empty box.
+import type { CollectionEntry } from 'astro:content';
+interface Props { posts: CollectionEntry<'blog'>[]; dateStyle?: 'short' | 'long' }
+const { posts, dateStyle = 'short' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const src = (c?: string) => (c && c.startsWith('/') ? `${base}${c}` : c);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', dateStyle === 'long' ? { month: 'short', day: 'numeric', year: 'numeric' } : { month: 'short', year: 'numeric' });
+---
+
+<div class="border-t border-[var(--line)]" data-preview-list>
+  {posts.map((post, i) => (
+    <a href={`${base}/blog/${post.id}`} class:list={['post-row', { 'post-row--plain': !post.data.cover }]} data-cover={src(post.data.cover)} data-reveal style={`--i:${i % 3}`}>
+      {post.data.cover && <span class="post-row__thumb"><img src={src(post.data.cover)} alt="" loading="lazy" /></span>}
+      <h3 class="t-h4 post-row__title">{post.data.title}</h3>
+      <span class="t-meta post-row__date whitespace-nowrap">{fmt(post.data.pubDate)}</span>
+      <p class="post-row__desc text-2 text-[0.98rem] leading-relaxed line-clamp-2 max-w-[75ch]">{post.data.description}</p>
+    </a>
+  ))}
+</div>
+
+<div class="cursor-preview" aria-hidden="true"></div>
+
+<script is:inline>
+  (function () {
+    var list = document.querySelector('[data-preview-list]');
+    var box = document.querySelector('.cursor-preview');
+    if (!list || !box || !matchMedia('(hover: hover) and (pointer: fine) and (min-width: 900px)').matches) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var img = document.createElement('img'); img.alt = ''; box.appendChild(img);
+    var x = 0, y = 0, tx = 0, ty = 0, raf = 0;
+    function loop() {
+      x += (tx - x) * 0.16; y += (ty - y) * 0.16;
+      box.style.transform = 'translate3d(' + (x + 28) + 'px,' + (y - 120) + 'px,0)';
+      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(loop) : 0;
+    }
+    list.querySelectorAll('[data-cover]').forEach(function (row) {
+      if (!row.dataset.cover) return;
+      row.addEventListener('mouseenter', function (e) {
+        img.src = row.dataset.cover;
+        if (!box.classList.contains('on')) { x = tx = e.clientX; y = ty = e.clientY; loop(); }
+        box.classList.add('on');
+      });
+      row.addEventListener('mouseleave', function () { box.classList.remove('on'); });
+    });
+    list.addEventListener('mousemove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      if (!raf) raf = requestAnimationFrame(loop);
+    });
+  })();
+</script>

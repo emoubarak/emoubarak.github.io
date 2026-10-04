@@ -1,24 +1,32 @@
 ---
 import '../styles/global.css';
+import { identity } from '../data/profile.js';
 
 interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
+  /** Pages without an orange hero at the top (kit, 404) start with a solid header and a padded container. */
+  contained?: boolean;
 }
 
-const { title, description = "El Mahdi Moubarak - Senior Software Engineer · SaaS & AI", noindex = false } = Astro.props;
+const { title, description = "El Mahdi Moubarak - Senior Software Engineer · SaaS & AI", noindex = false, contained = false } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const site = Astro.site ?? new URL('https://moubarak.dev');
 const ogImage = new URL(`${base}/og.png`, site).href;
 const canonicalUrl = new URL(Astro.url.pathname, site).href;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const navLinks = [
-  { href: `${base}/`, label: "Home" },
-  { href: `${base}/portfolio`, label: "Portfolio" },
-  { href: `${base}/blog`, label: "Blog" },
-  { href: `${base}/cv`, label: "CV" },
+  { href: `${base}/portfolio`, label: 'Portfolio' },
+  { href: `${base}/blog`, label: 'Blog' },
+  { href: `${base}/cv`, label: 'CV' },
 ];
+const isCurrent = (href: string) => {
+  const h = href.replace(base, '') || '/';
+  return path === h || (h !== '/' && path.startsWith(h + '/'));
+};
+const arrow = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 ---
 
 <!doctype html>
@@ -28,6 +36,7 @@ const navLinks = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <meta name="generator" content={Astro.generator} />
+  <meta name="theme-color" content="#fc7b42" />
   {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={canonicalUrl} />
   <meta property="og:title" content={title} />
@@ -43,76 +52,197 @@ const navLinks = [
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
   <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+  <link rel="apple-touch-icon" href={`${base}/apple-touch-icon.png`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" />
   <title>{title}</title>
   <script is:inline>
-    (function() {
-      const t = localStorage.getItem('theme');
-      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      }
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) d.classList.add('dark');
     })();
   </script>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class:list={['min-h-screen flex flex-col', { kit: contained }]}>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:px-4 focus:py-2 focus:rounded-full focus:bg-ink focus:text-white">Skip to content</a>
 
-  <header class="border-b-2 border-ink dark:border-dark-border py-4 sticky top-0 z-50 bg-paper dark:bg-dark-paper">
-    <nav class="max-w-3xl mx-auto px-5 flex items-center justify-between">
-      <a href={`${base}/`} class="font-mono text-sm font-bold tracking-tight hover:text-accent transition-colors">
-        emoubarak
+  <header class:list={['site-header', { 'is-solid': contained }]} data-solid={contained ? 'always' : undefined}>
+    <div class="wrap site-header__row">
+      <a href={`${base}/`} class="brand" aria-label="El Mahdi Moubarak, home">
+        <span class="brand__mark" aria-hidden="true">EM</span>
+        <span>El Mahdi Moubarak</span>
       </a>
 
-      <div class="flex items-center gap-5">
-        {navLinks.map(link => (
-          <a href={link.href} class="font-mono text-xs font-medium text-muted hover:text-ink dark:hover:text-dark-ink transition-colors">
-            {link.label}
-          </a>
+      <nav class="nav" aria-label="Main">
+        {navLinks.map((l) => (
+          <a href={l.href} class="nav__link" aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a>
         ))}
+      </nav>
 
-        <a
-          href="https://github.com/emoubarak"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub profile"
-          class="text-muted hover:text-ink dark:hover:text-dark-ink transition-colors"
-        >
-          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
-          </svg>
+      <div class="flex items-center gap-1">
+        <a href={identity.github} target="_blank" rel="noopener noreferrer" class="icon-btn header-gh" aria-label="GitHub profile">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         </a>
-
-        <button
-          id="theme-toggle"
-          class="b-border w-8 h-8 flex items-center justify-center text-xs font-mono font-bold cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors"
-          aria-label="Toggle dark mode"
-        >
-          <span id="icon-light" class="dark:hidden">D</span>
-          <span id="icon-dark" class="hidden dark:inline">L</span>
+        <button type="button" class="icon-btn theme-toggle" data-theme-toggle aria-label="Switch between light and dark theme">
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+        </button>
+        <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="btn btn--solid btn--sm header-cta ml-2">Book a call</a>
+        <button type="button" class="icon-btn burger" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <span></span><span></span>
         </button>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main class="flex-1 max-w-3xl mx-auto px-5 py-12 w-full">
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href={`${base}/`} aria-current={path === '/' ? 'page' : undefined}>Home</a>
+      {navLinks.map((l) => (
+        <a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a>
+      ))}
+    </nav>
+    <div class="mobile-menu__foot">
+      <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="btn btn--solid">Book a call <Fragment set:html={arrow} /></a>
+      <a href={`mailto:${identity.email}`} class="btn btn--line">Email</a>
+      <a href={identity.github} target="_blank" rel="noopener noreferrer" class="btn btn--ghost">GitHub</a>
+      <a href={identity.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn--ghost">LinkedIn</a>
+    </div>
+  </div>
+
+  <main id="main" class:list={['flex-1 w-full', { 'wrap pt-[calc(var(--header-h)+3rem)] pb-24': contained }]}>
     <slot />
   </main>
 
-  <footer class="border-t-2 border-ink dark:border-dark-border py-6">
-    <div class="max-w-3xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-muted">
-      <span>&copy; {new Date().getFullYear()} El Mahdi Moubarak</span>
-      <div class="flex gap-4">
-        <a href="mailto:elmahdi@moubarak.dev" class="hover:text-ink dark:hover:text-dark-ink transition-colors">email</a>
-        <a href="https://linkedin.com/in/el-mahdi-moubarak" target="_blank" class="hover:text-ink dark:hover:text-dark-ink transition-colors">linkedin</a>
-        <a href="https://github.com/emoubarak" target="_blank" class="hover:text-ink dark:hover:text-dark-ink transition-colors">github</a>
+  <footer class="site-footer relative z-[1] bg-[var(--bg)]">
+    <div class="wrap py-10 flex flex-col md:flex-row md:items-center justify-between gap-6 text-[0.95rem]">
+      <div class="flex items-center gap-3 text-[var(--muted)]">
+        <span class="brand__mark !w-7 !h-7 !text-[0.68rem] !rounded-lg" aria-hidden="true">EM</span>
+        <span>&copy; {new Date().getFullYear()} El Mahdi Moubarak · Lille, France</span>
       </div>
+      <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
+        <a href={`${base}/portfolio`}>Portfolio</a>
+        <a href={`${base}/blog`}>Blog</a>
+        <a href={`${base}/cv`}>CV</a>
+        <a href={`mailto:${identity.email}`}>Email</a>
+        <a href={identity.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href={identity.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
     </div>
   </footer>
 
   <script is:inline>
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-      const h = document.documentElement;
-      h.classList.toggle('dark');
-      localStorage.setItem('theme', h.classList.contains('dark') ? 'dark' : 'light');
-    });
+    (function () {
+      var root = document.documentElement;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Theme
+      document.querySelectorAll('[data-theme-toggle]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          root.classList.toggle('dark');
+          try { localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+        });
+      });
+
+      // Header: transparent over the orange hero, glass once the hero is behind it
+      var header = document.querySelector('.site-header');
+      var hero = document.querySelector('[data-hero]');
+      function onScroll() {
+        if (header.dataset.solid === 'always') return;
+        var limit = hero ? hero.offsetHeight - header.offsetHeight - 8 : 4;
+        // the home hero is sticky, so measure the content that slides over it instead
+        var over = document.querySelector('.after-hero');
+        var past = over ? over.getBoundingClientRect().top <= header.offsetHeight : window.scrollY > limit;
+        header.classList.toggle('is-solid', past);
+      }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+
+      // Mobile menu
+      var toggle = document.querySelector('[data-menu-toggle]');
+      var menu = document.getElementById('mobile-menu');
+      function setMenu(open) {
+        root.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menu.setAttribute('aria-hidden', String(!open));
+        if (open) menu.querySelector('a').focus({ preventScroll: true });
+      }
+      toggle.addEventListener('click', function () { setMenu(!root.classList.contains('menu-open')); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('menu-open')) { setMenu(false); toggle.focus(); } });
+      menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+      window.matchMedia('(min-width: 861px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
+
+      // Scroll reveals: checked on scroll rather than with IntersectionObserver, so a fast scroll,
+      // an anchor jump or a restored scroll position never leaves a block hidden above the screen
+      var pending = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+      function reveal() {
+        var limit = window.innerHeight * 0.92;
+        pending = pending.filter(function (el) {
+          if (el.getBoundingClientRect().top < limit) { el.classList.add('is-in'); return false; }
+          return true;
+        });
+        if (!pending.length) window.removeEventListener('scroll', onReveal);
+      }
+      // throttled with timers, not requestAnimationFrame: rAF is paused in background tabs,
+      // where a block would otherwise stay invisible after a scroll
+      var lastReveal = 0, revealTimer = 0;
+      function onReveal() {
+        var now = Date.now();
+        if (now - lastReveal > 80) { lastReveal = now; reveal(); }
+        else if (!revealTimer) revealTimer = setTimeout(function () { revealTimer = 0; lastReveal = Date.now(); reveal(); }, 90);
+      }
+      if (reduce) pending.forEach(function (el) { el.classList.add('is-in'); });
+      else { reveal(); window.addEventListener('scroll', onReveal, { passive: true }); window.addEventListener('resize', onReveal); }
+
+      // Statement: words light up as the paragraph crosses the screen
+      document.querySelectorAll('.scrub').forEach(function (el) {
+        if (reduce) return;
+        var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        var nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(function (n) {
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var s = document.createElement('span'); s.className = 'w'; s.textContent = part; frag.appendChild(s);
+          });
+          n.parentNode.replaceChild(frag, n);
+        });
+        var words = el.querySelectorAll('.w');
+        var ticking = false;
+        function paint() {
+          ticking = false;
+          var r = el.getBoundingClientRect();
+          var vh = window.innerHeight;
+          // 0 when the top enters at 88% of the screen, 1 when the bottom reaches 62%
+          var p = (vh * 0.88 - r.top) / (r.height + vh * 0.26);
+          var n = Math.round(Math.max(0, Math.min(1, p)) * words.length);
+          for (var i = 0; i < words.length; i++) words[i].classList.toggle('on', i < n);
+        }
+        paint();
+        window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });
+        window.addEventListener('resize', paint);
+      });
+
+      // Copy buttons (email)
+      document.querySelectorAll('[data-copy]').forEach(function (b) {
+        b.addEventListener('click', function (e) {
+          if (!navigator.clipboard) return;
+          e.preventDefault();
+          navigator.clipboard.writeText(b.dataset.copy).then(function () {
+            b.classList.add('is-copied');
+            setTimeout(function () { b.classList.remove('is-copied'); }, 1600);
+          });
+        });
+      });
+    })();
   </script>
 </body>
 </html>

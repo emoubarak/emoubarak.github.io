@@ -1,0 +1,243 @@
+---
+// Home hero visual: one app window drawn in ink on the orange field, cycling through the three services.
+// Pure SVG + CSS keyframes; a small script only switches scenes, pauses off screen, and lets the tabs jump.
+// prefers-reduced-motion: no auto-advance, every scene is shown fully drawn.
+const scenes = [
+  { key: 'saas', label: 'SaaS & web apps' },
+  { key: 'agents', label: 'AI automation & agents' },
+  { key: 'rag', label: 'LLM & RAG' },
+];
+---
+
+<div class="sm" data-sm data-scene="0">
+  <svg class="sm__svg" viewBox="0 0 600 520" role="img" aria-labelledby="sm-title">
+    <title id="sm-title">Animated illustration of three services: a web app being built and deployed, an AI agent moving work from an inbox to a CRM, and a chat answering from documents with a cited source.</title>
+    <defs>
+      <filter id="sm-shadow" x="-10%" y="-10%" width="120%" height="130%">
+        <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#5a1e05" flood-opacity="0.32" />
+      </filter>
+    </defs>
+
+    <!-- Window frame, shared by the three scenes -->
+    <g class="sm__float">
+      <g filter="url(#sm-shadow)">
+        <rect x="24" y="20" width="552" height="420" rx="22" fill="#fffaf6" stroke="#14161a" stroke-width="2.5" />
+      </g>
+      <line x1="24" y1="64" x2="576" y2="64" stroke="#14161a" stroke-width="2" />
+      <circle cx="54" cy="42" r="6" fill="#14161a" /><circle cx="74" cy="42" r="6" fill="none" stroke="#14161a" stroke-width="2" /><circle cx="94" cy="42" r="6" fill="none" stroke="#14161a" stroke-width="2" />
+      <rect x="200" y="32" width="200" height="20" rx="10" fill="#f6e3d8" />
+
+      <!-- Scene 1: SaaS & web apps, the product assembles itself then ships -->
+      <g class="sc sc--saas">
+        <rect class="a pop" style="--d:0" x="44" y="84" width="104" height="336" rx="12" fill="#14161a" />
+        <rect class="a grow" style="--d:.25" x="60" y="108" width="62" height="9" rx="4.5" fill="#fc7b42" />
+        <rect class="a grow" style="--d:.33" x="60" y="134" width="72" height="8" rx="4" fill="#5b5f66" />
+        <rect class="a grow" style="--d:.41" x="60" y="156" width="56" height="8" rx="4" fill="#5b5f66" />
+        <rect class="a grow" style="--d:.49" x="60" y="178" width="66" height="8" rx="4" fill="#5b5f66" />
+
+        <g class="a pop" style="--d:.55"><rect x="166" y="84" width="118" height="78" rx="12" fill="#fff" stroke="#14161a" stroke-width="2" /><rect x="182" y="102" width="44" height="7" rx="3.5" fill="#c9c3be" /><rect x="182" y="124" width="70" height="18" rx="5" fill="#14161a" /></g>
+        <g class="a pop" style="--d:.68"><rect x="296" y="84" width="118" height="78" rx="12" fill="#fff" stroke="#14161a" stroke-width="2" /><rect x="312" y="102" width="52" height="7" rx="3.5" fill="#c9c3be" /><rect x="312" y="124" width="58" height="18" rx="5" fill="#14161a" /></g>
+        <g class="a pop" style="--d:.81"><rect x="426" y="84" width="130" height="78" rx="12" fill="#fc7b42" stroke="#14161a" stroke-width="2" /><rect x="442" y="102" width="48" height="7" rx="3.5" fill="#14161a" opacity=".45" /><rect x="442" y="124" width="76" height="18" rx="5" fill="#14161a" /></g>
+
+        <g class="a pop" style="--d:.95">
+          <rect x="166" y="178" width="390" height="242" rx="12" fill="#fff" stroke="#14161a" stroke-width="2" />
+          <line x1="190" y1="370" x2="532" y2="370" stroke="#e7ded8" stroke-width="2" />
+          <line x1="190" y1="320" x2="532" y2="320" stroke="#e7ded8" stroke-width="2" />
+          <line x1="190" y1="270" x2="532" y2="270" stroke="#e7ded8" stroke-width="2" />
+          <path class="draw" style="--d:1.25;--len:460" d="M190 380 C 230 372, 250 330, 290 336 S 350 300, 380 292 S 440 250, 470 240 S 515 214, 532 206" fill="none" stroke="#14161a" stroke-width="3.5" stroke-linecap="round" pathLength="460" />
+          <circle class="a pop" style="--d:2.2" cx="532" cy="206" r="7" fill="#fc7b42" stroke="#14161a" stroke-width="2.5" />
+        </g>
+
+        <g class="a toast" style="--d:2.5">
+          <rect x="330" y="452" width="246" height="50" rx="25" fill="#14161a" />
+          <circle cx="358" cy="477" r="12" fill="#3ccf8e" />
+          <path d="M352 477 l4.5 4.5 l8 -9" fill="none" stroke="#14161a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          <text x="380" y="483" fill="#fff" font-size="17" font-weight="600" font-family="Geist, system-ui, sans-serif">Live in production</text>
+        </g>
+      </g>
+
+      <!-- Scene 2: AI automation & agents, work moves from the inbox to the CRM by itself -->
+      <g class="sc sc--agents">
+        <g class="a pop" style="--d:0">
+          <rect x="52" y="104" width="128" height="104" rx="14" fill="#fff" stroke="#14161a" stroke-width="2" />
+          <rect x="76" y="128" width="40" height="30" rx="5" fill="none" stroke="#14161a" stroke-width="2.5" /><path d="M77 130 l19 15 l19 -15" fill="none" stroke="#14161a" stroke-width="2.5" stroke-linejoin="round" />
+          <text x="76" y="190" font-size="17" font-weight="650" fill="#14161a" font-family="Geist, system-ui, sans-serif">Inbox</text>
+        </g>
+        <g class="a pop" style="--d:.25">
+          <circle cx="300" cy="156" r="58" fill="#14161a" />
+          <path class="spin" d="M300 128 l7 21 l21 7 l-21 7 l-7 21 l-7 -21 l-21 -7 l21 -7 z" fill="#fc7b42" />
+          <text x="300" y="242" text-anchor="middle" font-size="17" font-weight="650" fill="#14161a" font-family="Geist, system-ui, sans-serif">Agent</text>
+        </g>
+        <g class="a pop" style="--d:.5">
+          <rect x="420" y="104" width="128" height="104" rx="14" fill="#fff" stroke="#14161a" stroke-width="2" />
+          <rect x="444" y="126" width="48" height="36" rx="4" fill="none" stroke="#14161a" stroke-width="2.5" /><line x1="444" y1="138" x2="492" y2="138" stroke="#14161a" stroke-width="2" /><line x1="444" y1="150" x2="492" y2="150" stroke="#14161a" stroke-width="2" /><line x1="460" y1="126" x2="460" y2="162" stroke="#14161a" stroke-width="2" />
+          <text x="444" y="190" font-size="17" font-weight="650" fill="#14161a" font-family="Geist, system-ui, sans-serif">CRM</text>
+        </g>
+        <path class="draw" style="--d:.7;--len:60" d="M184 156 H240" stroke="#14161a" stroke-width="2.5" stroke-dasharray="6 6" pathLength="60" fill="none" />
+        <path class="draw" style="--d:.9;--len:60" d="M360 156 H416" stroke="#14161a" stroke-width="2.5" stroke-dasharray="6 6" pathLength="60" fill="none" />
+        <circle class="packet" style="--d:1.1;--x0:184px;--x1:240px" cx="0" cy="156" r="7" fill="#fc7b42" stroke="#14161a" stroke-width="2" />
+        <circle class="packet" style="--d:1.6;--x0:360px;--x1:416px" cx="0" cy="156" r="7" fill="#fc7b42" stroke="#14161a" stroke-width="2" />
+
+        <g class="a pop" style="--d:1.2">
+          <rect x="52" y="272" width="496" height="148" rx="14" fill="#fff" stroke="#14161a" stroke-width="2" />
+        </g>
+        {[['Sort the incoming requests', 1.5, 308], ['Update the client record', 2.0, 350], ['Draft the replies for review', 2.5, 392]].map(([t, d, y]) => (
+          <g class="a slide" style={`--d:${d}`}>
+            <rect x="76" y={Number(y) - 15} width="26" height="26" rx="7" fill="none" stroke="#14161a" stroke-width="2.5" />
+            <path class="draw" style={`--d:${Number(d) + 0.3};--len:24`} d={`M82 ${Number(y) - 2} l5.5 5.5 l10 -11`} fill="none" stroke="#14161a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="24" />
+            <text x="120" y={Number(y) + 6} font-size="18" fill="#14161a" font-family="Geist, system-ui, sans-serif">{t}</text>
+          </g>
+        ))}
+      </g>
+
+      <!-- Scene 3: LLM & RAG, a question answered from the company's own documents, with its source -->
+      <g class="sc sc--rag">
+        {[0, 1, 2].map((i) => (
+          <g class="a slide" style={`--d:${i * 0.18}`}>
+            <rect x={52 + i * 14} y={96 + i * 22} width="132" height="168" rx="12" fill="#fff" stroke="#14161a" stroke-width="2" />
+            <rect x={70 + i * 14} y={118 + i * 22} width="70" height="8" rx="4" fill="#14161a" />
+            <rect x={70 + i * 14} y={140 + i * 22} width="94" height="6" rx="3" fill="#c9c3be" />
+            <rect x={70 + i * 14} y={156 + i * 22} width="84" height="6" rx="3" fill="#c9c3be" />
+            <rect x={70 + i * 14} y={172 + i * 22} width="90" height="6" rx="3" fill="#c9c3be" />
+            {i === 2 && <rect class="a hl" style="--d:2.6" x={66 + i * 14} y={186 + i * 22} width="102" height="14" rx="4" fill="#fc7b42" opacity=".55" />}
+            <rect x={70 + i * 14} y={190 + i * 22} width="74" height="6" rx="3" fill="#c9c3be" />
+          </g>
+        ))}
+        <text class="a slide" style="--d:.6" x="80" y="350" font-size="15" fill="#5b5f66" font-family="'JetBrains Mono', monospace">policy.pdf</text>
+        <path class="draw" style="--d:.7;--len:70" d="M238 230 C 262 230, 262 200, 290 200" fill="none" stroke="#14161a" stroke-width="2.5" stroke-dasharray="6 6" pathLength="70" />
+
+        <g class="a pop" style="--d:.9">
+          <rect x="296" y="88" width="260" height="330" rx="14" fill="#fff" stroke="#14161a" stroke-width="2" />
+        </g>
+        <g class="a bubble-r" style="--d:1.2">
+          <rect x="356" y="110" width="182" height="52" rx="16" fill="#14161a" />
+          <text x="374" y="142" font-size="16" fill="#fff" font-family="Geist, system-ui, sans-serif">Refund window?</text>
+        </g>
+        <g class="a typing" style="--d:1.7">
+          <circle cx="330" cy="196" r="5" fill="#14161a" /><circle cx="346" cy="196" r="5" fill="#14161a" /><circle cx="362" cy="196" r="5" fill="#14161a" />
+        </g>
+        <g class="a bubble-l" style="--d:2.5">
+          <rect x="314" y="182" width="224" height="140" rx="16" fill="#fbe1d3" stroke="#14161a" stroke-width="2" />
+          <rect class="a grow" style="--d:2.75" x="332" y="204" width="180" height="8" rx="4" fill="#14161a" />
+          <rect class="a grow" style="--d:2.85" x="332" y="224" width="160" height="8" rx="4" fill="#14161a" />
+          <rect class="a grow" style="--d:2.95" x="332" y="244" width="176" height="8" rx="4" fill="#14161a" />
+          <rect class="a grow" style="--d:3.05" x="332" y="264" width="110" height="8" rx="4" fill="#14161a" />
+          <g class="a pop" style="--d:3.3">
+            <rect x="332" y="284" width="158" height="26" rx="13" fill="#fff" stroke="#14161a" stroke-width="2" />
+            <text x="346" y="302" font-size="13" fill="#14161a" font-family="'JetBrains Mono', monospace">policy.pdf · p.4</text>
+          </g>
+        </g>
+        <g class="a pop" style="--d:1">
+          <rect x="314" y="366" width="224" height="36" rx="18" fill="none" stroke="#14161a" stroke-width="2" />
+          <circle cx="518" cy="384" r="10" fill="#14161a" />
+        </g>
+      </g>
+    </g>
+  </svg>
+
+  <div class="sm__tabs" role="tablist" aria-label="Services">
+    {scenes.map((s, i) => (
+      <button type="button" class="sm__tab" role="tab" data-sm-tab={i} aria-selected={i === 0 ? 'true' : 'false'}>
+        <span class="sm__bar"><span></span></span>
+        {s.label}
+      </button>
+    ))}
+  </div>
+</div>
+
+<style is:global>
+  .sm { position: relative; width: 100%; max-width: 42rem; margin-inline: auto; }
+  .sm__svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .sm__float { animation: sm-float 7s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes sm-float { 50% { transform: translateY(-8px) rotate(-0.4deg); } }
+
+  /* Scenes: only the active one is visible; its parts replay their entrance each time it becomes active */
+  .sc { opacity: 0; transition: opacity 0.35s ease; }
+  .sm[data-scene='0'] .sc--saas, .sm[data-scene='1'] .sc--agents, .sm[data-scene='2'] .sc--rag { opacity: 1; }
+  .sm.is-paused * { animation-play-state: paused !important; }
+
+  .sc .a { transform-box: fill-box; transform-origin: center; animation-duration: 0.7s; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); animation-fill-mode: both; animation-delay: calc(var(--d, 0) * 1s); }
+  .sc .pop { animation-name: sm-pop; }
+  .sc .grow { animation-name: sm-grow; transform-origin: left center; }
+  .sc .slide { animation-name: sm-slide; }
+  .sc .toast { animation-name: sm-toast; }
+  .sc .bubble-r { animation-name: sm-pop; transform-origin: right bottom; }
+  .sc .bubble-l { animation-name: sm-pop; transform-origin: left top; }
+  .sc .hl { animation-name: sm-grow; transform-origin: left center; }
+  .sc .typing { animation: sm-typing 0.8s ease both; animation-delay: calc(var(--d) * 1s); }
+  .sc .draw { stroke-dasharray: var(--len) var(--len); animation: sm-draw 1s cubic-bezier(0.65, 0, 0.35, 1) both; animation-delay: calc(var(--d, 0) * 1s); }
+  .sc path.draw[stroke-dasharray='6 6'] { stroke-dasharray: 6 6; animation-name: sm-dash-in; }
+  .sc .packet { animation: sm-packet 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite both; animation-delay: calc(var(--d, 0) * 1s); }
+  .sc .spin { transform-box: fill-box; transform-origin: center; animation: sm-spin 6s linear infinite; }
+
+  @keyframes sm-pop { from { opacity: 0; transform: scale(0.82) translateY(10px); } }
+  @keyframes sm-grow { from { opacity: 0; transform: scaleX(0); } }
+  @keyframes sm-slide { from { opacity: 0; transform: translateX(-18px); } }
+  @keyframes sm-toast { from { opacity: 0; transform: translateY(26px) scale(0.92); } }
+  @keyframes sm-draw { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+  @keyframes sm-dash-in { from { opacity: 0; } }
+  @keyframes sm-typing { 0% { opacity: 0; } 15%, 75% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes sm-packet { 0% { opacity: 0; transform: translateX(var(--x0)); } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; transform: translateX(var(--x1)); } }
+  @keyframes sm-spin { to { transform: rotate(360deg); } }
+
+  .sm__tabs { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.1rem; flex-wrap: wrap; }
+  .sm__tab {
+    display: flex; flex-direction: column; gap: 0.45rem; align-items: flex-start;
+    min-width: 0; flex: 1 1 0; max-width: 12rem;
+    padding: 0.25rem 0.2rem; font-size: 0.86rem; font-weight: 600; line-height: 1.2; text-align: left;
+    color: rgb(20 22 26 / 0.62); cursor: pointer; transition: color 0.25s;
+  }
+  .sm__tab:hover, .sm__tab[aria-selected='true'] { color: #14161a; }
+  .sm__bar { display: block; width: 100%; height: 3px; border-radius: 3px; background: rgb(20 22 26 / 0.18); overflow: hidden; }
+  .sm__bar > span { display: block; height: 100%; width: 100%; background: #14161a; transform: scaleX(0); transform-origin: left; }
+  .sm__tab[aria-selected='true'] .sm__bar > span { animation: sm-progress var(--sm-dur, 6s) linear both; }
+  .sm.is-paused .sm__bar > span { animation-play-state: paused; }
+  @keyframes sm-progress { to { transform: scaleX(1); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sm__float, .sc .spin, .sc .packet { animation: none !important; }
+    .sc .a, .sc .draw { animation: none !important; opacity: 1; stroke-dashoffset: 0; }
+    .sc .typing { opacity: 0; }
+    .sm__tab[aria-selected='true'] .sm__bar > span { animation: none; transform: scaleX(1); }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var root = document.querySelector('[data-sm]');
+    if (!root) return;
+    var tabs = root.querySelectorAll('[data-sm-tab]');
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var DUR = 6000, scene = 0, timer = 0, visible = true;
+    root.style.setProperty('--sm-dur', DUR + 'ms');
+
+    function show(i) {
+      scene = (i + tabs.length) % tabs.length;
+      // a fresh copy of the scene replays every entrance animation from the start
+      var g = root.querySelectorAll('.sc')[scene];
+      g.replaceWith(g.cloneNode(true));
+      root.dataset.scene = String(scene);
+      tabs.forEach(function (t, k) {
+        t.setAttribute('aria-selected', String(k === scene));
+        var bar = t.querySelector('.sm__bar > span');
+        bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
+      });
+      schedule();
+    }
+    function schedule() {
+      clearTimeout(timer);
+      if (reduce || !visible || document.hidden) return;
+      timer = setTimeout(function () { show(scene + 1); }, DUR);
+    }
+    tabs.forEach(function (t, k) { t.addEventListener('click', function () { show(k); }); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        visible = es[0].isIntersecting;
+        root.classList.toggle('is-paused', !visible);
+        if (visible) schedule(); else clearTimeout(timer);
+      }).observe(root);
+    }
+    document.addEventListener('visibilitychange', function () { if (document.hidden) clearTimeout(timer); else schedule(); });
+    schedule();
+  })();
+</script>

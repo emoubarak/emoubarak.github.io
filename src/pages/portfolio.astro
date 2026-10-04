@@ -1,159 +1,160 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { projects, projectCategories as categories } from '../data/profile.js';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { projects, projectCategories } from '../data/profile.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
+// Only the categories that have projects, each with its count
+const categories = projectCategories
+  .map((c) => ({ ...c, n: c.key === 'all' ? projects.length : projects.filter((p) => p.category === c.key).length }))
+  .filter((c) => c.n > 0);
+const fan = [
+  { src: `${base}/portfolio/ai-visibility-store.webp`, w: 1440, h: 900, style: '--i:0;--r:5deg;--r0:9deg;width:62%;top:5%;right:1%' },
+  { src: `${base}/portfolio/pdfold-home.webp`, w: 1440, h: 900, style: '--i:1;--r:-6deg;--r0:-10deg;width:62%;top:18%;right:34%' },
+  { src: `${base}/portfolio/piktechs-home.webp`, w: 1440, h: 900, style: '--i:2;--r:2deg;--r0:5deg;width:66%;top:40%;right:12%' },
+];
 ---
 
 <Layout
   title="Portfolio - El Mahdi Moubarak"
   description="Selected work: SaaS products, web apps, e-commerce and mobile applications built by El Mahdi Moubarak."
 >
-  <!-- Header -->
-  <section class="mb-10">
-    <h1 class="text-2xl font-extrabold mb-1">Portfolio</h1>
-    <p class="text-sm leading-relaxed text-body max-w-xl">
-      Every project is unique. A selection of SaaS products, web apps, e-commerce stores and
-      mobile applications I designed, built and shipped. Click a card to preview it.
+  <PageHero eyebrow="Portfolio">
+    <h1 class="t-page">
+      <span class="rise"><span style="--i:0">Built and</span></span>
+      <span class="rise"><span style="--i:1">shipped</span></span>
+    </h1>
+    <p class="t-lede hero__lede fade-up" style="--i:1">
+      SaaS products, web apps, e-commerce stores and mobile apps I designed, built and shipped.
     </p>
+    <p class="t-meta mt-6 fade-up" style="--i:2">Open a project to preview it.</p>
+    <div slot="visual" class="fan" aria-hidden="true">
+      {fan.map((f) => (
+        <div class="fan__item" style={f.style}><img src={f.src} alt="" width={f.w} height={f.h} /></div>
+      ))}
+    </div>
+  </PageHero>
+
+  <div class="sticky top-[var(--header-h)] z-30 bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] backdrop-blur-md border-b border-[var(--line)]">
+    <div class="wrap py-3 md:py-4 flex items-center justify-between gap-4">
+      <div class="filters filters--scroll w-full" role="group" aria-label="Filter projects by category">
+        {categories.map((c) => (
+          <button type="button" class="filter" data-filter={c.key} aria-pressed={c.key === 'all' ? 'true' : 'false'}>
+            {c.label}<span class="filter__n">{c.n}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap py-[clamp(2.5rem,5vw,4.5rem)] pb-[var(--section)]">
+    <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-[clamp(1.25rem,2.4vw,2.25rem)]">
+      {projects.map((p, i) => (
+        <article
+          class="card portfolio-card cursor-pointer"
+          data-previews={JSON.stringify(p.previews)}
+          data-url={p.url}
+          data-title={p.title}
+          data-category={p.category}
+          data-reveal
+          style={`--i:${i % 2}`}
+        >
+          <div class="card__media">
+            <img src={p.thumb} alt={`${p.title}: ${p.subtitle}`} width="1600" height="1000" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
+          </div>
+          <div class="card__body">
+            <div class="flex items-center justify-between gap-3 t-meta">
+              <span>{p.categoryLabel}</span>
+              <span class="text-right">{p.role}</span>
+            </div>
+            <h2 class="t-h3 card__title mt-4"><button type="button" class="card__hit" aria-label={`Preview ${p.title}`}>{p.title}</button></h2>
+            <p class:list={['t-meta mt-2', { italic: !p.url }]}>{p.subtitle}</p>
+            <p class="text-2 leading-relaxed mt-5">{p.description}</p>
+            <div class="chips mt-6">{p.tags.map((t) => <span class="chip">{t}</span>)}</div>
+            <span class="link-arrow mt-auto pt-7" aria-hidden="true">Preview <Icon name="arrow" /></span>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p id="no-results" class="hidden text-center text-[var(--muted)] py-16">No project in this category.</p>
   </section>
 
-  <!-- Filters -->
-  <div class="flex flex-wrap gap-2 mb-10">
-    {categories.map((c) => (
-      <button
-        class:list={['filter-btn font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors', { 'filter-active': c.key === 'all' }]}
-        data-filter={c.key}
-      >
-        {c.label}
-      </button>
-    ))}
-  </div>
-
-  <!-- Grid -->
-  <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-    {projects.map((p) => (
-      <div
-        class="portfolio-card b-border b-lift bg-paper dark:bg-dark-surface cursor-pointer flex flex-col"
-        data-previews={JSON.stringify(p.previews)}
-        data-url={p.url}
-        data-title={p.title}
-        data-category={p.category}
-        role="button"
-        tabindex="0"
-        aria-label={`Preview ${p.title}`}
-      >
-        <div class="relative h-52 overflow-hidden border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper shrink-0">
-          <img
-            src={p.image}
-            alt={`Preview of ${p.title}`}
-            class:list={['absolute inset-0 w-full h-full object-cover', p.imageCentered ? 'object-center' : 'object-top']}
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <div class="p-5 flex flex-col flex-1">
-          <div class="flex items-center justify-between gap-2 mb-2">
-            <span class="tag">{p.categoryLabel}</span>
-            <span class="font-mono text-[0.65rem] text-muted shrink-0">{p.role}</span>
-          </div>
-          <h2 class="font-mono text-sm font-bold mb-0.5">{p.title}</h2>
-          <p class:list={['font-mono text-[0.65rem] text-muted mb-2', { italic: !p.url }]}>{p.subtitle}</p>
-          <p class="text-sm text-body flex-1">{p.description}</p>
-          <div class="flex flex-wrap gap-1.5 mt-3">
-            {p.tags.map((t) => (
-              <span class="tag">{t}</span>
-            ))}
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-  <p id="no-results" class="hidden text-center text-muted font-mono text-sm py-16">No project in this category.</p>
-
   <!-- Preview modal -->
-  <div id="demo-modal" class="fixed inset-0 z-[60] bg-black/70 hidden overflow-y-auto" style="overscroll-behavior:contain;-webkit-overflow-scrolling:touch;">
-    <div class="flex min-h-full items-center justify-center p-0 md:p-6">
-      <div id="demo-modal-dialog" class="bg-paper dark:bg-dark-paper b-border w-full md:w-[90vw] max-h-[100dvh] md:max-h-[90vh] flex flex-col overflow-hidden">
-        <div class="flex items-center justify-between gap-3 px-4 py-3 border-b-2 border-ink dark:border-dark-border shrink-0">
-          <span id="demo-modal-title" class="font-mono text-xs font-bold truncate">Preview</span>
+  <div id="demo-modal" class="modal fixed inset-0 z-[60] hidden overflow-y-auto" style="overscroll-behavior:contain;-webkit-overflow-scrolling:touch;">
+    <div class="modal__backdrop" aria-hidden="true"></div>
+    <div class="relative flex min-h-full items-center justify-center p-0 md:p-8">
+      <div id="demo-modal-dialog" class="modal__dialog w-full md:w-[min(92vw,1400px)] max-h-[100dvh] md:max-h-[90vh] flex flex-col overflow-hidden">
+        <div class="flex items-center justify-between gap-3 pl-5 pr-3 py-3 border-b border-[var(--line)] shrink-0">
+          <span id="demo-modal-title" class="font-[family-name:var(--font-display)] font-bold text-lg tracking-tight truncate">Preview</span>
           <div class="flex items-center gap-2 shrink-0">
-            <a
-              id="demo-visit-link"
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hidden font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 bg-accent text-white border-ink hover:bg-accent-alt transition-colors"
-            >
-              Visit site ↗
-            </a>
-            <button
-              id="close-demo-modal"
-              type="button"
-              class="font-mono text-xs font-bold b-border w-8 h-8 flex items-center justify-center cursor-pointer bg-paper dark:bg-dark-surface hover:bg-accent hover:text-white hover:border-accent transition-colors"
-              aria-label="Close preview"
-            >
-              ✕
+            <a id="demo-visit-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden btn btn--solid btn--sm">Visit site <Icon name="out" /></a>
+            <button id="close-demo-modal" type="button" class="icon-btn" aria-label="Close preview">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             </button>
           </div>
         </div>
         <!-- Preview tabs: only rendered when a project has more than one preview -->
-        <div id="demo-tabs" class="hidden flex-wrap gap-2 px-4 py-2 border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-surface shrink-0"></div>
-        <div id="demo-modal-body" class="flex-1 min-h-0 overflow-y-auto bg-paper-alt dark:bg-dark-surface" style="overscroll-behavior:contain;-webkit-overflow-scrolling:touch;">
-          <iframe id="demo-iframe" src="" class="w-full block hidden" style="height:80vh;border:0;" allowfullscreen></iframe>
+        <div id="demo-tabs" class="hidden flex-wrap gap-2 px-5 py-3 border-b border-[var(--line)] shrink-0" role="group" aria-label="Preview"></div>
+        <div id="demo-modal-body" class="flex-1 min-h-0 overflow-y-auto bg-[var(--bg-2)]" style="overscroll-behavior:contain;-webkit-overflow-scrolling:touch;">
+          <iframe id="demo-iframe" src="about:blank" title="Live preview" class="w-full block hidden" style="height:80vh;border:0;" allowfullscreen></iframe>
           <!-- Image preview: full width, natural height → vertical scroll for long captures -->
-          <img id="demo-img" src="" alt="Preview" class="w-full block hidden" style="height:auto;" />
-          <video
-            id="demo-video"
-            class="w-full block hidden bg-black"
-            style="height:auto;"
-            muted
-            loop
-            playsinline
-            autoplay
-            controls
-            preload="metadata"
-          ></video>
+          <img id="demo-img" alt="Preview" class="w-full block hidden" style="height:auto;" />
+          <video id="demo-video" class="w-full block hidden bg-black" style="height:auto;" muted loop playsinline autoplay controls preload="metadata"></video>
         </div>
       </div>
     </div>
   </div>
 
-  <style>
-    .filter-btn.filter-active {
-      background: var(--color-accent);
-      color: #fff;
-      border-color: var(--color-accent);
-    }
-  </style>
-
-  <!-- Global: tabs are created in JS, so they never carry Astro's scope attribute. -->
   <style is:global>
-    #demo-tabs .preview-tab.preview-tab-active {
-      background: var(--color-accent);
-      color: #fff;
-      border-color: var(--color-accent);
-    }
+    .modal__backdrop { position: fixed; inset: 0; background: rgb(15 16 18 / 0.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .modal__dialog { background: var(--bg); border: 1px solid var(--line); box-shadow: var(--shadow-lg); }
+    @media (min-width: 768px) { .modal__dialog { border-radius: var(--radius); } }
+    .modal:not(.hidden) .modal__backdrop { animation: modal-fade 0.35s var(--ease-out) both; }
+    .modal:not(.hidden) .modal__dialog { animation: modal-in 0.5s var(--ease-out) both; }
+    @keyframes modal-fade { from { opacity: 0; } }
+    @keyframes modal-in { from { opacity: 0; transform: translateY(24px) scale(0.98); } }
+    #cards-grid .card.is-wide { grid-column: 1 / -1; }
+    .card__hit { font: inherit; letter-spacing: inherit; color: inherit; text-align: left; cursor: pointer; }
+    .card__hit::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+    .card__hit:focus-visible { outline: none; }
+    .card:has(.card__hit:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .card.is-hiding { display: none; }
   </style>
 
   <script is:inline>
     // ===== Filters =====
-    document.querySelectorAll('.filter-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.filter-btn').forEach((b) => {
-          b.classList.toggle('filter-active', b === btn);
+    // An odd number of visible cards would leave one alone on the last row: the first one goes wide instead.
+    (function () {
+      var grid = document.getElementById('cards-grid');
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('[data-category]'));
+      var buttons = document.querySelectorAll('.filter[data-filter]');
+      var wideQuery = window.matchMedia('(min-width: 768px)');
+      function layout() {
+        var visible = cards.filter(function (c) { return !c.classList.contains('is-hiding'); });
+        cards.forEach(function (c) { c.classList.remove('is-wide', 'card--wide'); });
+        if (wideQuery.matches && visible.length % 2 === 1) visible[0].classList.add('is-wide', 'card--wide');
+        document.getElementById('no-results').classList.toggle('hidden', visible.length > 0);
+      }
+      function apply(filter) {
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.filter === filter)); });
+        cards.forEach(function (card) {
+          var show = filter === 'all' || card.dataset.category === filter;
+          card.classList.toggle('is-hiding', !show);
+          if (show) { card.classList.remove('is-in'); requestAnimationFrame(function () { card.classList.add('is-in'); }); }
         });
-        let visible = 0;
-        document.querySelectorAll('#cards-grid > [data-category]').forEach((card) => {
-          const show = filter === 'all' || card.dataset.category === filter;
-          card.style.display = show ? '' : 'none';
-          if (show) visible++;
+        layout();
+      }
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var run = function () { apply(btn.dataset.filter); };
+          if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(run);
+          else run();
         });
-        document.getElementById('no-results').classList.toggle('hidden', visible > 0);
       });
-    });
+      wideQuery.addEventListener('change', layout);
+      layout();
+    })();
 
     // ===== Preview modal =====
     (function () {
@@ -171,6 +172,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       modal.setAttribute('role', 'dialog');
       modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-labelledby', 'demo-modal-title');
       modal.setAttribute('tabindex', '-1');
 
       let lastFocusedElement = null;
@@ -247,12 +249,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           const tab = document.createElement('button');
           tab.type = 'button';
           tab.textContent = preview.label;
-          tab.className =
-            'preview-tab font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors';
-          if (i === 0) tab.classList.add('preview-tab-active');
+          tab.className = 'filter preview-tab';
+          tab.setAttribute('aria-pressed', String(i === 0));
           tab.addEventListener('click', () => {
             tabsBar.querySelectorAll('.preview-tab').forEach((t) => {
-              t.classList.toggle('preview-tab-active', t === tab);
+              t.setAttribute('aria-pressed', String(t === tab));
             });
             showPreview(preview);
           });
@@ -300,9 +301,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         if (modal.classList.contains('hidden')) return;
         if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
         if (e.key !== 'Tab') return;
-        const focusable = modal.querySelectorAll(
+        const focusable = Array.from(modal.querySelectorAll(
           "button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])"
-        );
+        )).filter((el) => !el.classList.contains('hidden'));
         if (focusable.length === 0) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
@@ -310,7 +311,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       });
 
-      // Card triggers (click + keyboard)
+      // Card triggers: the title is a real button stretched over the card, so keyboard and clicks both land here
       function trigger(el) {
         let previews;
         try {
@@ -322,9 +323,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       }
       document.querySelectorAll('.portfolio-card[data-previews]').forEach((card) => {
         card.addEventListener('click', () => trigger(card));
-        card.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(card); }
-        });
       });
     })();
   </script>

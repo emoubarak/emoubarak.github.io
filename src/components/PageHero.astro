@@ -1,0 +1,21 @@
+---
+// The one hero structure used by every page: an orange field, text on the left, a real artefact on the right.
+// `full` is the home hero (100svh, portrait standing on the bottom edge, page slides over it).
+interface Props {
+  size?: 'full' | 'page';
+  eyebrow?: string;
+}
+const { size = 'page', eyebrow } = Astro.props;
+---
+
+<section class:list={['hero on-orange', `hero--${size}`, { 'hero--sticky': size === 'full' }]} data-hero>
+  <div class="wrap hero__inner">
+    <div class="hero__text">
+      {eyebrow && <p class="t-eyebrow hero__eyebrow fade-up" style="--i:0">{eyebrow}</p>}
+      <slot />
+    </div>
+    <div class="hero__visual">
+      <slot name="visual" />
+    </div>
+  </div>
+</section>

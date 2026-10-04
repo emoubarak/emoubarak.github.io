@@ -1,5 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import PostList from '../../components/PostList.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -10,45 +13,60 @@ const [featured, ...others] = caseStudies;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const src = (c: string) => (c.startsWith('/') ? `${base}${c}` : c);
 const shortTitle = (t: string) => t.replace(/^Case Study:\s*/, '');
+const minutes = (body = '') => Math.max(2, Math.round(body.split(/\s+/).length / 230));
 ---
 
 <Layout title="Blog - El Mahdi Moubarak" description="Case studies and articles on AI engineering, Claude Code, browser agents and shipping products.">
-  <section class="mb-10">
-    <h1 class="text-2xl font-extrabold mb-1">Blog</h1>
-    <p class="font-mono text-xs text-muted">
-      Case studies from real projects, and what building with AI every day taught me.
-    </p>
-  </section>
+  <PageHero eyebrow="Blog">
+    <h1 class="t-page">
+      <span class="rise"><span style="--i:0">Notes from</span></span>
+      <span class="rise"><span style="--i:1">the work</span></span>
+    </h1>
+    <p class="t-lede hero__lede fade-up" style="--i:1">Case studies from real projects, and what building with AI every day taught me.</p>
+    <div class="hero__actions fade-up" style="--i:2">
+      <a href="#case-studies" class="btn btn--solid">Case studies <Icon name="down" /></a>
+      <a href="#articles" class="btn btn--line">Articles</a>
+    </div>
+    <div slot="visual" class="fan" aria-hidden="true">
+      <div class="fan__item" style="--i:0;--r:-5deg;--r0:-10deg;width:74%;top:6%;right:24%"><img src={`${base}/blog/scanner-pipeline.svg`} alt="" width="1200" height="630" /></div>
+      <div class="fan__item" style="--i:1;--r:4deg;--r0:9deg;width:74%;top:38%;right:2%"><img src={`${base}/blog/fix-ladder.svg`} alt="" width="1200" height="630" /></div>
+    </div>
+  </PageHero>
 
   {caseStudies.length > 0 && (
-    <section class="mb-14 scroll-mt-24" id="case-studies">
-      <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-5">Case studies</h2>
+    <section class="wrap section" id="case-studies">
+      <div class="s-head">
+        <div>
+          <p class="t-eyebrow">From real projects</p>
+          <h2 class="t-h2">Case studies</h2>
+        </div>
+      </div>
 
       {featured && (
-        <a href={`${base}/blog/${featured.id}`} class="block b-border b-shadow b-lift bg-paper dark:bg-dark-surface mb-4 group">
+        <a href={`${base}/blog/${featured.id}`} class="card card--wide mb-[clamp(1.25rem,2.4vw,2.25rem)]" data-reveal>
           {featured.data.cover && (
-            <div class="border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper">
-              <img src={src(featured.data.cover)} alt={featured.data.coverAlt ?? ''} class="w-full h-auto block" loading="eager" />
-            </div>
+            <div class="card__media"><img src={src(featured.data.cover)} alt={featured.data.coverAlt ?? ''} loading="eager" /></div>
           )}
-          <div class="p-5">
-            <h3 class="font-mono text-base font-bold leading-snug mb-2 group-hover:text-accent transition-colors">{shortTitle(featured.data.title)}</h3>
-            <p class="text-sm text-body">{featured.data.description}</p>
+          <div class="card__body">
+            <p class="t-meta">Case study · {minutes(featured.body)} min read</p>
+            <h3 class="t-h3 card__title mt-4">{shortTitle(featured.data.title)}</h3>
+            <p class="text-2 leading-relaxed mt-5">{featured.data.description}</p>
+            <span class="link-arrow mt-8">Read the case study <Icon name="arrow" /></span>
           </div>
         </a>
       )}
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {others.map((p) => (
-          <a href={`${base}/blog/${p.id}`} class="flex flex-col b-border b-shadow b-lift bg-paper dark:bg-dark-surface group">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[clamp(1.25rem,2.4vw,2.25rem)]">
+        {others.map((p, i) => (
+          <a href={`${base}/blog/${p.id}`} class="card" data-reveal style={`--i:${i}`}>
             {p.data.cover && (
-              <div class="border-b-2 border-ink dark:border-dark-border bg-paper-alt dark:bg-dark-paper aspect-[16/9] overflow-hidden">
-                <img src={src(p.data.cover)} alt={p.data.coverAlt ?? ''} class="w-full h-full object-cover object-top block" loading="lazy" />
-              </div>
+              <div class="card__media card__media--fit"><img src={src(p.data.cover)} alt={p.data.coverAlt ?? ''} loading="lazy" /></div>
             )}
-            <div class="p-4 flex flex-col flex-1">
-              <h3 class="font-mono text-sm font-bold leading-snug mb-2 group-hover:text-accent transition-colors">{shortTitle(p.data.title)}</h3>
-              <p class="text-xs text-body mb-3 line-clamp-3">{p.data.description}</p>
+            <div class="card__body">
+              <p class="t-meta">Case study · {minutes(p.body)} min read</p>
+              <h3 class="t-h4 card__title mt-3">{shortTitle(p.data.title)}</h3>
+              <p class="text-2 leading-relaxed mt-4 line-clamp-3">{p.data.description}</p>
+              <span class="link-arrow mt-auto pt-6">Read <Icon name="arrow" /></span>
             </div>
           </a>
         ))}
@@ -56,31 +74,17 @@ const shortTitle = (t: string) => t.replace(/^Case Study:\s*/, '');
     </section>
   )}
 
-  <section>
-    <h2 class="font-mono text-xs font-bold text-muted uppercase tracking-widest mb-3">Articles</h2>
+  <section class="wrap section" id="articles">
+    <div class="s-head">
+      <div>
+        <p class="t-eyebrow">Writing</p>
+        <h2 class="t-h2">Articles</h2>
+      </div>
+    </div>
     {articles.length === 0 ? (
-      <div class="b-border p-8 text-center bg-paper dark:bg-dark-surface">
-        <p class="font-mono text-sm text-muted">Nothing here yet.</p>
-      </div>
+      <p class="text-[var(--muted)]">Nothing here yet.</p>
     ) : (
-      <div class="space-y-3">
-        {articles.map((post) => (
-          <a href={`${base}/blog/${post.id}`} class="flex gap-4 py-3 border-b border-ink/10 dark:border-dark-border group items-start">
-            {post.data.cover && (
-              <img src={src(post.data.cover)} alt="" class="hidden sm:block w-28 aspect-[16/10] object-cover object-top b-border shrink-0" loading="lazy" />
-            )}
-            <div class="flex-1 min-w-0">
-              <div class="flex items-baseline justify-between gap-4">
-                <span class="font-mono text-sm font-bold group-hover:text-accent transition-colors">{post.data.title}</span>
-                <span class="font-mono text-[0.65rem] text-muted shrink-0">
-                  {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                </span>
-              </div>
-              <span class="text-xs text-muted line-clamp-2">{post.data.description}</span>
-            </div>
-          </a>
-        ))}
-      </div>
+      <PostList posts={articles} dateStyle="long" />
     )}
   </section>
 </Layout>
