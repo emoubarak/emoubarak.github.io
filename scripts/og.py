@@ -51,7 +51,7 @@ def cards():
         "images": [
             {"src": f"{p}/portfolio/polymarket-illustration.webp", "w": 400, "x": 760, "y": 70, "r": 5},
             {"src": f"{p}/portfolio/pdfold-illustration.webp", "w": 400, "x": 660, "y": 150, "r": -5},
-            {"src": f"{p}/portfolio/piktechs-home.webp", "w": 420, "x": 730, "y": 300, "r": 2},
+            {"src": f"{p}/portfolio/piktechs-og.webp", "w": 430, "x": 725, "y": 330, "r": 2},
         ],
     }
     yield "cv", {
