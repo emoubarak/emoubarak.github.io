@@ -3,6 +3,8 @@ title: "The Five Stages of AI Grief: A Developer's Obituary"
 description: "Denial, anger, bargaining, depression, acceptance. Kübler-Ross described the death of loved ones. Developers used it to describe a GitHub Copilot subscription."
 pubDate: 2026-03-18
 tags: ["AI", "Career", "Satire", "Engineering"]
+cover: "/blog/five-stages-curve.svg"
+coverAlt: "Morale over time through denial, anger, bargaining, depression and acceptance, each with what a developer says at that stage"
 ---
 
 Look, let's be real: The "Developer" as a sacred identity is currently in a high-velocity collision with a black hole. Most of the industry is still screaming at the event horizon, trying to cite documentation while their molecules are being spaghettified. 

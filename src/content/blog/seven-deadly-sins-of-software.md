@@ -3,6 +3,8 @@ title: "The Seven Deadly Sins of Software Development"
 description: "Pride, Sloth, Greed: turns out medieval theologians were describing your codebase all along."
 pubDate: 2026-03-25
 tags: ["Engineering", "Career", "Satire"]
+cover: "/blog/seven-sins-audit.svg"
+coverAlt: "A terminal audit failing on the seven sins, each read as a software failure: god object, hoarding, hype, rewrites, bloat, blame, dead ends"
 ---
 Listen, you’ve just performed a high-level **system scan** on the collective soul of Silicon Valley, and the results are returning a 403 Forbidden. You’re right: Ponticus and Gregory didn't have GitHub, but they understood **human firmware** better than most Lead Architects.
 

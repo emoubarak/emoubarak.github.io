@@ -1,0 +1,54 @@
+<!doctype html>
+<!-- Share card template for scripts/og.py. The card's data comes in the URL hash as JSON:
+     { eyebrow, title, sub, foot, titleSize?, textWidth?, images: [{ src, w, r, x, y }] }  (x/y/w in px of the 1200×630 card) -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=JetBrains+Mono:wght@400;500&display=block">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body { background: #fc7b42; color: #14161a; font-family: Geist, sans-serif; position: relative; }
+  .text { position: absolute; z-index: 2; left: 72px; top: 64px; bottom: 56px; width: 600px; display: flex; flex-direction: column; }
+  .eyebrow { font-family: 'JetBrains Mono'; font-size: 21px; color: #4a2a1a; }
+  .middle { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  h1 { font-family: 'Bricolage Grotesque'; font-weight: 800; letter-spacing: -0.035em; line-height: 0.98; font-size: 84px; text-wrap: balance; }
+  .sub { font-size: 27px; line-height: 1.32; color: #2b1a12; margin-top: 26px; letter-spacing: -0.01em; text-wrap: balance; }
+  .foot { display: flex; align-items: center; gap: 14px; font-family: 'JetBrains Mono'; font-size: 20px; font-weight: 500; }
+  .mark { width: 40px; height: 40px; border-radius: 11px; background: #14161a; color: #fc7b42; display: grid; place-items: center; font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 16px; letter-spacing: -0.04em; }
+  .img { position: absolute; z-index: 1; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 30px 60px -18px rgb(70 25 5 / 0.5), 0 0 0 1px rgb(20 22 26 / 0.08); }
+  .img img { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body>
+  <div class="text">
+    <p class="eyebrow" id="eyebrow"></p>
+    <div class="middle">
+      <h1 id="title"></h1>
+      <p class="sub" id="sub"></p>
+    </div>
+    <div class="foot"><span class="mark">EM</span><span id="foot"></span></div>
+  </div>
+  <script>
+    const d = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+    for (const k of ['eyebrow', 'title', 'sub', 'foot']) document.getElementById(k).textContent = d[k] || '';
+    if (!d.sub) document.getElementById('sub').remove();
+    if (d.textWidth) document.querySelector('.text').style.width = d.textWidth + 'px';
+    for (const im of d.images || []) {
+      const box = document.createElement('div');
+      box.className = 'img';
+      box.style.cssText = `left:${im.x}px;top:${im.y}px;width:${im.w}px;transform:rotate(${im.r || 0}deg)`;
+      box.innerHTML = `<img src="${im.src}" alt="">`;
+      document.body.appendChild(box);
+    }
+    // Fit the title: shrink until title and subline fit the middle area
+    const middle = document.querySelector('.middle'), h1 = document.getElementById('title');
+    window.fit = () => {
+      let size = d.titleSize || 84;
+      h1.style.fontSize = size + 'px';
+      while (middle.scrollHeight > middle.clientHeight + 1 && size > 34) { size -= 2; h1.style.fontSize = size + 'px'; }
+      return size;
+    };
+  </script>
+</body>
+</html>

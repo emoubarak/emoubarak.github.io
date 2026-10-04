@@ -42,7 +42,13 @@ Refonte du 2026-10-04. Ce fichier dit ce qui est voulu, pour qu'une retouche res
 - Captures sources (`public/portfolio/*-home.webp`, `ai-visibility-store.webp`) : prises en Chrome headless à
   1440×900 @2x, bandeaux cookies retirés du DOM avant la capture.
 - Logos clients : `public/logos/*.png`, silhouettes en alpha affichées en `mask-image` (une seule couleur, suit le thème).
-- Image de partage : `scripts/og.html` (servir le repo en local, capture 1200×630) → `public/og.png`.
+- Images de partage (Open Graph 1200×630) : `./scripts/og.py` génère `public/og/portfolio.png`, `cv.png`, `blog.png`
+  et `public/og/blog/<slug>.png` pour chaque article (titre, temps de lecture, sa couverture) à partir de
+  `scripts/og-card.html`. À relancer après un nouvel article. La carte de l'accueil (`public/og.png`) vient de
+  `scripts/og.html`. Chaque page passe la sienne au layout (`ogImage`). LinkedIn garde l'ancienne en cache :
+  la rafraîchir dans le Post Inspector (https://www.linkedin.com/post-inspector/).
+- Couvertures d'articles : un schéma qui explique l'article, SVG 1200×630 dans `public/blog/`, même style pour
+  toutes (JetBrains Mono, encre `#111`, orange `#ff5c00`, papier `#faf9f6`).
 - Portrait HD (`public/portrait.webp`, 1024 px) : restauration OpenRouter `openai/gpt-image-2.5-sunburst`,
   qualité medium, 0,019 $, à partir de `profile-picture.webp`. Prompt : « Restore and upscale this exact
   photograph to high resolution. It must remain the same photo of the same real person […] Only recover natural
