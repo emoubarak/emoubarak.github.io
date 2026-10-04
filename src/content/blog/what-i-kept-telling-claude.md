@@ -21,6 +21,8 @@ A rough keyword filter says that around 5% of my messages correct the agent. It'
 
 By far the most frequent. The agent says done, and it isn't: a page it never looked at at my screen width, a fix it never replayed with the account that had the bug, a backend change whose migration was never applied to the deployed database. One message from May sums it up: *"still a 503. Test it and verify, and don't stop until it works."*
 
+![Futurama Fry meme: "Not sure if it's done, or the agent just said done".](/blog/memes/what-i-kept-telling-claude-1.webp)
+
 What works: define done as "observed working where it will be used", and give the agent eyes. I now have a small tool that takes full-page screenshots at my real widths (1920, 1440, 1366, 768, 390) and reports overflow, broken or stretched images, and elements off screen. The agent has to open the PNGs and look at them. For clicks and flows, a browser agent. For code, the CI run, but only when the change can break something: a docs commit gets pushed and that's it, a migration gets watched to the end.
 
 ### 2. "You can do that yourself."
@@ -32,6 +34,8 @@ This one is on me as much as on the model. When the boundary of autonomy isn't w
 ### 3. "I told you to use X."
 
 My browser automation runs on an agent called jev. My coding agent kept reaching for a different browser integration it was primed toward. The rule was in my global instructions, in two project memories, and in a skill. I still counted something like fifteen repeats. One message just says: *"that's the fifteenth time you pull this on me."*
+
+![Bernie Sanders meme, me to my coding agent: "I am once again asking you to use jev".](/blog/memes/what-i-kept-telling-claude-2.webp)
 
 Written rules lose against strong defaults. When a rule fails twice, it should stop being prose. A twenty-line `PreToolUse` hook now denies that tool and explains which one to use instead, unless my message explicitly asks for it. I added it this week, so I can't claim a result yet. The point is that it no longer depends on the model remembering.
 

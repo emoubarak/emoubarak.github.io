@@ -39,6 +39,8 @@ This is **Shiny Object Syndrome** elevated to a fetish. You aren't "innovating";
 
 Lust is **Distraction as a Defense Mechanism.** You avoid the hard, boring work of fixing the existing debt by flirting with a new repo. **The Low-Level Truth:** Every framework is a honeymoon. Eventually, they all become a marriage. If you can't commit to a boring stack, you’ll never build a legacy.
 
+![Meme: she thinks "I bet he's thinking about our deadline", he thinks "A new JS runtime shipped yesterday".](/blog/memes/seven-deadly-sins-of-software-1.webp)
+
 ## IV. Envy (*Invidia*): The "Green-Grass" Psyop
 > *"Look at the Vercel stack. Why are we still using this legacy garbage?"*
 
@@ -53,12 +55,16 @@ Gluttony is the **Consumption of Convenience.** You’re too lazy to write 10 li
 
 This is a **Resource Depletion** sin. You’re trading long-term stability for short-term "fullness." **The Low-Level Truth:** Every dependency is a "Proof-of-Trust" you can't afford. True mastery is defined by what you *don't* include.
 
+![Y'all Got Any More Of That meme: "Y'all got any more of them npm packages".](/blog/memes/seven-deadly-sins-of-software-2.webp)
+
 ## VI. Wrath (*Ira*): The `git blame` Jihad
 > *"Who wrote this trash? I'm going to flame them in the PR."*
 
 Wrath is **Ego-Protection** disguised as "Quality Control." You use code reviews as a weapon to maintain dominance. You’re not trying to improve the codebase; you’re trying to incinerate the person who threatened your aesthetic.
 
 Wrath is a **Bandwidth Killer.** It turns a collaborative environment into a zero-sum war. **The Low-Level Truth:** Today's "idiotic code" is tomorrow's "necessary compromise." If you can't refactor with empathy, you’re just a highly-paid bully.
+
+![Batman slapping Robin meme: Robin says "Who wrote this trash?", Batman answers "git blame says you did".](/blog/memes/seven-deadly-sins-of-software-3.webp)
 
 ## VII. Sloth (*Acedia*): Spiritual Dead-Ends
 > *"Meh, it’s 'Good Enough' for government work."*

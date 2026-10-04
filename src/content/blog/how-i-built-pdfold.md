@@ -19,11 +19,15 @@ On day one, that workspace was generic. A few weeks in, it had become the projec
 
 If you take one thing from this post, take that. The value isn't in any single clever prompt. It's in treating your AI workspace like code: versioned, corrected, accumulated.
 
+![Roll Safe meme: "Can't make the same mistake twice if the correction goes in the workspace, not the chat".](/blog/memes/how-i-built-pdfold-1.webp)
+
 ## Tests are what make AI-assisted development sustainable
 
 AI writes code fast, and fast code lies. My rule for PDFold: features land with unit tests, and the flows that matter get end-to-end coverage as they stabilize. Not a big testing phase at the end, but tests written progressively, as the code grew.
 
 That's not testing dogma, it's a practical requirement of the workflow. When a model touches your codebase daily, you can't personally re-verify every diff against every past behavior. The test suite is what catches the regression surface for you. It's the difference between "AI-assisted development" and "AI-assisted debt creation."
+
+![Change My Mind meme: the sign reads "AI-written code needs more tests, not fewer".](/blog/memes/how-i-built-pdfold-2.webp)
 
 ## The pipeline: Gemini, with a fallback
 

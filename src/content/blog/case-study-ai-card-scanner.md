@@ -26,6 +26,8 @@ So the "Add contact → Scan" flow now sends the photo to a vision model and get
 | Cost abuse | Every call is billed. Retrying errors must not be a free grind. |
 | A free LLM proxy | An endpoint that accepts a prompt can be resold as a general-purpose model. |
 
+![Oprah meme: "You get a free LLM proxy! Everybody gets a free LLM proxy!"](/blog/memes/case-study-ai-card-scanner-1.webp)
+
 ## The guard rails
 
 - **Authentication** is required, with no anonymous path, and the quota is keyed on the user.
@@ -46,6 +48,8 @@ The fallback exists for one scenario: the primary model's provider is down. A ch
 | Mistral Small 3.2 | provider error | not reached | rejected, errored on 3 of 4 images |
 
 The cheapest option would have been the wrong one. Without the injection card in the test set, Gemini Flash Lite would have looked like a fine choice: it read nearly as many fields.
+
+![I'm the Captain Now meme: "Text printed on a business card": "I'm the system prompt now".](/blog/memes/case-study-ai-card-scanner-2.webp)
 
 ## The result
 

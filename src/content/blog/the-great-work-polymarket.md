@@ -19,6 +19,8 @@ So I did what any serious quantitative researcher does. I named my bots after my
 
 The first generation was esoteric: **gurdjieff**, **iching**, **kabbalah**, **tao**, **hermetic**. When they died, the second generation was alchemical: **rubedo**, **citrinitas**, **albedo**, **coniunctio**, **fixatio**, **aurum**, **lapis**, **coagula**. In hindsight, the naming was the most accurate part of the project. Alchemy is the ancient discipline of believing very hard that lead is about to become gold.
 
+!["I'm something of a scientist myself" meme: "Names his trading bots after alchemists. You know, I'm something of a quant myself."](/blog/memes/the-great-work-polymarket-1.webp)
+
 Here is how the Great Work went.
 
 ---
@@ -55,6 +57,8 @@ The second research wave found it: three minutes before the end of a window, buy
 
 97 live trades later: it won **84.5%** of the time. Break-even, after fees, was **85.2%**. I was paying 84.2¢ for a favorite that won 84.5% of the time. The market had priced it to within a third of a point. Zero mispricing.
 
+![Hide the Pain Harold meme: "Won 84.5% of 97 live trades", then "Break-even after fees: 85.2%".](/blog/memes/the-great-work-polymarket-2.webp)
+
 The autopsy found two stacked cherry-picks. The "+5%" came from a single cell of the grid, the one with zero execution cost; the same script in a realistic configuration printed **−$10 a day**, positive on one day in six. And the edge itself was momentum in disguise: the favorite only beats its price when Bitcoin trends, and the four "positive days" were trending days.
 
 The lesson, carved into the research journal in capitals: **"positive N days out of N, in-sample" is worth nothing.** Report the realistic configuration, never the best cell.
@@ -76,6 +80,8 @@ Meanwhile I falsified everything else that sounded clever. The tie rule: a coin 
 So I stopped trying to predict and started reading other people's wallets on-chain. One was up about $80k. Its secret was not a model.
 
 It was **maker rebates**. On these markets, the exchange hands a share of the taker fees back to whoever provides liquidity. The gold was never in calling the flip. It was in being the counterparty the exchange pays to exist. The philosopher's stone was real. It just wasn't mine, and it wasn't magic: it was fee accounting.
+
+![Two guys on a bus meme: the sad one is "Me, predicting the next five-minute candle", the happy one is "The wallet collecting maker rebates".](/blog/memes/the-great-work-polymarket-3.webp)
 
 ---
 

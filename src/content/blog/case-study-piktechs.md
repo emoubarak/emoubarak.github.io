@@ -20,6 +20,8 @@ tldr:
 
 A prototype that demos well is not a product that bills. Piktechs needed multi-tenant data with real permissions, subscriptions that never drift from Stripe, Android and iOS apps, and a way to keep shipping fast without ever breaking billing or leaking one account's data into another. With one engineer.
 
+![Drake meme: rejecting "A prototype that demos well", approving "A product that bills".](/blog/memes/case-study-piktechs-1.webp)
+
 ## What I built, in under six months
 
 | Area | What shipped |
@@ -57,6 +59,8 @@ It didn't go smoothly, and the mistakes are the useful part:
 - **Pushing after every small fix had a cost.** CI minutes are a budget, and running out once blocked a production deploy. Commits are batched now, and documentation-only changes skip the pipeline.
 - **Two components for one thing.** The card preview in the editor and the public card were separate. Every change had to be made twice, and they drifted until I merged them into one shared component. The agent will happily copy-paste between them for weeks if you let it.
 - **The same rule, asked for three times.** A navigation rule kept coming back because each fix patched one caller. It only stopped when it moved to one central place with an end-to-end test.
+
+![UNO Draw 25 meme: the card says "Use one component or draw 25", the agent draws 25.](/blog/memes/case-study-piktechs-2.webp)
 
 ## What I'd tell anyone taking over an AI-generated prototype
 

@@ -13,6 +13,8 @@ tldr:
 
 Larry Wall listed laziness as the first virtue of a programmer: the drive to write the thing that saves you from doing the work again. I take it literally. If I do something twice, a machine does it the third time. With AI agents, the definition of "something a machine can do" has moved a long way, and my working day has changed with it. Most of the time, at least one of my computers is working on something I'm not watching.
 
+![Tuxedo Winnie the Pooh meme: plain Pooh is "Doing it by hand a third time", tuxedo Pooh is "Writing the thing that does it forever".](/blog/memes/lazy-by-design-1.webp)
+
 ## What "the machine works alone" looks like on a normal day
 
 **Long autonomous runs with an end condition.** I start Claude Code with a goal and a condition that defines done, then go do something else. Not "improve the site", but "every service page has a full-height hero with a real image, checked in screenshots at 1920 and 390, committed". A separate check verifies the condition before the run is allowed to stop. A typical prompt before I leave the desk: *"I have to go away from my computer, work autonomously until it's done."*
@@ -44,6 +46,8 @@ Laziness only works if nothing breaks while you're not looking. After a lot of r
 
 - **Stalling on a solvable blocker.** I came back to runs that had stopped on something the agent could have solved by searching for a key or trying another route. The rule now: timebox an approach, switch, and stop only for blockers that truly need a human.
 - **Asking instead of doing.** "Shall I run the migration?" at 11pm, read at 9am, is eight lost hours. That's why the stop points are written down: everything not on the list is a yes.
+
+![Waiting skeleton meme: "Shall I run the migration?", then "The agent, still waiting at 9am".](/blog/memes/lazy-by-design-2.webp)
 - **Claiming done without looking.** The most common failure of all. The fix is #1 and #3 above, not a sterner prompt.
 - **Doing too much.** Laziness is not scope creep. A retouch request gets the smallest change that answers it, and everything else goes in a "worth flagging" list.
 

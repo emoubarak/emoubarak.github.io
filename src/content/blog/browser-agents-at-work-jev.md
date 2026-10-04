@@ -32,6 +32,8 @@ My coding agent writes UI it cannot see, and half of my admin work happens in we
 
 jev never sees password fields. That's not a limitation to work around, it's the right design. In jev-check, accounts sign in over the DevTools protocol, so the agent never needs a password. In my own browser, the agent leaves the tab in front of me at the login screen. The runner hands over through WebRTC. In all three cases the agent does the clicking and the human does the credentials.
 
+![One Does Not Simply meme: "One does not simply let the agent type your password".](/blog/memes/browser-agents-at-work-jev-1.webp)
+
 ## Gotchas nobody tells you
 
 1. **One narrow goal per call.** "Open the menu", then "fill the form", then "read the confirmation". A long multi-step goal loops, sometimes on the same button ten times.
@@ -44,6 +46,8 @@ jev never sees password fields. That's not a limitation to work around, it's the
 8. **Test on demo pages, not on real sites in a loop.** Iterate against a local page or a demo site, then do one real check at human pace. Whatever you run shares your IP.
 9. **Not in CI.** Agent runs are non-deterministic and billed per decision. My deterministic, mocked end-to-end suite stays the gate. The agent is the coding agent's eyes during a task, on demand.
 10. **Show the cost.** Every step logs its model cost. Read-only looks are cheap, and seeing the numbers keeps you from guessing.
+
+![Spider-Man pointing at Spider-Man meme: one is "localhost", the other "127.0.0.1".](/blog/memes/browser-agents-at-work-jev-2.webp)
 
 ## When the coding agent says "jev can't do that"
 

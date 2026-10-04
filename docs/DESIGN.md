@@ -65,6 +65,12 @@ Refonte du 2026-10-04. Ce fichier dit ce qui est voulu, pour qu'une retouche res
   ≈ 0,01 $ l'image, une génération par image) vers `public/blog/<slug>.webp` ; style commun, scène et texte
   alternatif de chaque article dans `docs/blog-covers.json`. Nouvel article : ajouter sa scène, lancer le script,
   puis `./scripts/og.py`.
+- Memes dans les articles (demande du 2026-10-04) : deux ou trois par article, chacun après le paragraphe dont il se
+  moque. `./scripts/memes.py [slug]` les génère via le serveur MCP `meme-mcp` (Imgflip, gratuit, compte dans
+  `my-cv-secrets/imgflip.env`) et insère l'image dans l'article ; modèles, textes, emplacement et texte alternatif dans
+  `docs/blog-memes.json`. Modèles à deux zones de texte seulement, jamais deux fois le même, texte court (une zone
+  trop remplie donne une police minuscule). Affichés à leur taille, 28rem au plus, centrés. Le petit « imgflip.com »
+  en bas à gauche vient du compte gratuit.
 - Le rendu HTML vers PNG (images de partage, illustrations) passe par `scripts/shoot.py` (Chrome headless).
 - Portrait HD (`public/portrait.webp`, 1024 px) : restauration OpenRouter `openai/gpt-image-2.5-sunburst`,
   qualité medium, 0,019 $, à partir de `profile-picture.webp`. Prompt : « Restore and upscale this exact

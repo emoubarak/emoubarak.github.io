@@ -19,6 +19,8 @@ tldr:
 
 Those bugs live where three things meet on the deployed app: the front end, the backend, and the permissions in the database. Mocks replace exactly the part that's wrong. Screenshots show the surface but not whether the data changed. And an AI agent that says "done" after clicking a button proves nothing: in my first runs, zero actions and "done" happened together more than once.
 
+![Monkey puppet side-eye meme: "Agent: Done! (0 actions taken)", then "Me, opening the database".](/blog/memes/case-study-jev-check-1.webp)
+
 ## What I built
 
 A harness that asks the real app, as a real account state.
@@ -43,6 +45,8 @@ The harness is mostly the fixes nobody tells you about:
 - **Observe twice.** The toast that explained a refusal is gone a second later.
 - **Treat "0 actions" as proof of nothing.**
 - **One narrow goal per run.** Long goals loop.
+
+![Anime girl hiding from the Terminator meme: the girl is "The dialog, still animating in a background tab", the Terminator who can't see her is "The browser agent".](/blog/memes/case-study-jev-check-2.webp)
 
 ## What it changed
 

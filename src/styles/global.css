@@ -896,6 +896,8 @@
     background: var(--bg-2);
     margin-top: 2em;
   }
+  /* memes (scripts/memes.py): at their own small size, centred, never stretched to the column */
+  .prose-content img[src*="/blog/memes/"] { width: auto; max-width: min(100%, 28rem); margin-inline: auto; }
   .prose-content img + em, .prose-content p:has(> img) + p > em:only-child {
     display: block;
     font-size: 0.9rem;

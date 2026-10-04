@@ -22,6 +22,8 @@ This is the classic **Low-Level Blindness.** You're looking at the assembly code
 
 Calling AI "just autocomplete" is like calling a nuclear reactor "just a fancy way to boil water." It's factually true and strategically useless. The denial here isn't about the tech; it's about the **buffer overflow** in your own sense of specialness. You thought the "Creative Spark" was a proprietary API. Turns out, it's a public endpoint.
 
+![Mocking SpongeBob meme: "It's just spicy autocomplete", repeated in a mocking voice.](/blog/memes/five-stages-of-ai-grief-1.webp)
+
 ## 2. Anger: The LinkedIn Jihad
 > *"These 'Vibe Coders' are going to burn the world down. Hallucinations! Security risks! Theft!"*
 
@@ -36,12 +38,16 @@ This is the **"Middle Management" maneuver.** It's an attempt to negotiate a pea
 
 "I have *Taste*," you say. "I have *Architecture*." Sure you do. But you're bargaining from a position of dwindling leverage. You're trying to build a moat out of "Expertise" while the water level is rising 10 feet an hour. Bargaining is just **latency** before the inevitable.
 
+![They Don't Know meme: a guy alone at a party thinking "They don't know my LinkedIn title says AI Pilot now".](/blog/memes/five-stages-of-ai-grief-2.webp)
+
 ## 4. Depression: The Existential Blue Screen
 > *"Why even open VS Code? The machine already wrote the solution 4 seconds before I finished the prompt."*
 
 This is the quietest, most honest part of the cycle. It's the realization that your **Economic Value** was tied to a skill that just became a commodity. 
 
 It's a "Dark Night of the Soul" for people who use Jira. You realize you aren't the "Architect of the Future". You're a translator for a language that's becoming obsolete. If the "What" is automated and the "How" is instant, then "Who" are you? If you don't have an answer that isn't "I write React," you're going to stay in this loop for a long time.
+
+![This Is Fine meme: a dog in a burning room, "The AI shipped my ticket. This is fine."](/blog/memes/five-stages-of-ai-grief-3.webp)
 
 ## 5. Acceptance: Becoming the Ghost in the Machine
 > *"I'm not a dev. I'm a Problem-Solver using the highest-leverage tools available. Next question."*
