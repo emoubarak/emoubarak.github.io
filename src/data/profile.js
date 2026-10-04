@@ -279,7 +279,7 @@ export const projectCategories = [
   { key: 'mobile', label: 'Mobile' },
 ];
 
-// `thumb` is the uniform card image (public/work/, built by scripts/thumbs.py); `image` and `previews` stay the originals.
+// `thumb` is the uniform card image (public/work/, built by scripts/thumbs.py); `previews` are the tabs of the preview modal.
 export const projects = [
   {
     title: 'Piktechs',
@@ -289,8 +289,6 @@ export const projects = [
     categoryLabel: 'SaaS',
     role: 'Founder',
     description: 'B2B SaaS platform for digital business cards at professional events: connection, lead capture with an AI card scanner, CRM and team workspaces. Designed, built and operated end to end.',
-    image: `${base}/portfolio/piktechs-og.webp`,
-    imageCentered: true,
     previews: [
       { label: 'Dashboard', src: `${base}/portfolio/piktechs-devices.webp` },
       { label: 'Live site', src: 'https://piktechs.com' },
@@ -306,8 +304,6 @@ export const projects = [
     categoryLabel: 'SaaS',
     role: 'Founder',
     description: 'SaaS converting PDFs to structured Markdown through a multi-pass OCR pipeline combined with Gemini. Understands and transforms documents of any size, in 11 languages.',
-    image: `${base}/portfolio/pdfold-og.webp`,
-    imageCentered: true,
     previews: [
       { label: 'How it works', src: `${base}/portfolio/pdfold-illustration.webp` },
       { label: 'Motion design', src: `${base}/portfolio/pdfold-motion.mp4`, poster: `${base}/portfolio/pdfold-motion-poster.webp` },
@@ -325,8 +321,6 @@ export const projects = [
     categoryLabel: 'Apify Actor',
     role: 'Author',
     description: 'Self-service tool measuring how AI answer engines describe a brand across ChatGPT, Perplexity, Gemini and Google AI Overviews. Statistical sampling per prompt, real geo-localization and week-over-week tracking.',
-    image: `${base}/portfolio/ai-visibility-og.webp`,
-    imageCentered: true,
     // apify.com sets frame-ancestors 'self', so it cannot be previewed in an iframe.
     previews: [
       { label: 'How it works', src: `${base}/portfolio/ai-visibility-illustration.webp` },
@@ -343,8 +337,6 @@ export const projects = [
     categoryLabel: 'Open source',
     role: 'Author · MIT',
     description: 'Open-source agent skill for Claude Code, Codex and OpenClaw: an AI browser agent signs in to a staging app as a real account state (free, paid, lapsed, team member, stranger) and follows a plain-English goal, then the database gives the verdict. Built to catch what mocks miss: paywalls, roles and cross-account isolation disagreeing on a deployed app.',
-    image: `${base}/blog/jev-check-audit.svg`,
-    imageCentered: true,
     previews: [
       { label: 'What it catches', src: `${base}/blog/jev-check-audit.svg` },
       { label: 'Repository', src: `${base}/portfolio/jev-check.webp` },
@@ -360,8 +352,6 @@ export const projects = [
     categoryLabel: 'Agency',
     role: 'CTO',
     description: 'Digital agency building tailor-made web & mobile applications, e-commerce platforms and AI automation workflows for SMEs. I own the full technical stack, from architecture to production.',
-    image: `${base}/portfolio/ksur-showreel-poster.webp`,
-    imageCentered: true,
     // agence-ksur.com sets frame-ancestors 'self', so it cannot be previewed in an iframe.
     previews: [
       { label: 'Homepage', src: `${base}/portfolio/ksur-home.webp` },
@@ -378,8 +368,6 @@ export const projects = [
     categoryLabel: 'Research',
     role: 'Solo research',
     description: 'An honest hunt for a trading edge on Polymarket\'s 5 and 15 minute binary crypto markets: hypothesis, out-of-sample backtest, live paper trading, then falsification. ~12,000 paper trades across 60 concurrent runners, settled against the Chainlink oracle. The verdict: the market is efficient and nearly every edge turns out to be a measurement artifact.',
-    image: `${base}/portfolio/polymarket-dashboard.webp`,
-    imageCentered: true,
     // github.com sets X-Frame-Options: DENY, so the repo cannot be previewed in an iframe.
     previews: [
       { label: 'What it found', src: `${base}/portfolio/polymarket-illustration.webp` },
@@ -396,7 +384,6 @@ export const projects = [
     categoryLabel: 'Website',
     role: 'Client work',
     description: 'Immersive landing page for T&EM, a new-generation integrated agency balancing transformation and empathy. Kinetic, scroll-led design.',
-    image: `${base}/portfolio/atandemagency.webp`,
     previews: [{ label: 'Live site', src: 'https://atandemagency.com' }],
     url: 'https://atandemagency.com',
     tags: ['Landing page', 'Kinetic design'],
@@ -409,8 +396,6 @@ export const projects = [
     categoryLabel: 'E-commerce',
     role: 'Founder · sold',
     description: 'Online store of Montessori educational toys and games, built end to end, grown to real revenue, and successfully sold: SEO, marketing and custom Liquid themes.',
-    image: `${base}/portfolio/montessori-og.webp`,
-    imageCentered: true,
     previews: [{ label: 'Landing page', src: `${base}/portfolio/montessori.png` }],
     url: 'https://mon-jouet-montessori.com',
     tags: ['Shopify', 'Liquid', 'SEO'],
@@ -423,8 +408,6 @@ export const projects = [
     categoryLabel: 'Mobile App',
     role: 'Mobile Software Engineer',
     description: 'Grocery delivery mobile app with real-time geolocation, on the Uber model. Sole mobile engineer on the first version, from wireframes to production-ready interface.',
-    image: `${base}/portfolio/deuspi-og.webp`,
-    imageCentered: true,
     previews: [{ label: 'App screenshot', src: `${base}/portfolio/deuspi.png` }],
     url: null,
     tags: ['React Native', 'JavaScript'],
@@ -437,8 +420,6 @@ export const projects = [
     categoryLabel: 'Web App',
     role: 'Full-Stack Engineer',
     description: 'AI web application for automatic correction of hospital discharge summaries for French hospitals. Built solo, 5,000+ documents processed, €700,000 saved.',
-    image: `${base}/portfolio/altao-og.webp`,
-    imageCentered: true,
     previews: [
       { label: 'Recoding tool', src: `${base}/portfolio/altao-devices.webp` },
       { label: 'Full app', src: `${base}/portfolio/altao-mockup.webp` },
@@ -454,8 +435,6 @@ export const projects = [
     categoryLabel: 'Web App',
     role: 'Full-Stack Engineer',
     description: 'MQTT debugging web tool for an R&D team: message visualization, payload publishing and logging. Improved team development speed by 70%.',
-    image: `${base}/portfolio/worldline-og.webp`,
-    imageCentered: true,
     previews: [
       { label: 'MQTT debugger', src: `${base}/portfolio/worldline-devices.webp` },
       { label: 'Full app', src: `${base}/portfolio/worldline-mockup.webp` },
