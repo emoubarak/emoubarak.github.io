@@ -26,8 +26,9 @@ const others = (await getCollection('blog', ({ data }) => !data.draft))
 <Layout title={`${post.data.title} - El Mahdi Moubarak`} description={post.data.description} ogImage={`/og/blog/${post.id}.png`} published={post.data.pubDate}>
   <div class="progress" aria-hidden="true" data-progress></div>
   <article>
-    <header class="hero on-orange" data-hero>
-      <div class:list={['wrap pt-[calc(var(--header-h)+clamp(2.5rem,7vh,4.5rem))]', post.data.cover ? 'pb-[clamp(9rem,18vw,15rem)]' : 'pb-[clamp(3rem,8vh,5rem)]']}>
+    <!-- full-height like every hero; the cover's top edge shows at the bottom of the first screen -->
+    <header class="hero on-orange min-h-[100svh]" data-hero>
+      <div class:list={['wrap min-h-[100svh] flex flex-col justify-center pt-[calc(var(--header-h)+clamp(2.5rem,7vh,4.5rem))]', post.data.cover ? 'pb-[clamp(9rem,18vw,15rem)]' : 'pb-[clamp(3rem,8vh,5rem)]']}>
         <div class="max-w-[62rem]">
           <a href={`${base}/blog`} class="link-arrow text-[0.95rem] fade-up" style="--i:0"><Icon name="back" /> Blog</a>
           <h1 class="mt-8 text-[clamp(2.3rem,1.3rem+3.4vw,4.6rem)] leading-[1.02] tracking-[-0.035em] font-extrabold fade-up" style="--i:1">{post.data.title}</h1>

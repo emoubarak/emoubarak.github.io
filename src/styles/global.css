@@ -439,7 +439,7 @@
   }
   .hero__visual { position: relative; z-index: 1; }
   .hero--full { min-height: 100svh; }
-  .hero--page { min-height: clamp(30rem, 74svh, 46rem); }
+  .hero--page { min-height: 100svh; }
   .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: clamp(1.75rem, 4vh, 2.5rem); }
   .hero__eyebrow { margin-bottom: clamp(1rem, 2.6vh, 1.75rem); }
   .hero__lede { margin-top: clamp(1.25rem, 3vh, 2rem); max-width: 36ch; color: var(--text-2); text-wrap: balance; }
@@ -472,6 +472,12 @@
 
   /* Page heroes: real artefacts fanned on the right (project captures, CV pages, article covers) */
   .fan { position: absolute; inset: var(--header-h) 0 0 0; pointer-events: none; }
+  /* Desktop: a fixed-height stage centred under the header, level with the text */
+  @media (min-width: 900px) {
+    .hero--page .fan { inset: auto 0; top: calc(50% + var(--header-h) / 2); height: min(32rem, calc(100% - var(--header-h) - 2rem)); transform: translateY(-50%); }
+    /* 12 % larger than its box, grown from the right edge so nothing leaves the screen */
+    .hero--page .fan { scale: 1.12; transform-origin: right center; }
+  }
   .fan__item {
     position: absolute;
     border-radius: var(--radius-sm);
@@ -487,10 +493,12 @@
     to { opacity: 1; transform: translate3d(0, 0, 0) rotate(var(--r, 0deg)); }
   }
   .fan__item { transform: rotate(var(--r, 0deg)); }
+  /* Phones: the artefacts sit under the text and fill the rest of the screen */
   @media (max-width: 899px) {
-    .hero--page .hero__visual { display: none; }
-    .hero--page { min-height: auto; }
-    .hero--page .hero__text { padding-bottom: clamp(3rem, 8vh, 4.5rem); }
+    .hero--page .hero__inner { display: flex; flex-direction: column; min-height: 100svh; }
+    .hero--page .hero__text { align-self: stretch; padding-bottom: 1.25rem; }
+    .hero--page .hero__visual { flex: 1; min-height: 17rem; margin-bottom: 2rem; }
+    .hero--page .fan { inset: 0; }
   }
 
   /* Hero load sequence: lines rise out of a mask, then the rest fades up */

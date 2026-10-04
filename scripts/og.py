@@ -49,8 +49,8 @@ def cards():
         "sub": "SaaS products, web apps, e-commerce stores and mobile apps I designed, built and shipped.",
         "foot": "El Mahdi Moubarak",
         "images": [
-            {"src": f"{p}/portfolio/polymarket-illustration.webp", "w": 400, "x": 760, "y": 70, "r": 5},
-            {"src": f"{p}/portfolio/pdfold-illustration.webp", "w": 400, "x": 660, "y": 150, "r": -5},
+            {"src": f"{p}/portfolio/ksur-home.webp", "w": 400, "x": 760, "y": 70, "r": 5},
+            {"src": f"{p}/portfolio/altao-og.webp", "w": 410, "x": 655, "y": 160, "r": -5},
             {"src": f"{p}/portfolio/piktechs-og.webp", "w": 430, "x": 725, "y": 330, "r": 2},
         ],
     }
