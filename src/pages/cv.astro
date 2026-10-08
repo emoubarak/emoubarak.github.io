@@ -6,6 +6,12 @@ import { identity, experiences, education, techGroups, interests, projects, aiAp
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const href = (h: string) => (h.startsWith('/') ? `${base}${h}` : h);
+const ext = (h: string) => !h.startsWith('/');
+// the light markup of profile.js: **key phrase** in bold, ==result== in the accent colour
+const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const md = (t: string) => esc(t)
+  .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-[var(--text)]">$1</strong>')
+  .replace(/==(.+?)==/g, '<strong class="font-semibold text-[var(--accent)]">$1</strong>');
 const toc = [
   { id: 'profile', label: 'Profile' },
   { id: 'ai', label: 'How I work with AI' },
@@ -17,13 +23,13 @@ const toc = [
 ];
 ---
 
-<Layout title="CV - El Mahdi Moubarak" description="Full CV - El Mahdi Moubarak, Founder & Full-Stack Engineer." ogImage="/og/cv.png">
+<Layout title="CV - El Mahdi Moubarak" description="Full CV - El Mahdi Moubarak, Software & AI Engineer." ogImage="/og/cv.png">
   <PageHero eyebrow="El Mahdi Moubarak">
     <h1 class="t-page">
       <span class="rise"><span style="--i:0">Curriculum</span></span>
       <span class="rise"><span style="--i:1">vitae</span></span>
     </h1>
-    <p class="t-lede hero__lede fade-up" style="--i:1">{identity.title.en}</p>
+    <p class="t-lede hero__lede fade-up" style="--i:1">{identity.cvTitle.en}</p>
     <div class="hero__actions fade-up" style="--i:2">
       <a href={`${base}/cv-en.pdf`} download class="btn btn--solid">PDF in English <Icon name="down" /></a>
       <a href={`${base}/cv-fr.pdf`} download class="btn btn--line" lang="fr">PDF en français <Icon name="down" /></a>
@@ -48,9 +54,7 @@ const toc = [
       <section id="profile" data-toc-section>
         <p class="t-eyebrow mb-5">Profile</p>
         <p class="t-statement !text-[clamp(1.45rem,1.1rem+1.3vw,2.25rem)] !font-medium">
-          I build software and AI systems end-to-end: specs, architecture, code, deploy.
-          6 years across cybersecurity, healthcare and fintech, mostly as the only engineer on the project.
-          I work with founders and agencies who need something built properly and shipped fast.
+          Full-stack engineer shipping production software since 2019 in cybersecurity, healthcare and fintech, often as the only engineer on the product. Since 2026 I build AI-native: a browser agent that tests my SaaS as real users with the database as judge, LLM features whose models are picked by attacking them, and Claude Code as my main engineering environment.
         </p>
         <p class="t-meta mt-6">{identity.location.en} · {identity.languages.en}</p>
       </section>
@@ -83,12 +87,22 @@ const toc = [
                 <p class="t-meta mt-1">{exp.location}</p>
               </div>
               <div>
-                <h3 class="t-h4">{exp.company}</h3>
+                <h3 class="t-h4">{exp.url
+                  ? <a href={exp.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 hover:text-[var(--accent)] transition-colors">{exp.company}<span class="inline-block w-[0.8em] text-[var(--accent)]"><Icon name="out" /></span></a>
+                  : exp.company}</h3>
                 <p class="font-medium text-2 mt-1">{exp.role}</p>
-                <p class="mt-4 leading-relaxed">{exp.summary}</p>
+                <p class="mt-4 leading-relaxed" set:html={md(exp.summary)} />
                 <ul class="bullet-list mt-5 text-2 leading-relaxed">
-                  {exp.achievements.map((a) => <li>{a}</li>)}
+                  {exp.achievements.map((a) => <li set:html={md(a)} />)}
                 </ul>
+                {exp.stack && <p class="t-meta mt-5"><span class="font-semibold !text-[var(--text)]">Stack</span> · {exp.stack.join(' · ')}</p>}
+                {exp.links && (
+                  <div class="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+                    {exp.links.map((l) => (
+                      <a href={href(l.href)} target={ext(l.href) ? '_blank' : undefined} rel={ext(l.href) ? 'noopener noreferrer' : undefined} class="link-arrow text-[0.95rem] !text-[var(--accent)]">{l.label} <Icon name="arrow" /></a>
+                    ))}
+                  </div>
+                )}
               </div>
             </article>
           ))}

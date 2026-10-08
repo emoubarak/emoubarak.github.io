@@ -51,7 +51,7 @@ A prototype that demos well is not a product that bills. Piktechs needed multi-t
 
 ## Where it stands, honestly
 
-The product is in production with live billing, team workspaces, the AI scanner and CRM integrations. The Android app builds and releases from CI, and its first store release is going through review; iOS comes after.
+The product is in production with live billing, team workspaces, the AI scanner and CRM integrations. The Android app builds and releases from CI and is [live on Google Play](https://play.google.com/store/apps/details?id=com.piktechs.app); iOS comes after.
 
 It didn't go smoothly, and the mistakes are the useful part:
 

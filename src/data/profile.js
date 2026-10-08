@@ -13,6 +13,8 @@ export const identity = {
   // deliberately different on Fiverr and Upwork, where the public first name is "Adam"
   publicNames: { site: 'El Mahdi Moubarak', linkedin: 'El Mahdi MOUBARAK', malt: 'El Mahdi M.', upwork: 'Adam M.', fiverr: 'Adam' },
   title: { en: 'Founder & Full-Stack Engineer · Software, SaaS & AI', fr: 'Fondateur & Ingénieur Full-Stack · Logiciel, SaaS & IA' },
+  // title on the CV (PDF and /cv page), aimed at engineering roles rather than freelance clients
+  cvTitle: { en: 'Software & AI Engineer · Full-Stack, LLM Systems, Agents', fr: 'Ingénieur Logiciel & IA · Full-Stack, Systèmes LLM, Agents' },
   headline: { en: 'I ship software & AI products to production', fr: 'Je livre des logiciels et des produits IA en production' },
   city: 'Lille',
   location: { en: 'Lille, France · Remote across Europe', fr: 'Lille, France · Remote partout en Europe' },
@@ -22,7 +24,9 @@ export const identity = {
   github: 'https://github.com/emoubarak',
   calendly: 'https://calendly.com/moubarakelmahdipro/',
   languages: { en: 'French (native) · English (C1, TOEIC) · Spanish (professional)', fr: 'Français (natif) · Anglais (C1, TOEIC) · Espagnol (professionnel)' },
-  yearsExperience: 6,
+  // first production work in 2019 (Worldline internship); internships and work alongside the 2022 degree included.
+  // Public copy says "since 2019", never a year count a reader would recompute from the degree date.
+  experienceSince: 2019,
   domains: { en: 'healthcare, fintech and cybersecurity', fr: 'santé, fintech et cybersécurité' },
   rates: { maltDaily: '550 €/day', upworkHourly: '$55/hr' },
   availability: { en: 'more than 30 h/week · remote, on-site possible (Lille 50 km, Paris)', fr: 'plus de 30 h/semaine · remote, présentiel possible (Lille 50 km, Paris)' },
@@ -33,7 +37,9 @@ export const identity = {
 // Measured, verifiable numbers. Nothing here is rounded up or estimated.
 export const proof = [
   { claim: { en: 'Medical AI platform for hospitals, sole engineer: 5,000+ documents processed, €700,000 saved.', fr: 'Plateforme médicale IA pour hôpitaux, seul ingénieur : 5 000+ documents traités, 700 000 € économisés.' }, source: 'ALTAO Santé' },
-  { claim: { en: 'Security Rating®, a cyber-rating SaaS used by 200+ organisations: 700+ tickets delivered over 3 years.', fr: 'Security Rating®, SaaS de cyber-notation utilisé par 200+ organisations : 700+ tickets livrés en 3 ans.' }, source: 'Board of Cyber' },
+  { claim: { en: 'Security Rating®, a cyber-rating SaaS used by 200+ organizations.', fr: 'Security Rating®, SaaS de cyber-notation utilisé par 200+ organisations.' }, source: 'Board of Cyber' },
+  { claim: { en: 'Agentic QA with jev: 16 standing browser-agent checks on plan gates and permissions, the database as judge; its screenshots on closed tickets surfaced 3 follow-up bugs the fixes had missed or introduced.', fr: 'QA agentique avec jev : 16 vérifications permanentes par agent navigateur sur les offres et les permissions, la base de données pour juge ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits.' }, source: 'Piktechs' },
+  { claim: { en: 'AI card scanner: of four candidate vision models, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.', fr: "Scanner de cartes IA : sur quatre modèles de vision candidats, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le repli est celui qui a résisté." }, source: 'Piktechs' },
   { claim: { en: "Internal R&D tool that improved the team's development speed by 70%.", fr: "Outil interne de R&D qui a amélioré la vitesse de développement de l'équipe de 70 %." }, source: 'Worldline' },
   { claim: { en: '~12,000 trades journaled across 60 concurrent runners, settled against the Chainlink oracle.', fr: '~12 000 trades journalisés sur 60 runners concurrents, réglés contre l\'oracle Chainlink.' }, source: 'Polymarket Up/Down Lab' },
   { claim: { en: 'Any PDF into structured Markdown, in 11 languages.', fr: "N'importe quel PDF en Markdown structuré, en 11 langues." }, source: 'PDFold' },
@@ -133,7 +139,34 @@ export const services = [
   },
 ];
 
+// Experiences, in the CV's order. Light markup, rendered on /cv: **bold** for a key phrase,
+// ==text== for a result (accent colour). The knowledge base keeps ** and drops ==.
+// `url` links the company name; `links` are the proofs shown under the role (case studies, store, testimonial).
 export const experiences = [
+  {
+    company: "Piktechs",
+    url: "https://piktechs.com",
+    role: "Co-Founder & CTO",
+    period: "Mar 2026 – Present",
+    location: "France",
+    summary: "B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.",
+    achievements: [
+      "**Sole engineer:** took a two-week prototype to a **complete production B2B SaaS** for event lead capture, with Claude Code as the main engineering environment.",
+      "**Agentic QA with jev**, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal, then **a SQL query, not the agent, gives the verdict**. ==16 standing checks== on plan gates and permissions; its before/after screenshots on closed tickets surfaced ==3 follow-up bugs==. Open-sourced as jev-check.",
+      "Shipped an **AI business-card scanner**: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by **prompt-injection testing** (==2 of 4== candidate models obeyed an injected card).",
+      "**Live Stripe billing** (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured by **Postgres row-level security** and role-based permissions; billing and permission code is **reviewed by a different model** from the one that wrote it.",
+      "**Android app live on Google Play** and iOS build from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.",
+      "Unit and Playwright tests gate CI/CD across separate test and production environments.",
+    ],
+    stack: ["React", "TypeScript", "Vite", "Tailwind", "Supabase (Postgres, RLS, Edge Functions)", "Stripe", "Capacitor", "OpenRouter", "Resend", "Playwright", "Vitest", "jev (Browser Use)", "GitHub Actions", "Cloudflare Pages", "Claude Code"],
+    links: [
+      { label: "Case study: Piktechs", href: "/blog/case-study-piktechs" },
+      { label: "Case study: jev-check", href: "/blog/case-study-jev-check" },
+      { label: "Case study: the AI card scanner", href: "/blog/case-study-ai-card-scanner" },
+      { label: "Android app on Google Play", href: "https://play.google.com/store/apps/details?id=com.piktechs.app&hl=en" },
+      { label: "jev-check on GitHub", href: "https://github.com/emoubarak/jev-check" },
+    ],
+  },
   {
     company: "EMM",
     role: "Founder & AI / Full-Stack Engineer",
@@ -141,102 +174,104 @@ export const experiences = [
     location: "Lille, France · Remote",
     summary: "Independent software engineering practice: web apps, SaaS and AI automation for founders, SMEs and agencies, from requirements to production.",
     achievements: [
-      "Self-hosted AI agents: installing, configuring and securing agent runtimes on a client's own server or VPS (OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack), connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.",
-      "AI browser automation on jev-ultrafast (Browser Use): my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.",
-      "Rescuing AI-generated MVPs (Lovable, Bolt, Cursor, Claude Code): code audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests and deployment.",
-      "LLM and RAG integration into existing products: OCR + LLM pipelines, chatbots over documents, OpenAI / Claude / Gemini in production.",
-      "Corporate AI training for DRIVECO: two tailored FR/EN sessions with live use cases built on the company's real workflows and OpenAI ecosystem.",
+      "**Self-hosted AI agents:** installing, configuring and securing agent runtimes on a client's own server or VPS (OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack), connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.",
+      "**AI browser automation with jev** (Browser Use's jev-ultrafast): my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.",
+      "**Rescuing AI-generated MVPs** (Lovable, Bolt, Cursor, Claude Code): code audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests and deployment.",
+      "**LLM and RAG integration** into existing products: OCR + LLM pipelines, chatbots over documents, OpenAI / Claude / Gemini in production.",
+      "**AI-native workflow:** a versioned Claude Code workspace shared across two machines, where repeated corrections become hooks and skills, and a weekly pass mines my own sessions for what I keep correcting.",
     ],
-  },
-  {
-    company: "Piktechs",
-    role: "Co-Founder & CTO",
-    period: "Mar 2026 – Present",
-    location: "France",
-    summary: "B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces (React, TypeScript, Supabase, Stripe).",
-    achievements: [
-      "Sole engineer: took the product over from a two-week prototype in April 2026 and turned it into a production SaaS in under six months, with Claude Code as the main engineering environment.",
-      "Shipped an AI business-card scanner: vision model with a cross-provider fallback selected by prompt-injection testing, strict JSON output, a per-user quota and on-device OCR as the last resort.",
-      "Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured with Postgres row-level security and role-based permissions.",
-      "Android and iOS apps from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.",
-      "Agentic QA with jev (Browser Use's jev-ultrafast): a browser agent signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team), follows a plain-English goal, and the database gives the verdict. Bug tickets get a one-command reproduction and before/after screenshots taken by the agent. Open-sourced as jev-check.",
-      "Unit and Playwright tests as the deterministic gate, CI/CD with separate test and production environments, and a reviewer agent on a different model for billing and permission code.",
+    stack: ["TypeScript", "Python", "Next.js", "Node.js", "Supabase", "Docker", "OpenAI, Claude, Gemini APIs", "MCP", "Browser Use", "Claude Code"],
+    links: [
+      { label: "Article: what I kept telling Claude", href: "/blog/what-i-kept-telling-claude" },
+      { label: "Article: browser agents at work", href: "/blog/browser-agents-at-work-jev" },
+      { label: "Article: lazy by design", href: "/blog/lazy-by-design" },
     ],
   },
   {
     company: "KSUR Services",
+    url: "https://www.agence-ksur.com",
     role: "CTO",
     period: "Mar 2026 – Present",
     location: "France · Morocco",
     summary: "Agence-KSUR is a digital agency building tailor-made web and mobile applications, e-commerce platforms, and AI-driven automation workflows for SMEs and enterprises.",
     achievements: [
-      "Own the agency's full technical stack and delivery, from architecture to production.",
+      "Own the agency's **full technical stack and delivery**, from architecture to production.",
       "Design and build tailored web & mobile applications from the ground up.",
-      "Architect and deploy AI-powered automation workflows to streamline internal and client operations.",
+      "Architect and deploy **AI-powered automation workflows** to streamline internal and client operations.",
     ],
   },
   {
     company: "DRIVECO",
+    url: "https://www.driveco.com",
     role: "AI Trainer",
     period: "Jul 2026",
     location: "Paris (Hybrid)",
     summary: "Corporate AI training for DRIVECO teams, an operator of electric-vehicle charging infrastructure.",
     achievements: [
-      "Designed and delivered two tailored AI training sessions (FR/EN), with live hands-on use cases built on the company's real workflows and OpenAI ecosystem.",
+      "Designed and delivered **two tailored AI training sessions** (FR/EN), with live hands-on use cases built on the company's real workflows and OpenAI ecosystem.",
+    ],
+    links: [
+      { label: "Public testimonial on LinkedIn", href: "https://www.linkedin.com/posts/el-mahdi-moubarak_merci-%C3%A0-toute-l%C3%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/" },
     ],
   },
   {
     company: "Board of Cyber",
+    url: "https://www.boardofcyber.io",
     role: "Full-Stack Engineer",
     period: "Mar 2023 – Feb 2026",
     location: "Paris (Remote)",
-    summary: "Core contributor to Security Rating®, a SaaS cyber-rating platform used by 200+ organizations (Angular, TypeScript, Python).",
+    summary: "Mostly front-end, in a **team of 20 developers**, on Security Rating®, a SaaS cyber-rating platform used by ==200+ organizations==: client platform, back office and manager office.",
     achievements: [
-      "Solved 700+ tickets across platform, back office and manager office in a high-cadence release cycle.",
-      "Engineered a Python-based nmap vulnerability scanning probe automating attack surface data collection.",
-      "Implemented test coverage with Spectator and optimized CI/CD pipelines for regression-free deployments.",
-      "Contributed to Angular migration and major library upgrades, reducing technical debt incrementally.",
+      "Built **Angular components**, worked on the Angular version upgrades, added test coverage (Spectator) and fixed bugs in a high-cadence release cycle.",
+      "Built a Python **vulnerability-scanning probe** on nmap that automated attack-surface data collection for the ratings.",
     ],
+    stack: ["Angular", "TypeScript", "Python", "nmap", "Spectator", "Docker", "CI/CD"],
   },
   {
     company: "ALTAO Santé",
+    url: "https://www.linkedin.com/company/altao---recherche-developpement-marketing-sante",
     role: "Full-Stack & AI Engineer",
     period: "Sep 2021 – Sep 2022",
     location: "Lille (On-site)",
-    summary: "Sole engineer on a greenfield medical platform for hospital discharge summary correction, replacing a fragmented multi-tool legacy workflow (Vue.js, Django, PostgreSQL).",
+    summary: "**Sole engineer** on a greenfield medical platform for hospital discharge summary correction, replacing a fragmented multi-tool legacy workflow.",
     achievements: [
-      "Processed 5,000+ documents through the platform, saving hospitals €700,000.",
-      "Ran requirement sessions directly with doctors, wrote specs, integrated ML algorithms from the Data Science team.",
+      "Processed ==5,000+ documents== through the platform, saving hospitals ==€700,000==.",
+      "Ran requirement sessions directly with doctors, wrote specs, integrated **ML algorithms** from the Data Science team.",
       "Deployed and monitored the full AWS infrastructure autonomously (EC2, Route53, Amplify).",
     ],
+    stack: ["Vue.js", "Django", "Python", "PostgreSQL", "AWS (EC2, Route53, Amplify)"],
   },
   {
     company: "Deuspi",
+    url: "https://www.linkedin.com/company/deuspi/",
     role: "Mobile Software Engineer",
     period: "Mar 2021 – Jun 2021",
     location: "Lille (Remote)",
-    summary: "Sole mobile engineer on the first version of a React Native grocery delivery app, transitioning the product from web-only to native mobile.",
+    summary: "**Sole mobile engineer** on the first version of a React Native grocery delivery app, transitioning the product from web-only to native mobile.",
     achievements: [
       "Owned the full frontend from designer wireframes to production-ready interface.",
       "Implemented a gamified UX direction defined by the product team to drive customer retention.",
       "Co-defined API contracts with the backend developer for real-time order tracking and inventory sync.",
     ],
+    stack: ["React Native", "JavaScript", "REST APIs"],
   },
   {
     company: "Worldline",
+    url: "https://worldline.com",
     role: "Full-Stack Engineer",
-    period: "Apr 2019 – Aug 2019",
+    period: "Apr 2019 – Aug 2019 · Internship",
     location: "Seclin (On-site)",
-    summary: "Built an internal R&D debugging tool (Vue.js, Spring Boot, MQTT) improving team development speed by 70%.",
+    summary: "Built an internal R&D debugging tool improving team development speed by ==70%==.",
     achievements: [
       "Designed and built a centralized dashboard automating the creation, storage and replay of complex payment test sets.",
     ],
+    stack: ["Vue.js", "Spring Boot", "Java", "MQTT", "Docker"],
   },
 ];
 
 export const education = [
   {
-    degree: "Engineering Degree in CS, Networks & Telecoms",
+    degree: "Engineering Degree (Master's level) in CS, Networks & Telecoms",
     school: "IMT Nord Europe",
     period: "2017 – 2022",
     detail: "Lille, France.",
@@ -254,9 +289,9 @@ export const certifications = [
 ];
 
 export const techGroups = [
+  { label: "AI & Automation", items: ["AI Agents", "Agentic Dev", "Claude Code (skills, hooks, subagents)", "MCP", "Browser agents & agentic QA (jev, Browser Use)", "LLM APIs (OpenAI, Claude, Gemini, OpenRouter)", "LLM evaluation & prompt-injection testing", "Local LLMs (llama.cpp, ExLlamaV2)", "RAG", "Vectorization", "OCR & Vision pipelines", "ElevenLabs", "Voice AI"] },
   { label: "Web & Mobile Dev", items: ["TypeScript", "JavaScript", "Next.js", "React", "React Native", "Capacitor", "Angular", "Vue.js", "Node.js", "Python", "Django", "Flask", "PostgreSQL", "Supabase"] },
   { label: "Cloud & DevOps", items: ["AWS (EC2, Route53, Amplify)", "Docker", "Git", "CI/CD", "Vercel"] },
-  { label: "AI & Automation", items: ["AI Agents", "Agentic Dev", "Claude Code (skills, hooks, subagents)", "MCP", "Browser agents (Browser Use)", "LLM APIs (OpenAI, Claude, Gemini, OpenRouter)", "LLM evaluation & prompt-injection testing", "Local LLMs (llama.cpp, ExLlamaV2)", "RAG", "Vectorization", "OCR & Vision pipelines", "ElevenLabs", "Voice AI"] },
   { label: "E-commerce", items: ["Shopify API", "Liquid", "Stripe", "SEO"] },
   { label: "Languages", items: ["French (Native)", "English (C1, TOEIC)", "Spanish"] },
 ];
@@ -287,7 +322,7 @@ export const projects = [
     subtitle: 'piktechs.com',
     category: 'saas',
     categoryLabel: 'SaaS',
-    role: 'Founder',
+    role: 'Co-Founder & CTO',
     description: 'B2B SaaS platform for digital business cards at professional events: connection, lead capture with an AI card scanner, CRM and team workspaces. Designed, built and operated end to end.',
     previews: [
       { label: 'Dashboard', src: `${base}/portfolio/piktechs-devices.webp` },
