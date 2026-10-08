@@ -1,20 +1,20 @@
 ---
 title: "Case Study: Piktechs, from a Two-Week Prototype to a Production SaaS with Claude Code"
-description: "How I took a Lovable prototype to a production B2B SaaS as the only engineer: multi-tenant workspaces, live billing, mobile apps and an AI feature, with Claude Code as the main engineering environment. The workflow, the mistakes, the lessons."
+description: "How I took a two-week prototype to a production B2B SaaS as the only engineer: multi-tenant workspaces, live billing, mobile apps and an AI feature, with Claude Code as the main engineering environment. The workflow, the mistakes, the lessons."
 pubDate: 2026-09-12
 tags: ["Case Study", "SaaS", "Claude"]
 featured: true
 cover: "/blog/case-study-piktechs.webp"
 coverAlt: "A taped-together paper prototype of an app on the left, the same app solid on a laptop and a phone on the right."
 tldr:
-  - "As the only engineer, I took a two-week Lovable prototype to a production B2B SaaS with Claude Code as the main engineering environment."
+  - "As the only engineer, I took a two-week prototype to a production B2B SaaS with Claude Code as the main engineering environment."
   - "Fast by default, strict in the silent-failure zone (billing, row-level security, webhooks), reviewed by a different model."
   - "Done means the whole chain: migration applied, function deployed, ticket closed with before/after proof."
 ---
 
 ## Context
 
-[Piktechs](https://piktechs.com) is a B2B SaaS for professionals at events: digital business cards shared over NFC or QR, lead capture, a light CRM, and team workspaces. I co-founded it in March 2026; I'm the CTO and the only engineer. In April 2026, the product existed as a two-week Lovable prototype.
+[Piktechs](https://piktechs.com) is a B2B SaaS for professionals at events: digital business cards shared over NFC or QR, lead capture, a light CRM, and team workspaces. I co-founded it in March 2026; I'm the CTO and the only engineer. In April 2026, the product existed as a two-week prototype.
 
 ## The problem
 

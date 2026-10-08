@@ -155,7 +155,7 @@ export const experiences = [
     location: "France",
     summary: "B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces (React, TypeScript, Supabase, Stripe).",
     achievements: [
-      "Sole engineer: took the product over from a two-week Lovable prototype in April 2026 and turned it into a production SaaS in under six months, with Claude Code as the main engineering environment.",
+      "Sole engineer: took the product over from a two-week prototype in April 2026 and turned it into a production SaaS in under six months, with Claude Code as the main engineering environment.",
       "Shipped an AI business-card scanner: vision model with a cross-provider fallback selected by prompt-injection testing, strict JSON output, a per-user quota and on-device OCR as the last resort.",
       "Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured with Postgres row-level security and role-based permissions.",
       "Android and iOS apps from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.",

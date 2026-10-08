@@ -72,7 +72,7 @@ Diplôme d'ingénieur de l'IMT Nord Europe (Informatique, Réseaux & Télécoms)
     label: 'LinkedIn About (≤ 2,600 characters)',
     en: `I build AI into products, and I build with AI every day.
 
-Most of my recent work happens with Claude Code as my main engineering environment. As the only engineer on Piktechs, a B2B SaaS for digital business cards, I took it from a two-week Lovable prototype to a production product with live billing, multi-tenant workspaces and mobile apps. Doing that alone taught me more about working with AI agents than any tutorial, mostly through what went wrong.
+Most of my recent work happens with Claude Code as my main engineering environment. As the only engineer on Piktechs, a B2B SaaS for digital business cards, I took it from a two-week prototype to a production product with live billing, multi-tenant workspaces and mobile apps. Doing that alone taught me more about working with AI agents than any tutorial, mostly through what went wrong.
 
 A few things I hold to:
 • An agent saying "done" is a claim. I give it ways to check its work against reality, and the database has the last word. I open-sourced that approach as jev-check.
@@ -85,7 +85,7 @@ Before that: six years shipping software in cybersecurity, healthcare and fintec
 I write about all of this, mistakes included, on moubarak.dev. Based in Lille, working remotely across Europe.`,
     fr: `Je construis des produits qui embarquent de l'IA, et je construis avec l'IA tous les jours.
 
-L'essentiel de mon travail récent se fait avec Claude Code comme environnement d'ingénierie principal. Seul ingénieur sur Piktechs, un SaaS B2B de cartes de visite digitales, je l'ai fait passer d'un prototype Lovable de deux semaines à un produit en production : facturation en live, espaces de travail multi-clients, applications mobiles. Le faire seul m'a plus appris sur le travail avec des agents IA que n'importe quel tutoriel, surtout à travers ce qui a raté.
+L'essentiel de mon travail récent se fait avec Claude Code comme environnement d'ingénierie principal. Seul ingénieur sur Piktechs, un SaaS B2B de cartes de visite digitales, je l'ai fait passer d'un prototype de deux semaines à un produit en production : facturation en live, espaces de travail multi-clients, applications mobiles. Le faire seul m'a plus appris sur le travail avec des agents IA que n'importe quel tutoriel, surtout à travers ce qui a raté.
 
 Quelques principes auxquels je tiens :
 • Un agent qui dit « fini » fait une affirmation. Je lui donne de quoi vérifier son travail face au réel, et c'est la base de données qui tranche. J'ai publié cette approche en open source : jev-check.
@@ -165,7 +165,7 @@ March 2026 – Present · France
 
 B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.
 
-• Sole engineer: took the product over from a two-week Lovable prototype in April 2026 and turned it into a production SaaS in under six months, with Claude Code as the main engineering environment.
+• Sole engineer: took the product over from a two-week prototype in April 2026 and turned it into a production SaaS in under six months, with Claude Code as the main engineering environment.
 • Shipped an AI business-card scanner: vision model with a cross-provider fallback selected by prompt-injection testing, strict JSON output, a per-user quota and on-device OCR as the last resort.
 • Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured with Postgres row-level security and role-based permissions.
 • Android and iOS apps from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.
@@ -180,7 +180,7 @@ Mars 2026 – Aujourd'hui · France
 
 SaaS B2B pour l'événementiel & le networking : cartes de visite digitales (NFC/QR), capture de leads et CRM, espaces d'équipe.
 
-• Seul ingénieur : reprise du produit depuis un prototype Lovable de deux semaines en avril 2026, transformé en SaaS en production en moins de six mois, avec Claude Code comme environnement d'ingénierie principal.
+• Seul ingénieur : reprise du produit depuis un prototype de deux semaines en avril 2026, transformé en SaaS en production en moins de six mois, avec Claude Code comme environnement d'ingénierie principal.
 • Scanner de cartes de visite IA : modèle de vision avec repli sur un autre fournisseur choisi par des tests d'injection de prompt, sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours.
 • Facturation Stripe en live (checkout, portail client, webhooks, offres d'équipe au siège, réconciliation planifiée) et espaces de travail multi-clients sécurisés par row-level security Postgres et permissions par rôle.
 • Applications Android et iOS depuis le même code (Capacitor), passes Apple et Google Wallet, synchronisation CRM et intégration Zapier.
@@ -903,7 +903,7 @@ const bioSections = bios.map((b) => ({ label: b.label, blocks: pair(b) }));
 // ===== Featured (case studies & articles), generated from the blog so it never drifts =====
 const featuredIds = ['case-study-piktechs', 'case-study-ai-card-scanner', 'case-study-jev-check', 'what-i-kept-telling-claude', 'browser-agents-at-work-jev', 'lazy-by-design', 'how-i-built-pdfold', 'the-great-work-polymarket'];
 const featuredFr = {
-  'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment j'ai fait passer un prototype Lovable en production, seul ingénieur : le workflow, les erreurs, les leçons."],
+  'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment j'ai fait passer un prototype de deux semaines en production, seul ingénieur : le workflow, les erreurs, les leçons."],
   'case-study-ai-card-scanner': ["Étude de cas : choisir le modèle de repli d'un LLM en l'attaquant", "Le scanner de cartes de Piktechs lit du texte écrit par des inconnus : comment j'ai choisi son modèle de repli en testant l'injection de prompt plutôt que le prix, et les garde-fous d'un endpoint LLM payant."],
   'case-study-jev-check': ["Étude de cas : jev-check, une QA par agent navigateur où la base de données rend le verdict", "Les tests unitaires et les suites mockées ratent les bugs où le front, le back et les permissions se contredisent. Un agent navigateur connecté sous de vrais états de compte, et la base qui tranche."],
   'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "Les mêmes corrections revenaient dans chaque projet. Lesquelles, pourquoi les écrire ne suffisait pas, et où chaque correction doit vraiment vivre."],
