@@ -209,7 +209,7 @@
         "name": "Ancient Aliens",
         "text0": "I'm not saying it was the cable",
         "text1": "But it was the cable",
-        "after": "again and again, at about 1 GB/s.",
+        "after": "Writing settled at 52-57 tokens per second.",
         "alt": "Ancient Aliens meme: \"I'm not saying it was the cable. But it was the cable.\""
       },
       {
@@ -217,16 +217,8 @@
         "name": "Leonardo Dicaprio Cheers",
         "text0": "When the 180B model writes faster",
         "text1": "than the 35B did in May",
-        "after": "Now a model five times larger writes faster.",
+        "after": "A model five times larger now writes faster.",
         "alt": "Leonardo DiCaprio Cheers meme: \"When the 180B model writes faster than the 35B did in May.\""
-      },
-      {
-        "template": "97984",
-        "name": "Disaster Girl",
-        "text0": "One quick iGPU benchmark",
-        "text1": "The desktop it was also displaying",
-        "after": "most patches are for someone else's machine.",
-        "alt": "Disaster Girl meme: \"One quick iGPU benchmark. The desktop it was also displaying.\""
       }
     ]
   }
