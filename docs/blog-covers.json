@@ -43,6 +43,10 @@
     "how-i-built-pdfold": {
       "scene": "A friendly flat machine with two rollers stands in the middle, like a small printing press. On the left, a messy scanned paper page goes in: crooked two-column text lines, a skewed table and a coffee ring stain. On the right, a clean neat page comes out, with a bold heading bar, tidy bullet lines and a perfectly aligned table grid, a few orange highlights. Above the machine, three small orange check marks pop out like a passing test suite. A small potted plant sits beside it.",
       "alt": "A messy scanned page goes into a small press and comes out as a clean, structured page, with three check marks above it."
+    },
+    "a-180b-model-in-a-shoebox": {
+      "scene": "A tiny square mini PC box sits on a desk, connected by one thick cable to a small graphics card standing in an open external dock beside it. Behind them rises an enormous wall of thousands of small identical drawers, reaching up to the top of the frame like a giant library card catalogue. A few drawers glow orange and are open. A small friendly robot arm on the graphics card reaches up and pulls one small drawer out of the wall. The scale contrast is the joke: two tiny machines in front of a gigantic wall. A coffee mug on the desk.",
+      "alt": "A tiny mini PC and an external graphics card connected by one cable, feeding from a wall of thousands of small drawers that reaches the ceiling."
     }
   }
 }
