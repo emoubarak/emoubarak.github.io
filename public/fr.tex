@@ -1,0 +1,176 @@
+% CV El Mahdi Moubarak - compile avec pdfLaTeX (Overleaf, TeX Live 2024)
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[a4paper,left=1.7cm,right=1.7cm,top=1.25cm,bottom=1.1cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[default,semibold]{sourcesanspro}
+\usepackage[protrusion=true,expansion=true,tracking=true]{microtype}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{accsupp}
+\usepackage{tikz}
+\usepackage[french]{babel}
+\usepackage{hyperref}
+
+% Machine-readable text for applicant tracking systems
+\ifdefined\pdfgentounicode
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+\fi
+
+% Near-black text, one accent (moubarak.dev's) for names and results, one grey for secondary information
+\definecolor{ink}{RGB}{33, 33, 33}
+\definecolor{accent}{RGB}{194, 65, 12}
+\definecolor{muted}{RGB}{110, 110, 110}
+\definecolor{hair}{RGB}{215, 215, 215}
+\definecolor{rolerule}{RGB}{200, 200, 200}
+\definecolor{band}{RGB}{28, 31, 36}
+\definecolor{onband}{RGB}{205, 208, 212}
+\definecolor{accentlight}{RGB}{255, 138, 85}
+\definecolor{chip}{RGB}{243, 240, 237}
+\definecolor{linkc}{RGB}{26, 93, 171}
+
+\hypersetup{colorlinks=true, linkcolor=accent, urlcolor=accent,
+    pdftitle={El Mahdi Moubarak, Ingénieur Logiciel et IA}, pdfauthor={El Mahdi Moubarak}}
+
+\makeatletter
+\renewcommand\normalsize{\@setfontsize\normalsize{11}{14.5}}
+\makeatother
+\normalsize
+\AtBeginDocument{\color{ink}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\raggedright
+\emergencystretch=2em
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+% Section titles: letter-spaced capitals, a hairline that starts with a short accent segment
+\titleformat{\section}{\color{ink}\bfseries}{}{0pt}{\textls[60]}[{\vspace{-8.5pt}\noindent\rlap{\color{hair}\rule[0.6pt]{\linewidth}{0.6pt}}{\color{accent}\rule{1.2cm}{1.8pt}}\endgraf}]
+\titlespacing*{\section}{0pt}{13pt}{6pt}
+
+\setlist[itemize]{leftmargin=1.05em, labelsep=0.5em, itemsep=2.5pt, parsep=0pt, topsep=3pt,
+    label={\color{muted}\raisebox{0.2ex}{\scriptsize\textbullet}}}
+
+% separator: lines may break after the dot, never before it
+\newcommand{\sep}{\unskip\nobreak\hspace{0.45em}{\color{muted}$\cdot$}\hspace{0.45em}\ignorespaces}
+% skill chip: a plain coloured box, so text extraction keeps reading order
+\newcommand{\chip}[1]{{\setlength{\fboxsep}{0pt}\colorbox{chip}{\fontsize{9.8}{11}\selectfont\vrule width 0pt height 9.6pt depth 3.6pt\hspace{3.5pt}#1\hspace{3.5pt}}}}
+\newcommand{\cs}{\hspace{2.5pt plus 1pt}}
+\newcommand{\stack}[1]{{\color{muted}(#1)}}
+% full stack of an experience, on its own line under the bullets
+\newcommand{\stackline}[1]{\par\vspace{2pt}{\leftskip=1.05em\fontsize{10}{13}\selectfont\color{muted}{\bfseries Stack}\enspace #1\par}}
+\newcommand{\contact}[2]{\href{#1}{\color{onband}#2}}
+% links: blue in running text; a linked name stays orange and ends with a small orange icon,
+% hidden from text extraction so parsers read only the words
+\newcommand{\linkicon}{\BeginAccSupp{ActualText={}}\hspace{0.18em}\raisebox{0.12ex}{\color{accent}\scalebox{0.66}{\faExternalLink*}}\EndAccSupp{}}
+\newcommand{\link}[2]{\href{#1}{\color{linkc}#2}}
+\newcommand{\org}[2]{\href{#1}{\color{accent}#2\linkicon}}
+\newcommand{\m}[1]{{\color{accent}\bfseries #1}}
+% \role{Title}{Company}{Location}{Dates}
+\newcommand{\role}[4]{\par\vspace{5pt}\needspace{4\baselineskip}{\bfseries #1}\sep{\color{accent}\bfseries #2}{\color{muted}, #3}\hfill{\color{muted}#4}\par}
+% thin rule between two experiences: left-aligned like the role titles, a third of the width
+\newcommand{\expsep}{\par\vspace{8.5pt}\nointerlineskip\hbox to\linewidth{{\color{rolerule}\rule{0.3\linewidth}{0.6pt}}\hfil}\vspace{-3.5pt}}
+% \project{Name}{URL or empty}{Description}
+\newcommand{\project}[3]{\item {\color{accent}\bfseries\ifx&#2&#1\else\href{#2}{\color{accent}#1\linkicon}\fi} : #3}
+
+\begin{document}
+
+% En-tête sur bandeau sombre
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[band] (current page.north west) rectangle ([yshift=-3.9cm]current page.north east);
+    \fill[accent] ([yshift=-3.9cm]current page.north west) rectangle ([yshift=-4.0cm]current page.north east);
+\end{tikzpicture}%
+\vspace*{-1pt}%
+{\fontsize{27}{32}\selectfont\bfseries\color{white} El Mahdi Moubarak}\par\vspace{5pt}
+{\large\color{accentlight} Ingénieur Logiciel \& IA{\color{onband}\enspace$\cdot$\enspace}Full-Stack, Systèmes LLM, Agents}\hfill{\color{onband}Lille, France}\par\vspace{7pt}
+{\fontsize{10}{13}\selectfont\color{onband}\contact{mailto:elmahdi@moubarak.dev}{elmahdi@moubarak.dev}\sep
+\contact{https://moubarak.dev}{moubarak.dev}\sep
+\contact{https://www.linkedin.com/in/el-mahdi-moubarak}{linkedin.com/in/el-mahdi-moubarak}\sep
+\contact{https://github.com/emoubarak}{github.com/emoubarak}}\par
+\vspace{20pt}
+
+\section*{PROFIL}
+Ingénieur full-stack, je livre du logiciel en production depuis 2019 (cybersécurité, santé, fintech), souvent seul ingénieur du produit. Depuis 2026, je travaille en natif IA : un agent navigateur qui teste mon SaaS comme un vrai utilisateur, la base de données pour juge ; des fonctionnalités LLM dont je choisis les modèles en les attaquant ; Claude Code comme environnement principal.
+
+\section*{EXPÉRIENCE}
+
+\role{Co-fondateur \& CTO}{\org{https://piktechs.com}{Piktechs}}{France}{Mars 2026 -- Aujourd'hui}
+\begin{itemize}
+    \item \textbf{Seul ingénieur :} prototype de deux semaines transformé en \textbf{SaaS B2B complet en production} pour la capture de leads événementiels, avec Claude Code comme environnement d'ingénierie principal
+    \item \textbf{QA agentique avec jev}, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe) et suit un objectif en langage naturel, puis \textbf{une requête SQL, pas l'agent, rend le verdict}. \m{16 vérifications permanentes} sur les accès par offre et les permissions ; ses captures avant/après sur des tickets clos ont révélé \m{3 bugs résiduels}. Publié en open source : \link{https://github.com/emoubarak/jev-check}{jev-check}
+    \item \textbf{Scanner de cartes de visite IA} : modèle de vision avec sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours ; modèle de repli choisi par des \textbf{tests d'injection de prompt} (\m{2 modèles candidats sur 4} ont obéi à une carte piégée)
+    \item \textbf{Facturation Stripe en live} (checkout, portail, webhooks, offres par siège, réconciliation) et espaces multi-clients sécurisés par \textbf{row-level security Postgres} ; le code de facturation et de permissions est \textbf{relu par un autre modèle} que celui qui l'a écrit
+    \item \textbf{Application Android} \link{https://play.google.com/store/apps/details?id=com.piktechs.app\&hl=fr}{publiée sur Google Play} et build iOS depuis le même code (Capacitor) ; tests unitaires et Playwright en garde-fou de la CI/CD, environnements de test et de production séparés
+\end{itemize}
+\stackline{React\sep TypeScript\sep Vite\sep Tailwind\sep Supabase (Postgres, RLS, Edge Functions)\sep Stripe\sep Capacitor\sep OpenRouter\sep Resend\sep Playwright, Vitest\sep jev (Browser Use)\sep GitHub Actions\sep Cloudflare Pages\sep Claude Code}
+
+\expsep
+\role{Fondateur \& Ingénieur IA / Full-Stack}{\org{https://moubarak.dev}{EMM}}{Lille, France}{Mars 2026 -- Aujourd'hui}
+\begin{itemize}
+    \item Activité d'ingénierie indépendante : \textbf{pipelines LLM et OCR}, \textbf{agents IA} avec skills et MCP sur mesure, automatisation navigateur avec jev pour les back-offices sans API, pour des PME et des agences
+    \item \textbf{Travail natif avec l'IA :} espace Claude Code versionné sur deux machines, où les corrections répétées deviennent des hooks et des skills, et une analyse hebdomadaire de mes sessions repère ce que je corrige encore (\link{https://moubarak.dev/blog/what-i-kept-telling-claude}{article})
+    \item Conception et animation de \textbf{formations IA} pour DRIVECO (opérateur de bornes de recharge) : deux sessions FR/EN construites sur les workflows réels de l'entreprise, avec un \link{https://www.linkedin.com/posts/el-mahdi-moubarak_merci-\%C3\%A0-toute-l\%C3\%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/}{témoignage public} de sa DRH
+    \item Également CTO de \link{https://www.agence-ksur.com}{KSUR Services} (agence web, France et Maroc) : stack technique et livraisons
+\end{itemize}
+\stackline{TypeScript\sep Python\sep Next.js\sep Node.js\sep Supabase\sep Docker\sep OpenAI, Claude, Gemini APIs\sep MCP\sep Browser Use\sep Claude Code}
+
+\expsep
+\role{Ingénieur Full-Stack}{\org{https://www.boardofcyber.io}{Board of Cyber}}{Paris (remote)}{Mars 2023 -- Févr. 2026}
+\begin{itemize}
+    \item Principalement front-end, dans une \textbf{équipe de 20 développeurs}, sur \textit{Security Rating\textregistered}, plateforme SaaS d'évaluation cyber utilisée par \m{plus de 200 organisations} : plateforme client, back office et manager office
+    \item Création de \textbf{composants Angular}, montées de version d'Angular, couverture de tests (Spectator) et correctifs à cadence de release élevée
+    \item Conception d'une \textbf{sonde Python de scan de vulnérabilités} (nmap) automatisant la collecte des données de surface d'attaque pour les notations
+\end{itemize}
+\stackline{Angular\sep TypeScript\sep Python\sep nmap\sep Spectator\sep Docker\sep CI/CD}
+
+\expsep
+\role{Ingénieur Full-Stack \& IA}{\org{https://www.linkedin.com/company/altao---recherche-developpement-marketing-sante}{ALTAO Santé}}{Lille}{Sept. 2021 -- Sept. 2022}
+\begin{itemize}
+    \item \textbf{Seul ingénieur} sur une plateforme médicale greenfield de correction des comptes-rendus de sortie hospitaliers, remplaçant un workflow éclaté entre plusieurs outils
+    \item Plus de \m{5~000 documents} traités via la plateforme, \m{700~000~\texteuro{}} économisés pour les hôpitaux
+    \item Intégration des \textbf{modèles de prédiction ML} et des moteurs de règles de l'équipe Data Science dans le workflow de production
+    \item Recueil des besoins avec les médecins, specs, déploiement et monitoring de l'infrastructure AWS
+\end{itemize}
+\stackline{Vue.js\sep Django\sep Python\sep PostgreSQL\sep AWS (EC2, Route53, Amplify)}
+
+\expsep
+\role{Ingénieur Logiciel Mobile}{\org{https://www.linkedin.com/company/deuspi/}{Deuspi}}{Lille}{Mars 2021 -- Juin 2021}
+\begin{itemize}
+    \item \textbf{Seul ingénieur mobile} sur la V1 d'une app React Native de livraison de courses, des maquettes à la production
+\end{itemize}
+\stackline{React Native\sep JavaScript\sep REST APIs}
+
+\expsep
+\role{Ingénieur Full-Stack}{\org{https://worldline.com}{Worldline}}{Seclin}{Avr. 2019 -- Août 2019 (stage)}
+\begin{itemize}
+    \item Développement d'un outil interne de R\&D pour créer, stocker et rejouer des jeux de tests de paiement sur MQTT, améliorant la vitesse de développement de l'équipe de \m{70\,\%}
+\end{itemize}
+\stackline{Vue.js\sep Spring Boot\sep Java\sep MQTT\sep Docker}
+
+\section*{OPEN SOURCE \& PROJETS}
+\begin{itemize}
+    \project{jev-check}{https://github.com/emoubarak/jev-check}{\textbf{skill d'agent open source (MIT)} pour Claude Code, Codex et OpenClaw : \textbf{QA par agent navigateur} sur une app de staging, où \textbf{une requête SQL, pas l'agent,} rend le verdict \stack{Python, CDP}}
+    \project{jev-administrator}{}{\textbf{orchestrateur auto-hébergé d'agents navigateur} (privé) : profils connectés persistants, un worker isolé par tâche, \textbf{main passée à un humain en direct} via WebRTC pour les connexions et la 2FA, back-office de suivi \stack{Python, Podman, CDP}}
+    \project{Polymarket Lab}{https://github.com/emoubarak/polymarket-updown-lab}{recherche d'un avantage de trading en six semaines : \textbf{backtests hors échantillon}, \m{\textasciitilde12~000 trades papier} sur 60 runners, moteur Python et \textbf{market maker} en Go. Verdict : \textbf{aucun avantage exploitable}}
+    \project{PDFold}{https://pdfold.com}{PDF en Markdown structuré, \m{11 langues} : \textbf{pipeline OCR multi-passes + Gemini} avec repli, facturation Stripe \stack{Next.js, Supabase}}
+    \project{AI Visibility Tracker}{https://apify.com/emoubarak/ai-search-visibility-tracker}{mesure comment ChatGPT, Perplexity, Gemini et Google AI Overviews \textbf{citent une marque}, \textbf{chaque prompt échantillonné plusieurs fois} ; appelable via \textbf{MCP} \stack{TypeScript}}
+    \project{Articles}{https://moubarak.dev/blog}{\link{https://moubarak.dev/cv\#ai}{ma façon de travailler avec l'IA} ; études de cas sur \link{https://moubarak.dev/blog/case-study-ai-card-scanner}{le scanner de cartes IA}, \link{https://moubarak.dev/blog/case-study-jev-check}{jev-check} et \link{https://moubarak.dev/blog/case-study-piktechs}{Piktechs}}
+\end{itemize}
+
+\section*{COMPÉTENCES}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\bfseries}p{3cm}>{\raggedright\arraybackslash\setlength{\lineskiplimit}{2pt}\setlength{\lineskip}{4pt}}X@{}}
+Langages & \chip{TypeScript, JavaScript}\cs \chip{Python}\cs \chip{Go}\cs \chip{SQL}\cs \chip{Java} \\[5pt]
+IA \& LLM & \chip{APIs LLM (OpenAI, Anthropic Claude, Gemini, OpenRouter)}\cs \chip{Agents IA, MCP, Claude Code}\cs \chip{Agents navigateur \& QA agentique (jev, Browser Use)}\cs \chip{Évaluation de LLM \& injection de prompt}\cs \chip{Pipelines OCR \& vision}\cs \chip{RAG}\cs \chip{LLMs locaux (llama.cpp, ExLlamaV2)} \\[5pt]
+Web \& cloud & \chip{React, Next.js, Node.js}\cs \chip{Angular, Vue.js}\cs \chip{Django}\cs \chip{React Native, Capacitor}\cs \chip{PostgreSQL, Supabase}\cs \chip{Stripe}\cs \chip{AWS, Cloudflare}\cs \chip{Docker, CI/CD} \\[5pt]
+Langues & \chip{Français (natif)}\cs \chip{Anglais (C1, TOEIC)}\cs \chip{Espagnol (professionnel)} \\
+\end{tabularx}
+
+\section*{FORMATION}
+{\bfseries IMT Nord Europe}\sep Diplôme d'Ingénieur (Bac+5), Informatique, Réseaux \& Télécoms\hfill{\color{muted}Lille, 2017 -- 2022}\par
+
+\end{document}
