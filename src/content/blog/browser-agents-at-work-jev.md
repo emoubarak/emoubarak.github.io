@@ -51,7 +51,7 @@ jev never sees password fields. That's not a limitation to work around, it's the
 
 ## When the coding agent says "jev can't do that"
 
-It's usually wrong. The most frequent version in my history was "jev can't type", which came from an outdated note. The other was quietly switching to a different browser tool when jev stalled. Both are now handled outside the model: the stale note is fixed, and a hook denies the other browser tool and points back to jev. If jev blocks on a page, the right move is to observe why the element is missing from its table, patch, and retry. My fork also adds a [Cloudflare Workers AI decision provider](https://github.com/emoubarak/jev-ultrafast/tree/clef), from an experiment on decision-model speed.
+It's usually wrong. The most frequent version in my history was "jev can't type", which came from an outdated note. The other was quietly switching to a different browser tool when jev stalled. Both are now handled outside the model: the stale note is fixed, and a hook denies the other browser tool and points back to jev. If jev blocks on a page, the right move is to observe why the element is missing from its table, patch, and retry.
 
 ## What I'd tell you before you start
 
