@@ -424,6 +424,23 @@ export const projects = [
     tags: ['Landing page', 'Kinetic design'],
   },
   {
+    title: 'Vyrion International Consulting',
+    thumb: `${base}/work/vyrion.webp`,
+    subtitle: 'vyrioncapital.com',
+    category: 'website',
+    categoryLabel: 'Website',
+    role: 'Client work',
+    description: 'Trilingual website (English, French, Chinese) for a consultancy that helps companies set up and operate in China: company formation, visas, compliance and sourcing. Each service page carries a short quiz that suggests a route and sends a checklist PDF, so visitors leave as qualified leads.',
+    // vyrioncapital.com sends X-Frame-Options: DENY, so it cannot be previewed in an iframe.
+    previews: [
+      { label: 'Homepage', src: `${base}/portfolio/vyrion-home.webp` },
+      { label: 'Quiz & checklist', src: `${base}/portfolio/vyrion-quiz.webp` },
+      { label: 'CINA directory', src: `${base}/portfolio/vyrion-cina.webp` },
+    ],
+    url: 'https://www.vyrioncapital.com',
+    tags: ['Next.js', 'TypeScript', 'EN · FR · ZH', 'Lead magnets'],
+  },
+  {
     title: 'Mon Jouet Montessori',
     thumb: `${base}/work/montessori.webp`,
     subtitle: 'mon-jouet-montessori.com',

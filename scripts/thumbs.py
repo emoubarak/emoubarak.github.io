@@ -23,6 +23,7 @@ SOURCES = {
     "ksur": "portfolio/ksur-home.webp",
     "polymarket": "portfolio/polymarket-illustration.webp",
     "atandem": "portfolio/atandem-home.webp",
+    "vyrion": "portfolio/vyrion-home.webp",
     "montessori": "portfolio/montessori-og.webp",
     "deuspi": "portfolio/deuspi-og.webp",
     "altao": "portfolio/altao-og.webp",
