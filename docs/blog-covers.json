@@ -47,6 +47,10 @@
     "a-180b-model-in-a-shoebox": {
       "scene": "A tiny square mini PC box sits on a desk, connected by one thick cable to a small graphics card standing in an open external dock beside it. Behind them rises an enormous wall of thousands of small identical drawers, reaching up to the top of the frame like a giant library card catalogue. A few drawers glow orange and are open. A small friendly robot arm on the graphics card reaches up and pulls one small drawer out of the wall. The scale contrast is the joke: two tiny machines in front of a gigantic wall. A coffee mug on the desk.",
       "alt": "A tiny mini PC and an external graphics card connected by one cable, feeding from a wall of thousands of small drawers that reaches the ceiling."
+    },
+    "then-i-bought-a-gpu": {
+      "scene": "A tiny square mini PC sits on a desk, connected by one thick cable to a graphics card standing in an open external dock beside it. The card is now much bigger than before, taller than the mini PC, with two big fans. Behind them rises an enormous wall of thousands of small identical drawers reaching the top of the frame, like a giant library card catalogue. Dozens of drawers are open and glow orange, and two friendly robot arms mounted on the graphics card pull several drawers out at once, with short motion lines showing speed. A long shopping receipt curls off the edge of the desk onto the floor. A coffee mug on the desk.",
+      "alt": "A tiny mini PC connected by one cable to a much bigger graphics card, whose robot arms pull dozens of glowing drawers at once from a wall of thousands."
     }
   }
 }

@@ -220,6 +220,24 @@
         "after": "A model five times larger now writes faster.",
         "alt": "Leonardo DiCaprio Cheers meme: \"When the 180B model writes faster than the 35B did in May.\""
       }
+    ],
+    "then-i-bought-a-gpu": [
+      {
+        "template": "87743020",
+        "name": "Two Buttons",
+        "text0": "Follow my own advice",
+        "text1": "Buy the GPU",
+        "after": "and the scripts to reproduce it: **[emoubarak",
+        "alt": "Two Buttons meme: \"Follow my own advice\" / \"Buy the GPU\""
+      },
+      {
+        "template": "61544",
+        "name": "Success Kid",
+        "text0": "Bought 12 more GB",
+        "text1": "Deleted two weeks of tuning",
+        "after": "Same accuracy, a sixth faster reading, one reboot.",
+        "alt": "Success Kid meme: \"Bought 12 more GB\" / \"Deleted two weeks of tuning\""
+      }
     ]
   }
 }
