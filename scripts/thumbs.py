@@ -31,7 +31,6 @@ SOURCES = {
     "lumber": "portfolio/lumber-three.webp",
     "atandem": "portfolio/atandem-home.webp",
     "vyrion": "portfolio/vyrion-home.webp",
-    "aknel": "portfolio/aknel-home.webp",
     "the-icon": "portfolio/the-icon-home.webp",
     "montessori": "portfolio/montessori-og.webp",
     "deuspi": "portfolio/deuspi-og.webp",
