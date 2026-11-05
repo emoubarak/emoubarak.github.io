@@ -1519,38 +1519,52 @@ const assetGroups = [
 }));
 
 // ===== Project filter (cross-section: assets + bios + experience + links) =====
-const projectFilters = [
-  { key: 'all', label: 'All' },
-  { key: 'brand', label: 'Personal brand' },
-  { key: 'emm', label: 'EMM' },
-  { key: 'piktechs', label: 'Piktechs' },
-  { key: 'jev', label: 'jev · browser agents' },
-  { key: 'writing', label: 'Writing' },
-  { key: 'pdfold', label: 'PDFold' },
-  { key: 'ai-visibility', label: 'AI Visibility' },
-  { key: 'text-to-video', label: 'Text-to-Video' },
-  { key: 'polymarket', label: 'Polymarket Lab' },
-  { key: 'hindsight', label: 'Hindsight' },
-  { key: 'strata', label: '180B on eGPU' },
-  { key: 'signal-bot', label: 'Signal Bot' },
-  { key: 'calcpit', label: 'CalcPit' },
-  { key: 'the-icon', label: 'THE ICON' },
-  { key: 'montessori', label: 'Montessori' },
-  { key: 'ksur', label: 'KSUR' },
-  { key: 'driveco', label: 'DRIVECO' },
-  { key: 'boardofcyber', label: 'Board of Cyber' },
-  { key: 'altao', label: 'ALTAO' },
-  { key: 'deuspi', label: 'Deuspi' },
-  { key: 'worldline', label: 'Worldline' },
-  { key: 'atandem', label: 'Atandem' },
-  { key: 'vyrion', label: 'Vyrion' },
-  { key: 'aknel', label: 'Aknel' },
-  { key: 'content', label: 'Channels' },
-  { key: 'internal', label: 'Internal tools' },
-  { key: 'research', label: 'Research' },
-  { key: 'confidential', label: 'Confidential clients' },
-  { key: 'companies', label: 'Company logos' },
+// Project filters, grouped by kind of work so the row reads as a map, not a flat list
+const projectFilterGroups = [
+  { label: 'General', filters: [
+    { key: 'all', label: 'All' },
+    { key: 'brand', label: 'Personal brand' },
+    { key: 'companies', label: 'Company logos' },
+  ] },
+  { label: 'Experience', filters: [
+    { key: 'emm', label: 'EMM' },
+    { key: 'piktechs', label: 'Piktechs' },
+    { key: 'ksur', label: 'KSUR' },
+    { key: 'driveco', label: 'DRIVECO' },
+    { key: 'boardofcyber', label: 'Board of Cyber' },
+    { key: 'altao', label: 'ALTAO' },
+    { key: 'deuspi', label: 'Deuspi' },
+    { key: 'worldline', label: 'Worldline' },
+  ] },
+  { label: 'Own products', filters: [
+    { key: 'pdfold', label: 'PDFold' },
+    { key: 'ai-visibility', label: 'AI Visibility' },
+    { key: 'calcpit', label: 'CalcPit' },
+    { key: 'montessori', label: 'Montessori' },
+  ] },
+  { label: 'Open source', filters: [
+    { key: 'jev', label: 'jev · browser agents' },
+    { key: 'hindsight', label: 'Hindsight' },
+    { key: 'strata', label: '180B on eGPU' },
+    { key: 'signal-bot', label: 'Signal Bot' },
+    { key: 'polymarket', label: 'Polymarket Lab' },
+    { key: 'text-to-video', label: 'Text-to-Video' },
+  ] },
+  { label: 'Client work', filters: [
+    { key: 'the-icon', label: 'THE ICON' },
+    { key: 'vyrion', label: 'Vyrion' },
+    { key: 'aknel', label: 'Aknel' },
+    { key: 'atandem', label: 'Atandem' },
+    { key: 'confidential', label: 'Confidential clients' },
+  ] },
+  { label: 'Other', filters: [
+    { key: 'content', label: 'Channels' },
+    { key: 'writing', label: 'Writing' },
+    { key: 'internal', label: 'Internal tools' },
+    { key: 'research', label: 'Research' },
+  ] },
 ];
+const projectFilters = projectFilterGroups.flatMap((g) => g.filters);
 
 const linkBlocks = [
   {
@@ -1698,16 +1712,23 @@ const eduBlocks = pair(education);
         </button>
       ))}
     </div>
-    <div class="flex flex-wrap items-center gap-2">
-      <span class="font-mono text-[0.6rem] text-muted uppercase tracking-widest w-14 shrink-0">Project</span>
-      {projectFilters.map((f) => (
-        <button
-          class:list={['project-filter-btn font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors', { 'filter-active': f.key === 'all' }]}
-          data-project-filter={f.key}
-        >
-          {f.label}
-        </button>
-      ))}
+    <div class="flex flex-wrap items-start gap-2">
+      <span class="font-mono text-[0.6rem] text-muted uppercase tracking-widest w-full sm:w-14 shrink-0 sm:pt-2">Project</span>
+      <div class="flex flex-col gap-2 min-w-0 flex-1">
+        {projectFilterGroups.map((g) => (
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-[0.6rem] text-muted w-full sm:w-24 shrink-0">{g.label}</span>
+            {g.filters.map((f) => (
+              <button
+                class:list={['project-filter-btn font-mono text-[0.65rem] font-bold b-border px-3 py-1.5 cursor-pointer bg-paper dark:bg-dark-surface hover:bg-paper-alt transition-colors', { 'filter-active': f.key === 'all' }]}
+                data-project-filter={f.key}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 
