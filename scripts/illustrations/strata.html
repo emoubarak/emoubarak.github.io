@@ -1,0 +1,80 @@
+<!doctype html>
+<!-- Strata on an eGPU: a 180B model on a mini PC whose only strong GPU sits in an OCuLink dock.
+     Numbers are the measured ones from emoubarak/strata-flash-next-egpu (RTX 3060 Ti 8 GB, Oct 2026)
+     and emoubarak/strata-flash-next-rtx3080-20gb (RTX 3080 20 GB, 2026-11-02). -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { --field: #fff4ec; }
+  .model { left: 80px; top: 64px; width: 1280px; height: 132px; padding: 26px 40px; display: flex; align-items: center; gap: 28px; }
+  .model h2 { font-size: 52px; }
+  .model p { font-size: 22px; margin-top: 8px; }
+  .chip { margin-left: auto; font-size: 22px; padding: 14px 22px; border-radius: 30px; background: #14161a; color: #fff; white-space: nowrap; }
+  .box { top: 262px; height: 250px; padding: 28px 30px; }
+  .box h3 { font-size: 34px; }
+  .box p { font-size: 20px; margin-top: 10px; line-height: 1.45; }
+  .pc { left: 80px; width: 440px; }
+  .gpu { left: 920px; width: 440px; }
+  .cable { position: absolute; left: 520px; top: 360px; width: 400px; height: 60px; }
+  .cable span { position: absolute; left: 0; right: 0; top: -44px; text-align: center; font-size: 20px; }
+  .runs { top: 572px; height: 262px; width: 626px; padding: 28px 32px; }
+  .runs h3 { font-size: 30px; }
+  .runs .sub { font-size: 19px; margin-top: 6px; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 18px; font-size: 22px; }
+  .row b { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 46px; letter-spacing: -0.03em; }
+  .hot b { color: #e0571c; }
+</style>
+</head>
+<body>
+  <div class="card model">
+    <div>
+      <h2 class="display">Qwen3.8-Flash-Next 180B</h2>
+      <p class="mono muted">~6B active per token · run locally with Strata</p>
+    </div>
+    <span class="chip mono">no cloud, no API</span>
+  </div>
+
+  <div class="card box pc">
+    <h3 class="display">Mini PC</h3>
+    <p>Ryzen 7 8845HS, 64 GB DDR5.<br>The experts live in RAM.</p>
+    <svg class="abs" style="left:30px;bottom:26px" width="380" height="58" viewBox="0 0 380 58" fill="none" stroke="#14161a" stroke-width="3">
+      <rect x="2" y="2" width="376" height="54" rx="12" fill="#f3f2ee"/>
+      <g fill="#14161a" stroke="none"><circle cx="30" cy="29" r="6"/><rect x="56" y="22" width="40" height="14" rx="4"/><rect x="108" y="22" width="40" height="14" rx="4"/></g>
+      <rect x="300" y="18" width="58" height="22" rx="5" fill="#fc7b42"/>
+    </svg>
+  </div>
+
+  <svg class="cable" viewBox="0 0 400 60" fill="none">
+    <path d="M0 30 C120 -10 280 70 400 30" stroke="#14161a" stroke-width="9" stroke-linecap="round"/>
+    <path d="M0 30 C120 -10 280 70 400 30" stroke="#fc7b42" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 14"/>
+  </svg>
+  <div class="abs mono" style="left:520px;top:300px;width:400px;text-align:center;font-size:20px">OCuLink · PCIe Gen4 x4</div>
+  <div class="abs mono muted" style="left:520px;top:440px;width:400px;text-align:center;font-size:18px">6.6 GB/s measured</div>
+
+  <div class="card box gpu">
+    <h3 class="display">eGPU dock</h3>
+    <p>One consumer card holds<br>the shared layers and the cache.</p>
+    <svg class="abs" style="left:30px;bottom:26px" width="380" height="58" viewBox="0 0 380 58" fill="none" stroke="#14161a" stroke-width="3">
+      <rect x="2" y="2" width="376" height="54" rx="10" fill="#14161a"/>
+      <circle cx="110" cy="29" r="19" fill="#2a2d33" stroke="#f3f2ee"/><circle cx="270" cy="29" r="19" fill="#2a2d33" stroke="#f3f2ee"/>
+      <rect x="166" y="22" width="48" height="14" rx="4" fill="#fc7b42" stroke="none"/>
+    </svg>
+  </div>
+
+  <div class="card runs" style="left:80px">
+    <h3 class="display">RTX 3060 Ti · 8 GB</h3>
+    <p class="sub mono muted">October 2026</p>
+    <div class="row"><span>prompt read</span><b>390 t/s</b></div>
+    <div class="row"><span>generation</span><b>55 t/s</b></div>
+  </div>
+  <div class="card runs hot" style="left:734px">
+    <h3 class="display">RTX 3080 · 20 GB</h3>
+    <p class="sub mono muted">2 November 2026 · 262k context</p>
+    <div class="row"><span>prompt read</span><b>~2,000 t/s</b></div>
+    <div class="row"><span>generation</span><b>110-204 t/s</b></div>
+  </div>
+  <script>window.ready = true;</script>
+</body>
+</html>

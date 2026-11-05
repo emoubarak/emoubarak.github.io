@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- Jev Voice: a spoken command, planned by Claude, carried out in the user's own browser profile.
+     The panel on the right is the real side panel (docs/panel.png of emoubarak/jev-voice); timings are its
+     measured ones (2026-10-09). -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { --field: #eef6f6; }
+  .say { left: 80px; top: 110px; width: 820px; height: 164px; padding: 30px 36px; border-radius: 34px; }
+  .say p { font-size: 34px; line-height: 1.35; }
+  .say .mic { position: absolute; right: -26px; top: -26px; width: 72px; height: 72px; border-radius: 50%; background: #fc7b42; border: 3px solid #14161a; display: grid; place-items: center; }
+  .step { left: 80px; width: 820px; height: 112px; padding: 22px 30px; display: flex; align-items: center; gap: 24px; }
+  .step .ic { flex: none; width: 64px; height: 64px; border-radius: 18px; border: 3px solid #14161a; display: grid; place-items: center; background: #fff4ec; }
+  .step h3 { font-size: 28px; }
+  .step p { font-size: 18px; margin-top: 4px; }
+  .step .t { margin-left: auto; font-size: 22px; font-weight: 700; white-space: nowrap; }
+  .panel { position: absolute; left: 980px; top: 52px; width: 384px; height: auto; border: 3px solid #14161a; border-radius: 26px; overflow: hidden; box-shadow: 0 22px 44px -22px rgb(20 22 26 / 0.35); background: #fff; }
+  .panel img { width: 100%; display: block; }
+</style>
+</head>
+<body>
+  <div class="card say">
+    <span class="mic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2.6" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+    <p>"Open Wikipedia, search for Ada Lovelace and tell me her year of birth"</p>
+  </div>
+  <div class="card step" style="top:330px">
+    <span class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2.6" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h6"/></svg></span>
+    <div><h3 class="display">Claude plans</h3><p class="mono muted">one or two narrow goals, which tab</p></div><span class="t mono">~3 s</span>
+  </div>
+  <div class="card step" style="top:476px">
+    <span class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2.6" stroke-linejoin="round"><path d="M5 3l13 8-6 1.5L9 18z"/></svg></span>
+    <div><h3 class="display">Jev acts</h3><p class="mono muted">one click or keystroke at a time</p></div><span class="t mono">0.3-0.6 s each</span>
+  </div>
+  <div class="card step" style="top:622px">
+    <span class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2.6" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>
+    <div><h3 class="display">The answer comes back</h3><p class="mono muted">in your own profile, signed in</p></div><span class="t mono">12-19 s total</span>
+  </div>
+  <div class="panel"><img src="../../public/portfolio/jev-voice-panel.webp" alt=""></div>
+  <script>window.ready = true;</script>
+</body>
+</html>
