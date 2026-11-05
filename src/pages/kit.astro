@@ -386,6 +386,127 @@ Stack : Python, jev-ultrafast, browser-harness (CDP), SQL (Postgres, Supabase, S
 Compétences : AI Agents · Test Automation · Software Testing · Large Language Models (LLM) · Python · Open-Source Software`,
   },
   {
+    label: 'Hindsight',
+    project: 'hindsight',
+    link: 'https://github.com/emoubarak/hindsight',
+    en: `Hindsight - https://github.com/emoubarak/hindsight
+Open-source Claude Code plugin (MIT) that gives the agent a memory of every past session. Ask "do you remember how we deployed this?" and a hook searches the old transcripts by meaning and puts the best matches in context. Corrections you keep repeating are detected as you type, logged, then turned into the narrowest fix that works: a hook, a skill, a CLAUDE.md rule or a project memory. Runs on your machine, with no server and no account; secrets are redacted before anything is written.
+
+Stack: Python, Claude Code hooks and skills, BM25, embeddings (optional), reciprocal rank fusion
+
+Skills: AI Agents · Large Language Models (LLM) · Information Retrieval · Python · Open-Source Software`,
+    fr: `Hindsight - https://github.com/emoubarak/hindsight
+Plugin Claude Code open source (MIT) qui donne à l'agent la mémoire de toutes ses sessions passées. On lui demande « tu te souviens comment on a déployé ça ? » et un hook cherche par le sens dans les anciennes conversations, puis place les meilleurs passages dans le contexte. Les corrections répétées sont repérées à la frappe, notées, puis transformées en la règle la plus ciblée qui marche : un hook, un skill, une règle CLAUDE.md ou une mémoire de projet. Tourne sur votre machine, sans serveur ni compte ; les secrets sont masqués avant toute écriture.
+
+Stack : Python, hooks et skills Claude Code, BM25, embeddings (optionnels), fusion de classements
+
+Compétences : AI Agents · Large Language Models (LLM) · Information Retrieval · Python · Open-Source Software`,
+  },
+  {
+    label: 'Jev Voice',
+    project: 'jev',
+    link: 'https://github.com/emoubarak/jev-voice',
+    en: `Jev Voice - https://github.com/emoubarak/jev-voice
+Open-source browser extension (MIT): say a task out loud and it is carried out in your own Chromium profile, already signed in to your accounts. Live transcription on Cloudflare Workers AI, Claude turns the sentence into one or two narrow goals, then the Jev agent (Browser Use) acts one click or keystroke at a time. No chrome.debugger and no remote-debugging port; it stops on a login, a captcha or a code. A Wikipedia lookup takes 12 to 19 seconds from command to answer.
+
+Stack: Chrome extension (side panel, native messaging), Python, Claude, jev-ultrafast, Deepgram on Cloudflare Workers AI
+
+Skills: AI Agents · Browser Automation · Speech Recognition · Large Language Models (LLM) · Python · Open-Source Software`,
+    fr: `Jev Voice - https://github.com/emoubarak/jev-voice
+Extension de navigateur open source (MIT) : on dit une tâche à voix haute et elle s'exécute dans votre propre profil Chromium, déjà connecté à vos comptes. Transcription en direct sur Cloudflare Workers AI, Claude transforme la phrase en un ou deux objectifs précis, puis l'agent Jev (Browser Use) agit un clic ou une frappe à la fois. Ni chrome.debugger ni port de débogage à distance ; il s'arrête sur une connexion, un captcha ou un code. Une recherche Wikipédia prend 12 à 19 secondes, de la commande à la réponse.
+
+Stack : extension Chrome (panneau latéral, native messaging), Python, Claude, jev-ultrafast, Deepgram sur Cloudflare Workers AI
+
+Compétences : AI Agents · Browser Automation · Speech Recognition · Large Language Models (LLM) · Python · Open-Source Software`,
+  },
+  {
+    label: 'jev-administrator',
+    project: 'jev',
+    link: '',
+    en: `jev-administrator (private project)
+Task runner for browser agents. Each identity (a brand, a person) gets its own persistent browser, with its own cookies, IP and timezone. Tasks are written in plain English from the terminal or a back-office and run on Claude, OpenRouter models or a local Qwen. When a site asks for a login, a captcha or a 2FA code, the task pauses, a phone notification opens the live browser over WebRTC, and the agent resumes once the human step is done.
+
+Stack: Python, jev-ultrafast, Chromium + Neko (WebRTC), SQLite, Podman / Docker Compose, Claude Code, opencode, llama-swap
+
+Skills: AI Agents · Browser Automation · Large Language Models (LLM) · Software Architecture · Python · Docker`,
+    fr: `jev-administrator (projet privé)
+Orchestrateur de tâches pour agents navigateur. Chaque identité (une marque, une personne) a son propre navigateur persistant, avec ses cookies, son IP et son fuseau horaire. Les tâches s'écrivent en langage naturel depuis le terminal ou un back-office, et tournent sur Claude, des modèles OpenRouter ou un Qwen local. Quand un site demande une connexion, un captcha ou un code 2FA, la tâche se met en pause, une notification sur le téléphone ouvre le navigateur en direct par WebRTC, et l'agent reprend une fois l'étape humaine faite.
+
+Stack : Python, jev-ultrafast, Chromium + Neko (WebRTC), SQLite, Podman / Docker Compose, Claude Code, opencode, llama-swap
+
+Compétences : AI Agents · Browser Automation · Large Language Models (LLM) · Software Architecture · Python · Docker`,
+  },
+  {
+    label: 'A 180B Model on an eGPU',
+    project: 'strata',
+    link: 'https://github.com/emoubarak/strata-flash-next-rtx3080-20gb',
+    en: `A 180B Model on an eGPU - https://github.com/emoubarak/strata-flash-next-rtx3080-20gb
+Dated benchmarks and the full working config for running Qwen3.8-Flash-Next 180B (about 6B active per token) with Strata on a mini PC whose only strong GPU sits in an OCuLink dock. With an RTX 3080 20 GB: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, up to 262k context. With the previous RTX 3060 Ti 8 GB: 390 tokens/s read, 55 tokens/s generation. Two public repos (MIT), one per GPU, with frozen prompts and the scripts to reproduce every number.
+Previous card: https://github.com/emoubarak/strata-flash-next-egpu
+
+Stack: Strata (llama.cpp as the baseline), CUDA, Python, Linux, OCuLink (PCIe Gen4 x4)
+
+Skills: Large Language Models (LLM) · Performance Tuning · Benchmarking · Linux · Python · Open-Source Software`,
+    fr: `Un modèle de 180B sur eGPU - https://github.com/emoubarak/strata-flash-next-rtx3080-20gb
+Mesures datées et configuration complète pour faire tourner Qwen3.8-Flash-Next 180B (environ 6B actifs par token) avec Strata sur un mini PC dont la seule carte graphique puissante est dans un boîtier OCuLink. Avec une RTX 3080 20 Go : environ 2 000 tokens/s en lecture du prompt et 110 à 204 tokens/s en génération, jusqu'à 262k de contexte. Avec la RTX 3060 Ti 8 Go d'avant : 390 tokens/s en lecture, 55 tokens/s en génération. Deux dépôts publics (MIT), un par carte, avec les prompts figés et les scripts pour refaire chaque mesure.
+Carte précédente : https://github.com/emoubarak/strata-flash-next-egpu
+
+Stack : Strata (llama.cpp comme référence), CUDA, Python, Linux, OCuLink (PCIe Gen4 x4)
+
+Compétences : Large Language Models (LLM) · Performance Tuning · Benchmarking · Linux · Python · Open-Source Software`,
+  },
+  {
+    label: 'Signal LLM Bot',
+    project: 'signal-bot',
+    link: 'https://github.com/emoubarak/signal-bot',
+    en: `Signal LLM Bot - https://github.com/emoubarak/signal-bot
+Bot for Signal group chats, called by name in plain language, with no commands to learn. It summarizes what was said, explains a message, transcribes voice notes, makes and edits images, searches the web, does exact maths and posts reminders at the right time, even after a restart. Runs in Docker on OpenRouter models, or on a local model through any OpenAI-compatible server, with nothing leaving the machine.
+
+Stack: Python, OpenRouter (DeepSeek, Gemini, image models), signal-cli, Docker, tool calling
+
+Skills: Chatbot Development · Large Language Models (LLM) · AI Agents · Python · Docker`,
+    fr: `Signal LLM Bot - https://github.com/emoubarak/signal-bot
+Bot pour les groupes Signal, appelé par son nom en langage courant, sans commande à apprendre. Il résume ce qui s'est dit, explique un message, transcrit les vocaux, crée et retouche des images, cherche sur le web, fait des calculs exacts et poste des rappels à l'heure dite, même après un redémarrage. Tourne dans Docker sur des modèles OpenRouter, ou sur un modèle local via n'importe quel serveur compatible OpenAI, sans que rien ne quitte la machine.
+
+Stack : Python, OpenRouter (DeepSeek, Gemini, modèles d'image), signal-cli, Docker, appels d'outils
+
+Compétences : Chatbot Development · Large Language Models (LLM) · AI Agents · Python · Docker`,
+  },
+  {
+    label: 'CalcPit',
+    project: 'calcpit',
+    link: 'https://www.calcpit.com/',
+    en: `CalcPit - https://www.calcpit.com/
+87 free calculators for construction and landscaping (concrete, framing, roofing, electrical, HVAC) that give the quantity to order. Static site with no framework, one config per calculator, every formula tested against hand-worked cases, and a link that shares each result with its numbers.
+
+Stack: JavaScript, Node.js build, Cloudflare Pages and Functions, SEO
+
+Skills: Web Development · Search Engine Optimization (SEO) · JavaScript · Product Development`,
+    fr: `CalcPit - https://www.calcpit.com/
+87 calculateurs gratuits pour la construction et l'aménagement extérieur (béton, charpente, toiture, électricité, chauffage et clim) qui donnent la quantité à commander. Site statique sans framework, une configuration par calculateur, chaque formule testée contre des cas calculés à la main, et un lien qui partage chaque résultat avec ses chiffres.
+
+Stack : JavaScript, build Node.js, Cloudflare Pages et Functions, SEO
+
+Compétences : Web Development · Search Engine Optimization (SEO) · JavaScript · Product Development`,
+  },
+  {
+    label: 'Lumber Calculator',
+    project: 'calcpit',
+    link: 'https://play.google.com/store/apps/details?id=com.calcpit.lumber',
+    en: `Lumber Calculator - https://play.google.com/store/apps/details?id=com.calcpit.lumber
+Android app with nine framing and sheet-goods calculators, generated from the same tested formulas as calcpit.com. It reads feet and inches as people type them (8' 6 1/2"), saves results into jobs that export a material list, and works offline with no account and no network request.
+
+Stack: React Native, Expo, JavaScript, Google Play
+
+Skills: Mobile Application Development · React Native · Android Development · JavaScript`,
+    fr: `Lumber Calculator - https://play.google.com/store/apps/details?id=com.calcpit.lumber
+Application Android de neuf calculateurs de charpente et de panneaux, générée à partir des mêmes formules testées que calcpit.com. Elle lit les pieds et pouces tels qu'on les tape (8' 6 1/2"), range les résultats dans des chantiers qui exportent une liste de matériaux, et fonctionne hors ligne, sans compte ni requête réseau.
+
+Stack : React Native, Expo, JavaScript, Google Play
+
+Compétences : Mobile Application Development · React Native · Android Development · JavaScript`,
+  },
+  {
     label: 'PDFold',
     project: 'pdfold',
     link: 'https://pdfold.com/',
@@ -456,7 +577,7 @@ Une étude de cas d'ingénierie : la recherche honnête d'un edge de trading sur
 
 Méthode scientifique de bout en bout : hypothèse, backtest in-sample et out-of-sample, paper trading en direct, puis falsification. Environ 12 000 trades journalisés sur 60 runners concurrents, réglés contre l'oracle Chainlink. Deux moteurs complets : un framework de paper trading en Python (stdlib uniquement, zéro dépendance) et un market maker HFT en Go à faible latence.
 
-Le verdict mesuré : le marché est remarquablement efficient, et presque tout « edge » que l'on croit trouver se révèle être un artefact de mesure. Le vrai livrable, c'est la méthode — et l'art de ne pas se mentir quand les données vous contredisent.
+Le verdict mesuré : le marché est remarquablement efficient, et presque tout « edge » que l'on croit trouver se révèle être un artefact de mesure. Le vrai livrable, c'est la méthode, et l'art de ne pas se mentir quand les données vous contredisent.
 
 Stack : Python (stdlib uniquement) · Go · WebSockets temps réel · Preact · APIs Polymarket CLOB & Gamma · flux Binance / Bitstamp / Chainlink · signature on-chain EIP-712 · backtesting & validation OOS · market making (Avellaneda-Stoikov) · architecture deux VPS
 
@@ -563,6 +684,8 @@ const proof = {
 - Piktechs AI card scanner: of four cheap vision models tested on the same photos, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.
 - Agentic QA with jev on Piktechs: 16 standing browser-agent checks on plan gates and permissions, the database as judge; its screenshots on closed tickets surfaced 3 follow-up bugs the fixes had missed or introduced.
 - jev-check, open source (MIT): browser-agent QA where the database, not the agent, gives the verdict.
+- A 180B-parameter model run locally on a mini PC with an RTX 3080 20 GB over OCuLink: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, measured and published with reproduce scripts.
+- CalcPit: 87 construction calculators on calcpit.com, and an Android app (Lumber Calculator, Google Play) generated from the same tested formulas.
 - Shopify store (Mon Jouet Montessori) built, grown to real revenue, and sold.
 - Corporate AI training delivered for DRIVECO: two tailored FR/EN sessions.
 - Shipping production software since 2019 across healthcare, fintech and cybersecurity. Engineering degree (Master's level), IMT Nord Europe.`,
@@ -574,6 +697,8 @@ const proof = {
 - Scanner de cartes IA de Piktechs : sur quatre modèles de vision bon marché testés sur les mêmes photos, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le modèle de repli est celui qui a résisté.
 - QA agentique avec jev sur Piktechs : 16 vérifications permanentes par agent navigateur sur les offres et les permissions, la base de données pour juge ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits.
 - jev-check, open source (MIT) : QA par agent navigateur où c'est la base de données, pas l'agent, qui rend le verdict.
+- Un modèle de 180 milliards de paramètres en local sur un mini PC avec une RTX 3080 20 Go en OCuLink : environ 2 000 tokens/s en lecture du prompt et 110 à 204 tokens/s en génération, mesurés et publiés avec les scripts pour les refaire.
+- CalcPit : 87 calculateurs de construction sur calcpit.com, et une application Android (Lumber Calculator, Google Play) générée à partir des mêmes formules testées.
 - Boutique Shopify (Mon Jouet Montessori) créée, montée jusqu'à un vrai chiffre d'affaires, puis vendue.
 - Formation IA en entreprise livrée pour DRIVECO : deux sessions FR/EN sur mesure.
 - Je livre du logiciel en production depuis 2019 en santé, fintech et cybersécurité. Diplôme d'ingénieur (bac+5), IMT Nord Europe.`,
@@ -669,6 +794,13 @@ const assetGroups = [
       { label: 'jev-check · repository', file: 'portfolio/jev-check.webp', type: 'Screenshot' },
       { label: 'jev-check · the audit, raster (2400px)', file: 'portfolio/jev-check-audit.webp', type: 'Diagram' },
       { label: 'Task runner · architecture', file: 'blog/jev-administrator-architecture.webp', type: 'Diagram' },
+      { label: 'jev-administrator · how it works (example data)', file: 'portfolio/jev-administrator-illustration.webp', type: 'Diagram' },
+      { label: 'jev-administrator · card thumbnail (portfolio)', file: 'work/jev-administrator.webp', type: 'Thumbnail' },
+      { label: 'Jev Voice · how it works, with the real side panel', file: 'portfolio/jev-voice-illustration.webp', type: 'Diagram' },
+      { label: 'Jev Voice · architecture', file: 'portfolio/jev-voice-arch.webp', type: 'Diagram' },
+      { label: 'Jev Voice · side panel', file: 'portfolio/jev-voice-panel.webp', type: 'Screenshot' },
+      { label: 'Jev Voice · repository', file: 'portfolio/jev-voice-repo.webp', type: 'Screenshot' },
+      { label: 'Jev Voice · card thumbnail (portfolio)', file: 'work/jev-voice.webp', type: 'Thumbnail' },
       { label: 'Browser agent · the loop and the hand-off', file: 'blog/browser-agents-at-work-jev.webp', type: 'Illustration' },
       { label: 'Card thumbnail (portfolio)', file: 'work/jev-check.webp', type: 'Thumbnail' },
       { label: 'Share image · jev-check case study', file: 'og/blog/case-study-jev-check.png', type: 'OG image' },
@@ -727,6 +859,66 @@ const assetGroups = [
       { label: 'The Great Work · cover illustration', file: 'blog/the-great-work-polymarket.webp', type: 'Illustration' },
       { label: 'Live dashboard', file: 'portfolio/polymarket-dashboard.webp', type: 'Screenshot' },
       { label: 'Share image · the Great Work article', file: 'og/blog/the-great-work-polymarket.png', type: 'OG image' },
+    ],
+  },
+  {
+    key: 'hindsight',
+    name: 'Hindsight',
+    link: 'https://github.com/emoubarak/hindsight',
+    assets: [
+      { label: 'Card thumbnail (portfolio)', file: 'work/hindsight.webp', type: 'Thumbnail' },
+      { label: 'Recall in action', file: 'portfolio/hindsight-demo.webp', type: 'Screenshot' },
+      { label: 'Repository', file: 'portfolio/hindsight-repo.webp', type: 'Screenshot' },
+      { label: 'How it works', file: 'portfolio/hindsight-how.webp', type: 'Diagram' },
+    ],
+  },
+  {
+    key: 'strata',
+    name: 'A 180B model on an eGPU',
+    link: 'https://github.com/emoubarak/strata-flash-next-rtx3080-20gb',
+    assets: [
+      { label: 'Card thumbnail (portfolio)', file: 'work/strata.webp', type: 'Thumbnail' },
+      { label: 'Repository · RTX 3080 20 GB', file: 'portfolio/strata-repo.webp', type: 'Screenshot' },
+      { label: 'What it measures · illustration, measured numbers', file: 'portfolio/strata-illustration.webp', type: 'Diagram' },
+      { label: '8 GB vs 20 GB · chart', file: 'portfolio/strata-8gb-vs-20gb.webp', type: 'Diagram' },
+      { label: 'A 180B model in a shoebox · cover illustration', file: 'blog/a-180b-model-in-a-shoebox.webp', type: 'Illustration' },
+      { label: 'Then I bought a GPU · cover illustration', file: 'blog/then-i-bought-a-gpu.webp', type: 'Illustration' },
+      { label: 'Share image · a 180B model in a shoebox', file: 'og/blog/a-180b-model-in-a-shoebox.png', type: 'OG image' },
+      { label: 'Share image · then I bought a GPU', file: 'og/blog/then-i-bought-a-gpu.png', type: 'OG image' },
+    ],
+  },
+  {
+    key: 'signal-bot',
+    name: 'Signal LLM Bot',
+    link: 'https://github.com/emoubarak/signal-bot',
+    assets: [
+      { label: 'Card thumbnail (portfolio)', file: 'work/signal-bot.webp', type: 'Thumbnail' },
+      { label: 'Repository', file: 'portfolio/signal-bot-repo.webp', type: 'Screenshot' },
+      { label: 'In a group · illustration (example chat)', file: 'portfolio/signal-bot-illustration.webp', type: 'Illustration' },
+    ],
+  },
+  {
+    key: 'calcpit',
+    name: 'CalcPit · Lumber Calculator',
+    link: 'https://www.calcpit.com/',
+    assets: [
+      { label: 'CalcPit · card thumbnail (portfolio)', file: 'work/calcpit.webp', type: 'Thumbnail' },
+      { label: 'Lumber Calculator · card thumbnail (portfolio)', file: 'work/lumber.webp', type: 'Thumbnail' },
+      { label: 'CalcPit · homepage, first screen', file: 'portfolio/calcpit-home.webp', type: 'Landing page' },
+      { label: 'CalcPit · concrete slab calculator', file: 'portfolio/calcpit-slab.webp', type: 'Screenshot' },
+      { label: 'Lumber Calculator · five store screens', file: 'portfolio/lumber-screens.webp', type: 'Screenshot' },
+      { label: 'Lumber Calculator · three store screens', file: 'portfolio/lumber-three.webp', type: 'Screenshot' },
+      { label: 'Lumber Calculator · job material list', file: 'portfolio/lumber-job.webp', type: 'Screenshot' },
+    ],
+  },
+  {
+    key: 'the-icon',
+    name: 'THE ICON',
+    link: 'https://the-icon.be/',
+    assets: [
+      { label: 'Card thumbnail (portfolio)', file: 'work/the-icon.webp', type: 'Thumbnail' },
+      { label: 'Homepage · first screen', file: 'portfolio/the-icon-home.webp', type: 'Landing page' },
+      { label: 'Offers page · first screen', file: 'portfolio/the-icon-offres.webp', type: 'Landing page' },
     ],
   },
   {
@@ -831,6 +1023,11 @@ const projectFilters = [
   { key: 'ai-visibility', label: 'AI Visibility' },
   { key: 'text-to-video', label: 'Text-to-Video' },
   { key: 'polymarket', label: 'Polymarket Lab' },
+  { key: 'hindsight', label: 'Hindsight' },
+  { key: 'strata', label: '180B on eGPU' },
+  { key: 'signal-bot', label: 'Signal Bot' },
+  { key: 'calcpit', label: 'CalcPit' },
+  { key: 'the-icon', label: 'THE ICON' },
   { key: 'montessori', label: 'Montessori' },
   { key: 'ksur', label: 'KSUR' },
   { key: 'driveco', label: 'DRIVECO' },
@@ -857,9 +1054,16 @@ PDFold: https://pdfold.com/
 AI Search Visibility Tracker: https://apify.com/emoubarak/ai-search-visibility-tracker
 Text-to-Short-Video: https://github.com/emoubarak/prompt-to-short-video-generator
 jev-check (open source): https://github.com/emoubarak/jev-check
+Hindsight (open source): https://github.com/emoubarak/hindsight
+Jev Voice (open source): https://github.com/emoubarak/jev-voice
+A 180B model on an eGPU (benchmarks): https://github.com/emoubarak/strata-flash-next-rtx3080-20gb
+Signal LLM Bot: https://github.com/emoubarak/signal-bot
+CalcPit: https://www.calcpit.com/
+Lumber Calculator (Android): https://play.google.com/store/apps/details?id=com.calcpit.lumber
 Case studies: https://moubarak.dev/blog#case-studies
 Mon Jouet Montessori: https://mon-jouet-montessori.com/
-Atandem Agency: https://atandemagency.com/`,
+Atandem Agency: https://atandemagency.com/
+THE ICON: https://the-icon.be/`,
   },
   {
     label: 'Companies & references',
