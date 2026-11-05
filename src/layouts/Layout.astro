@@ -30,6 +30,22 @@ const isCurrent = (href: string) => {
   const h = href.replace(base, '') || '/';
   return path === h || (h !== '/' && path.startsWith(h + '/'));
 };
+// One person behind the companies: agence-ksur.com, pdfold.com and piktechs.com point to this @id.
+const personLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://moubarak.dev/#person',
+  name: identity.name,
+  url: identity.website,
+  jobTitle: identity.title.en,
+  address: { '@type': 'PostalAddress', addressLocality: identity.city, addressCountry: 'FR' },
+  sameAs: [identity.linkedin, identity.github],
+  worksFor: [
+    { '@type': 'Organization', '@id': 'https://www.agence-ksur.com/#organization', name: 'AGENCE-KSUR', url: 'https://www.agence-ksur.com/' },
+    { '@type': 'Organization', '@id': 'https://piktechs.com/#organization', name: 'Piktechs', url: 'https://piktechs.com/' },
+  ],
+  knowsAbout: ['Software engineering', 'SaaS', 'Artificial intelligence', 'LLM agents', 'Full-stack web development'],
+};
 const arrow = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 ---
 
@@ -64,6 +80,7 @@ const arrow = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=JetBrains+Mono:wght@400;500;700&display=swap" />
   <title>{title}</title>
+  <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
   <script is:inline>
     (function () {
       var d = document.documentElement;

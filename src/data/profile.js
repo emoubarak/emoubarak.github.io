@@ -188,8 +188,8 @@ export const experiences = [
     ],
   },
   {
-    company: "KSUR Services",
-    url: "https://www.agence-ksur.com",
+    company: "AGENCE-KSUR",
+    url: "https://www.agence-ksur.com/",
     role: "CTO",
     period: "Mar 2026 – Present",
     location: "France · Morocco",
