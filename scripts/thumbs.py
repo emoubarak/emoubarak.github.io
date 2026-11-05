@@ -24,6 +24,7 @@ SOURCES = {
     "polymarket": "portfolio/polymarket-illustration.webp",
     "atandem": "portfolio/atandem-home.webp",
     "vyrion": "portfolio/vyrion-home.webp",
+    "aknel": "portfolio/aknel-home.webp",
     "montessori": "portfolio/montessori-og.webp",
     "deuspi": "portfolio/deuspi-og.webp",
     "altao": "portfolio/altao-og.webp",

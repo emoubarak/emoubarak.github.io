@@ -441,6 +441,23 @@ export const projects = [
     tags: ['Next.js', 'TypeScript', 'EN · FR · ZH', 'Lead magnets'],
   },
   {
+    title: 'Aknel Couverture',
+    thumb: `${base}/work/aknel.webp`,
+    subtitle: 'aknel-couverture.fr',
+    category: 'website',
+    categoryLabel: 'Website',
+    role: 'Client work',
+    description: 'Website for a roofing contractor in Lyon: leak repairs, roof renovation, zinc work and moss removal. A four-step quote form, free calculators and a photo diagnosis turn visits into quote requests.',
+    // aknel-couverture.fr sends X-Frame-Options: SAMEORIGIN, so it cannot be previewed in an iframe.
+    previews: [
+      { label: 'Homepage', src: `${base}/portfolio/aknel-home.webp` },
+      { label: 'Leak map', src: `${base}/portfolio/aknel-schema.webp` },
+      { label: 'Quote request', src: `${base}/portfolio/aknel-devis.webp` },
+    ],
+    url: 'https://www.aknel-couverture.fr',
+    tags: ['Lead generation', 'Quote form', 'Calculators'],
+  },
+  {
     title: 'Mon Jouet Montessori',
     thumb: `${base}/work/montessori.webp`,
     subtitle: 'mon-jouet-montessori.com',
