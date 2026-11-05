@@ -14,6 +14,11 @@ les blocs copiables de `/kit`, puis LinkedIn, Malt, Upwork et Fiverr.
 | `pages/portfolio.astro` | `projects` (`thumb` pour la carte, `previews` pour la modale), `projectCategories` |
 | `pages/kit.astro` | `identity`, `education`, `certifications`, `aiApproach` (bloc EN « How I work with AI » généré) — et garde sa prose EN/FR propre |
 
+**Le kit est la base de toutes ses réalisations**, les siennes comme celles faites pour un client, publiées ou non
+(demande du 2026-11-05) : chaque réalisation y a sa fiche EN/FR (`projects`), son groupe d'images (`assetGroups`),
+son filtre et son lien. Une carte ajoutée au portfolio, un site client livré, un dépôt qui aboutit : la fiche du kit
+suit dans le même commit. Un projet privé ou confidentiel y entre aussi, décrit sans nom de client ni détail interne.
+
 `kit.astro` conserve les textes rédigés à la main (EN + FR) destinés au copier-coller sur chaque
 plateforme : ils ne sont pas dérivables des données. En revanche ils **doivent s'accorder** avec les
 faits structurés ci-dessus. Quand les deux divergent, c'est `profile.js` qui a raison.

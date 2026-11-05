@@ -571,7 +571,7 @@ export const projects = [
     category: 'website',
     categoryLabel: 'Website',
     role: 'Client work',
-    description: 'Website for THE ICON, a digital marketing and sales support agency: 23 pages covering their services, three offer tiers, method and results, plus two calculators (ad ROI, lost leads) that open the conversation. Swiss brutalist design in static HTML, CSS and JS, with no build step.',
+    description: 'Website for THE ICON, a digital marketing and sales support agency: 22 pages covering their services, three offer tiers, method and results, plus two calculators (ad ROI, lost leads). Swiss brutalist design in static HTML, CSS and JS, with no build step.',
     previews: [
       { label: 'Homepage', src: `${base}/portfolio/the-icon-home.webp` },
       { label: 'Offers', src: `${base}/portfolio/the-icon-offres.webp` },
