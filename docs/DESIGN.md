@@ -61,8 +61,8 @@ Refonte du 2026-10-04. Ce fichier dit ce qui est voulu, pour qu'une retouche res
   LinkedIn, 1584×396) vers `public/linkedin-banner.png`. Le quart gauche du bas reste vide : la photo de profil le couvre.
 - Couvertures d'articles : une illustration de la scène de l'article, sans aucun texte (les anciens schémas SVG
   très écrits « piquaient les yeux », 2026-10-04). Aplats, contours encre, orange du site, fond papier, 16:9
-  (1536×864). `./scripts/covers.py <slug>` les génère sur OpenRouter (`openai/gpt-image-2.5-sunburst`, medium,
-  ≈ 0,01 $ l'image, une génération par image) vers `public/blog/<slug>.webp` ; style commun, scène et texte
+  (1536×864). `./scripts/covers.py <slug>` les génère sur OpenRouter (`openai/gpt-image-2.6-sunburst`, medium,
+  ≈ 0,01 $ l'image mesuré sur la 2.5, même prix au jeton pour la 2.6 au 18/11/2026, une génération par image) vers `public/blog/<slug>.webp` ; style commun, scène et texte
   alternatif de chaque article dans `docs/blog-covers.json`. Nouvel article : ajouter sa scène, lancer le script,
   puis `./scripts/og.py`.
 - Memes dans les articles (demande du 2026-10-04) : deux ou trois par article, chacun après le paragraphe dont il se

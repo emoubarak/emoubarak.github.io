@@ -1,5 +1,5 @@
 {
-  "model": "openai/gpt-image-2.5-sunburst",
+  "model": "openai/gpt-image-2.6-sunburst",
   "quality": "medium",
   "aspect_ratio": "16:9",
   "style": "Editorial flat vector illustration for a tech blog cover. Clean geometric shapes with confident uniform dark ink outlines (#14161a), flat color fills, no gradients, no texture, no glow, no 3D, no photorealism, no glossy highlights. Strict palette: warm off-white paper background (#faf9f6), ink (#14161a), signal orange (#fc7b42) as the one accent, pale peach (#ffe3d3), white, light warm grey (#e9e5df). One clear scene, centred, with generous empty paper around it; the subject fills about two thirds of the frame. People, if any, are simple and friendly with minimal facial features. Absolutely no text, letters, numbers, logos or labels anywhere: screens and paper show abstract blocks and lines instead of words. Calm, modern, slightly playful.",
