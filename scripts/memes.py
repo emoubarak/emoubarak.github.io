@@ -4,7 +4,7 @@
     ./scripts/memes.py [slug ...]            # missing memes only, every post by default
     ./scripts/memes.py --force <slug>        # regenerate a post's memes
 
-Starts `meme-mcp` (npm i -g meme-mcp) with the Imgflip account from my-cv-secrets/imgflip.env, calls its
+Starts `meme-mcp` (npm i -g meme-mcp) with the Imgflip account from emoubarak.github.io-secrets/imgflip.env, calls its
 `generateMeme` tool over stdio, writes public/blog/memes/<slug>-<n>.webp (at most 900 px wide) and inserts
 the image line after the paragraph containing `after` in the post, once. Imgflip is free.
 """
@@ -14,7 +14,7 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
-SECRETS = ROOT / "my-cv-secrets/imgflip.env"
+SECRETS = ROOT / "emoubarak.github.io-secrets/imgflip.env"
 OUT = ROOT / "public/blog/memes"
 cfg = json.loads((ROOT / "docs/blog-memes.json").read_text())["posts"]
 args = sys.argv[1:]

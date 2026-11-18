@@ -30,7 +30,7 @@ pnpm-debug.log*
 __pycache__/
 
 # private audits (profile exports with personal data), never published
-my-cv-audits/
+emoubarak.github.io-audits/
 
 # secrets (Imgflip account for the meme MCP), never committed
-my-cv-secrets/
+emoubarak.github.io-secrets/
