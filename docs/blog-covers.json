@@ -51,6 +51,10 @@
     "then-i-bought-a-gpu": {
       "scene": "A tiny square mini PC sits on a desk, connected by one thick cable to a graphics card standing in an open external dock beside it. The card is now much bigger than before, taller than the mini PC, with two big fans. Behind them rises an enormous wall of thousands of small identical drawers reaching the top of the frame, like a giant library card catalogue. Dozens of drawers are open and glow orange, and two friendly robot arms mounted on the graphics card pull several drawers out at once, with short motion lines showing speed. A long shopping receipt curls off the edge of the desk onto the floor. A coffee mug on the desk.",
       "alt": "A tiny mini PC connected by one cable to a much bigger graphics card, whose robot arms pull dozens of glowing drawers at once from a wall of thousands."
+    },
+    "claude-skills-that-actually-load": {
+      "scene": "A tall wooden cabinet of many small drawers, like an old library card catalogue, seen from the front, filling the left two thirds. Each drawer has a small blank label plate and a round knob; almost all drawers are closed. Three drawers in different rows are pulled half open and glow softly in signal orange from inside. In front of the cabinet, a simple hand-drawn wooden signpost with three arrows, each arrow pointing to one of the three open drawers. On the right, a small laptop on a stool shows a chat bubble made of abstract lines. The feeling: one request, several right drawers opened at once.",
+      "alt": "A cabinet of many closed drawers with three of them open, and a signpost pointing to all three at once."
     }
   }
 }
