@@ -44,7 +44,9 @@ A `UserPromptSubmit` hook that adds one or two lines to each prompt:
 | Requests with every needed skill | 52% | **82%** |
 | No-skill prompts left clean | 99% | 95% |
 
-A third set, drawn after the last round of fixes, told the same story: 74% to 91%.
+A third set, drawn after the last round of fixes, told the same story: 74% to 93%. And because a first message is
+the easy case, I also replayed 28 prompts in the middle of their real session, with the transcript cut just before
+the prompt and resumed: 43% to 80%.
 
 It costs about 150 tokens per prompt and 20 milliseconds. No model call.
 
@@ -65,6 +67,6 @@ My rules drift out of date: I start a new project, I phrase things differently. 
 
 ## Caveats
 
-One user, one language (I write to Claude in French), one model. The bench replays first messages, so a skill Claude would load later in a real session counts as a miss on both sides. The labels were proposed by labelling agents and reviewed in a second pass, and some are judgement calls. Extra loads roughly doubled. Most are defensible, like the design skill on a "this interface is ugly" prompt, but each costs context.
+One user, one language (I write to Claude in French), one model. A skill Claude would load later in a real session, or had already loaded earlier, counts as a miss on both sides. The labels were proposed by labelling agents and reviewed in a second pass, and some are judgement calls. Extra loads roughly doubled. Most are defensible, like the design skill on a "this interface is ugly" prompt, but each costs context.
 
 The hook, the bench and the weekly review are on GitHub as a Claude Code plugin: [emoubarak/claude-skill-router](https://github.com/emoubarak/claude-skill-router). Your rules will look nothing like mine, so start from your own transcripts.
