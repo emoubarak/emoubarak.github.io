@@ -46,7 +46,7 @@ A `UserPromptSubmit` hook that adds one or two lines to each prompt:
 
 A third set, drawn after the last round of fixes, told the same story: 74% to 93%. And because a first message is
 the easy case, I also replayed 28 prompts in the middle of their real session, with the transcript cut just before
-the prompt and resumed: 43% to 80%.
+the prompt and resumed: 43% to 80%. A last set, drawn after the final rule fix: 82% to 94%.
 
 It costs about 150 tokens per prompt and 20 milliseconds. No model call.
 
