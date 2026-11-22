@@ -3,13 +3,16 @@
 
     python3 scripts/illustrations/polymarket_runs.py [path/to/runs.json]
 
+Default input: docs/results/runs.json of a polymarket-updown-lab checkout next to this repository.
+
 Writes polymarket-runs.json next to this file: one curve per archived paper run that actually traded,
 equity as a fraction of its starting stake, time normalised to 0..1.
 """
-import json, os, sys
+import json, sys
 from pathlib import Path
 
-src = Path(sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser("~/repos/polymarket-updown-lab/docs/results/runs.json"))
+REPO = Path(__file__).resolve().parents[2]
+src = Path(sys.argv[1] if len(sys.argv) > 1 else REPO.parent / "polymarket-updown-lab" / "docs" / "results" / "runs.json")
 runs = []
 for r in json.loads(src.read_text()):
     eq = r.get("equity") or []

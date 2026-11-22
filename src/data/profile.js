@@ -413,7 +413,7 @@ export const projects = [
     tags: ['Browser extension', 'Speech to text', 'Browser agents', 'Claude'],
   },
   {
-    title: 'jev-administrator',
+    title: 'browser-agents',
     thumb: `${base}/work/jev-administrator.webp`,
     subtitle: 'Private project',
     category: 'tool',
