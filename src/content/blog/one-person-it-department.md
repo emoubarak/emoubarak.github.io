@@ -47,9 +47,9 @@ The city plan. Roads are the private network, blocks are what each part owns. Wa
 
 **The laptop is a window.** I work on it, and almost everything I open on it is served by the mini PC. A second laptop exists in theory. It has been offline for two days, which means every audit report this week contains the line "not verified" next to its name, like a colleague who is permanently on leave.
 
-**The home server keeps what must survive**: accounting, photos, shared files. **The phone became a node** this morning: an agent installed and connected the photo backup app over the private network, then looked at the phone's screen to confirm it worked, because "the API said OK" is not the same thing as "it works". **An offsite storage box** holds the backups, and a small VPS sits outside the house.
+**The home server keeps what must survive**: accounting, a self-hosted photo library, shared files. **The phone became a node** this morning: an agent installed the photo library app and the file sync app over the private network, connected both to the home server, then looked at the phone's screen to confirm they worked, because "the API said OK" is not the same thing as "it works". It deliberately installed an old version of the photo app, because the current one may not talk to the server I never upgraded. Backward compatibility, the enterprise way: by freezing everything. **An offsite storage box** holds the backups, and a small VPS sits outside the house.
 
-Everything sits on one Tailscale network. The Claude workspace itself (rules, hooks, skills) is a git repository, synced at the start of every session on every machine. Correct a rule on the laptop, and the mini PC knows it the next time a session opens there.
+Everything sits on one Tailscale network. This morning I got tired of approving SSH logins between my own machines every few hours, so the trust between them is now explicit and one-way. Which machine trusts which is the kind of detail a public page keeps to itself. The Claude workspace itself (rules, hooks, skills) is a git repository, synced at the start of every session on every machine. Correct a rule on the laptop, and the mini PC knows it the next time a session opens there.
 
 ## District one: Instructions
 
@@ -101,6 +101,8 @@ No internal tool of mine has an API key for a model. Keys with spending caps exi
 
 [![Routines, "Schedule" page: seventeen tasks with their timing, next run and last result, such as "Claude workspace: weekly learning pass" every Sunday at 21:00 and "Weekly channel report" every Monday at 11:00, with filters for the source of the task (Routines, PC timers, browser agents).](/blog/one-person-it-department/routines-schedule.webp)](/blog/one-person-it-department/routines-schedule.webp)
 
+Reports arrive on Telegram: the night's ticket fixes in the morning, a failed routine the moment it fails. Two scheduling bugs died today. The Monday report on my channels used to start at 11:00 sharp, whether or not the three stats collections it summarizes had finished; it now waits for them. And a browser task left "running" with no worker behind it now fails after 24 hours instead of running forever. Five such zombies were cleaned up on the spot, and up to three "failed" notifications may have reached my phone at breakfast to celebrate.
+
 Anything a routine writes for the outside world lands in "To review" first. Replies, comments, posts: drafted by a model, sent by a script, approved by me. The routine that sends replies runs every fifteen minutes and only sends what I approved.
 
 ## District five: the hands
@@ -115,7 +117,9 @@ Browser agents do the work that has no API: web consoles, dashboards behind a lo
 
 [![The tasks page of the back office filtering by source: from "All sources" to "Claude session (1)", then back. Task goals are fake, such as "Read the 20 newest comments and draft replies for review".](/blog/one-person-it-department/browser-tasks-source.gif)](/blog/one-person-it-department/browser-tasks-source.gif)
 
-Also today: a small tool that drives my real browser closed a tab I had opened myself, twice, in two different sessions. It now closes only the tabs it opened. It took two incidents and a ticket, the standard number of incidents a real IT department needs before writing a procedure.
+Also today: the small tool that drives my real browser kept bringing its window to the front while I was typing. I asked it to stop at four in the morning, with a lot of exclamation marks and one very long "a". The fix makes it refuse to open a tab in another profile, turn "open in new tab" links into navigation in the same background tab, and block anything that raises a window. The agent fixing it closed my browser by mistake while testing. Later, the same tool closed a tab I had opened myself, twice, in two different sessions. It now closes only the tabs it opened. It took two incidents and a ticket, the standard number of incidents a real IT department needs before writing a procedure.
+
+One more, from a batch of map searches: between 12% and 90% of the pages came back blank and were counted as read. A page is now read only once its text is displayed, reloaded if it stays empty, and reported as empty otherwise. The rerun: zero blank pages, for eight cents of proxy.
 
 ## District six: the ledger
 
@@ -125,7 +129,7 @@ The first version listed my repositories. My correction is now the first line of
 
 [![Inventory, "Projects" page: seventeen project cards with a status (Live, Archived, In progress, Paused), a description, a link and the services behind them (Cloudflare, Supabase, Hetzner, Vercel, GitHub Pages). Names and links are fake, for example "Crypto Regret: web game on serverless workers" and "Coinflip Lab: trading bots that turned every edge back into lead".](/blog/one-person-it-department/inventory.webp)](/blog/one-person-it-department/inventory.webp)
 
-It collects every six hours, checks about 180 links, reads expiry dates from the registries, and flags problems. While filling it in, the agent found a contact address displayed on one of my sites that had never existed as a mailbox. Every email sent to it had been lost, for as long as the site had been online. The app paid for itself before I finished configuring it, which in IT terms means it will now be forgotten for a year.
+It is also kept up to date by the work itself: a hook at the end of every Claude session records any new repository the session created, so the inventory no longer depends on me remembering it exists. It collects every six hours, checks about 180 links, reads expiry dates from the registries, and flags problems. While filling it in, the agent found a contact address displayed on one of my sites that had never existed as a mailbox. Every email sent to it had been lost, for as long as the site had been online. The app paid for itself before I finished configuring it, which in IT terms means it will now be forgotten for a year.
 
 ## Districts seven and eight: the watchtower and the vault
 
@@ -191,7 +195,7 @@ The fixes ran as seven parallel workstreams: three on Opus for infrastructure, b
 
 Half my tooling used to be named after the browser agent it started with. The agent's wrapper, my personal-browser driver, the QA harness, the voice interface, the back office: all variations of one three-letter name. Last night I decided this was misleading and asked for names that say what each thing does. Two sessions and a few hours later, everything had a descriptive name: browser agents, my browser, account state check, voice browser.
 
-A rename is the cleanest test of evolvability there is, and mine failed it: the thirty dead paths above are its debris. The lesson made it into the event table. A rename is an event, and every event needs something that checks its consequences.
+Even my CV PDFs had to be rebuilt, because they named the old tools. A rename is the cleanest test of evolvability there is, and mine failed it: the thirty dead paths above are its debris. The lesson made it into the event table. A rename is an event, and every event needs something that checks its consequences.
 
 Same week, same idea: every app of the harness now speaks English, interface and notifications included. The apps tied to a client project keep the client's language. One rule, one line in the instructions, and a test that searches the rendered text for words in the other language rather than trusting a screenshot. A screenshot proves the layout. It doesn't prove the last French button is gone. Clicking through every screen to check the translation, I also noticed that a status badge stayed yellow after I answered a yes-or-no question. Translation is the best bug hunt I know, because it makes someone read every string.
 
@@ -264,6 +268,7 @@ For completeness, the rest of today's tickets, because a real IT department is m
 - **A tweet** promised faster browsing by changing DNS servers. The agent checked my ISP's box: it does not allow changing them, there is no such field in its interface code, and it already caches answers (0 ms for a site already visited, 81 ms the first time, against about 50 ms for a public resolver). Taking over DHCP from the mini PC would make the whole house lose internet when it reboots, to save 30 ms on sites I have never visited. Verdict: the tweet works in a city where the local DNS is slow. Mine isn't. Nothing changed.
 - **A one-pixel line** appeared at the top of my laptop screen whenever a maximized browser sat on the portable monitor next to it. The suspect is the browser drawing one pixel outside its own window, in a layer the window manager doesn't clip. Two logouts and one precise question later ("how exactly do you maximize it?"), a fix in a small window-manager extension is waiting for my next logout. Not verified, so not fixed.
 - **Statistics files** had been rewritten every three hours but never committed since Thursday: 750 lines waiting. They now commit and push themselves.
+- **The accounting app** now records payouts from the platforms I sell on, warns when the last bank statement is more than seven days old, and drops a reminder in the calendar every Monday at 14:00 to fetch a new one. An independent review found two defects in the payout code before anything changed in the books. Every existing number stayed the same, which in accounting is the only acceptable kind of excitement.
 - **A paused project** was reported as "broken" by three different apps. It is now "paused" everywhere, because a system that can't tell a pause from a failure trains you to ignore red.
 
 ## What I'd tell anyone running a one-person IT department
