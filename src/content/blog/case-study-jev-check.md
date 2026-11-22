@@ -1,5 +1,5 @@
 ---
-title: "Case Study: jev-check, Browser-Agent QA Where the Database Gives the Verdict"
+title: "Case Study: account-state-check, Browser-Agent QA Where the Database Gives the Verdict"
 description: "Unit tests and mocked end-to-end suites miss the bugs where the deployed front, the backend and the permissions disagree. I built a browser-agent harness that signs in as a real account state and lets the database decide, then open-sourced it as an agent skill."
 pubDate: 2026-09-19
 tags: ["Case Study", "AI", "QA"]
@@ -53,7 +53,7 @@ The harness is mostly the fixes nobody tells you about:
 - Plan gates and workspace permissions have standing checks, run on demand against the test environment rather than in CI.
 - A bug ticket starts with a one-line reproduction as a given account, and closes with a before/after pair of screenshots.
 - Taking the "after" shots for a batch of closed tickets surfaced three follow-up bugs that the fixes had introduced or missed.
-- I open-sourced it as [jev-check](https://github.com/emoubarak/jev-check) (MIT), an agent skill for Claude Code, Codex and OpenClaw. It ships with a tiny demo app with a free-plan gate, plus the same app with a silent billing regression, so you can watch the agent say "done" and the database say no:
+- I open-sourced it as [account-state-check](https://github.com/emoubarak/account-state-check) (MIT), an agent skill for Claude Code, Codex and OpenClaw. It ships with a tiny demo app with a free-plan gate, plus the same app with a silent billing regression, so you can watch the agent say "done" and the database say no:
 
 ```text
 FAIL  free_publish_blocked   as free   1 act   2 calls   1.3s  ← draft_still_unpublished,

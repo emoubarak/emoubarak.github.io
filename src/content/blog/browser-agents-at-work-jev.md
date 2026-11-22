@@ -15,7 +15,7 @@ My coding agent writes UI it cannot see, and half of my admin work happens in we
 
 ## What I use it for
 
-**QA of my own app, as real users.** On [Piktechs](https://piktechs.com), a browser agent signs in to the test environment as a specific account state (free, Pro, lapsed, team member, frozen team), follows a one-line goal, and then the database says whether the result is correct. The agent's "done" is only a claim. Sixteen standing checks cover plan gates and workspace permissions. I open-sourced the approach as [jev-check](https://github.com/emoubarak/jev-check), and it gets [its own case study](/blog/case-study-jev-check).
+**QA of my own app, as real users.** On [Piktechs](https://piktechs.com), a browser agent signs in to the test environment as a specific account state (free, Pro, lapsed, team member, frozen team), follows a one-line goal, and then the database says whether the result is correct. The agent's "done" is only a claim. Sixteen standing checks cover plan gates and workspace permissions. I open-sourced the approach as [account-state-check](https://github.com/emoubarak/account-state-check), and it gets [its own case study](/blog/case-study-jev-check).
 
 **Screenshots that prove things.** A visible bug gets a screenshot in its ticket. A fixed one gets a before/after pair in the closing comment, so I can check the fix at a glance without running anything. One responsive audit produced a single ticket listing every mobile layout defect with its screenshot, ready to fix in one pass. Taking the "after" shots of a batch of closed tickets also found three real follow-up bugs. A screenshot is a claim about the product, so it gets looked at before it gets published.
 
@@ -30,7 +30,7 @@ My coding agent writes UI it cannot see, and half of my admin work happens in we
 
 ## The rule that matters most: humans type passwords
 
-jev never sees password fields. That's not a limitation to work around, it's the right design. In jev-check, accounts sign in over the DevTools protocol, so the agent never needs a password. In my own browser, the agent leaves the tab in front of me at the login screen. The runner hands over through WebRTC. In all three cases the agent does the clicking and the human does the credentials.
+jev never sees password fields. That's not a limitation to work around, it's the right design. In account-state-check, accounts sign in over the DevTools protocol, so the agent never needs a password. In my own browser, the agent leaves the tab in front of me at the login screen. The runner hands over through WebRTC. In all three cases the agent does the clicking and the human does the credentials.
 
 ![One Does Not Simply meme: "One does not simply let the agent type your password".](/blog/memes/browser-agents-at-work-jev-1.webp)
 

@@ -75,7 +75,7 @@ Diplôme d'ingénieur de l'IMT Nord Europe (Informatique, Réseaux & Télécoms)
 Most of my recent work happens with Claude Code as my main engineering environment. As the only engineer on Piktechs, a B2B SaaS for digital business cards, I took it from a two-week prototype to a production product with live billing, multi-tenant workspaces and mobile apps. Doing that alone taught me more about working with AI agents than any tutorial, mostly through what went wrong.
 
 A few things I hold to:
-• An agent saying "done" is a claim. I give it ways to check its work against reality, and the database has the last word. I open-sourced that approach as jev-check.
+• An agent saying "done" is a claim. I give it ways to check its work against reality, and the database has the last word. I open-sourced that approach as account-state-check.
 • An AI feature starts with its threat model. Our card scanner reads text written by strangers, so its fallback model was chosen by testing prompt injection, not by price.
 • Measure before believing. I'd rather publish an honest "there is no edge here" (my Polymarket research) than a flattering backtest.
 • Correct the workspace, not the chat. Lessons go where the next session will find them, and rules that keep failing become checks.
@@ -88,7 +88,7 @@ I write about all of this, mistakes included, on moubarak.dev. Based in Lille, w
 L'essentiel de mon travail récent se fait avec Claude Code comme environnement d'ingénierie principal. Seul ingénieur sur Piktechs, un SaaS B2B de cartes de visite digitales, je l'ai fait passer d'un prototype de deux semaines à un produit en production : facturation en live, espaces de travail multi-clients, applications mobiles. Le faire seul m'a plus appris sur le travail avec des agents IA que n'importe quel tutoriel, surtout à travers ce qui a raté.
 
 Quelques principes auxquels je tiens :
-• Un agent qui dit « fini » fait une affirmation. Je lui donne de quoi vérifier son travail face au réel, et c'est la base de données qui tranche. J'ai publié cette approche en open source : jev-check.
+• Un agent qui dit « fini » fait une affirmation. Je lui donne de quoi vérifier son travail face au réel, et c'est la base de données qui tranche. J'ai publié cette approche en open source : account-state-check.
 • Une fonctionnalité IA commence par son modèle de menace. Notre scanner de cartes lit du texte écrit par des inconnus, alors son modèle de repli a été choisi en testant l'injection de prompt, pas sur le prix.
 • Mesurer avant de croire. Je préfère publier un « il n'y a rien ici » honnête (ma recherche sur Polymarket) qu'un backtest flatteur.
 • Corriger l'espace de travail, pas la conversation. Les leçons vont là où la session suivante les trouvera, et les règles qui échouent deviennent des vérifications.
@@ -168,7 +168,7 @@ March 2026 – Present · France
 B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.
 
 • Sole engineer: took a two-week prototype to a complete production B2B SaaS for event lead capture, with Claude Code as the main engineering environment.
-• Agentic QA with jev, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal, then a SQL query, not the agent, gives the verdict. 16 standing checks on plan gates and permissions; its before/after screenshots on closed tickets surfaced 3 follow-up bugs. Open-sourced as jev-check.
+• Agentic QA with jev, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal, then a SQL query, not the agent, gives the verdict. 16 standing checks on plan gates and permissions; its before/after screenshots on closed tickets surfaced 3 follow-up bugs. Open-sourced as account-state-check.
 • Shipped an AI business-card scanner: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by prompt-injection testing (2 of 4 candidate models obeyed an injected card).
 • Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured by Postgres row-level security and role-based permissions; billing and permission code is reviewed by a different model from the one that wrote it.
 • Android app live on Google Play (https://play.google.com/store/apps/details?id=com.piktechs.app) and iOS build from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.
@@ -183,7 +183,7 @@ Mars 2026 – Aujourd'hui · France
 SaaS B2B pour l'événementiel & le networking : cartes de visite digitales (NFC/QR), capture de leads et CRM, espaces d'équipe.
 
 • Seul ingénieur : prototype de deux semaines transformé en SaaS B2B complet en production pour la capture de leads événementiels, avec Claude Code comme environnement d'ingénierie principal.
-• QA agentique avec jev, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe, équipe gelée) et suit un objectif en langage naturel, puis une requête SQL, pas l'agent, rend le verdict. 16 vérifications permanentes sur les accès par offre et les permissions ; ses captures avant/après sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits. Publié en open source : jev-check.
+• QA agentique avec jev, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe, équipe gelée) et suit un objectif en langage naturel, puis une requête SQL, pas l'agent, rend le verdict. 16 vérifications permanentes sur les accès par offre et les permissions ; ses captures avant/après sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits. Publié en open source : account-state-check.
 • Scanner de cartes de visite IA : modèle de vision avec sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours ; modèle de repli choisi par des tests d'injection de prompt (2 modèles candidats sur 4 ont obéi à une carte piégée).
 • Facturation Stripe en live (checkout, portail client, webhooks, offres d'équipe facturées par siège, réconciliation planifiée) et espaces de travail multi-clients sécurisés par row-level security Postgres et permissions par rôle ; le code de facturation et de permissions est relu par un autre modèle que celui qui l'a écrit.
 • Application Android publiée sur Google Play (https://play.google.com/store/apps/details?id=com.piktechs.app&hl=fr) et build iOS depuis le même code (Capacitor), passes Apple et Google Wallet, synchronisation CRM et intégration Zapier.
@@ -369,16 +369,16 @@ Stack : React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter, jev (B
 Compétences : Stripe (Software) · React.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Large Language Models (LLM) · TypeScript · Supabase`,
   },
   {
-    label: 'jev-check',
+    label: 'account-state-check',
     project: 'jev',
-    link: 'https://github.com/emoubarak/jev-check',
-    en: `jev-check - https://github.com/emoubarak/jev-check
+    link: 'https://github.com/emoubarak/account-state-check',
+    en: `account-state-check - https://github.com/emoubarak/account-state-check
 Open-source agent skill (MIT) for Claude Code, Codex and OpenClaw. An AI browser agent (jev-ultrafast, by Browser Use) signs in to a staging app as a real account state (free, paid, lapsed, team member, stranger) and follows a plain-English goal; then a SQL query on the database gives the verdict, not the agent. Built from the QA harness of Piktechs to catch what mocks miss: paywalls, roles and cross-account isolation disagreeing on a deployed app. Throw-away accounts in exact states, deleted after every run, sessions injected so no password is ever typed, before/after screenshots for tickets.
 
 Stack: Python, jev-ultrafast, browser-harness (CDP), SQL (Postgres, Supabase, SQLite)
 
 Skills: AI Agents · Test Automation · Software Testing · Large Language Models (LLM) · Python · Open-Source Software`,
-    fr: `jev-check - https://github.com/emoubarak/jev-check
+    fr: `account-state-check - https://github.com/emoubarak/account-state-check
 Skill d'agent open source (MIT) pour Claude Code, Codex et OpenClaw. Un agent navigateur IA (jev-ultrafast, de Browser Use) se connecte à une app de staging sous un vrai état de compte (gratuit, payant, expiré, membre d'équipe, inconnu) et suit un objectif en langage naturel ; puis une requête SQL sur la base rend le verdict, pas l'agent. Issu du harnais de QA de Piktechs, pour attraper ce que les mocks ratent : paywalls, rôles et isolation entre comptes qui se contredisent sur une app déployée. Comptes jetables dans des états exacts, supprimés après chaque exécution, sessions injectées pour qu'aucun mot de passe ne soit jamais tapé, captures avant/après pour les tickets.
 
 Stack : Python, jev-ultrafast, browser-harness (CDP), SQL (Postgres, Supabase, SQLite)
@@ -403,16 +403,16 @@ Stack : Python, hooks et skills Claude Code, BM25, embeddings (optionnels), fusi
 Compétences : AI Agents · Large Language Models (LLM) · Information Retrieval · Python · Open-Source Software`,
   },
   {
-    label: 'Jev Voice',
+    label: 'Voice Browser',
     project: 'jev',
-    link: 'https://github.com/emoubarak/jev-voice',
-    en: `Jev Voice - https://github.com/emoubarak/jev-voice
+    link: 'https://github.com/emoubarak/voice-browser',
+    en: `Voice Browser - https://github.com/emoubarak/voice-browser
 Open-source browser extension (MIT): say a task out loud and it is carried out in your own Chromium profile, already signed in to your accounts. Live transcription on Cloudflare Workers AI, Claude turns the sentence into one or two narrow goals, then the Jev agent (Browser Use) acts one click or keystroke at a time. No chrome.debugger and no remote-debugging port; it stops on a login, a captcha or a code. A Wikipedia lookup takes 12 to 19 seconds from command to answer.
 
 Stack: Chrome extension (side panel, native messaging), Python, Claude, jev-ultrafast, Deepgram on Cloudflare Workers AI
 
 Skills: AI Agents · Browser Automation · Speech Recognition · Large Language Models (LLM) · Python · Open-Source Software`,
-    fr: `Jev Voice - https://github.com/emoubarak/jev-voice
+    fr: `Voice Browser - https://github.com/emoubarak/voice-browser
 Extension de navigateur open source (MIT) : on dit une tâche à voix haute et elle s'exécute dans votre propre profil Chromium, déjà connecté à vos comptes. Transcription en direct sur Cloudflare Workers AI, Claude transforme la phrase en un ou deux objectifs précis, puis l'agent Jev (Browser Use) agit un clic ou une frappe à la fois. Ni chrome.debugger ni port de débogage à distance ; il s'arrête sur une connexion, un captcha ou un code. Une recherche Wikipédia prend 12 à 19 secondes, de la commande à la réponse.
 
 Stack : extension Chrome (panneau latéral, native messaging), Python, Claude, jev-ultrafast, Deepgram sur Cloudflare Workers AI
@@ -1129,7 +1129,7 @@ const proof = {
 - PDFold: any PDF into structured Markdown, in 11 languages.
 - Piktechs AI card scanner: of four cheap vision models tested on the same photos, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.
 - Agentic QA with jev on Piktechs: 16 standing browser-agent checks on plan gates and permissions, the database as judge; its screenshots on closed tickets surfaced 3 follow-up bugs the fixes had missed or introduced.
-- jev-check, open source (MIT): browser-agent QA where the database, not the agent, gives the verdict.
+- account-state-check, open source (MIT): browser-agent QA where the database, not the agent, gives the verdict.
 - A 180B-parameter model run locally on a mini PC with an RTX 3080 20 GB over OCuLink: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, measured and published with reproduce scripts.
 - CalcPit: 87 construction calculators on calcpit.com, and an Android app (Lumber Calculator, Google Play) generated from the same tested formulas.
 - Shopify store (Mon Jouet Montessori) built, grown to real revenue, and sold.
@@ -1142,7 +1142,7 @@ const proof = {
 - PDFold : n'importe quel PDF en Markdown structuré, en 11 langues.
 - Scanner de cartes IA de Piktechs : sur quatre modèles de vision bon marché testés sur les mêmes photos, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le modèle de repli est celui qui a résisté.
 - QA agentique avec jev sur Piktechs : 16 vérifications permanentes par agent navigateur sur les offres et les permissions, la base de données pour juge ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits.
-- jev-check, open source (MIT) : QA par agent navigateur où c'est la base de données, pas l'agent, qui rend le verdict.
+- account-state-check, open source (MIT) : QA par agent navigateur où c'est la base de données, pas l'agent, qui rend le verdict.
 - Un modèle de 180 milliards de paramètres en local sur un mini PC avec une RTX 3080 20 Go en OCuLink : environ 2 000 tokens/s en lecture du prompt et 110 à 204 tokens/s en génération, mesurés et publiés avec les scripts pour les refaire.
 - CalcPit : 87 calculateurs de construction sur calcpit.com, et une application Android (Lumber Calculator, Google Play) générée à partir des mêmes formules testées.
 - Boutique Shopify (Mon Jouet Montessori) créée, montée jusqu'à un vrai chiffre d'affaires, puis vendue.
@@ -1237,22 +1237,22 @@ const assetGroups = [
   {
     key: 'jev',
     name: 'jev · browser agents',
-    link: 'https://github.com/emoubarak/jev-check',
+    link: 'https://github.com/emoubarak/account-state-check',
     assets: [
-      { label: 'jev-check · the agent says done, the database says no', file: 'blog/case-study-jev-check.webp', type: 'Illustration' },
-      { label: 'jev-check · repository', file: 'portfolio/jev-check.webp', type: 'Screenshot' },
-      { label: 'jev-check · the audit, raster (2400px)', file: 'portfolio/jev-check-audit.webp', type: 'Diagram' },
+      { label: 'account-state-check · the agent says done, the database says no', file: 'blog/case-study-jev-check.webp', type: 'Illustration' },
+      { label: 'account-state-check · repository', file: 'portfolio/jev-check.webp', type: 'Screenshot' },
+      { label: 'account-state-check · the audit, raster (2400px)', file: 'portfolio/jev-check-audit.webp', type: 'Diagram' },
       { label: 'Task runner · architecture', file: 'blog/jev-administrator-architecture.webp', type: 'Diagram' },
       { label: 'jev-administrator · how it works (example data)', file: 'portfolio/jev-administrator-illustration.webp', type: 'Diagram' },
       { label: 'jev-administrator · card thumbnail (portfolio)', file: 'work/jev-administrator.webp', type: 'Thumbnail' },
-      { label: 'Jev Voice · how it works, with the real side panel', file: 'portfolio/jev-voice-illustration.webp', type: 'Diagram' },
-      { label: 'Jev Voice · architecture', file: 'portfolio/jev-voice-arch.webp', type: 'Diagram' },
-      { label: 'Jev Voice · side panel', file: 'portfolio/jev-voice-panel.webp', type: 'Screenshot' },
-      { label: 'Jev Voice · repository', file: 'portfolio/jev-voice-repo.webp', type: 'Screenshot' },
-      { label: 'Jev Voice · card thumbnail (portfolio)', file: 'work/jev-voice.webp', type: 'Thumbnail' },
+      { label: 'Voice Browser · how it works, with the real side panel', file: 'portfolio/jev-voice-illustration.webp', type: 'Diagram' },
+      { label: 'Voice Browser · architecture', file: 'portfolio/jev-voice-arch.webp', type: 'Diagram' },
+      { label: 'Voice Browser · side panel', file: 'portfolio/jev-voice-panel.webp', type: 'Screenshot' },
+      { label: 'Voice Browser · repository', file: 'portfolio/jev-voice-repo.webp', type: 'Screenshot' },
+      { label: 'Voice Browser · card thumbnail (portfolio)', file: 'work/jev-voice.webp', type: 'Thumbnail' },
       { label: 'Browser agent · the loop and the hand-off', file: 'blog/browser-agents-at-work-jev.webp', type: 'Illustration' },
       { label: 'Card thumbnail (portfolio)', file: 'work/jev-check.webp', type: 'Thumbnail' },
-      { label: 'Share image · jev-check case study', file: 'og/blog/case-study-jev-check.png', type: 'OG image' },
+      { label: 'Share image · account-state-check case study', file: 'og/blog/case-study-jev-check.png', type: 'OG image' },
       { label: 'Share image · browser agents article', file: 'og/blog/browser-agents-at-work-jev.png', type: 'OG image' },
     ],
   },
@@ -1551,9 +1551,9 @@ Piktechs: https://piktechs.com/
 PDFold: https://pdfold.com/
 AI Search Visibility Tracker: https://apify.com/emoubarak/ai-search-visibility-tracker
 Text-to-Short-Video: https://github.com/emoubarak/prompt-to-short-video-generator
-jev-check (open source): https://github.com/emoubarak/jev-check
+account-state-check (open source): https://github.com/emoubarak/account-state-check
 Hindsight (open source): https://github.com/emoubarak/hindsight
-Jev Voice (open source): https://github.com/emoubarak/jev-voice
+Voice Browser (open source): https://github.com/emoubarak/voice-browser
 A 180B model on an eGPU (benchmarks): https://github.com/emoubarak/strata-flash-next-rtx3080-20gb
 Signal LLM Bot: https://github.com/emoubarak/signal-bot
 CalcPit: https://www.calcpit.com/
@@ -1613,7 +1613,7 @@ const featuredIds = ['case-study-piktechs', 'case-study-ai-card-scanner', 'case-
 const featuredFr = {
   'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment j'ai fait passer un prototype de deux semaines en production, seul ingénieur : le workflow, les erreurs, les leçons."],
   'case-study-ai-card-scanner': ["Étude de cas : choisir le modèle de repli d'un LLM en l'attaquant", "Le scanner de cartes de Piktechs lit du texte écrit par des inconnus : comment j'ai choisi son modèle de repli en testant l'injection de prompt plutôt que le prix, et les garde-fous d'un endpoint LLM payant."],
-  'case-study-jev-check': ["Étude de cas : jev-check, une QA par agent navigateur où la base de données rend le verdict", "Les tests unitaires et les suites mockées ratent les bugs où le front, le back et les permissions se contredisent. Un agent navigateur connecté sous de vrais états de compte, et la base qui tranche."],
+  'case-study-jev-check': ["Étude de cas : account-state-check, une QA par agent navigateur où la base de données rend le verdict", "Les tests unitaires et les suites mockées ratent les bugs où le front, le back et les permissions se contredisent. Un agent navigateur connecté sous de vrais états de compte, et la base qui tranche."],
   'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "Les mêmes corrections revenaient dans chaque projet. Lesquelles, pourquoi les écrire ne suffisait pas, et où chaque correction doit vraiment vivre."],
   'browser-agents-at-work-jev': ["Des agents navigateur au travail : ce que jev m'a appris au quotidien", "QA de mon propre SaaS sous de vrais comptes, consoles web sans API, passage de main pour les mots de passe : les cas d'usage, l'architecture et les pièges."],
   'lazy-by-design': ["La flemme comme méthode : faire travailler mes machines quand je ne suis pas là", "Si je fais une chose deux fois, une machine la fait la troisième : exécutions autonomes, tâches planifiées, sources uniques, et ce qu'il faut à un agent pour travailler seul sans risque."],

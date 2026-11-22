@@ -56,7 +56,7 @@ export const aiApproach = {
     {
       title: 'Done means observed, not claimed',
       text: "An agent saying \"done\" is a claim. I give it ways to check its work against reality: screenshots at real screen widths, a browser agent that uses the deployed app as a given kind of user, and a database query as the final judge.",
-      proof: { label: 'Case study: jev-check', href: '/blog/case-study-jev-check' },
+      proof: { label: 'Case study: account-state-check', href: '/blog/case-study-jev-check' },
     },
     {
       title: 'An AI feature starts with its threat model',
@@ -152,7 +152,7 @@ export const experiences = [
     summary: "B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.",
     achievements: [
       "**Sole engineer:** took a two-week prototype to a **complete production B2B SaaS** for event lead capture, with Claude Code as the main engineering environment.",
-      "**Agentic QA with jev**, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal, then **a SQL query, not the agent, gives the verdict**. ==16 standing checks== on plan gates and permissions; its before/after screenshots on closed tickets surfaced ==3 follow-up bugs==. Open-sourced as jev-check.",
+      "**Agentic QA with jev**, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal, then **a SQL query, not the agent, gives the verdict**. ==16 standing checks== on plan gates and permissions; its before/after screenshots on closed tickets surfaced ==3 follow-up bugs==. Open-sourced as account-state-check.",
       "Shipped an **AI business-card scanner**: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by **prompt-injection testing** (==2 of 4== candidate models obeyed an injected card).",
       "**Live Stripe billing** (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured by **Postgres row-level security** and role-based permissions; billing and permission code is **reviewed by a different model** from the one that wrote it.",
       "**Android app live on Google Play** and iOS build from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.",
@@ -161,10 +161,10 @@ export const experiences = [
     stack: ["React", "TypeScript", "Vite", "Tailwind", "Supabase (Postgres, RLS, Edge Functions)", "Stripe", "Capacitor", "OpenRouter", "Resend", "Playwright", "Vitest", "jev (Browser Use)", "GitHub Actions", "Cloudflare Pages", "Claude Code"],
     links: [
       { label: "Case study: Piktechs", href: "/blog/case-study-piktechs" },
-      { label: "Case study: jev-check", href: "/blog/case-study-jev-check" },
+      { label: "Case study: account-state-check", href: "/blog/case-study-jev-check" },
       { label: "Case study: the AI card scanner", href: "/blog/case-study-ai-card-scanner" },
       { label: "Android app on Google Play", href: "https://play.google.com/store/apps/details?id=com.piktechs.app&hl=en" },
-      { label: "jev-check on GitHub", href: "https://github.com/emoubarak/jev-check" },
+      { label: "account-state-check on GitHub", href: "https://github.com/emoubarak/account-state-check" },
     ],
   },
   {
@@ -365,9 +365,9 @@ export const projects = [
     tags: ['TypeScript', 'Node.js', 'MCP', 'GEO / AEO'],
   },
   {
-    title: 'jev-check',
+    title: 'account-state-check',
     thumb: `${base}/work/jev-check.webp`,
-    subtitle: 'github.com/emoubarak/jev-check',
+    subtitle: 'github.com/emoubarak/account-state-check',
     category: 'research',
     categoryLabel: 'Open source',
     role: 'Author · MIT',
@@ -376,7 +376,7 @@ export const projects = [
       { label: 'What it catches', src: `${base}/portfolio/jev-check-audit.webp` },
       { label: 'Repository', src: `${base}/portfolio/jev-check.webp` },
     ],
-    url: 'https://github.com/emoubarak/jev-check',
+    url: 'https://github.com/emoubarak/account-state-check',
     tags: ['Python', 'Browser agents', 'Agent skill', 'QA'],
   },
   {
@@ -397,9 +397,9 @@ export const projects = [
     tags: ['Python', 'Claude Code plugin', 'Hooks', 'Semantic search'],
   },
   {
-    title: 'Jev Voice',
+    title: 'Voice Browser',
     thumb: `${base}/work/jev-voice.webp`,
-    subtitle: 'github.com/emoubarak/jev-voice',
+    subtitle: 'github.com/emoubarak/voice-browser',
     category: 'research',
     categoryLabel: 'Open source',
     role: 'Author · MIT',
@@ -409,7 +409,7 @@ export const projects = [
       { label: 'Architecture', src: `${base}/portfolio/jev-voice-arch.webp` },
       { label: 'Repository', src: `${base}/portfolio/jev-voice-repo.webp` },
     ],
-    url: 'https://github.com/emoubarak/jev-voice',
+    url: 'https://github.com/emoubarak/voice-browser',
     tags: ['Browser extension', 'Speech to text', 'Browser agents', 'Claude'],
   },
   {

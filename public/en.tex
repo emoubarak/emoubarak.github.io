@@ -101,7 +101,7 @@ Full-stack engineer shipping production software since 2019 in cybersecurity, he
 \role{Co-Founder \& CTO}{\org{https://piktechs.com}{Piktechs}}{France}{Mar 2026 -- Present}
 \begin{itemize}
     \item \textbf{Sole engineer:} took a two-week prototype to a \textbf{complete production B2B SaaS} for event lead capture, with Claude Code as the main engineering environment
-    \item \textbf{Agentic QA with jev}, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member) and follows a plain-English goal, then \textbf{a SQL query, not the agent, gives the verdict}. \m{16 standing checks} on plan gates and permissions; its before/after screenshots on closed tickets surfaced \m{3 follow-up bugs}. Open-sourced as \link{https://github.com/emoubarak/jev-check}{jev-check}
+    \item \textbf{Agentic QA with jev}, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member) and follows a plain-English goal, then \textbf{a SQL query, not the agent, gives the verdict}. \m{16 standing checks} on plan gates and permissions; its before/after screenshots on closed tickets surfaced \m{3 follow-up bugs}. Open-sourced as \link{https://github.com/emoubarak/account-state-check}{account-state-check}
     \item Shipped an \textbf{AI business-card scanner}: vision LLM with strict JSON output, per-user quota and on-device OCR as last resort; chose the cross-provider fallback by \textbf{prompt-injection testing} (\m{2 of 4} candidate models obeyed an injected card)
     \item Built \textbf{live Stripe billing} (checkout, portal, webhooks, per-seat plans, reconciliation) and multi-tenant workspaces secured by \textbf{Postgres row-level security}; billing and permission code is \textbf{reviewed by a different model} from the one that wrote it
     \item Shipped the \textbf{Android app}, \link{https://play.google.com/store/apps/details?id=com.piktechs.app\&hl=en}{live on Google Play}, and the iOS build from one codebase (Capacitor); unit and Playwright tests gate CI/CD across separate test and production environments
@@ -153,12 +153,12 @@ Full-stack engineer shipping production software since 2019 in cybersecurity, he
 
 \section*{OPEN SOURCE \& PROJECTS}
 \begin{itemize}
-    \project{jev-check}{https://github.com/emoubarak/jev-check}{\textbf{open-source (MIT) agent skill} for Claude Code, Codex and OpenClaw: \textbf{browser-agent QA} on a staging app where \textbf{a SQL query, not the agent,} gives the verdict \stack{Python, CDP}}
+    \project{account-state-check}{https://github.com/emoubarak/account-state-check}{\textbf{open-source (MIT) agent skill} for Claude Code, Codex and OpenClaw: \textbf{browser-agent QA} on a staging app where \textbf{a SQL query, not the agent,} gives the verdict \stack{Python, CDP}}
     \project{jev-administrator}{}{\textbf{self-hosted orchestrator for browser agents} (private): persistent logged-in browser profiles, one isolated worker per task, \textbf{live human hand-off} over WebRTC for logins and 2FA, back-office with a task timeline \stack{Python, Podman, CDP}}
     \project{Polymarket Lab}{https://github.com/emoubarak/polymarket-updown-lab}{six weeks of trading-edge research: \textbf{out-of-sample backtests}, \m{\textasciitilde12,000 paper trades} across 60 concurrent runners, Python engine and Go \textbf{market maker}. Verdict: \textbf{no tradable edge}}
     \project{PDFold}{https://pdfold.com}{PDF to structured Markdown in \m{11 languages}: \textbf{multi-pass OCR + Gemini pipeline} with failover, Stripe billing \stack{Next.js, Supabase}}
     \project{AI Visibility Tracker}{https://apify.com/emoubarak/ai-search-visibility-tracker}{measures how ChatGPT, Perplexity, Gemini and Google AI Overviews \textbf{mention a brand}, \textbf{sampling each prompt several times} per engine; callable over \textbf{MCP} \stack{TypeScript}}
-    \project{Writing}{https://moubarak.dev/blog}{\link{https://moubarak.dev/cv\#ai}{how I work with AI}; case studies on \link{https://moubarak.dev/blog/case-study-ai-card-scanner}{the AI card scanner}, \link{https://moubarak.dev/blog/case-study-jev-check}{jev-check} and \link{https://moubarak.dev/blog/case-study-piktechs}{Piktechs}}
+    \project{Writing}{https://moubarak.dev/blog}{\link{https://moubarak.dev/cv\#ai}{how I work with AI}; case studies on \link{https://moubarak.dev/blog/case-study-ai-card-scanner}{the AI card scanner}, \link{https://moubarak.dev/blog/case-study-jev-check}{account-state-check} and \link{https://moubarak.dev/blog/case-study-piktechs}{Piktechs}}
 \end{itemize}
 
 \section*{SKILLS}

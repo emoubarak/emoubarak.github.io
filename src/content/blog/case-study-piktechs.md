@@ -47,7 +47,7 @@ A prototype that demos well is not a product that bills. Piktechs needed multi-t
 
 **Tickets are contracts.** Every bug ticket has a Reproduce section: one command, links, code permalinks pinned to a commit, and the check that goes green once it's fixed. A visible bug gets a screenshot, and closing it takes a before/after pair, so a fix can be checked at a glance.
 
-**The agent gets eyes.** A browser agent signs in to the deployed test app as a specific account state and the database gives the verdict. I open-sourced it as [jev-check](/blog/case-study-jev-check).
+**The agent gets eyes.** A browser agent signs in to the deployed test app as a specific account state and the database gives the verdict. I open-sourced it as [account-state-check](/blog/case-study-jev-check).
 
 ## Where it stands, honestly
 
