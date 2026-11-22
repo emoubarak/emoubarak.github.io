@@ -77,7 +77,7 @@ It is now a routine like the others, so its failure lands on my phone like the o
 
 The dashboard is where my day starts. Every open issue across my six GitHub accounts, the pull requests whose CI is red, my day's calendar, web terminals into running sessions, the commits waiting to be pushed, and a gauge of how much of my Claude plan is left this week.
 
-[![Dashboard in dark mode, list view: a sidebar with GitHub organisations and repositories (lab, local-inference, inventory, browser-agents, routines, dashboard), a "My day" panel with one issue in progress and seven pull requests with failing CI, and a "Today" calendar column with events such as "Weekly ticket triage (local model)" and "Domain renewal". All names are placeholders.](/blog/one-person-it-department/dashboard.webp)](/blog/one-person-it-department/dashboard.webp)
+[![Dashboard in dark mode, list view: a sidebar with GitHub organisations and repositories (lab, local-inference, inventory, browser-agents, routines, dashboard), a "My day" panel with one issue in progress and seven pull requests with failing CI, and a "Today" calendar column with events such as "Weekly ticket triage (local model)" and "Domain renewal". Project names and issue titles are placeholders.](/blog/one-person-it-department/dashboard.webp)](/blog/one-person-it-department/dashboard.webp)
 
 The board view is a kanban across every repository. The header of the real one said "last 7 days: 90 closed, 258 created" when I took this capture. I'll come back to that ratio, because it is the plot of the second half of this post.
 
