@@ -55,6 +55,10 @@
     "claude-skills-that-actually-load": {
       "scene": "A tall wooden cabinet of many small drawers, like an old library card catalogue, seen from the front, filling the left two thirds. Each drawer has a small blank label plate and a round knob; almost all drawers are closed. Three drawers in different rows are pulled half open and glow softly in signal orange from inside. In front of the cabinet, a simple hand-drawn wooden signpost with three arrows, each arrow pointing to one of the three open drawers. On the right, a small laptop on a stool shows a chat bubble made of abstract lines. The feeling: one request, several right drawers opened at once.",
       "alt": "A cabinet of many closed drawers with three of them open, and a signpost pointing to all three at once."
+    },
+    "one-person-it-department": {
+      "scene": "A miniature city laid out on a large table, seen from slightly above, with no person anywhere in the image. The buildings of the city are computers and devices: a small mini PC tower with an external graphics card box beside it, a laptop opened like a building, a smartphone standing upright like a skyscraper, a stack of server boxes, a round clock tower, and a safe shaped like a bank vault. Thin grey roads connect all the buildings in a grid, with tiny orange dots travelling along them like cars. A small orange warning flag is planted on the roof of the safe. In the foreground, resting on the edge of the table, an orange hard hat and a clipboard with a pencil, as if the urban planner just stepped away. Paper background, generous empty space around the table. No people, no faces, no hands.",
+      "alt": "A miniature city on a table whose buildings are computers, a phone, server boxes, a clock tower and a safe with a small warning flag, joined by little roads; a hard hat and a clipboard rest on the edge of the table."
     }
   }
 }

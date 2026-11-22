@@ -238,6 +238,32 @@
         "after": "Same accuracy, a sixth faster reading, one reboot.",
         "alt": "Success Kid meme: \"Bought 12 more GB\" / \"Deleted two weeks of tuning\""
       }
+    ],
+    "one-person-it-department": [
+      {
+        "template": "97984",
+        "name": "Disaster Girl",
+        "text0": "Monitoring: all green",
+        "text1": "The backup: dead since October",
+        "after": "\"It should work\" was not an accepted value.",
+        "alt": "Disaster Girl meme: a girl smiling in front of a burning house, \"Monitoring: all green\" and \"The backup: dead since October\"."
+      },
+      {
+        "template": "91538330",
+        "name": "X, X Everywhere",
+        "text0": "Registries",
+        "text1": "Registries everywhere",
+        "after": "The evidence for anything weekly had been rotated away",
+        "alt": "Buzz Lightyear showing Woody the horizon: \"Registries\" and \"Registries everywhere\"."
+      },
+      {
+        "template": "252600902",
+        "name": "Always Has Been",
+        "text0": "Wait, it's all agent tickets?",
+        "text1": "Always has been",
+        "after": "and keep \"ready\" short.",
+        "alt": "Two astronauts in space: \"Wait, it's all agent tickets?\" \"Always has been\"."
+      }
     ]
   }
 }

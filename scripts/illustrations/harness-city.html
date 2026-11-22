@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Harness city plan</title>
+<!-- Animated city plan of the harness for the blog post "My One-Person IT Department".
+     Deterministic: window.render(t) draws the state at t seconds (0..9). Frames are captured one by one and
+     assembled into a GIF with ffmpeg. Labels are generic on purpose: no project name, host or address. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@500;600&display=block" rel="stylesheet">
+<style>
+  :root { --orange:#fc7b42; --ink:#14161a; --paper:#fafaf8; --road:#e7e4dc; --mute:#6b6f76; --red:#e5484d; --green:#2f9e5b; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { width:1200px; height:675px; background:var(--paper); overflow:hidden; }
+  svg { display:block; }
+  .name { font:800 27px 'Bricolage Grotesque', sans-serif; letter-spacing:-.02em; fill:var(--ink); }
+  .sub { font:500 15.5px 'JetBrains Mono', monospace; fill:var(--mute); }
+  .chip { font:600 15px 'JetBrains Mono', monospace; }
+  .title { font:800 22px 'Bricolage Grotesque', sans-serif; fill:var(--ink); }
+  .note { font:500 14px 'JetBrains Mono', monospace; fill:var(--mute); }
+</style>
+</head>
+<body>
+<svg id="s" width="1200" height="675" viewBox="0 0 1200 675"></svg>
+<script>
+const W = 1200, H = 675;
+// grid of districts: 3 x 3 blocks separated by roads (the private network)
+const X = [60, 440, 820], Y = [86, 280, 474], BW = 320, BH = 164;
+const D = [
+  { id:'rules',  c:0, r:0, name:'Instructions', sub:'17 hooks · ~90 skills' },
+  { id:'memory', c:1, r:0, name:'Memory',       sub:'every session, 2 machines' },
+  { id:'brains', c:2, r:0, name:'Brains',       sub:'subscription + 180B local' },
+  { id:'desk',   c:0, r:1, name:'Front desk',   sub:'issues · calendar · terminals' },
+  { id:'clock',  c:1, r:1, name:'Clock',        sub:'17 routines · night loop' },
+  { id:'hands',  c:2, r:1, name:'Hands',        sub:'12 browser profiles' },
+  { id:'ledger', c:0, r:2, name:'Ledger',       sub:'17 projects · renewals' },
+  { id:'tower',  c:1, r:2, name:'Watchtower',   sub:'26 probes · alerts to phone' },
+  { id:'vault',  c:2, r:2, name:'Vault',        sub:'nightly offsite backup' },
+];
+const byId = Object.fromEntries(D.map(d => [d.id, d]));
+const cx = d => X[d.c] + BW / 2, cy = d => Y[d.r] + BH / 2;
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const ease = t => 1 - Math.pow(1 - clamp(t), 4);            // expo-ish out
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+// flows: [from, to, start, label]; a dot travels along the roads (horizontal then vertical)
+const FLOWS = [
+  ['clock', 'hands', 2.3, 'routine starts a browser task'],
+  ['hands', 'tower', 3.3, 'task failed: ping the phone'],
+  ['ledger', 'desk', 4.3, 'domain renewal: into the calendar'],
+];
+function path(a, b) {
+  // leave a block from its edge, travel on the road, enter the target block
+  const A = byId[a], B = byId[b];
+  const pts = [];
+  if (A.r === B.r) { // same row: straight through the vertical road
+    const y = cy(A), x1 = A.c < B.c ? X[A.c] + BW : X[A.c], x2 = A.c < B.c ? X[B.c] : X[B.c] + BW;
+    pts.push([x1, y], [x2, y]);
+  } else if (A.c === B.c) { // same column: out through the right edge, along the road, back in
+    const x = X[A.c] + BW, rx = x + 30;
+    pts.push([x, cy(A)], [rx, cy(A)], [rx, cy(B)], [x, cy(B)]);
+  } else { // corner: go down the vertical road, then along the horizontal road
+    const roadX = (A.c < B.c ? X[A.c] + BW + 30 : X[A.c] - 30);
+    const roadY = (A.r < B.r ? Y[B.r] - 15 : Y[B.r] + BH + 15);
+    pts.push([A.c < B.c ? X[A.c] + BW : X[A.c], cy(A)], [roadX, cy(A)], [roadX, roadY], [cx(B), roadY]);
+  }
+  return pts;
+}
+function along(pts, f) {
+  const L = []; let tot = 0;
+  for (let i = 1; i < pts.length; i++) { const l = Math.hypot(pts[i][0] - pts[i-1][0], pts[i][1] - pts[i-1][1]); L.push(l); tot += l; }
+  let d = f * tot;
+  for (let i = 1; i < pts.length; i++) {
+    if (d <= L[i-1]) { const k = d / L[i-1]; return [pts[i-1][0] + (pts[i][0] - pts[i-1][0]) * k, pts[i-1][1] + (pts[i][1] - pts[i-1][1]) * k]; }
+    d -= L[i-1];
+  }
+  return pts[pts.length - 1];
+}
+function el(tag, attrs, text) {
+  const e = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text != null) e.textContent = text;
+  return e;
+}
+function chip(svg, x, y, text, color, alpha) {
+  const w = text.length * 9.1 + 26;
+  const g = el('g', { opacity: alpha });
+  const x0 = clamp(x - w / 2, 12, W - w - 12);
+  g.appendChild(el('rect', { x: x0, y: y - 17, width: w, height: 34, rx: 17, fill: color }));
+  g.appendChild(el('text', { x: x0 + w / 2, y: y + 5.5, 'text-anchor': 'middle', class: 'chip', fill: '#fafaf8' }, text));
+  svg.appendChild(g);
+}
+window.render = function (t) {
+  const s = document.getElementById('s');
+  s.innerHTML = '';
+  // roads (private network) behind everything
+  s.appendChild(el('rect', { x: 30, y: 62, width: W - 60, height: H - 92, rx: 26, fill: 'var(--road)' }));
+  s.appendChild(el('text', { x: 40, y: 44, class: 'title' }, 'The city plan'));
+  s.appendChild(el('text', { x: 212, y: 44, class: 'note' }, 'roads = private network · blocks = what each part owns'));
+  // vault state: ok, then broken (5.4..7.3), then fixed
+  const broken = t >= 5.4 && t < 7.3, fixed = t >= 7.3;
+  D.forEach((d, i) => {
+    const a = ease(seg(t, 0.15 * i, 0.15 * i + 0.5));
+    const lit = 0.35 + 0.65 * a;
+    const isVault = d.id === 'vault';
+    let stroke = 'var(--ink)', fill = '#ffffff', sw = 2.5;
+    if (isVault && broken) { stroke = 'var(--red)'; fill = '#fdecec'; sw = 4; }
+    if (isVault && fixed) { stroke = 'var(--green)'; fill = '#eaf6ee'; sw = 4; }
+    const g = el('g', { opacity: lit, transform: `translate(0 ${(1 - a) * 10})` });
+    g.appendChild(el('rect', { x: X[d.c], y: Y[d.r], width: BW, height: BH, rx: 20, fill, stroke, 'stroke-width': sw }));
+    g.appendChild(el('rect', { x: X[d.c] + 24, y: Y[d.r] + 26, width: 34, height: 8, rx: 4, fill: 'var(--orange)' }));
+    g.appendChild(el('text', { x: X[d.c] + 24, y: Y[d.r] + 80, class: 'name' }, d.name));
+    let sub = d.sub;
+    if (isVault && broken) sub = 'last backup: 5 weeks ago';
+    if (isVault && fixed) sub = 'fixed · checked every morning';
+    g.appendChild(el('text', { x: X[d.c] + 24, y: Y[d.r] + 112, class: 'sub', fill: isVault && broken ? 'var(--red)' : isVault && fixed ? 'var(--green)' : 'var(--mute)' }, sub));
+    s.appendChild(g);
+  });
+  // flows
+  FLOWS.forEach(([a, b, t0, label]) => {
+    const f = seg(t, t0, t0 + 0.8), out = seg(t, t0 + 1.6, t0 + 1.9);
+    if (f <= 0 || out >= 1) return;
+    const pts = path(a, b);
+    const vis = 1 - out;
+    const done = along(pts, ease(f));
+    // trail
+    const trail = [pts[0]];
+    let acc = 0; const n = 24;
+    for (let i = 1; i <= n; i++) trail.push(along(pts, ease(f) * i / n));
+    s.appendChild(el('polyline', { points: trail.map(p => p.join(',')).join(' '), fill: 'none', stroke: 'var(--orange)', 'stroke-width': 5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round', opacity: vis }));
+    s.appendChild(el('circle', { cx: done[0], cy: done[1], r: 9, fill: 'var(--orange)', stroke: 'var(--ink)', 'stroke-width': 2.5, opacity: vis }));
+    const B = byId[b];
+    chip(s, cx(B), Y[B.r] + BH - 22, label, 'var(--ink)', vis * ease(seg(t, t0 + 0.6, t0 + 0.9)));
+  });
+  // the audit: watchtower checks the vault
+  if (t >= 6.3) {
+    const f = ease(seg(t, 6.3, 7.1));
+    const A = byId.tower, B = byId.vault, y = cy(A) - 34;
+    const x1 = X[A.c] + BW, x2 = x1 + (X[B.c] - x1) * f;
+    s.appendChild(el('line', { x1, y1: y, x2, y2: y, stroke: fixed ? 'var(--green)' : 'var(--red)', 'stroke-width': 5, 'stroke-dasharray': '10 8', 'stroke-linecap': 'round' }));
+  }
+  if (broken) chip(s, cx(byId.vault), Y[2] - 22, 'nobody was told', 'var(--red)', ease(seg(t, 5.5, 5.8)));
+  if (fixed) chip(s, cx(byId.vault), Y[2] - 22, 'daily check at 08:40', 'var(--green)', ease(seg(t, 7.3, 7.6)));
+};
+document.fonts.ready.then(() => { window.__ready = true; render(9); });
+</script>
+</body>
+</html>
