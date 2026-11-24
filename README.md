@@ -16,7 +16,7 @@ src/content/blog/    blog posts (Markdown)
 src/data/profile.js  the single source of profile facts, read by every page and the kit
 src/components/      shared components; layouts and styles sit next to them
 public/              files served as is: CV PDFs and their LaTeX sources, images, Open Graph cards
-scripts/             image tooling: Open Graph cards, blog covers and memes, portfolio illustrations, LinkedIn banner
+scripts/             build-cv.sh (recompiles the CV PDFs from public/*.tex with pdfLaTeX); image tooling: Open Graph cards, blog covers and memes, portfolio illustrations, LinkedIn banner
 docs/                design notes and the inputs of the image scripts
 ```
 
