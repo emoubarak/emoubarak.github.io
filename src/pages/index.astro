@@ -94,15 +94,23 @@ const logos = [
 
       {projects.map((p, i) => (
         <article class:list={['work-row', { 'work-row--flip': i % 2 === 1 }]}>
-          <a href={p.url} target="_blank" rel="noopener noreferrer" class="work-row__media frame block" data-reveal aria-label={`Open ${p.title}`}>
-            <img src={p.thumb} alt={`${p.title}: ${p.subtitle}`} width="1600" height="1000" loading="lazy" decoding="async" />
-          </a>
+          {p.url ? (
+            <a href={p.url} target="_blank" rel="noopener noreferrer" class="work-row__media frame block" data-reveal aria-label={`Open ${p.title}`}>
+              <img src={p.thumb} alt={`${p.title}: ${p.subtitle}`} width="1600" height="1000" loading="lazy" decoding="async" />
+            </a>
+          ) : (
+            <div class="work-row__media frame block" data-reveal>
+              <img src={p.thumb} alt={`${p.title}: ${p.subtitle}`} width="1600" height="1000" loading="lazy" decoding="async" />
+            </div>
+          )}
           <div class="work-row__body" data-reveal style="--i:2">
             <p class="t-meta">{p.categoryLabel} · {p.role}</p>
-            <h3 class="t-h3 work-row__title"><a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a></h3>
+            <h3 class="t-h3 work-row__title">{p.url ? <a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a> : p.title}</h3>
             <p class="text-2 leading-relaxed max-w-[52ch]">{p.description}</p>
             <div class="chips mt-6">{p.tags.map((t) => <span class="chip">{t}</span>)}</div>
-            <a href={p.url} target="_blank" rel="noopener noreferrer" class="link-arrow mt-8">{p.subtitle} <Icon name="out" /></a>
+            {p.url
+              ? <a href={p.url} target="_blank" rel="noopener noreferrer" class="link-arrow mt-8">{p.subtitle} <Icon name="out" /></a>
+              : <p class="t-meta mt-8">{p.subtitle}</p>}
           </div>
         </article>
       ))}

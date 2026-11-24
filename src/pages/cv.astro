@@ -152,7 +152,7 @@ const toc = [
               <Tag href={p.url ?? undefined} target={p.url ? '_blank' : undefined} rel={p.url ? 'noopener noreferrer' : undefined} class="group grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_auto] items-baseline gap-x-6 gap-y-1 py-5 border-t border-[var(--line)]">
                 <span class="font-[family-name:var(--font-display)] font-semibold text-[1.2rem] tracking-tight transition-colors group-hover:text-[var(--accent)]">{p.title}</span>
                 <span class="t-meta max-md:col-start-1 max-md:row-start-2">{p.categoryLabel} · {p.role}</span>
-                <span class="t-meta md:text-right max-md:row-span-2 max-md:self-center">{p.url ? '↗' : 'Confidential'}</span>
+                <span class="t-meta md:text-right max-md:row-span-2 max-md:self-center">{p.url ? '↗' : p.archived ? 'Archived' : 'Confidential'}</span>
               </Tag>
             );
           })}

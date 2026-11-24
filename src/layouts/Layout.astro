@@ -30,7 +30,7 @@ const isCurrent = (href: string) => {
   const h = href.replace(base, '') || '/';
   return path === h || (h !== '/' && path.startsWith(h + '/'));
 };
-// One person behind the companies: agence-ksur.com, pdfold.com and piktechs.com point to this @id.
+// One person behind the companies: agence-ksur.com and piktechs.com point to this @id.
 const personLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',

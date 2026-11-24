@@ -7,7 +7,7 @@ cover: "/blog/how-i-built-pdfold.webp"
 coverAlt: "A messy scanned page goes into a small press and comes out as a clean, structured page, with three check marks above it."
 ---
 
-PDFold converts PDFs into structured Markdown in 11 languages. I built it alone, and it's live in production at [pdfold.com](https://pdfold.com).
+PDFold converted PDFs into structured Markdown in 11 languages. I built it alone and ran it in production. The project is now archived.
 
 This is not another "I prompted an app into existence" post. The interesting part of building PDFold wasn't the AI writing code. It was the system I built *around* the AI so that its output stayed shippable week after week. Here's that system.
 
@@ -54,4 +54,4 @@ Every one of those choices removes an ops problem I'd otherwise own alone. As a 
 3. **Fallbacks for your core dependency.** If your product is an API call, have a second route for it.
 4. **Boring infra.** Spend your novelty budget on the product, not the plumbing.
 
-PDFold is live at [pdfold.com](https://pdfold.com). If you're a founder trying to ship something like this, this workflow is a big part of what I do for clients. [Get in touch](mailto:elmahdi@moubarak.dev).
+PDFold is now archived. If you're a founder trying to ship something like this, this workflow is a big part of what I do for clients. [Get in touch](mailto:elmahdi@moubarak.dev).

@@ -334,7 +334,7 @@ export const projects = [
   {
     title: 'PDFold',
     thumb: `${base}/work/pdfold.webp`,
-    subtitle: 'pdfold.com',
+    subtitle: 'Archived project',
     category: 'saas',
     categoryLabel: 'SaaS',
     role: 'Founder',
@@ -344,7 +344,8 @@ export const projects = [
       { label: 'Motion design', src: `${base}/portfolio/pdfold-motion.mp4`, poster: `${base}/portfolio/pdfold-motion-poster.webp` },
       { label: 'Landing page', src: `${base}/portfolio/pdfold.png` },
     ],
-    url: 'https://pdfold.com',
+    url: null,
+    archived: true,
     tags: ['Next.js', 'TypeScript', 'Gemini API', 'Stripe'],
   },
   {
@@ -490,32 +491,33 @@ export const projects = [
   {
     title: 'CalcPit',
     thumb: `${base}/work/calcpit.webp`,
-    subtitle: 'calcpit.com',
+    subtitle: 'Archived project',
     category: 'web-app',
     categoryLabel: 'Web App',
     role: 'Founder',
     description: '87 free calculators for construction and landscaping (concrete, framing, roofing, electrical, HVAC) that give the quantity to order. Static site with no framework, every formula tested against hand-worked cases, and a link that shares each result with its numbers.',
-    // calcpit.com sends frame-ancestors 'none', so it cannot be previewed in an iframe.
     previews: [
       { label: 'Homepage', src: `${base}/portfolio/calcpit-home.webp` },
       { label: 'Concrete slab', src: `${base}/portfolio/calcpit-slab.webp` },
     ],
-    url: 'https://www.calcpit.com',
+    url: null,
+    archived: true,
     tags: ['JavaScript', 'Static site', 'SEO', 'Cloudflare'],
   },
   {
     title: 'Lumber Calculator',
     thumb: `${base}/work/lumber.webp`,
-    subtitle: 'Google Play',
+    subtitle: 'Archived project',
     category: 'mobile',
     categoryLabel: 'Android App',
     role: 'Founder',
-    description: 'Android app with nine framing and sheet-goods calculators, built from the same tested formulas as calcpit.com. It reads feet and inches as people type them (8\' 6 1/2"), saves results into jobs that export a material list, and works offline with no account and no network request.',
+    description: 'Android app with nine framing and sheet-goods calculators, built from the same tested formulas as the CalcPit calculators. It reads feet and inches as people type them (8\' 6 1/2"), saves results into jobs that export a material list, and works offline with no account and no network request.',
     previews: [
       { label: 'Screens', src: `${base}/portfolio/lumber-screens.webp` },
       { label: 'Job material list', src: `${base}/portfolio/lumber-job.webp` },
     ],
-    url: 'https://play.google.com/store/apps/details?id=com.calcpit.lumber',
+    url: null,
+    archived: true,
     tags: ['React Native', 'Expo', 'Android', 'Offline'],
   },
   {
