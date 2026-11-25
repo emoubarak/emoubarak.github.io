@@ -34,12 +34,10 @@ export const harness = {
   counted: '25 November 2026',
 
   stats: [
-    { n: '~50', label: 'skills I wrote, about thirty more borrowed and credited' },
-    { n: '19', label: 'hooks that run before or after the model acts, 105 tests' },
-    { n: '24', label: 'scheduled routines, each with a failure alert' },
-    { n: '303', label: 'tickets triaged by the local model, with a second agent checking' },
-    { n: '~30', label: 'endpoints watched, alerts on my phone' },
-    { n: '14,800', label: 'messages and notes from past sessions, searchable by meaning' },
+    { n: '57% → 84%', label: 'of the skills a prompt needs, loaded once a router hook picks them (held-out prompts)' },
+    { n: '180B', label: 'parameters in a model running in my office, 110 to 204 tokens per second' },
+    { n: '0 €', label: 'to triage 303 open tickets with the local model, each closure checked by a second agent' },
+    { n: '3 bugs', label: 'that fixes had introduced or missed, caught by a browser agent with the database as judge' },
   ],
 
   journey: [
@@ -77,12 +75,12 @@ export const harness = {
       },
     },
     {
-      id: 'memory', name: 'Memory', tag: '14,800 entries', icon: icons.memory, layout: 'wide',
+      id: 'memory', name: 'Memory', tag: 'every past session', icon: icons.memory, layout: 'wide',
       what: 'Every Claude Code session of my two main machines is collected and indexed by meaning, with project notes, rules and docs.',
       points: [
         '“Do you remember”, “where were we”, “like last time”: <b>the model searches before it answers</b>.',
         'Before writing a new memory note, it checks that the note does not exist already.',
-        'Of 8,904 messages I typed since May, <b>480 were corrections</b>. The repeated ones become rules.',
+        'About <b>one message in twenty</b> I type corrects the model. The repeated corrections become rules.',
         'Packaged as an open-source plugin: <b>hindsight</b>.',
       ],
       visual: { kind: 'image', src: '/portfolio/hindsight-demo.webp', w: 1800, h: 840, alt: 'Terminal: "do you remember how we deploy the api to staging?" A hook finds the session of September 1st and Claude answers with the exact command.' },
@@ -110,7 +108,7 @@ export const harness = {
       visual: { kind: 'image', src: '/harness-dashboard.webp', w: 1095, h: 1000, alt: 'Dashboard in dark mode: repositories grouped by account in the sidebar, a "My day" panel with one issue in progress and seven pull requests with failing CI. Project names and issue titles are placeholders.' },
     },
     {
-      id: 'clock', name: 'Clock', tag: '24 routines', icon: icons.clock, layout: 'flip',
+      id: 'clock', name: 'Clock', tag: 'scheduled work', icon: icons.clock, layout: 'flip',
       what: 'Everything scheduled runs on the mini PC, in this order of preference: a plain script, then the local model, then the Claude subscription when quality matters.',
       points: [
         'No internal tool of mine holds a model API key. <b>Plumbing runs on the subscription or on the GPU</b>.',
@@ -143,11 +141,11 @@ export const harness = {
       visual: { kind: 'image', src: '/blog/one-person-it-department/inventory.webp', w: 1600, h: 1000, alt: 'Inventory, "Projects" page: project cards with a status, a description and the services behind them. Names and links are fake.' },
     },
     {
-      id: 'watch', name: 'Watchtower', tag: '~30 probes', icon: icons.watch, anchor: 'vault', hidden: true,
+      id: 'watch', name: 'Watchtower', tag: 'probes & alerts', icon: icons.watch, anchor: 'vault', hidden: true,
     },
     {
       id: 'vault', name: 'Vault', tag: 'nightly backup', icon: icons.vault, layout: 'wide',
-      what: 'Monitoring watches about thirty endpoints. Every night at four the mini PC backs itself up offsite, and on Sundays a sample is restored to prove the backup works.',
+      what: 'Monitoring watches every public endpoint and alerts my phone. Every night at four the mini PC backs itself up offsite, and on Sundays a sample is restored to prove the backup works.',
       points: [
         'An audit by <b>five parallel agents</b> asked one question per layer: who feeds what, and when?',
         'The verdict: <b>everything that gets created is tracked, everything that changes is not</b>.',
@@ -234,7 +232,7 @@ export const harness = {
 
   openSource: [
     { name: 'claude-skill-router', url: 'https://github.com/emoubarak/claude-skill-router', text: 'Makes Claude Code load every skill that fits a prompt, with a bench that replays your own sessions to measure it.', proof: '57% → 84% of needed skills loaded', stack: 'Python · Claude Code hooks' },
-    { name: 'hindsight', url: 'https://github.com/emoubarak/hindsight', text: 'Memory for Claude Code: search every past session by meaning, turn your corrections into rules.', proof: '14,800 entries indexed here', stack: 'Python · BM25 + embeddings · plugin' },
+    { name: 'hindsight', url: 'https://github.com/emoubarak/hindsight', text: 'Memory for Claude Code: search every past session by meaning, turn your corrections into rules.', stack: 'Python · BM25 + embeddings · plugin' },
     { name: 'account-state-check', url: 'https://github.com/emoubarak/account-state-check', text: 'A browser agent tests your staging app as each kind of user, and a SQL query gives the verdict.', proof: 'Found 3 bugs that fixes had introduced or missed', stack: 'Python · CDP · agent skill' },
     { name: 'voice-browser', url: 'https://github.com/emoubarak/voice-browser', text: 'Talk to your browser: Claude plans the command, a browser agent clicks, with no debugger port open.', proof: '9 to 19 s from speech to action', stack: 'Chrome extension · Python' },
     { name: 'strata-flash-next-rtx3080-20gb', url: 'https://github.com/emoubarak/strata-flash-next-rtx3080-20gb', text: 'Settings and benchmark scripts for a 180B model on a mini PC with an RTX 3080 20 GB over OCuLink.', proof: '≈2,000 tok/s read, 110-204 tok/s write', stack: 'Strata · llama-swap · benchmarks' },

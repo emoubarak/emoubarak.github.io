@@ -98,7 +98,7 @@ const benchMax = 10;
           </div>
         ))}
       </div>
-      <p class="t-meta mt-5">Counted on {counted}. One person, a mini PC with an external GPU, a home server, a laptop, two phones and a small VPS, on one private network.</p>
+      <p class="t-meta mt-5">One person, a mini PC with an external GPU, a home server, a laptop, two phones and a small VPS, on one private network.</p>
     </section>
 
     <!-- Life of a prompt -->
@@ -183,8 +183,8 @@ const benchMax = 10;
                       const p = at(h, R);
                       return <circle cx={p.x} cy={p.y} r="8" class="dial__ev" data-ev={i} />;
                     }))}
-                    <text x={C} y={C - 6} class="dial__center">24</text>
-                    <text x={C} y={C + 18} class="dial__center-l">routines</text>
+                    <text x={C} y={C - 6} class="dial__center">24 h</text>
+                    <text x={C} y={C + 18} class="dial__center-l">of routines</text>
                   </svg>
                   <ul class="dial__legend">
                     {clock.map((e, i) => (
@@ -230,7 +230,7 @@ const benchMax = 10;
             {s.uses != null && (
               <div class="skill__uses">
                 <span class="skill__bar"><span style={`width:${Math.max(6, Math.round((s.uses / skills.maxUses) * 100))}%`}></span></span>
-                <span class="t-meta">{s.uses} sessions</span>
+                
               </div>
             )}
           </article>
@@ -453,8 +453,7 @@ const benchMax = 10;
 
   /* ── numbers ── */
   .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-  @media (min-width: 700px) { .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  @media (min-width: 1100px) { .stats { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
   .stat { background: var(--bg); padding: clamp(1.25rem, 2.4vw, 2rem); }
   .stat__n { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 1.3rem + 1.5vw, 3rem); line-height: 1; letter-spacing: -0.04em; }
   .stat__l { margin-top: 0.6rem; color: var(--text-2); font-size: 0.95rem; line-height: 1.4; }

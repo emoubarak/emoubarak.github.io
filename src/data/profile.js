@@ -178,7 +178,7 @@ export const experiences = [
       "**AI browser automation with jev** (Browser Use's jev-ultrafast): my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.",
       "**Rescuing AI-generated MVPs** (Lovable, Bolt, Cursor, Claude Code): code audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests and deployment.",
       "**LLM and RAG integration** into existing products: OCR + LLM pipelines, chatbots over documents, OpenAI / Claude / Gemini in production.",
-      "**My own agent harness:** about ==50 skills==, ==19 hooks== and 105 tests, ==24 scheduled routines==, session memory searchable by meaning and a local 180B model behind one alias. Repeated corrections become hooks, and a weekly pass mines my sessions for them.",
+      "**My own agent harness:** skills, hooks that turn repeated corrections into enforced checks, scheduled routines with failure alerts, session memory searchable by meaning and a local 180B model behind one alias. Repeated corrections become hooks, and a weekly pass mines my sessions for them.",
     ],
     stack: ["TypeScript", "Python", "Next.js", "Node.js", "Supabase", "Docker", "OpenAI, Claude, Gemini APIs", "MCP", "Browser Use", "Claude Code"],
     links: [
