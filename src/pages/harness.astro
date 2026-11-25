@@ -7,7 +7,7 @@ import { harness } from '../data/harness.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const img = (p: string) => `${base}${p}`;
-const { counted, stats, journey, districts, skills, sourcing, hooks, clock, bench, openSource, workshop, lessons } = harness;
+const { counted, stats, journey, districts, agents, skills, sourcing, hooks, clock, bench, openSource, workshop, lessons } = harness;
 
 // map of the hero: a 3 × 3 city, one block per district, roads between them
 const B = { w: 156, h: 132, gx: 36, gy: 34, x0: 14, y0: 14 };
@@ -191,7 +191,20 @@ const benchMax = 10;
                       <li data-ev={i} tabindex="0"><span class="t-meta">{e.time}</span>{e.what}</li>
                     ))}
                   </ul>
+                  {d.visual.src && (
+                    <a href={img(d.visual.src)} class="shot dial__shot" target="_blank" rel="noopener">
+                      <img src={img(d.visual.src)} alt={d.visual.alt} width={d.visual.w} height={d.visual.h} loading="lazy" decoding="async" />
+                    </a>
+                  )}
                 </figure>
+              )}
+              {d.visual?.kind === 'project' && (
+                <div class="proj" aria-label="A project in the inventory owns several things">
+                  <div class="proj__core"><span class="t-meta">one card per</span><b>Project</b><span class="t-meta">a thing that exists in the world</span></div>
+                  <ul class="proj__parts">
+                    {d.visual.parts.map((pt: string, i: number) => <li style={`--i:${i}`}>{pt}</li>)}
+                  </ul>
+                </div>
               )}
               {d.visual?.kind === 'backup' && (
                 <div class="backup" aria-label="Timeline of the backup that died silently">
@@ -205,6 +218,33 @@ const benchMax = 10;
                 </div>
               )}
             </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Agents -->
+    <section id="agents" class="section wrap">
+      <div class="grid lg:grid-cols-12 gap-x-16 gap-y-6 items-end">
+        <div class="lg:col-span-6">
+          <p class="t-eyebrow mb-4">The staff</p>
+          <h2 class="t-h2">Several agents, one rulebook</h2>
+        </div>
+        <p class="lg:col-span-6 text-2 text-[1.1rem] leading-relaxed">{agents.intro}</p>
+      </div>
+      <div class="crew">
+        <div class="crew__hub" data-reveal>
+          <p class="crew__hub-title">{agents.hub.title}</p>
+          <ul>{agents.hub.items.map((it) => <li>{it}</li>)}</ul>
+        </div>
+        {agents.list.map((a, i) => (
+          <article class="agent" data-reveal style={`--i:${i % 3}`}>
+            <div class="agent__top"><span class="agent__icon" aria-hidden="true" set:html={a.icon} /><h3 class="agent__name">{a.name}</h3></div>
+            <p class="agent__role">{a.role}</p>
+            <dl class="agent__dl">
+              <div><dt>Brains</dt><dd>{a.brains}</dd></div>
+              <div><dt>Rules</dt><dd>{a.rules}</dd></div>
+            </dl>
           </article>
         ))}
       </div>
@@ -627,4 +667,32 @@ const benchMax = 10;
   .case__from { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
   .case__title { margin-top: 0.5rem; font-family: var(--font-display); font-weight: 700; font-size: 1.12rem; line-height: 1.25; letter-spacing: -0.015em; }
   .case__text { margin-top: 0.6rem; color: var(--text-2); font-size: 0.95rem; line-height: 1.55; }
+  /* ── agents ── */
+  .crew { margin-top: clamp(2.5rem, 5vw, 3.5rem); display: grid; gap: 1rem; }
+  @media (min-width: 760px) { .crew { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1150px) { .crew { grid-template-columns: repeat(4, minmax(0, 1fr)); } .crew__hub { grid-row: span 2; } }
+  .crew__hub { background: var(--orange); color: #14161a; border-radius: var(--radius); padding: 1.6rem; display: flex; flex-direction: column; justify-content: center; }
+  .crew__hub-title { font-family: var(--font-display); font-weight: 800; font-size: 1.7rem; letter-spacing: -0.03em; line-height: 1.05; }
+  .crew__hub ul { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: 0.5rem; }
+  .crew__hub li { font-family: var(--font-mono); font-size: 0.85rem; padding: 0.45rem 0.7rem; background: rgb(255 255 255 / 0.55); border-radius: 8px; }
+  .agent { border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius-sm); padding: 1.3rem; display: flex; flex-direction: column; gap: 0.65rem; }
+  .agent__top { display: flex; align-items: center; gap: 0.65rem; }
+  .agent__icon { width: 2.2rem; height: 2.2rem; border-radius: 10px; display: grid; place-content: center; background: color-mix(in srgb, var(--orange) 20%, transparent); color: var(--accent); flex: none; }
+  .agent__icon :global(svg) { width: 1.15rem; height: 1.15rem; }
+  .agent__name { font-family: var(--font-mono); font-weight: 700; font-size: 1rem; }
+  .agent__role { color: var(--text-2); font-size: 0.94rem; line-height: 1.5; flex: 1; }
+  .agent__dl { margin: 0; display: grid; gap: 0.45rem; border-top: 1px dashed var(--line-strong); padding-top: 0.7rem; }
+  .agent__dl div { display: grid; grid-template-columns: 3.6rem 1fr; gap: 0.5rem; font-size: 0.85rem; line-height: 1.4; }
+  .agent__dl dt { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); padding-top: 0.1rem; }
+  .agent__dl dd { margin: 0; color: var(--text); }
+
+  /* ── clock screenshot and project card ── */
+  .dial__shot { grid-column: 1 / -1; margin-top: 0.5rem; }
+  .proj { position: relative; display: grid; gap: 1.25rem; padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: var(--radius); background: var(--bg-2); }
+  .proj__core { justify-self: center; display: grid; justify-items: center; gap: 0.2rem; padding: 1.2rem 2rem; border-radius: var(--radius-sm); background: #14161a; color: #f3f2ee; text-align: center; }
+  .proj__core b { font-family: var(--font-display); font-size: 1.9rem; letter-spacing: -0.03em; line-height: 1.05; }
+  .proj__core .t-meta { color: #a9adb4; }
+  .proj__parts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; position: relative; }
+  .proj__parts li { position: relative; text-align: center; padding: 0.8rem 0.6rem; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: 0.95rem; }
+  .proj__parts li::before { content: ''; position: absolute; left: 50%; top: -0.7rem; width: 2px; height: 0.7rem; background: var(--line-strong); }
 </style>

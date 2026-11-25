@@ -68,8 +68,8 @@ def cards():
         "sub": "How I run AI agents on my own machines, and check that the work is really done.",
         "foot": "El Mahdi Moubarak",
         "images": [
-            {"src": f"{p}/blog/one-person-it-department/inventory.webp", "w": 440, "x": 700, "y": 70, "r": -5},
-            {"src": f"{p}/blog/one-person-it-department/routines-today.webp", "w": 450, "x": 720, "y": 290, "r": 3},
+            {"src": f"{p}/harness/browser-profiles.webp", "w": 450, "x": 690, "y": 60, "r": -5},
+            {"src": f"{p}/harness/routines-schedule.webp", "w": 450, "x": 720, "y": 300, "r": 3},
         ],
     }
     yield "blog", {

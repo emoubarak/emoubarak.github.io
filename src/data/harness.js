@@ -94,7 +94,7 @@ export const harness = {
         'A video render <b>reserves RAM before starting</b>: the arbiter swaps models, then gives it back.',
         'Confidential tasks run on a separate browser-agent instance that <b>only talks to the local model</b>.',
       ],
-      visual: { kind: 'image', src: '/harness-strata.webp', w: 1200, h: 340, alt: 'Benchmark card: Qwen3.8-Flash-Next 180B on an RTX 3080 20 GB over OCuLink. 2,000 tokens per second prompt read, 2,395 at 162k tokens, 110 to 204 generation, 262k context.' },
+      visual: { kind: 'image', src: '/harness/services.webp', w: 2200, h: 1760, alt: 'Services page of the mini PC: RTX 3080 eGPU and RAM gauges, the RTX arbiter with its default target, and the local models that can be loaded on the GPU or the integrated graphics.' },
     },
     {
       id: 'desk', name: 'Front desk', tag: 'one dashboard', icon: icons.desk, layout: 'wide',
@@ -105,7 +105,7 @@ export const harness = {
         '<b>Only I move a ticket to “ready”</b>. Agents may create tickets, never promote them.',
         'The local model <b>triaged 303 tickets in 37 repositories</b> for free, and a second agent argued against every proposed closure.',
       ],
-      visual: { kind: 'image', src: '/harness-dashboard.webp', w: 1095, h: 1000, alt: 'Dashboard in dark mode: repositories grouped by account in the sidebar, a "My day" panel with one issue in progress and seven pull requests with failing CI. Project names and issue titles are placeholders.' },
+      visual: { kind: 'image', src: '/harness/dashboard.webp', w: 2880, h: 1800, alt: 'Dashboard in dark mode: repositories grouped by account, a "My day" panel with one issue in progress and seven pull requests with failing CI, and today\'s calendar. Project names and event titles are placeholders.' },
     },
     {
       id: 'clock', name: 'Clock', tag: 'scheduled work', icon: icons.clock, layout: 'flip',
@@ -115,7 +115,7 @@ export const harness = {
         'Anything written for the outside world <b>lands in “to review” first</b>. A script sends only what I approved.',
         'Reports reach Telegram: the night\'s fixes in the morning, a failed routine the moment it fails.',
       ],
-      visual: { kind: 'clock' },
+      visual: { kind: 'clock', src: '/harness/routines-schedule.webp', w: 2880, h: 1800, alt: 'Routines, Schedule page: each task with its timing, next run, last result and what runs it (a script, the local model or Claude). Project names are placeholders.' },
     },
     {
       id: 'hands', name: 'Hands', tag: 'browser agents', icon: icons.hands, layout: 'wide',
@@ -125,9 +125,10 @@ export const harness = {
         'One isolated worker per task. Every task records <b>who created it</b>: a routine, a session or me.',
         'Password, captcha or 2FA: <b>Telegram pings my phone</b> and I take over the remote browser by touch.',
         'Money stays out of reach: bank, taxes and payments only happen in my own browser.',
+        'Each task runs with the model that fits it: Sonnet, Haiku, DeepSeek or a local Qwen.',
       ],
       incident: 'In a batch of searches, 12% to 90% of the pages came back blank and were counted as read. A page now counts only once its text is on screen, and is reloaded if it stays empty. The rerun had zero blank pages.',
-      visual: { kind: 'image', src: '/blog/one-person-it-department/browser-tasks-source.gif', w: 1472, h: 920, alt: 'The tasks page of the browser-agents back office filtering by source. Task goals are fake, such as "Read the 20 newest comments and draft replies for review".' },
+      visual: { kind: 'image', src: '/harness/browser-profiles.webp', w: 2880, h: 1720, alt: 'browser-agents back office, Profiles page: one card per account with its state (asleep or stopped), task count, last activity and purpose. Names and purposes are placeholders.' },
     },
     {
       id: 'ledger', name: 'Ledger', tag: 'inventory', icon: icons.ledger, layout: 'flip',
@@ -138,7 +139,7 @@ export const harness = {
         'Renewals flow into my calendar as reminders: <b>19 created on the first run</b>.',
       ],
       incident: 'While filling it in, the agent found a contact address shown on one of my sites that had never existed as a mailbox. Every email sent to it had been lost since the site went live.',
-      visual: { kind: 'image', src: '/blog/one-person-it-department/inventory.webp', w: 1600, h: 1000, alt: 'Inventory, "Projects" page: project cards with a status, a description and the services behind them. Names and links are fake.' },
+      visual: { kind: 'project', parts: ['Repositories', 'A domain', 'A mailbox', 'A host', 'Accounts', 'Renewals and bills'] },
     },
     {
       id: 'watch', name: 'Watchtower', tag: 'probes & alerts', icon: icons.watch, anchor: 'vault', hidden: true,
@@ -163,6 +164,19 @@ export const harness = {
       },
     },
   ],
+
+  agents: {
+    intro: 'Claude Code is the main agent, but it is not the only one. Each agent gets the same rulebook, so a correction made once applies everywhere.',
+    hub: { title: 'One rulebook', items: ['120-line instructions', 'Hooks that say no', 'Skills', 'Memory of past sessions'] },
+    list: [
+      { name: 'Claude Code', icon: icons.type, role: 'Main engineering agent, three or four sessions in parallel.', brains: 'Haiku, Sonnet or Opus, picked per prompt by a router', rules: 'Rules, hooks, skills, memory' },
+      { name: 'opencode', icon: icons.route, role: 'Second coding agent, on the local model.', brains: 'Local 180B or 27B', rules: 'Same rules, generated; same hooks through a plugin' },
+      { name: 'pi', icon: icons.shield, role: 'Small fixes delegated when code must stay on the machine, in a copy of the repository.', brains: 'Local model', rules: 'Same rules; nothing applied without my review' },
+      { name: 'browser-agents', icon: icons.hands, role: 'Web work with no API, one dedicated browser per account.', brains: 'Sonnet, Haiku, DeepSeek or local Qwen', rules: 'Human hand-off for passwords; every task closed with its result' },
+      { name: 'Hermes gateway', icon: icons.brains, role: 'Agent gateway for routines and bots that must run without my plan.', brains: 'The local model alias', rules: 'Callers never name a model' },
+      { name: 'Routines', icon: icons.clock, role: 'Scheduled work: a script first, then the local model, then Claude when quality matters.', brains: 'Script, local model or Claude', rules: 'Outside-facing text waits in “To review”' },
+    ],
+  },
 
   skills: {
     intro: 'A skill is a written procedure the model loads when a task matches: what good looks like, the tools to use, the traps I already fell into. One per kind of work I repeat. These are the ones my sessions load most.',
