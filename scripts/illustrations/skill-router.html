@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- claude-skill-router: a hook names the skills a prompt needs, in the user's own words.
+     Numbers are the published ones from emoubarak/claude-skill-router (held-out set: 57% -> 84% of needed skills loaded,
+     about 150 tokens and 20 ms per prompt). The prompt and skill names are examples. -->
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<style>
+  body { --field: #f3f1fb; }
+  .prompt { left: 80px; top: 80px; width: 560px; height: 150px; padding: 30px 34px; }
+  .prompt p { font-size: 30px; line-height: 1.3; margin-top: 12px; }
+  .label { font-size: 19px; }
+  .hook { left: 80px; top: 280px; width: 560px; height: 370px; padding: 30px 34px; }
+  .hook h3 { font-size: 34px; margin-top: 10px; }
+  .skill { display: flex; align-items: center; gap: 14px; margin-top: 16px; font-size: 24px; padding: 14px 18px; border-radius: 16px; background: #f3f2ee; }
+  .skill i { width: 16px; height: 16px; border-radius: 50%; background: #fc7b42; flex: none; }
+  .skill.off { opacity: 0.45; }
+  .skill.off i { background: #c9ccd2; }
+  .cost { left: 80px; top: 690px; width: 560px; height: 130px; padding: 26px 34px; display: flex; gap: 40px; align-items: center; }
+  .cost b { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 46px; letter-spacing: -0.03em; display: block; }
+  .cost span { font-size: 20px; }
+  .result { left: 720px; top: 80px; width: 640px; height: 740px; padding: 40px 44px; }
+  .result h2 { font-size: 46px; margin-top: 12px; }
+  .result .sub { font-size: 21px; margin-top: 12px; line-height: 1.4; margin-bottom: 10px; }
+  .bar { margin-top: 40px; }
+  .bar .top { display: flex; justify-content: space-between; align-items: baseline; font-size: 24px; }
+  .bar .top b { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 76px; letter-spacing: -0.04em; }
+  .track { margin-top: 14px; height: 34px; border-radius: 18px; background: #eceae4; overflow: hidden; border: 3px solid #14161a; }
+  .fill { height: 100%; background: #9aa0a8; }
+  .after .fill { background: #fc7b42; }
+  .note { position: absolute; left: 44px; right: 44px; bottom: 40px; font-size: 19px; }
+</style>
+</head>
+<body>
+  <div class="card prompt">
+    <span class="label mono muted">you type</span>
+    <p>“redo the heroes of the client site”</p>
+  </div>
+
+  <div class="card hook">
+    <span class="label mono muted">router hook, before Claude reads it</span>
+    <h3 class="display">Skills that fit</h3>
+    <div class="skill mono"><i></i>site-vitrine</div>
+    <div class="skill mono"><i></i>frontend-design</div>
+    <div class="skill mono off"><i></i>video</div>
+  </div>
+
+  <div class="card cost">
+    <div><b>~150</b><span class="muted">tokens per prompt</span></div>
+    <div><b>~20 ms</b><span class="muted">added per prompt</span></div>
+  </div>
+
+  <div class="card result">
+    <span class="label mono muted">measured on held-out prompts</span>
+    <h2 class="display">Skills a prompt needs, actually loaded</h2>
+    <p class="sub muted">Same model, same skills, real prompts the rules were never tuned on.</p>
+    <div class="bar">
+      <div class="top"><span>Without the router</span><b>57%</b></div>
+      <div class="track"><div class="fill" style="width:57%"></div></div>
+    </div>
+    <div class="bar after">
+      <div class="top"><span>With the router</span><b>84%</b></div>
+      <div class="track"><div class="fill" style="width:84%"></div></div>
+    </div>
+    <p class="note mono muted">Rules written in your own words · bench replays your sessions</p>
+  </div>
+  <script>document.fonts.ready.then(() => { window.ready = true; });</script>
+</body>
+</html>

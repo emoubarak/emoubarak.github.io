@@ -196,7 +196,8 @@ export const experiences = [
     location: "France · Morocco",
     summary: "Agence-KSUR is a digital agency building tailor-made web and mobile applications, e-commerce platforms, and AI-driven automation workflows for SMEs and enterprises.",
     achievements: [
-      "Own the agency's **full technical stack and delivery**, from architecture to production.",
+      "Own the agency's **full technical stack and delivery**, from architecture to production, for ==about ten client companies== in France, Belgium, Morocco and La Réunion.",
+      "**Partnership with THE ICON** (the-icon.be), a Belgian marketing and sales agency: KSUR builds the websites of its clients.",
       "Design and build tailored web & mobile applications from the ground up.",
       "Architect and deploy **AI-powered automation workflows** to streamline internal and client operations.",
     ],
@@ -316,7 +317,7 @@ export const projectCategories = [
 ];
 
 // `thumb` is the uniform card image (public/work/, built by scripts/thumbs.py); `previews` are the tabs of the preview modal.
-export const projects = [
+const allProjects = [
   {
     title: 'Piktechs',
     thumb: `${base}/work/piktechs.webp`,
@@ -407,6 +408,7 @@ export const projects = [
     role: 'Author · MIT',
     description: 'A Claude Code hook that names the skills a prompt needs, from rules written in your own words, and a bench that replays your real sessions to measure it. On my setup, the share of needed skills loaded went from 57% to 84% on prompts the rules were never tuned on, for about 150 tokens and 20 ms per prompt.',
     previews: [
+      { label: 'What it does', src: `${base}/portfolio/skill-router-illustration.webp` },
       { label: 'The write-up', src: `${base}/blog/claude-skills-that-actually-load.webp` },
     ],
     url: 'https://github.com/emoubarak/claude-skill-router',
@@ -430,13 +432,16 @@ export const projects = [
   },
   {
     title: 'browser-agents',
-    thumb: `${base}/work/jev-administrator.webp`,
+    thumb: `${base}/work/browser-agents.webp`,
     subtitle: 'Private project',
     category: 'tool',
     categoryLabel: 'Internal tool',
     role: 'Author',
     description: 'Task runner for browser agents. Each identity gets its own persistent browser, with its own cookies, IP and timezone. Tasks are written in plain English from the terminal or a back-office and run on Claude, OpenRouter models or a local Qwen. When a site asks for a login, a captcha or a 2FA code, the task pauses and a phone notification opens the live browser; the agent resumes once the human step is done.',
-    previews: [{ label: 'How it works', src: `${base}/portfolio/jev-administrator-illustration.webp` }],
+    previews: [
+      { label: 'Profiles', src: `${base}/harness/browser-profiles.webp` },
+      { label: 'How it works', src: `${base}/portfolio/jev-administrator-illustration.webp` },
+    ],
     url: null,
     tags: ['Python', 'Browser agents', 'Containers', 'Multi-model'],
   },
@@ -505,6 +510,8 @@ export const projects = [
   },
   {
     title: 'CalcPit',
+    // archived product, hidden from the site on 2026-11-25 (kept here for the kit and the knowledge base)
+    hidden: true,
     thumb: `${base}/work/calcpit.webp`,
     subtitle: 'Archived project',
     category: 'web-app',
@@ -521,6 +528,8 @@ export const projects = [
   },
   {
     title: 'Lumber Calculator',
+    // archived product, hidden from the site on 2026-11-25 (kept here for the kit and the knowledge base)
+    hidden: true,
     thumb: `${base}/work/lumber.webp`,
     subtitle: 'Archived project',
     category: 'mobile',
@@ -581,6 +590,66 @@ export const projects = [
     tags: ['HTML / CSS / JS', 'Lead generation', 'Calculators'],
   },
   {
+    title: 'Group BW Invest',
+    thumb: `${base}/work/groupbw.webp`,
+    subtitle: 'groupbw.be',
+    category: 'website',
+    categoryLabel: 'Website',
+    role: 'Client work · with THE ICON',
+    description: 'Website for a Belgian construction company (structural work, steel structures, building extensions), in French, English and Dutch, with a quote request that accepts building plans. Built for a client of THE ICON.',
+    previews: [
+      { label: 'Homepage', src: `${base}/portfolio/groupbw-home.webp` },
+      { label: 'Live site', src: 'https://www.groupbw.be' },
+    ],
+    url: 'https://www.groupbw.be',
+    tags: ['HTML / CSS / JS', 'FR · EN · NL', 'Quote form'],
+  },
+  {
+    title: 'ID Advise',
+    thumb: `${base}/work/idadvise.webp`,
+    subtitle: 'idadvise.com',
+    category: 'website',
+    categoryLabel: 'Website',
+    role: 'Client work · with THE ICON',
+    description: 'Website for a Belgian general contractor that coordinates every trade on a building site, in French, English and Dutch: one page per trade, maintenance, job offers and a contact form. Built for a client of THE ICON.',
+    previews: [
+      { label: 'Homepage', src: `${base}/portfolio/idadvise-home.webp` },
+      { label: 'Live site', src: 'https://www.idadvise.com' },
+    ],
+    url: 'https://www.idadvise.com',
+    tags: ['HTML / CSS / JS', 'FR · EN · NL', 'Careers'],
+  },
+  {
+    title: 'Prestige Auto Ecoservice',
+    thumb: `${base}/work/prestige-auto.webp`,
+    subtitle: 'prestige-auto-ecoservices.com',
+    category: 'website',
+    categoryLabel: 'Website',
+    role: 'Client work · AGENCE-KSUR',
+    description: 'One-page site for a BMW and Mini repair workshop in Casablanca: services, customer reviews, opening hours and one-tap call.',
+    previews: [
+      { label: 'Homepage', src: `${base}/portfolio/prestige-auto-home.webp` },
+      { label: 'Live site', src: 'https://prestige-auto-ecoservices.com' },
+    ],
+    url: 'https://prestige-auto-ecoservices.com',
+    tags: ['HTML / CSS / JS', 'Local business'],
+  },
+  {
+    title: 'Central Garage',
+    thumb: `${base}/work/central-garage.webp`,
+    subtitle: 'central-garage.re',
+    category: 'website',
+    categoryLabel: 'Website',
+    role: 'Client work · AGENCE-KSUR',
+    description: 'Website for a multi-brand garage in Le Port, La Réunion: services, opening hours, directions and appointment booking.',
+    previews: [
+      { label: 'Homepage', src: `${base}/portfolio/central-garage-home.webp` },
+      { label: 'Live site', src: 'https://central-garage.re' },
+    ],
+    url: 'https://central-garage.re',
+    tags: ['HTML / CSS / JS', 'Appointments'],
+  },
+  {
     title: 'Mon Jouet Montessori',
     thumb: `${base}/work/montessori.webp`,
     subtitle: 'mon-jouet-montessori.com',
@@ -635,3 +704,6 @@ export const projects = [
     tags: ['Vue.js', 'Spring Boot', 'MQTT'],
   },
 ];
+
+// What the site shows: archived products flagged hidden stay in the data, out of the pages.
+export const projects = allProjects.filter((p) => !p.hidden);
