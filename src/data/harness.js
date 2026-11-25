@@ -120,7 +120,7 @@ export const harness = {
       visual: { kind: 'clock' },
     },
     {
-      id: 'hands', name: 'Hands', tag: 'one browser per account', icon: icons.hands, layout: 'wide',
+      id: 'hands', name: 'Hands', tag: 'browser agents', icon: icons.hands, layout: 'wide',
       what: 'Browser agents handle web work that has no API: admin consoles and dashboards behind a login.',
       points: [
         '<b>One profile per identity</b>, logged in once. Every later task on that account goes through the agents.',
