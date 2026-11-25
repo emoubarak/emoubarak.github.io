@@ -21,6 +21,7 @@ SOURCES = {
     "ai-visibility": "portfolio/ai-visibility-illustration.webp",
     "jev-check": "portfolio/jev-check-audit.webp",
     "hindsight": "portfolio/hindsight-demo.webp",
+    "skill-router": "blog/claude-skills-that-actually-load.webp",
     "jev-voice": "portfolio/jev-voice-illustration.webp",
     "jev-administrator": "portfolio/jev-administrator-illustration.webp",
     "ksur": "portfolio/ksur-home.webp",

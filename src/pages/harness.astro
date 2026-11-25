@@ -1,0 +1,631 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { identity } from '../data/profile.js';
+import { harness } from '../data/harness.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const img = (p: string) => `${base}${p}`;
+const { counted, stats, journey, districts, skills, sourcing, hooks, clock, bench, openSource, workshop, lessons } = harness;
+
+// map of the hero: a 3 × 3 city, one block per district, roads between them
+const B = { w: 156, h: 132, gx: 36, gy: 34, x0: 14, y0: 14 };
+const blocks = districts.map((d, i) => ({
+  ...d,
+  x: B.x0 + (i % 3) * (B.w + B.gx),
+  y: B.y0 + Math.floor(i / 3) * (B.h + B.gy),
+}));
+const roadX = [B.x0 + B.w + B.gx / 2, B.x0 + 2 * B.w + 1.5 * B.gx];
+const roadY = [B.y0 + B.h + B.gy / 2, B.y0 + 2 * B.h + 1.5 * B.gy];
+const W = B.x0 * 2 + 3 * B.w + 2 * B.gx;
+const H = B.y0 * 2 + 3 * B.h + 2 * B.gy;
+// the routes the little couriers drive along (they only use roads)
+const routes = [
+  `M ${roadX[0]} 0 V ${roadY[1]} H ${W}`,
+  `M 0 ${roadY[0]} H ${roadX[1]} V ${H}`,
+  `M ${W} ${roadY[0]} H ${roadX[0]} V ${roadY[1]} H 0`,
+];
+
+// 24-hour dial
+const R = 150, C = 190;
+const at = (h: number, r = R) => {
+  const a = (h / 24) * Math.PI * 2 - Math.PI / 2;
+  return { x: C + r * Math.cos(a), y: C + r * Math.sin(a) };
+};
+const arc = (h0: number, h1: number, r: number) => {
+  const p0 = at(h0, r), p1 = at(h1, r);
+  const large = h1 - h0 > 12 ? 1 : 0;
+  return `M ${p0.x.toFixed(1)} ${p0.y.toFixed(1)} A ${r} ${r} 0 ${large} 1 ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`;
+};
+const benchMax = 10;
+---
+
+<Layout
+  title="The harness - El Mahdi Moubarak"
+  description="How one person runs AI agents on a handful of machines: skills, hooks, routines, browser agents, memory and a local 180B model, with what each part checks and what broke."
+  ogImage="/og/harness.png"
+>
+  <PageHero eyebrow="Behind the work">
+    <h1 class="t-page">
+      <span class="rise"><span style="--i:0">The</span></span>
+      <span class="rise"><span style="--i:1">harness</span></span>
+    </h1>
+    <p class="t-lede hero__lede fade-up" style="--i:1">
+      The setup I built to make AI agents do real work on my own machines, and to check that it is really done.
+    </p>
+    <div class="hero__actions fade-up" style="--i:2">
+      <a href="#journey" class="btn btn--solid">Take the tour <Icon name="arrow" /></a>
+      <a href="#open-source" class="btn btn--line">Open-source parts</a>
+    </div>
+    <p class="t-meta mt-6 fade-up" style="--i:3">Click a block of the city to jump to it.</p>
+
+    <div slot="visual" class="city-wrap">
+      <svg class="city" viewBox={`0 0 ${W} ${H}`} role="group" aria-label="Map of the harness: nine districts joined by roads">
+        <g class="city__roads" aria-hidden="true">
+          {roadX.map((x) => <line x1={x} y1="0" x2={x} y2={H} />)}
+          {roadY.map((y) => <line x1="0" y1={y} x2={W} y2={y} />)}
+        </g>
+        <g aria-hidden="true">
+          {routes.map((d, i) => <circle class="city__car" r="5.5" style={`offset-path: path('${d}'); --d:${9 + i * 2.5}s; --delay:${-i * 3.1}s`} />)}
+        </g>
+        {blocks.map((b, i) => (
+          <a href={`#${b.anchor ?? b.id}`} class="city__block" style={`--i:${i}`} aria-label={`${b.name}: ${b.tag}`}>
+            <rect x={b.x} y={b.y} width={B.w} height={B.h} rx="16" />
+            <g transform={`translate(${b.x + 18} ${b.y + 18})`} class="city__icon" aria-hidden="true" set:html={b.icon} />
+            <text x={b.x + 18} y={b.y + B.h - 40} class="city__name">{b.name}</text>
+            <text x={b.x + 18} y={b.y + B.h - 20} class="city__tag">{b.tag}</text>
+            {b.id === 'vault' && (
+              <g class="city__flag" aria-hidden="true">
+                <line x1={b.x + B.w - 26} y1={b.y + 16} x2={b.x + B.w - 26} y2={b.y + 50} />
+                <path d={`M ${b.x + B.w - 26} ${b.y + 16} h 18 l -5 7 l 5 7 h -18 z`} />
+              </g>
+            )}
+          </a>
+        ))}
+      </svg>
+    </div>
+  </PageHero>
+
+  <div class="after-hero">
+    <!-- Numbers -->
+    <section class="wrap pt-[clamp(3.5rem,7vw,6.5rem)]">
+      <div class="stats">
+        {stats.map((s, i) => (
+          <div class="stat" data-reveal style={`--i:${i}`}>
+            <p class="stat__n">{s.n}</p>
+            <p class="stat__l">{s.label}</p>
+          </div>
+        ))}
+      </div>
+      <p class="t-meta mt-5">Counted on {counted}. One person, a mini PC with an external GPU, a home server, a laptop, two phones and a small VPS, on one private network.</p>
+    </section>
+
+    <!-- Life of a prompt -->
+    <section id="journey" class="section wrap">
+      <div class="band-ink px-[clamp(1.5rem,5vw,4.5rem)] py-[clamp(3rem,6vw,5.5rem)]">
+        <div class="max-w-[46rem]">
+          <p class="t-eyebrow mb-4">The tour</p>
+          <h2 class="t-h2">Life of a prompt</h2>
+          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">What happens between the moment I type three words and the moment I accept that something is done.</p>
+        </div>
+        <ol class="journey" style={`--n:${journey.length}`}>
+          <span class="journey__track" aria-hidden="true"><span class="journey__dot"></span></span>
+          {journey.map((j, i) => (
+            <li class="journey__stop" data-reveal style={`--i:${i}`}>
+              <span class="journey__icon" aria-hidden="true" set:html={j.icon} />
+              <h3 class="journey__title">{j.title}</h3>
+              <p class="journey__text">{j.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Districts -->
+    <section class="section wrap">
+      <div class="s-head">
+        <div>
+          <p class="t-eyebrow">The city</p>
+          <h2 class="t-h2">Nine districts</h2>
+        </div>
+        <a href={`${base}/blog/one-person-it-department`} class="link-arrow shrink-0 mb-2">The long version (22 Nov) <Icon name="arrow" /></a>
+      </div>
+
+      <div class="districts">
+        {districts.filter((d) => !d.hidden).map((d, i) => (
+          <article id={d.id} class:list={['district', `district--${d.layout}`]} data-reveal>
+            <div class="district__text">
+              <p class="district__kicker"><span class="district__icon" aria-hidden="true" set:html={d.icon} />{d.tag}</p>
+              <h3 class="t-h3">{d.name}</h3>
+              <p class="text-2 leading-relaxed mt-4">{d.what}</p>
+              <ul class="district__list">
+                {d.points.map((p) => <li set:html={p} />)}
+              </ul>
+              {d.incident && (
+                <aside class="incident">
+                  <p class="incident__head">Incident report</p>
+                  <p set:html={d.incident} />
+                </aside>
+              )}
+            </div>
+            <div class="district__visual">
+              {d.visual?.kind === 'image' && (
+                <a href={img(d.visual.src)} class="shot" target="_blank" rel="noopener">
+                  <img src={img(d.visual.src)} alt={d.visual.alt} width={d.visual.w} height={d.visual.h} loading="lazy" decoding="async" />
+                </a>
+              )}
+              {d.visual?.kind === 'rules' && (
+                <div class="rulefile" aria-label="The instruction file is capped at 120 lines by a hook">
+                  <div class="rulefile__bar"><span>CLAUDE.md</span><span>120 / 120</span></div>
+                  <ol>
+                    {d.visual.lines.map((l: string) => <li>{l}</li>)}
+                    <li class="rulefile__refused">Line 121 refused by a hook. Make room or move it to a project.</li>
+                  </ol>
+                </div>
+              )}
+              {d.visual?.kind === 'clock' && (
+                <figure class="dial">
+                  <svg viewBox="0 0 380 380" role="img" aria-label="24-hour dial of the scheduled routines">
+                    <circle cx={C} cy={C} r={R} class="dial__ring" />
+                    <circle cx={C} cy={C} r={R - 26} class="dial__ring dial__ring--dash" data-ev={clock.findIndex((e) => e.ring)} />
+                    <path d={arc(1, 7, R + 14)} class="dial__arc" />
+                    {Array.from({ length: 24 }, (_, h) => {
+                      const a = at(h, R - 8), b2 = at(h, R + 4), t = at(h, R - 30);
+                      return (
+                        <g>
+                          <line x1={a.x} y1={a.y} x2={b2.x} y2={b2.y} class:list={['dial__tick', { 'dial__tick--major': h % 6 === 0 }]} />
+                          {h % 6 === 0 && <text x={t.x} y={t.y + 4} class="dial__hour">{String(h).padStart(2, '0')}</text>}
+                        </g>
+                      );
+                    })}
+                    {clock.flatMap((e, i) => (e.hs ?? (e.h != null ? [e.h] : [])).map((h) => {
+                      const p = at(h, R);
+                      return <circle cx={p.x} cy={p.y} r="8" class="dial__ev" data-ev={i} />;
+                    }))}
+                    <text x={C} y={C - 6} class="dial__center">24</text>
+                    <text x={C} y={C + 18} class="dial__center-l">routines</text>
+                  </svg>
+                  <ul class="dial__legend">
+                    {clock.map((e, i) => (
+                      <li data-ev={i} tabindex="0"><span class="t-meta">{e.time}</span>{e.what}</li>
+                    ))}
+                  </ul>
+                </figure>
+              )}
+              {d.visual?.kind === 'backup' && (
+                <div class="backup" aria-label="Timeline of the backup that died silently">
+                  {d.visual.steps.map((s: { date: string; text: string; state: string }) => (
+                    <div class:list={['backup__step', `is-${s.state}`]}>
+                      <span class="backup__date">{s.date}</span>
+                      <span class="backup__dot" aria-hidden="true"></span>
+                      <span class="backup__text">{s.text}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section wrap">
+      <div class="s-head">
+        <div>
+          <p class="t-eyebrow">Training department</p>
+          <h2 class="t-h2">The skills I use most</h2>
+        </div>
+      </div>
+      <p class="text-2 text-[1.1rem] leading-relaxed max-w-[60ch] -mt-4">{skills.intro}</p>
+      <div class="skills">
+        {skills.items.map((s, i) => (
+          <article class="skill" data-reveal style={`--i:${i % 3}`}>
+            <div class="skill__top">
+              <span class="skill__icon" aria-hidden="true" set:html={s.icon} />
+              <code class="skill__name">{s.name}</code>
+            </div>
+            <p class="skill__text">{s.text}</p>
+            {s.uses != null && (
+              <div class="skill__uses">
+                <span class="skill__bar"><span style={`width:${Math.max(6, Math.round((s.uses / skills.maxUses) * 100))}%`}></span></span>
+                <span class="t-meta">{s.uses} sessions</span>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+      {skills.note && <p class="t-meta mt-6">{skills.note}</p>}
+    </section>
+
+    <!-- Sourcing -->
+    <section id="sourcing" class="section wrap">
+      <div class="grid lg:grid-cols-12 gap-x-16 gap-y-6 items-end">
+        <div class="lg:col-span-6">
+          <p class="t-eyebrow mb-4">Research and development</p>
+          <h2 class="t-h2">Where the skills come from</h2>
+        </div>
+        <p class="lg:col-span-6 text-2 text-[1.1rem] leading-relaxed">{sourcing.intro}</p>
+      </div>
+      <ol class="pipe">
+        {sourcing.steps.map((st, i) => (
+          <li class="pipe__step" data-reveal style={`--i:${i}`}>
+            <span class="pipe__icon" aria-hidden="true" set:html={st.icon} />
+            <h3 class="pipe__title">{st.title}</h3>
+            <p class="pipe__text">{st.text}</p>
+            <p class="pipe__check"><span aria-hidden="true">✓</span>{st.check}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="cases">
+        {sourcing.examples.map((ex, i) => (
+          <article class="case" data-reveal style={`--i:${i}`}>
+            <p class="case__from">{ex.from}</p>
+            <h3 class="case__title">{ex.title}</h3>
+            <p class="case__text">{ex.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Hooks -->
+    <section id="hooks" class="section wrap">
+      <div class="band-paper px-[clamp(1.5rem,5vw,4.5rem)] py-[clamp(3rem,6vw,5.5rem)]">
+        <div class="max-w-[46rem]">
+          <p class="t-eyebrow mb-4">Policy handbook</p>
+          <h2 class="t-h2">Rules that became code</h2>
+          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">A rule the model breaks twice stops being a sentence. It becomes a hook: a script that runs before or after the model acts, and says no.</p>
+        </div>
+        <div class="hooks">
+          {hooks.map((h, i) => (
+            <article class="hook" data-reveal style={`--i:${i % 3}`}>
+              <p class="hook__when">{h.when}</p>
+              <p class="hook__before"><span>What happened</span>{h.before}</p>
+              <p class="hook__after"><span>What the hook does</span>{h.after}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Local model bench -->
+    <section id="bench" class="section wrap">
+      <div class="grid lg:grid-cols-12 gap-x-16 gap-y-10 items-start">
+        <div class="lg:col-span-5">
+          <p class="t-eyebrow mb-4">Measured</p>
+          <h2 class="t-h2">Is the local model worth it?</h2>
+          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">{bench.intro}</p>
+          <p class="text-2 leading-relaxed mt-4">{bench.verdict}</p>
+          <a href={`${base}/blog/then-i-bought-a-gpu`} class="link-arrow mt-6">The GPU setup and its speeds <Icon name="arrow" /></a>
+        </div>
+        <div class="lg:col-span-7">
+          <div class="bench" role="table" aria-label="Same bug fixes done five ways, scored by a judge model">
+            <div class="bench__head" role="row">
+              <span role="columnheader">Who fixes it</span>
+              <span role="columnheader">Quality (judge, out of 10)</span>
+              <span role="columnheader">My wait</span>
+            </div>
+            {bench.rows.map((r, i) => (
+              <div class:list={['bench__row', { 'is-best': r.best }]} role="row" data-reveal style={`--i:${i}`}>
+                <span role="cell" class="bench__who">{r.who}</span>
+                <span role="cell" class="bench__q">
+                  <span class="bench__bar"><span style={`width:${(r.q / benchMax) * 100}%`}></span></span>
+                  <b>{r.q.toFixed(1)}</b>
+                </span>
+                <span role="cell" class="t-meta">{r.wait}</span>
+              </div>
+            ))}
+          </div>
+          <p class="t-meta mt-4">{bench.note}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open source -->
+    <section id="open-source" class="section wrap">
+      <div class="s-head">
+        <div>
+          <p class="t-eyebrow">Take it home</p>
+          <h2 class="t-h2">Open-source parts</h2>
+        </div>
+        <a href={identity.github} target="_blank" rel="noopener noreferrer" class="link-arrow shrink-0 mb-2">GitHub <Icon name="out" /></a>
+      </div>
+      <div class="repos">
+        {openSource.map((r, i) => (
+          <a href={r.url} target="_blank" rel="noopener noreferrer" class="repo" data-reveal style={`--i:${i % 4}`}>
+            <span class="repo__name">{r.name} <Icon name="out" /></span>
+            <span class="repo__text">{r.text}</span>
+            {r.proof && <span class="repo__proof">{r.proof}</span>}
+            <span class="t-meta">{r.stack}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Workshop -->
+    <section id="workshop" class="section wrap">
+      <div class="band-ink px-[clamp(1.5rem,5vw,4.5rem)] py-[clamp(3rem,6vw,5.5rem)]">
+        <div class="max-w-[46rem]">
+          <p class="t-eyebrow mb-4">The workshop</p>
+          <h2 class="t-h2">Small tools that make it livable</h2>
+          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">Each one exists because something annoyed me twice.</p>
+        </div>
+        <ul class="workshop">
+          {workshop.map((w, i) => {
+            const Tag = w.url ? 'a' : 'div';
+            return (
+              <li data-reveal style={`--i:${i % 3}`}>
+                <Tag class="tool" {...(w.url ? { href: w.url, target: '_blank', rel: 'noopener noreferrer' } : {})}>
+                  <span class="tool__icon" aria-hidden="true" set:html={w.icon} />
+                  <span class="tool__body">
+                    <span class="tool__name">{w.name} <span class="tool__tag">{w.tag}</span></span>
+                    <span class="tool__text">{w.text}</span>
+                  </span>
+                </Tag>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Lessons -->
+    <section class="section wrap">
+      <div class="grid lg:grid-cols-12 gap-x-16 gap-y-8">
+        <div class="lg:col-span-4">
+          <p class="t-eyebrow mb-4">If you run one too</p>
+          <h2 class="t-h2">What I'd tell you</h2>
+        </div>
+        <ul class="lessons lg:col-span-8">
+          {lessons.map((l, i) => (
+            <li data-reveal style={`--i:${i % 2}`}><strong>{l.title}</strong> {l.text}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="wrap pb-[var(--section)]">
+      <div class="band-orange on-orange px-[clamp(1.5rem,5vw,5rem)] py-[clamp(3rem,7vw,6rem)] grid lg:grid-cols-12 gap-10 items-end" data-reveal>
+        <div class="lg:col-span-7">
+          <p class="t-eyebrow mb-6">Contact</p>
+          <h2 class="t-page">Want one for your team?</h2>
+          <p class="t-lede mt-6 max-w-[36ch]">I set up agents that check their own work, on your own servers.</p>
+        </div>
+        <div class="lg:col-span-5 flex flex-col items-start gap-4 lg:items-end">
+          <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="btn btn--solid">Book a call <Icon name="arrow" /></a>
+          <a href={`mailto:${identity.email}`} class="btn btn--line">{identity.email}</a>
+          <div class="flex gap-6 mt-2 font-semibold">
+            <a href={`${base}/cv`} class="link">CV</a>
+            <a href={identity.linkedin} target="_blank" rel="noopener noreferrer" class="link">LinkedIn ↗</a>
+            <a href={identity.github} target="_blank" rel="noopener noreferrer" class="link">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<script is:inline>
+  // dial: hovering or focusing a legend line lights its mark on the clock, and the reverse
+  document.querySelectorAll('.dial').forEach(function (dial) {
+    function set(i) {
+      dial.querySelectorAll('[data-ev]').forEach(function (el) { el.classList.toggle('is-on', el.getAttribute('data-ev') === i); });
+    }
+    dial.querySelectorAll('[data-ev]').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { set(el.getAttribute('data-ev')); });
+      el.addEventListener('focus', function () { set(el.getAttribute('data-ev')); });
+      el.addEventListener('mouseleave', function () { set(null); });
+      el.addEventListener('blur', function () { set(null); });
+    });
+  });
+</script>
+
+<style>
+  /* ── hero city ── */
+  .city-wrap { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-top: var(--header-h); padding-bottom: 2rem; }
+  .city { width: 100%; max-width: 40rem; height: auto; overflow: visible; }
+  .city__roads line { stroke: rgb(20 22 26 / 0.28); stroke-width: 3; stroke-dasharray: 10 9; }
+  .city__car { fill: #14161a; offset-rotate: 0deg; animation: drive var(--d) linear infinite; animation-delay: var(--delay); }
+  @keyframes drive { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+  .city__block rect { fill: #fff; stroke: #14161a; stroke-width: 2.2; transition: fill 0.25s, transform 0.35s var(--ease-out); transform-box: fill-box; transform-origin: center; }
+  .city__block { cursor: pointer; outline: none; }
+  .city__block:hover rect, .city__block:focus-visible rect { fill: #14161a; }
+  .city__block:hover text, .city__block:focus-visible text { fill: #fff; }
+  .city__block:hover .city__icon, .city__block:focus-visible .city__icon { color: #fc7b42; }
+  .city__block:focus-visible rect { stroke: #fff; stroke-width: 3; }
+  .city__icon { color: #14161a; transition: color 0.25s; }
+  .city__name { font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; fill: #14161a; }
+  .city__tag { font-family: var(--font-mono); font-size: 11.5px; fill: #4a2a1a; }
+  .city__flag line { stroke: #14161a; stroke-width: 2; }
+  .city__flag path { fill: #d92d20; animation: flag 8s steps(1) infinite; }
+  @keyframes flag { 0%, 55% { fill: #d92d20; } 56%, 100% { fill: #16a34a; } }
+  @media (max-width: 640px) { .city__tag { display: none; } .city__name { font-size: 22px; } }
+  @media (max-width: 1023px) {
+    .city-wrap { padding: 0 0 2rem; justify-content: center; }
+    .city { max-width: 30rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .city__car { animation: none; offset-distance: 40%; }
+    .city__flag path { animation: none; fill: #16a34a; }
+  }
+
+  /* ── numbers ── */
+  .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  @media (min-width: 700px) { .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 1100px) { .stats { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+  .stat { background: var(--bg); padding: clamp(1.25rem, 2.4vw, 2rem); }
+  .stat__n { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 1.3rem + 1.5vw, 3rem); line-height: 1; letter-spacing: -0.04em; }
+  .stat__l { margin-top: 0.6rem; color: var(--text-2); font-size: 0.95rem; line-height: 1.4; }
+
+  /* ── journey ── */
+  .journey { position: relative; list-style: none; margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding: 0; display: grid; gap: 1.75rem; }
+  .journey__track { display: none; }
+  .journey__stop { position: relative; padding-left: 3.6rem; }
+  .journey__icon { position: absolute; left: 0; top: 0; width: 2.6rem; height: 2.6rem; border-radius: 999px; display: grid; place-content: center; background: var(--orange); color: #14161a; }
+  .journey__icon :global(svg) { width: 1.25rem; height: 1.25rem; }
+  .journey__title { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.015em; line-height: 1.2; }
+  .journey__text { margin-top: 0.45rem; color: var(--text-2); font-size: 0.95rem; line-height: 1.5; }
+  @media (max-width: 1099px) {
+    .journey::before { content: ''; position: absolute; left: 1.3rem; top: 1.3rem; bottom: 1.3rem; width: 2px; background: var(--line); }
+  }
+  @media (min-width: 1100px) {
+    .journey { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 1.25rem; }
+    .journey__stop { padding-left: 0; padding-top: 4rem; }
+    .journey__track { display: block; position: absolute; left: 1.3rem; right: 1.3rem; top: 1.25rem; height: 2px; background: var(--line); }
+    .journey__dot { position: absolute; top: -5px; left: 0; width: 12px; height: 12px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 4px rgb(252 123 66 / 0.35); animation: travel 9s var(--ease-in-out) infinite; }
+    @keyframes travel { from { left: 0; } to { left: calc(100% - 12px); } }
+  }
+  @media (prefers-reduced-motion: reduce) { .journey__dot { animation: none; } }
+
+  /* ── districts ── */
+  .districts { display: grid; gap: clamp(4rem, 8vw, 7rem); margin-top: clamp(1rem, 3vw, 2.5rem); }
+  .district { display: grid; gap: clamp(2rem, 4vw, 4rem); align-items: center; scroll-margin-top: calc(var(--header-h) + 2rem); }
+  @media (min-width: 1000px) {
+    .district { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+    .district--flip { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+    .district--flip .district__text { order: 2; }
+    .district--wide { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+  }
+  .district__kicker { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent); margin-bottom: 0.9rem; }
+  .district__icon { width: 2rem; height: 2rem; border-radius: 10px; display: grid; place-content: center; background: var(--orange); color: #14161a; }
+  .district__icon :global(svg) { width: 1.1rem; height: 1.1rem; }
+  .district__list { margin-top: 1.1rem; display: grid; gap: 0.55rem; padding: 0; list-style: none; }
+  .district__list li { position: relative; padding-left: 1.2rem; color: var(--text-2); line-height: 1.55; }
+  .district__list li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 0.45rem; height: 0.45rem; border-radius: 2px; background: var(--orange); }
+  .district__list :global(b) { color: var(--text); font-weight: 600; }
+  .incident { margin-top: 1.5rem; border: 1.5px dashed var(--line-strong); border-radius: var(--radius-sm); padding: 1rem 1.15rem; background: var(--bg-2); font-size: 0.95rem; line-height: 1.55; color: var(--text-2); }
+  .incident__head { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); margin-bottom: 0.35rem; }
+  .incident :global(b) { color: var(--text); }
+  .shot { display: block; border-radius: var(--radius); overflow: hidden; background: #fff; box-shadow: var(--shadow-lg), 0 0 0 1px var(--line); transition: translate 0.45s var(--ease-out); }
+  .shot:hover { translate: 0 -4px; }
+  .shot img { display: block; width: 100%; height: auto; }
+
+  .rulefile { border-radius: var(--radius); overflow: hidden; background: #14161a; color: #e9e7e2; box-shadow: var(--shadow-lg); font-family: var(--font-mono); font-size: 0.86rem; }
+  .rulefile__bar { display: flex; justify-content: space-between; padding: 0.8rem 1.1rem; background: #1f2227; color: #a9adb4; }
+  .rulefile ol { margin: 0; padding: 1rem 1.1rem 1.2rem 3.3rem; display: grid; gap: 0.5rem; counter-reset: l 114; list-style: none; }
+  .rulefile li { position: relative; line-height: 1.45; counter-increment: l; }
+  .rulefile li::before { content: counter(l); position: absolute; left: -2.3rem; width: 1.8rem; text-align: right; color: #5d626a; }
+  .rulefile__refused { color: #ff8a55; }
+  .rulefile__refused::before { content: '121' !important; color: #ff8a55 !important; }
+
+  .dial { display: grid; gap: 1.5rem; align-items: center; margin: 0; }
+  @media (min-width: 700px) { .dial { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+  .dial svg { width: 100%; max-width: 24rem; height: auto; margin-inline: auto; }
+  .dial__ring { fill: none; stroke: var(--line-strong); stroke-width: 2; }
+  .dial__ring--dash { stroke-dasharray: 2 6; transition: stroke 0.2s, stroke-width 0.2s; }
+  .dial__ring--dash.is-on { stroke: var(--orange); stroke-width: 5; }
+  .dial__arc { fill: none; stroke: var(--orange); stroke-width: 9; stroke-linecap: round; opacity: 0.85; }
+  .dial__tick { stroke: var(--muted); stroke-width: 1.4; }
+  .dial__tick--major { stroke: var(--text); stroke-width: 2.4; }
+  .dial__hour { font-family: var(--font-mono); font-size: 12px; fill: var(--muted); text-anchor: middle; }
+  .dial__center { font-family: var(--font-display); font-weight: 800; font-size: 46px; text-anchor: middle; fill: var(--text); }
+  .dial__center-l { font-family: var(--font-mono); font-size: 13px; text-anchor: middle; fill: var(--muted); }
+  .dial__ev { fill: var(--bg); stroke: var(--text); stroke-width: 2.5; transition: r 0.2s, fill 0.2s; cursor: pointer; }
+  .dial__ev.is-on { fill: var(--orange); r: 11; }
+  .dial__legend { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.2rem; }
+  .dial__legend li { display: grid; grid-template-columns: 6.6rem 1fr; gap: 0.75rem; padding: 0.45rem 0.6rem; border-radius: 8px; color: var(--text-2); font-size: 0.93rem; line-height: 1.4; outline: none; cursor: default; }
+  .dial__legend li.is-on, .dial__legend li:focus-visible { background: color-mix(in srgb, var(--orange) 18%, transparent); color: var(--text); }
+
+  .backup { display: grid; gap: 0; position: relative; padding: 0.5rem 0; }
+  .backup::before { content: ''; position: absolute; left: 9.55rem; top: 1.2rem; bottom: 1.2rem; width: 2px; background: var(--line-strong); }
+  .backup__step { display: grid; grid-template-columns: 8.6rem 1.9rem 1fr; align-items: start; gap: 0.6rem; padding: 0.75rem 0; }
+  .backup__date { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); padding-top: 0.15rem; text-align: right; }
+  .backup__dot { width: 1rem; height: 1rem; border-radius: 999px; margin: 0.2rem auto 0; position: relative; z-index: 1; background: var(--bg); border: 2.5px solid var(--text); }
+  .backup__text { color: var(--text-2); line-height: 1.5; }
+  .backup__step.is-bad .backup__dot { background: #d92d20; border-color: #d92d20; }
+  .backup__step.is-silent .backup__dot { border-style: dashed; border-color: var(--muted); }
+  .backup__step.is-good .backup__dot { background: #16a34a; border-color: #16a34a; }
+  .backup__step.is-bad .backup__text, .backup__step.is-good .backup__text { color: var(--text); font-weight: 500; }
+
+  /* ── skills ── */
+  .skills { margin-top: clamp(2rem, 4vw, 3rem); display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr)); }
+  .skill { display: flex; flex-direction: column; gap: 0.7rem; padding: 1.3rem 1.3rem 1.2rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); transition: border-color 0.25s, translate 0.35s var(--ease-out); }
+  .skill:hover { border-color: var(--line-strong); translate: 0 -3px; }
+  .skill__top { display: flex; align-items: center; gap: 0.7rem; }
+  .skill__icon { flex: none; width: 2.2rem; height: 2.2rem; border-radius: 10px; display: grid; place-content: center; background: color-mix(in srgb, var(--orange) 20%, transparent); color: var(--accent); }
+  .skill__icon :global(svg) { width: 1.15rem; height: 1.15rem; }
+  .skill__name { font-family: var(--font-mono); font-weight: 700; font-size: 0.95rem; }
+  .skill__text { color: var(--text-2); font-size: 0.95rem; line-height: 1.5; flex: 1; }
+  .skill__uses { display: flex; align-items: center; gap: 0.7rem; }
+  .skill__bar { flex: 1; height: 6px; border-radius: 999px; background: var(--bg-2); overflow: hidden; }
+  .skill__bar span { display: block; height: 100%; background: var(--orange); border-radius: inherit; }
+
+  /* ── hooks ── */
+  .band-paper { background: var(--bg-2); border-radius: clamp(1.25rem, 3vw, 2.25rem); }
+  .hooks { margin-top: clamp(2rem, 4vw, 3rem); display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
+  .hook { background: var(--surface); border-radius: var(--radius-sm); padding: 1.3rem; display: grid; gap: 0.85rem; align-content: start; box-shadow: var(--shadow-sm); }
+  .hook__when { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); }
+  .hook__before, .hook__after { font-size: 0.95rem; line-height: 1.5; color: var(--text-2); }
+  .hook__before span, .hook__after span { display: block; font-weight: 600; color: var(--text); font-size: 0.85rem; margin-bottom: 0.2rem; }
+  .hook__after { border-top: 1px solid var(--line); padding-top: 0.85rem; }
+
+  /* ── bench ── */
+  .bench { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .bench__head, .bench__row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.2fr) 5.5rem; gap: 1rem; align-items: center; padding: 0.95rem 1.2rem; }
+  .bench__head { background: var(--bg-2); font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+  .bench__row { border-top: 1px solid var(--line); }
+  .bench__row.is-best { background: color-mix(in srgb, var(--orange) 10%, transparent); }
+  .bench__who { font-size: 0.95rem; line-height: 1.35; }
+  .bench__q { display: flex; align-items: center; gap: 0.7rem; }
+  .bench__q b { font-family: var(--font-mono); font-size: 0.9rem; width: 2rem; }
+  .bench__bar { flex: 1; height: 10px; border-radius: 999px; background: var(--bg-2); overflow: hidden; }
+  .bench__bar span { display: block; height: 100%; background: var(--text); border-radius: inherit; }
+  .bench__row.is-best .bench__bar span { background: var(--orange); }
+  @media (max-width: 560px) {
+    .bench__head { display: none; }
+    .bench__row { grid-template-columns: 1fr auto; }
+    .bench__q { grid-column: 1 / -1; grid-row: 2; }
+  }
+
+  /* ── open source ── */
+  .repos { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+  .repo { display: flex; flex-direction: column; gap: 0.6rem; padding: 1.35rem; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--surface); transition: border-color 0.25s, translate 0.35s var(--ease-out); }
+  .repo:hover { border-color: var(--text); translate: 0 -3px; }
+  .repo__name { overflow-wrap: anywhere; display: flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-weight: 700; }
+  .repo__name :global(svg) { width: 1rem; height: 1rem; color: var(--muted); }
+  .repo__text { color: var(--text-2); font-size: 0.95rem; line-height: 1.5; flex: 1; }
+  .repo__proof { font-size: 0.9rem; font-weight: 600; color: var(--accent); }
+
+  /* ── lessons ── */
+  .lessons { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  @media (min-width: 760px) { .lessons { grid-template-columns: 1fr 1fr; column-gap: 3rem; } }
+  .lessons li { padding: 1.1rem 0; border-top: 1px solid var(--line); color: var(--text-2); line-height: 1.55; }
+  .lessons strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 0.2rem; font-family: var(--font-display); font-size: 1.1rem; letter-spacing: -0.01em; }
+  /* ── workshop ── */
+  .workshop { list-style: none; margin: clamp(2rem, 4vw, 3rem) 0 0; padding: 0; display: grid; gap: 0 2.5rem; }
+  @media (min-width: 800px) { .workshop { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1200px) { .workshop { grid-template-columns: 1fr 1fr 1fr; } }
+  .tool { display: flex; gap: 1rem; padding: 1.25rem 0; border-top: 1px solid var(--line); height: 100%; }
+  a.tool:hover .tool__name { color: var(--accent); }
+  .tool__icon { flex: none; width: 2.4rem; height: 2.4rem; border-radius: 10px; display: grid; place-content: center; background: var(--orange); color: #14161a; }
+  .tool__icon :global(svg) { width: 1.2rem; height: 1.2rem; }
+  .tool__body { display: grid; gap: 0.35rem; }
+  .tool__name { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; letter-spacing: -0.01em; transition: color 0.2s; }
+  .tool__tag { font-family: var(--font-mono); font-weight: 400; font-size: 0.72rem; color: var(--muted); margin-left: 0.35rem; }
+  .tool__text { color: var(--text-2); font-size: 0.95rem; line-height: 1.5; }
+  /* ── sourcing ── */
+  .pipe { list-style: none; margin: clamp(2.5rem, 5vw, 3.5rem) 0 0; padding: 0; display: grid; gap: 1rem; }
+  @media (min-width: 760px) { .pipe { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1150px) { .pipe { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; } }
+  .pipe__step { position: relative; display: flex; flex-direction: column; gap: 0.6rem; padding: 1.4rem 1.3rem; border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius-sm); }
+  @media (min-width: 1150px) {
+    .pipe__step { border-radius: 0; border-right-width: 0; }
+    .pipe__step:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+    .pipe__step:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; border-right-width: 1px; }
+    .pipe__step:not(:last-child)::after { content: ''; position: absolute; right: -0.55rem; top: 2.1rem; width: 1.1rem; height: 1.1rem; background: var(--surface); border-top: 1px solid var(--line); border-right: 1px solid var(--line); transform: rotate(45deg); z-index: 1; }
+  }
+  .pipe__icon { width: 2.4rem; height: 2.4rem; border-radius: 10px; display: grid; place-content: center; background: color-mix(in srgb, var(--orange) 20%, transparent); color: var(--accent); }
+  .pipe__icon :global(svg) { width: 1.2rem; height: 1.2rem; }
+  .pipe__title { font-family: var(--font-display); font-weight: 700; font-size: 1.12rem; letter-spacing: -0.015em; }
+  .pipe__text { color: var(--text-2); font-size: 0.94rem; line-height: 1.5; flex: 1; }
+  .pipe__check { display: flex; gap: 0.5rem; align-items: baseline; font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.4; color: var(--text); padding-top: 0.7rem; border-top: 1px dashed var(--line-strong); }
+  .pipe__check span { color: #16a34a; font-weight: 700; }
+  .cases { margin-top: 1.25rem; display: grid; gap: 1rem; }
+  @media (min-width: 900px) { .cases { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .case { padding: 1.4rem 1.4rem 1.5rem; border-radius: var(--radius-sm); background: var(--bg-2); }
+  .case__from { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
+  .case__title { margin-top: 0.5rem; font-family: var(--font-display); font-weight: 700; font-size: 1.12rem; line-height: 1.25; letter-spacing: -0.015em; }
+  .case__text { margin-top: 0.6rem; color: var(--text-2); font-size: 0.95rem; line-height: 1.55; }
+</style>

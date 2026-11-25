@@ -178,10 +178,11 @@ export const experiences = [
       "**AI browser automation with jev** (Browser Use's jev-ultrafast): my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.",
       "**Rescuing AI-generated MVPs** (Lovable, Bolt, Cursor, Claude Code): code audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests and deployment.",
       "**LLM and RAG integration** into existing products: OCR + LLM pipelines, chatbots over documents, OpenAI / Claude / Gemini in production.",
-      "**AI-native workflow:** a versioned Claude Code workspace shared across two machines, where repeated corrections become hooks and skills, and a weekly pass mines my own sessions for what I keep correcting.",
+      "**My own agent harness:** about ==50 skills==, ==19 hooks== and 105 tests, ==24 scheduled routines==, session memory searchable by meaning and a local 180B model behind one alias. Repeated corrections become hooks, and a weekly pass mines my sessions for them.",
     ],
     stack: ["TypeScript", "Python", "Next.js", "Node.js", "Supabase", "Docker", "OpenAI, Claude, Gemini APIs", "MCP", "Browser Use", "Claude Code"],
     links: [
+      { label: "Tour of the harness", href: "/harness" },
       { label: "Article: what I kept telling Claude", href: "/blog/what-i-kept-telling-claude" },
       { label: "Article: browser agents at work", href: "/blog/browser-agents-at-work-jev" },
       { label: "Article: lazy by design", href: "/blog/lazy-by-design" },
@@ -396,6 +397,20 @@ export const projects = [
     ],
     url: 'https://github.com/emoubarak/hindsight',
     tags: ['Python', 'Claude Code plugin', 'Hooks', 'Semantic search'],
+  },
+  {
+    title: 'Claude Skill Router',
+    thumb: `${base}/work/skill-router.webp`,
+    subtitle: 'github.com/emoubarak/claude-skill-router',
+    category: 'tool',
+    categoryLabel: 'Open source',
+    role: 'Author · MIT',
+    description: 'A Claude Code hook that names the skills a prompt needs, from rules written in your own words, and a bench that replays your real sessions to measure it. On my setup, the share of needed skills loaded went from 57% to 84% on prompts the rules were never tuned on, for about 150 tokens and 20 ms per prompt.',
+    previews: [
+      { label: 'The write-up', src: `${base}/blog/claude-skills-that-actually-load.webp` },
+    ],
+    url: 'https://github.com/emoubarak/claude-skill-router',
+    tags: ['Python', 'Claude Code hooks', 'Evaluation'],
   },
   {
     title: 'Voice Browser',

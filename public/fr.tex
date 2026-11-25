@@ -113,7 +113,7 @@ Ingénieur full-stack, je livre du logiciel en production depuis 2019 (cyberséc
 \role{Fondateur \& Ingénieur IA / Full-Stack}{\org{https://moubarak.dev}{EMM}}{Lille, France}{Mars 2026 -- Aujourd'hui}
 \begin{itemize}
     \item Activité d'ingénierie indépendante : \textbf{pipelines LLM et OCR}, \textbf{agents IA} avec skills et MCP sur mesure, automatisation navigateur avec jev pour les back-offices sans API, pour des PME et des agences
-    \item \textbf{Travail natif avec l'IA :} espace Claude Code versionné sur deux machines, où les corrections répétées deviennent des hooks et des skills, et une analyse hebdomadaire de mes sessions repère ce que je corrige encore (\link{https://moubarak.dev/blog/what-i-kept-telling-claude}{article})
+    \item \textbf{Conçu et exploité mon propre harnais d'agents} : une \m{cinquantaine de skills}, \m{19 hooks} et 105 tests, \m{24 routines planifiées}, mémoire des sessions interrogeable par le sens, et un \textbf{modèle local de 180B} sur une RTX 3080 ; les corrections répétées deviennent des hooks (\link{https://moubarak.dev/harness}{visite})
     \item Conception et animation de \textbf{formations IA} pour DRIVECO (opérateur de bornes de recharge) : deux sessions FR/EN construites sur les workflows réels de l'entreprise, avec un \link{https://www.linkedin.com/posts/el-mahdi-moubarak_merci-\%C3\%A0-toute-l\%C3\%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/}{témoignage public} de sa DRH
     \item Également CTO de \link{https://www.agence-ksur.com}{KSUR Services} (agence web, France et Maroc) : stack technique et livraisons
 \end{itemize}
@@ -139,13 +139,6 @@ Ingénieur full-stack, je livre du logiciel en production depuis 2019 (cyberséc
 \stackline{Vue.js\sep Django\sep Python\sep PostgreSQL\sep AWS (EC2, Route53, Amplify)}
 
 \expsep
-\role{Ingénieur Logiciel Mobile}{\org{https://www.linkedin.com/company/deuspi/}{Deuspi}}{Lille}{Mars 2021 -- Juin 2021}
-\begin{itemize}
-    \item \textbf{Seul ingénieur mobile} sur la V1 d'une app React Native de livraison de courses, des maquettes à la production
-\end{itemize}
-\stackline{React Native\sep JavaScript\sep REST APIs}
-
-\expsep
 \role{Ingénieur Full-Stack}{\org{https://worldline.com}{Worldline}}{Seclin}{Avr. 2019 -- Août 2019 (stage)}
 \begin{itemize}
     \item Développement d'un outil interne de R\&D pour créer, stocker et rejouer des jeux de tests de paiement sur MQTT, améliorant la vitesse de développement de l'équipe de \m{70\,\%}
@@ -157,9 +150,9 @@ Ingénieur full-stack, je livre du logiciel en production depuis 2019 (cyberséc
     \project{account-state-check}{https://github.com/emoubarak/account-state-check}{\textbf{skill d'agent open source (MIT)} pour Claude Code, Codex et OpenClaw : \textbf{QA par agent navigateur} sur une app de staging, où \textbf{une requête SQL, pas l'agent,} rend le verdict \stack{Python, CDP}}
     \project{browser-agents}{}{\textbf{orchestrateur auto-hébergé d'agents navigateur} (privé) : profils connectés persistants, un worker isolé par tâche, \textbf{main passée à un humain en direct} via WebRTC pour les connexions et la 2FA, back-office de suivi \stack{Python, Podman, CDP}}
     \project{Polymarket Lab}{https://github.com/emoubarak/polymarket-updown-lab}{recherche d'un avantage de trading en six semaines : \textbf{backtests hors échantillon}, \m{\textasciitilde12~000 trades papier} sur 60 runners, moteur Python et \textbf{market maker} en Go. Verdict : \textbf{aucun avantage exploitable}}
-    \project{PDFold}{}{Archivé. PDF en Markdown structuré, \m{11 langues} : \textbf{pipeline OCR multi-passes + Gemini} avec repli, facturation Stripe \stack{Next.js, Supabase}}
-    \project{AI Visibility Tracker}{https://apify.com/emoubarak/ai-search-visibility-tracker}{mesure comment ChatGPT, Perplexity, Gemini et Google AI Overviews \textbf{citent une marque}, \textbf{chaque prompt échantillonné plusieurs fois} ; appelable via \textbf{MCP} \stack{TypeScript}}
-    \project{Articles}{https://moubarak.dev/blog}{\link{https://moubarak.dev/cv\#ai}{ma façon de travailler avec l'IA} ; cas d'étude : \link{https://moubarak.dev/blog/case-study-ai-card-scanner}{scanner de cartes IA}, \link{https://moubarak.dev/blog/case-study-jev-check}{account-state-check} et \link{https://moubarak.dev/blog/case-study-piktechs}{Piktechs}}
+    \project{claude-skill-router}{https://github.com/emoubarak/claude-skill-router}{fait charger à Claude Code les skills dont un prompt a besoin, avec un \textbf{banc rejoué sur mes vraies sessions} : skills utiles chargés \m{57~\% $\rightarrow$ 84~\%} sur des prompts jamais vus \stack{Python, hooks Claude Code}}
+    \project{hindsight}{https://github.com/emoubarak/hindsight}{\textbf{mémoire pour Claude Code} : toutes les sessions passées interrogeables par le sens (\m{14~800 entrées}), corrections transformées en règles \stack{Python, embeddings, plugin}}
+    \project{Articles}{https://moubarak.dev/blog}{\link{https://moubarak.dev/harness}{visite de mon harnais}, \link{https://moubarak.dev/cv\#ai}{ma façon de travailler avec l'IA} ; cas d'étude : \link{https://moubarak.dev/blog/case-study-ai-card-scanner}{scanner de cartes IA}, \link{https://moubarak.dev/blog/case-study-jev-check}{account-state-check} et \link{https://moubarak.dev/blog/case-study-piktechs}{Piktechs}}
 \end{itemize}
 
 \section*{COMPÉTENCES}

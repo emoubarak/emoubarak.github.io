@@ -23,6 +23,7 @@ const canonicalUrl = new URL(Astro.url.pathname, site).href;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const navLinks = [
   { href: `${base}/portfolio`, label: 'Portfolio' },
+  { href: `${base}/harness`, label: 'Harness' },
   { href: `${base}/blog`, label: 'Blog' },
   { href: `${base}/cv`, label: 'CV' },
 ];
@@ -148,6 +149,7 @@ const arrow = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="
       </div>
       <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
         <a href={`${base}/portfolio`}>Portfolio</a>
+        <a href={`${base}/harness`}>Harness</a>
         <a href={`${base}/blog`}>Blog</a>
         <a href={`${base}/cv`}>CV</a>
         <a href={`mailto:${identity.email}`}>Email</a>

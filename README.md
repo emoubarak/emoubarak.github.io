@@ -11,9 +11,10 @@ Source of [moubarak.dev](https://moubarak.dev/), the personal site of El Mahdi M
 ## Layout
 
 ```text
-src/pages/           home, portfolio, cv, blog, kit, 404
+src/pages/           home, portfolio, harness, cv, blog, kit, 404
 src/content/blog/    blog posts (Markdown)
 src/data/profile.js  the single source of profile facts, read by every page and the kit
+src/data/harness.js  content and counts of the /harness page (recount them when the setup changes)
 src/components/      shared components; layouts and styles sit next to them
 public/              files served as is: CV PDFs and their LaTeX sources, images, Open Graph cards
 scripts/             build-cv.sh (recompiles the CV PDFs from public/*.tex with pdfLaTeX); image tooling: Open Graph cards, blog covers and memes, portfolio illustrations, LinkedIn banner

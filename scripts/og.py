@@ -63,6 +63,15 @@ def cards():
             {"src": f"{p}/cv-en-page.webp", "w": 310, "x": 860, "y": 50, "r": 4},
         ],
     }
+    yield "harness", {
+        "eyebrow": "moubarak.dev/harness", "title": "The harness",
+        "sub": "How I run AI agents on my own machines, and check that the work is really done.",
+        "foot": "El Mahdi Moubarak",
+        "images": [
+            {"src": f"{p}/blog/one-person-it-department/inventory.webp", "w": 440, "x": 700, "y": 70, "r": -5},
+            {"src": f"{p}/blog/one-person-it-department/routines-today.webp", "w": 450, "x": 720, "y": 290, "r": 3},
+        ],
+    }
     yield "blog", {
         "eyebrow": "moubarak.dev/blog", "title": "Notes from the work",
         "sub": "Case studies from real projects, and what building with AI every day taught me.",
