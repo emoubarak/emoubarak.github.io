@@ -250,7 +250,7 @@ export const experiences = [
     company: "Deuspi",
     url: "https://www.linkedin.com/company/deuspi/",
     role: "Mobile Software Engineer",
-    period: "Mar 2021 – Jun 2021 · Internship",
+    period: "Mar 2021 – Jun 2021",
     location: "Lille (Remote)",
     summary: "**Sole mobile engineer** on the first version of a React Native grocery delivery app, transitioning the product from web-only to native mobile.",
     achievements: [
@@ -263,7 +263,7 @@ export const experiences = [
     company: "Worldline",
     url: "https://worldline.com",
     role: "Full-Stack Engineer",
-    period: "Apr 2019 – Aug 2019 · Internship",
+    period: "Apr 2019 – Aug 2019",
     location: "Seclin (On-site)",
     summary: "Internal tool for the R&D team to create, store and replay payment test sets over MQTT.",
     achievements: [
@@ -713,7 +713,7 @@ const allProjects = [
     subtitle: 'Confidential project',
     category: 'mobile',
     categoryLabel: 'Mobile App',
-    role: 'Mobile Software Engineer · internship',
+    role: 'Mobile Software Engineer',
     description: 'Grocery delivery mobile app with real-time geolocation, on the Uber model. I was the only mobile engineer on the first version, built in React Native from the designer\'s wireframes. Its CEO recommends my work publicly on Malt.',
     previews: [{ label: 'App screenshot', src: `${base}/portfolio/deuspi.png` }],
     url: null,
