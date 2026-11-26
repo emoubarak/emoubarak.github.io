@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,6 +16,8 @@ export default defineConfig({
     '/my-cv/blog': '/blog',
     '/my-cv/blog/[slug]': '/blog/[slug]',
   },
+  // /kit and /404 are noindex; /my-cv/* are redirects
+  integrations: [sitemap({ filter: (page) => !/\/(kit|404)\/?$/.test(page) && !page.includes('/my-cv') })],
   vite: {
     plugins: [tailwindcss()]
   }

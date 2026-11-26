@@ -10,16 +10,17 @@ const categories = projectCategories
   .map((c) => ({ ...c, n: c.key === 'all' ? projects.length : projects.filter((p) => p.category === c.key).length }))
   .filter((c) => c.n > 0);
 const fan = [
-  { project: 'Agence KSUR', src: `${base}/portfolio/ksur-home.webp`, w: 1440, h: 900, style: '--i:0;--r:5deg;--r0:9deg;width:62%;top:5%;right:1%' },
-  { project: 'Altao RSS Tool', src: `${base}/portfolio/altao-og.webp`, w: 2500, h: 1314, style: '--i:1;--r:-6deg;--r0:-10deg;width:62%;top:18%;right:34%' },
+  { project: 'KSUR', src: `${base}/portfolio/ksur-home.webp`, w: 1440, h: 900, style: '--i:0;--r:5deg;--r0:9deg;width:62%;top:5%;right:1%' },
+  { project: 'Altao Discharge Summary Tool', src: `${base}/portfolio/altao-og.webp`, w: 2500, h: 1314, style: '--i:1;--r:-6deg;--r0:-10deg;width:62%;top:18%;right:34%' },
   { project: 'Piktechs', src: `${base}/portfolio/piktechs-og.webp`, w: 1200, h: 630, style: '--i:2;--r:2deg;--r0:5deg;width:66%;top:40%;right:12%' },
 ];
 ---
 
 <Layout
   title="Portfolio - El Mahdi Moubarak"
-  description="Selected work: SaaS products, web apps, e-commerce and mobile applications built by El Mahdi Moubarak."
-  ogImage="/og/portfolio.png"
+  description="Work by El Mahdi Moubarak: SaaS products, open-source AI tools, research and client websites."
+  ogImage="/og/portfolio.png?v=2"
+  ogAlt="Portfolio of El Mahdi Moubarak: screenshots of the KSUR, ALTAO and Piktechs projects"
 >
   <PageHero eyebrow="Portfolio">
     <h1 class="t-page">
@@ -27,7 +28,7 @@ const fan = [
       <span class="rise"><span style="--i:1">shipped</span></span>
     </h1>
     <p class="t-lede hero__lede fade-up" style="--i:1">
-      SaaS products, web apps, e-commerce stores and mobile apps I designed, built and shipped.
+      SaaS products, open-source tools for Claude Code and browser agents, research write-ups and client websites.
     </p>
     <p class="t-meta mt-6 fade-up" style="--i:2">Open a project to preview it.</p>
     <div slot="visual" class="fan">
@@ -62,7 +63,7 @@ const fan = [
           style={`--i:${i % 2}`}
         >
           <div class="card__media">
-            <img src={p.thumb} alt={`${p.title}: ${p.subtitle}`} width="1600" height="1000" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
+            <img src={p.thumb} alt={p.thumbAlt ?? `${p.title}: ${p.subtitle}`} width="1600" height="1000" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
           </div>
           <div class="card__body">
             <div class="flex items-center justify-between gap-3 t-meta">
@@ -89,7 +90,7 @@ const fan = [
         <div class="flex items-center justify-between gap-3 pl-5 pr-3 py-3 border-b border-[var(--line)] shrink-0">
           <span id="demo-modal-title" class="font-[family-name:var(--font-display)] font-bold text-lg tracking-tight truncate">Preview</span>
           <div class="flex items-center gap-2 shrink-0">
-            <a id="demo-visit-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden btn btn--solid btn--sm">Visit site <Icon name="out" /></a>
+            <a id="demo-visit-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden btn btn--solid btn--sm"><span id="demo-visit-label">Visit site</span> <Icon name="out" /></a>
             <button id="close-demo-modal" type="button" class="icon-btn" aria-label="Close preview">
               <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             </button>
@@ -168,6 +169,7 @@ const fan = [
       const modalBody = document.getElementById('demo-modal-body');
       const modalTitle = document.getElementById('demo-modal-title');
       const visitLink = document.getElementById('demo-visit-link');
+      const visitLabel = document.getElementById('demo-visit-label');
       const closeBtn = document.getElementById('close-demo-modal');
       if (!modal) return;
 
@@ -204,7 +206,7 @@ const fan = [
 
       // Tear down every media slot so a closed/switched preview stops loading and decoding.
       function resetMedia() {
-        // about:blank, not '' — an empty src resolves against the page URL and reloads
+        // about:blank rather than '': an empty src resolves against the page URL and reloads
         // this whole page into the hidden iframe on every open and tab switch.
         iframe.src = 'about:blank';
         iframe.classList.add('hidden');
@@ -270,6 +272,7 @@ const fan = [
         const linkUrl = externalUrl || (/^https?:\/\//i.test(first.src) ? first.src : null);
         if (linkUrl) {
           visitLink.href = linkUrl;
+          visitLabel.textContent = /^https?:\/\/(www\.)?github\.com\//i.test(linkUrl) ? 'View on GitHub' : 'Visit site';
           visitLink.classList.remove('hidden');
         } else {
           visitLink.classList.add('hidden');

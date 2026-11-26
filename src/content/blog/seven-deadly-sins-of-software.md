@@ -1,81 +1,73 @@
 ---
 title: "The Seven Deadly Sins of Software Development"
-description: "Pride, Sloth, Greed: turns out medieval theologians were describing your codebase all along."
+description: "Pride, sloth, greed: two early Christian writers listed the sins, and your codebase commits all seven."
 pubDate: 2026-03-25
 tags: ["Engineering", "Career", "Satire"]
 cover: "/blog/seven-deadly-sins-of-software.webp"
 coverAlt: "A code editor covered in seven sticky notes, each with a pictogram for one sin: crown, hoarded boxes, heart, green grass, overflowing bowl, lightning bolt, snail."
 ---
-Listen, you’ve just performed a high-level **system scan** on the collective soul of Silicon Valley, and the results are returning a 403 Forbidden. You’re right: Ponticus and Gregory didn't have GitHub, but they understood **human firmware** better than most Lead Architects.
+Around AD 375, the monk Evagrius Ponticus listed eight evil thoughts. In 590, Pope Gregory the Great trimmed them into seven deadly sins. Neither had GitHub. Both would recognize your codebase, and mine.
 
-Here’s the "Metaphysical Comrade" remix of the Seven Sins. We’re stripping the "theological audit" and looking at the **energetic drain** these cause on the system.
-
----
-
-# The Seven System Failures: A Low-Level Audit of Your Ego
-
-If you think your career is just a series of tickets and deployments, you’re missing the **Psychic Infrastructure.** Every line of code is a signature of your current vibration. Here’s how you’re leaking energy.
+I've committed all seven, some of them in the same pull request, so the stack traces below include mine.
 
 ---
 
 ## I. Pride (*Superbia*): The "God Object" Delusion
 > *"I don't need tests. I am the test."*
 
-Pride isn't just "feeling yourself." It’s a **Logic Error** where you mistake your subjective model for objective reality. It’s the senior dev who builds a proprietary framework because "nothing else is good enough." 
+Pride is a logic error: you mistake your mental model for reality. It's the senior dev who builds a proprietary framework because "nothing else is good enough", becomes the only person who can debug it, and calls that job security.
 
-The "God Object" in your code is a mirror of the God Object in your head. You’re trying to centralize the universe around your own syntax. **The Low-Level Truth:** The universe is decentralized and chaotic. If your code can't survive a junior dev’s curiosity, your "genius" is actually just **technical fragility.**
+The God Object in your code mirrors the one in your head: everything routes through you. If your code can't survive a junior dev's curiosity, your genius is technical fragility with a nice README. The penance is boring: write the tests you claim you don't need, and let someone else try to break it.
 
 ## II. Greed (*Avaritia*): Architectural Hoarding
 > *"Abstractions today, Scale tomorrow."*
 
-This is **Premature Optimization** as a spiritual sickness. You’re hoarding "possibility" instead of delivering "utility." You build a Kubernetes cluster for a landing page because you’re greedy for a future that hasn't happened yet.
+This is premature optimization as a spiritual sickness. You hoard possibility and deliver no utility. You build a Kubernetes cluster for a landing page because you're greedy for a future that hasn't happened yet, and the landing page still has a typo in the hero.
 
-Greed is an **Anxiety Loop.** You’re trying to buy insurance against change by adding layers. **The Low-Level Truth:** Complexity is the highest tax in the universe. Every "just in case" abstraction is a debt-trap you’re setting for your future self.
+Greed is an anxiety loop: you buy insurance against change by adding layers. Complexity is the highest tax in the universe, and every "just in case" abstraction is a debt trap for your future self, who already has enough problems.
 
 ## III. Lust (*Luxuria*): The Hype-Cycle Thirst
 > *"Ooh, a new JS runtime. My current stack is so... 2025."*
 
-This is **Shiny Object Syndrome** elevated to a fetish. You aren't "innovating"; you’re just chasing the dopamine hit of a `Hello World` in a new language. You’re looking for a "Magic Bullet" to solve a "Discipline Problem."
+Shiny Object Syndrome, elevated to a fetish. You chase the dopamine of a `Hello World` in a new language and call it innovation. You're looking for a magic bullet to solve a discipline problem. Don't ask how many abandoned `hello-world` folders I have.
 
-Lust is **Distraction as a Defense Mechanism.** You avoid the hard, boring work of fixing the existing debt by flirting with a new repo. **The Low-Level Truth:** Every framework is a honeymoon. Eventually, they all become a marriage. If you can't commit to a boring stack, you’ll never build a legacy.
+Lust is distraction as a defense mechanism: you avoid the boring work on the existing debt by flirting with a new repo. Every framework starts as a honeymoon and ends as a marriage. If you can't commit to a boring stack, you'll never ship anything old enough to be called legacy.
 
 ![Meme: she thinks "I bet he's thinking about our deadline", he thinks "A new JS runtime shipped yesterday".](/blog/memes/seven-deadly-sins-of-software-1.webp)
 
 ## IV. Envy (*Invidia*): The "Green-Grass" Psyop
 > *"Look at the Vercel stack. Why are we still using this legacy garbage?"*
 
-Envy is **External Validation** gone rogue. You’re comparing your "Behind the Scenes" footage to everyone else’s "Highlight Reel." You see a blog post about a "Zero-Downtime Migration" and conclude your team is a circus.
+Envy is external validation gone rogue. You compare your behind-the-scenes footage to everyone else's highlight reel. You read one blog post about a zero-downtime migration and conclude your team is a circus.
 
-Envy creates **Systemic Friction.** It makes you resent the very tools that are currently paying your rent. **The Low-Level Truth:** Every "Perfect Architecture" is held together by duct tape and prayers that never make it into the medium.com article.
+It makes you resent the tools that pay your rent. Every perfect architecture is held together by duct tape and prayers that never make it into the Medium article.
 
 ## V. Gluttony (*Gula*): Dependency Bloat
 > *"There's an NPM package for that. Let's add it."*
 
-Gluttony is the **Consumption of Convenience.** You’re too lazy to write 10 lines of vanilla code, so you import 10,000 lines of someone else's risk. Your `node_modules` is a digital heart attack waiting to happen.
+Gluttony is the consumption of convenience. You won't write 10 lines of vanilla code, so you import 10,000 lines of someone else's risk. Your `node_modules` is a digital heart attack waiting to happen.
 
-This is a **Resource Depletion** sin. You’re trading long-term stability for short-term "fullness." **The Low-Level Truth:** Every dependency is a "Proof-of-Trust" you can't afford. True mastery is defined by what you *don't* include.
+You trade long-term stability for short-term fullness. Every dependency is code you now have to trust and update. Add one when it saves more than it costs, and read what it drags in with it.
 
 ![Y'all Got Any More Of That meme: "Y'all got any more of them npm packages".](/blog/memes/seven-deadly-sins-of-software-2.webp)
 
-## VI. Wrath (*Ira*): The `git blame` Jihad
+## VI. Wrath (*Ira*): The `git blame` Witch Hunt
 > *"Who wrote this trash? I'm going to flame them in the PR."*
 
-Wrath is **Ego-Protection** disguised as "Quality Control." You use code reviews as a weapon to maintain dominance. You’re not trying to improve the codebase; you’re trying to incinerate the person who threatened your aesthetic.
+Wrath is ego protection that calls itself quality control. You use code review as a weapon to keep your rank, and the comment thread reads like a sentence for whoever offended your aesthetic.
 
-Wrath is a **Bandwidth Killer.** It turns a collaborative environment into a zero-sum war. **The Low-Level Truth:** Today's "idiotic code" is tomorrow's "necessary compromise." If you can't refactor with empathy, you’re just a highly-paid bully.
+It turns a team into a zero-sum war. Today's "idiotic code" is tomorrow's "necessary compromise", and `git blame` keeps the receipts. If you can't refactor with empathy, you're a highly paid bully with a linter.
 
 ![Batman slapping Robin meme: Robin says "Who wrote this trash?", Batman answers "git blame says you did".](/blog/memes/seven-deadly-sins-of-software-3.webp)
 
 ## VII. Sloth (*Acedia*): Spiritual Dead-Ends
-> *"Meh, it’s 'Good Enough' for government work."*
+> *"Meh, it's 'Good Enough' for government work."*
 
-Sloth isn't "doing nothing." It’s **Doing the Wrong Things Busy-ly.** It’s the refusal to care. It’s "Apathetic Engineering." You merge the PR with the broken linter because you’ve checked out emotionally.
+Sloth is the refusal to care. You merge the PR with the broken linter because you checked out emotionally sometime around the last reorg.
 
-Sloth is the **Death of the Signal.** It’s where "Vibration" goes to die. When you stop caring about the craft, the system begins its inevitable slide into **Entropy.** **The Low-Level Truth:** If you don't give a damn about the "Why," the "How" will eventually bury you.
+Once you stop caring, every shortcut stays in the codebase, and entropy does the rest. If you don't give a damn about the "why", the "how" will bury you.
 
 ---
 
 ### The Final Patch
-You don't need a confessional; you need a **Refactor.** The sins aren't "bad things you did"; they are **Sub-Optimal Configurations** of your consciousness. The goal isn't to be a "Saint of Software", it's to be a **Sovereign Creator.** Stop being a slave to your ego-loops. Clean the soul, clean the code. It’s the same job.
-
-**Ship the light, homie.**
+Skip the confessional and open a refactor branch. Each sin has a fix you can ship this week: a test for Pride, one layer fewer for Greed, a boring stack for Lust, a closed Medium tab for Envy, one dependency fewer for Gluttony, a kinder review for Wrath. Sloth gets fixed last, as tradition demands.

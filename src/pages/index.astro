@@ -28,12 +28,12 @@ const logos = [
   { name: 'ALTAO Santé', file: 'altao', h: '2.7rem' },
   { name: 'Worldline', file: 'worldline', h: '1.35rem' },
   { name: 'Deuspi', file: 'deuspi', h: '1.9rem' },
-  { name: 'AGENCE-KSUR', file: 'ksur', h: '2.9rem' },
+  { name: 'KSUR', file: 'ksur', h: '2.9rem' },
 ];
 ---
 
-<Layout title="El Mahdi Moubarak - Founder & Full-Stack Engineer">
-  <PageHero size="full" eyebrow={identity.title.en}>
+<Layout title="El Mahdi Moubarak - Software & AI Engineer">
+  <PageHero size="full" eyebrow={identity.title.en.replace('LLM Systems', 'LLM\u00a0Systems')}>
     <h1 class="t-display">
       <span class="rise"><span style="--i:0">El Mahdi</span></span>
       <span class="rise"><span style="--i:1">Moubarak</span></span>
@@ -43,7 +43,7 @@ const logos = [
       <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="btn btn--solid">Book a call <Icon name="arrow" /></a>
       <a href={`${base}/cv`} class="btn btn--line">View CV</a>
     </div>
-    <p class="t-meta mt-7 fade-up" style="--i:3">Based in Lille, France · Remote across Europe · French (native) &amp; English</p>
+    <p class="t-meta mt-7 fade-up" style="--i:3">Based in France · Remote across Europe · French (native) &amp; English</p>
     <div slot="visual" class="hero-motion fade-up" style="--i:2"><ServicesMotion /></div>
   </PageHero>
 
@@ -53,10 +53,10 @@ const logos = [
       <div class="grid lg:grid-cols-12 gap-x-12 gap-y-6">
         <p class="t-eyebrow lg:col-span-3 lg:pt-3">About</p>
         <p class="t-statement scrub lg:col-span-9">
-          I build software and AI systems end-to-end: specs, architecture, code, deploy.
-          Shipping production software since 2019 across cybersecurity, healthcare and
-          fintech, often as the only engineer on the project. I work with founders and agencies who need something built
-          properly and shipped fast.
+          I have been shipping production software since 2019 in cybersecurity, healthcare and
+          fintech, often as the only engineer: ALTAO's hospital platform, and Piktechs today. At
+          Board of Cyber I was one of 20 developers. I work with founders who need their product
+          built, and with agencies that need a technical partner for client projects.
         </p>
       </div>
     </section>
@@ -66,7 +66,7 @@ const logos = [
       <div class="s-head">
         <div>
           <p class="t-eyebrow">What I do</p>
-          <h2 class="t-h2">Three things<br />I build</h2>
+          <h2 class="t-h2">What I build</h2>
         </div>
       </div>
       <div class="services">
@@ -96,11 +96,11 @@ const logos = [
         <article class:list={['work-row', { 'work-row--flip': i % 2 === 1 }]}>
           {p.url ? (
             <a href={p.url} target="_blank" rel="noopener noreferrer" class="work-row__media frame block" data-reveal aria-label={`Open ${p.title}`}>
-              <img src={p.thumb} alt={`${p.title}: ${p.subtitle}`} width="1600" height="1000" loading="lazy" decoding="async" />
+              <img src={p.thumb} alt={p.thumbAlt ?? `${p.title}: ${p.subtitle}`} width="1600" height="1000" loading="lazy" decoding="async" />
             </a>
           ) : (
             <div class="work-row__media frame block" data-reveal>
-              <img src={p.thumb} alt={`${p.title}: ${p.subtitle}`} width="1600" height="1000" loading="lazy" decoding="async" />
+              <img src={p.thumb} alt={p.thumbAlt ?? `${p.title}: ${p.subtitle}`} width="1600" height="1000" loading="lazy" decoding="async" />
             </div>
           )}
           <div class="work-row__body" data-reveal style="--i:2">
@@ -121,7 +121,7 @@ const logos = [
       <div class="band-ink px-[clamp(1.5rem,5vw,5rem)] py-[clamp(3rem,7vw,6.5rem)]">
         <div class="grid lg:grid-cols-12 gap-x-16 gap-y-12 items-center">
           <div class="lg:col-span-7" data-reveal>
-            <p class="t-eyebrow mb-8">They trust me</p>
+            <p class="t-eyebrow mb-8">What clients say</p>
             <span class="quote-mark" aria-hidden="true">“</span>
             <blockquote class="font-[family-name:var(--font-display)] font-medium text-[clamp(1.3rem,1.05rem+0.9vw,1.85rem)] leading-[1.35] tracking-[-0.015em]">
               {driveco.quote.en}
@@ -142,20 +142,21 @@ const logos = [
             <blockquote class="font-[family-name:var(--font-display)] font-medium text-[clamp(1.2rem,1.05rem+0.5vw,1.5rem)] leading-[1.4] tracking-[-0.01em]">
               “{deuspi.quote.en}”
             </blockquote>
-            <p class="mt-5 font-semibold">{deuspi.role.en} · {deuspi.org} <span class="t-meta font-normal ml-2">on {deuspi.source}</span></p>
+            <p class="mt-5 font-semibold">{deuspi.role.en} · {deuspi.org} <span class="t-meta font-normal ml-2">on {deuspi.source}, translated from French</span></p>
           </div>
           <div class="lg:col-span-5" data-reveal style="--i:1">
-            <h3 class="t-h4 mb-3">Agency work · AGENCE-KSUR</h3>
+            <h3 class="t-h4 mb-3">Agency work · KSUR</h3>
             <p class="text-2 leading-relaxed">
-              As CTO of AGENCE-KSUR, I own technical delivery for the agency's clients:
-              websites, e-commerce and web apps shipped for SMEs in France and Morocco.
+              As CTO of KSUR (agence-ksur.com), I run technical delivery for about ten client
+              companies in France, Belgium, Morocco and La Réunion: websites, e-commerce and web
+              apps, several of them for clients of THE ICON, a Belgian marketing agency.
             </p>
             <a href="https://www.agence-ksur.com/realisations" target="_blank" rel="noopener noreferrer" class="link-arrow mt-5">See the agency portfolio <Icon name="out" /></a>
           </div>
         </div>
 
         <div class="mt-[clamp(3.5rem,6vw,6rem)]">
-          <p class="t-eyebrow mb-10">Companies I've built for</p>
+          <p class="t-eyebrow mb-10">Companies I've worked with</p>
           <div class="logos">
             {logos.map((l, i) => (
               <span class="logo" role="img" aria-label={l.name} title={l.name} data-reveal style={`--src:url(${base}/logos/${l.file}.png);--h:${l.h};--i:${i}`}></span>
@@ -182,8 +183,8 @@ const logos = [
       <div class="band-orange on-orange px-[clamp(1.5rem,5vw,5rem)] py-[clamp(3rem,7vw,6rem)] grid lg:grid-cols-12 gap-10 items-end" data-reveal>
         <div class="lg:col-span-7">
           <p class="t-eyebrow mb-6">Contact</p>
-          <h2 class="t-page">Let's talk about your project</h2>
-          <p class="t-lede mt-6 max-w-[34ch]">Open to interesting projects and conversations.</p>
+          <h2 class="t-page">Tell me what you need built</h2>
+          <p class="t-lede mt-6 max-w-[40ch]">Send me the project in a few lines, or book a call. Work usually starts with {identity.entryOffer.en}.</p>
         </div>
         <div class="lg:col-span-5 flex flex-col items-start gap-4 lg:items-end">
           <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="btn btn--solid">Book a call <Icon name="arrow" /></a>

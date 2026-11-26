@@ -4,122 +4,110 @@ import { getCollection } from 'astro:content';
 import { identity as canon, education as canonEducation, certifications as canonCerts, aiApproach } from '../data/profile.js';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+// absolute link to the place where a reader can check a principle
+const proofUrl = (pr) => (pr.proof.href.startsWith('/') ? 'https://moubarak.dev' + pr.proof.href : pr.proof.href);
 
 // ===== Identity =====
-const identity = {
-  en: `Name: El Mahdi Moubarak
-Title: Founder & Full-Stack Engineer · Software, SaaS & AI
-Headline: I ship software & AI products to production
-Location: Lille, France · Remote
-Email: elmahdi@moubarak.dev
-Website: https://moubarak.dev/
-LinkedIn: https://linkedin.com/in/el-mahdi-moubarak
-GitHub: https://github.com/emoubarak
-Calendly: https://calendly.com/moubarakelmahdipro/
-Languages: French (native) · English (C1, TOEIC) · Spanish (professional)
-Available for: freelance missions · SaaS & AI development · automation · tech consulting`,
-  fr: `Nom : El Mahdi Moubarak
-Titre : Fondateur & Ingénieur Full-Stack · Logiciel, SaaS & IA
-Accroche : Je livre des logiciels et des produits IA en production
-Localisation : Lille, France · Remote
-Email : elmahdi@moubarak.dev
-Site : https://moubarak.dev/
-LinkedIn : https://linkedin.com/in/el-mahdi-moubarak
-GitHub : https://github.com/emoubarak
-Calendly : https://calendly.com/moubarakelmahdipro/
-Langues : Français (natif) · Anglais (C1, TOEIC) · Espagnol (professionnel)
-Disponible pour : missions freelance · développement SaaS & IA · automatisation · conseil tech`,
-};
+// The "Copy all" text is generated from identityFields (below), itself read from profile.js,
+// so the copied block and the per-field rows always agree.
 
 // ===== Bios =====
 const bios = [
   {
     label: 'Headline (one-liner)',
-    en: `I ship software & AI products to production.`,
-    fr: `Je livre des logiciels et des produits IA en production.`,
+    en: canon.headline.en.replace(/\.?$/, '.'),
+    fr: canon.headline.fr.replace(/\.?$/, '.'),
   },
   {
     label: 'Short bio',
-    en: `I build software and AI systems end-to-end: specs, architecture, code, deploy. Shipping production software since 2019 across cybersecurity, healthcare and fintech, often as the only engineer on the project. I work with founders and agencies who need something built properly and shipped fast.`,
-    fr: `Je conçois et livre des logiciels et des systèmes IA de bout en bout : specs, architecture, code, déploiement. Je livre du logiciel en production depuis 2019 en cybersécurité, santé et fintech, souvent comme seul ingénieur sur le projet. Je travaille avec des fondateurs et des agences qui ont besoin de quelque chose de bien construit et livré vite.`,
+    en: `Software and AI engineer. I write the specs, design the architecture, then write the code and deploy it, often as the only engineer on the project. I've shipped production software since 2019 in cybersecurity, healthcare and fintech. I work with founders and agencies: a SaaS v1, an AI feature inside an existing product, or the websites of an agency's clients.`,
+    fr: `Ingénieur logiciel et IA. Je rédige les spécifications, conçois l'architecture, puis j'écris le code et je le déploie, souvent comme seul ingénieur du projet. Je mets du logiciel en production depuis 2019, en cybersécurité, en santé et dans la fintech. Je travaille avec des fondateurs et des agences : la première version d'un SaaS, une fonctionnalité IA dans un produit existant, ou les sites des clients d'une agence.`,
   },
   {
     label: 'Long bio',
-    en: `I'm El Mahdi Moubarak, founder and full-stack engineer based in France. I build software and AI systems end-to-end: specs, architecture, code, deploy.
+    en: `I'm El Mahdi Moubarak, a software and AI engineer based in France. I write the specs, design the architecture, then write the code and deploy it.
 
-Since 2019 I've shipped software across cybersecurity, healthcare and fintech, often as the only engineer on the project. At Board of Cyber I spent three years on Security Rating®, a SaaS cyber-rating platform used by 200+ organizations, mostly front-end in a team of 20 developers. At ALTAO Santé I built a greenfield medical platform solo that processed 5,000+ hospital documents and saved hospitals €700,000.
+Since 2019 I've shipped software in cybersecurity, healthcare and fintech, often as the only engineer on the project. At Board of Cyber I spent three years on Security Rating®, a SaaS cyber-rating platform used by 200+ organizations, mostly on the front end, in a team of 20 developers. At ALTAO Santé I was the only software engineer on a new medical platform that processed 5,000+ hospital discharge summaries; the Data Science team supplied the ML models, which I integrated.
 
-Today I run EMM, my independent software engineering practice, I'm co-founder and CTO of Piktechs (B2B SaaS for events & networking: digital business cards, lead capture, team workspaces) and CTO of KSUR Services, where I own the agency's full technical stack from architecture to production. I also deliver corporate AI training (two tailored FR/EN sessions for DRIVECO, with live use cases).
+Today I run EMM, my independent practice. I'm also co-founder and CTO of Piktechs (B2B SaaS for events and networking: digital business cards, lead capture, team workspaces) and CTO of KSUR (agence-ksur.com), a web agency whose client sites I build and host. In July 2026 I ran two hands-on ChatGPT workshops (FR/EN) for DRIVECO's teams.
 
-How I work with AI: Claude Code is my main engineering environment, a browser agent (jev) checks what I ship as real users would, and the database, not the agent, decides whether it works. I write about the approach, mistakes included, on moubarak.dev.
+How I work with AI: I build in Claude Code. jev, Browser Use's browser agent, signs in to the deployed app as each kind of user, and a SQL query on the database checks each result. I write up these projects, with what went wrong, on moubarak.dev.
 
 Stack: TypeScript, React, Next.js, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker, plus AI agents, browser agents, LLM APIs, RAG and OCR/Vision pipelines.
 
-Engineering degree from IMT Nord Europe (CS, Networks & Telecoms). French (native), English (C1), Spanish. Available for freelance missions, SaaS & AI development, automation and tech consulting. If you need something shipped, get in touch.`,
-    fr: `Je suis El Mahdi Moubarak, fondateur et ingénieur full-stack basé en France. Je conçois et livre des logiciels et des systèmes IA de bout en bout : specs, architecture, code, déploiement.
+Engineering degree from IMT Nord Europe (CS, Networks & Telecoms). French (native), English (C1), Spanish (professional). Available for freelance missions, SaaS and AI development, automation and tech consulting. To start: a paid audit or a 5 to 10 day proof of concept with one measurable deliverable.`,
+    fr: `Je suis El Mahdi Moubarak, ingénieur logiciel et IA basé en France. Je rédige les spécifications, conçois l'architecture, puis j'écris le code et je le déploie.
 
-Depuis 2019, j'ai livré du logiciel en cybersécurité, santé et fintech, souvent comme seul ingénieur sur le projet. Chez Board of Cyber, j'ai passé trois ans sur Security Rating®, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations, surtout en front-end, dans une équipe de 20 développeurs. Chez ALTAO Santé, j'ai construit seul une plateforme médicale greenfield qui a traité plus de 5 000 documents hospitaliers et économisé 700 000 € aux hôpitaux.
+Depuis 2019, je mets du logiciel en production en cybersécurité, en santé et dans la fintech, souvent comme seul ingénieur du projet. Chez Board of Cyber, j'ai passé trois ans sur Security Rating®, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations, surtout côté front-end, dans une équipe de 20 développeurs. Chez ALTAO Santé, j'étais le seul ingénieur logiciel d'une nouvelle plateforme médicale qui a traité plus de 5 000 comptes rendus d'hospitalisation ; l'équipe Data Science fournissait les modèles ML, que j'ai intégrés.
 
-Aujourd'hui, je dirige EMM, mon activité indépendante de conception logicielle, je suis co-fondateur et CTO de Piktechs (SaaS B2B pour l'événementiel & le networking : cartes de visite digitales, capture de leads, espaces d'équipe) et CTO de KSUR Services, où je suis responsable de toute la stack technique, de l'architecture à la production. J'anime également des formations IA en entreprise (deux sessions FR/EN sur mesure pour DRIVECO, avec cas d'usage en direct).
+Aujourd'hui, je dirige EMM, mon activité indépendante. Je suis aussi cofondateur et CTO de Piktechs (SaaS B2B pour l'événementiel et le networking : cartes de visite numériques, capture de leads, espaces d'équipe) et CTO de KSUR (agence-ksur.com), une agence web dont je réalise et héberge les sites clients. En juillet 2026, j'ai animé deux ateliers ChatGPT pratiques (FR/EN) pour les équipes de DRIVECO.
 
-Ma façon de travailler avec l'IA : Claude Code est mon environnement d'ingénierie principal, un agent navigateur (jev) vérifie ce que je livre comme le ferait un vrai utilisateur, et c'est la base de données, pas l'agent, qui dit si ça marche. J'écris sur cette approche, erreurs comprises, sur moubarak.dev.
+Ma façon de travailler avec l'IA : je développe dans Claude Code. jev, l'agent navigateur de Browser Use, se connecte à l'app déployée sous chaque type de compte, et une requête SQL sur la base vérifie chaque résultat. Je raconte ces projets, avec ce qui a raté, sur moubarak.dev.
 
-Stack : TypeScript, React, Next.js, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker, ainsi que agents IA, agents navigateur, APIs LLM, RAG et pipelines OCR/Vision.
+Stack : TypeScript, React, Next.js, React Native, Angular, Vue.js, Python/Django, PostgreSQL, Supabase, AWS, Docker, ainsi que des agents IA, des agents navigateur, des API LLM, du RAG et des pipelines OCR/Vision.
 
-Diplôme d'ingénieur de l'IMT Nord Europe (Informatique, Réseaux & Télécoms). Français (natif), Anglais (C1), Espagnol. Disponible pour missions freelance, développement SaaS & IA, automatisation et conseil tech. Besoin de livrer quelque chose ? Contactez-moi.`,
+Diplôme d'ingénieur de l'IMT Nord Europe (informatique, réseaux et télécoms). Français (natif), anglais (C1), espagnol (professionnel). Disponible pour des missions freelance, du développement SaaS et IA, de l'automatisation et du conseil technique. Pour démarrer : un audit payant ou une preuve de concept de 5 à 10 jours, avec un livrable mesurable.`,
   },
   {
     label: 'LinkedIn About (≤ 2,600 characters)',
-    en: `I build AI into products, and I build with AI every day.
+    en: `Software and AI engineer. I build SaaS products, LLM features and browser agents for founders and agencies, and ship them to production.
 
-Most of my recent work happens with Claude Code as my main engineering environment. As the only engineer on Piktechs, a B2B SaaS for digital business cards, I took it from a two-week prototype to a production product with live billing, multi-tenant workspaces and mobile apps. Doing that alone taught me more about working with AI agents than any tutorial, mostly through what went wrong.
+Most days I work in Claude Code. As the only engineer on Piktechs, a B2B SaaS for digital business cards, I took it from a two-week prototype to a production product with live Stripe billing, multi-tenant workspaces, an Android app on Google Play and an iOS build. The case study lists what broke on the way and what I changed: https://moubarak.dev/blog/case-study-piktechs
 
 A few things I hold to:
-• An agent saying "done" is a claim. I give it ways to check its work against reality, and the database has the last word. I open-sourced that approach as account-state-check.
-• An AI feature starts with its threat model. Our card scanner reads text written by strangers, so its fallback model was chosen by testing prompt injection, not by price.
-• Measure before believing. I'd rather publish an honest "there is no edge here" (my Polymarket research) than a flattering backtest.
-• Correct the workspace, not the chat. Lessons go where the next session will find them, and rules that keep failing become checks.
+• When an agent says "done", I check it on the deployed app, with a browser agent signed in as each kind of user. I open-sourced that approach as account-state-check.
+• An AI feature starts with its threat model. Our card scanner reads text written by strangers, so I chose its fallback model by testing prompt injection.
+• Measure before believing. My Polymarket research ended on "no tradable edge", and I published it with the method.
+• When an agent gets something wrong, I write the fix into its own files (a hook, a skill or a rule), where the next session reads it. When a written rule fails twice, I turn it into an automatic check.
 
-From 2019 to 2026: software in cybersecurity, healthcare and fintech, often as the only engineer. At ALTAO Santé I built a medical platform that processed 5,000+ discharge summaries and saved hospitals €700,000; at Board of Cyber I spent three years on Security Rating®, in a team of 20 developers. I also run hands-on AI training for teams, most recently at DRIVECO.
+From 2019 to 2026: software in cybersecurity, healthcare and fintech, often as the only engineer. At ALTAO Santé I was the only software engineer on a medical platform for hospital discharge summaries; at Board of Cyber I spent three years on Security Rating®, in a team of 20 developers. In July 2026 I ran two hands-on ChatGPT workshops (FR/EN) for DRIVECO's teams.
 
-I write about all of this, mistakes included, on moubarak.dev. Based in Lille, working remotely across Europe.`,
-    fr: `Je construis des produits qui embarquent de l'IA, et je construis avec l'IA tous les jours.
+I write about all of this, mistakes included, on moubarak.dev. Based in France, working remotely across Europe.`,
+    fr: `Ingénieur logiciel et IA. Je conçois des SaaS, des fonctionnalités LLM et des agents navigateur pour des fondateurs et des agences, et je les mets en production.
 
-L'essentiel de mon travail récent se fait avec Claude Code comme environnement d'ingénierie principal. Seul ingénieur sur Piktechs, un SaaS B2B de cartes de visite digitales, je l'ai fait passer d'un prototype de deux semaines à un produit en production : facturation en live, espaces de travail multi-clients, applications mobiles. Le faire seul m'a plus appris sur le travail avec des agents IA que n'importe quel tutoriel, surtout à travers ce qui a raté.
+Je travaille au quotidien dans Claude Code. Seul ingénieur de Piktechs, un SaaS B2B de cartes de visite numériques, je l'ai fait passer d'un prototype de deux semaines à un produit en production, avec la facturation Stripe, des espaces de travail multi-clients, une application Android sur Google Play et une version iOS. L'étude de cas (en anglais) détaille ce qui a cassé en route et ce que j'ai changé : https://moubarak.dev/blog/case-study-piktechs
 
 Quelques principes auxquels je tiens :
-• Un agent qui dit « fini » fait une affirmation. Je lui donne de quoi vérifier son travail face au réel, et c'est la base de données qui tranche. J'ai publié cette approche en open source : account-state-check.
-• Une fonctionnalité IA commence par son modèle de menace. Notre scanner de cartes lit du texte écrit par des inconnus, alors son modèle de repli a été choisi en testant l'injection de prompt, pas sur le prix.
-• Mesurer avant de croire. Je préfère publier un « il n'y a rien ici » honnête (ma recherche sur Polymarket) qu'un backtest flatteur.
-• Corriger l'espace de travail, pas la conversation. Les leçons vont là où la session suivante les trouvera, et les règles qui échouent deviennent des vérifications.
+• Quand un agent dit « fini », je vérifie sur l'app déployée, avec un agent navigateur connecté sous chaque type de compte. J'ai publié cette méthode en open source : account-state-check.
+• Une fonctionnalité IA commence par son modèle de menace. Notre scanner de cartes lit du texte écrit par des inconnus : j'ai donc choisi son modèle de repli en testant l'injection de prompt.
+• Mesurer avant de croire. Ma recherche sur Polymarket a conclu qu'il n'y avait pas d'avantage exploitable, et je l'ai publiée avec la méthode.
+• Quand un agent se trompe, j'écris la correction dans ses propres fichiers (un hook, un skill ou une règle), là où la session suivante la lira. Quand une règle écrite échoue deux fois, j'en fais une vérification automatique.
 
-De 2019 à 2026 : du logiciel livré en cybersécurité, santé et fintech, souvent comme seul ingénieur. Chez ALTAO Santé, j'ai construit une plateforme médicale qui a traité 5 000+ comptes rendus d'hospitalisation et fait économiser 700 000 € aux hôpitaux ; chez Board of Cyber, trois ans sur Security Rating®, dans une équipe de 20 développeurs. J'anime aussi des formations IA pratiques pour des équipes, dernièrement chez DRIVECO.
+De 2019 à 2026 : du logiciel en cybersécurité, en santé et dans la fintech, souvent comme seul ingénieur. Chez ALTAO Santé, j'étais le seul ingénieur logiciel d'une plateforme médicale pour les comptes rendus d'hospitalisation ; chez Board of Cyber, j'ai passé trois ans sur Security Rating®, dans une équipe de 20 développeurs. En juillet 2026, j'ai animé deux ateliers ChatGPT pratiques (FR/EN) pour les équipes de DRIVECO.
 
-J'écris sur tout cela, erreurs comprises, sur moubarak.dev. Basé à Lille, en remote partout en Europe.`,
+J'écris sur tout cela, erreurs comprises, sur moubarak.dev. Basé en France, en télétravail partout en Europe.`,
   },
   {
     label: 'How I work with AI (CV, LinkedIn Featured, proposals)',
-    // EN is generated from profile.js (aiApproach), so the CV page and this block can't drift apart
-    en: 'How I work with AI\n\n' + aiApproach.principles.map((pr) => `${pr.title}\n${pr.text}\nSee: ${pr.proof.href.startsWith('/') ? 'https://moubarak.dev' + pr.proof.href : pr.proof.href}`).join('\n\n'),
-    fr: `Ma façon de travailler avec l'IA
-
-Fini veut dire observé, pas affirmé
-Un agent qui dit « fini » fait une affirmation. Je lui donne de quoi vérifier son travail face au réel : des captures aux vraies largeurs d'écran, un agent navigateur qui utilise l'app déployée comme un type d'utilisateur donné, et une requête en base comme juge final.
-
-Une fonctionnalité IA commence par son modèle de menace
-Tout ce qu'un modèle lit peut avoir été écrit par un attaquant. Avant le prompt, je décide ce que la fonctionnalité ne doit jamais faire, puis je choisis les modèles en les testant contre ça, pas sur leur prix ou leur réputation.
-
-Rapide là où c'est sûr, strict là où les erreurs sont silencieuses
-La plupart des changements partent sans cérémonie. La facturation, les permissions et tout ce qui touche à l'argent ou aux données d'un autre compte ont des vérifications obligatoires, et une relecture par un autre modèle que celui qui a écrit le code.
-
-Mesurer avant de croire
-Les modèles ne sont pas déterministes et les backtests flattent. Je pose la même question plusieurs fois, je teste hors échantillon, et j'essaie de casser mes propres résultats avant d'y croire. Parfois, le verdict honnête est qu'il n'y avait rien.
-
-Corriger l'espace de travail, pas la conversation
-Quand un agent se trompe, la correction va là où la session suivante la trouvera, à l'endroit le plus étroit qui marche. Une règle qui échoue deux fois cesse d'être une phrase et devient une vérification de l'outillage.
-
-La flemme, assumée
-Si je fais une chose deux fois, une machine la fait la troisième. Un agent peut travailler seul quand il a une condition d'arrivée, un budget, un moyen de se vérifier et un moyen de m'appeler. Le travail, c'est de rendre sûr le fait de s'éloigner.`,
+    // EN is generated from profile.js (aiApproach), so the CV page and this block can't drift apart.
+    // FR is the hand translation of the same principles, in the same order; its links come from profile.js too.
+    en: 'How I work with AI\n\n' + aiApproach.principles.map((pr) => `${pr.title}\n${pr.text}\nSee: ${proofUrl(pr)}`).join('\n\n'),
+    fr: "Ma façon de travailler avec l'IA\n\n" + [
+      {
+        title: "« Fini » veut dire que je l'ai vu marcher",
+        text: "Avant de dire qu'une tâche est finie, je la vérifie sur le produit : des captures aux largeurs d'écran que les gens utilisent, et un agent navigateur qui se connecte à l'app de test sous un type de compte donné. Une requête sur la base vérifie ensuite le résultat.",
+      },
+      {
+        title: 'Une fonctionnalité IA commence par son modèle de menace',
+        text: "Un modèle peut lire un texte écrit par un attaquant : une carte de visite, un e-mail, une page web. Avant d'écrire le prompt, je liste ce que la fonctionnalité ne doit jamais faire, puis je choisis le modèle qui passe ces tests.",
+      },
+      {
+        title: 'Des contrôles en plus là où un bug passerait inaperçu',
+        text: "Sur Piktechs, chaque changement passe les tests unitaires et Playwright en CI, et je suis le seul à valider une mise en production. La facturation, les permissions et tout ce qui touche aux données d'un autre compte ont en plus des vérifications obligatoires et une relecture par un autre modèle que celui qui a écrit le code.",
+      },
+      {
+        title: 'Mesurer avant de croire',
+        text: "Les modèles donnent des réponses différentes au même prompt, et les backtests surestiment les résultats. Je répète chaque test de nombreuses fois, je teste hors échantillon et j'essaie de casser un résultat avant de m'y fier. Mes six semaines de recherche sur Polymarket n'ont trouvé aucune stratégie rentable ; le dépôt publie la méthode et les résultats.",
+      },
+      {
+        title: 'Mettre chaque correction là où la session suivante la lit',
+        text: "J'écris chaque correction dans un fichier que la session d'agent suivante lit (une règle CLAUDE.md, un skill ou une mémoire de projet), le plus ciblé qui marche. Si une règle écrite échoue deux fois, je la remplace par un hook qui bloque l'erreur.",
+      },
+      {
+        title: 'Automatiser ce que je fais deux fois',
+        text: "J'automatise toute tâche que j'ai faite deux fois. Un agent ne tourne seul qu'avec une condition d'arrêt, un budget, un moyen de vérifier son propre travail et un moyen de me joindre, et il s'arrête pour demander avant toute dépense, mot de passe, publication, mise en production ou suppression irréversible.",
+      },
+    ].map((pr, i) => `${pr.title}\n${pr.text}` + (aiApproach.principles[i] ? `\nVoir (en anglais) : ${proofUrl(aiApproach.principles[i])}` : '')).join('\n\n'),
   },
 ];
 
@@ -131,14 +119,10 @@ const experiences = [
     en: `Founder & AI / Full-Stack Engineer - EMM
 March 2026 – Present · France
 
-Independent software engineering practice: web apps, SaaS and AI automation for founders, SMEs and agencies, from requirements to production.
+Independent software engineering practice: web apps, SaaS and AI automation for founders, SMEs and agencies. What I offer: self-hosted AI agents with custom skills and MCP, rescue of apps built with AI app builders or coding agents (Lovable, Bolt, Cursor, Claude Code), and LLM and RAG features inside existing products.
 
-• Self-hosted AI agents: installing, configuring and securing agent runtimes on a client's own server or VPS (OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack), connected to their tools (Slack, WhatsApp, Telegram, CRM, Google Workspace), with custom skills and MCP.
-• AI browser automation on jev-ultrafast (Browser Use): my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.
-• Rescuing AI-generated MVPs (Lovable, Bolt, Cursor, Claude Code): code audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests and deployment.
-• LLM and RAG integration into existing products: OCR + LLM pipelines, chatbots over documents, OpenAI / Claude / Gemini in production.
-• Corporate AI training: two tailored FR/EN sessions for DRIVECO, with live use cases built on their real workflows.
-• AI-native workflow: a versioned Claude Code workspace shared across two machines, where repeated corrections become hooks and skills, and a weekly pass mines my own sessions for what I keep correcting.
+• AI browser automation with jev, Browser Use's browser agent: my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API. It hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.
+• My own agent harness, versioned and shared across two machines: skills, hooks that turn a correction I keep repeating into an automatic check, scheduled routines that alert me when they fail, session memory searchable by meaning, and a 180B mixture-of-experts model (about 6B active per token) on an RTX 3080 20 GB. A weekly review of my sessions lists the corrections that still come back. Tour: https://moubarak.dev/harness
 
 Stack: TypeScript · Python · Next.js · Node.js · Supabase · Docker · OpenAI, Claude, Gemini APIs · MCP · Browser Use · Claude Code
 
@@ -146,16 +130,12 @@ Skills: AI Agents · Artificial Intelligence (AI) · Automation · Large Languag
     fr: `Fondateur & Ingénieur IA / Full-Stack - EMM
 Mars 2026 – Aujourd'hui · France
 
-Activité indépendante de conception logicielle : applications web, SaaS et automatisation IA pour fondateurs, PME et agences, du besoin à la mise en production.
+Activité indépendante de conception logicielle : applications web, SaaS et automatisation par l'IA pour des fondateurs, des PME et des agences. Ce que je propose : des agents IA hébergés sur le serveur du client, avec des skills et des connexions MCP sur mesure, la reprise d'applications faites avec des générateurs d'apps IA ou des agents de code (Lovable, Bolt, Cursor, Claude Code), et des fonctionnalités LLM et RAG dans des produits existants.
 
-• Agents IA self-hosted : installation, configuration et sécurisation de runtimes d'agents sur le serveur ou VPS du client (OpenClaw, Hermes Agent, agents GPT et Claude, ou une stack sur mesure), connectés à ses outils (Slack, WhatsApp, Telegram, CRM, Google Workspace), avec skills et MCP sur mesure.
-• Automatisation navigateur par IA sur jev-ultrafast (Browser Use) : mon propre exécuteur de tâches pilote des navigateurs dédiés depuis le terminal pour saisir, extraire et mettre à jour des données dans des back-offices sans API, passe la main à un humain pour les connexions, captchas et 2FA, et journalise chaque étape avec sa capture et son coût.
-• Reprise de MVP générés par IA (Lovable, Bolt, Cursor, Claude Code) : audit du code, sécurité (auth, RLS Supabase, clés API exposées), refactoring, tests et mise en production.
-• Intégration LLM et RAG dans des produits existants : pipelines OCR + LLM, chatbots sur documents, OpenAI / Claude / Gemini en production.
-• Formation IA en entreprise : deux sessions FR/EN sur mesure pour DRIVECO, avec cas d'usage en direct sur leurs propres workflows.
-• Travail natif avec l'IA : un espace Claude Code versionné et partagé entre deux machines, où les corrections répétées deviennent des hooks et des skills, et une analyse hebdomadaire de mes propres sessions repère ce que je corrige encore.
+• Automatisation de navigateur par l'IA avec jev, l'agent navigateur de Browser Use : mon propre orchestrateur de tâches pilote des navigateurs dédiés depuis le terminal pour saisir, extraire et mettre à jour des données dans des back-offices sans API. Il passe la main à un humain pour les connexions, les captchas et la double authentification, et garde une trace de chaque étape avec sa capture et son coût.
+• Mon propre environnement d'agents, versionné et partagé entre deux machines : des skills, des hooks qui transforment une correction que je répète en vérification automatique, des tâches planifiées qui m'alertent quand elles échouent, une mémoire des sessions où l'on cherche par le sens, et un modèle de 180B à mélange d'experts (environ 6B actifs par token) sur une RTX 3080 20 Go. Chaque semaine, une revue de mes sessions liste les corrections qui reviennent encore. Visite guidée (en anglais) : https://moubarak.dev/harness
 
-Stack : TypeScript · Python · Next.js · Node.js · Supabase · Docker · APIs OpenAI, Claude, Gemini · MCP · Browser Use · Claude Code
+Stack : TypeScript · Python · Next.js · Node.js · Supabase · Docker · API OpenAI, Claude, Gemini · MCP · Browser Use · Claude Code
 
 Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Software Architecture · Full-Stack Development · Software as a Service (SaaS) · Web Development`,
   },
@@ -167,8 +147,8 @@ March 2026 – Present · France
 
 B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.
 
-• Sole engineer: took a two-week prototype to a complete production B2B SaaS for event lead capture, with Claude Code as the main engineering environment.
-• Agentic QA with jev, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal, then a SQL query, not the agent, gives the verdict. 16 standing checks on plan gates and permissions; its before/after screenshots on closed tickets surfaced 3 follow-up bugs. Open-sourced as account-state-check.
+• Sole engineer: took a two-week prototype to a production B2B SaaS for event lead capture, built with Claude Code.
+• Agentic QA with jev, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal; a SQL query on the database then checks the outcome. 16 standing checks on plan gates and permissions; its before/after screenshots on closed tickets surfaced 3 bugs that the fixes had missed or introduced. Open-sourced as account-state-check.
 • Shipped an AI business-card scanner: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by prompt-injection testing (2 of 4 candidate models obeyed an injected card).
 • Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured by Postgres row-level security and role-based permissions; billing and permission code is reviewed by a different model from the one that wrote it.
 • Android app live on Google Play (https://play.google.com/store/apps/details?id=com.piktechs.app) and iOS build from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.
@@ -177,65 +157,69 @@ B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture 
 Stack: React · TypeScript · Vite · Tailwind · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Resend · Playwright · Vitest · jev (Browser Use) · GitHub Actions · Cloudflare Pages · Claude Code
 
 Skills: Artificial Intelligence (AI) · Large Language Models (LLM) · Software as a Service (SaaS) · Software Architecture · Full-Stack Development · Supabase · Stripe (Software) · TypeScript · React.js · DevOps`,
-    fr: `Co-fondateur & CTO - Piktechs
+    fr: `Cofondateur & CTO - Piktechs
 Mars 2026 – Aujourd'hui · France
 
-SaaS B2B pour l'événementiel & le networking : cartes de visite digitales (NFC/QR), capture de leads et CRM, espaces d'équipe.
+SaaS B2B pour l'événementiel et le networking : cartes de visite numériques (NFC/QR), capture de leads et CRM, espaces d'équipe.
 
-• Seul ingénieur : prototype de deux semaines transformé en SaaS B2B complet en production pour la capture de leads événementiels, avec Claude Code comme environnement d'ingénierie principal.
-• QA agentique avec jev, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe, équipe gelée) et suit un objectif en langage naturel, puis une requête SQL, pas l'agent, rend le verdict. 16 vérifications permanentes sur les accès par offre et les permissions ; ses captures avant/après sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits. Publié en open source : account-state-check.
-• Scanner de cartes de visite IA : modèle de vision avec sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours ; modèle de repli choisi par des tests d'injection de prompt (2 modèles candidats sur 4 ont obéi à une carte piégée).
-• Facturation Stripe en live (checkout, portail client, webhooks, offres d'équipe facturées par siège, réconciliation planifiée) et espaces de travail multi-clients sécurisés par row-level security Postgres et permissions par rôle ; le code de facturation et de permissions est relu par un autre modèle que celui qui l'a écrit.
-• Application Android publiée sur Google Play (https://play.google.com/store/apps/details?id=com.piktechs.app&hl=fr) et build iOS depuis le même code (Capacitor), passes Apple et Google Wallet, synchronisation CRM et intégration Zapier.
-• Tests unitaires et Playwright en garde-fou de la CI/CD, environnements de test et de production séparés.
+• Seul ingénieur : j'ai fait d'un prototype de deux semaines un SaaS B2B en production pour la capture de leads sur les événements, développé avec Claude Code.
+• QA automatisée avec jev, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe, équipe gelée) et suit un objectif écrit en langage courant ; une requête SQL sur la base vérifie ensuite le résultat. 16 vérifications permanentes sur les accès par offre et les permissions ; ses captures avant/après sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits. Publié en open source : account-state-check.
+• Scanner de cartes de visite par IA : modèle de vision avec sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours ; modèle de repli choisi par des tests d'injection de prompt (2 modèles candidats sur 4 ont obéi à une carte piégée).
+• Facturation Stripe en production (paiement, portail client, webhooks, offres d'équipe facturées par siège, rapprochement planifié) et espaces de travail multi-clients protégés par la sécurité au niveau des lignes (RLS) de Postgres et des permissions par rôle ; le code de facturation et de permissions est relu par un autre modèle que celui qui l'a écrit.
+• Application Android publiée sur Google Play (https://play.google.com/store/apps/details?id=com.piktechs.app&hl=fr) et version iOS depuis le même code (Capacitor), passes Apple et Google Wallet, synchronisation CRM et intégration Zapier.
+• Les tests unitaires et Playwright bloquent la CI/CD en cas d'échec, avec des environnements de test et de production séparés.
 
 Stack : React · TypeScript · Vite · Tailwind · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Resend · Playwright · Vitest · jev (Browser Use) · GitHub Actions · Cloudflare Pages · Claude Code
 
 Compétences : Artificial Intelligence (AI) · Large Language Models (LLM) · Software as a Service (SaaS) · Software Architecture · Full-Stack Development · Supabase · Stripe (Software) · TypeScript · React.js · DevOps`,
   },
   {
-    label: 'KSUR Services - CTO',
+    label: 'KSUR - CTO',
     project: 'ksur',
-    en: `CTO - KSUR Services
+    en: `CTO - KSUR
 March 2026 – Present · France · Morocco
 
-Agence-KSUR is a digital agency specialized in building tailor-made web and mobile applications, e-commerce platforms, and AI-driven automation workflows to accelerate growth for SMEs and enterprises.
+KSUR (agence-ksur.com) is a web agency for small businesses. As CTO I run the technical side for about ten client companies in France, Belgium, Morocco and La Réunion.
 
-• Own the agency's full technical stack and delivery, from architecture to production.
-• Design and build tailored web & mobile applications from the ground up.
-• Architect and deploy AI-powered automation workflows to streamline internal and client operations.
+• Partnership with THE ICON (the-icon.be), a Belgian marketing and sales agency: KSUR builds the websites of its clients, in French, English and Dutch.
+• Built eight business and e-commerce sites for companies in Morocco and France, including an online store connected to Odoo (sales, stock, accounting) that sold more than 300 products in its first year.
+• Set up and run the hosting: one Apache VPS for the agency site, its demos and four client sites, with push-to-deploy and an SMTP check per client site in CI.
+• Built nine live demos shown to prospects (law firm, medical practice, SME dashboard, warehouse management, route optimizer and more) and the agency's quote and invoice generator.
 
-Skills: AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Full-Stack Development · Mobile Application Development · Software Architecture · Web Development · Cloud Computing · DevOps · Search Engine Optimization (SEO)`,
-    fr: `CTO - KSUR Services
+Skills: Web Development · Full-Stack Development · Software Architecture · DevOps · E-Commerce · Odoo · Search Engine Optimization (SEO) · Internationalization`,
+    fr: `CTO - KSUR
 Mars 2026 – Aujourd'hui · France · Maroc
 
-Agence-KSUR est une agence digitale spécialisée dans la création d'applications web et mobiles sur mesure, de plateformes e-commerce et de workflows d'automatisation IA pour accélérer la croissance des PME et des entreprises.
+KSUR (agence-ksur.com) est une agence web pour les petites entreprises. J'en dirige la partie technique, pour une dizaine d'entreprises clientes en France, en Belgique, au Maroc et à La Réunion.
 
-• Responsable de l'ensemble de la stack technique et des livraisons de l'agence, de l'architecture à la production.
-• Conception et développement d'applications web & mobiles sur mesure.
-• Architecture et déploiement de workflows d'automatisation IA pour fluidifier les opérations internes et clients.
+• Partenariat avec THE ICON (the-icon.be), agence belge de marketing et d'accompagnement commercial : KSUR réalise les sites de ses clients, en français, anglais et néerlandais.
+• Huit sites vitrines et e-commerce au Maroc et en France, dont une boutique en ligne connectée à Odoo (ventes, stock, comptabilité) qui a vendu plus de 300 produits la première année.
+• Hébergement du site de l'agence, de ses démos et de quatre sites clients sur un VPS Apache, avec déploiement à chaque push et vérification SMTP de chaque site client en CI.
+• Neuf démos en ligne montrées aux prospects (cabinet d'avocats, cabinet médical, tableau de bord de PME, gestion d'entrepôt, optimiseur de tournées…) et le générateur de devis et de factures de l'agence.
 
-Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Full-Stack Development · Mobile Application Development · Software Architecture · Web Development · Cloud Computing · DevOps · Search Engine Optimization (SEO)`,
+Compétences : Web Development · Full-Stack Development · Software Architecture · DevOps · E-Commerce · Odoo · Search Engine Optimization (SEO) · Internationalization`,
   },
   {
     label: 'DRIVECO - AI Trainer',
     project: 'driveco',
     en: `AI Trainer - DRIVECO
-July 2026 · Paris
+July 2026 · Paris (Hybrid)
 
-Corporate AI training for DRIVECO teams.
+Two ChatGPT workshops, "Make AI work for you", in French and English, for the teams of DRIVECO, an EV charging operator.
 
-• Designed and delivered two tailored AI training sessions (FR/EN), with live hands-on use cases built on the company's real workflows and OpenAI ecosystem.
+• Designed the material: a 10-slide deck in both languages and a bilingual site of 10 hands-on demos built on the company's own workflows (sales, marketing, HR, finance, supply chain, support, a custom GPT built live).
+• Led both sessions, from the first prompt to automating a complete business process.
 
-Skills: AI Agents · Large Language Models (LLM) · Artificial Intelligence (AI) · Automation · Employee Training · Prompt Engineering`,
+Skills: Corporate Training · Employee Training · Prompt Engineering · Generative AI · Large Language Models (LLM) · Public Speaking`,
     fr: `Formateur IA - DRIVECO
-Juillet 2026 · Paris
+Juillet 2026 · Paris (hybride)
 
-Formation IA en entreprise pour les équipes DRIVECO.
+Deux ateliers ChatGPT, « Make AI work for you », en français et en anglais, pour les équipes de DRIVECO, opérateur de recharge de véhicules électriques.
 
-• Conception et animation de deux sessions de formation IA sur mesure (FR/EN), avec cas d'usage pratiques en direct construits sur les workflows réels de l'entreprise et l'écosystème OpenAI.
+• Conception des supports : un deck de 10 slides dans les deux langues et un site bilingue de 10 démos pratiques construites sur les processus de l'entreprise (ventes, marketing, RH, finance, supply chain, support, création d'un GPT personnalisé en direct).
+• Animation des deux sessions, du premier prompt à l'automatisation d'un processus métier complet.
 
-Compétences : AI Agents · Large Language Models (LLM) · Artificial Intelligence (AI) · Automation · Employee Training · Prompt Engineering`,
+Compétences : Corporate Training · Employee Training · Prompt Engineering · Generative AI · Large Language Models (LLM) · Public Speaking`,
   },
   {
     label: 'Board of Cyber - Full-Stack Engineer',
@@ -245,19 +229,19 @@ March 2023 – February 2026 · Paris (remote)
 
 Mostly front-end, in a team of 20 developers, on Security Rating®, a SaaS cyber-rating platform used by 200+ organizations: client platform, back office and manager office.
 
-• Built Angular components, worked on the Angular version upgrades, added test coverage (Spectator) and fixed bugs in a high-cadence release cycle.
+• Built Angular components, worked on the Angular version upgrades, added test coverage (Spectator) and fixed bugs.
 • Built a Python vulnerability-scanning probe on nmap that automated attack-surface data collection for the ratings.
 
 Stack: Angular, TypeScript, Python, nmap, Spectator, Docker, CI/CD
 
 Skills: Front-End Development · TypeScript · Python · Web Development · Angular · Full-Stack Development · Continuous Integration and Continuous Delivery (CI/CD) · Docker · Web Applications · Cybersecurity`,
     fr: `Ingénieur Full-Stack - Board of Cyber
-Mars 2023 – Février 2026 · Paris (remote)
+Mars 2023 – Février 2026 · Paris (télétravail)
 
-Principalement front-end, dans une équipe de 20 développeurs, sur Security Rating®, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations : plateforme client, back office et manager office.
+Surtout côté front-end, dans une équipe de 20 développeurs, sur Security Rating®, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations : plateforme client, back office et espace manager.
 
-• Création de composants Angular, montées de version d'Angular, couverture de tests (Spectator) et correctifs à cadence de release élevée.
-• Conception d'une sonde Python de scan de vulnérabilités (nmap) automatisant la collecte des données de surface d'attaque pour les notations.
+• Développement de composants Angular, montées de version d'Angular, ajout de tests (Spectator) et corrections de bugs.
+• Conception d'une sonde Python de scan de vulnérabilités (nmap) qui automatise la collecte des données de surface d'attaque pour les notations.
 
 Stack : Angular, TypeScript, Python, nmap, Spectator, Docker, CI/CD
 
@@ -269,12 +253,12 @@ Compétences : Front-End Development · TypeScript · Python · Web Development 
     en: `Full-Stack & AI Engineer - ALTAO Santé
 September 2021 – September 2022 · Lille
 
-Sole engineer on a greenfield medical platform for hospital discharge summary correction, replacing a fragmented multi-tool legacy workflow with a single production system.
+Only software engineer on a new medical platform that helps hospitals correct their discharge summaries.
 
-• Processed 5,000+ documents through the platform, saving hospitals €700,000.
-• Owned the full product lifecycle: ran requirement sessions directly with doctors, wrote specs, designed screens.
-• Integrated ML prediction algorithms and rule engines delivered by the Data Science team.
-• Deployed and monitored the full AWS infrastructure autonomously (EC2, Route53, Amplify).
+• Processed 5,000+ documents through the platform; tests on past documents before rollout estimated the savings for hospitals at €700,000.
+• Ran requirement sessions with doctors, wrote the specs and designed the screens.
+• Integrated the ML prediction models and rule engines supplied by the Data Science team.
+• Deployed and monitored the AWS infrastructure myself (EC2, Route53, Amplify).
 
 Stack: Vue.js, Django, Python, PostgreSQL, AWS (EC2, Route53, Amplify)
 
@@ -282,12 +266,12 @@ Skills: Vue.js · DevOps · Amazon Web Services (AWS) · PostgreSQL · Python ·
     fr: `Ingénieur Full-Stack & IA - ALTAO Santé
 Septembre 2021 – Septembre 2022 · Lille
 
-Seul ingénieur sur une plateforme médicale greenfield de correction des comptes-rendus de sortie hospitaliers, remplaçant un workflow legacy fragmenté par un système unique en production.
+Seul ingénieur logiciel d'une nouvelle plateforme médicale qui aide les hôpitaux à corriger leurs comptes rendus de sortie.
 
-• Traitement de plus de 5 000 documents via la plateforme, économisant 700 000 € aux hôpitaux.
-• Responsabilité du cycle produit complet : recueil de besoins directement avec les médecins, rédaction des specs, conception des écrans.
-• Intégration des algorithmes ML et moteurs de règles livrés par l'équipe Data Science.
-• Déploiement et monitoring autonome de toute l'infrastructure AWS (EC2, Route53, Amplify).
+• Plus de 5 000 documents traités par la plateforme, et 700 000 € d'économies estimées pour les hôpitaux lors des tests sur des documents passés, avant la mise en production.
+• Recueil des besoins avec les médecins, rédaction des spécifications et conception des écrans.
+• Intégration des modèles de prédiction ML et des moteurs de règles fournis par l'équipe Data Science.
+• Déploiement et supervision de l'infrastructure AWS, que je gérais seul (EC2, Route53, Amplify).
 
 Stack : Vue.js, Django, Python, PostgreSQL, AWS (EC2, Route53, Amplify)
 
@@ -299,11 +283,11 @@ Compétences : Vue.js · DevOps · Amazon Web Services (AWS) · PostgreSQL · Py
     en: `Mobile Software Engineer - Deuspi
 March 2021 – June 2021 · Lille
 
-Sole mobile engineer on the first version of a React Native grocery delivery app, transitioning the product from web-only to native mobile.
+Sole mobile engineer on the first version of a React Native grocery delivery app, which took the product from web-only to native mobile.
 
-• Owned the entire frontend from designer wireframes to production-ready mobile interface.
-• Implemented a gamified UX direction defined by the product team to drive customer retention.
-• Co-defined API contracts with the backend developer for real-time order tracking and inventory sync.
+• Built the whole frontend, from the designer's wireframes to the production app.
+• Built the gamified screens that the product team designed to bring customers back.
+• Defined the API contracts with the backend developer for real-time order tracking and inventory sync.
 
 Stack: React Native, JavaScript, REST APIs
 
@@ -311,13 +295,13 @@ Skills: Front-End Development · React Native · JavaScript · REST APIs · Mobi
     fr: `Ingénieur Logiciel Mobile - Deuspi
 Mars 2021 – Juin 2021 · Lille
 
-Seul ingénieur mobile sur la première version d'une application de livraison de courses en React Native, faisant passer le produit du web au mobile natif.
+Seul ingénieur mobile sur la première version d'une application de livraison de courses en React Native, qui a fait passer le produit du web au mobile natif.
 
-• Prise en charge complète du frontend, des maquettes du designer à l'interface prête pour la production.
-• Implémentation d'une direction UX gamifiée définie par l'équipe produit pour la rétention client.
-• Co-définition des contrats d'API avec le développeur backend pour le suivi de commandes temps réel.
+• Développement de tout le frontend, des maquettes du designer à l'application en production.
+• Développement des écrans ludiques (gamification) conçus par l'équipe produit pour fidéliser les clients.
+• Définition des contrats d'API avec le développeur backend pour le suivi des commandes en temps réel et la synchronisation des stocks.
 
-Stack : React Native, JavaScript, REST APIs
+Stack : React Native, JavaScript, API REST
 
 Compétences : Front-End Development · React Native · JavaScript · REST APIs · Mobile Applications · Postman API · Mobile Application Development`,
   },
@@ -327,10 +311,9 @@ Compétences : Front-End Development · React Native · JavaScript · REST APIs 
     en: `Full-Stack Engineer - Worldline
 April 2019 – August 2019 · Seclin · Internship
 
-Sole engineer on an internal R&D tooling project to eliminate manual debugging of MQTT-based interactive payment demos.
+Internal R&D tool for the team's MQTT-based interactive payment demos, which it had been debugging by hand.
 
-• Designed and built a centralized debugging dashboard from scratch, automating the creation, storage and replay of complex payment test sets.
-• Improved team development speed by 70% by replacing ad-hoc manual request crafting with a standardized internal portal.
+• Designed and built a dashboard to create, store and replay payment test sets, in place of MQTT requests written by hand; tests before rollout measured the team's development speed 70% higher.
 
 Stack: Vue.js, Spring Boot, Java, MQTT, Docker
 
@@ -338,10 +321,9 @@ Skills: Vue.js · Spring Boot · Web Development · Full-Stack Development · MQ
     fr: `Ingénieur Full-Stack - Worldline
 Avril 2019 – Août 2019 · Seclin · Stage
 
-Seul ingénieur sur un outil interne de R&D visant à éliminer le debugging manuel des démos de paiement interactives basées sur MQTT.
+Outil interne de R&D pour les démos de paiement interactives de l'équipe, basées sur MQTT, qu'elle déboguait jusque-là à la main.
 
-• Conception et développement d'un dashboard de debugging centralisé, automatisant la création, le stockage et le rejeu de jeux de tests de paiement complexes.
-• Amélioration de la vitesse de développement de l'équipe de 70% en remplaçant les requêtes manuelles ad-hoc par un portail interne standardisé.
+• Conception et développement d'un tableau de bord pour créer, stocker et rejouer des jeux de tests de paiement, à la place des requêtes MQTT écrites à la main ; les tests menés avant la mise en production ont mesuré une vitesse de développement de l'équipe supérieure de 70 %.
 
 Stack : Vue.js, Spring Boot, Java, MQTT, Docker
 
@@ -356,13 +338,13 @@ const projects = [
     project: 'piktechs',
     link: 'https://piktechs.com/',
     en: `Piktechs - https://piktechs.com/
-B2B NFC cards & event SaaS: digital business cards, lead capture with an AI card scanner, CRM and team workspaces for professional networking. Designed, built and operated end to end: architecture, frontend, backend, infrastructure, an Android app on Google Play and an iOS build, agentic QA with jev.
+B2B SaaS for NFC business cards and events: digital business cards, lead capture with an AI card scanner, CRM and team workspaces for professional networking. As the sole engineer, I designed and built all of it and I run it: architecture, frontend, backend, infrastructure, an Android app on Google Play and an iOS build, and agentic QA with jev, Browser Use's browser agent.
 
 Stack: React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter, jev (Browser Use)
 
 Skills: Stripe (Software) · React.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Large Language Models (LLM) · TypeScript · Supabase`,
     fr: `Piktechs - https://piktechs.com/
-SaaS de cartes NFC & événementiel B2B : cartes de visite digitales, capture de leads avec un scanner de cartes IA, CRM et espaces d'équipe pour le networking professionnel. Conçu, développé et opéré de bout en bout : architecture, frontend, backend, infrastructure, application Android sur Google Play et build iOS, QA agentique avec jev.
+SaaS B2B de cartes NFC et d'événementiel : cartes de visite numériques, capture de leads avec un scanner de cartes par IA, CRM et espaces d'équipe pour le networking professionnel. Seul ingénieur, j'ai tout conçu et développé, et je l'exploite : architecture, frontend, backend, infrastructure, application Android sur Google Play et version iOS, et QA automatisée avec jev, l'agent navigateur de Browser Use.
 
 Stack : React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter, jev (Browser Use)
 
@@ -373,13 +355,13 @@ Compétences : Stripe (Software) · React.js · Software as a Service (SaaS) · 
     project: 'jev',
     link: 'https://github.com/emoubarak/account-state-check',
     en: `account-state-check - https://github.com/emoubarak/account-state-check
-Open-source agent skill (MIT) for Claude Code, Codex and OpenClaw. An AI browser agent (jev-ultrafast, by Browser Use) signs in to a staging app as a real account state (free, paid, lapsed, team member, stranger) and follows a plain-English goal; then a SQL query on the database gives the verdict, not the agent. Built from the QA harness of Piktechs to catch what mocks miss: paywalls, roles and cross-account isolation disagreeing on a deployed app. Throw-away accounts in exact states, deleted after every run, sessions injected so no password is ever typed, before/after screenshots for tickets.
+Open-source agent skill (MIT) for Claude Code, Codex and OpenClaw. jev, Browser Use's browser agent, signs in to a staging app as a real account state (free, paid, lapsed, team member, stranger) and follows a plain-English goal; then a SQL query on the database decides pass or fail. I built it from the Piktechs QA setup to catch what mocks miss: paywalls, roles and cross-account isolation that disagree on a deployed app. Throw-away accounts in exact states, deleted after every run; sessions injected so no password is ever typed; before/after screenshots for tickets.
 
 Stack: Python, jev-ultrafast, browser-harness (CDP), SQL (Postgres, Supabase, SQLite)
 
 Skills: AI Agents · Test Automation · Software Testing · Large Language Models (LLM) · Python · Open-Source Software`,
     fr: `account-state-check - https://github.com/emoubarak/account-state-check
-Skill d'agent open source (MIT) pour Claude Code, Codex et OpenClaw. Un agent navigateur IA (jev-ultrafast, de Browser Use) se connecte à une app de staging sous un vrai état de compte (gratuit, payant, expiré, membre d'équipe, inconnu) et suit un objectif en langage naturel ; puis une requête SQL sur la base rend le verdict, pas l'agent. Issu du harnais de QA de Piktechs, pour attraper ce que les mocks ratent : paywalls, rôles et isolation entre comptes qui se contredisent sur une app déployée. Comptes jetables dans des états exacts, supprimés après chaque exécution, sessions injectées pour qu'aucun mot de passe ne soit jamais tapé, captures avant/après pour les tickets.
+Skill d'agent open source (MIT) pour Claude Code, Codex et OpenClaw. jev, l'agent navigateur de Browser Use, se connecte à une app de préproduction sous un vrai état de compte (gratuit, payant, expiré, membre d'équipe, inconnu) et suit un objectif écrit en langage courant ; puis une requête SQL sur la base décide si le test passe. Tiré de la QA de Piktechs, il attrape ce que les mocks ratent : paywalls, rôles et isolation entre comptes qui se contredisent sur une app déployée. Comptes jetables dans des états exacts, supprimés après chaque exécution ; sessions injectées pour qu'aucun mot de passe ne soit jamais tapé ; captures avant/après pour les tickets.
 
 Stack : Python, jev-ultrafast, browser-harness (CDP), SQL (Postgres, Supabase, SQLite)
 
@@ -390,30 +372,47 @@ Compétences : AI Agents · Test Automation · Software Testing · Large Languag
     project: 'hindsight',
     link: 'https://github.com/emoubarak/hindsight',
     en: `Hindsight - https://github.com/emoubarak/hindsight
-Open-source Claude Code plugin (MIT) that gives the agent a memory of every past session. Ask "do you remember how we deployed this?" and a hook searches the old transcripts by meaning and puts the best matches in context. Corrections you keep repeating are detected as you type, logged, then turned into the narrowest fix that works: a hook, a skill, a CLAUDE.md rule or a project memory. Runs on your machine, with no server and no account; secrets are redacted before anything is written.
+Open-source Claude Code plugin (MIT) that gives the agent a memory of every past session. Ask "do you remember how we deployed this?" and a hook searches the old transcripts by meaning and puts the best matches in context. Corrections you keep repeating are detected as you type and logged; Claude then proposes the narrowest fix that works (a hook, a skill, a CLAUDE.md rule or a project memory), and nothing is written before you say yes. Runs on your machine, with no server and no account; secrets are redacted before anything is written.
 
 Stack: Python, Claude Code hooks and skills, BM25, embeddings (optional), reciprocal rank fusion
 
 Skills: AI Agents · Large Language Models (LLM) · Information Retrieval · Python · Open-Source Software`,
     fr: `Hindsight - https://github.com/emoubarak/hindsight
-Plugin Claude Code open source (MIT) qui donne à l'agent la mémoire de toutes ses sessions passées. On lui demande « tu te souviens comment on a déployé ça ? » et un hook cherche par le sens dans les anciennes conversations, puis place les meilleurs passages dans le contexte. Les corrections répétées sont repérées à la frappe, notées, puis transformées en la règle la plus ciblée qui marche : un hook, un skill, une règle CLAUDE.md ou une mémoire de projet. Tourne sur votre machine, sans serveur ni compte ; les secrets sont masqués avant toute écriture.
+Plugin Claude Code open source (MIT) qui donne à l'agent la mémoire de toutes ses sessions passées. On lui demande « tu te souviens comment on a déployé ça ? » et un hook cherche par le sens dans les anciennes conversations, puis place les meilleurs passages dans le contexte. Les corrections répétées sont repérées à la frappe et notées ; Claude propose ensuite la correction la plus ciblée qui marche (un hook, un skill, une règle CLAUDE.md ou une mémoire de projet), et rien n'est écrit sans votre accord. Tourne sur votre machine, sans serveur ni compte ; les secrets sont masqués avant toute écriture.
 
 Stack : Python, hooks et skills Claude Code, BM25, embeddings (optionnels), fusion de classements
 
 Compétences : AI Agents · Large Language Models (LLM) · Information Retrieval · Python · Open-Source Software`,
   },
   {
+    label: 'Claude Skill Router',
+    project: 'skill-router',
+    link: 'https://github.com/emoubarak/claude-skill-router',
+    en: `Claude Skill Router - https://github.com/emoubarak/claude-skill-router
+Open-source Claude Code plugin (MIT): a hook that names the skills a prompt needs, from rules written in your own words, and a bench that replays your real sessions to measure it. On my setup (80 to 95 skills per session), the share of needed skills loaded went from 57% to 84% on held-out prompts the rules were never tuned on, for about 150 tokens and 20 ms per prompt, with no model call. The bench replays prompts through claude -p against a copy of the config, with a guard hook that denies every action, so the real setup is never touched.
+
+Stack: Python, Claude Code hooks (UserPromptSubmit), regex rules, replay bench on claude -p
+
+Skills: AI Agents · Large Language Models (LLM) · Benchmarking · Developer Tools · Python · Open-Source Software`,
+    fr: `Claude Skill Router - https://github.com/emoubarak/claude-skill-router
+Plugin Claude Code open source (MIT) : un hook qui nomme les skills dont un prompt a besoin, à partir de règles écrites avec vos propres mots, et un banc d'essai qui rejoue vos vraies sessions pour le mesurer. Sur ma configuration (80 à 95 skills par session), la part des skills nécessaires qui se chargent est passée de 57 % à 84 % sur des prompts mis de côté, jamais utilisés pour régler les règles, pour environ 150 tokens et 20 ms par prompt, sans appel de modèle. Le banc rejoue les prompts avec claude -p sur une copie de la configuration, avec un hook de garde qui refuse toute action : la vraie configuration n'est jamais touchée.
+
+Stack : Python, hooks Claude Code (UserPromptSubmit), règles en expressions régulières, banc de rejeu sur claude -p
+
+Compétences : AI Agents · Large Language Models (LLM) · Benchmarking · Developer Tools · Python · Open-Source Software`,
+  },
+  {
     label: 'Voice Browser',
     project: 'jev',
     link: 'https://github.com/emoubarak/voice-browser',
     en: `Voice Browser - https://github.com/emoubarak/voice-browser
-Open-source browser extension (MIT): say a task out loud and it is carried out in your own Chromium profile, already signed in to your accounts. Live transcription on Cloudflare Workers AI, Claude turns the sentence into one or two narrow goals, then the Jev agent (Browser Use) acts one click or keystroke at a time. No chrome.debugger and no remote-debugging port; it stops on a login, a captcha or a code. A Wikipedia lookup takes 12 to 19 seconds from command to answer.
+Open-source browser extension (MIT): say a task out loud and it is carried out in your own Chromium profile, already signed in to your accounts. Live transcription on Cloudflare Workers AI, Claude turns the sentence into one or two narrow goals, then jev, Browser Use's browser agent, acts one click or keystroke at a time. No chrome.debugger and no remote-debugging port; it stops on a login, a captcha or a code. A Wikipedia lookup takes 12 to 19 seconds from command to answer.
 
 Stack: Chrome extension (side panel, native messaging), Python, Claude, jev-ultrafast, Deepgram on Cloudflare Workers AI
 
 Skills: AI Agents · Browser Automation · Speech Recognition · Large Language Models (LLM) · Python · Open-Source Software`,
     fr: `Voice Browser - https://github.com/emoubarak/voice-browser
-Extension de navigateur open source (MIT) : on dit une tâche à voix haute et elle s'exécute dans votre propre profil Chromium, déjà connecté à vos comptes. Transcription en direct sur Cloudflare Workers AI, Claude transforme la phrase en un ou deux objectifs précis, puis l'agent Jev (Browser Use) agit un clic ou une frappe à la fois. Ni chrome.debugger ni port de débogage à distance ; il s'arrête sur une connexion, un captcha ou un code. Une recherche Wikipédia prend 12 à 19 secondes, de la commande à la réponse.
+Extension de navigateur open source (MIT) : on dit une tâche à voix haute et elle s'exécute dans votre propre profil Chromium, déjà connecté à vos comptes. Transcription en direct sur Cloudflare Workers AI, Claude transforme la phrase en un ou deux objectifs précis, puis jev, l'agent navigateur de Browser Use, agit un clic ou une frappe à la fois. Ni chrome.debugger ni port de débogage à distance ; il s'arrête sur une connexion, un captcha ou un code. Une recherche Wikipédia prend 12 à 19 secondes, de la commande à la réponse.
 
 Stack : extension Chrome (panneau latéral, native messaging), Python, Claude, jev-ultrafast, Deepgram sur Cloudflare Workers AI
 
@@ -424,13 +423,13 @@ Compétences : AI Agents · Browser Automation · Speech Recognition · Large La
     project: 'jev',
     link: '',
     en: `browser-agents (private project)
-Task runner for browser agents. Each identity (a brand, a person) gets its own persistent browser, with its own cookies, IP and timezone. Tasks are written in plain English from the terminal or a back-office and run on Claude, OpenRouter models or a local Qwen. When a site asks for a login, a captcha or a 2FA code, the task pauses, a phone notification opens the live browser over WebRTC, and the agent resumes once the human step is done.
+Task runner for browser agents. Each account it works for (a brand, a person) keeps its own persistent browser profile, so it stays signed in, and only one task uses it at a time. Tasks are written in plain English from the terminal or a back-office, run on Claude, OpenRouter models or a local Qwen, and stop at a time limit (60 minutes by default). When a site asks for a login, a captcha or a 2FA code, the task pauses, a phone notification opens the live browser over WebRTC, and the agent resumes once the human step is done.
 
 Stack: Python, jev-ultrafast, Chromium + Neko (WebRTC), SQLite, Podman / Docker Compose, Claude Code, opencode, llama-swap
 
 Skills: AI Agents · Browser Automation · Large Language Models (LLM) · Software Architecture · Python · Docker`,
     fr: `browser-agents (projet privé)
-Orchestrateur de tâches pour agents navigateur. Chaque identité (une marque, une personne) a son propre navigateur persistant, avec ses cookies, son IP et son fuseau horaire. Les tâches s'écrivent en langage naturel depuis le terminal ou un back-office, et tournent sur Claude, des modèles OpenRouter ou un Qwen local. Quand un site demande une connexion, un captcha ou un code 2FA, la tâche se met en pause, une notification sur le téléphone ouvre le navigateur en direct par WebRTC, et l'agent reprend une fois l'étape humaine faite.
+Orchestrateur de tâches pour agents navigateur. Chaque compte pour lequel il travaille (une marque, une personne) garde son propre profil de navigateur persistant, qui reste connecté, et une seule tâche l'utilise à la fois. Les tâches s'écrivent en langage courant depuis le terminal ou un back-office, tournent sur Claude, des modèles OpenRouter ou un Qwen local, et s'arrêtent à une limite de temps (60 minutes par défaut). Quand un site demande une connexion, un captcha ou un code 2FA, la tâche se met en pause, une notification sur le téléphone ouvre le navigateur en direct par WebRTC, et l'agent reprend une fois l'étape humaine faite.
 
 Stack : Python, jev-ultrafast, Chromium + Neko (WebRTC), SQLite, Podman / Docker Compose, Claude Code, opencode, llama-swap
 
@@ -513,28 +512,32 @@ Compétences : Mobile Application Development · React Native · Android Develop
     en: `PDFold (archived project)
 AI OCR + Vision pipeline converting PDFs to structured Markdown in 11 languages, with Stripe billing.
 
-Stack: Next.js, TypeScript, Gemini API, Stripe, Supabase, Vercel, Resend`,
-    fr: `PDFold (projet archivé)
-Pipeline IA OCR + Vision convertissant les PDF en Markdown structuré, 11 langues, facturation Stripe.
+Stack: Next.js, TypeScript, Gemini API, OpenRouter, Stripe, Supabase, Vercel, Resend
 
-Stack : Next.js, TypeScript, Gemini API, Stripe, Supabase, Vercel, Resend`,
+Skills: Large Language Models (LLM) · Optical Character Recognition (OCR) · Software as a Service (SaaS) · Next.js · TypeScript · Stripe (Software)`,
+    fr: `PDFold (projet archivé)
+Pipeline IA d'OCR et de vision qui convertit les PDF en Markdown structuré, en 11 langues, avec facturation Stripe.
+
+Stack : Next.js, TypeScript, Gemini API, OpenRouter, Stripe, Supabase, Vercel, Resend
+
+Compétences : Large Language Models (LLM) · Optical Character Recognition (OCR) · Software as a Service (SaaS) · Next.js · TypeScript · Stripe (Software)`,
   },
   {
     label: 'AI Search Visibility Tracker',
     project: 'ai-visibility',
     link: 'https://apify.com/emoubarak/ai-search-visibility-tracker',
     en: `AI Search Visibility Tracker - https://apify.com/emoubarak/ai-search-visibility-tracker
-Self-service tool measuring how AI answer engines describe a brand across ChatGPT, Perplexity, Gemini and Google AI Overviews. Every prompt is sampled several times per engine for real mention rates, with genuinely localized results and week-over-week deltas. Callable by AI agents through MCP.
+Self-service tool measuring how AI answer engines describe a brand across ChatGPT, Perplexity, Gemini and Google AI Overviews. It asks each prompt several times per engine (3 by default, up to 5) and reports rates with the sample count, Google AI Overviews results per market, and what changed since last week. Callable by AI agents through MCP.
 
 Stack: TypeScript, Node.js, Apify, MCP, OpenRouter
 
 Skills: Generative Engine Optimization · Answer Engine Optimization · Search Engine Optimization (SEO) · Large Language Models (LLM) · AI Agents · Model Context Protocol (MCP) · TypeScript · Node.js`,
     fr: `AI Search Visibility Tracker - https://apify.com/emoubarak/ai-search-visibility-tracker
-Outil self-service mesurant la façon dont les moteurs de réponse IA décrivent une marque sur ChatGPT, Perplexity, Gemini et Google AI Overviews. Chaque prompt est échantillonné plusieurs fois par moteur pour obtenir de vrais taux de mention, avec des résultats réellement localisés et des écarts semaine après semaine. Appelable par un agent IA via MCP.
+Outil en libre-service qui mesure comment les moteurs de réponse IA décrivent une marque sur ChatGPT, Perplexity, Gemini et Google AI Overviews. Il pose chaque prompt plusieurs fois par moteur (3 par défaut, jusqu'à 5) et donne des taux avec le nombre d'essais, les résultats de Google AI Overviews par marché, et ce qui a changé depuis la semaine précédente. Un agent IA peut l'appeler via MCP.
 
 Stack : TypeScript, Node.js, Apify, MCP, OpenRouter
 
-Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Full-Stack Development · Mobile Application Development · Software Architecture · Web Development · Cloud Computing · DevOps · Search Engine Optimization (SEO)`,
+Compétences : Generative Engine Optimization · Answer Engine Optimization · Search Engine Optimization (SEO) · Large Language Models (LLM) · AI Agents · Model Context Protocol (MCP) · TypeScript · Node.js`,
   },
   {
     // named "Video Generator Application" on LinkedIn (keep that title there); this note stays out of the copy text
@@ -561,11 +564,11 @@ Compétences : Automation · Generative AI · Python`,
     en: `Polymarket Up/Down Lab - Algorithmic Edge Research on Prediction Markets
 June 2026
 
-An engineering case study: an honest hunt for a trading edge on Polymarket's binary crypto markets (5 and 15 minute "Up or Down" windows).
+A search for a trading edge on Polymarket's binary crypto markets (5 and 15 minute "Up or Down" windows).
 
-Scientific method end to end: hypothesis, in-sample and out-of-sample backtest, live paper trading, then falsification. Around 12,000 trades journaled across 60 concurrent runners, settled against the Chainlink oracle. Two full engines built: a Python paper-trading framework (stdlib only, zero dependencies) and a low-latency Go HFT market maker.
+Method: hypothesis, in-sample and out-of-sample backtest, live paper trading, then falsification. About 12,000 paper trades logged across 60 runners in parallel (7 strategy variants × 6 coins × 2 window lengths), settled against the Chainlink oracle. Two engines: a Python paper-trading framework (standard library only, no dependencies) and a Go market maker whose pricing path runs in about 114 ns.
 
-The measured verdict: the market is remarkably efficient, and nearly every "edge" you think you have found turns out to be a measurement artifact. The real deliverable is the method, and how not to lie to yourself when the data disagrees with you.
+Result: no tradable edge. Nearly every edge I found turned out to be a measurement artifact, and the one signal that held out of sample earned about zero after fees. The repository documents each step.
 
 Stack: Python (stdlib only) · Go · real-time WebSockets · Preact · Polymarket CLOB & Gamma APIs · Binance / Bitstamp / Chainlink feeds · EIP-712 on-chain signing · backtesting & OOS validation · market making (Avellaneda-Stoikov) · two-host VPS architecture
 
@@ -573,36 +576,32 @@ Skills: System Architecture · Algorithmic Trading · Quantitative Analytics · 
     fr: `Polymarket Up/Down Lab - Recherche d'edge algorithmique sur les marchés de prédiction
 Juin 2026
 
-Une étude de cas d'ingénierie : la recherche honnête d'un edge de trading sur les marchés crypto binaires de Polymarket (fenêtres « Up or Down » de 5 et 15 minutes).
+La recherche d'un avantage exploitable (edge) sur les marchés crypto binaires de Polymarket (fenêtres « Up or Down » de 5 et 15 minutes).
 
-Méthode scientifique de bout en bout : hypothèse, backtest in-sample et out-of-sample, paper trading en direct, puis falsification. Environ 12 000 trades journalisés sur 60 runners concurrents, réglés contre l'oracle Chainlink. Deux moteurs complets : un framework de paper trading en Python (stdlib uniquement, zéro dépendance) et un market maker HFT en Go à faible latence.
+Méthode : hypothèse, backtest sur l'échantillon puis hors échantillon, trading simulé (paper trading) en conditions réelles, puis tentative de réfutation. Environ 12 000 trades simulés, enregistrés sur 60 instances en parallèle (7 variantes de stratégie × 6 cryptomonnaies × 2 durées de fenêtre), réglés sur l'oracle Chainlink. Deux moteurs : un framework de paper trading en Python (bibliothèque standard seule, sans dépendance) et un market maker en Go qui calcule son prix en 114 ns environ.
 
-Le verdict mesuré : le marché est remarquablement efficient, et presque tout « edge » que l'on croit trouver se révèle être un artefact de mesure. Le vrai livrable, c'est la méthode, et l'art de ne pas se mentir quand les données vous contredisent.
+Résultat : aucun avantage exploitable. Presque chaque edge trouvé s'est révélé être un artefact de mesure, et le seul signal qui a tenu hors échantillon rapportait à peu près zéro une fois les frais déduits. Le dépôt documente chaque étape.
 
 Stack : Python (stdlib uniquement) · Go · WebSockets temps réel · Preact · APIs Polymarket CLOB & Gamma · flux Binance / Bitstamp / Chainlink · signature on-chain EIP-712 · backtesting & validation OOS · market making (Avellaneda-Stoikov) · architecture deux VPS
 
 Compétences : System Architecture · Algorithmic Trading · Quantitative Analytics · Data Analysis · Blockchain · WebSocket · Python · Go`,
   },
   {
-    label: 'Worldline MQTT Debugger',
+    label: 'Worldline MQTT Tool',
     project: 'worldline',
     link: '',
-    en: `Worldline MQTT Debugger Tool
-April - August 2019 · Seclin, France
+    en: `Worldline MQTT Tool
+April 2019 – August 2019 · Seclin, France
 
-Internal R&D tool built to eliminate the manual debugging of MQTT-based interactive payment demos.
-
-A centralised dashboard automating the creation, storage and replay of complex payment test sets, which improved the team's development speed by 70%.
+Internal R&D tool for MQTT-based interactive payment demos, which the team had been debugging by hand: a dashboard to create, store and replay payment test sets, in place of MQTT requests written by hand.
 
 Stack: Vue.js · Spring Boot · MQTT · Java
 
 Skills: Vue.js · Spring Boot · MQTT · Java · Web Development · Software Infrastructure`,
-    fr: `Worldline MQTT Debugger Tool
-Avril - août 2019 · Seclin, France
+    fr: `Worldline MQTT Tool
+Avril 2019 – Août 2019 · Seclin, France
 
-Outil interne de R&D conçu pour éliminer le debugging manuel des démos de paiement interactives basées sur MQTT.
-
-Un dashboard centralisé automatisant la création, le stockage et le rejeu de jeux de tests de paiement complexes, qui a amélioré la vitesse de développement de l'équipe de 70 %.
+Outil interne de R&D pour des démos de paiement interactives basées sur MQTT, que l'équipe déboguait jusque-là à la main : un tableau de bord pour créer, stocker et rejouer des jeux de tests de paiement, à la place des requêtes MQTT écrites à la main.
 
 Stack : Vue.js · Spring Boot · MQTT · Java
 
@@ -664,13 +663,13 @@ Compétences : Web Development · Web Design · Multilingual Websites · Search 
     project: 'prestige-auto',
     link: 'https://prestige-auto-ecoservices.com/',
     en: `Prestige Auto Ecoservice - https://prestige-auto-ecoservices.com/
-Client work, through AGENCE-KSUR. One-page site for a BMW and Mini repair workshop in Casablanca: services, customer reviews, opening hours and one-tap call.
+Client work, through KSUR. One-page site for a BMW and Mini repair workshop in Casablanca: services, customer reviews, opening hours and one-tap call.
 
 Stack: HTML, CSS, JavaScript
 
 Skills: Web Development · Web Design · Local SEO`,
     fr: `Prestige Auto Ecoservice - https://prestige-auto-ecoservices.com/
-Projet client, via AGENCE-KSUR. Site d'une page pour un atelier de réparation BMW et Mini à Casablanca : prestations, avis clients, horaires et appel en un clic.
+Projet client, via KSUR. Site d'une page pour un atelier de réparation BMW et Mini à Casablanca : prestations, avis clients, horaires et appel en un clic.
 
 Stack : HTML, CSS, JavaScript
 
@@ -681,13 +680,13 @@ Compétences : Web Development · Web Design · Local SEO`,
     project: 'central-garage',
     link: 'https://central-garage.re/',
     en: `Central Garage - https://central-garage.re/
-Client work, through AGENCE-KSUR. Website of a multi-brand garage in Le Port, La Réunion: services, opening hours, directions and appointment booking.
+Client work, through KSUR. Website of a multi-brand garage in Le Port, La Réunion: services, opening hours, directions and appointment booking.
 
 Stack: HTML, CSS, JavaScript
 
 Skills: Web Development · Web Design · Local SEO`,
     fr: `Central Garage - https://central-garage.re/
-Projet client, via AGENCE-KSUR. Site d'un garage multimarque au Port, à La Réunion : prestations, horaires, itinéraire et prise de rendez-vous.
+Projet client, via KSUR. Site d'un garage multimarque au Port, à La Réunion : prestations, horaires, itinéraire et prise de rendez-vous.
 
 Stack : HTML, CSS, JavaScript
 
@@ -769,7 +768,7 @@ Compétences : Web Development · E-Commerce · Odoo · Search Engine Optimizati
     project: 'the-icon',
     link: '',
     en: `THE ICON prospect demos (selection)
-Demo websites built from a brief for THE ICON's prospects in Belgium; two of them went on to become the clients' production websites.
+Demo websites built from a brief for THE ICON's prospects in Belgium; two of them became the production websites of Group BW Invest and ID Advise.
 - Two construction companies: 7 and 18 pages in French, English and Dutch, the English and Dutch pages built from the French source with translation dictionaries, with a working contact form.
 - A therapy and media practice: 18 pages (podcast, TV and radio, one page per interview, testimonials).
 - A wellbeing coach: two-page site with the client's photos, video extracts and generated drawings.
@@ -780,7 +779,7 @@ Stack: HTML, CSS, JavaScript, PHP forms, Python i18n build, GitHub Actions deplo
 
 Skills: Web Development · Internationalization · Lead Generation · Generative AI`,
     fr: `Démos pour les prospects de THE ICON (sélection)
-Sites de démonstration construits à partir d'un brief pour les prospects de THE ICON en Belgique ; deux sont ensuite devenus le site en production du client.
+Sites de démonstration construits à partir d'un brief pour les prospects de THE ICON en Belgique ; deux sont ensuite devenus les sites en production de Group BW Invest et d'ID Advise.
 - Deux entreprises de construction : 7 et 18 pages en français, anglais et néerlandais, les pages anglaises et néerlandaises construites depuis le français avec des dictionnaires de traduction, formulaire de contact fonctionnel.
 - Un cabinet de thérapie et de média : 18 pages (podcast, télé et radio, une page par interview, témoignages).
 - Une coach bien-être : site de deux pages avec ses photos, des extraits vidéo et des dessins générés.
@@ -923,13 +922,13 @@ Compétences : C (Programming Language) · Algorithms · Data Structures`,
     project: 'content',
     link: 'https://www.youtube.com/@gravitycandysim',
     en: `Gravity Candy - https://www.youtube.com/@gravitycandysim
-Channel of "satisfying" physics simulations for Shorts and TikTok, made entirely from code with no generative AI and no cost per video: vertical 1080×1920 at 60 fps, 62 to 72 seconds, with a note on each collision (synthesized or recorded CC0 instruments). Twelve formats (merges, escapes, pendulums, dominoes, Galton board, sand and more); a "director" runs 24 seeds and keeps the best one. Built on a study of 78 videos from 53 creators, 34 of them above 5 million views.
+Channel of "satisfying" physics simulations for Shorts and TikTok, made from code, with no generative AI and no cost per video: vertical 1080×1920 at 60 fps, 62 to 72 seconds, with a note on each collision (synthesized or recorded CC0 instruments). Twelve formats (merges, escapes, pendulums, dominoes, Galton board, sand and more); a "director" runs 24 seeds and keeps the best one. Built on a study of 78 videos from 53 creators, 34 of them above 5 million views.
 
 Stack: Python, numpy, scipy, pymunk, skia-python, ffmpeg, audio synthesis and loudness normalization
 
 Skills: Python · Simulation · Video Production · Content Creation · Audio Processing`,
     fr: `Gravity Candy - https://www.youtube.com/@gravitycandysim
-Chaîne de simulations physiques « satisfaisantes » pour Shorts et TikTok, faites entièrement par le code, sans IA générative ni coût par vidéo : format vertical 1080×1920 à 60 i/s, 62 à 72 secondes, avec une note sur chaque choc (instruments synthétisés ou enregistrés libres de droits). Douze formats (fusions, évasions, pendules, dominos, planche de Galton, sable…) ; un « réalisateur » lance 24 tirages (seeds) et garde le meilleur. Construite à partir d'une étude de 78 vidéos de 53 créateurs, dont 34 à plus de 5 millions de vues.
+Chaîne de simulations physiques « satisfaisantes » pour Shorts et TikTok, faites par le code, sans IA générative ni coût par vidéo : format vertical 1080×1920 à 60 i/s, 62 à 72 secondes, avec une note sur chaque choc (instruments synthétisés ou enregistrés libres de droits). Douze formats (fusions, évasions, pendules, dominos, planche de Galton, sable…) ; un « réalisateur » lance 24 tirages (seeds) et garde le meilleur. Construite à partir d'une étude de 78 vidéos de 53 créateurs, dont 34 à plus de 5 millions de vues.
 
 Stack : Python, numpy, scipy, pymunk, skia-python, ffmpeg, synthèse audio et normalisation du volume
 
@@ -970,16 +969,16 @@ Stack : Node.js, HyperFrames (HTML vers MP4), Python, ElevenLabs, Gemini, ffmpeg
 Compétences : Content Creation · Video Production · Generative AI · Automation`,
   },
   {
-    label: 'jev-car',
+    label: 'car-sourcing-nl-fr',
     project: 'internal',
     link: '',
-    en: `jev-car (private tool)
+    en: `car-sourcing-nl-fr (private tool)
 Car sourcing from the Netherlands for resale in France, built on browser-agents. It collects listings from Dutch and French marketplaces, reads plates and photos with a vision model, checks the Dutch vehicle register, then estimates the French resale price from the 15 closest comparables (median and a prudent first quartile), the repair costs and the margin after import costs.
 
 Stack: Python, SQLite, browser agents (jev), OpenRouter vision model, RDW open data
 
 Skills: Data Engineering · AI Agents · Python · Pricing Analysis`,
-    fr: `jev-car (outil privé)
+    fr: `car-sourcing-nl-fr (outil privé)
 Sourcing de voitures aux Pays-Bas pour la revente en France, bâti sur browser-agents. Il collecte les annonces de sites néerlandais et français, lit plaques et photos avec un modèle de vision, interroge le registre néerlandais des véhicules, puis estime le prix de revente en France à partir des 15 comparables les plus proches (médiane et premier quartile prudent), le coût des réparations et la marge après frais d'import.
 
 Stack : Python, SQLite, agents navigateur (jev), modèle de vision OpenRouter, données ouvertes RDW
@@ -1008,13 +1007,13 @@ Compétences : Full-Stack Development · Python · API Integration · Productivi
     project: 'internal',
     link: 'https://github.com/emoubarak/hindsight',
     en: `Claude Code workspace (private, public spin-off: Hindsight)
-My Claude Code setup, versioned and synced between two machines: global rules, 60 skills of my own plus 25 installed ones, catalogued with their real use counted from the sessions (about 500 uses in two and a half months), hooks that guard the file system, and a weekly learning loop that turns repeated corrections into rules. The memory and learning part is open source as Hindsight.
+My Claude Code setup, versioned and synced between two machines: global rules, my own skills and installed ones, catalogued with how often my sessions use each one, and hooks that guard the file system. Each week I review my sessions and turn the corrections I keep repeating into rules or hooks. The memory and learning part is open source as Hindsight. Tour: https://moubarak.dev/harness
 
 Stack: Python, bash, systemd, Claude Code hooks and skills
 
 Skills: AI Agents · Developer Tools · Automation · Python`,
     fr: `Espace de travail Claude Code (privé, version publique : Hindsight)
-Ma configuration Claude Code, versionnée et synchronisée entre deux machines : règles globales, 60 skills maison et 25 installés, recensés avec leur usage réel compté dans les sessions (environ 500 utilisations en deux mois et demi), des hooks qui protègent le système de fichiers, et une boucle d'apprentissage hebdomadaire qui transforme les corrections répétées en règles. La partie mémoire et apprentissage est en open source sous le nom Hindsight.
+Ma configuration Claude Code, versionnée et synchronisée entre deux machines : règles globales, skills maison et skills installés, recensés avec le nombre de fois où mes sessions utilisent chacun, et des hooks qui protègent le système de fichiers. Chaque semaine, je relis mes sessions et je transforme les corrections que je répète en règles ou en hooks. La partie mémoire et apprentissage est en open source sous le nom Hindsight. Visite guidée (en anglais) : https://moubarak.dev/harness
 
 Stack : Python, bash, systemd, hooks et skills Claude Code
 
@@ -1025,13 +1024,13 @@ Compétences : AI Agents · Developer Tools · Automation · Python`,
     project: 'internal',
     link: '',
     en: `Home lab tooling (private)
-A service manager page (start, stop, enable at boot and logs for 17 services, with 25 uptime monitors declared from a config file) and about 25 personal scripts, including a virtual screen for game streaming and encrypted backups with restic.
+A service manager page (start, stop, enable at boot and logs for each service, with uptime monitors declared in a config file) and personal scripts, including a virtual screen for game streaming and encrypted backups with restic.
 
 Stack: Python, bash, systemd, podman-compose, Uptime Kuma, restic
 
 Skills: Linux · DevOps · Automation · Python`,
     fr: `Outillage du serveur maison (privé)
-Une page de gestion des services (démarrer, arrêter, lancer au démarrage et journaux pour 17 services, avec 25 sondes de disponibilité déclarées dans un fichier de config) et environ 25 scripts personnels, dont un écran virtuel pour le streaming de jeux et des sauvegardes chiffrées avec restic.
+Une page de gestion des services (démarrer, arrêter, lancer au démarrage et journaux pour chaque service, avec des sondes de disponibilité déclarées dans un fichier de configuration) et des scripts personnels, dont un écran virtuel pour le streaming de jeux et des sauvegardes chiffrées avec restic.
 
 Stack : Python, bash, systemd, podman-compose, Uptime Kuma, restic
 
@@ -1042,13 +1041,13 @@ Compétences : Linux · DevOps · Automation · Python`,
     project: 'strata',
     link: 'https://huggingface.co/emoubarak/WebJev-35B-A3B-GGUF',
     en: `Local inference lab - https://huggingface.co/emoubarak/WebJev-35B-A3B-GGUF
-Local LLM stack on a mini PC with an external GPU: llama.cpp (CUDA and Vulkan), llama-swap and Open WebUI, with over 300 benchmark result files. On the RTX 3080 20 GB, Qwen3.6 35B-A3B runs at 142 tokens/s generation and 1,814 tokens/s prompt read, 3.1 and 6.1 times the previous 8 GB card. Published GGUF conversions of Lexmount's WebJev-35B-A3B on Hugging Face (328 downloads): the Q4 file makes the same decisions as Q8 on 52 of 54 recorded browser steps.
+Local LLM stack on a mini PC with an external GPU: llama.cpp (CUDA and Vulkan), llama-swap and Open WebUI, with dated benchmarks. On the RTX 3080 20 GB, Qwen3.6 35B-A3B runs at 142 tokens/s generation and 1,814 tokens/s prompt read, 3.1 and 6.1 times the previous 8 GB card. Published GGUF conversions of Lexmount's WebJev-35B-A3B on Hugging Face: the Q4 file makes the same decisions as Q8 on 52 of 54 recorded browser steps.
 
 Stack: llama.cpp, llama-swap, CUDA, Vulkan, Open WebUI, bash
 
 Skills: Large Language Models (LLM) · Performance Tuning · Benchmarking · Linux`,
     fr: `Laboratoire d'inférence locale - https://huggingface.co/emoubarak/WebJev-35B-A3B-GGUF
-Stack de LLM locaux sur un mini PC avec carte graphique externe : llama.cpp (CUDA et Vulkan), llama-swap et Open WebUI, avec plus de 300 fichiers de résultats de mesures. Sur la RTX 3080 20 Go, Qwen3.6 35B-A3B tourne à 142 tokens/s en génération et 1 814 tokens/s en lecture du prompt, 3,1 et 6,1 fois l'ancienne carte de 8 Go. Publication de conversions GGUF du modèle WebJev-35B-A3B de Lexmount sur Hugging Face (328 téléchargements) : le fichier Q4 prend les mêmes décisions que le Q8 sur 52 des 54 étapes de navigation enregistrées.
+Stack de LLM locaux sur un mini PC avec carte graphique externe : llama.cpp (CUDA et Vulkan), llama-swap et Open WebUI, avec des mesures datées. Sur la RTX 3080 20 Go, Qwen3.6 35B-A3B tourne à 142 tokens/s en génération et 1 814 tokens/s en lecture du prompt, 3,1 et 6,1 fois l'ancienne carte de 8 Go. Publication de conversions GGUF du modèle WebJev-35B-A3B de Lexmount sur Hugging Face : le fichier Q4 prend les mêmes décisions que le Q8 sur 52 des 54 étapes de navigation enregistrées.
 
 Stack : llama.cpp, llama-swap, CUDA, Vulkan, Open WebUI, bash
 
@@ -1076,13 +1075,13 @@ Compétences : Algorithmic Trading · Go · Low-Latency Systems · Quantitative 
     project: 'research',
     link: '',
     en: `pump.fun data engine (private research)
-24/7 collector and pre-registered statistical research on Solana memecoin launches: what brings buyers back to a coin and when a creator should exit. About 51,000 new coins a day, 1,328,864 coins analysed over October (2.2% graduate within 24 hours), poller lag p95 0.22 s, 37 tests. Of 24 pre-registered tests in phase 2, 8 held.
+24/7 collector and pre-registered statistical research on Solana memecoin launches: what brings buyers to a new coin, and how the creator's own buys and sales change that flow. About 51,000 new coins a day, 1,328,864 coins analysed over October (2.2% graduate within 24 hours), poller lag p95 0.22 s, 37 tests. Of 24 pre-registered tests in phase 2, 8 held.
 
 Stack: Python, websockets, httpx, Parquet, DuckDB, scikit-learn, statsmodels, Helius
 
 Skills: Data Engineering · Statistics · Blockchain · Python`,
     fr: `Moteur de données pump.fun (recherche privée)
-Collecteur en continu et recherche statistique pré-enregistrée sur les lancements de memecoins Solana : ce qui ramène des acheteurs sur un coin et quand un créateur doit sortir. Environ 51 000 nouveaux coins par jour, 1 328 864 coins analysés sur octobre (2,2 % « graduent » en 24 heures), latence p95 du collecteur de 0,22 s, 37 tests. Sur 24 tests pré-enregistrés en phase 2, 8 ont tenu.
+Collecteur en continu et recherche statistique pré-enregistrée sur les lancements de memecoins Solana : ce qui attire des acheteurs sur un nouveau coin, et comment les achats et les ventes de son créateur modifient ce flux. Environ 51 000 nouveaux coins par jour, 1 328 864 coins analysés sur octobre (2,2 % « graduent » en 24 heures), latence p95 du collecteur de 0,22 s, 37 tests. Sur 24 tests pré-enregistrés en phase 2, 8 ont tenu.
 
 Stack : Python, websockets, httpx, Parquet, DuckDB, scikit-learn, statsmodels, Helius
 
@@ -1093,13 +1092,13 @@ Compétences : Data Engineering · Statistics · Blockchain · Python`,
     project: 'research',
     link: '',
     en: `Fiverr keyword market study (private research)
-Extraction of Fiverr's keyword research data to position my freelance offer: 2,651 unique keywords across 12 categories, 311 subcategories and 645 service types, then a page-1 competition analysis of about 9,600 gigs, ending in 200 opportunities, each judged individually rather than by a formula.
+Extraction of Fiverr's keyword research data to position my freelance offer: 2,651 unique keywords across 12 categories, 311 subcategories and 645 service types, then a page-1 competition analysis of about 9,600 gigs, ending in 200 opportunities, each read and judged by hand.
 
 Stack: Python
 
 Skills: Market Research · Data Analysis · Python`,
     fr: `Étude de marché des mots-clés Fiverr (recherche privée)
-Extraction des données de recherche de mots-clés de Fiverr pour positionner mon offre freelance : 2 651 mots-clés uniques sur 12 catégories, 311 sous-catégories et 645 types de services, puis une analyse de la concurrence en première page sur environ 9 600 gigs, jusqu'à 200 opportunités jugées une par une plutôt que par une formule.
+Extraction des données de recherche de mots-clés de Fiverr pour positionner mon offre freelance : 2 651 mots-clés uniques sur 12 catégories, 311 sous-catégories et 645 types de services, puis une analyse de la concurrence en première page sur environ 9 600 gigs, jusqu'à 200 opportunités, chacune lue et jugée à la main.
 
 Stack : Python
 
@@ -1123,21 +1122,21 @@ Stack : TypeScript, Preact, Vite, Cloudflare Workers, Durable Objects, D1, viem,
 Compétences : Game Development · Smart Contracts · Solidity · TypeScript · Real-Time Systems`,
   },
   {
-    label: 'E-commerce Store (Shopify)',
+    label: 'Mon Jouet Montessori (Shopify)',
     project: 'montessori',
     link: 'https://mon-jouet-montessori.com/',
-    en: `E-commerce Store - https://mon-jouet-montessori.com/
-Shopify store built end to end, grown to real revenue, and successfully sold: SEO, marketing and custom Liquid themes.
+    en: `Mon Jouet Montessori - https://mon-jouet-montessori.com/
+Shopify store of Montessori toys that I built and ran (custom Liquid themes, SEO, marketing), then sold.
 
 Stack: Shopify, Liquid, SEO, Shopify API, Shopify CLI, Gadget.dev
 
 Skills: Web Development · E-Commerce · Search Engine Optimization (SEO)`,
-    fr: `Boutique E-commerce - https://mon-jouet-montessori.com/
-Boutique Shopify conçue et opérée de bout en bout, avec revenus réels, puis revendue avec succès : SEO, marketing et thèmes Liquid sur mesure.
+    fr: `Mon Jouet Montessori - https://mon-jouet-montessori.com/
+Boutique Shopify de jouets Montessori que j'ai créée et gérée (thèmes Liquid sur mesure, SEO, marketing), puis revendue.
 
 Stack : Shopify, Liquid, SEO, Shopify API, Shopify CLI, Gadget.dev
 
-Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large Language Models (LLM) · Full-Stack Development · Mobile Application Development · Software Architecture · Web Development · Cloud Computing · DevOps · Search Engine Optimization (SEO)`,
+Compétences : Web Development · E-Commerce · Search Engine Optimization (SEO)`,
   },
 ];
 
@@ -1147,89 +1146,81 @@ const skills = {
 Cloud & DevOps: AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
 AI & Automation: AI Agents, Agentic Dev, Claude Code (skills, hooks, subagents), MCP, Browser agents (Browser Use, jev), Agentic QA, LLM APIs (OpenAI, Claude, Gemini, OpenRouter), LLM evaluation & prompt-injection testing, Local LLMs (llama.cpp, ExLlamaV2), RAG, Vectorization, OCR & Vision pipelines, ElevenLabs, Voice AI, GEO/AEO
 E-commerce: Shopify API, Liquid, Stripe, SEO
-Languages: French (native), English (C1, TOEIC), Spanish`,
-  fr: `Dév Web & Mobile : TypeScript, JavaScript, Next.js, React, React Native, Capacitor, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
-Cloud & DevOps : AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
-IA & Automatisation : AI Agents, Agentic Dev, Claude Code (skills, hooks, sous-agents), MCP, Agents navigateur (Browser Use, jev), QA agentique, APIs LLM (OpenAI, Claude, Gemini, OpenRouter), Évaluation de LLM & tests d'injection de prompt, LLMs locaux (llama.cpp, ExLlamaV2), RAG, Vectorisation, Pipelines OCR & Vision, ElevenLabs, Voice AI, GEO/AEO
+Languages: French (native), English (C1, TOEIC), Spanish (professional)`,
+  fr: `Dév web et mobile : TypeScript, JavaScript, Next.js, React, React Native, Capacitor, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
+Cloud et DevOps : AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
+IA et automatisation : agents IA, développement avec agents, Claude Code (skills, hooks, sous-agents), MCP, agents navigateur (Browser Use, jev), QA par agent navigateur, API LLM (OpenAI, Claude, Gemini, OpenRouter), évaluation de LLM et tests d'injection de prompt, LLM locaux (llama.cpp, ExLlamaV2), RAG, vectorisation, pipelines OCR et vision, ElevenLabs, IA vocale, GEO/AEO
 E-commerce : Shopify API, Liquid, Stripe, SEO
-Langues : Français (natif), Anglais (C1, TOEIC), Espagnol`,
+Langues : français (natif), anglais (C1, TOEIC), espagnol (professionnel)`,
 };
 
 const education = {
   en: `IMT Nord Europe - Engineering Degree (Master's) in CS, Networks & Telecoms - Lille, 2017–2022
 Lycée Français International Louis-Massignon - Scientific Baccalaureate, Math Major - Casablanca, 2017
 Certification: TOEIC`,
-  fr: `IMT Nord Europe - Diplôme d'Ingénieur en Informatique, Réseaux & Télécoms - Lille, 2017–2022
-Lycée Français International Louis-Massignon - Baccalauréat Scientifique, spécialité Mathématiques - Casablanca, 2017
+  fr: `IMT Nord Europe - Diplôme d'ingénieur en informatique, réseaux et télécoms - Lille, 2017–2022
+Lycée Français International Louis-Massignon - Baccalauréat scientifique, spécialité mathématiques - Casablanca, 2017
 Certification : TOEIC`,
 };
 
 // ===== Service lines (the offer, as stated on Malt and Upwork) =====
 const services = {
   en: `What I deliver:
-- Full-stack and SaaS apps, web and mobile: MVP, V1 and iterations, from idea to production.
-- AI automation and agents: n8n and API workflows, agents wired into Slack, WhatsApp, CRMs and Google Workspace, browser automation (jev, Browser Use, Playwright) for back-offices with no API, and agentic QA: a browser agent that checks your staging app as each kind of user, verified against your database.
+- Full-stack and SaaS apps, web and mobile: MVP, V1 and the versions after it.
+- AI automation and agents: API workflows, agents wired into Slack, WhatsApp, CRMs and Google Workspace, browser automation for back-offices with no API (jev, Browser Use's browser agent, or Playwright), and agentic QA: a browser agent that checks your staging app as each kind of user, verified against your database.
 - LLM and RAG integration: chat over your documents, OCR + LLM pipelines, OpenAI / Claude / Gemini inside your existing product, with rate limits, fallbacks and evaluation handled.
 - AI-generated MVP rescue: an app built with Lovable, Bolt, Cursor or Claude Code that breaks in production: audit, security (auth, Supabase RLS, exposed API keys), refactoring, tests, deployment.
 - Self-hosted AI agents: installing and securing agent runtimes on your own server or VPS (OpenClaw, Hermes Agent, GPT- and Claude-based agents, or a custom stack), with custom skills and MCP.
-- Corporate AI training: hands-on FR/EN sessions built on your real workflows, from the first prompt to automating a whole business process.
-- Shopify where it gets technical: custom apps, Liquid, checkout, order-to-fulfilment automation into your factory, ERP or CRM.
+- Corporate AI training: hands-on FR/EN sessions built on your own workflows, from the first prompt to automating a whole business process.
+- Shopify where it gets technical: custom apps, Liquid, checkout, and automations that pass orders to your ERP or CRM.
 
-To get started: a paid audit or a 5-10 day proof of concept with one measurable deliverable.`,
+To get started: a paid audit or a 5 to 10 day proof of concept with one measurable deliverable.`,
   fr: `Ce que je livre :
-- Applications full-stack et SaaS, web et mobile : MVP, V1 et évolutions, de l'idée à la production.
-- Automatisation et agents IA : workflows n8n et API, agents connectés à Slack, WhatsApp, CRM et Google Workspace, automatisation navigateur (jev, Browser Use, Playwright) pour les back-offices sans API, et QA agentique : un agent navigateur qui vérifie votre app de staging sous chaque type d'utilisateur, contrôlé contre votre base de données.
-- Intégration LLM et RAG : chatbot sur vos documents, pipelines OCR + LLM, OpenAI / Claude / Gemini dans votre produit existant, avec gestion des quotas, des fallbacks et de l'évaluation.
-- Reprise de MVP généré par IA : votre app faite avec Lovable, Bolt, Cursor ou Claude Code ne tient pas en production : audit, sécurité (auth, RLS Supabase, clés API exposées), refactoring, tests, déploiement.
-- Agents IA self-hosted : installation et sécurisation de runtimes d'agents sur votre serveur ou VPS (OpenClaw, Hermes Agent, agents GPT et Claude, ou une stack sur mesure), avec skills et MCP sur mesure.
-- Formation IA en entreprise : sessions pratiques FR/EN construites sur vos propres workflows, du premier prompt à l'automatisation d'un processus métier complet.
-- Shopify là où c'est technique : apps custom, Liquid, checkout, automatisation commande → usine, ERP ou CRM.
+- Applications full-stack et SaaS, web et mobile : MVP, première version et versions suivantes.
+- Automatisation et agents IA : automatisations par API, agents connectés à Slack, WhatsApp, aux CRM et à Google Workspace, automatisation de navigateur pour les back-offices sans API (jev, l'agent navigateur de Browser Use, ou Playwright), et QA par agent navigateur : un agent qui vérifie votre app de préproduction sous chaque type d'utilisateur, en contrôlant le résultat dans votre base de données.
+- Intégration LLM et RAG : chatbot sur vos documents, pipelines OCR + LLM, OpenAI / Claude / Gemini dans votre produit existant, avec la gestion des quotas, des modèles de repli et de l'évaluation.
+- Reprise de MVP générés par IA : votre app faite avec Lovable, Bolt, Cursor ou Claude Code ne tient pas en production : audit, sécurité (authentification, RLS Supabase, clés API exposées), refactorisation, tests, déploiement.
+- Agents IA auto-hébergés : installation et sécurisation d'agents sur votre serveur ou votre VPS (OpenClaw, Hermes Agent, agents GPT et Claude, ou une stack sur mesure), avec des skills et des connexions MCP sur mesure.
+- Formation IA en entreprise : sessions pratiques FR/EN construites sur vos propres processus, du premier prompt à l'automatisation d'un processus métier complet.
+- Shopify quand ça devient technique : apps sur mesure, Liquid, tunnel de paiement, et automatisations qui transmettent les commandes à votre ERP ou à votre CRM.
 
-Pour démarrer : un audit ou un POC de 5 à 10 jours, avec un livrable mesurable.`,
+Pour démarrer : un audit payant ou une preuve de concept de 5 à 10 jours, avec un livrable mesurable.`,
 };
 
-// ===== Measured proof (every number is verifiable; no rounding up) =====
+// ===== Measured proof (every number is verifiable; no rounding up; estimates stay in their experience block) =====
 const proof = {
-  en: `- Medical AI platform for hospitals (ALTAO Santé), sole engineer: 5,000+ documents processed, €700,000 saved.
-- Security Rating®, a cyber-rating SaaS used by 200+ organizations (Board of Cyber).
-- Worldline internal R&D tool: team development speed improved by 70%.
-- Polymarket Up/Down Lab: ~12,000 trades journaled across 60 concurrent runners, settled against the Chainlink oracle.
-- PDFold (archived): any PDF into structured Markdown, in 11 languages.
+  en: `- ALTAO Santé, medical platform for hospitals where I was the only software engineer: 5,000+ documents processed.
+- Board of Cyber: three years on Security Rating®, a cyber-rating SaaS used by 200+ organizations.
+- Polymarket Up/Down Lab: about 12,000 paper trades across 60 runners in parallel, settled against the Chainlink oracle; result: no tradable edge after fees.
+- PDFold (archived): PDFs to structured Markdown in 11 languages.
 - Piktechs AI card scanner: of four cheap vision models tested on the same photos, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.
-- Agentic QA with jev on Piktechs: 16 standing browser-agent checks on plan gates and permissions, the database as judge; its screenshots on closed tickets surfaced 3 follow-up bugs the fixes had missed or introduced.
-- account-state-check, open source (MIT): browser-agent QA where the database, not the agent, gives the verdict.
-- A 180B-parameter model run locally on a mini PC with an RTX 3080 20 GB over OCuLink: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, measured and published with reproduce scripts.
+- Agentic QA on Piktechs with jev, Browser Use's browser agent: 16 standing checks on plan gates and permissions, where a SQL query on the database decides pass or fail; its screenshots on closed tickets surfaced 3 bugs the fixes had missed or introduced.
+- A 180B mixture-of-experts model (about 6B active per token) run locally on a mini PC with an RTX 3080 20 GB over OCuLink: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, published with the scripts to reproduce them.
 - CalcPit (archived): 87 construction calculators, and an Android app (Lumber Calculator) generated from the same tested formulas.
-- Shopify store (Mon Jouet Montessori) built, grown to real revenue, and sold.
-- Corporate AI training delivered for DRIVECO: two tailored FR/EN sessions.
-- Shipping production software since 2019 across healthcare, fintech and cybersecurity. Engineering degree (Master's level), IMT Nord Europe.`,
-  fr: `- Plateforme médicale IA pour hôpitaux (ALTAO Santé), seul ingénieur : 5 000+ documents traités, 700 000 € économisés.
-- Security Rating®, SaaS de cyber-notation utilisé par 200+ organisations (Board of Cyber).
-- Outil interne de R&D Worldline : vitesse de développement de l'équipe améliorée de 70 %.
-- Polymarket Up/Down Lab : ~12 000 trades journalisés sur 60 runners concurrents, réglés contre l'oracle Chainlink.
-- PDFold (archivé) : n'importe quel PDF en Markdown structuré, en 11 langues.
+- DRIVECO: two ChatGPT workshops (FR/EN) for its teams, with a public testimonial from its Chief People Officer.`,
+  fr: `- ALTAO Santé, plateforme médicale pour les hôpitaux dont j'étais le seul ingénieur logiciel : plus de 5 000 documents traités.
+- Board of Cyber : trois ans sur Security Rating®, SaaS de notation cyber utilisé par plus de 200 organisations.
+- Polymarket Up/Down Lab : environ 12 000 trades simulés sur 60 instances en parallèle, réglés sur l'oracle Chainlink ; résultat : aucun avantage exploitable une fois les frais déduits.
+- PDFold (archivé) : des PDF convertis en Markdown structuré, en 11 langues.
 - Scanner de cartes IA de Piktechs : sur quatre modèles de vision bon marché testés sur les mêmes photos, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le modèle de repli est celui qui a résisté.
-- QA agentique avec jev sur Piktechs : 16 vérifications permanentes par agent navigateur sur les offres et les permissions, la base de données pour juge ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits.
-- account-state-check, open source (MIT) : QA par agent navigateur où c'est la base de données, pas l'agent, qui rend le verdict.
-- Un modèle de 180 milliards de paramètres en local sur un mini PC avec une RTX 3080 20 Go en OCuLink : environ 2 000 tokens/s en lecture du prompt et 110 à 204 tokens/s en génération, mesurés et publiés avec les scripts pour les refaire.
-- CalcPit (archivé) : 87 calculateurs de construction, et une application Android (Lumber Calculator) générée à partir des mêmes formules testées.
-- Boutique Shopify (Mon Jouet Montessori) créée, montée jusqu'à un vrai chiffre d'affaires, puis vendue.
-- Formation IA en entreprise livrée pour DRIVECO : deux sessions FR/EN sur mesure.
-- Je livre du logiciel en production depuis 2019 en santé, fintech et cybersécurité. Diplôme d'ingénieur (bac+5), IMT Nord Europe.`,
+- QA automatisée sur Piktechs avec jev, l'agent navigateur de Browser Use : 16 vérifications permanentes sur les accès par offre et les permissions, où une requête SQL sur la base décide si le test passe ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits.
+- Un modèle de 180B à mélange d'experts (environ 6B actifs par token) en local sur un mini PC avec une RTX 3080 20 Go en OCuLink : environ 2 000 tokens/s en lecture du prompt et 110 à 204 tokens/s en génération, publiés avec les scripts pour refaire les mesures.
+- CalcPit (archivé) : 87 calculateurs pour la construction, et une application Android (Lumber Calculator) générée à partir des mêmes formules testées.
+- DRIVECO : deux ateliers ChatGPT (FR/EN) pour ses équipes, avec un témoignage public de sa DRH.`,
 };
 
 // ===== Client words (published publicly by the people quoted) =====
 const testimonials = {
   en: `"Learning how to use AI effectively is becoming a real lever for efficiency and impact. During our ChatGPT Workshop, 'Make AI work for you', we explored how AI can support us from the very first question to the automation of a complete business process. A big thank you to El Mahdi MOUBARAK for leading this insightful and energizing session. He brought both technical depth and a very practical mindset."
-— Bérénice Harfouf-Ponthus, Chief People Officer, DRIVECO (published on LinkedIn)
+Bérénice Harfouf-Ponthus, Chief People Officer, DRIVECO (published on LinkedIn)
 
 "We trusted El Mahdi with the mobile app for our delivery service. He taught himself what he needed and built the app autonomously. I recommend him strongly."
-— Leo Durfort, CEO, Deuspi (recommendation on Malt)`,
+Leo Durfort, CEO, Deuspi (recommendation on Malt, translated from French)`,
   fr: `« Learning how to use AI effectively is becoming a real lever for efficiency and impact. During our ChatGPT Workshop, "Make AI work for you", we explored how AI can support us from the very first question to the automation of a complete business process. A big thank you to El Mahdi MOUBARAK for leading this insightful and energizing session. He brought both technical depth and a very practical mindset. »
-— Bérénice Harfouf-Ponthus, DRH, DRIVECO (publié sur LinkedIn)
+Bérénice Harfouf-Ponthus, DRH, DRIVECO (publié sur LinkedIn, en anglais)
 
 « Nous avons fait confiance à El Mahdi pour notre projet de développement de l'application mobile d'un service de livraison. Il a su se former et développer l'application mobile en autonomie. Je vous le recommande fortement ! »
-— Leo Durfort, CEO, Deuspi (recommandation sur Malt)`,
+Leo Durfort, CEO, Deuspi (recommandation sur Malt)`,
 };
 
 // Unique ids for copy blocks
@@ -1450,7 +1441,7 @@ const assetGroups = [
   },
   {
     key: 'altao',
-    name: 'Altao RSS Tool',
+    name: 'Altao Discharge Summary Tool',
     link: null,
     assets: [
       { label: 'Thumbnail', file: 'portfolio/altao-thumb.webp', type: 'Thumbnail' },
@@ -1484,7 +1475,7 @@ const assetGroups = [
   },
   {
     key: 'ksur',
-    name: 'Agence KSUR',
+    name: 'KSUR',
     link: 'https://www.agence-ksur.com/',
     assets: [
       { label: 'Showreel (18s, MP4)', file: 'portfolio/ksur-showreel.mp4', poster: 'portfolio/ksur-showreel-poster.webp', type: 'Motion' },
@@ -1586,7 +1577,7 @@ const assetGroups = [
       { label: 'ALTAO Santé', file: 'logos/altao.png', type: 'Logo' },
       { label: 'Worldline', file: 'logos/worldline.png', type: 'Logo' },
       { label: 'Deuspi', file: 'logos/deuspi.png', type: 'Logo' },
-      { label: 'KSUR Services', file: 'logos/ksur.png', type: 'Logo' },
+      { label: 'KSUR', file: 'logos/ksur.png', type: 'Logo' },
     ],
   },
 ].map((g) => ({
@@ -1621,6 +1612,7 @@ const projectFilterGroups = [
   { label: 'Open source', filters: [
     { key: 'jev', label: 'jev · browser agents' },
     { key: 'hindsight', label: 'Hindsight' },
+    { key: 'skill-router', label: 'Skill Router' },
     { key: 'strata', label: '180B on eGPU' },
     { key: 'signal-bot', label: 'Signal Bot' },
     { key: 'polymarket', label: 'Polymarket Lab' },
@@ -1660,6 +1652,7 @@ AI Search Visibility Tracker: https://apify.com/emoubarak/ai-search-visibility-t
 Text-to-Short-Video: https://github.com/emoubarak/prompt-to-short-video-generator
 account-state-check (open source): https://github.com/emoubarak/account-state-check
 Hindsight (open source): https://github.com/emoubarak/hindsight
+Claude Skill Router (open source): https://github.com/emoubarak/claude-skill-router
 Voice Browser (open source): https://github.com/emoubarak/voice-browser
 A 180B model on an eGPU (benchmarks): https://github.com/emoubarak/strata-flash-next-rtx3080-20gb
 Signal LLM Bot: https://github.com/emoubarak/signal-bot
@@ -1677,7 +1670,7 @@ Polymarket market maker (Go): https://github.com/emoubarak/polymarket-updown-lab
   },
   {
     label: 'Companies & references',
-    text: `KSUR Services (agency): https://www.agence-ksur.com/
+    text: `KSUR (agency): https://www.agence-ksur.com/
 KSUR portfolio: https://www.agence-ksur.com/realisations
 DRIVECO: https://www.driveco.com/
 DRIVECO training post (LinkedIn): https://www.linkedin.com/posts/el-mahdi-moubarak_merci-%C3%A0-toute-l%C3%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/
@@ -1685,9 +1678,6 @@ Board of Cyber: https://www.boardofcyber.io/
 Worldline: https://worldline.com/`,
   },
 ].map((b) => ({ ...b, id: uid() }));
-
-// Flatten everything into copy blocks
-const identityBlocks = pair(identity);
 
 // Per-field identity rows, each individually copyable
 const identityFields = [
@@ -1701,12 +1691,19 @@ const identityFields = [
   { label: { en: 'GitHub', fr: 'GitHub' }, value: { en: canon.github, fr: canon.github } },
   { label: { en: 'Calendly', fr: 'Calendly' }, value: { en: canon.calendly, fr: canon.calendly } },
   { label: { en: 'Languages', fr: 'Langues' }, value: canon.languages },
-  { label: { en: 'Available for', fr: 'Disponible pour' }, value: { en: 'freelance missions · SaaS & AI development · automation · tech consulting', fr: 'missions freelance · développement SaaS & IA · automatisation · conseil tech' } },
+  { label: { en: 'Available for', fr: 'Disponible pour' }, value: { en: 'freelance missions · SaaS & AI development · automation · tech consulting', fr: 'missions freelance · développement SaaS et IA · automatisation · conseil technique' } },
   { label: { en: 'Rate', fr: 'Tarif' }, value: { en: `${canon.rates.maltDaily} (Malt) · ${canon.rates.upworkHourly} (Upwork)`, fr: `550 €/jour (Malt) · 55 $/h (Upwork)` } },
   { label: { en: 'Availability', fr: 'Disponibilité' }, value: canon.availability },
   { label: { en: 'Client sectors', fr: 'Secteurs clients' }, value: canon.clientSectors },
   { label: { en: 'Entry offer', fr: "Offre d'entrée" }, value: canon.entryOffer },
 ].map((f) => ({ ...f, idEn: uid(), idFr: uid() }));
+
+// "Copy all" = every field above, so it never misses one or disagrees with a row
+const identity = {
+  en: identityFields.map((f) => `${f.label.en}: ${f.value.en}`).join('\n'),
+  fr: identityFields.map((f) => `${f.label.fr} : ${f.value.fr}`).join('\n'),
+};
+const identityBlocks = pair(identity);
 
 const identityCards = [
   { lang: 'EN', langKey: 'en', idKey: 'idEn', copyAllId: identityBlocks[0].id, copyAllText: identityBlocks[0].text },
@@ -1715,15 +1712,16 @@ const identityCards = [
 const bioSections = bios.map((b) => ({ label: b.label, blocks: pair(b) }));
 // ===== Featured (case studies & articles), generated from the blog so it never drifts =====
 const featuredIds = ['case-study-piktechs', 'case-study-ai-card-scanner', 'case-study-jev-check', 'what-i-kept-telling-claude', 'browser-agents-at-work-jev', 'lazy-by-design', 'how-i-built-pdfold', 'the-great-work-polymarket'];
+// FR = translation of each article's current English title and description (frontmatter of src/content/blog/*.md)
 const featuredFr = {
-  'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment j'ai fait passer un prototype de deux semaines en production, seul ingénieur : le workflow, les erreurs, les leçons."],
-  'case-study-ai-card-scanner': ["Étude de cas : choisir le modèle de repli d'un LLM en l'attaquant", "Le scanner de cartes de Piktechs lit du texte écrit par des inconnus : comment j'ai choisi son modèle de repli en testant l'injection de prompt plutôt que le prix, et les garde-fous d'un endpoint LLM payant."],
-  'case-study-jev-check': ["Étude de cas : account-state-check, une QA par agent navigateur où la base de données rend le verdict", "Les tests unitaires et les suites mockées ratent les bugs où le front, le back et les permissions se contredisent. Un agent navigateur connecté sous de vrais états de compte, et la base qui tranche."],
-  'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "Les mêmes corrections revenaient dans chaque projet. Lesquelles, pourquoi les écrire ne suffisait pas, et où chaque correction doit vraiment vivre."],
-  'browser-agents-at-work-jev': ["Des agents navigateur au travail : ce que jev m'a appris au quotidien", "QA de mon propre SaaS sous de vrais comptes, consoles web sans API, passage de main pour les mots de passe : les cas d'usage, l'architecture et les pièges."],
-  'lazy-by-design': ["La flemme comme méthode : faire travailler mes machines quand je ne suis pas là", "Si je fais une chose deux fois, une machine la fait la troisième : exécutions autonomes, tâches planifiées, sources uniques, et ce qu'il faut à un agent pour travailler seul sans risque."],
-  'the-great-work-polymarket': ["Le Grand Œuvre : j'ai essayé de transformer des pile ou face sur le Bitcoin en or", "Des bots nommés d'après des mystiques et des alchimistes, les marchés Bitcoin à 5 minutes de Polymarket, et chaque avantage qui redevient du plomb. Un récit satirique du marché efficient."],
-  'how-i-built-pdfold': ["Comment j'ai construit PDFold seul : un workspace IA qui apprend, des tests et une infra sans surprise", "Le vrai setup derrière PDFold : une boucle de correction du workspace, des tests qui grandissent avec le code, et un pipeline OCR multi-passes sur Gemini avec bascule OpenRouter."],
+  'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment, seul ingénieur, j'ai fait d'un prototype de deux semaines un SaaS B2B en production : espaces de travail multi-clients, facturation en conditions réelles, une application Android et une fonctionnalité IA, avec Claude Code comme principal environnement de développement. Ma façon de travailler avec l'agent, et quatre erreurs que j'ai corrigées."],
+  'case-study-ai-card-scanner': ["Étude de cas : choisir le modèle de repli d'un LLM en l'attaquant", "Le scanner de cartes de visite de Piktechs lit la carte d'un inconnu avec un modèle de vision. Comment j'ai choisi son modèle de repli par un test d'injection de prompt avant de comparer les prix, et les garde-fous qui permettent d'exposer sans risque un endpoint LLM payant."],
+  'case-study-jev-check': ["Étude de cas : account-state-check, une QA par agent navigateur où la base de données rend le verdict", "Les tests unitaires et les suites de tests de bout en bout à base de mocks ratent les bugs où le front déployé, le backend et les permissions se contredisent. J'ai construit un outil de QA par agent navigateur qui se connecte à l'app de test déployée sous un compte dans un état exact et vérifie le résultat dans la base de données, puis je l'ai publié en open source comme skill d'agent."],
+  'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "J'ai relu environ 4 000 de mes propres prompts, sur quatre mois et deux machines, et retrouvé les six mêmes corrections dans chaque projet. Les écrire ne suffisait pas : une règle qu'un script peut vérifier va maintenant dans un hook, et le reste dans le fichier le plus ciblé qui marche."],
+  'browser-agents-at-work-jev': ["Des agents navigateur au travail : QA, consoles web et relais pour les mots de passe avec jev", "J'utilise jev, l'agent navigateur de Browser Use, tous les jours : pour tester mon propre SaaS sous chaque type de compte, pour travailler dans des consoles web sans API, et pour me rendre la main quand un mot de passe est demandé. Les cas d'usage, l'architecture et dix leçons de mise en place."],
+  'lazy-by-design': ["La flemme comme méthode : ce qu'il faut à un agent avant que je le laisse seul", "Si je fais une chose deux fois, une machine la fait la troisième. Comment cela devient des exécutions d'agents avec une condition d'arrêt vérifiable et un plafond de dépense, des tâches planifiées qui rendent compte, et une seule source pour chaque information."],
+  'the-great-work-polymarket': ["Le Grand Œuvre : j'ai essayé de transformer des pile ou face sur le Bitcoin en or", "J'ai donné à mes bots de trading simulé des noms de mystiques et d'alchimistes, je les ai lancés sur les marchés Bitcoin à cinq minutes de Polymarket, et j'ai passé juin à voir chaque avantage redevenir du plomb. Un récit satirique du marché efficient, en cinq étapes alchimiques."],
+  'how-i-built-pdfold': ["Comment j'ai construit PDFold seul : un espace de travail Claude avec une boucle de correction, des tests et une infra sans surprise", "La configuration derrière PDFold : un espace de travail Claude que je corrigeais après chaque raté, des tests écrits avec chaque fonctionnalité, et un pipeline PDF vers Markdown en deux passes sur Gemini, passé sur OpenRouter en août."],
 };
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 const featuredSections = featuredIds
@@ -1748,7 +1746,7 @@ const eduBlocks = pair(education);
 
 <Layout
   title="Profile Kit - El Mahdi Moubarak"
-  description="Canonical profile content - bios, experience and projects in EN/FR."
+  description="Copy-paste versions of my bio, experience and projects, in English and French."
   noindex
   contained
 >
@@ -1756,11 +1754,10 @@ const eduBlocks = pair(education);
   <section class="mb-12">
     <h1 class="text-2xl font-extrabold mb-1">Profile Kit</h1>
     <p class="font-mono text-xs text-muted mb-4">
-      Canonical, copy-paste-ready versions of my bio, experience and projects - EN & FR.
-      Single source of truth for freelance platforms (Malt, Upwork, LinkedIn…).
+      Copy-paste versions of my bio, experience and projects, in English and French, for Malt, Upwork and LinkedIn.
     </p>
     <p class="font-mono text-[0.65rem] text-muted">
-      Hidden page - not linked in the nav, not indexed.
+      Hidden page: not in the menu, not indexed.
     </p>
   </section>
 

@@ -8,13 +8,18 @@ interface Props {
   noindex?: boolean;
   /** Pages without an orange hero at the top (kit, 404) start with a solid header and a padded container. */
   contained?: boolean;
-  /** Share image under public/, built by scripts/og.py (default: the home card). */
+  /** Share image under public/, built by scripts/og.py (default: the home card). A changed image takes a new ?v=. */
   ogImage?: string;
+  /** Text alternative of the share image (default: the page title; the home card describes itself). */
+  ogAlt?: string;
   /** Set on articles: og:type article and its publication date. */
   published?: Date;
 }
 
-const { title, description = "El Mahdi Moubarak - Senior Software Engineer · SaaS & AI", noindex = false, contained = false, ogImage: ogPath = '/og/home.png', published } = Astro.props;
+const HOME_OG = '/og/home.png?v=2';
+const { title, description = "El Mahdi Moubarak, software and AI engineer in France: SaaS products, LLM features and browser agents in production. Co-founder and CTO of Piktechs.", noindex = false, contained = false, ogImage: ogPath = HOME_OG, ogAlt, published } = Astro.props;
+// the home card shows the name, the title and the headline (scripts/og.html)
+const ogImageAlt = ogAlt ?? (ogPath === HOME_OG ? `${identity.name}, ${identity.title.en}. ${identity.headline.en}.` : title);
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const site = Astro.site ?? new URL('https://moubarak.dev');
@@ -39,10 +44,12 @@ const personLd = {
   name: identity.name,
   url: identity.website,
   jobTitle: identity.title.en,
-  address: { '@type': 'PostalAddress', addressLocality: identity.city, addressCountry: 'FR' },
+  // country only: no public city (see identity.city)
+  address: { '@type': 'PostalAddress', addressCountry: 'FR' },
   sameAs: [identity.linkedin, identity.github],
   worksFor: [
-    { '@type': 'Organization', '@id': 'https://www.agence-ksur.com/#organization', name: 'AGENCE-KSUR', url: 'https://www.agence-ksur.com/' },
+    // the name agence-ksur.com declares for this @id
+    { '@type': 'Organization', '@id': 'https://www.agence-ksur.com/#organization', name: 'Agence KSUR', url: 'https://www.agence-ksur.com/' },
     { '@type': 'Organization', '@id': 'https://piktechs.com/#organization', name: 'Piktechs', url: 'https://piktechs.com/' },
   ],
   knowsAbout: ['Software engineering', 'SaaS', 'Artificial intelligence', 'LLM agents', 'Full-stack web development'],
@@ -70,7 +77,7 @@ const arrow = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content={ogPath === '/og/home.png' ? 'El Mahdi Moubarak - Founder & Full-Stack Engineer · Software, SaaS & AI' : title} />
+  <meta property="og:image:alt" content={ogImageAlt} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
@@ -145,7 +152,7 @@ const arrow = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="
   <footer class="site-footer relative z-[1] bg-[var(--bg)]">
     <div class="wrap py-10 flex flex-col md:flex-row md:items-center justify-between gap-6 text-[0.95rem]">
       <div class="flex items-center gap-3 text-[var(--muted)]">
-        <span>&copy; {new Date().getFullYear()} El Mahdi Moubarak · Lille, France</span>
+        <span>&copy; {new Date().getFullYear()} El Mahdi Moubarak · France</span>
       </div>
       <nav class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
         <a href={`${base}/portfolio`}>Portfolio</a>

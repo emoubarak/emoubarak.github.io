@@ -6,10 +6,11 @@
 """Share images (Open Graph, 1200×630) for every page and article.
 
     ./scripts/og.py            # rebuilds public/og/home.png, public/og/*.png and public/og/blog/<slug>.png
+    ./scripts/og.py home cv    # rebuilds only the cards named (home, cv, portfolio, harness, blog, blog/<slug>)
 
 Each card is scripts/og-card.html filled with the page's title and its real images (captures, CV pages, the
 article's cover), rendered in headless Chrome. The home card (public/og/home.png) comes from scripts/og.html.
-A changed image should get a new file name: platforms cache share images by URL.
+A changed image needs a new URL (the page bumps its ?v=): platforms cache share images by URL.
 Run it again after adding or renaming an article.
 """
 import json, re, sys
@@ -46,7 +47,7 @@ def cards():
     p = "/public"
     yield "portfolio", {
         "eyebrow": "moubarak.dev/portfolio", "title": "Built and shipped",
-        "sub": "SaaS products, web apps, e-commerce stores and mobile apps I designed, built and shipped.",
+        "sub": "SaaS products, open-source tools for Claude Code and browser agents, research write-ups and client websites.",
         "foot": "El Mahdi Moubarak",
         "images": [
             {"src": f"{p}/portfolio/ksur-home.webp", "w": 400, "x": 760, "y": 70, "r": 5},
@@ -56,7 +57,7 @@ def cards():
     }
     yield "cv", {
         "eyebrow": "moubarak.dev/cv", "title": "Curriculum vitae",
-        "sub": "Founder & Full-Stack Engineer · Software, SaaS & AI. PDF in English and French.",
+        "sub": "Software & AI Engineer · Full\u2011Stack, LLM\u00a0Systems, Agents. PDF in English and French.",
         "foot": "El Mahdi Moubarak",
         "images": [
             {"src": f"{p}/cv-fr-page.webp", "w": 290, "x": 730, "y": 70, "r": -7},
@@ -65,7 +66,7 @@ def cards():
     }
     yield "harness", {
         "eyebrow": "moubarak.dev/harness", "title": "The harness",
-        "sub": "How I run AI agents on my own machines, and check that the work is really done.",
+        "sub": "The setup I built to let AI agents work on my own machines, and the checks that tell me when a task is done.",
         "foot": "El Mahdi Moubarak",
         "images": [
             {"src": f"{p}/harness/browser-profiles.webp", "w": 450, "x": 690, "y": 60, "r": -5},
@@ -74,7 +75,7 @@ def cards():
     }
     yield "blog", {
         "eyebrow": "moubarak.dev/blog", "title": "Notes from the work",
-        "sub": "Case studies from real projects, and what building with AI every day taught me.",
+        "sub": "Case studies from Piktechs and my open-source tools, and articles on working with AI agents every day.",
         "foot": "El Mahdi Moubarak",
         "images": [
             {"src": f"{p}/blog/case-study-ai-card-scanner.webp", "w": 480, "x": 670, "y": 70, "r": -5},
@@ -101,18 +102,26 @@ def cards():
         yield f"blog/{f.stem}", card
 
 
-def render(items):
+def render(items, home=True):
     jobs = [(f"/scripts/og-card.html#" + quote(json.dumps(card)), OUT / f"{name}.png", "fit()") for name, card in items]
-    # the home card has its own layout (name, headline, the services illustration)
-    jobs.append(("/scripts/og.html", OUT / "home.png", None))
-    items = items + [("home", None)]
+    if home:
+        # the home card has its own layout (name, headline, the services illustration)
+        jobs.append(("/scripts/og.html", OUT / "home.png", None))
+        items = items + [("home", None)]
     for (name, _), size in zip(items, shoot(jobs, 1200, 630)):
         dst = OUT / f"{name}.png"
         print(f"{name:42} " + (f"title {size}px  " if size else "") + f"{dst.stat().st_size // 1024} KB")
 
 
 def main():
-    render(list(cards()))
+    names = set(sys.argv[1:])
+    if not names:
+        return render(list(cards()))
+    items = [(n, c) for n, c in cards() if n in names]
+    unknown = names - {n for n, _ in items} - {"home"}
+    if unknown:
+        sys.exit(f"unknown card(s): {', '.join(sorted(unknown))}")
+    render(items, home="home" in names)
 
 
 if __name__ == "__main__":

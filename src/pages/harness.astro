@@ -44,7 +44,7 @@ const benchMax = 10;
 <Layout
   title="The harness - El Mahdi Moubarak"
   description="How one person runs AI agents on a handful of machines: skills, hooks, routines, browser agents, memory and a local 180B model, with what each part checks and what broke."
-  ogImage="/og/harness.png"
+  ogImage="/og/harness.png?v=2"
 >
   <PageHero eyebrow="Behind the work">
     <h1 class="t-page">
@@ -52,7 +52,7 @@ const benchMax = 10;
       <span class="rise"><span style="--i:1">harness</span></span>
     </h1>
     <p class="t-lede hero__lede fade-up" style="--i:1">
-      The setup I built to make AI agents do real work on my own machines, and to check that it is really done.
+      The setup I built to let AI agents work on my own machines, and the checks that tell me when a task is done.
     </p>
     <div class="hero__actions fade-up" style="--i:2">
       <a href="#journey" class="btn btn--solid">Take the tour <Icon name="arrow" /></a>
@@ -98,7 +98,7 @@ const benchMax = 10;
           </div>
         ))}
       </div>
-      <p class="t-meta mt-5">One person, a mini PC with an external GPU, a home server, a laptop, two phones and a small VPS, on one private network.</p>
+      <p class="t-meta mt-5">One person, a mini PC with an external GPU, a home server, two laptops, two phones and a small VPS, on one private network.</p>
     </section>
 
     <!-- Life of a prompt -->
@@ -107,7 +107,7 @@ const benchMax = 10;
         <div class="max-w-[46rem]">
           <p class="t-eyebrow mb-4">The tour</p>
           <h2 class="t-h2">Life of a prompt</h2>
-          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">What happens between the moment I type three words and the moment I accept that something is done.</p>
+          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">What happens between my prompt and the moment I accept that something is done.</p>
         </div>
         <ol class="journey" style={`--n:${journey.length}`}>
           <span class="journey__track" aria-hidden="true"><span class="journey__dot"></span></span>
@@ -136,8 +136,8 @@ const benchMax = 10;
         {districts.filter((d) => !d.hidden).map((d, i) => (
           <article id={d.id} class:list={['district', `district--${d.layout}`]} data-reveal>
             <div class="district__text">
-              <p class="district__kicker"><span class="district__icon" aria-hidden="true" set:html={d.icon} />{d.tag}</p>
-              <h3 class="t-h3">{d.name}</h3>
+              <p class="district__kicker"><span class="district__icon" aria-hidden="true" set:html={d.icon} />{d.kicker ?? d.name}</p>
+              <h3 class="t-h3">{d.title ?? d.name}</h3>
               <p class="text-2 leading-relaxed mt-4">{d.what}</p>
               <ul class="district__list">
                 {d.points.map((p) => <li set:html={p} />)}
@@ -228,7 +228,7 @@ const benchMax = 10;
       <div class="grid lg:grid-cols-12 gap-x-16 gap-y-6 items-end">
         <div class="lg:col-span-6">
           <p class="t-eyebrow mb-4">The staff</p>
-          <h2 class="t-h2">Several agents, one rulebook</h2>
+          <h2 class="t-h2">The agents and what they share</h2>
         </div>
         <p class="lg:col-span-6 text-2 text-[1.1rem] leading-relaxed">{agents.intro}</p>
       </div>
@@ -242,7 +242,7 @@ const benchMax = 10;
             <div class="agent__top"><span class="agent__icon" aria-hidden="true" set:html={a.icon} /><h3 class="agent__name">{a.name}</h3></div>
             <p class="agent__role">{a.role}</p>
             <dl class="agent__dl">
-              <div><dt>Brains</dt><dd>{a.brains}</dd></div>
+              <div><dt>Model</dt><dd>{a.brains}</dd></div>
               <div><dt>Rules</dt><dd>{a.rules}</dd></div>
             </dl>
           </article>
@@ -315,13 +315,13 @@ const benchMax = 10;
         <div class="max-w-[46rem]">
           <p class="t-eyebrow mb-4">Policy handbook</p>
           <h2 class="t-h2">Rules that became code</h2>
-          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">A rule the model breaks twice stops being a sentence. It becomes a hook: a script that runs before or after the model acts, and says no.</p>
+          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">When the model breaks a rule twice, I turn the rule into a hook: a script that runs before or after the model acts, and can refuse what it is about to do.</p>
         </div>
         <div class="hooks">
           {hooks.map((h, i) => (
             <article class="hook" data-reveal style={`--i:${i % 3}`}>
               <p class="hook__when">{h.when}</p>
-              <p class="hook__before"><span>What happened</span>{h.before}</p>
+              <p class="hook__before"><span>Why</span>{h.before}</p>
               <p class="hook__after"><span>What the hook does</span>{h.after}</p>
             </article>
           ))}
@@ -388,8 +388,8 @@ const benchMax = 10;
       <div class="band-ink px-[clamp(1.5rem,5vw,4.5rem)] py-[clamp(3rem,6vw,5.5rem)]">
         <div class="max-w-[46rem]">
           <p class="t-eyebrow mb-4">The workshop</p>
-          <h2 class="t-h2">Small tools that make it livable</h2>
-          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">Each one exists because something annoyed me twice.</p>
+          <h2 class="t-h2">Small tools around the setup</h2>
+          <p class="text-2 text-[1.1rem] leading-relaxed mt-5">Each one exists because I hit the same problem twice.</p>
         </div>
         <ul class="workshop">
           {workshop.map((w, i) => {
@@ -431,7 +431,7 @@ const benchMax = 10;
         <div class="lg:col-span-7">
           <p class="t-eyebrow mb-6">Contact</p>
           <h2 class="t-page">Want one for your team?</h2>
-          <p class="t-lede mt-6 max-w-[36ch]">I set up agents that check their own work, on your own servers.</p>
+          <p class="t-lede mt-6 max-w-[36ch]">I set up agents on your own servers, with tests, a database query or a second model checking their work.</p>
         </div>
         <div class="lg:col-span-5 flex flex-col items-start gap-4 lg:items-end">
           <a href={identity.calendly} target="_blank" rel="noopener noreferrer" class="btn btn--solid">Book a call <Icon name="arrow" /></a>

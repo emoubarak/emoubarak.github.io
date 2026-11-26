@@ -2,7 +2,7 @@
 title: "I Told You Not to Buy a GPU. Then I Bought One."
 description: "Same mini PC, same cable, an RTX 3080 with 20 GB: Qwen3.8-Flash-Next 180B now reads about 2,000 tokens per second and writes 110 to 204. My settings and benchmarks."
 pubDate: 2026-11-02
-tags: ["AI", "Local inference", "Satire", "Hardware"]
+tags: ["AI", "Local inference", "Hardware"]
 cover: "/blog/then-i-bought-a-gpu.webp"
 coverAlt: "A tiny mini PC connected by one cable to a much bigger graphics card, whose robot arms pull dozens of glowing drawers at once from a wall of thousands."
 tldr:
@@ -32,17 +32,15 @@ Then I bought a GPU.
 
 The first turn of a Claude Code session is about 36,000 tokens of instructions and files. The 8 GB card needed about a minute and a half to read it. The 20 GB card reads it in **18 seconds**, then writes faster than my terminal scrolls.
 
-Everything is documented, with the exact config, dated benchmark files and the scripts to reproduce it: **[emoubarak/strata-flash-next-rtx3080-20gb](https://github.com/emoubarak/strata-flash-next-rtx3080-20gb)**.
-
 ![Two Buttons meme: "Follow my own advice" / "Buy the GPU"](/blog/memes/then-i-bought-a-gpu-1.webp)
 
-## Why 12 more gigabytes change everything
+## What 12 more gigabytes change
 
-Qwen3.8-Flash-Next is a committee of 24,576 small experts, and each token only consults a handful. The whole game is having the right experts on the card when they are needed.
+Qwen3.8-Flash-Next is a committee of 24,576 small experts, and each token only consults a handful. Every expert already on the card is one the CPU doesn't have to compute and the cable doesn't have to carry.
 
 The 8 GB card held about 800 of them. The 20 GB card holds **about 9,700**. While writing, the expert the model wants is already on the card more than 9 times out of 10, so the CPU barely helps anymore. While reading a long prompt, far fewer experts cross the cable, and the card holds the speed as the prompt grows: 15,000 tokens or 162,000, it stays around 2,000 tokens per second.
 
-The rest is memory bandwidth: 721 GB/s measured on this card, which is what writing speed actually depends on.
+Writing speed then depends on memory bandwidth: 721 GB/s measured on this card.
 
 ## My settings
 
@@ -51,7 +49,7 @@ Strata's calibration on the new card kept its own defaults, so the settings I tu
 | Setting | What it does | Gain |
 |---|---|---|
 | `--prefill 16384` | reads the prompt in chunks of 16,384 tokens | reading +28 to +47% |
-| `--spec 4` + the MTP head | guesses 4 tokens ahead, keeps the right ones | writing +37 to +51% |
+| `--spec 4` + the MTP (multi-token prediction) head | guesses 4 tokens ahead, keeps the right ones | writing +37 to +51% |
 | `--kv-resident 32768` | 262k context: 32k tokens of memory on the card, the rest in RAM | −5 to −9% reading, 2× the window |
 | `--conversation-cache-slots 4` | parks up to 4 conversations in 8 GB of RAM | Claude Code with sub-agents twice as fast (68 s → 35 s) |
 | `STRATA_KV_PREFETCH=1` | uploads the next layer's memory while the current one computes | reading +2.5 to +4.8% |
@@ -59,7 +57,7 @@ Strata's calibration on the new card kept its own defaults, so the settings I tu
 | `STRATA_ROUTE_TAIL_SKIP=4` | skips an absent expert when every token ranks it 4th or worse | writing +7 to +16% |
 | [gpu-unlock](https://github.com/Zagitta/gpu-unlock) | kernel module that lifts the half-speed FP16 limit on GeForce cards | reading +16 to +19% |
 
-Two of those deserve a note. `ROUTE_TAIL_SKIP` is a dial, not a switch: lower values skip more experts and write faster, and 4 is the lowest value that still scored exactly like the default on a freshly started server. And gpu-unlock is a kernel module that removes a speed limit NVIDIA put on its gaming cards. Same accuracy, a sixth faster reading, one reboot.
+`ROUTE_TAIL_SKIP` takes a threshold: lower values skip more experts and write faster, and 4 is the lowest value that still scored exactly like the default on a freshly started server. gpu-unlock is a third-party kernel module. I kept it because the multiplication check below scored the same 38/40 with and without it, and it only acts when its kernel argument is set: removing the argument and rebooting turns it off.
 
 ![Success Kid meme: "Bought 12 more GB" / "Deleted two weeks of tuning"](/blog/memes/then-i-bought-a-gpu-2.webp)
 
@@ -68,8 +66,8 @@ Two of those deserve a note. `ROUTE_TAIL_SKIP` is a dial, not a switch: lower va
 Speed settings that skip work are only worth it if the answers survive, so I checked on the final config:
 
 - 40 two-digit multiplications, right after start, no thinking: **38/40**, the same two misses as with the default settings.
-- My agent's 20-decision exam, 4 runs: **36/40**, the same single case missed every time.
-- Tool calls in both the OpenAI and Anthropic formats, the two formats Claude Code and OpenCode speak.
+- My agent's 10-case exam, 4 runs each: **36/40**, the same single case missed every time.
+- Tool calls: correct in both the OpenAI and Anthropic formats, the two that Claude Code and OpenCode use.
 
 ## What you need to try it
 
@@ -80,6 +78,6 @@ Speed settings that skip work are only worth it if the answers survive, so I che
 
 ## So, should you buy the GPU?
 
-In my defense, the software kept its promise. In two weeks: about twenty Strata releases, one kernel module and a few environment variables, on top of the card. The same mini PC now reads five times faster and writes twice as fast as when I told you not to upgrade.
+In my defense, the software kept its promise. In two weeks: twelve Strata releases, one kernel module and a few environment variables, on top of the card. The same mini PC now reads five times faster and writes twice as fast as when I told you not to upgrade.
 
 So the advice stands, with an update: try the config first. Then buy the card. Then [try the config again](https://github.com/emoubarak/strata-flash-next-rtx3080-20gb).

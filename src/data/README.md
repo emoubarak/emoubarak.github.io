@@ -1,4 +1,4 @@
-# `profile.js` — la source mère
+# `profile.js`, la source mère
 
 Toute surface publique est une **projection** de ce fichier : ce site (`/`, `/cv`, `/portfolio`),
 les blocs copiables de `/kit`, puis LinkedIn, Malt, Upwork et Fiverr.
@@ -12,7 +12,7 @@ les blocs copiables de `/kit`, puis LinkedIn, Malt, Upwork et Fiverr.
 | `pages/index.astro` | `identity`, `services` (les 3 lignes phares), `projects` (4 en vedette), `testimonials` |
 | `pages/cv.astro` | `aiApproach` (principes, chacun avec sa preuve), `experiences`, `education`, `techGroups`, `interests`, `projects` |
 | `pages/portfolio.astro` | `projects` (`thumb` pour la carte, `previews` pour la modale), `projectCategories` |
-| `pages/kit.astro` | `identity`, `education`, `certifications`, `aiApproach` (bloc EN « How I work with AI » généré) — et garde sa prose EN/FR propre |
+| `pages/kit.astro` | `identity`, `education`, `certifications`, `aiApproach` (bloc EN « How I work with AI » généré), et garde sa prose EN/FR propre |
 
 **Le kit est la base de toutes ses réalisations**, les siennes comme celles faites pour un client, publiées ou non
 (demande du 2026-11-05) : chaque réalisation y a sa fiche EN/FR (`projects`), son groupe d'images (`assetGroups`),
@@ -28,8 +28,13 @@ faits structurés ci-dessus. Quand les deux divergent, c'est `profile.js` qui a 
 - **Angle IA d'abord.** EMM est « Founder & AI / Full-Stack Engineer » et ALTAO « Full-Stack & AI
   Engineer » : les deux missions les plus IA du parcours doivent le dire dans leur intitulé, pas
   seulement dans leur description.
-- **Lille** est la ville officielle. LinkedIn la dérive d'un code postal, Upwork d'une adresse postale.
-- **« Adam »** est délibérément le prénom public sur Fiverr et Upwork — voir `identity.publicNames`.
+- **France** est le seul lieu affiché (décision du 26/11/2026) : plus de ville de résidence publique, plus jamais
+  Lille comme lieu de vie (`identity.city` vaut `null`, `location` dit « France · Remote across Europe »). Les lieux
+  passés restent sur leur ligne : IMT Nord Europe et ALTAO à Lille, Worldline à Seclin.
+- **Un seul intitulé** partout (site, CV, images de partage, bannière LinkedIn) : « Software & AI Engineer ·
+  Full-Stack, LLM Systems, Agents » / « Ingénieur logiciel et IA · full-stack, systèmes LLM, agents ». Jamais
+  « Senior ». `title` et `cvTitle` ont la même valeur.
+- **« Adam »** est délibérément le prénom public sur Fiverr et Upwork (voir `identity.publicNames`).
 - Les termes CMS legacy (Grav CMS, AngularJS) sont retirés des stacks : ils tiraient le matching vers
   du travail CMS.
 - **Shopify** est hors de la page d'accueil et hors des titres : segmenté, c'est le pool le moins
@@ -38,7 +43,7 @@ faits structurés ci-dessus. Quand les deux divergent, c'est `profile.js` qui a 
 ## Articles et études de cas
 
 Le blog (`src/content/blog/`) accepte en frontmatter `cover`, `tldr` et `featured` : une couverture qui
-explique (illustration ou vraie capture) et trois lignes « In short » s'affichent avant le texte. Pas de tuiles de
+explique (illustration ou vraie capture) et trois lignes « Summary » s'affichent avant le texte. Pas de tuiles de
 chiffres : un chiffre n'entre dans le texte que s'il change ce que le lecteur comprend. Le tag `Case Study` range un
 article dans la section « Case studies » de `/blog` ; `featured: true` la met en grand. Les illustrations
 de couverture sont dans `public/blog/<slug>.webp`, générées par `scripts/covers.py` (voir `docs/DESIGN.md`).

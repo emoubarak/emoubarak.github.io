@@ -35,7 +35,7 @@
 \definecolor{linkc}{RGB}{26, 93, 171}
 
 \hypersetup{colorlinks=true, linkcolor=accent, urlcolor=accent,
-    pdftitle={El Mahdi Moubarak, Ingénieur Logiciel et IA}, pdfauthor={El Mahdi Moubarak}}
+    pdftitle={El Mahdi Moubarak, Ingénieur logiciel et IA}, pdfauthor={El Mahdi Moubarak}}
 
 \makeatletter
 \renewcommand\normalsize{\@setfontsize\normalsize{11}{14.5}}
@@ -87,7 +87,7 @@
 \end{tikzpicture}%
 \vspace*{-1pt}%
 {\fontsize{27}{32}\selectfont\bfseries\color{white} El Mahdi Moubarak}\par\vspace{5pt}
-{\large\color{accentlight} Ingénieur Logiciel \& IA{\color{onband}\enspace$\cdot$\enspace}Full-Stack, Systèmes LLM, Agents}\hfill{\color{onband}Lille, France}\par\vspace{7pt}
+{\large\color{accentlight} Ingénieur logiciel et IA{\color{onband}\enspace$\cdot$\enspace}full-stack, systèmes LLM, agents}\hfill{\color{onband}France\enspace$\cdot$\enspace télétravail partout en Europe}\par\vspace{7pt}
 {\fontsize{10}{13}\selectfont\color{onband}\contact{mailto:elmahdi@moubarak.dev}{elmahdi@moubarak.dev}\sep
 \contact{https://moubarak.dev}{moubarak.dev}\sep
 \contact{https://www.linkedin.com/in/el-mahdi-moubarak}{linkedin.com/in/el-mahdi-moubarak}\sep
@@ -95,75 +95,74 @@
 \vspace{20pt}
 
 \section*{PROFIL}
-Ingénieur full-stack, je livre du logiciel en production depuis 2019 (cybersécurité, santé, fintech), souvent seul ingénieur du produit. Depuis 2026, je travaille en natif IA : un agent navigateur qui teste mon SaaS comme un vrai utilisateur, la base de données pour juge ; des fonctionnalités LLM dont je choisis les modèles en les attaquant ; Claude Code comme environnement principal.
+Ingénieur full-stack, je mets des logiciels en production depuis 2019 (cybersécurité, santé, fintech), souvent comme seul ingénieur du produit. Je conçois des SaaS, des fonctionnalités LLM et des agents navigateur, avec Claude Code comme environnement de travail principal depuis 2026. Je teste mon SaaS avec un agent navigateur qui se connecte sous chaque type de compte, et je choisis le modèle de chaque fonctionnalité IA après avoir attaqué les modèles candidats par injection de prompt.
 
 \section*{EXPÉRIENCE}
 
-\role{Co-fondateur \& CTO}{\org{https://piktechs.com}{Piktechs}}{France}{Mars 2026 -- Aujourd'hui}
+\role{Cofondateur et CTO}{\org{https://piktechs.com}{Piktechs}}{France}{Mars 2026 -- Aujourd'hui}
 \begin{itemize}
-    \item \textbf{Seul ingénieur :} prototype de deux semaines transformé en \textbf{SaaS B2B complet en production} pour la capture de leads événementiels, avec Claude Code comme environnement d'ingénierie principal
-    \item \textbf{QA agentique avec jev}, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe) et suit un objectif en langage naturel, puis \textbf{une requête SQL, pas l'agent, rend le verdict}. \m{16 vérifications permanentes} sur les accès par offre et les permissions ; ses captures avant/après sur des tickets clos ont révélé \m{3 bugs résiduels}. En open source : \link{https://github.com/emoubarak/account-state-check}{account-state-check}
+    \item \textbf{Seul ingénieur :} prototype de deux semaines transformé en \textbf{SaaS B2B en production} pour collecter des contacts sur les salons et événements
+    \item \textbf{QA agentique avec jev}, l'agent navigateur de Browser Use : il se connecte à l'application de test avec un compte dans chaque état (gratuit, Pro, expiré, membre d'équipe) et suit un objectif en langage naturel ; \textbf{une requête SQL sur la base décide ensuite si le test passe}. \m{16 vérifications permanentes} sur les accès de chaque offre et les droits ; ses captures avant/après sur des tickets clos ont révélé \m{3 bugs} que les correctifs avaient manqués ou introduits. En open source : \link{https://github.com/emoubarak/account-state-check}{account-state-check}
     \item \textbf{Scanner de cartes de visite IA} : modèle de vision avec sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours ; modèle de repli choisi par des \textbf{tests d'injection de prompt} (\m{2 modèles candidats sur 4} ont obéi à une carte piégée)
-    \item \textbf{Facturation Stripe en live} (checkout, portail, webhooks, offres par siège, réconciliation) et espaces multi-clients sécurisés par \textbf{row-level security Postgres} ; le code de facturation et de permissions est \textbf{relu par un autre modèle} que celui qui l'a écrit
-    \item \textbf{Application Android} \link{https://play.google.com/store/apps/details?id=com.piktechs.app\&hl=fr}{publiée sur Google Play} et build iOS depuis le même code (Capacitor) ; tests unitaires et Playwright en garde-fou de la CI/CD, environnements de test et de production séparés
+    \item \textbf{Facturation Stripe en production} (paiement, portail client, webhooks, offres par siège, rapprochement) et espaces multi-clients cloisonnés par la \textbf{RLS de Postgres} ; chaque changement de facturation ou de permissions passe des tests, une \textbf{relecture par un second modèle} et mon accord avant la production
+    \item \textbf{Application Android} \link{https://play.google.com/store/apps/details?id=com.piktechs.app\&hl=fr}{publiée sur Google Play} et version iOS tirées du même code (Capacitor) ; tests unitaires et Playwright obligatoires dans la CI/CD, environnements de test et de production séparés
 \end{itemize}
 \stackline{React\sep TypeScript\sep Vite\sep Tailwind\sep Supabase (Postgres, RLS, Edge Functions)\sep Stripe\sep Capacitor\sep OpenRouter\sep Resend\sep Playwright, Vitest\sep jev (Browser Use)\sep GitHub Actions\sep Cloudflare Pages\sep Claude Code}
 
 \expsep
-\role{Fondateur \& Ingénieur IA / Full-Stack}{\org{https://moubarak.dev}{EMM}}{Lille, France}{Mars 2026 -- Aujourd'hui}
+\role{Fondateur, ingénieur IA et full-stack}{\org{https://moubarak.dev}{EMM}}{ma société (SASU), France}{Mars 2026 -- Aujourd'hui}
 \begin{itemize}
-    \item Activité d'ingénierie indépendante : \textbf{pipelines LLM et OCR}, \textbf{agents IA} avec skills et MCP sur mesure, automatisation navigateur avec jev pour les back-offices sans API, pour des PME et des agences
-    \item \textbf{Conçu et exploité mon propre harnais d'agents} : skills, hooks qui transforment les corrections répétées en contrôles, routines planifiées avec alertes d'échec, mémoire des sessions interrogeable par le sens, et un \textbf{modèle local de 180B} sur une RTX 3080 ; les corrections répétées deviennent des hooks (\link{https://moubarak.dev/harness}{visite})
-    \item Conception et animation de \textbf{formations IA} pour DRIVECO (opérateur de bornes de recharge) : deux sessions FR/EN construites sur les workflows réels de l'entreprise, avec un \link{https://www.linkedin.com/posts/el-mahdi-moubarak_merci-\%C3\%A0-toute-l\%C3\%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/}{témoignage public} de sa DRH
-    \item Également CTO de \link{https://www.agence-ksur.com}{KSUR Services} (agence web, France et Maroc), en partenariat avec \link{https://the-icon.be}{THE ICON} (Belgique) : stack technique et livraisons pour \m{une dizaine d'entreprises clientes}
+    \item \textbf{Conception et exploitation de mon environnement d'agents} : skills, hooks qui transforment les corrections répétées en contrôles, routines planifiées avec alertes d'échec, un \textbf{modèle de 180B à mélange d'experts} (environ 6B actifs par token) en local sur une RTX 3080 20 Go (\link{https://moubarak.dev/harness}{moubarak.dev/harness})
+    \item Conception et animation de \textbf{formations IA} pour DRIVECO (opérateur de bornes de recharge) : deux sessions, en français et en anglais, construites sur les processus de l'entreprise, avec un \link{https://www.linkedin.com/posts/el-mahdi-moubarak_merci-\%C3\%A0-toute-l\%C3\%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/}{témoignage public} de sa DRH
+    \item Également CTO de \link{https://www.agence-ksur.com}{KSUR Services} (agence web), en partenariat avec \link{https://the-icon.be}{THE ICON} (Belgique) : choix techniques et livraison des projets d'\m{une dizaine d'entreprises clientes} en France, en Belgique, au Maroc et à La Réunion
 \end{itemize}
-\stackline{TypeScript\sep Python\sep Next.js\sep Node.js\sep Supabase\sep Docker\sep OpenAI, Claude, Gemini APIs\sep MCP\sep Browser Use\sep Claude Code}
+\stackline{TypeScript\sep Python\sep Next.js\sep Node.js\sep Supabase\sep Docker\sep API OpenAI, Claude, Gemini\sep MCP\sep Browser~Use\sep Claude Code}
 
 \expsep
-\role{Ingénieur Full-Stack}{\org{https://www.boardofcyber.io}{Board of Cyber}}{Paris (remote)}{Mars 2023 -- Févr. 2026}
+\role{Ingénieur full-stack}{\org{https://www.boardofcyber.io}{Board of Cyber}}{Paris (télétravail)}{Mars 2023 -- Févr. 2026}
 \begin{itemize}
-    \item Principalement front-end, dans une \textbf{équipe de 20 développeurs}, sur \textit{Security Rating\textregistered}, plateforme SaaS d'évaluation cyber utilisée par \m{plus de 200 organisations} : plateforme client, back office et manager office
-    \item Création de \textbf{composants Angular}, montées de version d'Angular, couverture de tests (Spectator) et correctifs à cadence de release élevée
+    \item Principalement front-end, dans une \textbf{équipe de 20 développeurs}, sur \textit{Security Rating\textregistered}, plateforme SaaS de notation cyber utilisée par \m{plus de 200 organisations} : espace client, back-office et espace manager
+    \item Création de \textbf{composants Angular}, montées de version d'Angular, couverture de tests (Spectator) et correctifs
     \item Conception d'une \textbf{sonde Python de scan de vulnérabilités} (nmap) automatisant la collecte des données de surface d'attaque pour les notations
 \end{itemize}
 \stackline{Angular\sep TypeScript\sep Python\sep nmap\sep Spectator\sep Docker\sep CI/CD}
 
 \expsep
-\role{Ingénieur Full-Stack \& IA}{\org{https://www.linkedin.com/company/altao---recherche-developpement-marketing-sante}{ALTAO Santé}}{Lille}{Sept. 2021 -- Sept. 2022}
+\role{Ingénieur full-stack et IA}{\org{https://www.linkedin.com/company/altao---recherche-developpement-marketing-sante}{ALTAO Santé}}{Lille}{Sept. 2021 -- Sept. 2022}
 \begin{itemize}
-    \item \textbf{Seul ingénieur} sur une plateforme médicale greenfield de correction des comptes-rendus de sortie hospitaliers, remplaçant un workflow éclaté entre plusieurs outils
-    \item Plus de \m{5~000 documents} traités via la plateforme, \m{700~000~\texteuro{}} économisés pour les hôpitaux
-    \item Intégration des \textbf{modèles de prédiction ML} et des moteurs de règles de l'équipe Data Science dans le workflow de production
-    \item Recueil des besoins avec les médecins, specs, déploiement et monitoring de l'infrastructure AWS
+    \item \textbf{Seul ingénieur} d'une plateforme médicale partie de zéro, qui corrige les comptes rendus de sortie hospitaliers et remplace une chaîne éclatée entre plusieurs outils
+    \item Plus de \m{5~000 documents} traités par la plateforme ; \m{700~000~\texteuro{}} d'économies estimées pour les hôpitaux lors des tests sur des documents passés, avant la mise en production
+    \item Intégration des \textbf{modèles de prédiction ML} et des moteurs de règles de l'équipe Data Science
+    \item Recueil des besoins avec les médecins, rédaction des spécifications, déploiement et supervision de l'infrastructure AWS
 \end{itemize}
 \stackline{Vue.js\sep Django\sep Python\sep PostgreSQL\sep AWS (EC2, Route53, Amplify)}
 
 \expsep
-\role{Ingénieur Full-Stack}{\org{https://worldline.com}{Worldline}}{Seclin}{Avr. 2019 -- Août 2019 (stage)}
+\role{Ingénieur full-stack}{\org{https://worldline.com}{Worldline}}{Seclin}{Avr. 2019 -- Août 2019 (stage)}
 \begin{itemize}
-    \item Développement d'un outil interne de R\&D pour créer, stocker et rejouer des jeux de tests de paiement sur MQTT, améliorant la vitesse de développement de l'équipe de \m{70\,\%}
+    \item Conception d'un outil interne de R\&D qui crée, stocke et rejoue des jeux de tests de paiement sur MQTT ; vitesse de développement de l'équipe \m{70\,\%} plus élevée, mesurée par des tests avant la mise en production
 \end{itemize}
 \stackline{Vue.js\sep Spring Boot\sep Java\sep MQTT\sep Docker}
 
 \section*{OPEN SOURCE \& PROJETS}
 \begin{itemize}
-    \project{account-state-check}{https://github.com/emoubarak/account-state-check}{\textbf{skill d'agent open source (MIT)} pour Claude Code, Codex et OpenClaw : \textbf{QA par agent navigateur} sur une app de staging, où \textbf{une requête SQL, pas l'agent,} rend le verdict \stack{Python, CDP}}
-    \project{browser-agents}{}{\textbf{orchestrateur auto-hébergé d'agents navigateur} (privé) : profils connectés persistants, un worker isolé par tâche, \textbf{main passée à un humain en direct} via WebRTC pour les connexions et la 2FA, back-office de suivi \stack{Python, Podman, CDP}}
-    \project{Polymarket Lab}{https://github.com/emoubarak/polymarket-updown-lab}{recherche d'un avantage de trading en six semaines : \textbf{backtests hors échantillon}, \m{\textasciitilde12~000 trades papier} sur 60 runners, moteur Python et \textbf{market maker} en Go. Verdict : \textbf{aucun avantage exploitable}}
-    \project{claude-skill-router}{https://github.com/emoubarak/claude-skill-router}{fait charger à Claude Code les skills dont un prompt a besoin, avec un \textbf{banc rejoué sur mes vraies sessions} : skills utiles chargés \m{57~\% $\rightarrow$ 84~\%} sur des prompts jamais vus \stack{Python, hooks Claude Code}}
-    \project{hindsight}{https://github.com/emoubarak/hindsight}{\textbf{mémoire pour Claude Code} : toutes les sessions passées interrogeables par le sens, corrections transformées en règles \stack{Python, embeddings, plugin}}
-    \project{Articles}{https://moubarak.dev/blog}{\link{https://moubarak.dev/harness}{visite de mon harnais}, \link{https://moubarak.dev/cv\#ai}{ma façon de travailler avec l'IA} ; cas d'étude : \link{https://moubarak.dev/blog/case-study-ai-card-scanner}{scanner de cartes IA}, \link{https://moubarak.dev/blog/case-study-jev-check}{account-state-check} et \link{https://moubarak.dev/blog/case-study-piktechs}{Piktechs}}
+    \project{account-state-check}{https://github.com/emoubarak/account-state-check}{\textbf{skill d'agent open source (MIT)} pour Claude Code, Codex et OpenClaw, qui applique la \textbf{QA par agent navigateur} décrite plus haut à n'importe quelle application de préproduction \stack{Python, CDP}}
+    \project{browser-agents}{}{\textbf{orchestrateur auto-hébergé d'agents navigateur} (privé) : profils connectés persistants, un processus isolé par tâche, \textbf{reprise en main par un humain en direct} (WebRTC) pour les connexions et la 2FA, back-office de suivi \stack{Python, Podman, CDP}}
+    \project{Polymarket Up/Down Lab}{https://github.com/emoubarak/polymarket-updown-lab}{recherche sur les marchés crypto à 5 et 15 minutes de Polymarket : \textbf{backtests hors échantillon}, \m{\textasciitilde12~000 transactions simulées} sur 60 configurations en parallèle, moteur Python et \textbf{market maker} en Go. Résultat : \textbf{aucun avantage exploitable après frais}}
+    \project{claude-skill-router}{https://github.com/emoubarak/claude-skill-router}{fait charger à Claude Code les skills dont un prompt a besoin ; sur un \textbf{banc d'essai qui rejoue mes propres sessions}, la part des skills utiles chargés passe de \m{57~\% à 84~\%} sur des prompts jamais vus au réglage \stack{Python, hooks Claude Code}}
+    \project{hindsight}{https://github.com/emoubarak/hindsight}{\textbf{mémoire pour Claude Code} : un hook ajoute au contexte les sessions passées trouvées par recherche sémantique ; il propose des règles tirées des corrections répétées, écrites seulement avec mon accord \stack{Python, embeddings, plugin}}
+    \project{À lire (en anglais)}{https://moubarak.dev/blog}{\link{https://moubarak.dev/cv\#ai}{ma méthode avec l'IA} ; études de cas : \link{https://moubarak.dev/blog/case-study-ai-card-scanner}{scanner de cartes IA}, \link{https://moubarak.dev/blog/case-study-jev-check}{QA agentique} et \link{https://moubarak.dev/blog/case-study-piktechs}{Piktechs}}
 \end{itemize}
 
 \section*{COMPÉTENCES}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\bfseries}p{3cm}>{\raggedright\arraybackslash\setlength{\lineskiplimit}{2pt}\setlength{\lineskip}{4pt}}X@{}}
 Langages & \chip{TypeScript, JavaScript}\cs \chip{Python}\cs \chip{Go}\cs \chip{SQL}\cs \chip{Java} \\[5pt]
-IA \& LLM & \chip{APIs LLM (OpenAI, Anthropic Claude, Gemini, OpenRouter)}\cs \chip{Agents IA, MCP, Claude Code}\cs \chip{Agents navigateur \& QA agentique (jev, Browser Use)}\cs \chip{Évaluation de LLM \& injection de prompt}\cs \chip{Pipelines OCR \& vision}\cs \chip{RAG}\cs \chip{LLMs locaux (llama.cpp, ExLlamaV2)} \\[5pt]
+IA \& LLM & \chip{API LLM (OpenAI, Anthropic Claude, Gemini, OpenRouter)}\cs \chip{Agents IA, MCP, Claude Code}\cs \chip{Agents navigateur \& QA agentique (jev, Browser Use)}\cs \chip{Pipelines OCR \& vision}\cs \chip{RAG}\cs \chip{Évaluation de LLM \& tests d'injection de prompt}\cs \chip{LLM locaux (llama.cpp, ExLlamaV2)} \\[5pt]
 Web \& cloud & \chip{React, Next.js, Node.js}\cs \chip{Angular, Vue.js}\cs \chip{Django}\cs \chip{React Native, Capacitor}\cs \chip{PostgreSQL, Supabase}\cs \chip{Stripe}\cs \chip{AWS, Cloudflare}\cs \chip{Docker, CI/CD} \\[5pt]
-Langues & \chip{Français (natif)}\cs \chip{Anglais (C1, TOEIC)}\cs \chip{Espagnol (professionnel)} \\
+Langues & \chip{Français (natif)}\cs \chip{Anglais (C1, TOEIC)}\cs \chip{Espagnol (niveau professionnel)} \\
 \end{tabularx}
 
 \section*{FORMATION}
-{\bfseries IMT Nord Europe}\sep Diplôme d'Ingénieur (Bac+5), Informatique, Réseaux \& Télécoms\hfill{\color{muted}Lille, 2017 -- 2022}\par
+{\bfseries IMT Nord Europe}\sep Diplôme d'ingénieur (bac+5), informatique, réseaux et télécoms\hfill{\color{muted}Lille, 2017 -- 2022}\par
 
 \end{document}
