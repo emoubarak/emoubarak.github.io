@@ -91,7 +91,7 @@ export const harness = {
       points: [
         'Every local tool asks for the same model name, and <b>a small arbiter service</b> picks which model answers: the 180B by default, a 27B when memory runs short.',
         'A video render <b>reserves RAM before it starts</b>: the arbiter switches to the 27B, and the RAM comes back when the render ends.',
-        'Confidential tasks run on a separate browser-agent instance that <b>only talks to the local model</b>.',
+        'Confidential tasks run on a separate browser-agent instance that <b>plans with the local model only</b>; the browser agent’s step decisions still go to its remote model.',
       ],
       visual: { kind: 'image', src: '/harness/services.webp', w: 2200, h: 1760, alt: 'Services page of the mini PC: RTX 3080 eGPU and RAM gauges, the RTX arbiter with its default target, and the local models that can be loaded on the GPU or the integrated graphics.' },
     },
@@ -203,8 +203,8 @@ export const harness = {
       { icon: icons.clock, title: 'Keep it fresh', text: 'Each skill has a card: what can go stale, where to check, how often. Copied skills are watched upstream.', check: 'Checked again 21 days after the last check, if I used it since' },
     ],
     examples: [
-      { from: 'A Reddit thread', title: '“The harder I use Claude Code, the larger the backlog gets”', text: 'Its best answer became the “ready” rule of my dashboard. A local model then triaged the whole backlog, and a Claude session checked the closures it proposed.' },
-      { from: 'A model launch on X', title: 'A new small model, up to twice as fast as my fallback', text: 'It scored 21 out of 40 on the web-agent exam my main model passes at 36. It stayed out of the harness.' },
+      { from: 'A Reddit thread', title: '“The harder I use Claude Code, the larger the backlog gets”', text: 'One reply became the “ready” rule of my dashboard. A local model then triaged the whole backlog, and a Claude session checked the closures it proposed.' },
+      { from: 'A model launch on X', title: 'A new small model, up to twice as fast as my fallback', text: 'It first scored 21 out of 40 on my web-agent exam; a replay showed my parser rejected valid answers, and with the fix it scored 35, against 36 for my main model.' },
       { from: 'My own sessions', title: 'The router behind the skills', text: 'Every Monday a routine compares the skills it suggested with the ones Claude loaded, and scores it on a fixed test set to catch a regression.' },
     ],
   },
@@ -236,7 +236,7 @@ export const harness = {
     note: 'The local agent passed the tests 13 times out of 13 and still missed a function that was never wired in. Only Opus, reading the code, caught it.',
     rows: [
       { who: 'Opus alone', q: 7.2, wait: '2 min 50', best: true },
-      { who: 'Opus reads, the local 27B writes', q: 6.6, wait: '4 min 10' },
+      { who: 'Opus reads, the local 27B writes', q: 6.6, wait: '4 min' },
       { who: 'Opus delegates blind to the 180B', q: 6.5, wait: '7 min' },
       { who: 'Sonnet alone', q: 5.5, wait: '1 min' },
       { who: 'Opus delegates blind to the 27B', q: 4.7, wait: '8 min 30' },

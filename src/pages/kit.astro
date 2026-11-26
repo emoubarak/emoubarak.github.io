@@ -105,7 +105,7 @@ J'écris sur tout cela, erreurs comprises, sur moubarak.dev. Basé en France, en
       },
       {
         title: 'Automatiser ce que je fais deux fois',
-        text: "J'automatise toute tâche que j'ai faite deux fois. Un agent ne tourne seul qu'avec une condition d'arrêt, un budget, un moyen de vérifier son propre travail et un moyen de me joindre, et il s'arrête pour demander avant toute dépense, mot de passe, publication, mise en production ou suppression irréversible.",
+        text: "J'automatise toute tâche que j'ai faite deux fois. Un agent ne tourne seul qu'avec une condition d'arrêt, un budget, un moyen de vérifier son propre travail et un moyen de me joindre, et il s'arrête pour demander avant de dépasser son budget et avant tout mot de passe, publication, mise en production ou suppression irréversible.",
       },
     ].map((pr, i) => `${pr.title}\n${pr.text}` + (aiApproach.principles[i] ? `\nVoir (en anglais) : ${proofUrl(aiApproach.principles[i])}` : '')).join('\n\n'),
   },
@@ -510,13 +510,13 @@ Compétences : Mobile Application Development · React Native · Android Develop
     project: 'pdfold',
     link: '',
     en: `PDFold (archived project)
-AI OCR + Vision pipeline converting PDFs to structured Markdown in 11 languages, with Stripe billing.
+Vision-model pipeline converting PDFs to structured Markdown in 11 languages, with Stripe billing.
 
 Stack: Next.js, TypeScript, Gemini API, OpenRouter, Stripe, Supabase, Vercel, Resend
 
 Skills: Large Language Models (LLM) · Optical Character Recognition (OCR) · Software as a Service (SaaS) · Next.js · TypeScript · Stripe (Software)`,
     fr: `PDFold (projet archivé)
-Pipeline IA d'OCR et de vision qui convertit les PDF en Markdown structuré, en 11 langues, avec facturation Stripe.
+Pipeline à modèle de vision qui convertit les PDF en Markdown structuré, en 11 langues, avec facturation Stripe.
 
 Stack : Next.js, TypeScript, Gemini API, OpenRouter, Stripe, Supabase, Vercel, Resend
 
@@ -566,7 +566,7 @@ June 2026
 
 A search for a trading edge on Polymarket's binary crypto markets (5 and 15 minute "Up or Down" windows).
 
-Method: hypothesis, in-sample and out-of-sample backtest, live paper trading, then falsification. About 12,000 paper trades logged across 60 runners in parallel (7 strategy variants × 6 coins × 2 window lengths), settled against the Chainlink oracle. Two engines: a Python paper-trading framework (standard library only, no dependencies) and a Go market maker whose pricing path runs in about 114 ns.
+Method: hypothesis, in-sample and out-of-sample backtest, live paper trading, then falsification. About 12,000 paper trades logged across 60 runners in parallel (5 strategy variants × 6 coins × 2 window lengths), settled against the Chainlink oracle. Two engines: a Python paper-trading framework (standard library only, no dependencies) and a Go market maker whose pricing path runs in about 114 ns.
 
 Result: no tradable edge. Nearly every edge I found turned out to be a measurement artifact, and the one signal that held out of sample earned about zero after fees. The repository documents each step.
 
@@ -578,7 +578,7 @@ Juin 2026
 
 La recherche d'un avantage exploitable (edge) sur les marchés crypto binaires de Polymarket (fenêtres « Up or Down » de 5 et 15 minutes).
 
-Méthode : hypothèse, backtest sur l'échantillon puis hors échantillon, trading simulé (paper trading) en conditions réelles, puis tentative de réfutation. Environ 12 000 trades simulés, enregistrés sur 60 instances en parallèle (7 variantes de stratégie × 6 cryptomonnaies × 2 durées de fenêtre), réglés sur l'oracle Chainlink. Deux moteurs : un framework de paper trading en Python (bibliothèque standard seule, sans dépendance) et un market maker en Go qui calcule son prix en 114 ns environ.
+Méthode : hypothèse, backtest sur l'échantillon puis hors échantillon, trading simulé (paper trading) en conditions réelles, puis tentative de réfutation. Environ 12 000 trades simulés, enregistrés sur 60 instances en parallèle (5 variantes de stratégie × 6 cryptomonnaies × 2 durées de fenêtre), réglés sur l'oracle Chainlink. Deux moteurs : un framework de paper trading en Python (bibliothèque standard seule, sans dépendance) et un market maker en Go qui calcule son prix en 114 ns environ.
 
 Résultat : aucun avantage exploitable. Presque chaque edge trouvé s'est révélé être un artefact de mesure, et le seul signal qui a tenu hors échantillon rapportait à peu près zéro une fois les frais déduits. Le dépôt documente chaque étape.
 
@@ -1720,7 +1720,7 @@ const featuredFr = {
   'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "J'ai relu environ 4 000 de mes propres prompts, sur quatre mois et deux machines, et retrouvé les six mêmes corrections dans chaque projet. Les écrire ne suffisait pas : une règle qu'un script peut vérifier va maintenant dans un hook, et le reste dans le fichier le plus ciblé qui marche."],
   'browser-agents-at-work-jev': ["Des agents navigateur au travail : QA, consoles web et relais pour les mots de passe avec jev", "J'utilise jev, l'agent navigateur de Browser Use, tous les jours : pour tester mon propre SaaS sous chaque type de compte, pour travailler dans des consoles web sans API, et pour me rendre la main quand un mot de passe est demandé. Les cas d'usage, l'architecture et dix leçons de mise en place."],
   'lazy-by-design': ["La flemme comme méthode : ce qu'il faut à un agent avant que je le laisse seul", "Si je fais une chose deux fois, une machine la fait la troisième. Comment cela devient des exécutions d'agents avec une condition d'arrêt vérifiable et un plafond de dépense, des tâches planifiées qui rendent compte, et une seule source pour chaque information."],
-  'the-great-work-polymarket': ["Le Grand Œuvre : j'ai essayé de transformer des pile ou face sur le Bitcoin en or", "J'ai donné à mes bots de trading simulé des noms de mystiques et d'alchimistes, je les ai lancés sur les marchés Bitcoin à cinq minutes de Polymarket, et j'ai passé juin à voir chaque avantage redevenir du plomb. Un récit satirique du marché efficient, en cinq étapes alchimiques."],
+  'the-great-work-polymarket': ["Le Grand Œuvre : j'ai essayé de transformer des pile ou face sur le Bitcoin en or", "J'ai donné à mes bots de trading simulé des noms de mystiques et d'alchimistes, je les ai lancés sur les marchés Bitcoin à cinq minutes de Polymarket, et j'ai passé juin à voir chaque avantage redevenir du plomb. Un récit de terrain sur le marché efficient, en cinq étapes alchimiques."],
   'how-i-built-pdfold': ["Comment j'ai construit PDFold seul : un espace de travail Claude avec une boucle de correction, des tests et une infra sans surprise", "La configuration derrière PDFold : un espace de travail Claude que je corrigeais après chaque raté, des tests écrits avec chaque fonctionnalité, et un pipeline PDF vers Markdown en deux passes sur Gemini, passé sur OpenRouter en août."],
 };
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);

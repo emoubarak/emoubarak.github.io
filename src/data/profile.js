@@ -21,7 +21,7 @@ export const identity = {
   cvTitle: title,
   // no trailing period: the home hero adds it
   headline: { en: 'I build SaaS products, LLM features and browser agents, and ship them to production', fr: 'Je conçois des SaaS, des fonctionnalités LLM et des agents navigateur, et je les mets en production' },
-  // no public city since 2026-11-26: the site shows the country only (he no longer lives in Lille).
+  // no public city since 2026-11-26: the site shows the country only.
   // Kept as a key because the knowledge base reads it; past places (IMT Nord Europe, ALTAO, Worldline) stay on their entries.
   city: null,
   location: { en: 'France · Remote across Europe', fr: 'France · télétravail partout en Europe' },
@@ -36,7 +36,6 @@ export const identity = {
   experienceSince: 2019,
   domains: { en: 'healthcare, fintech and cybersecurity', fr: 'santé, fintech et cybersécurité' },
   rates: { maltDaily: '550 €/day', upworkHourly: '$55/hr' },
-  // his words of 2026-11-15: no longer in Lille; on-site in mainland France or Belgium means a flight, for a grouped trip
   availability: { en: 'more than 30 h/week · remote; on-site only for a planned, grouped trip (mainland France, Belgium)', fr: 'plus de 30 h/semaine · télétravail ; présentiel seulement sur un déplacement groupé et planifié (France métropolitaine, Belgique)' },
   clientSectors: { en: 'IT & digital services · software publishers · healthcare providers · banking & financial services', fr: 'services numériques et IT · édition de logiciels · fournisseurs de soins de santé · banques et services financiers' },
   entryOffer: { en: 'a paid audit or a 5-10 day proof of concept with one measurable deliverable', fr: 'un audit payant ou une preuve de concept de 5 à 10 jours, avec un livrable mesurable' },
@@ -50,7 +49,7 @@ export const proof = [
   { claim: { en: "Agentic QA with jev, Browser Use's browser agent: 16 permanent checks on what each plan unlocks and who can do what, each one decided by a SQL query on the database; its screenshots on closed tickets found 3 bugs the fixes had missed or introduced.", fr: "QA par agent navigateur avec jev, l'agent navigateur de Browser Use : 16 vérifications permanentes sur ce que débloque chaque offre et qui a le droit de faire quoi, chacune tranchée par une requête SQL sur la base ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits." }, source: 'Piktechs' },
   { claim: { en: 'AI card scanner: of four candidate vision models, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.', fr: "Scanner de cartes IA : sur quatre modèles de vision candidats, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le repli est celui qui a résisté." }, source: 'Piktechs' },
   { claim: { en: "Internal R&D tool to create, store and replay payment test sets; tests before rollout measured the team's development speed 70% higher.", fr: "Outil interne de R&D pour créer, stocker et rejouer des jeux de tests de paiement ; les tests avant la mise en production ont mesuré une vitesse de développement de l'équipe 70 % plus élevée." }, source: 'Worldline' },
-  { claim: { en: '~12,000 paper trades across 60 paper-trading runs in parallel (7 strategy variants × 6 coins × 2 window lengths), settled against the Chainlink oracle.', fr: "~12 000 trades simulés sur 60 sessions de paper trading en parallèle (7 variantes de stratégie × 6 cryptos × 2 durées de fenêtre), réglés contre l'oracle Chainlink." }, source: 'Polymarket Up/Down Lab' },
+  { claim: { en: '~12,000 paper trades across 60 paper-trading runs in parallel (5 strategy variants × 6 coins × 2 window lengths), settled against the Chainlink oracle.', fr: "~12 000 trades simulés sur 60 sessions de paper trading en parallèle (5 variantes de stratégie × 6 cryptos × 2 durées de fenêtre), réglés contre l'oracle Chainlink." }, source: 'Polymarket Up/Down Lab' },
   { claim: { en: 'PDFs into structured Markdown, in 11 languages.', fr: 'Des PDF en Markdown structuré, en 11 langues.' }, source: 'PDFold' },
   { claim: { en: 'Shopify store built, grown through SEO and marketing, and sold.', fr: 'Boutique Shopify créée, développée par le SEO et le marketing, puis vendue.' }, source: 'Mon Jouet Montessori' },
   { claim: { en: 'Corporate AI training: two sessions, in French and English.', fr: 'Formation IA en entreprise : deux sessions, en français et en anglais.' }, source: 'DRIVECO' },
@@ -76,7 +75,7 @@ export const aiApproach = {
     },
     {
       title: 'Extra checks where a bug would go unnoticed',
-      text: "On Piktechs, every change runs the unit and Playwright tests in CI, and only I approve a release to production. Billing, permissions and anything touching another account's data also get mandatory checks and a review by a different model from the one that wrote the code.",
+      text: "On Piktechs, every code change runs the unit and Playwright tests in CI, and only I approve a release to production. Billing, permissions and anything touching another account's data also get mandatory checks and a review by a different model from the one that wrote the code.",
       proof: { label: 'Case study: Piktechs', href: '/blog/case-study-piktechs' },
     },
     {
@@ -91,7 +90,7 @@ export const aiApproach = {
     },
     {
       title: 'Automate what I do twice',
-      text: "I automate any task I have done twice. An agent runs alone only with an end condition, a budget, a way to check its own work and a way to reach me, and it stops to ask before money, passwords, publishing, a production release or a deletion that cannot be undone.",
+      text: "I automate any task I have done twice. An agent runs alone only with an end condition, a budget, a way to check its own work and a way to reach me, and it stops to ask before spending beyond its budget, and before passwords, publishing, a production release or a deletion that cannot be undone.",
       proof: { label: 'Article: lazy by design', href: '/blog/lazy-by-design' },
     },
   ],
@@ -351,7 +350,7 @@ const allProjects = [
     category: 'saas',
     categoryLabel: 'SaaS',
     role: 'Founder',
-    description: 'SaaS that converted PDFs to structured Markdown with a multi-pass OCR pipeline and Gemini, in 11 languages.',
+    description: 'SaaS that converted PDFs to structured Markdown with two passes of a vision model (Gemini, then GPT through OpenRouter), in 11 languages.',
     previews: [
       { label: 'How it works', src: `${base}/portfolio/pdfold-illustration.webp` },
       { label: 'Motion design', src: `${base}/portfolio/pdfold-motion.mp4`, poster: `${base}/portfolio/pdfold-motion-poster.webp` },
@@ -489,7 +488,7 @@ const allProjects = [
     category: 'research',
     categoryLabel: 'Research',
     role: 'Solo',
-    description: 'A search for a trading edge on Polymarket\'s 5 and 15 minute binary crypto markets: hypothesis, out-of-sample backtest, live paper trading, then falsification. ~12,000 paper trades across 60 paper-trading runs in parallel (7 strategy variants × 6 coins × 2 window lengths), settled against the Chainlink oracle. Result: the market is efficient, and nearly every edge I found came from a measurement artifact.',
+    description: 'A search for a trading edge on Polymarket\'s 5 and 15 minute binary crypto markets: hypothesis, out-of-sample backtest, live paper trading, then falsification. ~12,000 paper trades across 60 paper-trading runs in parallel (5 strategy variants × 6 coins × 2 window lengths), settled against the Chainlink oracle. Result: the market is efficient, and nearly every edge I found came from a measurement artifact.',
     // github.com sets X-Frame-Options: DENY, so the repo cannot be previewed in an iframe.
     previews: [
       { label: 'What it found', src: `${base}/portfolio/polymarket-illustration.webp` },

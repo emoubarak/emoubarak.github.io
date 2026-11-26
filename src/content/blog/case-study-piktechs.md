@@ -39,7 +39,7 @@ Turning it into a product that bills meant multi-tenant data with real permissio
 
 **An engineering guide for the agent.** It holds the decisions and constraints that the code doesn't show. Project skills cover recurring jobs (issue creation, release checks, a regression guard, agentic QA).
 
-**Extra checks where a bug would go unnoticed.** Every change runs the unit and Playwright tests in CI; the checks grow with what can break. Billing, row-level security, public reads and payment webhooks are different: a bug there raises no error; it charges the wrong amount or shows one account's data to another. Every change in that zone gets its checks plus a review by a dedicated reviewer agent pinned to a different model from the one that wrote the code.
+**Extra checks where a bug would go unnoticed.** Every code change runs the unit and Playwright tests in CI; the checks grow with what can break. Billing, row-level security, public reads and payment webhooks are different: a bug there raises no error; it charges the wrong amount or shows one account's data to another. Every change in that zone gets its checks plus a review by a dedicated reviewer agent pinned to a different model from the one that wrote the code.
 
 **Agents by size of task.** Small edits stay in the main session, since starting an agent costs time. Subagents take work that spans several files, run in parallel only when their file sets don't overlap, and unrelated tasks get their own git worktree.
 

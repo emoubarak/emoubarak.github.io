@@ -28,8 +28,7 @@ faits structurés ci-dessus. Quand les deux divergent, c'est `profile.js` qui a 
 - **Angle IA d'abord.** EMM est « Founder & AI / Full-Stack Engineer » et ALTAO « Full-Stack & AI
   Engineer » : les deux missions les plus IA du parcours doivent le dire dans leur intitulé, pas
   seulement dans leur description.
-- **France** est le seul lieu affiché (décision du 26/11/2026) : plus de ville de résidence publique, plus jamais
-  Lille comme lieu de vie (`identity.city` vaut `null`, `location` dit « France · Remote across Europe »). Les lieux
+- **France** est le seul lieu affiché (décision du 26/11/2026) : plus de ville de résidence publique (`identity.city` vaut `null`, `location` dit « France · Remote across Europe »). Les lieux
   passés restent sur leur ligne : IMT Nord Europe et ALTAO à Lille, Worldline à Seclin.
 - **Un seul intitulé** partout (site, CV, images de partage, bannière LinkedIn) : « Software & AI Engineer ·
   Full-Stack, LLM Systems, Agents » / « Ingénieur logiciel et IA · full-stack, systèmes LLM, agents ». Jamais

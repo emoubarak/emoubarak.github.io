@@ -6,7 +6,7 @@ tags: ["Engineering", "Career", "Satire"]
 cover: "/blog/seven-deadly-sins-of-software.webp"
 coverAlt: "A code editor covered in seven sticky notes, each with a pictogram for one sin: crown, hoarded boxes, heart, green grass, overflowing bowl, lightning bolt, snail."
 ---
-Around AD 375, the monk Evagrius Ponticus listed eight evil thoughts. In 590, Pope Gregory the Great trimmed them into seven deadly sins. Neither had GitHub. Both would recognize your codebase, and mine.
+In the late fourth century, the monk Evagrius Ponticus listed eight evil thoughts. In 590, Pope Gregory the Great trimmed them into seven deadly sins. Neither had GitHub. Both would recognize your codebase, and mine.
 
 I've committed all seven, some of them in the same pull request, so the stack traces below include mine.
 

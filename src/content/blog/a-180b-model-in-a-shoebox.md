@@ -1,6 +1,6 @@
 ---
 title: "A 180B Model in a Shoebox: Local Inference on a Mini PC and an 8 GB Card"
-description: "Qwen3.8-Flash-Next, 180B parameters, running with Strata on a mini PC and an RTX 3060 Ti 8 GB over OCuLink: about 390 tokens per second reading, 50 to 57 writing. The benchmarks, and the calibration and cable that produced them."
+description: "Qwen3.8-Flash-Next, 180B parameters, running with Strata on a mini PC and an RTX 3060 Ti 8 GB over OCuLink: about 390 tokens per second reading, 52 to 57 writing. The benchmarks, and the calibration and cable that produced them."
 pubDate: 2026-10-15
 tags: ["AI", "Local inference", "Hardware"]
 cover: "/blog/a-180b-model-in-a-shoebox.webp"
