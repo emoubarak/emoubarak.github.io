@@ -9,7 +9,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sitemap:submit": "node scripts/submit-sitemap.js",
+    "sitemap:verify": "node scripts/submit-sitemap.js --verify-only",
+    "sitemap:check-auth": "node scripts/submit-sitemap.js --check-auth"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.6",

@@ -1,0 +1,39 @@
+name: Sitemap weekly resubmission
+
+# Safety net for the submit-sitemap job of deploy.yml, which runs only after a
+# successful deploy that changed a page. This run always resubmits the live
+# sitemap to Search Console, even without a change, and rechecks every URL.
+
+on:
+  schedule:
+    # Monday 06:00 UTC.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sitemap-submit
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # --remote: the live sitemaps, no build. No --changed: IndexNow has nothing
+      # new to announce on a Monday morning.
+      - name: Verify and submit sitemap
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GSC_CLIENT_ID: ${{ secrets.GSC_CLIENT_ID }}
+          GSC_CLIENT_SECRET: ${{ secrets.GSC_CLIENT_SECRET }}
+          GSC_REFRESH_TOKEN: ${{ secrets.GSC_REFRESH_TOKEN }}
+        run: node scripts/submit-sitemap.js --remote

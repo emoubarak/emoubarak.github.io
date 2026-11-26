@@ -6,6 +6,7 @@ on:
   push:
     branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
+  # A manual run also resubmits the sitemap and pushes every URL to IndexNow.
   workflow_dispatch:
 
 # Allow this job to clone the repo and create a page deployment
@@ -17,6 +18,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      # Empty when the diff step failed: the submission then runs anyway.
+      changed: ${{ steps.diff.outputs.changed || 'true' }}
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v5
@@ -24,6 +28,23 @@ jobs:
         uses: withastro/action@v3
         with:
           node-version: 22
+
+      # Production still serves the previous version here: every page whose HTML
+      # differs from the live one is a page to announce. Never blocks the deploy.
+      - name: List pages changed since the live version
+        id: diff
+        continue-on-error: true
+        run: |
+          node scripts/submit-sitemap.js --changed-out=changed-urls.json
+          count=$(node -p "require('./changed-urls.json').changed.length + require('./changed-urls.json').removed.length")
+          echo "changed=$([ "$count" -gt 0 ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        continue-on-error: true
+        with:
+          name: sitemap-diff
+          path: changed-urls.json
+          if-no-files-found: ignore
+          retention-days: 7
 
   deploy:
     needs: build
@@ -35,3 +56,48 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Resubmits the sitemap to Search Console and the changed URLs to IndexNow once
+  # production serves the new build. Runs only when a page changed (or by hand).
+  # The site is already live at this point: a failure here only turns the run red.
+  submit-sitemap:
+    needs: [build, deploy]
+    if: needs.build.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    concurrency:
+      group: sitemap-submit
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # The exact build that was deployed (the Pages artifact), unpacked into dist/.
+      - uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: pages-artifact
+      - run: mkdir -p dist && tar -xf pages-artifact/artifact.tar -C dist
+
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: sitemap-diff
+          path: .
+
+      - name: Submit to Google Search Console + IndexNow
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GSC_CLIENT_ID: ${{ secrets.GSC_CLIENT_ID }}
+          GSC_CLIENT_SECRET: ${{ secrets.GSC_CLIENT_SECRET }}
+          GSC_REFRESH_TOKEN: ${{ secrets.GSC_REFRESH_TOKEN }}
+        run: |
+          node scripts/submit-sitemap.js \
+            --wait-for-prod \
+            --changed=changed-urls.json \
+            ${{ github.event_name == 'workflow_dispatch' && '--indexnow-all' || '' }}
