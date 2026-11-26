@@ -622,8 +622,7 @@ const allProjects = [
   },
   {
     title: 'Group BW Invest',
-    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
-    hidden: true,
+    // back on 2026-11-26: real agency clients, shown at Mehdi's request
     thumb: `${base}/work/groupbw.webp`,
     thumbAlt: 'Group BW Invest home page: a building under construction at sunset, headline in French: build, strengthen, raise',
     subtitle: 'groupbw.be',
@@ -640,8 +639,7 @@ const allProjects = [
   },
   {
     title: 'ID Advise',
-    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
-    hidden: true,
+    // back on 2026-11-26: real agency clients, shown at Mehdi's request
     thumb: `${base}/work/idadvise.webp`,
     thumbAlt: 'ID Advise home page: a modern house, headline in French: every trade of a project, one direction',
     subtitle: 'idadvise.com',
@@ -658,8 +656,7 @@ const allProjects = [
   },
   {
     title: 'Prestige Auto Ecoservice',
-    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
-    hidden: true,
+    // back on 2026-11-26: real agency clients, shown at Mehdi's request
     thumb: `${base}/work/prestige-auto.webp`,
     thumbAlt: 'Prestige Auto Ecoservice home page: BMW cars in the workshop, headline in French: car repair workshop',
     subtitle: 'prestige-auto-ecoservices.com',
@@ -676,8 +673,7 @@ const allProjects = [
   },
   {
     title: 'Central Garage',
-    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
-    hidden: true,
+    // back on 2026-11-26: real agency clients, shown at Mehdi's request
     thumb: `${base}/work/central-garage.webp`,
     thumbAlt: 'Central Garage home page: the garage front in Le Port, headline in French: general mechanics in Le Port',
     subtitle: 'central-garage.re',
@@ -760,7 +756,8 @@ const allProjects = [
 // and older confidential work last (2026-11-26 selection).
 const order = [
   'Piktechs', 'browser-agents', 'account-state-check', 'Claude Skill Router', 'KSUR',
-  'Vyrion International Consulting', 'Mon Jouet Montessori', 'THE ICON', 'Atandem Agency', 'Polymarket Up/Down Lab', 'A 180B Model on an eGPU',
+  'Vyrion International Consulting', 'Mon Jouet Montessori', 'THE ICON', 'Atandem Agency',
+  'Group BW Invest', 'ID Advise', 'Prestige Auto Ecoservice', 'Central Garage', 'Polymarket Up/Down Lab', 'A 180B Model on an eGPU',
   'Signal LLM Bot', 'Altao Discharge Summary Tool', 'Deuspi',
 ];
 const rank = (p) => { const i = order.indexOf(p.title); return i === -1 ? order.length : i; };
