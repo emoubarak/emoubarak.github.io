@@ -23,7 +23,7 @@ Larry Wall listed laziness as the first virtue of a programmer: the drive to wri
 
 **Parallel sessions.** Three or four Claude Code sessions at once is normal: one on the SaaS, one on a client site, one on tooling. They sometimes share a repository, which is why my instructions say that changes you didn't make belong to another session at work, and you never revert, stash or check out over them.
 
-**Scheduled jobs that report back.** A GitHub Actions job reconciles subscription state with Stripe every night. A weekly job on one of my sites searches public Q&A for questions its calculators answer and opens a GitHub issue with what it found. A systemd timer on my mini PC runs a weekly pass over my own Claude Code history and turns repeated corrections into rules (more on that in [this post](/blog/what-i-kept-telling-claude)). A research project ran 60 paper-trading runners on a VPS for weeks, journaling every decision.
+**Scheduled jobs that report back.** A GitHub Actions job reconciles subscription state with Stripe every night. A weekly job on one of my sites searches public Q&A for questions its calculators answer and opens a GitHub issue with what it found. A systemd timer on my mini PC runs a weekly pass over my own Claude Code history and turns repeated corrections into rules (more on that in [this post](/blog/what-i-kept-telling-claude)). A research project ran 75 paper-trading runners on a VPS for weeks, journaling every decision.
 
 **Browser work in web consoles.** A browser agent does admin in web consoles that have no API, and a small task runner keeps dedicated browsers alive for longer jobs. It calls me for a password, a captcha, a 2FA code or the final click. Details in [Browser Agents at Work](/blog/browser-agents-at-work-jev).
 

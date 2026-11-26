@@ -10,9 +10,10 @@ import { getCollection } from 'astro:content';
 // The homepage shows three headline lines only. The other four (MVP rescue, self-hosted
 // agents, corporate AI training, technical Shopify) stay in the mother source and on /kit,
 // where they feed Malt and Upwork.
-const homeServices = ['SaaS & Web Apps', 'AI Automation & Agents', 'LLM & RAG Integration'];
+const homeServices = ['SaaS & Web Apps', 'AI Automation & Agents', 'LLM Integration'];
 const services = homeServices.map((t) => allServices.find((s) => s.title === t)).filter(Boolean);
-const featured = ['Piktechs', 'account-state-check', 'Claude Skill Router', 'browser-agents'];
+// three projects since the 2026-11-26 selection: client work follows right below (DRIVECO quote, KSUR block)
+const featured = ['Piktechs', 'browser-agents', 'account-state-check'];
 const projects = featured.map((t) => allProjects.find((p) => p.title === t)).filter(Boolean);
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
@@ -147,9 +148,9 @@ const logos = [
           <div class="lg:col-span-5" data-reveal style="--i:1">
             <h3 class="t-h4 mb-3">Agency work · KSUR</h3>
             <p class="text-2 leading-relaxed">
-              As CTO of KSUR (agence-ksur.com), I run technical delivery for about ten client
-              companies in France, Belgium, Morocco and La Réunion: websites, e-commerce and web
-              apps, several of them for clients of THE ICON, a Belgian marketing agency.
+              As CTO of KSUR (agence-ksur.com), I run technical delivery for six live client sites
+              in Morocco and La Réunion. Through a partnership with THE ICON, a Belgian marketing
+              agency, KSUR also built THE ICON's website and the sites of two of its Belgian clients.
             </p>
             <a href="https://www.agence-ksur.com/realisations" target="_blank" rel="noopener noreferrer" class="link-arrow mt-5">See the agency portfolio <Icon name="out" /></a>
           </div>

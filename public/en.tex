@@ -101,10 +101,10 @@ Full-stack engineer shipping production software since 2019 in cybersecurity, he
 \role{Co-Founder \& CTO}{\org{https://piktechs.com}{Piktechs}}{France}{Mar 2026 -- Present}
 \begin{itemize}
     \item \textbf{Sole engineer:} took a two-week prototype to a \textbf{B2B SaaS in production} for event lead capture
-    \item \textbf{Agentic QA with jev}, Browser Use's browser agent: it signs in to the test app as a user in each account state (free, Pro, lapsed, team member) and follows a plain-English goal; \textbf{a SQL query on the database then decides pass or fail}. \m{16 permanent checks} on what each plan unlocks and who can do what; its screenshots on closed tickets found \m{3 bugs} the fixes had missed or introduced. Open-sourced as \link{https://github.com/emoubarak/account-state-check}{account-state-check}
+    \item Multi-tenant workspaces isolated by \textbf{Postgres row-level security} (143 migrations) and \textbf{live Stripe billing} with per-seat plans, webhooks and a scheduled reconciliation; each billing or permission change needs tests, a \textbf{review by a second model} and my approval before production
     \item Shipped an \textbf{AI business-card scanner}: vision LLM with strict JSON output, per-user quota and on-device OCR as last resort; chose the cross-provider fallback by \textbf{prompt-injection testing} (\m{2 of 4} candidate models obeyed an injected card)
-    \item Built \textbf{live Stripe billing} (checkout, portal, webhooks, per-seat plans, reconciliation) and multi-tenant workspaces secured by \textbf{Postgres row-level security}; each billing or permission change needs tests, a \textbf{review by a second model} and my approval before production
-    \item Shipped the \textbf{Android app}, \link{https://play.google.com/store/apps/details?id=com.piktechs.app\&hl=en}{live on Google Play}, and the iOS build from one codebase (Capacitor); unit and Playwright tests gate CI/CD across separate test and production environments
+    \item \textbf{Agentic QA with jev}, Browser Use's browser agent: it signs in to the test app as a user in each account state (free, Pro, lapsed, team member) and follows a plain-English goal; \textbf{a SQL query on the database then decides pass or fail}. \m{16 permanent checks} on what each plan unlocks and who can do what; its screenshots on closed tickets found \m{3 bugs} the fixes had missed or introduced. Open-sourced as \link{https://github.com/emoubarak/account-state-check}{account-state-check}
+    \item \m{1,493 unit tests} and \m{140 Playwright tests} (Nov 2026) gate CI/CD across separate test and production environments; \textbf{Android app on Google Play} from the same codebase (Capacitor)
 \end{itemize}
 \stackline{React\sep TypeScript\sep Vite\sep Tailwind\sep Supabase (Postgres, RLS, Edge Functions)\sep Stripe\sep Capacitor\sep OpenRouter\sep Resend\sep Playwright, Vitest\sep jev (Browser Use)\sep GitHub Actions\sep Cloudflare Pages\sep Claude Code}
 
@@ -113,7 +113,7 @@ Full-stack engineer shipping production software since 2019 in cybersecurity, he
 \begin{itemize}
     \item \textbf{Built and run my own agent harness}: skills, hooks that turn repeated corrections into enforced checks, scheduled routines with failure alerts, and a \textbf{180B mixture-of-experts model} (about 6B active per token) running locally on an RTX 3080 20 GB (\link{https://moubarak.dev/harness}{moubarak.dev/harness})
     \item Designed and delivered \textbf{corporate AI training} for DRIVECO (EV charging operator): two sessions, in French and English, built on the company's own workflows, with a \link{https://www.linkedin.com/posts/el-mahdi-moubarak_merci-\%C3\%A0-toute-l\%C3\%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/}{public testimonial} from its Chief People Officer
-    \item Also CTO of \link{https://www.agence-ksur.com}{KSUR} (web agency), in partnership with \link{https://the-icon.be}{THE ICON} (Belgium): technical stack and delivery for \m{about ten client companies} in France, Belgium, Morocco and La Réunion
+    \item Also CTO of \link{https://www.agence-ksur.com}{KSUR} (web agency): technical stack and delivery for \m{six live client sites} in Morocco and La Réunion. In partnership with \link{https://the-icon.be}{THE ICON} (Belgium), KSUR built THE ICON's website and the sites of two of its Belgian clients
 \end{itemize}
 \stackline{TypeScript\sep Python\sep Next.js\sep Node.js\sep Supabase\sep Docker\sep OpenAI, Claude, Gemini APIs\sep MCP\sep Browser~Use\sep Claude Code}
 
@@ -147,16 +147,16 @@ Full-stack engineer shipping production software since 2019 in cybersecurity, he
 \begin{itemize}
     \project{account-state-check}{https://github.com/emoubarak/account-state-check}{\textbf{open-source (MIT) agent skill} for Claude Code, Codex and OpenClaw: the \textbf{browser-agent QA} above, packaged for any staging app \stack{Python, CDP}}
     \project{browser-agents}{}{\textbf{self-hosted orchestrator for browser agents} (private): persistent logged-in browser profiles, one isolated worker per task, \textbf{live human hand-off} over WebRTC for logins and 2FA, back-office with a task timeline \stack{Python, Podman, CDP}}
-    \project{Polymarket Up/Down Lab}{https://github.com/emoubarak/polymarket-updown-lab}{research on Polymarket's 5- and 15-minute crypto markets: \textbf{out-of-sample backtests}, \m{\textasciitilde12,000 simulated trades} across 60 parallel runs, Python engine and Go \textbf{market maker}. Result: \textbf{no tradable edge after fees}}
+    \project{Polymarket Up/Down Lab}{https://github.com/emoubarak/polymarket-updown-lab}{research in \textbf{paper trading} on Polymarket's 5- and 15-minute crypto markets: \textbf{out-of-sample backtests}, then \m{\textasciitilde12,000 simulated trades} across 75 runners against the live order books. Result: \textbf{no edge after fees}}
     \project{claude-skill-router}{https://github.com/emoubarak/claude-skill-router}{makes Claude Code load the skills a prompt needs; on a \textbf{bench replayed from my own sessions}, the share of needed skills loaded rose from \m{57\% to 84\%} on prompts the rules were never tuned on \stack{Python, Claude Code hooks}}
-    \project{hindsight}{https://github.com/emoubarak/hindsight}{\textbf{memory for Claude Code}: a hook finds past sessions by meaning and adds them to the context; it proposes rules from repeated corrections and writes nothing until I approve \stack{Python, embeddings, plugin}}
+    \project{WebJev-35B-A3B-GGUF}{https://huggingface.co/emoubarak/WebJev-35B-A3B-GGUF}{\textbf{GGUF conversion} of a browser-agent decision model, \m{409 downloads} on Hugging Face (Nov 2026); Q4 matches Q8 on 52 of 54 real steps}
     \project{Further reading}{https://moubarak.dev/blog}{\link{https://moubarak.dev/cv\#ai}{how I work with AI}; case studies on \link{https://moubarak.dev/blog/case-study-ai-card-scanner}{the AI card scanner}, \link{https://moubarak.dev/blog/case-study-jev-check}{browser-agent QA} and \link{https://moubarak.dev/blog/case-study-piktechs}{Piktechs}}
 \end{itemize}
 
 \section*{SKILLS}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\bfseries}p{3cm}>{\raggedright\arraybackslash\setlength{\lineskiplimit}{2pt}\setlength{\lineskip}{4pt}}X@{}}
 Programming & \chip{TypeScript, JavaScript}\cs \chip{Python}\cs \chip{Go}\cs \chip{SQL}\cs \chip{Java} \\[5pt]
-AI \& LLM & \chip{LLM APIs (OpenAI, Anthropic Claude, Gemini, OpenRouter)}\cs \chip{AI agents, MCP, Claude Code}\cs \chip{Browser agents \& agentic QA (jev, Browser Use)}\cs \chip{LLM evaluation \& prompt-injection testing}\cs \chip{OCR \& vision pipelines}\cs \chip{RAG}\cs \chip{Local LLMs (llama.cpp, ExLlamaV2)} \\[5pt]
+AI \& LLM & \chip{LLM APIs (OpenAI, Anthropic Claude, Gemini, OpenRouter)}\cs \chip{AI agents, MCP, Claude Code}\cs \chip{Browser agents \& agentic QA (jev, Browser Use)}\cs \chip{LLM evaluation \& prompt-injection testing}\cs \chip{OCR \& vision pipelines}\cs \chip{Local LLMs (llama.cpp, ExLlamaV2)} \\[5pt]
 Web \& Cloud & \chip{React, Next.js, Node.js}\cs \chip{Angular, Vue.js}\cs \chip{Django}\cs \chip{React Native, Capacitor}\cs \chip{PostgreSQL, Supabase}\cs \chip{Stripe}\cs \chip{AWS, Cloudflare}\cs \chip{Docker, CI/CD} \\[5pt]
 Languages & \chip{French (native)}\cs \chip{English (C1, TOEIC)}\cs \chip{Spanish (professional)} \\
 \end{tabularx}

@@ -13,7 +13,7 @@ tldr:
 
 I am a software developer with no background in finance, and in June I decided to beat a market.
 
-Not any market. Polymarket's "Bitcoin Up or Down": every five or fifteen minutes, a binary bet on whether BTC closes above where it opened. Up trades at 51¢, Down at 49¢, the window closes, the oracle speaks, repeat forever. It looked like a coin flip with a price tag, and I had the arrogance of a man who has written a lot of unit tests. At least the arrogance stayed on paper: every bot in this story traded paper money against the live order books. The small real-money pilots came later, and the repo has an autopsy for each of their losses.
+Not any market. Polymarket's "Bitcoin Up or Down": every five or fifteen minutes, a binary bet on whether BTC closes above where it opened. Up trades at 51¢, Down at 49¢, the window closes, the oracle speaks, repeat forever. It looked like a coin flip with a price tag, and I had the arrogance of a man who has written a lot of unit tests. At least the arrogance stayed on paper: every bot in this story traded paper money against the live order books.
 
 I did what any serious quantitative researcher does: I named my bots after mystics.
 

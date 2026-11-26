@@ -251,7 +251,7 @@ export const harness = {
     { name: 'strata-flash-next-rtx3080-20gb', url: 'https://github.com/emoubarak/strata-flash-next-rtx3080-20gb', text: 'Settings and benchmark scripts for a 180B model on a mini PC with an RTX 3080 20 GB over OCuLink.', proof: '≈2,000 tok/s read, 110-204 tok/s write', stack: 'Strata · llama-swap · benchmarks' },
     { name: 'sunshine-gnome-virtual-display', url: 'https://github.com/emoubarak/sunshine-gnome-virtual-display', text: 'Streams a GNOME desktop to Moonlight on a virtual monitor at the client\'s exact resolution, then puts the desktop back.', proof: 'Network latency 42 ms → 5-9 ms', stack: 'Bash · Python · Mutter' },
     { name: 'signal-bot', url: 'https://github.com/emoubarak/signal-bot', text: 'An LLM bot for Signal groups: summaries, voice-note transcripts, images, reminders. OpenRouter or a local model.', stack: 'Python · SQLite · Docker' },
-    { name: 'polymarket-updown-lab', url: 'https://github.com/emoubarak/polymarket-updown-lab', text: 'Trading research with out-of-sample backtests. Result: no tradable edge after fees.', proof: '≈12,000 paper trades, 60 runners', stack: 'Python · Go' },
+    { name: 'polymarket-updown-lab', url: 'https://github.com/emoubarak/polymarket-updown-lab', text: 'Trading research with out-of-sample backtests. Result: no tradable edge after fees.', proof: '≈12,000 paper trades, 75 runners', stack: 'Python · Go' },
   ],
 
   workshop: [

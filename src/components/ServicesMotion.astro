@@ -5,13 +5,13 @@
 const scenes = [
   { key: 'saas', label: 'SaaS & web apps' },
   { key: 'agents', label: 'AI automation & agents' },
-  { key: 'rag', label: 'LLM & RAG' },
+  { key: 'llm', label: 'LLM integration' },
 ];
 ---
 
 <div class="sm" data-sm data-scene="0">
   <svg class="sm__svg" viewBox="0 0 600 520" role="img" aria-labelledby="sm-title">
-    <title id="sm-title">Animated illustration of three services: a web app being built and deployed, an AI agent moving work from an inbox to a CRM, and a chat answering from documents with a cited source.</title>
+    <title id="sm-title">Animated illustration of three services: a web app being built and deployed, an AI agent moving work from an inbox to a CRM, and fields extracted from a scanned PDF into checked JSON.</title>
     <defs>
       <filter id="sm-shadow" x="-10%" y="-10%" width="120%" height="130%">
         <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#5a1e05" flood-opacity="0.32" />
@@ -90,8 +90,8 @@ const scenes = [
         ))}
       </g>
 
-      <!-- Scene 3: LLM & RAG, a question answered from the company's own documents, with its source -->
-      <g class="sc sc--rag">
+      <!-- Scene 3: LLM integration, fields read from a scanned PDF into JSON that passes a schema check -->
+      <g class="sc sc--llm">
         {[0, 1, 2].map((i) => (
           <g class="a slide" style={`--d:${i * 0.18}`}>
             <rect x={52 + i * 14} y={96 + i * 22} width="132" height="168" rx="12" fill="#fff" stroke="#14161a" stroke-width="2" />
@@ -99,37 +99,30 @@ const scenes = [
             <rect x={70 + i * 14} y={140 + i * 22} width="94" height="6" rx="3" fill="#c9c3be" />
             <rect x={70 + i * 14} y={156 + i * 22} width="84" height="6" rx="3" fill="#c9c3be" />
             <rect x={70 + i * 14} y={172 + i * 22} width="90" height="6" rx="3" fill="#c9c3be" />
-            {i === 2 && <rect class="a hl" style="--d:2.6" x={66 + i * 14} y={186 + i * 22} width="102" height="14" rx="4" fill="#fc7b42" opacity=".55" />}
+            {i === 2 && <rect class="a hl" style="--d:1.1" x={66 + i * 14} y={186 + i * 22} width="102" height="14" rx="4" fill="#fc7b42" opacity=".55" />}
             <rect x={70 + i * 14} y={190 + i * 22} width="74" height="6" rx="3" fill="#c9c3be" />
           </g>
         ))}
-        <text class="a slide" style="--d:.6" x="80" y="350" font-size="15" fill="#5b5f66" font-family="'JetBrains Mono', monospace">policy.pdf</text>
+        <text class="a slide" style="--d:.6" x="80" y="350" font-size="15" fill="#5b5f66" font-family="'JetBrains Mono', monospace">invoice-scan.pdf</text>
         <path class="draw" style="--d:.7;--len:70" d="M238 230 C 262 230, 262 200, 290 200" fill="none" stroke="#14161a" stroke-width="2.5" stroke-dasharray="6 6" pathLength="70" />
 
         <g class="a pop" style="--d:.9">
           <rect x="296" y="88" width="260" height="330" rx="14" fill="#fff" stroke="#14161a" stroke-width="2" />
+          <text x="318" y="124" font-size="14" fill="#5b5f66" font-family="'JetBrains Mono', monospace">extracted.json</text>
+          <line x1="296" y1="142" x2="556" y2="142" stroke="#e7ded8" stroke-width="2" />
         </g>
-        <g class="a bubble-r" style="--d:1.2">
-          <rect x="356" y="110" width="182" height="52" rx="16" fill="#14161a" />
-          <text x="374" y="142" font-size="16" fill="#fff" font-family="Geist, system-ui, sans-serif">Refund window?</text>
-        </g>
-        <g class="a typing" style="--d:1.7">
-          <circle cx="330" cy="196" r="5" fill="#14161a" /><circle cx="346" cy="196" r="5" fill="#14161a" /><circle cx="362" cy="196" r="5" fill="#14161a" />
-        </g>
-        <g class="a bubble-l" style="--d:2.5">
-          <rect x="314" y="182" width="224" height="140" rx="16" fill="#fbe1d3" stroke="#14161a" stroke-width="2" />
-          <rect class="a grow" style="--d:2.75" x="332" y="204" width="180" height="8" rx="4" fill="#14161a" />
-          <rect class="a grow" style="--d:2.85" x="332" y="224" width="160" height="8" rx="4" fill="#14161a" />
-          <rect class="a grow" style="--d:2.95" x="332" y="244" width="176" height="8" rx="4" fill="#14161a" />
-          <rect class="a grow" style="--d:3.05" x="332" y="264" width="110" height="8" rx="4" fill="#14161a" />
-          <g class="a pop" style="--d:3.3">
-            <rect x="332" y="284" width="158" height="26" rx="13" fill="#fff" stroke="#14161a" stroke-width="2" />
-            <text x="346" y="302" font-size="13" fill="#14161a" font-family="'JetBrains Mono', monospace">policy.pdf · p.4</text>
+        {[['supplier', 1.3, 186, 112], ['date', 1.6, 232, 80], ['total', 1.9, 278, 64], ['vat_no', 2.2, 324, 100]].map(([k, d, y, w]) => (
+          <g class="a slide" style={`--d:${d}`}>
+            <text x="318" y={y} font-size="15" fill="#14161a" font-family="'JetBrains Mono', monospace">{k}</text>
+            <rect class="a grow" style={`--d:${Number(d) + 0.15}`} x="408" y={Number(y) - 11} width={w} height="12" rx="6" fill="#14161a" />
+            <path class="draw" style={`--d:${Number(d) + 0.4};--len:24`} d={`M534 ${Number(y) - 6} l5 5 l9 -10`} fill="none" stroke="#fc7b42" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="24" />
           </g>
-        </g>
-        <g class="a pop" style="--d:1">
-          <rect x="314" y="366" width="224" height="36" rx="18" fill="none" stroke="#14161a" stroke-width="2" />
-          <circle cx="518" cy="384" r="10" fill="#14161a" />
+        ))}
+        <g class="a toast" style="--d:2.8">
+          <rect x="314" y="360" width="224" height="40" rx="20" fill="#14161a" />
+          <circle cx="338" cy="380" r="10" fill="#3ccf8e" />
+          <path d="M333 380 l4 4 l7 -8" fill="none" stroke="#14161a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+          <text x="358" y="385" fill="#fff" font-size="15" font-weight="600" font-family="Geist, system-ui, sans-serif">Schema check passed</text>
         </g>
       </g>
     </g>
@@ -153,7 +146,7 @@ const scenes = [
 
   /* Scenes: only the active one is visible; its parts replay their entrance each time it becomes active */
   .sc { opacity: 0; transition: opacity 0.35s ease; }
-  .sm[data-scene='0'] .sc--saas, .sm[data-scene='1'] .sc--agents, .sm[data-scene='2'] .sc--rag { opacity: 1; }
+  .sm[data-scene='0'] .sc--saas, .sm[data-scene='1'] .sc--agents, .sm[data-scene='2'] .sc--llm { opacity: 1; }
   .sm.is-paused * { animation-play-state: paused !important; }
 
   .sc .a { transform-box: fill-box; transform-origin: center; animation-duration: 0.7s; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); animation-fill-mode: both; animation-delay: calc(var(--d, 0) * 1s); }

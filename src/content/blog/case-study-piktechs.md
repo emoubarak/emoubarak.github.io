@@ -28,9 +28,9 @@ Turning it into a product that bills meant multi-tenant data with real permissio
 |---|---|
 | App | React, TypeScript, Vite, TanStack Query, Tailwind and shadcn/ui, French and English |
 | Data | Supabase Postgres with row-level security, role-based permissions per workspace (groups, a rights matrix, deny by default) |
-| Backend | Edge Functions in Deno: billing, CRM sync, wallet passes, vCards, social preview images, team analytics |
+| Backend | Edge Functions in Deno: billing, CRM sync, vCards, social preview images, team analytics |
 | Billing | Stripe checkout, customer portal, webhooks, per-seat team plans with a shared card pool, a nightly reconciliation job |
-| Mobile | An Android app built from the same codebase with Capacitor, on Google Play; Apple and Google Wallet passes |
+| Mobile | An Android app built from the same codebase with Capacitor, on Google Play |
 | AI | A vision-model business-card scanner ([its own case study](/blog/case-study-ai-card-scanner)) |
 | Integrations | CRM sync, Zapier |
 | Delivery | App and marketing site split into two repositories, each with a test and a production environment |

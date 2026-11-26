@@ -49,7 +49,7 @@ export const proof = [
   { claim: { en: "Agentic QA with jev, Browser Use's browser agent: 16 permanent checks on what each plan unlocks and who can do what, each one decided by a SQL query on the database; its screenshots on closed tickets found 3 bugs the fixes had missed or introduced.", fr: "QA par agent navigateur avec jev, l'agent navigateur de Browser Use : 16 vérifications permanentes sur ce que débloque chaque offre et qui a le droit de faire quoi, chacune tranchée par une requête SQL sur la base ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits." }, source: 'Piktechs' },
   { claim: { en: 'AI card scanner: of four candidate vision models, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.', fr: "Scanner de cartes IA : sur quatre modèles de vision candidats, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le repli est celui qui a résisté." }, source: 'Piktechs' },
   { claim: { en: "Internal R&D tool to create, store and replay payment test sets; tests before rollout measured the team's development speed 70% higher.", fr: "Outil interne de R&D pour créer, stocker et rejouer des jeux de tests de paiement ; les tests avant la mise en production ont mesuré une vitesse de développement de l'équipe 70 % plus élevée." }, source: 'Worldline' },
-  { claim: { en: '~12,000 paper trades across 60 paper-trading runs in parallel (5 strategy variants × 6 coins × 2 window lengths), settled against the Chainlink oracle.', fr: "~12 000 trades simulés sur 60 sessions de paper trading en parallèle (5 variantes de stratégie × 6 cryptos × 2 durées de fenêtre), réglés contre l'oracle Chainlink." }, source: 'Polymarket Up/Down Lab' },
+  { claim: { en: 'Paper trading only: ~12,000 simulated trades across 75 runners, settled against the Chainlink oracle; no edge after fees.', fr: "En paper trading seulement : ~12 000 trades simulés sur 75 runners, réglés contre l'oracle Chainlink ; aucun avantage après frais." }, source: 'Polymarket Up/Down Lab' },
   { claim: { en: 'PDFs into structured Markdown, in 11 languages.', fr: 'Des PDF en Markdown structuré, en 11 langues.' }, source: 'PDFold' },
   { claim: { en: 'Shopify store built, grown through SEO and marketing, and sold.', fr: 'Boutique Shopify créée, développée par le SEO et le marketing, puis vendue.' }, source: 'Mon Jouet Montessori' },
   { claim: { en: 'Corporate AI training: two sessions, in French and English.', fr: 'Formation IA en entreprise : deux sessions, en français et en anglais.' }, source: 'DRIVECO' },
@@ -123,8 +123,8 @@ export const services = [
     audience: "For teams that repeat the same task every day",
   },
   {
-    title: "LLM & RAG Integration",
-    description: "Chat over your documents, data extraction from scans and PDFs, and OpenAI, Claude or Gemini inside your existing product, with rate limits, fallbacks and evaluation in place.",
+    title: "LLM Integration",
+    description: "Data extraction from scans and PDFs, and OpenAI, Claude or Gemini models inside your existing product, with rate limits, a fallback model and evaluation in place.",
     audience: "For products that already have users and need an AI feature",
   },
   {
@@ -162,18 +162,17 @@ export const experiences = [
     summary: "B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.",
     achievements: [
       "**Sole engineer:** took a two-week prototype to a **B2B SaaS in production** for event lead capture.",
-      "**Agentic QA with jev**, Browser Use's browser agent: it signs in to the test app as a user in each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal; **a SQL query on the database then decides pass or fail**. ==16 permanent checks== on what each plan unlocks and who can do what; its before/after screenshots on closed tickets found ==3 bugs== that the fixes had missed or introduced. Open-sourced as account-state-check.",
+      "Multi-tenant workspaces isolated by **Postgres row-level security** across 143 migrations, with role-based permissions, and **live Stripe billing** with per-seat team plans: checkout, customer portal, webhooks and a scheduled reconciliation with Stripe. Every billing or permission change gets a **second review by a different model** from the one that wrote it.",
       "Shipped an **AI business-card scanner**: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by **prompt-injection testing** (==2 of 4== candidate models obeyed an injected card).",
-      "**Live Stripe billing** (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured by **Postgres row-level security** and role-based permissions; every billing or permission change gets a **second review by a different model** from the one that wrote it.",
-      "**Android app live on Google Play** and iOS build from the same codebase (Capacitor), Apple and Google Wallet passes, CRM sync and a Zapier integration.",
-      "Unit and Playwright tests gate CI/CD across separate test and production environments.",
+      "**Agentic QA with jev**, Browser Use's browser agent: it signs in to the test app as a user in each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal; **a SQL query on the database then decides pass or fail**. ==16 permanent checks== on what each plan unlocks and who can do what; its before/after screenshots on closed tickets found ==3 bugs== that the fixes had missed or introduced. Open-sourced as account-state-check.",
+      "==1,493 unit tests== and ==140 Playwright tests== (Nov 2026) gate CI/CD across separate test and production environments.",
+      "**Android app on Google Play** from the same codebase (Capacitor), CRM sync and a Zapier integration.",
     ],
     stack: ["React", "TypeScript", "Vite", "Tailwind", "Supabase (Postgres, RLS, Edge Functions)", "Stripe", "Capacitor", "OpenRouter", "Resend", "Playwright", "Vitest", "jev (Browser Use)", "GitHub Actions", "Cloudflare Pages", "Claude Code"],
     links: [
       { label: "Case study: Piktechs", href: "/blog/case-study-piktechs" },
       { label: "Case study: account-state-check", href: "/blog/case-study-jev-check" },
       { label: "Case study: the AI card scanner", href: "/blog/case-study-ai-card-scanner" },
-      { label: "Android app on Google Play", href: "https://play.google.com/store/apps/details?id=com.piktechs.app&hl=en" },
       { label: "account-state-check on GitHub", href: "https://github.com/emoubarak/account-state-check" },
     ],
   },
@@ -182,7 +181,7 @@ export const experiences = [
     role: "Founder & AI / Full-Stack Engineer",
     period: "Mar 2026 – Present",
     location: "France · Remote",
-    summary: "My own company, a French SASU, through which I invoice freelance work. The offer: self-hosted AI agents, rescue of AI-generated MVPs (Lovable, Bolt, Cursor, Claude Code), and LLM and RAG features in existing products.",
+    summary: "My own company, a French SASU, through which I invoice freelance work. The offer: self-hosted AI agents, rescue of AI-generated MVPs (Lovable, Bolt, Cursor, Claude Code), and LLM features in existing products.",
     achievements: [
       "**AI browser automation with jev:** my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to me for logins, captchas and 2FA, and logs every step with a screenshot and its cost.",
       "**My own agent harness:** skills, hooks that turn repeated corrections into enforced checks, scheduled routines with failure alerts, semantic search over past sessions, and a 180B mixture-of-experts model (about 6B active per token) running locally on an RTX 3080 20 GB. A weekly job scans my sessions for corrections I keep repeating.",
@@ -202,9 +201,9 @@ export const experiences = [
     location: "France · Morocco",
     summary: "Web agency (agence-ksur.com): websites, e-commerce and web apps for small businesses.",
     achievements: [
-      "Run the **technical stack and delivery** for ==about ten client companies== in France, Belgium, Morocco and La Réunion.",
-      "**Partnership with THE ICON** (the-icon.be), a Belgian marketing and sales agency: KSUR builds the websites of its clients.",
-      "Run the agency's hosting: one VPS serving the agency site, its demo sites and four client sites, with deployment on every push to GitHub and an email check per client site in CI.",
+      "Run the **technical stack and delivery** for ==six live client sites== in Morocco and La Réunion.",
+      "**Partnership with THE ICON** (the-icon.be), a Belgian marketing and sales agency: KSUR built THE ICON's website, and the sites of two of its Belgian clients in French, English and Dutch.",
+      "Run the agency's hosting: one VPS serving the agency site, its demo sites and five client sites, with deployment on every push to GitHub and an email check per client site in CI.",
     ],
   },
   {
@@ -296,7 +295,7 @@ export const certifications = [
 ];
 
 export const techGroups = [
-  { label: "AI & Automation", items: ["AI Agents", "Claude Code (skills, hooks, subagents)", "MCP", "Browser agents & agentic QA (jev, Browser Use)", "LLM APIs (OpenAI, Claude, Gemini, OpenRouter)", "LLM evaluation & prompt-injection testing", "Local LLMs (llama.cpp, ExLlamaV2)", "RAG", "Embeddings & vector search", "OCR & Vision pipelines", "ElevenLabs", "Voice AI"] },
+  { label: "AI & Automation", items: ["AI Agents", "Claude Code (skills, hooks, subagents)", "MCP", "Browser agents & agentic QA (jev, Browser Use)", "LLM APIs (OpenAI, Claude, Gemini, OpenRouter)", "LLM evaluation & prompt-injection testing", "Local LLMs (llama.cpp, ExLlamaV2)", "Embeddings & vector search", "OCR & Vision pipelines", "ElevenLabs", "Voice AI"] },
   { label: "Web & Mobile Dev", items: ["TypeScript", "JavaScript", "Next.js", "React", "React Native", "Capacitor", "Angular", "Vue.js", "Node.js", "Python", "Django", "Flask", "PostgreSQL", "Supabase"] },
   { label: "Cloud & DevOps", items: ["AWS (EC2, Route53, Amplify)", "Docker", "Git", "CI/CD", "Vercel"] },
   { label: "E-commerce", items: ["Shopify API", "Liquid", "Stripe", "SEO"] },
@@ -334,7 +333,7 @@ const allProjects = [
     category: 'saas',
     categoryLabel: 'SaaS',
     role: 'Co-Founder & CTO',
-    description: 'B2B SaaS for digital business cards (NFC and QR) at professional events: lead capture with an AI card scanner, a CRM and team workspaces. I am its only engineer, from the web app to the Android app on Google Play.',
+    description: 'B2B SaaS for digital business cards (NFC and QR) at professional events: lead capture with an AI card scanner, a CRM and team workspaces. I am its only engineer. Workspaces are isolated by Postgres row-level security, team plans are billed per seat through Stripe webhooks and a scheduled reconciliation, and the scanner\'s fallback model was chosen by prompt-injection tests. 1,493 unit and 140 Playwright tests gate each release (Nov 2026).',
     previews: [
       { label: 'Dashboard', src: `${base}/portfolio/piktechs-devices.webp` },
       { label: 'Live site', src: 'https://piktechs.com' },
@@ -344,6 +343,8 @@ const allProjects = [
   },
   {
     title: 'PDFold',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/pdfold.webp`,
     thumbAlt: 'PDFold diagram: a scanned PDF goes through OCR, layout and Gemini passes and comes out as Markdown',
     subtitle: 'Archived project',
@@ -362,6 +363,8 @@ const allProjects = [
   },
   {
     title: 'AI Search Visibility Tracker',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/ai-visibility.webp`,
     thumbAlt: 'Tracker diagram: one prompt asked five times to ChatGPT, Perplexity, Gemini and AI Overviews, with mention counts and a weekly trend',
     subtitle: 'apify.com/emoubarak',
@@ -396,6 +399,8 @@ const allProjects = [
   },
   {
     title: 'Hindsight',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/hindsight.webp`,
     thumbAlt: 'Claude Code session where Hindsight recalls a deploy command from an earlier session',
     subtitle: 'github.com/emoubarak/hindsight',
@@ -430,6 +435,8 @@ const allProjects = [
   },
   {
     title: 'Voice Browser',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/jev-voice.webp`,
     thumbAlt: 'Voice Browser: a spoken Wikipedia request, the steps it runs and the extension panel with the answer',
     subtitle: 'github.com/emoubarak/voice-browser',
@@ -471,7 +478,7 @@ const allProjects = [
     category: 'agency',
     categoryLabel: 'Agency',
     role: 'CTO',
-    description: 'Web agency where I am CTO: websites, e-commerce and web apps for about ten client companies in France, Belgium, Morocco and La Réunion, several of them clients of THE ICON, a Belgian marketing agency. I run the technical stack, the delivery and the hosting.',
+    description: 'Web agency where I am CTO: websites, e-commerce and web apps for small businesses, with six client sites live in Morocco and La Réunion. Through a partnership with THE ICON, a Belgian marketing agency, KSUR also built THE ICON\'s website and the sites of two of its Belgian clients. I run the technical stack, the delivery and the hosting.',
     // agence-ksur.com sets frame-ancestors 'self', so it cannot be previewed in an iframe.
     previews: [
       { label: 'Homepage', src: `${base}/portfolio/ksur-home.webp` },
@@ -488,14 +495,14 @@ const allProjects = [
     category: 'research',
     categoryLabel: 'Research',
     role: 'Solo',
-    description: 'A search for a trading edge on Polymarket\'s 5 and 15 minute binary crypto markets: hypothesis, out-of-sample backtest, live paper trading, then falsification. ~12,000 paper trades across 60 paper-trading runs in parallel (5 strategy variants × 6 coins × 2 window lengths), settled against the Chainlink oracle. Result: the market is efficient, and nearly every edge I found came from a measurement artifact.',
+    description: 'A search for a trading edge on Polymarket\'s 5 and 15 minute binary crypto markets, in paper trading only: hypothesis, out-of-sample backtest, simulated trades against the live order books, then falsification. ~12,000 simulated trades across 75 runners, settled against the Chainlink oracle. Result: no edge after fees, and nearly every edge I found came from a measurement artifact.',
     // github.com sets X-Frame-Options: DENY, so the repo cannot be previewed in an iframe.
+    // The dashboard screenshot (portfolio/polymarket-dashboard.webp) left the card on 2026-11-26: it shows a real-money panel.
     previews: [
       { label: 'What it found', src: `${base}/portfolio/polymarket-illustration.webp` },
-      { label: 'Live dashboard', src: `${base}/portfolio/polymarket-dashboard.webp` },
     ],
     url: 'https://github.com/emoubarak/polymarket-updown-lab',
-    tags: ['Python', 'Go', 'Backtesting', 'Market making'],
+    tags: ['Python', 'Backtesting', 'Paper trading', 'Out-of-sample tests'],
   },
   {
     title: 'A 180B Model on an eGPU',
@@ -505,14 +512,14 @@ const allProjects = [
     category: 'research',
     categoryLabel: 'Research',
     role: 'Solo · MIT',
-    description: 'Dated benchmarks and the full working config for running Qwen3.8-Flash-Next 180B (about 6B active per token) with Strata on a mini PC whose only strong GPU sits in an OCuLink dock. With an RTX 3080 20 GB: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, up to 262k context. Two public repos, one per GPU, with frozen prompts and the scripts to reproduce every number.',
+    description: 'Dated benchmarks and the full working config for running Qwen3.8-Flash-Next 180B (about 6B active per token) with Strata on a mini PC whose only strong GPU sits in an OCuLink dock. With an RTX 3080 20 GB: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, up to 262k context. Two public repos, one per GPU, with frozen prompts and the scripts to reproduce every number. I also published WebJev-35B-A3B-GGUF, a GGUF conversion of a browser-agent decision model: 409 downloads on Hugging Face (Nov 2026), and the Q4 file matches Q8 on 52 of 54 real steps.',
     previews: [
       { label: 'What it measures', src: `${base}/portfolio/strata-illustration.webp` },
       { label: '8 GB vs 20 GB', src: `${base}/portfolio/strata-8gb-vs-20gb.webp` },
       { label: 'Repository', src: `${base}/portfolio/strata-repo.webp` },
     ],
     url: 'https://github.com/emoubarak/strata-flash-next-rtx3080-20gb',
-    tags: ['Local LLM', 'CUDA', 'Benchmarks', 'eGPU'],
+    tags: ['Local LLM', 'CUDA', 'Benchmarks', 'eGPU', 'GGUF'],
   },
   {
     title: 'Signal LLM Bot',
@@ -616,6 +623,8 @@ const allProjects = [
   },
   {
     title: 'Group BW Invest',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/groupbw.webp`,
     thumbAlt: 'Group BW Invest home page: a building under construction at sunset, headline in French: build, strengthen, raise',
     subtitle: 'groupbw.be',
@@ -632,6 +641,8 @@ const allProjects = [
   },
   {
     title: 'ID Advise',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/idadvise.webp`,
     thumbAlt: 'ID Advise home page: a modern house, headline in French: every trade of a project, one direction',
     subtitle: 'idadvise.com',
@@ -648,6 +659,8 @@ const allProjects = [
   },
   {
     title: 'Prestige Auto Ecoservice',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/prestige-auto.webp`,
     thumbAlt: 'Prestige Auto Ecoservice home page: BMW cars in the workshop, headline in French: car repair workshop',
     subtitle: 'prestige-auto-ecoservices.com',
@@ -664,6 +677,8 @@ const allProjects = [
   },
   {
     title: 'Central Garage',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/central-garage.webp`,
     thumbAlt: 'Central Garage home page: the garage front in Le Port, headline in French: general mechanics in Le Port',
     subtitle: 'central-garage.re',
@@ -680,6 +695,8 @@ const allProjects = [
   },
   {
     title: 'Mon Jouet Montessori',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/montessori.webp`,
     thumbAlt: 'Mon Jouet Montessori home page: a wooden activity cube and the headline Toys that awaken your children',
     subtitle: 'mon-jouet-montessori.com',
@@ -722,6 +739,8 @@ const allProjects = [
   },
   {
     title: 'Worldline MQTT Tool',
+    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
+    hidden: true,
     thumb: `${base}/work/worldline.webp`,
     thumbAlt: 'Mock-up of the MQTT tool: a console to publish a message on a topic and trigger quick actions',
     subtitle: 'Confidential project',
@@ -738,15 +757,13 @@ const allProjects = [
   },
 ];
 
-// What the site shows: archived products flagged hidden stay in the data, out of the pages.
-// Display order (portfolio, CV): flagship product and the open-source agent tools first, then client work,
-// research, and older or archived projects last (2026-11-26).
+// What the site shows: projects flagged hidden stay in the data, out of the pages.
+// Display order (portfolio, CV): flagship product and the agent tools first, then client work, research,
+// and older confidential work last (2026-11-26 selection).
 const order = [
-  'Piktechs', 'account-state-check', 'Claude Skill Router', 'browser-agents', 'Hindsight', 'KSUR',
-  'THE ICON', 'Vyrion International Consulting', 'Group BW Invest', 'ID Advise', 'Atandem Agency',
-  'Prestige Auto Ecoservice', 'Central Garage', 'Polymarket Up/Down Lab', 'A 180B Model on an eGPU',
-  'Voice Browser', 'Signal LLM Bot', 'Altao Discharge Summary Tool', 'Deuspi', 'PDFold',
-  'AI Search Visibility Tracker', 'Mon Jouet Montessori', 'Worldline MQTT Tool',
+  'Piktechs', 'browser-agents', 'account-state-check', 'Claude Skill Router', 'KSUR', 'THE ICON',
+  'Vyrion International Consulting', 'Atandem Agency', 'Polymarket Up/Down Lab', 'A 180B Model on an eGPU',
+  'Signal LLM Bot', 'Altao Discharge Summary Tool', 'Deuspi',
 ];
 const rank = (p) => { const i = order.indexOf(p.title); return i === -1 ? order.length : i; };
 export const projects = allProjects.filter((p) => !p.hidden).sort((a, b) => rank(a) - rank(b));
