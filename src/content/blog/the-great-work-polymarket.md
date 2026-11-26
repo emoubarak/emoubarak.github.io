@@ -7,7 +7,7 @@ cover: "/blog/the-great-work-polymarket.webp"
 coverAlt: "A bearded alchemist at his bench, a laptop chart beside him: an orange coin flips above the flask and comes out as grey lead."
 tldr:
   - "Every edge I found on Polymarket's Bitcoin Up or Down markets was an artifact: stale data, a cherry-picked cell, or momentum that only works when Bitcoin trends."
-  - "Over 97 paper trades, favorites bought at 84.2¢ on average won 84.5% of the time: the price was right, and break-even after fees was 85.2%."
+  - "Over 97 paper trades, favorites won 84.5% of the time, as their price of about 84¢ implied, and short of the 85.2% needed to break even after fees."
   - "The one profitable wallet I traced made its money from maker rebates: the exchange hands part of the taker fees to whoever provides liquidity."
 ---
 

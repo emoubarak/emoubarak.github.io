@@ -55,7 +55,7 @@ The global instruction file is capped at **120 lines**: a hook counts the lines 
 
 Around it sit the hooks, each written because the model did something at least twice. One refuses new files at the root of my home directory. One refuses a browser integration I don't use. One blocks a push that contains a secret. One closes the browser tabs an agent opened and no longer needs. One catches a reply that ends with "shall I run it?" and sends the model back to work, once, unless it names a real reason to ask. Its natural enemy is a memory note saying that "there's no way to do X?" from me is a question to answer, without running off to do X. When the two collide, the hook still sends the model back once, and the model keeps its question if it says why it needs me.
 
-Then the skills, one per kind of work I repeat, and a router hook that names the matching ones in my own words. It took the share of needed skills loaded from 57% to 84% on held-out prompts: [Ninety Skills, Four in Ten Missed](/blog/claude-skills-that-actually-load).
+Then the skills, one per kind of work I repeat, and a router hook that names the matching ones in my own words. It took the share of needed skills loaded from 57% to 84% on held-out prompts: [Four in Ten Skills Missed](/blog/claude-skills-that-actually-load).
 
 Two smaller pieces of plumbing: a model router that sends each prompt to Haiku, Sonnet or Opus depending on the task, and a proxy that compresses shell output before the model reads it.
 

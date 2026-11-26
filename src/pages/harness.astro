@@ -255,7 +255,7 @@ const benchMax = 10;
       <div class="s-head">
         <div>
           <p class="t-eyebrow">Training department</p>
-          <h2 class="t-h2">The skills I use most</h2>
+          <h2 class="t-h2">My own skills</h2>
         </div>
       </div>
       <p class="text-2 text-[1.1rem] leading-relaxed max-w-[60ch] -mt-4">{skills.intro}</p>
@@ -267,12 +267,6 @@ const benchMax = 10;
               <code class="skill__name">{s.name}</code>
             </div>
             <p class="skill__text">{s.text}</p>
-            {s.uses != null && (
-              <div class="skill__uses">
-                <span class="skill__bar"><span style={`width:${Math.max(6, Math.round((s.uses / skills.maxUses) * 100))}%`}></span></span>
-                
-              </div>
-            )}
           </article>
         ))}
       </div>
@@ -493,7 +487,8 @@ const benchMax = 10;
 
   /* ── numbers ── */
   .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-  @media (min-width: 1000px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 999px) { .stat:last-child:nth-child(odd) { grid-column: span 2; } }
   .stat { background: var(--bg); padding: clamp(1.25rem, 2.4vw, 2rem); }
   .stat__n { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 1.3rem + 1.5vw, 3rem); line-height: 1; letter-spacing: -0.04em; }
   .stat__l { margin-top: 0.6rem; color: var(--text-2); font-size: 0.95rem; line-height: 1.4; }
@@ -587,9 +582,6 @@ const benchMax = 10;
   .skill__icon :global(svg) { width: 1.15rem; height: 1.15rem; }
   .skill__name { font-family: var(--font-mono); font-weight: 700; font-size: 0.95rem; }
   .skill__text { color: var(--text-2); font-size: 0.95rem; line-height: 1.5; flex: 1; }
-  .skill__uses { display: flex; align-items: center; gap: 0.7rem; }
-  .skill__bar { flex: 1; height: 6px; border-radius: 999px; background: var(--bg-2); overflow: hidden; }
-  .skill__bar span { display: block; height: 100%; background: var(--orange); border-radius: inherit; }
 
   /* ── hooks ── */
   .band-paper { background: var(--bg-2); border-radius: clamp(1.25rem, 3vw, 2.25rem); }

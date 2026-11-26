@@ -57,7 +57,7 @@ Most days I work in Claude Code. As the only engineer on Piktechs, a B2B SaaS fo
 A few things I hold to:
 • When an agent says "done", I check it on the deployed app, with a browser agent signed in as each kind of user. I open-sourced that approach as account-state-check.
 • An AI feature starts with its threat model. Our card scanner reads text written by strangers, so I chose its fallback model by testing prompt injection.
-• Measure before believing. My Polymarket research ended on "no tradable edge", and I published it with the method.
+• Measure before believing. My paper-trading research on Polymarket ended on "no tradable edge", and I published it with the method.
 • When an agent gets something wrong, I write the fix into its own files (a hook, a skill or a rule), where the next session reads it. When a written rule fails twice, I turn it into an automatic check.
 
 From 2019 to 2026: software in cybersecurity, healthcare and fintech, often as the only engineer. At ALTAO Santé I was the only software engineer on a medical platform for hospital discharge summaries; at Board of Cyber I spent three years on Security Rating®, in a team of 20 developers. In July 2026 I ran two hands-on ChatGPT workshops (FR/EN) for DRIVECO's teams.
@@ -70,7 +70,7 @@ Je travaille au quotidien dans Claude Code. Seul ingénieur de Piktechs, un SaaS
 Quelques principes auxquels je tiens :
 • Quand un agent dit « fini », je vérifie sur l'app déployée, avec un agent navigateur connecté sous chaque type de compte. J'ai publié cette méthode en open source : account-state-check.
 • Une fonctionnalité IA commence par son modèle de menace. Notre scanner de cartes lit du texte écrit par des inconnus : j'ai donc choisi son modèle de repli en testant l'injection de prompt.
-• Mesurer avant de croire. Ma recherche sur Polymarket a conclu qu'il n'y avait pas d'avantage exploitable, et je l'ai publiée avec la méthode.
+• Mesurer avant de croire. Ma recherche sur Polymarket, en trading simulé, a conclu qu'il n'y avait pas d'avantage exploitable, et je l'ai publiée avec la méthode.
 • Quand un agent se trompe, j'écris la correction dans ses propres fichiers (un hook, un skill ou une règle), là où la session suivante la lira. Quand une règle écrite échoue deux fois, j'en fais une vérification automatique.
 
 De 2019 à 2026 : du logiciel en cybersécurité, en santé et dans la fintech, souvent comme seul ingénieur. Chez ALTAO Santé, j'étais le seul ingénieur logiciel d'une plateforme médicale pour les comptes rendus d'hospitalisation ; chez Board of Cyber, j'ai passé trois ans sur Security Rating®, dans une équipe de 20 développeurs. En juillet 2026, j'ai animé deux ateliers ChatGPT pratiques (FR/EN) pour les équipes de DRIVECO.
@@ -97,7 +97,7 @@ J'écris sur tout cela, erreurs comprises, sur moubarak.dev. Basé en France, en
       },
       {
         title: 'Mesurer avant de croire',
-        text: "Les modèles donnent des réponses différentes au même prompt, et les backtests surestiment les résultats. Je répète chaque test de nombreuses fois, je teste hors échantillon et j'essaie de casser un résultat avant de m'y fier. Mes six semaines de recherche sur Polymarket n'ont trouvé aucune stratégie rentable ; le dépôt publie la méthode et les résultats.",
+        text: "Les modèles donnent des réponses différentes au même prompt, et les backtests surestiment les résultats. Je répète chaque test de nombreuses fois, je teste hors échantillon et j'essaie de casser un résultat avant de m'y fier. Ma recherche sur Polymarket n'a trouvé aucun avantage exploitable ; le dépôt publie la méthode et les résultats.",
       },
       {
         title: 'Mettre chaque correction là où la session suivante la lit',
@@ -121,8 +121,8 @@ March 2026 – Present · France
 
 Independent software engineering practice: web apps, SaaS and AI automation for founders, SMEs and agencies. What I offer: self-hosted AI agents with custom skills and MCP, rescue of apps built with AI app builders or coding agents (Lovable, Bolt, Cursor, Claude Code), and LLM features inside existing products.
 
-• AI browser automation with jev, Browser Use's browser agent: my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API. It hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.
-• My own agent harness, versioned and shared across two machines: skills, hooks that turn a correction I keep repeating into an automatic check, scheduled routines that alert me when they fail, session memory searchable by meaning, and a 180B mixture-of-experts model (about 6B active per token) on an RTX 3080 20 GB. A weekly review of my sessions lists the corrections that still come back. Tour: https://moubarak.dev/harness
+• AI browser automation with jev, Browser Use's browser agent: my own task runner, in use since October 2026, drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API. It hands over to a human for logins, captchas and 2FA, and logs every step with a screenshot and its cost.
+• My own agent harness, versioned and shared across my machines: hooks that turn a correction I keep repeating into an automatic check, scheduled routines that alert me when they fail, and a 180B mixture-of-experts model (about 6B active per token) on an RTX 3080 20 GB. A router hook I wrote raised the share of needed skills that load from 57% to 84% on held-out prompts. Tour: https://moubarak.dev/harness
 
 Stack: TypeScript · Python · Next.js · Node.js · Supabase · Docker · OpenAI, Claude, Gemini APIs · MCP · Browser Use · Claude Code
 
@@ -132,8 +132,8 @@ Mars 2026 – Aujourd'hui · France
 
 Activité indépendante de conception logicielle : applications web, SaaS et automatisation par l'IA pour des fondateurs, des PME et des agences. Ce que je propose : des agents IA hébergés sur le serveur du client, avec des skills et des connexions MCP sur mesure, la reprise d'applications faites avec des générateurs d'apps IA ou des agents de code (Lovable, Bolt, Cursor, Claude Code), et des fonctionnalités LLM dans des produits existants.
 
-• Automatisation de navigateur par l'IA avec jev, l'agent navigateur de Browser Use : mon propre orchestrateur de tâches pilote des navigateurs dédiés depuis le terminal pour saisir, extraire et mettre à jour des données dans des back-offices sans API. Il passe la main à un humain pour les connexions, les captchas et la double authentification, et garde une trace de chaque étape avec sa capture et son coût.
-• Mon propre environnement d'agents, versionné et partagé entre deux machines : des skills, des hooks qui transforment une correction que je répète en vérification automatique, des tâches planifiées qui m'alertent quand elles échouent, une mémoire des sessions où l'on cherche par le sens, et un modèle de 180B à mélange d'experts (environ 6B actifs par token) sur une RTX 3080 20 Go. Chaque semaine, une revue de mes sessions liste les corrections qui reviennent encore. Visite guidée (en anglais) : https://moubarak.dev/harness
+• Automatisation de navigateur par l'IA avec jev, l'agent navigateur de Browser Use : mon propre orchestrateur de tâches, en service depuis octobre 2026, pilote des navigateurs dédiés depuis le terminal pour saisir, extraire et mettre à jour des données dans des back-offices sans API. Il passe la main à un humain pour les connexions, les captchas et la double authentification, et garde une trace de chaque étape avec sa capture et son coût.
+• Mon propre environnement d'agents, versionné et partagé entre mes machines : des hooks qui transforment une correction que je répète en vérification automatique, des tâches planifiées qui m'alertent quand elles échouent, et un modèle de 180B à mélange d'experts (environ 6B actifs par token) sur une RTX 3080 20 Go. Un hook de routage que j'ai écrit a fait passer la part des skills nécessaires qui se chargent de 57 % à 84 % sur des prompts mis de côté. Visite guidée (en anglais) : https://moubarak.dev/harness
 
 Stack : TypeScript · Python · Next.js · Node.js · Supabase · Docker · API OpenAI, Claude, Gemini · MCP · Browser Use · Claude Code
 
@@ -148,11 +148,11 @@ March 2026 – Present · France
 B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.
 
 • Sole engineer: took a two-week prototype to a production B2B SaaS for event lead capture, built with Claude Code.
-• Agentic QA with jev, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal; a SQL query on the database then checks the outcome. 16 standing checks on plan gates and permissions; its before/after screenshots on closed tickets surfaced 3 bugs that the fixes had missed or introduced. Open-sourced as account-state-check.
+• Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured by Postgres row-level security and role-based permissions.
 • Shipped an AI business-card scanner: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by prompt-injection testing (2 of 4 candidate models obeyed an injected card).
-• Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured by Postgres row-level security and role-based permissions; billing and permission code is reviewed by a different model from the one that wrote it.
-• Android app on Google Play from the same codebase (Capacitor), CRM sync and a Zapier integration.
-• Unit and Playwright tests run in CI on every push, with separate test and production environments.
+• Agentic QA with jev, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal; a SQL query on the database then checks the outcome. Standing checks cover what each plan unlocks and who can do what. Open-sourced as account-state-check.
+• Android app on Google Play from the same codebase (Capacitor).
+• Separate test and production environments and unit and Playwright tests in CI on every push; a billing or permission change also needs a review by a different model from the one that wrote it, and my approval before production.
 
 Stack: React · TypeScript · Vite · Tailwind · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Resend · Playwright · Vitest · jev (Browser Use) · GitHub Actions · Cloudflare Pages · Claude Code
 
@@ -163,11 +163,11 @@ Mars 2026 – Aujourd'hui · France
 SaaS B2B pour l'événementiel et le networking : cartes de visite numériques (NFC/QR), capture de leads et CRM, espaces d'équipe.
 
 • Seul ingénieur : j'ai fait d'un prototype de deux semaines un SaaS B2B en production pour la capture de leads sur les événements, développé avec Claude Code.
-• QA automatisée avec jev, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe, équipe gelée) et suit un objectif écrit en langage courant ; une requête SQL sur la base vérifie ensuite le résultat. 16 vérifications permanentes sur les accès par offre et les permissions ; ses captures avant/après sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits. Publié en open source : account-state-check.
+• Facturation Stripe en production (paiement, portail client, webhooks, offres d'équipe facturées par siège, rapprochement planifié) et espaces de travail multi-locataires protégés par la sécurité au niveau des lignes (RLS) de Postgres et des permissions par rôle.
 • Scanner de cartes de visite par IA : modèle de vision avec sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours ; modèle de repli choisi par des tests d'injection de prompt (2 modèles candidats sur 4 ont obéi à une carte piégée).
-• Facturation Stripe en production (paiement, portail client, webhooks, offres d'équipe facturées par siège, rapprochement planifié) et espaces de travail multi-locataires protégés par la sécurité au niveau des lignes (RLS) de Postgres et des permissions par rôle ; le code de facturation et de permissions est relu par un autre modèle que celui qui l'a écrit.
-• Application Android publiée sur Google Play depuis le même code (Capacitor), synchronisation CRM et intégration Zapier.
-• Les tests unitaires et Playwright tournent dans la CI à chaque push, avec des environnements de test et de production séparés.
+• QA automatisée avec jev, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe, équipe gelée) et suit un objectif écrit en langage courant ; une requête SQL sur la base vérifie ensuite le résultat. Des vérifications permanentes couvrent ce que débloque chaque offre et qui a le droit de faire quoi. Publié en open source : account-state-check.
+• Application Android publiée sur Google Play depuis le même code (Capacitor).
+• Environnements de test et de production séparés, et tests unitaires et Playwright dans la CI à chaque push ; un changement de facturation ou de permissions demande en plus la relecture d'un autre modèle que celui qui l'a écrit, et mon accord avant la mise en production.
 
 Stack : React · TypeScript · Vite · Tailwind · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Resend · Playwright · Vitest · jev (Browser Use) · GitHub Actions · Cloudflare Pages · Claude Code
 
@@ -182,9 +182,8 @@ March 2026 – Present · France · Morocco
 KSUR (agence-ksur.com) is a web agency for small businesses. It has built more than twenty client websites, mostly in Morocco, plus La Réunion; as CTO I run the technical side, delivery and hosting.
 
 • Partnership with THE ICON (the-icon.be), a Belgian marketing and sales agency: KSUR built THE ICON's website and the sites of two of its clients, in French, English and Dutch.
-• Built eight business and e-commerce sites for companies in Morocco and France, including an online store connected to Odoo (sales, stock, accounting) that sold more than 300 products in its first year.
-• Set up and run the hosting: one Apache VPS for the agency site, its demos and five client sites, with push-to-deploy and an SMTP check per client site in CI.
-• Built nine live demos shown to prospects (law firm, medical practice, SME dashboard, warehouse management, route optimizer and more) and the agency's quote and invoice generator.
+• E-commerce: an online store connected to Odoo for sales, stock and accounting.
+• Set up and run the hosting on an Apache VPS: push-to-deploy from GitHub, and a daily check that each client site's mailbox and contact form still work, with an alert when one fails.
 
 Skills: Web Development · Full-Stack Development · Software Architecture · DevOps · E-Commerce · Odoo · Search Engine Optimization (SEO) · Internationalization`,
     fr: `CTO - KSUR
@@ -193,9 +192,8 @@ Mars 2026 – Aujourd'hui · France · Maroc
 KSUR (agence-ksur.com) est une agence web pour les petites entreprises. Elle a réalisé plus de vingt sites clients, surtout au Maroc, et à La Réunion ; j'en dirige la partie technique, la livraison et l'hébergement.
 
 • Partenariat avec THE ICON (the-icon.be), agence belge de marketing et d'accompagnement commercial : KSUR a réalisé le site de THE ICON et ceux de deux de ses clients, en français, anglais et néerlandais.
-• Huit sites vitrines et e-commerce au Maroc et en France, dont une boutique en ligne connectée à Odoo (ventes, stock, comptabilité) qui a vendu plus de 300 produits la première année.
-• Hébergement du site de l'agence, de ses démos et de cinq sites clients sur un VPS Apache, avec déploiement à chaque push et vérification SMTP de chaque site client en CI.
-• Neuf démos en ligne montrées aux prospects (cabinet d'avocats, cabinet médical, tableau de bord de PME, gestion d'entrepôt, optimiseur de tournées…) et le générateur de devis et de factures de l'agence.
+• E-commerce : une boutique en ligne connectée à Odoo pour les ventes, le stock et la comptabilité.
+• Mise en place et exploitation de l'hébergement sur un VPS Apache : déploiement à chaque push sur GitHub, et vérification quotidienne de la messagerie et du formulaire de contact de chaque site client, avec une alerte en cas d'échec.
 
 Compétences : Web Development · Full-Stack Development · Software Architecture · DevOps · E-Commerce · Odoo · Search Engine Optimization (SEO) · Internationalization`,
   },
@@ -207,7 +205,7 @@ July 2026 · Paris (Hybrid)
 
 Two ChatGPT workshops, "Make AI work for you", in French and English, for the teams of DRIVECO, an EV charging operator.
 
-• Designed the material: a 10-slide deck in both languages and a bilingual site of 10 hands-on demos built on the company's own workflows (sales, marketing, HR, finance, supply chain, support, a custom GPT built live).
+• Designed the material in both languages: a deck and a site of hands-on demos built on the company's own workflows (sales, marketing, HR, finance, supply chain, support, a custom GPT built live).
 • Led both sessions, from the first prompt to automating a complete business process.
 
 Skills: Corporate Training · Employee Training · Prompt Engineering · Generative AI · Large Language Models (LLM) · Public Speaking`,
@@ -216,7 +214,7 @@ Juillet 2026 · Paris (hybride)
 
 Deux ateliers ChatGPT, « Make AI work for you », en français et en anglais, pour les équipes de DRIVECO, opérateur de recharge de véhicules électriques.
 
-• Conception des supports : un deck de 10 slides dans les deux langues et un site bilingue de 10 démos pratiques construites sur les processus de l'entreprise (ventes, marketing, RH, finance, supply chain, support, création d'un GPT personnalisé en direct).
+• Conception des supports dans les deux langues : un deck et un site de démos pratiques construites sur les processus de l'entreprise (ventes, marketing, RH, finance, supply chain, support, création d'un GPT personnalisé en direct).
 • Animation des deux sessions, du premier prompt à l'automatisation d'un processus métier complet.
 
 Compétences : Corporate Training · Employee Training · Prompt Engineering · Generative AI · Large Language Models (LLM) · Public Speaking`,
@@ -229,7 +227,7 @@ March 2023 – February 2026 · Paris (remote)
 
 Mostly front-end, in a team of 20 developers, on Security Rating®, a SaaS cyber-rating platform used by 200+ organizations: client platform, back office and manager office.
 
-• Built Angular components, worked on the Angular version upgrades, added test coverage (Spectator) and fixed bugs.
+• Angular components and Angular version upgrades on a large codebase shared by 20 developers, with test coverage in Spectator.
 • Built a Python vulnerability-scanning probe on nmap that automated attack-surface data collection for the ratings.
 
 Stack: Angular, TypeScript, Python, nmap, Spectator, Docker, CI/CD
@@ -240,7 +238,7 @@ Mars 2023 – Février 2026 · Paris (télétravail)
 
 Surtout côté front-end, dans une équipe de 20 développeurs, sur Security Rating®, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations : plateforme client, back office et espace manager.
 
-• Développement de composants Angular, montées de version d'Angular, ajout de tests (Spectator) et corrections de bugs.
+• Composants Angular et montées de version d'Angular sur une grande base de code partagée par 20 développeurs, avec des tests en Spectator.
 • Conception d'une sonde Python de scan de vulnérabilités (nmap) qui automatise la collecte des données de surface d'attaque pour les notations.
 
 Stack : Angular, TypeScript, Python, nmap, Spectator, Docker, CI/CD
@@ -286,7 +284,6 @@ March 2021 – June 2021 · Lille
 Sole mobile engineer on the first version of a React Native grocery delivery app, which took the product from web-only to native mobile.
 
 • Built the whole frontend, from the designer's wireframes to the production app.
-• Built the gamified screens that the product team designed to bring customers back.
 • Defined the API contracts with the backend developer for real-time order tracking and inventory sync.
 
 Stack: React Native, JavaScript, REST APIs
@@ -298,7 +295,6 @@ Mars 2021 – Juin 2021 · Lille
 Seul ingénieur mobile sur la première version d'une application de livraison de courses en React Native, qui a fait passer le produit du web au mobile natif.
 
 • Développement de tout le frontend, des maquettes du designer à l'application en production.
-• Développement des écrans ludiques (gamification) conçus par l'équipe produit pour fidéliser les clients.
 • Définition des contrats d'API avec le développeur backend pour le suivi des commandes en temps réel et la synchronisation des stocks.
 
 Stack : React Native, JavaScript, API REST
@@ -313,7 +309,7 @@ April 2019 – August 2019 · Seclin · Internship
 
 Internal R&D tool for the team's MQTT-based interactive payment demos, which it had been debugging by hand.
 
-• Designed and built a dashboard to create, store and replay payment test sets, in place of MQTT requests written by hand; tests before rollout measured the team's development speed 70% higher.
+• Designed and built a dashboard to create, store and replay payment test sets, in place of MQTT requests written by hand; tests before rollout estimated the gain in the team's development speed at 70%.
 
 Stack: Vue.js, Spring Boot, Java, MQTT, Docker
 
@@ -323,7 +319,7 @@ Avril 2019 – Août 2019 · Seclin · Stage
 
 Outil interne de R&D pour les démos de paiement interactives de l'équipe, basées sur MQTT, qu'elle déboguait jusque-là à la main.
 
-• Conception et développement d'un tableau de bord pour créer, stocker et rejouer des jeux de tests de paiement, à la place des requêtes MQTT écrites à la main ; les tests menés avant la mise en production ont mesuré une vitesse de développement de l'équipe supérieure de 70 %.
+• Conception et développement d'un tableau de bord pour créer, stocker et rejouer des jeux de tests de paiement, à la place des requêtes MQTT écrites à la main ; les tests menés avant la mise en production estimaient le gain de vitesse de développement de l'équipe à 70 %.
 
 Stack : Vue.js, Spring Boot, Java, MQTT, Docker
 
@@ -338,13 +334,13 @@ const projects = [
     project: 'piktechs',
     link: 'https://piktechs.com/',
     en: `Piktechs - https://piktechs.com/
-B2B SaaS for NFC business cards and events: digital business cards, lead capture with an AI card scanner, CRM and team workspaces for professional networking. As the sole engineer, I designed and built all of it and I run it: architecture, frontend, backend, infrastructure, an Android app on Google Play, and agentic QA with jev, Browser Use's browser agent.
+B2B SaaS for NFC business cards and events: digital business cards, lead capture with an AI card scanner, CRM and team workspaces for professional networking. As the sole engineer, I designed, built and run all of it: multi-tenant workspaces isolated by Postgres row-level security, live Stripe billing with webhooks and a scheduled reconciliation, a card scanner whose fallback model I chose by prompt-injection testing, an Android app on Google Play, and agentic QA with jev, Browser Use's browser agent.
 
 Stack: React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter, jev (Browser Use)
 
 Skills: Stripe (Software) · React.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Large Language Models (LLM) · TypeScript · Supabase`,
     fr: `Piktechs - https://piktechs.com/
-SaaS B2B de cartes NFC et d'événementiel : cartes de visite numériques, capture de leads avec un scanner de cartes par IA, CRM et espaces d'équipe pour le networking professionnel. Seul ingénieur, j'ai tout conçu et développé, et je l'exploite : architecture, frontend, backend, infrastructure, application Android sur Google Play, et QA automatisée avec jev, l'agent navigateur de Browser Use.
+SaaS B2B de cartes NFC et d'événementiel : cartes de visite numériques, capture de leads avec un scanner de cartes par IA, CRM et espaces d'équipe pour le networking professionnel. Seul ingénieur, j'ai tout conçu et développé, et je l'exploite : espaces de travail multi-locataires isolés par la sécurité au niveau des lignes (RLS) de Postgres, facturation Stripe en production avec webhooks et rapprochement planifié, un scanner dont j'ai choisi le modèle de repli par des tests d'injection de prompt, une application Android sur Google Play, et une QA automatisée avec jev, l'agent navigateur de Browser Use.
 
 Stack : React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter, jev (Browser Use)
 
@@ -372,13 +368,13 @@ Compétences : AI Agents · Test Automation · Software Testing · Large Languag
     project: 'hindsight',
     link: 'https://github.com/emoubarak/hindsight',
     en: `Hindsight - https://github.com/emoubarak/hindsight
-Open-source Claude Code plugin (MIT) that gives the agent a memory of every past session. Ask "do you remember how we deployed this?" and a hook searches the old transcripts by meaning and puts the best matches in context. Corrections you keep repeating are detected as you type and logged; Claude then proposes the narrowest fix that works (a hook, a skill, a CLAUDE.md rule or a project memory), and nothing is written before you say yes. Runs on your machine, with no server and no account; secrets are redacted before anything is written.
+Open-source Claude Code plugin (MIT): a hook searches past session transcripts by meaning and puts the best matches in context. Corrections you keep repeating are logged, and Claude proposes the narrowest place to write the fix (a hook, a skill, a CLAUDE.md rule or a project memory); nothing is written before you say yes. Runs locally with no server or account, and secrets are redacted before anything is written.
 
 Stack: Python, Claude Code hooks and skills, BM25, embeddings (optional), reciprocal rank fusion
 
 Skills: AI Agents · Large Language Models (LLM) · Information Retrieval · Python · Open-Source Software`,
     fr: `Hindsight - https://github.com/emoubarak/hindsight
-Plugin Claude Code open source (MIT) qui donne à l'agent la mémoire de toutes ses sessions passées. On lui demande « tu te souviens comment on a déployé ça ? » et un hook cherche par le sens dans les anciennes conversations, puis place les meilleurs passages dans le contexte. Les corrections répétées sont repérées à la frappe et notées ; Claude propose ensuite la correction la plus ciblée qui marche (un hook, un skill, une règle CLAUDE.md ou une mémoire de projet), et rien n'est écrit sans votre accord. Tourne sur votre machine, sans serveur ni compte ; les secrets sont masqués avant toute écriture.
+Plugin Claude Code open source (MIT) : un hook cherche par le sens dans les anciennes conversations et place les meilleurs passages dans le contexte. Les corrections répétées sont notées, et Claude propose l'endroit le plus ciblé où écrire la correction (un hook, un skill, une règle CLAUDE.md ou une mémoire de projet) ; rien n'est écrit sans votre accord. Tourne en local, sans serveur ni compte, et les secrets sont masqués avant toute écriture.
 
 Stack : Python, hooks et skills Claude Code, BM25, embeddings (optionnels), fusion de classements
 
@@ -406,13 +402,13 @@ Compétences : AI Agents · Large Language Models (LLM) · Benchmarking · Devel
     project: 'jev',
     link: 'https://github.com/emoubarak/voice-browser',
     en: `Voice Browser - https://github.com/emoubarak/voice-browser
-Open-source browser extension (MIT): say a task out loud and it is carried out in your own Chromium profile, already signed in to your accounts. Live transcription on Cloudflare Workers AI, Claude turns the sentence into one or two narrow goals, then jev, Browser Use's browser agent, acts one click or keystroke at a time. No chrome.debugger and no remote-debugging port; it stops on a login, a captcha or a code. A Wikipedia lookup takes 12 to 19 seconds from command to answer.
+Open-source browser extension (MIT), built on jev, Browser Use's browser agent: say a task out loud and it is carried out in your own Chromium profile, already signed in to your accounts. Claude turns the sentence into one or two narrow goals, then jev acts one click or keystroke at a time. No chrome.debugger and no remote-debugging port; it stops on a login, a captcha or a code.
 
 Stack: Chrome extension (side panel, native messaging), Python, Claude, jev-ultrafast, Deepgram on Cloudflare Workers AI
 
 Skills: AI Agents · Browser Automation · Speech Recognition · Large Language Models (LLM) · Python · Open-Source Software`,
     fr: `Voice Browser - https://github.com/emoubarak/voice-browser
-Extension de navigateur open source (MIT) : on dit une tâche à voix haute et elle s'exécute dans votre propre profil Chromium, déjà connecté à vos comptes. Transcription en direct sur Cloudflare Workers AI, Claude transforme la phrase en un ou deux objectifs précis, puis jev, l'agent navigateur de Browser Use, agit un clic ou une frappe à la fois. Ni chrome.debugger ni port de débogage à distance ; il s'arrête sur une connexion, un captcha ou un code. Une recherche Wikipédia prend 12 à 19 secondes, de la commande à la réponse.
+Extension de navigateur open source (MIT), bâtie sur jev, l'agent navigateur de Browser Use : on dit une tâche à voix haute et elle s'exécute dans votre propre profil Chromium, déjà connecté à vos comptes. Claude transforme la phrase en un ou deux objectifs précis, puis jev agit un clic ou une frappe à la fois. Ni chrome.debugger ni port de débogage à distance ; l'extension s'arrête sur une connexion, un captcha ou un code.
 
 Stack : extension Chrome (panneau latéral, native messaging), Python, Claude, jev-ultrafast, Deepgram sur Cloudflare Workers AI
 
@@ -423,13 +419,13 @@ Compétences : AI Agents · Browser Automation · Speech Recognition · Large La
     project: 'jev',
     link: '',
     en: `browser-agents (private project)
-Task runner for browser agents. Each account it works for (a brand, a person) keeps its own persistent browser profile, so it stays signed in, and only one task uses it at a time. Tasks are written in plain English from the terminal or a back-office, run on Claude, OpenRouter models or a local Qwen, and stop at a time limit (60 minutes by default). When a site asks for a login, a captcha or a 2FA code, the task pauses, a phone notification opens the live browser over WebRTC, and the agent resumes once the human step is done.
+Task runner for browser agents, in use since October 2026. Each account it works for (a brand, a person) keeps its own persistent browser profile, so it stays signed in, and only one task uses it at a time. Tasks are written in plain English from the terminal or a back-office, run on Claude, OpenRouter models or a local Qwen, and stop at a time limit (60 minutes by default). When a site asks for a login, a captcha or a 2FA code, the task pauses, a phone notification opens the live browser over WebRTC, and the agent resumes once the human step is done.
 
 Stack: Python, jev-ultrafast, Chromium + Neko (WebRTC), SQLite, Podman / Docker Compose, Claude Code, opencode, llama-swap
 
 Skills: AI Agents · Browser Automation · Large Language Models (LLM) · Software Architecture · Python · Docker`,
     fr: `browser-agents (projet privé)
-Orchestrateur de tâches pour agents navigateur. Chaque compte pour lequel il travaille (une marque, une personne) garde son propre profil de navigateur persistant, qui reste connecté, et une seule tâche l'utilise à la fois. Les tâches s'écrivent en langage courant depuis le terminal ou un back-office, tournent sur Claude, des modèles OpenRouter ou un Qwen local, et s'arrêtent à une limite de temps (60 minutes par défaut). Quand un site demande une connexion, un captcha ou un code 2FA, la tâche se met en pause, une notification sur le téléphone ouvre le navigateur en direct par WebRTC, et l'agent reprend une fois l'étape humaine faite.
+Orchestrateur de tâches pour agents navigateur, en service depuis octobre 2026. Chaque compte pour lequel il travaille (une marque, une personne) garde son propre profil de navigateur persistant, qui reste connecté, et une seule tâche l'utilise à la fois. Les tâches s'écrivent en langage courant depuis le terminal ou un back-office, tournent sur Claude, des modèles OpenRouter ou un Qwen local, et s'arrêtent à une limite de temps (60 minutes par défaut). Quand un site demande une connexion, un captcha ou un code 2FA, la tâche se met en pause, une notification sur le téléphone ouvre le navigateur en direct par WebRTC, et l'agent reprend une fois l'étape humaine faite.
 
 Stack : Python, jev-ultrafast, Chromium + Neko (WebRTC), SQLite, Podman / Docker Compose, Claude Code, opencode, llama-swap
 
@@ -459,13 +455,13 @@ Compétences : Large Language Models (LLM) · Performance Tuning · Benchmarking
     project: 'signal-bot',
     link: 'https://github.com/emoubarak/signal-bot',
     en: `Signal LLM Bot - https://github.com/emoubarak/signal-bot
-Bot for Signal group chats, called by name in plain language, with no commands to learn. It summarizes what was said, explains a message, transcribes voice notes, makes and edits images, searches the web, does exact maths and posts reminders at the right time, even after a restart. Runs in Docker on OpenRouter models, or on a local model through any OpenAI-compatible server, with nothing leaving the machine.
+Bot for Signal group chats, called by name in plain language, with no commands to learn; maintained since April 2026 and in use in one group chat since October 2026. It summarizes what was said, explains a message, transcribes voice notes, makes and edits images, searches the web, does exact maths and posts reminders at the time you set. No message is lost while it restarts, and a reminder that came due meanwhile is posted when it is back. Runs in Docker on OpenRouter models, or on a local model through any OpenAI-compatible server, with nothing leaving the machine.
 
 Stack: Python, OpenRouter (DeepSeek, Gemini, image models), signal-cli, Docker, tool calling
 
 Skills: Chatbot Development · Large Language Models (LLM) · AI Agents · Python · Docker`,
     fr: `Signal LLM Bot - https://github.com/emoubarak/signal-bot
-Bot pour les groupes Signal, appelé par son nom en langage courant, sans commande à apprendre. Il résume ce qui s'est dit, explique un message, transcrit les vocaux, crée et retouche des images, cherche sur le web, fait des calculs exacts et poste des rappels à l'heure dite, même après un redémarrage. Tourne dans Docker sur des modèles OpenRouter, ou sur un modèle local via n'importe quel serveur compatible OpenAI, sans que rien ne quitte la machine.
+Bot pour les groupes Signal, appelé par son nom en langage courant, sans commande à apprendre ; maintenu depuis avril 2026 et utilisé dans un groupe depuis octobre 2026. Il résume ce qui s'est dit, explique un message, transcrit les vocaux, crée et retouche des images, cherche sur le web, fait des calculs exacts et poste des rappels à l'heure dite. Aucun message n'est perdu pendant un redémarrage, et un rappel arrivé à échéance entre-temps est posté au retour. Tourne dans Docker sur des modèles OpenRouter, ou sur un modèle local via n'importe quel serveur compatible OpenAI, sans que rien ne quitte la machine.
 
 Stack : Python, OpenRouter (DeepSeek, Gemini, modèles d'image), signal-cli, Docker, appels d'outils
 
@@ -476,13 +472,13 @@ Compétences : Chatbot Development · Large Language Models (LLM) · AI Agents �
     project: 'calcpit',
     link: '',
     en: `CalcPit (archived project)
-87 free calculators for construction and landscaping (concrete, framing, roofing, electrical, HVAC) that give the quantity to order. Static site with no framework, one config per calculator, every formula tested against hand-worked cases, and a link that shares each result with its numbers.
+Calculators for construction and landscaping (concrete, framing, roofing, electrical, HVAC) that give the quantity to order. Static site with no framework, one config per calculator and every formula tested against hand-worked cases.
 
 Stack: JavaScript, Node.js build, Cloudflare Pages and Functions, SEO
 
 Skills: Web Development · Search Engine Optimization (SEO) · JavaScript · Product Development`,
     fr: `CalcPit (projet archivé)
-87 calculateurs gratuits pour la construction et l'aménagement extérieur (béton, charpente, toiture, électricité, chauffage et clim) qui donnent la quantité à commander. Site statique sans framework, une configuration par calculateur, chaque formule testée contre des cas calculés à la main, et un lien qui partage chaque résultat avec ses chiffres.
+Calculateurs pour la construction et l'aménagement extérieur (béton, charpente, toiture, électricité, chauffage et clim) qui donnent la quantité à commander. Site statique sans framework, une configuration par calculateur et chaque formule testée contre des cas calculés à la main.
 
 Stack : JavaScript, build Node.js, Cloudflare Pages et Functions, SEO
 
@@ -493,13 +489,13 @@ Compétences : Web Development · Search Engine Optimization (SEO) · JavaScript
     project: 'calcpit',
     link: '',
     en: `Lumber Calculator (archived project)
-Android app with nine framing and sheet-goods calculators, generated from the same tested formulas as the CalcPit calculators. It reads feet and inches as people type them (8' 6 1/2"), saves results into jobs that export a material list, and works offline with no account and no network request.
+Android app of framing and sheet-goods calculators, generated from the same tested formulas as CalcPit. It reads feet and inches as people type them (8' 6 1/2"), saves results into jobs that export a material list, and works offline with no account and no network request.
 
 Stack: React Native, Expo, JavaScript, Google Play
 
 Skills: Mobile Application Development · React Native · Android Development · JavaScript`,
     fr: `Lumber Calculator (projet archivé)
-Application Android de neuf calculateurs de charpente et de panneaux, générée à partir des mêmes formules testées que les calculateurs CalcPit. Elle lit les pieds et pouces tels qu'on les tape (8' 6 1/2"), range les résultats dans des chantiers qui exportent une liste de matériaux, et fonctionne hors ligne, sans compte ni requête réseau.
+Application Android de calculateurs de charpente et de panneaux, générée à partir des mêmes formules testées que CalcPit. Elle lit les pieds et pouces tels qu'on les tape (8' 6 1/2"), range les résultats dans des chantiers qui exportent une liste de matériaux, et fonctionne hors ligne, sans compte ni requête réseau.
 
 Stack : React Native, Expo, JavaScript, Google Play
 
@@ -510,13 +506,13 @@ Compétences : Mobile Application Development · React Native · Android Develop
     project: 'pdfold',
     link: '',
     en: `PDFold (archived project)
-Vision-model pipeline converting PDFs to structured Markdown in 11 languages, with Stripe billing.
+Vision-model pipeline converting PDFs to structured Markdown, built as a SaaS: long-running conversion jobs (streamed progress, quotas, cancellation) and Stripe subscriptions behind an idempotent webhook that handles refunds and disputes.
 
 Stack: Next.js, TypeScript, OpenRouter, Stripe, Supabase, Netlify, Resend
 
 Skills: Large Language Models (LLM) · Optical Character Recognition (OCR) · Software as a Service (SaaS) · Next.js · TypeScript · Stripe (Software)`,
     fr: `PDFold (projet archivé)
-Pipeline à modèle de vision qui convertit les PDF en Markdown structuré, en 11 langues, avec facturation Stripe.
+Pipeline à modèle de vision qui convertit les PDF en Markdown structuré, construit comme un SaaS : conversions longues (progression en direct, quotas, annulation) et abonnements Stripe derrière un webhook idempotent qui gère remboursements et litiges.
 
 Stack : Next.js, TypeScript, OpenRouter, Stripe, Supabase, Netlify, Resend
 
@@ -545,13 +541,13 @@ Compétences : Generative Engine Optimization · Answer Engine Optimization · S
     project: 'text-to-video',
     link: 'https://github.com/emoubarak/prompt-to-short-video-generator',
     en: `Text-to-Short-Video - https://github.com/emoubarak/prompt-to-short-video-generator
-AI video generation pipeline: a scene-by-scene script becomes a vertical short, each scene with a DALL-E 3 image and an ElevenLabs voice, assembled automatically.
+Early project (2024): a Flask app that turns a scene-by-scene script into a vertical short, each scene with a DALL-E 3 image and an ElevenLabs voice, assembled automatically.
 
 Stack: Python, Flask, OpenAI API (DALL-E 3), ElevenLabs, moviepy
 
 Skills: Automation · Generative AI · Python`,
     fr: `Text-to-Short-Video - https://github.com/emoubarak/prompt-to-short-video-generator
-Pipeline IA de génération de vidéos : un script découpé en scènes devient un short vertical, chaque scène avec une image DALL-E 3 et une voix ElevenLabs, assemblé automatiquement.
+Projet de 2024 : une application Flask qui transforme un script découpé en scènes en short vertical, chaque scène avec une image DALL-E 3 et une voix ElevenLabs, assemblé automatiquement.
 
 Stack : Python, Flask, OpenAI API (DALL-E 3), ElevenLabs, moviepy
 
@@ -566,7 +562,7 @@ June 2026
 
 A search for a trading edge on Polymarket's binary crypto markets (5 and 15 minute "Up or Down" windows).
 
-Method: hypothesis, in-sample and out-of-sample backtest, live paper trading, then falsification. About 12,000 paper trades logged across 75 runners, settled against the Chainlink oracle. Two engines: a Python paper-trading framework (standard library only, no dependencies) and a Go market maker whose pricing path runs in about 114 ns.
+Method: hypothesis, in-sample and out-of-sample backtest, live paper trading, then falsification. About 12,000 paper trades logged across 75 strategy configurations (strategy, coin, time frame), settled against the Chainlink oracle. Two engines: a Python paper-trading framework (standard library only, no dependencies) and a Go market maker.
 
 Result: no tradable edge. Nearly every edge I found turned out to be a measurement artifact, and the one signal that held out of sample earned about zero after fees. The repository documents each step.
 
@@ -578,7 +574,7 @@ Juin 2026
 
 La recherche d'un avantage exploitable (edge) sur les marchés crypto binaires de Polymarket (fenêtres « Up or Down » de 5 et 15 minutes).
 
-Méthode : hypothèse, backtest sur l'échantillon puis hors échantillon, trading simulé (paper trading) en conditions réelles, puis tentative de réfutation. Environ 12 000 trades simulés, enregistrés sur 75 instances, réglés sur l'oracle Chainlink. Deux moteurs : un framework de paper trading en Python (bibliothèque standard seule, sans dépendance) et un market maker en Go qui calcule son prix en 114 ns environ.
+Méthode : hypothèse, backtest sur l'échantillon puis hors échantillon, trading simulé (paper trading) en conditions réelles, puis tentative de réfutation. Environ 12 000 trades simulés, enregistrés sur 75 configurations (stratégie, crypto, durée), réglés sur l'oracle Chainlink. Deux moteurs : un framework de paper trading en Python (bibliothèque standard seule, sans dépendance) et un market maker en Go.
 
 Résultat : aucun avantage exploitable. Presque chaque edge trouvé s'est révélé être un artefact de mesure, et le seul signal qui a tenu hors échantillon rapportait à peu près zéro une fois les frais déduits. Le dépôt documente chaque étape.
 
@@ -612,13 +608,13 @@ Compétences : Vue.js · Spring Boot · MQTT · Java · Web Development · Softw
     project: 'vyrion',
     link: 'https://www.vyrioncapital.com/',
     en: `Vyrion International Consulting - https://www.vyrioncapital.com/
-Client work. On an existing trilingual site (English, French, Chinese) for a consultancy that helps companies set up in China, I added a short quiz on each service page that emails a checklist PDF, lead delivery through Resend, six practical guides in three languages, and the SEO and AI-search work (structured data, IndexNow, Search Console, Bing).
+Client work. On an existing trilingual site (English, French, Chinese) for a consultancy that helps companies set up in China, I added a short quiz on each service page that emails a checklist PDF, lead delivery through Resend, and the SEO and AI-search setup (structured data, IndexNow, Search Console, Bing).
 
 Stack: Next.js, React, TypeScript, Tailwind CSS, next-intl, Resend, Vercel
 
 Skills: Web Development · Next.js · TypeScript · Lead Generation · Search Engine Optimization (SEO)`,
     fr: `Vyrion International Consulting - https://www.vyrioncapital.com/
-Projet client. Sur le site trilingue existant (anglais, français, chinois) d'un cabinet qui aide les entreprises à s'implanter en Chine, j'ai ajouté un court questionnaire sur chaque page service qui envoie une checklist PDF par e-mail, l'envoi des leads par Resend, six guides pratiques en trois langues, et le travail SEO et de référencement dans les moteurs IA (données structurées, IndexNow, Search Console, Bing).
+Projet client. Sur le site trilingue existant (anglais, français, chinois) d'un cabinet qui aide les entreprises à s'implanter en Chine, j'ai ajouté un court questionnaire sur chaque page service qui envoie une checklist PDF par e-mail, l'envoi des leads par Resend, et la mise en place du SEO et du référencement dans les moteurs IA (données structurées, IndexNow, Search Console, Bing).
 
 Stack : Next.js, React, TypeScript, Tailwind CSS, next-intl, Resend, Vercel
 
@@ -697,13 +693,13 @@ Compétences : Web Development · Web Design · Local SEO`,
     project: 'the-icon',
     link: 'https://the-icon.be/',
     en: `THE ICON - https://the-icon.be/
-Client work. Website for THE ICON, a Belgian digital marketing and sales support agency: 22 pages covering their services, three offer tiers, method and results, plus two calculators (ad ROI, lost leads). Swiss brutalist design in static HTML, CSS and JS with no build step, deployed to OVH on every push.
+Client work. Website for THE ICON, a Belgian digital marketing and sales support agency: their services, three offer tiers, method and results, plus two calculators (ad ROI, lost leads). Swiss brutalist design in static HTML, CSS and JS with no build step, deployed to OVH on every push.
 
 Stack: HTML, CSS, JavaScript (GSAP, Lenis), GitHub Actions, OVH
 
 Skills: Web Development · Web Design · Lead Generation · Search Engine Optimization (SEO)`,
     fr: `THE ICON - https://the-icon.be/
-Projet client. Site de THE ICON, agence belge de marketing digital et d'accompagnement commercial : 22 pages sur leurs services, trois formules, leur méthode et leurs résultats, plus deux calculateurs (rentabilité publicitaire, demandes perdues). Design suisse brutaliste en HTML, CSS et JS statiques sans étape de build, mis en ligne sur OVH à chaque push.
+Projet client. Site de THE ICON, agence belge de marketing digital et d'accompagnement commercial : leurs services, trois formules, leur méthode et leurs résultats, plus deux calculateurs (rentabilité publicitaire, demandes perdues). Design suisse brutaliste en HTML, CSS et JS statiques sans étape de build, mis en ligne sur OVH à chaque push.
 
 Stack : HTML, CSS, JavaScript (GSAP, Lenis), GitHub Actions, OVH
 
@@ -714,7 +710,7 @@ Compétences : Web Development · Web Design · Lead Generation · Search Engine
     project: 'ksur',
     link: 'https://www.agence-ksur.com/realisations',
     en: `KSUR demo gallery - https://www.agence-ksur.com/realisations
-Nine live demos shown to KSUR prospects, all with fictional data. Three business websites: a law firm, a medical practice and a hair salon (services, pricing, booking). Six web apps: an SME dashboard with KPIs and an AI assistant view, real-time delivery tracking, a warehouse management system with a location map, a route optimizer for a fleet, a 3D product configurator with a live quote, and a collaborative cloud workspace.
+Live demos shown to KSUR prospects, all with fictional data. Three business websites: a law firm, a medical practice and a hair salon (services, pricing, booking). Six web apps: an SME dashboard with KPIs, real-time delivery tracking, a warehouse management system with a location map, a route optimizer for a fleet, a 3D product configurator with a live quote, and a collaborative cloud workspace.
 
 Law firm: https://www.agence-ksur.com/demo/websites/avocat/
 Medical practice: https://www.agence-ksur.com/demo/websites/medecin/
@@ -730,7 +726,7 @@ Stack: HTML, Tailwind CSS, JavaScript, Chart.js, three.js, Lucide
 
 Skills: Web Development · Front-End Development · Data Visualization · JavaScript · UI Design`,
     fr: `Galerie de démos KSUR - https://www.agence-ksur.com/realisations
-Neuf démos en ligne montrées aux prospects de KSUR, toutes sur données fictives. Trois sites vitrines : un cabinet d'avocats, un cabinet médical et un salon de coiffure (prestations, tarifs, prise de rendez-vous). Six applications web : un tableau de bord PME avec indicateurs et une vue d'assistant IA, un suivi de livraisons en temps réel, un logiciel de gestion d'entrepôt avec plan des emplacements, un optimiseur de tournées pour une flotte, un configurateur produit en 3D avec devis instantané, et un espace de travail collaboratif.
+Démos en ligne montrées aux prospects de KSUR, toutes sur données fictives. Trois sites vitrines : un cabinet d'avocats, un cabinet médical et un salon de coiffure (prestations, tarifs, prise de rendez-vous). Six applications web : un tableau de bord PME avec indicateurs, un suivi de livraisons en temps réel, un logiciel de gestion d'entrepôt avec plan des emplacements, un optimiseur de tournées pour une flotte, un configurateur produit en 3D avec devis instantané, et un espace de travail collaboratif.
 
 Cabinet d'avocats : https://www.agence-ksur.com/demo/websites/avocat/
 Cabinet médical : https://www.agence-ksur.com/demo/websites/medecin/
@@ -751,13 +747,13 @@ Compétences : Web Development · Front-End Development · Data Visualization ·
     project: 'ksur',
     link: '',
     en: `KSUR client websites (selection)
-Eight business and e-commerce websites for companies in Morocco and France: product catalogues with downloadable brochures, a trilingual site in French, English and Arabic, contact forms on the agency's own mail setup, and an online store connected to Odoo (sales, stock, accounting) that sold more than 300 products in its first year.
+Business and e-commerce websites for companies, mostly in Morocco: product catalogues with downloadable brochures, a trilingual site in French, English and Arabic, contact forms on the agency's own mail setup, and an online store connected to Odoo (sales, stock, accounting).
 
 Stack: HTML, Tailwind CSS, JavaScript, i18next, PHP, Odoo, VPS with push-to-deploy
 
 Skills: Web Development · E-Commerce · Odoo · Search Engine Optimization (SEO) · Internationalization`,
     fr: `Sites clients KSUR (sélection)
-Huit sites vitrines et e-commerce pour des entreprises au Maroc et en France : catalogues produits avec brochure à télécharger, un site trilingue en français, anglais et arabe, des formulaires de contact sur la messagerie de l'agence, et une boutique en ligne connectée à Odoo (ventes, stock, comptabilité) qui a vendu plus de 300 produits la première année.
+Sites vitrines et e-commerce pour des entreprises, surtout au Maroc : catalogues produits avec brochure à télécharger, un site trilingue en français, anglais et arabe, des formulaires de contact sur la messagerie de l'agence, et une boutique en ligne connectée à Odoo (ventes, stock, comptabilité).
 
 Stack : HTML, Tailwind CSS, JavaScript, i18next, PHP, Odoo, VPS avec déploiement au push
 
@@ -769,10 +765,10 @@ Compétences : Web Development · E-Commerce · Odoo · Search Engine Optimizati
     link: '',
     en: `THE ICON prospect demos (selection)
 Demo websites built from a brief for THE ICON's prospects in Belgium; two of them became the production websites of Group BW Invest and ID Advise.
-- Two construction companies: 7 and 18 pages in French, English and Dutch, the English and Dutch pages built from the French source with translation dictionaries, with a working contact form.
-- A therapy and media practice: 18 pages (podcast, TV and radio, one page per interview, testimonials).
-- A wellbeing coach: two-page site with the client's photos, video extracts and generated drawings.
-- Two car service businesses in Brussels: 6 and 4 pages in Belgian French, online booking request.
+- Two construction companies, in French, English and Dutch: the English and Dutch pages are built from the French source with translation dictionaries, and the contact form works.
+- A therapy and media practice: podcast, TV and radio, one page per interview, testimonials.
+- A wellbeing coach: a site with the client's photos, video extracts and generated drawings.
+- Two car service businesses in Brussels, in Belgian French, with an online booking request.
 - THE ICON's own podcast and video studio: one-page site with generated photos and videos.
 
 Stack: HTML, CSS, JavaScript, PHP forms, Python i18n build, GitHub Actions deploy to OVH, generated images and video (OpenRouter)
@@ -780,10 +776,10 @@ Stack: HTML, CSS, JavaScript, PHP forms, Python i18n build, GitHub Actions deplo
 Skills: Web Development · Internationalization · Lead Generation · Generative AI`,
     fr: `Démos pour les prospects de THE ICON (sélection)
 Sites de démonstration construits à partir d'un brief pour les prospects de THE ICON en Belgique ; deux sont ensuite devenus les sites en production de Group BW Invest et d'ID Advise.
-- Deux entreprises de construction : 7 et 18 pages en français, anglais et néerlandais, les pages anglaises et néerlandaises construites depuis le français avec des dictionnaires de traduction, formulaire de contact fonctionnel.
-- Un cabinet de thérapie et de média : 18 pages (podcast, télé et radio, une page par interview, témoignages).
-- Une coach bien-être : site de deux pages avec ses photos, des extraits vidéo et des dessins générés.
-- Deux entreprises d'entretien auto à Bruxelles : 6 et 4 pages en français de Belgique, demande de rendez-vous en ligne.
+- Deux entreprises de construction, en français, anglais et néerlandais : les pages anglaises et néerlandaises sont construites depuis le français avec des dictionnaires de traduction, et le formulaire de contact fonctionne.
+- Un cabinet de thérapie et de média : podcast, télé et radio, une page par interview, témoignages.
+- Une coach bien-être : un site avec ses photos, des extraits vidéo et des dessins générés.
+- Deux entreprises d'entretien auto à Bruxelles, en français de Belgique, avec une demande de rendez-vous en ligne.
 - Le studio de podcast et vidéo de THE ICON : site d'une page avec photos et vidéos générées.
 
 Stack : HTML, CSS, JavaScript, formulaires PHP, build i18n en Python, déploiement GitHub Actions vers OVH, images et vidéos générées (OpenRouter)
@@ -795,13 +791,13 @@ Compétences : Web Development · Internationalization · Lead Generation · Gen
     project: 'ksur',
     link: '',
     en: `KSUR prospect demos (selection)
-About ten one-off demo sites built for KSUR prospects before a sale, from one to five pages each: a medical lab (in Arabic, right to left), a concierge service, a business-setup consultancy, a restaurant, a garage and several industrial firms in Morocco. Contact forms are mock-ups until the deal is signed.
+One-off demo sites built for KSUR prospects before a sale: a medical lab (in Arabic, right to left), a concierge service, a business-setup consultancy, a restaurant, a garage and several industrial firms in Morocco. Central Garage's site in La Réunion started as one of these demos. Contact forms are mock-ups until the deal is signed.
 
 Stack: HTML, CSS, JavaScript
 
 Skills: Web Development · Web Design · Pre-Sales`,
     fr: `Démos pour les prospects de KSUR (sélection)
-Une dizaine de sites de démonstration faits sur mesure pour des prospects de KSUR avant la vente, d'une à cinq pages chacun : un laboratoire médical (en arabe, de droite à gauche), une conciergerie, un cabinet de création d'entreprise, un restaurant, un garage et plusieurs industriels marocains. Les formulaires de contact restent des maquettes jusqu'à la signature.
+Sites de démonstration faits sur mesure pour des prospects de KSUR avant la vente : un laboratoire médical (en arabe, de droite à gauche), une conciergerie, un cabinet de création d'entreprise, un restaurant, un garage et plusieurs industriels marocains. Le site de Central Garage, à La Réunion, est parti de l'une de ces démos. Les formulaires de contact restent des maquettes jusqu'à la signature.
 
 Stack : HTML, CSS, JavaScript
 
@@ -812,13 +808,13 @@ Compétences : Web Development · Web Design · Pre-Sales`,
     project: 'atandem',
     link: 'https://atandemagency.com/',
     en: `Atandem Agency - https://atandemagency.com/
-Client work. Website for T&EM, an integrated agency in Vienna: a scroll-driven horizontal journey on the home page, five service panels, an interactive 3D tandem bike on the contact page, and a small admin to add, hide or back up languages (English live, German ready and hidden). Cookie consent with analytics off by default.
+Client work. Website for T&EM, an integrated agency in Vienna: a scroll-driven horizontal journey on the home page, an interactive 3D tandem bike on the contact page, and a small admin to add, hide or back up languages (English live, German ready and hidden). Cookie consent with analytics off by default.
 
 Stack: Astro, Three.js, PHP (translation admin), Vitest, Playwright, Hostinger
 
 Skills: Web Development · Web Design · Three.js · Internationalization`,
     fr: `Atandem Agency - https://atandemagency.com/
-Projet client. Site de T&EM, agence intégrée à Vienne : un parcours horizontal piloté par le défilement sur l'accueil, cinq panneaux de services, un tandem en 3D interactif sur la page contact, et une petite administration pour ajouter, masquer ou sauvegarder les langues (anglais en ligne, allemand prêt et masqué). Bandeau de consentement avec mesure d'audience désactivée par défaut.
+Projet client. Site de T&EM, agence intégrée à Vienne : un parcours horizontal piloté par le défilement sur l'accueil, un tandem en 3D interactif sur la page contact, et une petite administration pour ajouter, masquer ou sauvegarder les langues (anglais en ligne, allemand prêt et masqué). Bandeau de consentement avec mesure d'audience désactivée par défaut.
 
 Stack : Astro, Three.js, PHP (administration des traductions), Vitest, Playwright, Hostinger
 
@@ -829,13 +825,13 @@ Compétences : Web Development · Web Design · Three.js · Internationalization
     project: 'driveco',
     link: '',
     en: `DRIVECO ChatGPT workshop material
-Material for two corporate sessions, in French and English, for DRIVECO, an EV charging operator: a 10-slide deck in both languages and a bilingual site of 10 hands-on demos (partner email, sales, marketing, HR, finance, supply chain, support, building a custom GPT live, Deep Research, Canvas), most with their setup, sample data, prompt and expected output, plus custom GPT examples, a FAQ assistant and a quiz.
+Material for two corporate sessions, in French and English, for DRIVECO, an EV charging operator: a deck in both languages and a bilingual site of hands-on demos (partner email, sales, marketing, HR, finance, supply chain, support, building a custom GPT live, Deep Research, Canvas), most with their setup, sample data, prompt and expected output, plus custom GPT examples, a FAQ assistant and a quiz.
 
 Stack: HTML, CSS, JavaScript, ChatGPT, GitHub Actions
 
 Skills: Corporate Training · Prompt Engineering · Generative AI · Public Speaking`,
     fr: `Support de l'atelier ChatGPT pour DRIVECO
-Supports de deux sessions en entreprise, en français et en anglais, pour DRIVECO, opérateur de recharge de véhicules électriques : un deck de 10 slides dans les deux langues et un site bilingue de 10 démos pratiques (e-mail partenaire, ventes, marketing, RH, finance, supply chain, support, création d'un GPT personnalisé en direct, Deep Research, Canvas), la plupart avec leur mise en place, leurs données d'exemple, leur prompt et le résultat attendu, plus des exemples de GPT personnalisés, un GPT de FAQ et un quiz.
+Supports de deux sessions en entreprise, en français et en anglais, pour DRIVECO, opérateur de recharge de véhicules électriques : un deck dans les deux langues et un site bilingue de démos pratiques (e-mail partenaire, ventes, marketing, RH, finance, supply chain, support, création d'un GPT personnalisé en direct, Deep Research, Canvas), la plupart avec leur mise en place, leurs données d'exemple, leur prompt et le résultat attendu, plus des exemples de GPT personnalisés, un GPT de FAQ et un quiz.
 
 Stack : HTML, CSS, JavaScript, ChatGPT, GitHub Actions
 
@@ -846,13 +842,13 @@ Compétences : Corporate Training · Prompt Engineering · Generative AI · Publ
     project: 'emm',
     link: '',
     en: `EMM company admin tool (private)
-Back-office for my own company: company information, official documents, quote and invoice PDF generator whose legal mentions follow the client's type and country, supplier bills, expense notes, accounting, management analysis, VAT return lines computed from the data, and an admin checklist. Every edit is committed to git automatically.
+Back-office for my own company, which issues all its quotes and invoices: PDF quotes and invoices whose legal mentions follow the client's type and country, supplier bills, expense notes, accounting, and VAT return lines computed from the data. Every edit is committed to git automatically.
 
 Stack: HTML, CSS, JavaScript, pdf-lib, Node.js, Docker, git
 
 Skills: Full-Stack Development · Accounting Software · JavaScript`,
     fr: `Outil de gestion d'EMM (privé)
-Back-office de ma société : infos de l'entreprise, documents officiels, générateur de devis et factures PDF dont les mentions légales suivent le type et le pays du client, factures fournisseurs, notes de frais, comptabilité, analyse de gestion, lignes de déclaration de TVA calculées à partir des données, et checklist administrative. Chaque modification est enregistrée dans git automatiquement.
+Back-office de ma société, qui émet tous ses devis et factures : devis et factures PDF dont les mentions légales suivent le type et le pays du client, factures fournisseurs, notes de frais, comptabilité, et lignes de déclaration de TVA calculées à partir des données. Chaque modification est enregistrée dans git automatiquement.
 
 Stack : HTML, CSS, JavaScript, pdf-lib, Node.js, Docker, git
 
@@ -863,15 +859,15 @@ Compétences : Full-Stack Development · Accounting Software · JavaScript`,
     project: 'ksur',
     link: '',
     en: `KSUR internal tools (private)
-- Quote and invoice generator: line items with discounts, VAT in dirhams, optional delivery note and bank details pages, PDF and PNG export.
-- Agency hosting: one Apache VPS (Let's Encrypt) serving the agency site, its demo subdomains and five client sites, with push-to-deploy by GitHub webhook and an SMTP check per client site in CI.
+- Quote and invoice generator for the agency (VAT in dirhams, delivery notes, PDF export).
+- Agency hosting: one Apache VPS (Let's Encrypt) serving the agency site, its demo subdomains and five client sites, with push-to-deploy by GitHub webhook and a daily check of each client site's mailbox and contact form, with an alert when one fails.
 
 Stack: JavaScript, jsPDF, html2canvas, bash, Apache, GitHub Actions
 
 Skills: DevOps · Linux · JavaScript · Web Hosting`,
     fr: `Outils internes de KSUR (privés)
-- Générateur de devis et factures : lignes avec remises, TVA en dirhams, bon de livraison et RIB en option, export PDF et PNG.
-- Hébergement de l'agence : un VPS Apache (Let's Encrypt) qui sert le site de l'agence, ses sous-domaines de démo et cinq sites clients, avec déploiement au push par webhook GitHub et vérification SMTP de chaque site client en CI.
+- Générateur de devis et factures de l'agence (TVA en dirhams, bons de livraison, export PDF).
+- Hébergement de l'agence : un VPS Apache (Let's Encrypt) qui sert le site de l'agence, ses sous-domaines de démo et cinq sites clients, avec déploiement au push par webhook GitHub et vérification quotidienne de la messagerie et du formulaire de contact de chaque site client, avec une alerte en cas d'échec.
 
 Stack : JavaScript, jsPDF, html2canvas, bash, Apache, GitHub Actions
 
@@ -883,7 +879,7 @@ Compétences : DevOps · Linux · JavaScript · Web Hosting`,
     link: 'https://latable.nanocorp.app/',
     en: `Prototypes built with AI app builders and coding agents (experiments)
 - La Table (https://latable.nanocorp.app/): restaurant website builder generated by an AI agent (NanoCorp): landing page, dashboard for the menu, photos and reservations, a public page per restaurant, in English and French.
-- Floorz: sales CRM and account-planning prototype built in Lovable: 26 screens (pipeline, forecast, leads, coaching) and coded connectors for HubSpot, Salesforce and Gong, not tested on real accounts.
+- Floorz: sales CRM and account-planning prototype built in Lovable (pipeline, forecast, leads, coaching), with coded connectors for HubSpot, Salesforce and Gong, not tested on real accounts.
 - Guide du Maroc: tourism directory prototype built with a coding agent (search by city and category, owner space, reviews with moderation) on a headless CMS.
 
 Stack: Next.js, Vite, React, TypeScript, Tailwind CSS, PostgreSQL, Supabase, Stripe, Directus, PostGIS, Docker
@@ -891,7 +887,7 @@ Stack: Next.js, Vite, React, TypeScript, Tailwind CSS, PostgreSQL, Supabase, Str
 Skills: Rapid Prototyping · AI-Assisted Development · Product Development`,
     fr: `Prototypes faits avec des générateurs d'apps et des agents de code (expériences)
 - La Table (https://latable.nanocorp.app/) : créateur de sites pour restaurants généré par un agent IA (NanoCorp) : landing, tableau de bord pour le menu, les photos et les réservations, une page publique par restaurant, en anglais et en français.
-- Floorz : prototype de CRM commercial et de planification de comptes fait avec Lovable : 26 écrans (pipeline, prévisions, leads, coaching) et des connecteurs codés pour HubSpot, Salesforce et Gong, non testés sur de vrais comptes.
+- Floorz : prototype de CRM commercial et de planification de comptes fait avec Lovable (pipeline, prévisions, leads, coaching), avec des connecteurs codés pour HubSpot, Salesforce et Gong, non testés sur de vrais comptes.
 - Guide du Maroc : prototype d'annuaire touristique fait avec un agent de code (recherche par ville et catégorie, espace professionnel, avis modérés) sur un CMS headless.
 
 Stack : Next.js, Vite, React, TypeScript, Tailwind CSS, PostgreSQL, Supabase, Stripe, Directus, PostGIS, Docker
@@ -903,15 +899,15 @@ Compétences : Rapid Prototyping · AI-Assisted Development · Product Developme
     project: 'research',
     link: '',
     en: `Engineering school projects in C
-- Snake for the console with five modes: manual, automatic at three speeds, wrap-around walls with five lives, versus an AI, and a perfect AI run (score 749). Built in a pair.
-- Function plotter: lexer, parser to an expression tree, evaluator and OpenGL rendering, with 5 operators and 10 functions (sin, cos, tan, exp, log, sqrt, abs, sinc…).
+- Snake for the console, played by hand or by an AI, including an AI that plays a perfect game. Built in a pair.
+- Function plotter: lexer, parser to an expression tree, evaluator and OpenGL rendering.
 
 Stack: C, OpenGL / GLUT
 
 Skills: C (Programming Language) · Algorithms · Data Structures`,
     fr: `Projets d'école d'ingénieur en C
-- Snake en console avec cinq modes : manuel, automatique à trois vitesses, murs traversants avec cinq vies, contre une IA, et une partie parfaite de l'IA (score 749). Fait en binôme.
-- Traceur de fonctions : analyse lexicale, analyse syntaxique en arbre d'expression, évaluation et rendu OpenGL, avec 5 opérateurs et 10 fonctions (sin, cos, tan, exp, log, sqrt, abs, sinc…).
+- Snake en console, joué à la main ou par une IA, dont une IA qui fait une partie parfaite. Fait en binôme.
+- Traceur de fonctions : analyse lexicale, analyse syntaxique en arbre d'expression, évaluation et rendu OpenGL.
 
 Stack : C, OpenGL / GLUT
 
@@ -922,13 +918,13 @@ Compétences : C (Programming Language) · Algorithms · Data Structures`,
     project: 'content',
     link: '',
     en: `Gravity Candy
-Channel of "satisfying" physics simulations for Shorts and TikTok, made from code, with no generative AI and no cost per video: vertical 1080×1920 at 60 fps, 62 to 72 seconds, with a note on each collision (synthesized or recorded CC0 instruments). Twelve formats (merges, escapes, pendulums, dominoes, Galton board, sand and more); a "director" runs 24 seeds and keeps the best one. Built on a study of 78 videos from 53 creators, 34 of them above 5 million views.
+Channel of "satisfying" physics simulations for Shorts and TikTok, made from code, with no generative AI and no cost per video: vertical 1080×1920 at 60 fps, with a note on each collision (synthesized or recorded CC0 instruments). Formats include merges, escapes, pendulums, dominoes, a Galton board and sand; a "director" renders several seeds of each simulation and keeps the best one.
 
 Stack: Python, numpy, scipy, pymunk, skia-python, ffmpeg, audio synthesis and loudness normalization
 
 Skills: Python · Simulation · Video Production · Content Creation · Audio Processing`,
     fr: `Gravity Candy
-Chaîne de simulations physiques « satisfaisantes » pour Shorts et TikTok, faites par le code, sans IA générative ni coût par vidéo : format vertical 1080×1920 à 60 i/s, 62 à 72 secondes, avec une note sur chaque choc (instruments synthétisés ou enregistrés libres de droits). Douze formats (fusions, évasions, pendules, dominos, planche de Galton, sable…) ; un « réalisateur » lance 24 tirages (seeds) et garde le meilleur. Construite à partir d'une étude de 78 vidéos de 53 créateurs, dont 34 à plus de 5 millions de vues.
+Chaîne de simulations physiques « satisfaisantes » pour Shorts et TikTok, faites par le code, sans IA générative ni coût par vidéo : format vertical 1080×1920 à 60 i/s, avec une note sur chaque choc (instruments synthétisés ou enregistrés libres de droits). Parmi les formats : fusions, évasions, pendules, dominos, planche de Galton et sable ; un « réalisateur » lance plusieurs tirages (seeds) de chaque simulation et garde le meilleur.
 
 Stack : Python, numpy, scipy, pymunk, skia-python, ffmpeg, synthèse audio et normalisation du volume
 
@@ -939,13 +935,13 @@ Compétences : Python · Simulation · Video Production · Content Creation · A
     project: 'content',
     link: 'https://www.tiktok.com/@bouffon_lucide',
     en: `Bouffon Lucide - https://www.tiktok.com/@bouffon_lucide
-French TikTok series on manipulation and psychology: a jester explains to a kid, in a 1940s rubber-hose cartoon style, about 1:30 per episode. Made with AI images, avatars and voices and edited by code; $73.62 spent so far. On 26 November 2026: 22 videos, 75,629 views, 5,986 likes and 1,446 followers on TikTok (241 on 3 November); the best video reached 42,779 views.
+French TikTok series on manipulation and psychology: a jester explains to a kid, in a 1940s rubber-hose cartoon style, about 1:30 per episode. Made with AI images, avatars and voices, and edited by code.
 
 Stack: Kling AI Avatar, HeyGen, GPT Image, ElevenLabs, MiniMax, HyperFrames, ffmpeg
 
 Skills: Content Creation · Generative AI · Video Production · Storytelling`,
     fr: `Bouffon Lucide - https://www.tiktok.com/@bouffon_lucide
-Série TikTok de vulgarisation sur la manipulation et la psychologie : un bouffon explique à un gamin, dans un style de dessin animé des années 1940, environ 1 min 30 par épisode. Images, avatars et voix générés par IA, montage par du code ; 73,62 $ dépensés à ce jour. Au 26 novembre 2026 : 22 vidéos, 75 629 vues, 5 986 j'aime et 1 446 abonnés sur TikTok (241 le 3 novembre) ; la meilleure vidéo a fait 42 779 vues.
+Série TikTok de vulgarisation sur la manipulation et la psychologie : un bouffon explique à un gamin, dans un style de dessin animé des années 1940, environ 1 min 30 par épisode. Images, avatars et voix générés par IA, montage par du code.
 
 Stack : Kling AI Avatar, HeyGen, GPT Image, ElevenLabs, MiniMax, HyperFrames, ffmpeg
 
@@ -956,13 +952,13 @@ Compétences : Content Creation · Generative AI · Video Production · Storytel
     project: 'content',
     link: '',
     en: `Le Hotfix (discontinued)
-Satirical French tech-news channel on YouTube and TikTok in the style of Fireship, produced by a scripted pipeline: research, script, voice, memes, animated shots and editing. Six published episodes and ten final videos (one long-form at 6:52 and nine Shorts), for $3.26 in total, with an editing pace calibrated on 16 Fireship videos. The accounts later became Gravity Candy.
+Satirical French tech-news channel on YouTube and TikTok in the style of Fireship, produced by a scripted pipeline: research, script, voice, memes, animated shots and editing, with an editing pace calibrated on Fireship's own videos. The accounts later became Gravity Candy.
 
 Stack: Node.js, HyperFrames (HTML to MP4), Python, ElevenLabs, Gemini, ffmpeg
 
 Skills: Content Creation · Video Production · Generative AI · Automation`,
     fr: `Le Hotfix (arrêté)
-Chaîne francophone d'actu tech satirique sur YouTube et TikTok, dans l'esprit de Fireship, produite par un pipeline automatisé : recherche, script, voix, mèmes, plans animés et montage. Six épisodes publiés et dix vidéos finales (un format long de 6 min 52 et neuf Shorts), pour 3,26 $ en tout, avec un rythme de montage calé sur 16 vidéos de Fireship. Les comptes sont ensuite devenus Gravity Candy.
+Chaîne francophone d'actu tech satirique sur YouTube et TikTok, dans l'esprit de Fireship, produite par un pipeline automatisé : recherche, script, voix, mèmes, plans animés et montage, avec un rythme de montage calé sur des vidéos de Fireship. Les comptes sont ensuite devenus Gravity Candy.
 
 Stack : Node.js, HyperFrames (HTML vers MP4), Python, ElevenLabs, Gemini, ffmpeg
 
@@ -990,13 +986,13 @@ Compétences : Data Engineering · AI Agents · Python · Pricing Analysis`,
     project: 'internal',
     link: '',
     en: `Personal dashboard (private tool)
-Installable web app that gathers the GitHub tickets of all my accounts and organizations as a list and a kanban, a CalDAV calendar, notes and files per project, and terminals in the page. Each ticket can be handed to Claude or to a browser agent in one click. A cache rework took the ticket load on page opening from 1.3-1.9 s to under 20 ms.
+Installable web app that gathers the GitHub tickets of all my accounts and organizations as a list and a kanban, a CalDAV calendar, notes and files per project, and terminals in the page. Each ticket can be handed to Claude or to a browser agent in one click.
 
 Stack: Python (standard library), GitHub GraphQL, CalDAV, xterm.js, vanilla JavaScript
 
 Skills: Full-Stack Development · Python · API Integration · Productivity Tools`,
     fr: `Tableau de bord personnel (outil privé)
-Application web installable qui rassemble les tickets GitHub de tous mes comptes et organisations en liste et en kanban, un agenda CalDAV, des notes et fichiers par projet, et des terminaux dans la page. Chaque ticket se confie à Claude ou à un agent navigateur en un clic. Une refonte du cache a fait passer le chargement des tickets à l'ouverture de 1,3-1,9 s à moins de 20 ms.
+Application web installable qui rassemble les tickets GitHub de tous mes comptes et organisations en liste et en kanban, un agenda CalDAV, des notes et fichiers par projet, et des terminaux dans la page. Chaque ticket se confie à Claude ou à un agent navigateur en un clic.
 
 Stack : Python (bibliothèque standard), GitHub GraphQL, CalDAV, xterm.js, JavaScript natif
 
@@ -1007,13 +1003,13 @@ Compétences : Full-Stack Development · Python · API Integration · Productivi
     project: 'internal',
     link: 'https://github.com/emoubarak/hindsight',
     en: `Claude Code workspace (private, public spin-off: Hindsight)
-My Claude Code setup, versioned and synced between two machines: global rules, my own skills and installed ones, catalogued with how often my sessions use each one, and hooks that guard the file system. Each week I review my sessions and turn the corrections I keep repeating into rules or hooks. The memory and learning part is open source as Hindsight. Tour: https://moubarak.dev/harness
+My Claude Code setup, versioned and synced between my machines: global rules, my own skills and installed ones, catalogued with how often my sessions use each one, and hooks that guard the file system. Each week I review my sessions and turn the corrections I keep repeating into rules or hooks. The memory and learning part is open source as Hindsight. Tour: https://moubarak.dev/harness
 
 Stack: Python, bash, systemd, Claude Code hooks and skills
 
 Skills: AI Agents · Developer Tools · Automation · Python`,
     fr: `Espace de travail Claude Code (privé, version publique : Hindsight)
-Ma configuration Claude Code, versionnée et synchronisée entre deux machines : règles globales, skills maison et skills installés, recensés avec le nombre de fois où mes sessions utilisent chacun, et des hooks qui protègent le système de fichiers. Chaque semaine, je relis mes sessions et je transforme les corrections que je répète en règles ou en hooks. La partie mémoire et apprentissage est en open source sous le nom Hindsight. Visite guidée (en anglais) : https://moubarak.dev/harness
+Ma configuration Claude Code, versionnée et synchronisée entre mes machines : règles globales, skills maison et skills installés, recensés avec le nombre de fois où mes sessions utilisent chacun, et des hooks qui protègent le système de fichiers. Chaque semaine, je relis mes sessions et je transforme les corrections que je répète en règles ou en hooks. La partie mémoire et apprentissage est en open source sous le nom Hindsight. Visite guidée (en anglais) : https://moubarak.dev/harness
 
 Stack : Python, bash, systemd, hooks et skills Claude Code
 
@@ -1041,13 +1037,13 @@ Compétences : Linux · DevOps · Automation · Python`,
     project: 'strata',
     link: 'https://huggingface.co/emoubarak/WebJev-35B-A3B-GGUF',
     en: `Local inference lab - https://huggingface.co/emoubarak/WebJev-35B-A3B-GGUF
-Local LLM stack on a mini PC with an external GPU: llama.cpp (CUDA and Vulkan), llama-swap and Open WebUI, with dated benchmarks. On the RTX 3080 20 GB, Qwen3.6 35B-A3B runs at 142 tokens/s generation and 1,814 tokens/s prompt read, 3.1 and 6.1 times the previous 8 GB card. Published GGUF conversions of Lexmount's WebJev-35B-A3B on Hugging Face: the Q4 file makes the same decisions as Q8 on 52 of 54 recorded browser steps.
+Local LLM stack on a mini PC with an external GPU: llama.cpp (CUDA and Vulkan), llama-swap and Open WebUI, with dated benchmarks. Published WebJev-35B-A3B-GGUF, GGUF conversions of Lexmount's browser-agent decision model: 409 downloads on Hugging Face (Nov 2026), and its 4-bit file makes the same decisions as the 8-bit one on 52 of 54 browser steps replayed from real tasks.
 
 Stack: llama.cpp, llama-swap, CUDA, Vulkan, Open WebUI, bash
 
 Skills: Large Language Models (LLM) · Performance Tuning · Benchmarking · Linux`,
     fr: `Laboratoire d'inférence locale - https://huggingface.co/emoubarak/WebJev-35B-A3B-GGUF
-Stack de LLM locaux sur un mini PC avec carte graphique externe : llama.cpp (CUDA et Vulkan), llama-swap et Open WebUI, avec des mesures datées. Sur la RTX 3080 20 Go, Qwen3.6 35B-A3B tourne à 142 tokens/s en génération et 1 814 tokens/s en lecture du prompt, 3,1 et 6,1 fois l'ancienne carte de 8 Go. Publication de conversions GGUF du modèle WebJev-35B-A3B de Lexmount sur Hugging Face : le fichier Q4 prend les mêmes décisions que le Q8 sur 52 des 54 étapes de navigation enregistrées.
+Stack de LLM locaux sur un mini PC avec carte graphique externe : llama.cpp (CUDA et Vulkan), llama-swap et Open WebUI, avec des mesures datées. Publication de WebJev-35B-A3B-GGUF, des conversions GGUF du modèle de décision pour agents navigateur de Lexmount : 409 téléchargements sur Hugging Face (nov. 2026), et son fichier 4 bits prend les mêmes décisions que le 8 bits sur 52 des 54 étapes de navigation rejouées depuis de vraies tâches.
 
 Stack : llama.cpp, llama-swap, CUDA, Vulkan, Open WebUI, bash
 
@@ -1058,13 +1054,13 @@ Compétences : Large Language Models (LLM) · Performance Tuning · Benchmarking
     project: 'polymarket',
     link: 'https://github.com/emoubarak/polymarket-updown-lab/tree/main/market-maker',
     en: `Polymarket BTC 5-minute market maker - https://github.com/emoubarak/polymarket-updown-lab/tree/main/market-maker
-Follow-up to the Polymarket lab: a Go market maker for the 5-minute Bitcoin Up/Down markets, quoting from Φ(d2) with EWMA volatility and Avellaneda-Stoikov inventory skew, signing its own EIP-712 orders, with a paper simulator that models queue position. Pricing path about 114 ns with zero allocations, 44 tests. No delta-neutral configuration out of 8 came out net-positive after fees.
+Follow-up to the Polymarket lab: a Go market maker for the 5-minute Bitcoin Up/Down markets, quoting from Φ(d2) with EWMA volatility and Avellaneda-Stoikov inventory skew, signing its own EIP-712 orders, with a paper simulator that models queue position. Pricing path about 114 ns with zero allocations. No delta-neutral configuration out of 8 came out net-positive after fees.
 
 Stack: Go, WebSockets, secp256k1 / EIP-712
 
 Skills: Algorithmic Trading · Go · Low-Latency Systems · Quantitative Analytics`,
     fr: `Market maker Polymarket BTC 5 minutes - https://github.com/emoubarak/polymarket-updown-lab/tree/main/market-maker
-Suite du Polymarket Lab : un market maker en Go pour les marchés Bitcoin Up/Down de 5 minutes, qui cote à partir de Φ(d2) avec une volatilité EWMA et un décalage d'inventaire Avellaneda-Stoikov, signe lui-même ses ordres EIP-712 et s'accompagne d'un simulateur qui tient compte de la position dans la file d'attente. Calcul du prix en 114 ns environ sans allocation, 44 tests. Aucune des 8 configurations delta-neutres testées n'est rentable une fois les frais déduits.
+Suite du Polymarket Lab : un market maker en Go pour les marchés Bitcoin Up/Down de 5 minutes, qui cote à partir de Φ(d2) avec une volatilité EWMA et un décalage d'inventaire Avellaneda-Stoikov, signe lui-même ses ordres EIP-712 et s'accompagne d'un simulateur qui tient compte de la position dans la file d'attente. Calcul du prix en 114 ns environ sans allocation. Aucune des 8 configurations delta-neutres testées n'est rentable une fois les frais déduits.
 
 Stack : Go, WebSockets, secp256k1 / EIP-712
 
@@ -1075,13 +1071,13 @@ Compétences : Algorithmic Trading · Go · Low-Latency Systems · Quantitative 
     project: 'research',
     link: '',
     en: `pump.fun data engine (private research)
-24/7 collector and pre-registered statistical research on Solana memecoin launches: what brings buyers to a new coin, and how the creator's own buys and sales change that flow. About 51,000 new coins a day, 1,328,864 coins analysed over October (2.2% graduate within 24 hours), poller lag p95 0.22 s, 37 tests. Of 24 pre-registered tests in phase 2, 8 held.
+24/7 collector and pre-registered statistical research on Solana memecoin launches: what brings buyers to a new coin, and how the creator's own buys and sales change that flow. Collector lag p95 0.22 s. Of 24 pre-registered tests, 8 held after correction for multiple testing; with shuffled labels, none did.
 
 Stack: Python, websockets, httpx, Parquet, DuckDB, scikit-learn, statsmodels, Helius
 
 Skills: Data Engineering · Statistics · Blockchain · Python`,
     fr: `Moteur de données pump.fun (recherche privée)
-Collecteur en continu et recherche statistique pré-enregistrée sur les lancements de memecoins Solana : ce qui attire des acheteurs sur un nouveau coin, et comment les achats et les ventes de son créateur modifient ce flux. Environ 51 000 nouveaux coins par jour, 1 328 864 coins analysés sur octobre (2,2 % « graduent » en 24 heures), latence p95 du collecteur de 0,22 s, 37 tests. Sur 24 tests pré-enregistrés en phase 2, 8 ont tenu.
+Collecteur en continu et recherche statistique pré-enregistrée sur les lancements de memecoins Solana : ce qui attire des acheteurs sur un nouveau coin, et comment les achats et les ventes de son créateur modifient ce flux. Latence p95 du collecteur : 0,22 s. Sur 24 tests pré-enregistrés, 8 ont tenu après correction pour tests multiples ; avec des labels mélangés, aucun.
 
 Stack : Python, websockets, httpx, Parquet, DuckDB, scikit-learn, statsmodels, Helius
 
@@ -1092,13 +1088,13 @@ Compétences : Data Engineering · Statistics · Blockchain · Python`,
     project: 'research',
     link: '',
     en: `Fiverr keyword market study (private research)
-Extraction of Fiverr's keyword research data to position my freelance offer: 2,651 unique keywords across 12 categories, 311 subcategories and 645 service types, then a page-1 competition analysis of about 9,600 gigs, ending in 200 opportunities, each read and judged by hand.
+A complete extraction of Fiverr's keyword research data, to position my freelance offer, then a page-1 competition analysis ending in a shortlist of opportunities, each read and judged by hand.
 
 Stack: Python
 
 Skills: Market Research · Data Analysis · Python`,
     fr: `Étude de marché des mots-clés Fiverr (recherche privée)
-Extraction des données de recherche de mots-clés de Fiverr pour positionner mon offre freelance : 2 651 mots-clés uniques sur 12 catégories, 311 sous-catégories et 645 types de services, puis une analyse de la concurrence en première page sur environ 9 600 gigs, jusqu'à 200 opportunités, chacune lue et jugée à la main.
+Extraction complète des données de recherche de mots-clés de Fiverr pour positionner mon offre freelance, puis une analyse de la concurrence en première page, jusqu'à une liste courte d'opportunités, chacune lue et jugée à la main.
 
 Stack : Python
 
@@ -1109,13 +1105,13 @@ Compétences : Market Research · Data Analysis · Python`,
     project: 'confidential',
     link: '',
     en: `Real-time 1v1 browser game with on-chain stakes (client project, confidential)
-Short 1v1 matches computed on the server at 60 Hz, with stakes and payouts handled by smart contracts, running on a testnet before an audit. 208 Solidity tests, 41 unit tests and 9 end-to-end scripts.
+Short 1v1 matches simulated deterministically on the server at 60 Hz, with client-side prediction and replays; stakes are held in escrow and paid out by smart contracts. Running on a testnet; mainnet waits for an external audit.
 
 Stack: TypeScript, Preact, Vite, Cloudflare Workers, Durable Objects, D1, viem, Solidity, Foundry
 
 Skills: Game Development · Smart Contracts · Solidity · TypeScript · Real-Time Systems`,
     fr: `Jeu en ligne 1 contre 1 en temps réel avec mises on-chain (projet client, confidentiel)
-Matchs courts en 1 contre 1 calculés côté serveur à 60 Hz, avec mises et gains gérés par des contrats, en ligne sur testnet avant un audit. 208 tests Solidity, 41 tests unitaires et 9 scripts de bout en bout.
+Matchs courts en 1 contre 1 simulés de façon déterministe côté serveur à 60 Hz, avec prédiction côté client et replays ; les mises sont placées sous séquestre et payées par des contrats. En ligne sur testnet ; le mainnet attend un audit externe.
 
 Stack : TypeScript, Preact, Vite, Cloudflare Workers, Durable Objects, D1, viem, Solidity, Foundry
 
@@ -1144,12 +1140,12 @@ Compétences : Web Development · E-Commerce · Search Engine Optimization (SEO)
 const skills = {
   en: `Web & Mobile Dev: TypeScript, JavaScript, Next.js, React, React Native, Capacitor, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
 Cloud & DevOps: AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
-AI & Automation: AI Agents, Agentic Dev, Claude Code (skills, hooks, subagents), MCP, Browser agents (Browser Use, jev), Agentic QA, LLM APIs (OpenAI, Claude, Gemini, OpenRouter), LLM evaluation & prompt-injection testing, Local LLMs (llama.cpp, ExLlamaV2), Vectorization, OCR & Vision pipelines, ElevenLabs, Voice AI, GEO/AEO
+AI & Automation: AI Agents, Agentic Dev, Claude Code (skills, hooks, subagents), MCP, Browser agents (Browser Use, jev), Agentic QA, LLM APIs (OpenAI, Claude, Gemini, OpenRouter), LLM evaluation & prompt-injection testing, Local LLMs (llama.cpp, GGUF), Embeddings & vector search, OCR & Vision pipelines, ElevenLabs, Voice AI, GEO/AEO
 E-commerce: Shopify API, Liquid, Stripe, SEO
 Languages: French (native), English (C1, TOEIC), Spanish (professional)`,
   fr: `Dév web et mobile : TypeScript, JavaScript, Next.js, React, React Native, Capacitor, Angular, Vue.js, Node.js, Python, Django, Flask, PostgreSQL, Supabase
 Cloud et DevOps : AWS (EC2, Route53, Amplify), Docker, Git, CI/CD, Vercel
-IA et automatisation : agents IA, développement avec agents, Claude Code (skills, hooks, sous-agents), MCP, agents navigateur (Browser Use, jev), QA par agent navigateur, API LLM (OpenAI, Claude, Gemini, OpenRouter), évaluation de LLM et tests d'injection de prompt, LLM locaux (llama.cpp, ExLlamaV2), vectorisation, pipelines OCR et vision, ElevenLabs, IA vocale, GEO/AEO
+IA et automatisation : agents IA, développement avec agents, Claude Code (skills, hooks, sous-agents), MCP, agents navigateur (Browser Use, jev), QA par agent navigateur, API LLM (OpenAI, Claude, Gemini, OpenRouter), évaluation de LLM et tests d'injection de prompt, LLM locaux (llama.cpp, GGUF), embeddings et recherche vectorielle, pipelines OCR et vision, ElevenLabs, IA vocale, GEO/AEO
 E-commerce : Shopify API, Liquid, Stripe, SEO
 Langues : français (natif), anglais (C1, TOEIC), espagnol (professionnel)`,
 };
@@ -1191,22 +1187,18 @@ Pour démarrer : un audit payant ou une preuve de concept de 5 à 10 jours, avec
 const proof = {
   en: `- ALTAO Santé, medical platform for hospitals where I was the only software engineer: 5,000+ documents processed.
 - Board of Cyber: three years on Security Rating®, a cyber-rating SaaS used by 200+ organizations.
-- Polymarket Up/Down Lab: about 12,000 paper trades across 75 runners, settled against the Chainlink oracle; result: no tradable edge after fees.
-- PDFold (archived): PDFs to structured Markdown in 11 languages.
+- Polymarket Up/Down Lab: about 12,000 paper trades across 75 strategy configurations (strategy, coin, time frame), settled against the Chainlink oracle; result: no tradable edge after fees.
 - Piktechs AI card scanner: of four cheap vision models tested on the same photos, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.
-- Agentic QA on Piktechs with jev, Browser Use's browser agent: 16 standing checks on plan gates and permissions, where a SQL query on the database decides pass or fail; its screenshots on closed tickets surfaced 3 bugs the fixes had missed or introduced.
 - A 180B mixture-of-experts model (about 6B active per token) run locally on a mini PC with an RTX 3080 20 GB over OCuLink: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, published with the scripts to reproduce them.
-- CalcPit (archived): 87 construction calculators, and an Android app (Lumber Calculator) generated from the same tested formulas.
-- DRIVECO: two ChatGPT workshops (FR/EN) for its teams, with a public testimonial from its Chief People Officer.`,
+- WebJev-35B-A3B-GGUF, my GGUF conversion of a browser-agent decision model: 409 downloads on Hugging Face (Nov 2026); its 4-bit file makes the same decisions as the 8-bit one on 52 of 54 browser steps replayed from real tasks.
+- DRIVECO: two paid ChatGPT workshops (FR/EN) for its teams, with a public testimonial from its Chief People Officer.`,
   fr: `- ALTAO Santé, plateforme médicale pour les hôpitaux dont j'étais le seul ingénieur logiciel : plus de 5 000 documents traités.
 - Board of Cyber : trois ans sur Security Rating®, SaaS de notation cyber utilisé par plus de 200 organisations.
-- Polymarket Up/Down Lab : environ 12 000 trades simulés sur 75 instances, réglés sur l'oracle Chainlink ; résultat : aucun avantage exploitable une fois les frais déduits.
-- PDFold (archivé) : des PDF convertis en Markdown structuré, en 11 langues.
+- Polymarket Up/Down Lab : environ 12 000 trades simulés sur 75 configurations (stratégie, crypto, durée), réglés sur l'oracle Chainlink ; résultat : aucun avantage exploitable une fois les frais déduits.
 - Scanner de cartes IA de Piktechs : sur quatre modèles de vision bon marché testés sur les mêmes photos, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le modèle de repli est celui qui a résisté.
-- QA automatisée sur Piktechs avec jev, l'agent navigateur de Browser Use : 16 vérifications permanentes sur les accès par offre et les permissions, où une requête SQL sur la base décide si le test passe ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits.
 - Un modèle de 180B à mélange d'experts (environ 6B actifs par token) en local sur un mini PC avec une RTX 3080 20 Go en OCuLink : environ 2 000 tokens/s en lecture du prompt et 110 à 204 tokens/s en génération, publiés avec les scripts pour refaire les mesures.
-- CalcPit (archivé) : 87 calculateurs pour la construction, et une application Android (Lumber Calculator) générée à partir des mêmes formules testées.
-- DRIVECO : deux ateliers ChatGPT (FR/EN) pour ses équipes, avec un témoignage public de sa DRH.`,
+- WebJev-35B-A3B-GGUF, ma conversion GGUF d'un modèle de décision pour agents navigateur : 409 téléchargements sur Hugging Face (nov. 2026) ; son fichier 4 bits prend les mêmes décisions que le 8 bits sur 52 des 54 étapes de navigation rejouées depuis de vraies tâches.
+- DRIVECO : deux ateliers ChatGPT payés (FR/EN) pour ses équipes, avec un témoignage public de sa DRH.`,
 };
 
 // ===== Client words (published publicly by the people quoted) =====
@@ -1709,17 +1701,17 @@ const identityCards = [
 ];
 const bioSections = bios.map((b) => ({ label: b.label, blocks: pair(b) }));
 // ===== Featured (case studies & articles), generated from the blog so it never drifts =====
-const featuredIds = ['case-study-piktechs', 'case-study-ai-card-scanner', 'case-study-jev-check', 'what-i-kept-telling-claude', 'browser-agents-at-work-jev', 'lazy-by-design', 'how-i-built-pdfold', 'the-great-work-polymarket'];
+const featuredIds = ['case-study-piktechs', 'case-study-ai-card-scanner', 'case-study-jev-check', 'claude-skills-that-actually-load', 'what-i-kept-telling-claude', 'browser-agents-at-work-jev', 'lazy-by-design', 'the-great-work-polymarket'];
 // FR = translation of each article's current English title and description (frontmatter of src/content/blog/*.md)
 const featuredFr = {
   'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment, seul ingénieur, j'ai fait d'un prototype de deux semaines un SaaS B2B en production : espaces de travail multi-locataires, facturation en conditions réelles, une application Android et une fonctionnalité IA, avec Claude Code comme principal environnement de développement. Ma façon de travailler avec l'agent, et quatre erreurs que j'ai corrigées."],
   'case-study-ai-card-scanner': ["Étude de cas : choisir le modèle de repli d'un LLM en l'attaquant", "Le scanner de cartes de visite de Piktechs lit la carte d'un inconnu avec un modèle de vision. Comment j'ai choisi son modèle de repli par un test d'injection de prompt avant de comparer les prix, et les garde-fous qui permettent d'exposer sans risque un endpoint LLM payant."],
   'case-study-jev-check': ["Étude de cas : account-state-check, une QA par agent navigateur où la base de données rend le verdict", "Les tests unitaires et les suites de tests de bout en bout à base de mocks ratent les bugs où le front déployé, le backend et les permissions se contredisent. J'ai construit un outil de QA par agent navigateur qui se connecte à l'app de test déployée sous un compte dans un état exact et vérifie le résultat dans la base de données, puis je l'ai publié en open source comme skill d'agent."],
-  'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "J'ai relu environ 4 000 de mes propres prompts, sur quatre mois et deux machines, et retrouvé les six mêmes corrections dans chaque projet. Les écrire ne suffisait pas : une règle qu'un script peut vérifier va maintenant dans un hook, et le reste dans le fichier le plus ciblé qui marche."],
+  'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "J'ai relu quatre mois de mes propres prompts, sur deux machines, et retrouvé les six mêmes corrections dans chaque projet. Les écrire ne suffisait pas : une règle qu'un script peut vérifier va maintenant dans un hook, et le reste dans le fichier le plus ciblé qui marche."],
   'browser-agents-at-work-jev': ["Des agents navigateur au travail : QA, consoles web et relais pour les mots de passe avec jev", "J'utilise jev, l'agent navigateur de Browser Use, tous les jours : pour tester mon propre SaaS sous chaque type de compte, pour travailler dans des consoles web sans API, et pour me rendre la main quand un mot de passe est demandé. Les cas d'usage, l'architecture et dix leçons de mise en place."],
   'lazy-by-design': ["La flemme comme méthode : ce qu'il faut à un agent avant que je le laisse seul", "Si je fais une chose deux fois, une machine la fait la troisième. Comment cela devient des exécutions d'agents avec une condition d'arrêt vérifiable et un plafond de dépense, des tâches planifiées qui rendent compte, et une seule source pour chaque information."],
   'the-great-work-polymarket': ["Le Grand Œuvre : j'ai essayé de transformer des pile ou face sur le Bitcoin en or", "J'ai donné à mes bots de trading simulé des noms de mystiques et d'alchimistes, je les ai lancés sur les marchés Bitcoin à cinq minutes de Polymarket, et j'ai passé juin à voir chaque avantage redevenir du plomb. Un récit de terrain sur le marché efficient, en cinq étapes alchimiques."],
-  'how-i-built-pdfold': ["Comment j'ai construit PDFold seul : un espace de travail Claude avec une boucle de correction, des tests et une infra sans surprise", "La configuration derrière PDFold : un espace de travail Claude que je corrigeais après chaque raté, des tests écrits avec chaque fonctionnalité, et un pipeline PDF vers Markdown en deux passes sur Gemini, passé sur OpenRouter en août."],
+  'claude-skills-that-actually-load': ["Quatre skills sur dix ratés : faire charger les bons à Claude Code", "En rejouant mes propres prompts, j'ai vu que Claude Code ne chargeait que 57 % des skills dont une demande avait besoin. Un hook écrit avec mes propres mots l'a fait passer à 84 % sur des prompts qui n'avaient jamais servi à le régler."],
 };
 const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 const featuredSections = featuredIds

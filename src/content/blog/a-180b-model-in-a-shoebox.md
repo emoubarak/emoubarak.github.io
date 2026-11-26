@@ -1,13 +1,13 @@
 ---
 title: "A 180B Model in a Shoebox: Local Inference on a Mini PC and an 8 GB Card"
-description: "Qwen3.8-Flash-Next, 180B parameters, running with Strata on a mini PC and an RTX 3060 Ti 8 GB over OCuLink: about 390 tokens per second reading, 52 to 57 writing. The benchmarks, and the calibration and cable that produced them."
+description: "Qwen3.8-Flash-Next, 180B parameters, running with Strata on a mini PC and an RTX 3060 Ti 8 GB over OCuLink: about 390 tokens per second reading, 50 to 57 writing. The benchmarks, and the calibration and cable that produced them."
 pubDate: 2026-10-15
 tags: ["AI", "Local inference", "Hardware"]
 cover: "/blog/a-180b-model-in-a-shoebox.webp"
 coverAlt: "A tiny mini PC and an external graphics card connected by one cable, feeding from a wall of thousands of small drawers that reaches the ceiling."
 tldr:
-  - "A 180B model reads prompts at about 390 tokens per second and writes at 50-57 tokens per second on a mini PC with an 8 GB card."
-  - "The engine is Strata; the gains came from its calibration and a better cable, and two updates narrowed writing speed to 52-57 tokens per second."
+  - "A 180B model reads prompts at about 390 tokens per second and writes at 50 to 57 tokens per second on a mini PC with an 8 GB card."
+  - "The engine is Strata; the gains came from its calibration, a better cable and two updates."
   - "Full config, dated benchmarks and reproduce scripts: github.com/emoubarak/strata-flash-next-egpu."
 ---
 

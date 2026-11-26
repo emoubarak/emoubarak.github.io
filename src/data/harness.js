@@ -34,9 +34,8 @@ export const harness = {
   counted: '25 November 2026',
 
   stats: [
-    { n: '57% → 84%', label: 'of the skills a prompt needs, loaded once a router hook picks them (held-out prompts)' },
-    { n: '180B', label: 'parameter mixture-of-experts model (about 6B active per token) on an RTX 3080 20 GB in my office' },
-    { n: '303', label: 'open tickets triaged by the local model with no API bill; a Claude session checked the 11 closures it proposed and kept 3 open' },
+    { n: '57% → 84%', label: 'of the skills a prompt needs that Claude loads, before and after my router hook, on prompts the rules were never tuned on' },
+    { n: '≈2,000 tok/s', label: 'reading speed of a 180B model on one 20 GB consumer GPU, in public benchmarks with the scripts to rerun them' },
     { n: '2 of 4', label: 'candidate vision models obeyed a prompt injection printed on a business card; the scanner uses one that resisted' },
   ],
 
@@ -81,7 +80,6 @@ export const harness = {
         '“Do you remember”, “where were we”, “like last time”: <b>the model searches before it answers</b>.',
         'Before writing a new memory note, it checks that the note does not exist already.',
         'About <b>one message in twenty</b> I type corrects the model; those corrections feed the weekly pass.',
-        'Packaged as an open-source plugin: <b>hindsight</b>.',
       ],
       visual: { kind: 'image', src: '/portfolio/hindsight-demo.webp', w: 1800, h: 840, alt: 'Terminal: "do you remember how we deploy the api to staging?" A hook finds the session of September 1st and Claude answers with the exact command.' },
     },
@@ -99,8 +97,6 @@ export const harness = {
       id: 'desk', name: 'Front desk', title: 'The dashboard', tag: 'one dashboard', icon: icons.desk, layout: 'wide',
       what: 'Where my day starts: every open issue in my GitHub account and the organizations I work in, red CI, today\'s calendar, web terminals into running sessions, unpushed commits, and how much of my Claude plan is left this week.',
       points: [
-        'List view for the day, <b>kanban across every repository</b> for the week.',
-        'Tickets carry a priority, P0 to P3, with the same labels everywhere.',
         '<b>Only I move a ticket to “ready”</b>. Agents may create tickets, never promote them.',
         'The local model <b>proposes closures and never closes</b> a ticket itself. A second agent argues for keeping each one open: it blocked an untouched bug the local model had rated “done, confidence 95”.',
       ],
@@ -126,7 +122,7 @@ export const harness = {
         'Money stays out of reach: bank, taxes and payments only happen in my own browser.',
         'Each task runs with the model that fits it: Sonnet, Haiku, DeepSeek or a local Qwen.',
       ],
-      incident: 'In a batch of searches, 12% to 90% of the pages came back blank and were counted as read. A page now counts only once its text is on screen, and is reloaded if it stays empty. The rerun had zero blank pages.',
+      incident: 'In a batch of searches, up to 90% of the pages came back blank and were counted as read. A page now counts only once its text is on screen, and is reloaded if it stays empty. The rerun had zero blank pages.',
       visual: { kind: 'image', src: '/harness/browser-profiles.webp', w: 2880, h: 1720, alt: 'browser-agents back office, Profiles page: one card per account with its state (asleep or stopped), task count, last activity and purpose. Names and purposes are placeholders.' },
     },
     {
@@ -134,8 +130,8 @@ export const harness = {
       what: 'One page that lists every project, host, mailbox, domain and renewal date, built once I could no longer keep track of them across projects. Its first rule: a project is a thing in the world that owns repositories, a domain, a mailbox and bills.',
       points: [
         'A hook at the end of every session <b>records any repository the session created</b>.',
-        'Every six hours it <b>checks about 180 links</b> and reads expiry dates from the registries.',
-        'Renewals flow into my calendar as reminders: <b>19 created on the first run</b>.',
+        'Every six hours it <b>checks the links it lists</b> and reads expiry dates from the registries.',
+        'Renewals flow <b>into my calendar</b> as reminders.',
       ],
       incident: 'While filling it in, the agent found a contact address shown on one of my sites that had never existed as a mailbox. Every email sent to it had been lost since the site went live.',
       visual: { kind: 'project', parts: ['Repos', 'A domain', 'A mailbox', 'A host', 'Accounts', 'Renewals and bills'] },
@@ -147,7 +143,7 @@ export const harness = {
       id: 'vault', name: 'Vault', kicker: 'Watchtower and Vault', title: 'Monitoring and backups', tag: 'nightly backup', icon: icons.vault, layout: 'wide',
       what: 'Monitoring watches every public endpoint and alerts my phone. Every night at four the mini PC backs itself up offsite, and on Sundays a sample is restored to prove the backup works.',
       points: [
-        'An audit by <b>five parallel agents</b> traced, layer by layer, which part feeds which and when.',
+        'An audit traced, <b>layer by layer</b>, which part feeds which and when.',
         'It found that hooks recorded <b>what I created</b> (a repository, a skill), and that nothing recorded a rename, a new service or a deadline.',
         'Now <b>one source per subject</b>, and a morning check that compares the machine with it and alerts on any difference.',
         'Every new service gets a failure alert by default, with no list to maintain.',
@@ -178,19 +174,17 @@ export const harness = {
   },
 
   skills: {
-    intro: 'A skill is a written procedure the model loads when a task matches: the expected result, the tools to use, the traps I already fell into. Below, the eight my sessions loaded most.',
-    maxUses: 207,
+    intro: 'A skill is a written procedure the model loads when a task matches: the expected result, the tools to use, the traps I already fell into. Below, the ones I rely on most.',
     items: [
-      { name: 'web-access', icon: icons.globe, uses: 207, text: 'Which road to take to read or act on the web: an open data API first, a dedicated agent browser next, my own logged-in browser last.' },
-      { name: 'site-vitrine', icon: icons.site, uses: 125, text: 'Websites from brief to live URL: layout rules, images, forms, SEO, and screenshots at the widths people use before anyone says done.' },
-      { name: 'create-issue', icon: icons.ticket, uses: 83, text: 'A GitHub ticket with a working reproduction, a screenshot for a bug, a priority and no duplicate.' },
-      { name: 'model-router', icon: icons.route, uses: 57, text: 'Classifies each prompt and sends it to the cheapest model and effort that can handle it. The model only ever goes up during a conversation.' },
-      { name: 'interface-outil', icon: icons.desk, uses: 52, text: 'Interfaces of my own tools: filters, sorting, statuses, empty states, one language per app, checked by searching the rendered text.' },
-      { name: 'video', icon: icons.video, uses: 28, text: 'A video studio: script, voice, music, footage, editing and render, with live price checks and a hard spending cap. Pilots before any batch.' },
-      { name: 'agenda', icon: icons.clock, uses: 18, text: 'Reads and writes my self-hosted calendar, the one the dashboard shows and the inventory feeds with renewals.' },
-      { name: 'cles-api', icon: icons.key, uses: 10, text: 'One capped API key per project, and a table of who spends what. Scheduled jobs use the subscription or the local model first.' },
+      { name: 'web-access', icon: icons.globe, text: 'Which road to take to read or act on the web: an open data API first, a dedicated agent browser next, my own logged-in browser last.' },
+      { name: 'site-vitrine', icon: icons.site, text: 'Websites from brief to live URL: layout rules, images, forms, SEO, and screenshots at the widths people use before anyone says done.' },
+      { name: 'create-issue', icon: icons.ticket, text: 'A GitHub ticket with a working reproduction, a screenshot for a bug, a priority and no duplicate.' },
+      { name: 'model-router', icon: icons.route, text: 'Classifies each prompt and sends it to the cheapest model and effort that can handle it. The model only ever goes up during a conversation.' },
+      { name: 'interface-outil', icon: icons.desk, text: 'Interfaces of my own tools: filters, sorting, statuses, empty states, one language per app, checked by searching the rendered text.' },
+      { name: 'video', icon: icons.video, text: 'A video studio: script, voice, music, footage, editing and render, with live price checks and a hard spending cap. Pilots before any batch.' },
+      { name: 'cles-api', icon: icons.key, text: 'One capped API key per project, and a table of who spends what. Scheduled jobs use the subscription or the local model first.' },
     ],
-    note: 'Sessions that loaded each skill, on two machines, from late August to 22 November 2026. Also mine, used less: a devil\'s-advocate review, an SEO and AI-citation audit, and tools for social-media content. Borrowed skills (Anthropic, Emil Kowalski, Hardik Pandya\'s stop-slop and others) are credited in their folders and left off this list.',
+    note: 'Borrowed skills (Anthropic, Emil Kowalski, Hardik Pandya\'s stop-slop and others) are credited in their folders and left off this list.',
   },
 
   sourcing: {
@@ -204,7 +198,7 @@ export const harness = {
     ],
     examples: [
       { from: 'A Reddit thread', title: '“The harder I use Claude Code, the larger the backlog gets”', text: 'One reply became the “ready” rule of my dashboard. A local model then triaged the whole backlog, and a Claude session checked the closures it proposed.' },
-      { from: 'A model launch on X', title: 'A new small model, up to twice as fast as my fallback', text: 'It first scored 21 out of 40 on my web-agent exam; a replay showed my parser rejected valid answers, and with the fix it scored 35, against 36 for my main model.' },
+      { from: 'A model launch on X', title: 'A new small model, up to twice as fast as my fallback', text: 'My web-agent exam first gave it 21 out of 40. A replay of its raw answers showed my parser rejected answers that were right apart from one extra brace; with the parser fixed, it scored 35, against 36 for my main model.' },
       { from: 'My own sessions', title: 'The router behind the skills', text: 'Every Monday a routine compares the skills it suggested with the ones Claude loaded, and scores it on a fixed test set to catch a regression.' },
     ],
   },
@@ -224,7 +218,6 @@ export const harness = {
     { h: 8.5, time: '08:30', what: 'Scan for dead paths left behind by renames' },
     { h: 8.67, time: '08:40', what: 'Compare what runs with the registries, alert on any difference' },
     { hs: [9, 21], time: '09:00, 21:00', what: 'Alert if any backup is older than 26 hours' },
-    { h: 11, time: 'Mon 11:00', what: 'Weekly report on my content channels, after the three stats collections it summarizes' },
     { h: 14, time: 'Mon 14:00', what: 'Freshness check on my accounting data, with a reminder if it is stale' },
     { h: 21, time: 'Sun 21:00', what: 'Weekly learning pass over my corrections' },
     { ring: true, time: 'Every 15 min', what: 'Send the replies I approved, nothing else (the dotted ring)' },
@@ -232,7 +225,7 @@ export const harness = {
 
   bench: {
     intro: 'I wanted the local model to save my Claude plan by writing fixes that Claude would only review. So I took three real bug fixes from my dashboard, ran them five ways (2 to 5 runs per way), and had Sonnet score every result blind against the reference fix.',
-    verdict: 'Sonnet alone used an estimated 0.0075% of my weekly limit per fix, half the cheapest delegation, and finished in a minute, but it scored 5.5 against 7.2 for Opus alone. Delegating code to the local model is now for weeks when my plan is nearly used up, or for code that must stay on the machine.',
+    verdict: 'Sonnet alone cost less of my plan than any delegation, half the cheapest one, and finished in a minute, but it scored 5.5 against 7.2 for Opus alone. Delegating code to the local model is now for weeks when my plan is nearly used up, or for code that must stay on the machine.',
     note: 'The local agent passed the tests 13 times out of 13 and still missed a function that was never wired in. Only Opus, reading the code, caught it.',
     rows: [
       { who: 'Opus alone', q: 7.2, wait: '2 min 50', best: true },
@@ -245,22 +238,19 @@ export const harness = {
 
   openSource: [
     { name: 'claude-skill-router', url: 'https://github.com/emoubarak/claude-skill-router', text: 'Helps Claude Code load the skills a prompt needs, with a bench that replays your own sessions to measure it.', stack: 'Python · Claude Code hooks' },
-    { name: 'hindsight', url: 'https://github.com/emoubarak/hindsight', text: 'Memory for Claude Code: search every past session by meaning, turn your corrections into rules.', stack: 'Python · BM25 + embeddings · plugin' },
     { name: 'account-state-check', url: 'https://github.com/emoubarak/account-state-check', text: 'A browser agent tests your staging app as each kind of user, then reads the database to check the state of each account.', stack: 'Python · CDP · agent skill' },
-    { name: 'voice-browser', url: 'https://github.com/emoubarak/voice-browser', text: 'Talk to your browser: Claude plans the command, a browser agent clicks, with no debugger port open.', proof: '12 to 19 s for a Wikipedia lookup, from command to answer', stack: 'Chrome extension · Python' },
     { name: 'strata-flash-next-rtx3080-20gb', url: 'https://github.com/emoubarak/strata-flash-next-rtx3080-20gb', text: 'Settings and benchmark scripts for a 180B model on a mini PC with an RTX 3080 20 GB over OCuLink.', proof: '≈2,000 tok/s read, 110-204 tok/s write', stack: 'Strata · llama-swap · benchmarks' },
     { name: 'sunshine-gnome-virtual-display', url: 'https://github.com/emoubarak/sunshine-gnome-virtual-display', text: 'Streams a GNOME desktop to Moonlight on a virtual monitor at the client\'s exact resolution, then puts the desktop back.', proof: 'Network latency 42 ms → 5-9 ms', stack: 'Bash · Python · Mutter' },
-    { name: 'signal-bot', url: 'https://github.com/emoubarak/signal-bot', text: 'An LLM bot for Signal groups: summaries, voice-note transcripts, images, reminders. OpenRouter or a local model.', stack: 'Python · SQLite · Docker' },
-    { name: 'polymarket-updown-lab', url: 'https://github.com/emoubarak/polymarket-updown-lab', text: 'Trading research with out-of-sample backtests. Result: no tradable edge after fees.', proof: '≈12,000 paper trades, 75 runners', stack: 'Python · Go' },
+    { name: 'signal-bot', url: 'https://github.com/emoubarak/signal-bot', text: 'An LLM bot for Signal groups: summaries, voice-note transcripts, images, reminders. OpenRouter or a local model.', proof: 'Used by 7 people since October 2026', stack: 'Python · SQLite · Docker' },
+    { name: 'polymarket-updown-lab', url: 'https://github.com/emoubarak/polymarket-updown-lab', text: 'Trading research with out-of-sample backtests. Result: no tradable edge after fees.', proof: '≈12,000 paper trades, 75 strategy configurations', stack: 'Python · Go' },
   ],
 
   workshop: [
     { name: 'Phone remote', icon: icons.desk, text: 'Drives my Android phones from a browser tab: H.264 decoded in the page, touch, keyboard, clipboard.', tag: 'private' },
-    { name: 'A 16 KB watchdog app', icon: icons.shield, text: 'Android keeps turning off wireless debugging. A tiny app turns it back on, built and signed without Gradle.', tag: 'private' },
+    { name: 'Wireless debugging watchdog', icon: icons.shield, text: 'Android keeps turning off wireless debugging, which the phone remote needs. A small app turns it back on, even before the phone is unlocked.', tag: 'private' },
     { name: 'Live dictation', icon: icons.type, text: 'Speech to text at the cursor, French or English, about one second behind, on the CPU. Nothing leaves the house.', tag: 'private' },
     { name: 'Phone-sized screenshots', icon: icons.eye, text: 'Emulates my phone screen with real touch events and flags tap targets under 40 px before I see them.', tag: 'private' },
-    { name: 'Hooks in other agents', icon: icons.route, text: 'A plugin that runs the same Claude Code hooks inside opencode, so a second agent obeys the same rules.', tag: 'private' },
-    { name: 'prompter', icon: icons.slides, url: 'https://github.com/emoubarak/prompter', text: 'A Markdown script becomes a full-screen teleprompter on the second monitor. 81 lines of Python.', tag: 'open source' },
+    { name: 'prompter', icon: icons.slides, url: 'https://github.com/emoubarak/prompter', text: 'A Markdown script becomes a full-screen teleprompter on the second monitor.', tag: 'open source' },
   ],
 
   lessons: [

@@ -1,6 +1,6 @@
 ---
-title: "Ninety Skills, Four in Ten Missed: Making Claude Code Load the Right Ones"
-description: "I have about ninety Claude Code skills and I don't remember their names. Replaying my own prompts showed Claude loaded only 57% of the skills a request needed. A hook in my own words took it to 84% on prompts it was never tuned on."
+title: "Four in Ten Skills Missed: Making Claude Code Load the Right Ones"
+description: "Replaying my own prompts showed Claude Code loaded only 57% of the skills a request needed. A hook in my own words took it to 84% on prompts it was never tuned on."
 pubDate: 2026-11-20
 tags: ["AI", "Claude", "Workflow"]
 cover: "/blog/claude-skills-that-actually-load.webp"
@@ -8,7 +8,7 @@ coverAlt: "A cabinet of many closed drawers with three of them open, and a signp
 tldr:
   - "With 90 skills, Claude loaded only 57% of the skills my requests needed, and all of them in half the requests. Good descriptions were not enough."
   - "A small hook that names the matching skills in my own words, and reminds Claude that a request often needs several, took that to 84% on held-out prompts."
-  - "On the tuning set, rewording one injected sentence added four points of recall (89% to 93%). The bench, the hook and the weekly review are open source."
+  - "The bench, the hook and the weekly review are open source."
 ---
 
 I write skills for everything I do more than twice: a skill for my static sites, one for my internal dashboards, one for SEO, one for TikTok carousels, one for bookkeeping, one for GitHub tickets. Some are mine, some come from plugins. Across my repos a session now sees between 80 and 95 of them.
