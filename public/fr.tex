@@ -113,6 +113,7 @@ Ingénieur full-stack, je mets des logiciels en production depuis 2019 (cybersé
 \begin{itemize}
     \item \textbf{Conception et exploitation de mon environnement d'agents} : hooks qui transforment les corrections répétées en contrôles, routines planifiées qui m'alertent en cas d'échec, et un \textbf{modèle de 180B à mélange d'experts} en local sur une RTX 3080 20 Go, avec des bancs d'essai publics (\link{https://moubarak.dev/harness}{moubarak.dev/harness})
     \item Conception et animation de \textbf{formations IA} pour DRIVECO (opérateur de bornes de recharge) : deux sessions, en français et en anglais, construites sur les processus de l'entreprise, avec un \link{https://www.linkedin.com/posts/el-mahdi-moubarak_merci-\%C3\%A0-toute-l\%C3\%A9quipe-driveco-de-mavoir-share-7480266785208926210-AIX7/}{témoignage public} de sa DRH
+    \item \textbf{Acquisition de clients pour Vyrion} (cabinet d'implantation en Chine) : refonte du site, publicités, contenu social automatisé, SEO et lead magnets ; \m{une dizaine de clients signés depuis}
     \item Également CTO de \link{https://www.agence-ksur.com}{KSUR} (agence web) : \m{plus de vingt sites clients}, surtout au Maroc, et à La Réunion ; j'en dirige la partie technique, la livraison et l'hébergement. En partenariat avec \link{https://the-icon.be}{THE ICON} (Belgique), KSUR a réalisé le site de THE ICON et ceux de deux de ses clients belges
 \end{itemize}
 \stackline{TypeScript\sep Python\sep Next.js\sep Node.js\sep Supabase\sep Docker\sep API OpenAI, Claude, Gemini\sep MCP\sep Browser~Use\sep Claude Code}
@@ -123,7 +124,7 @@ Ingénieur full-stack, je mets des logiciels en production depuis 2019 (cybersé
     \item Principalement front-end, dans une \textbf{équipe de 20 développeurs}, sur \textit{Security Rating\textregistered}, plateforme SaaS de notation cyber utilisée par \m{plus de 200 organisations} : espace client, back-office et espace manager
     \item Création de \textbf{composants Angular} et \textbf{montées de version d'Angular} sur une base de code de grande taille
     % keeps the last bullet with its stack line when the page breaks inside this role
-    \needspace{3.5\baselineskip}\item Conception d'une \textbf{sonde Python de scan de vulnérabilités} (nmap) automatisant la collecte des données de surface d'attaque pour les notations
+    \needspace{3.5\baselineskip}\item Conception d'une \textbf{sonde Python de scan de vulnérabilités} (nmap) qui automatise la collecte de la surface d'attaque
 \end{itemize}
 \stackline{Angular\sep TypeScript\sep Python\sep nmap\sep Spectator\sep Docker\sep CI/CD}
 
@@ -133,7 +134,7 @@ Ingénieur full-stack, je mets des logiciels en production depuis 2019 (cybersé
     \item \textbf{Seul ingénieur} d'une plateforme médicale partie de zéro, qui corrige les comptes rendus de sortie hospitaliers et remplace une chaîne éclatée entre plusieurs outils
     \item Plus de \m{5~000 documents} traités par la plateforme ; \m{700~000~\texteuro{}} d'économies estimées pour les hôpitaux lors des tests sur des documents passés, avant la mise en production
     \item Intégration des \textbf{modèles de prédiction ML} et des moteurs de règles de l'équipe Data Science
-    \item Recueil des besoins avec les médecins, rédaction des spécifications, déploiement et supervision de l'infrastructure AWS
+    \item Recueil des besoins avec les médecins, spécifications, déploiement et supervision de l'infra AWS
 \end{itemize}
 \stackline{Vue.js\sep Django\sep Python\sep PostgreSQL\sep AWS (EC2, Route53, Amplify)}
 
@@ -148,9 +149,10 @@ Ingénieur full-stack, je mets des logiciels en production depuis 2019 (cybersé
 \begin{itemize}
     \project{account-state-check}{https://github.com/emoubarak/account-state-check}{\textbf{skill d'agent open source (MIT)} pour Claude Code, Codex et OpenClaw, qui applique la \textbf{QA par agent navigateur} décrite plus haut à n'importe quelle application de préproduction \stack{Python, CDP}}
     \project{browser-agents}{}{\textbf{orchestrateur auto-hébergé d'agents navigateur} (privé) : profils connectés persistants, un processus isolé par tâche, \textbf{reprise en main par un humain en direct} (WebRTC) pour les connexions et la 2FA, back-office de suivi \stack{Python, Podman, CDP}}
-    \project{Polymarket Up/Down Lab}{https://github.com/emoubarak/polymarket-updown-lab}{recherche en \textbf{paper trading} (trading simulé) sur les marchés crypto à 5 et 15 minutes de Polymarket : \textbf{backtests hors échantillon}, puis \m{\textasciitilde12~000 transactions simulées} sur 75 configurations de stratégie face aux carnets d'ordres en direct. Résultat : \textbf{aucun avantage après frais}}
-    \project{claude-skill-router}{https://github.com/emoubarak/claude-skill-router}{fait charger à Claude Code les skills dont un prompt a besoin ; sur un \textbf{banc d'essai qui rejoue mes propres sessions}, la part des skills utiles chargés passe de \m{57~\% à 84~\%} sur des prompts jamais vus au réglage \stack{Python, hooks Claude Code}}
-    \project{WebJev-35B-A3B-GGUF}{https://huggingface.co/emoubarak/WebJev-35B-A3B-GGUF}{\textbf{conversion GGUF} d'un modèle de décision pour agents navigateur, \m{409 téléchargements} sur Hugging Face (nov. 2026) ; son fichier 4 bits prend les mêmes décisions que le 8 bits sur 52 des 54 étapes rejouées depuis de vraies tâches}
+    \project{Polymarket Up/Down Lab}{https://github.com/emoubarak/polymarket-updown-lab}{recherche en \textbf{paper trading} sur les marchés crypto à 5 et 15 minutes : backtests hors échantillon, puis \m{\textasciitilde12~000 transactions simulées} sur carnets d'ordres réels ; \textbf{aucun avantage après frais}}
+    \project{claude-skill-router}{https://github.com/emoubarak/claude-skill-router}{fait charger à Claude Code les skills dont un prompt a besoin ; sur un \textbf{banc d'essai qui rejoue mes propres sessions}, la part des skills utiles chargés passe de \m{57~\% à 84~\%} sur des prompts jamais vus au réglage}
+    \project{Mon Jouet Montessori}{https://mon-jouet-montessori.com}{ma \textbf{boutique Shopify} : thème Liquid et application Shopify sur mesure ; \m{18\,000\,\texteuro{} de chiffre d'affaires} et \m{plus de 1\,000 commandes} la première année, \textbf{puis revendue}}
+    \project{WebJev-35B-A3B-GGUF}{https://huggingface.co/emoubarak/WebJev-35B-A3B-GGUF}{\textbf{conversion GGUF} d'un modèle de décision pour agents navigateur, \m{409 téléchargements} sur Hugging Face (nov. 2026) ; en 4 bits, mêmes décisions qu'en 8 bits sur 52 des 54 étapes rejouées}
     \project{À lire (en anglais)}{https://moubarak.dev/blog}{\link{https://moubarak.dev/cv\#ai}{ma méthode avec l'IA} ; études de cas : \link{https://moubarak.dev/blog/case-study-ai-card-scanner}{scanner de cartes IA}, \link{https://moubarak.dev/blog/case-study-jev-check}{QA agentique} et \link{https://moubarak.dev/blog/case-study-piktechs}{Piktechs}}
 \end{itemize}
 

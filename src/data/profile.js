@@ -50,7 +50,7 @@ export const proof = [
   { claim: { en: 'AI card scanner: of four candidate vision models, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.', fr: "Scanner de cartes IA : sur quatre modèles de vision candidats, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le repli est celui qui a résisté." }, source: 'Piktechs' },
   { claim: { en: "Internal R&D tool to create, store and replay payment test sets; tests before rollout measured the team's development speed 70% higher.", fr: "Outil interne de R&D pour créer, stocker et rejouer des jeux de tests de paiement ; les tests avant la mise en production ont mesuré une vitesse de développement de l'équipe 70 % plus élevée." }, source: 'Worldline' },
   { claim: { en: 'Paper trading only: ~12,000 simulated trades across 75 strategy configurations (strategy, coin, time frame), settled against the Chainlink oracle; no edge after fees.', fr: "En paper trading seulement : ~12 000 trades simulés sur 75 configurations (stratégie, crypto, durée), réglés contre l'oracle Chainlink ; aucun avantage après frais." }, source: 'Polymarket Up/Down Lab' },
-  // PDFold (archived, no paying user) and Mon Jouet Montessori (sale not provable) left on 2026-11-26
+  // PDFold (archived, no paying user) left on 2026-11-26; Mon Jouet Montessori came back the same day with its figures
   // (emoubarak.github.io-runs/affirmations-cv.md); /kit keeps both projects.
   { claim: { en: "Paid corporate AI training: two sessions, in French and English, with a public testimonial from the company's Chief People Officer.", fr: "Formation IA en entreprise, payée : deux sessions, en français et en anglais, avec un témoignage public de la DRH." }, source: 'DRIVECO' },
 ];
@@ -182,6 +182,7 @@ export const experiences = [
     summary: "My own company, a French SASU, through which I invoice freelance work.",
     achievements: [
       "**AI browser automation with jev:** my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to me for logins, captchas and 2FA, and logs every step with a screenshot and its cost.",
+      "**Client acquisition for Vyrion** (a consultancy for companies setting up in China): site redesign, ads, automated social-media content and the strategy around them (SEO, AI search, lead magnets); ==about ten clients signed since==.",
       "**My own agent harness:** hooks that turn repeated corrections into enforced checks, scheduled routines that alert me when they fail, and a 180B mixture-of-experts model running locally on an RTX 3080 20 GB, with public benchmarks.",
     ],
     stack: ["TypeScript", "Python", "Next.js", "Node.js", "Supabase", "Docker", "OpenAI, Claude, Gemini APIs", "MCP", "Browser Use", "Claude Code"],
@@ -249,7 +250,7 @@ export const experiences = [
     company: "Deuspi",
     url: "https://www.linkedin.com/company/deuspi/",
     role: "Mobile Software Engineer",
-    period: "Mar 2021 – Jun 2021",
+    period: "Mar 2021 – Jun 2021 · Internship",
     location: "Lille (Remote)",
     summary: "**Sole mobile engineer** on the first version of a React Native grocery delivery app, transitioning the product from web-only to native mobile.",
     achievements: [
@@ -591,8 +592,8 @@ const allProjects = [
     subtitle: 'vyrioncapital.com',
     category: 'website',
     categoryLabel: 'Website',
-    role: 'Client work',
-    description: 'On the existing trilingual site (English, French, Chinese) of a consultancy that helps companies set up and operate in China, I added a short quiz on each service page that emails a checklist PDF and sends the lead to the team through Resend.',
+    role: 'Client work · through EMM',
+    description: 'For a consultancy that helps companies set up and operate in China, I run client acquisition through EMM: the redesign of its trilingual site (English, French, Chinese), ads, automated social-media content, and the strategy around them (SEO, AI search, lead magnets such as a quiz on each service page that emails a checklist PDF). About ten clients signed since.',
     // vyrioncapital.com sends X-Frame-Options: DENY, so it cannot be previewed in an iframe.
     previews: [
       { label: 'Homepage', src: `${base}/portfolio/vyrion-home.webp` },
@@ -693,18 +694,17 @@ const allProjects = [
   },
   {
     title: 'Mon Jouet Montessori',
-    // out of the portfolio, home and CV on 2026-11-26 (emoubarak.github.io-runs/selection-2026-11-26.md); /kit keeps it
-    hidden: true,
+    // back on 2026-11-26 with Mehdi's figures: €18k revenue and 1,000+ orders in a year, then sold
     thumb: `${base}/work/montessori.webp`,
     thumbAlt: 'Mon Jouet Montessori home page: a wooden activity cube and the headline Toys that awaken your children',
     subtitle: 'mon-jouet-montessori.com',
     category: 'e-commerce',
     categoryLabel: 'E-commerce',
     role: 'Founder · sold',
-    description: 'Online store of Montessori toys and games that I built on Shopify with custom Liquid themes, grew through SEO and marketing, and sold.',
+    description: 'My own Shopify store of Montessori toys: a custom Liquid theme and a custom Shopify app for our own needs, grown through SEO and marketing to €18,000 in revenue and more than 1,000 orders in its first year, then sold.',
     previews: [{ label: 'Landing page', src: `${base}/portfolio/montessori.png` }],
     url: 'https://mon-jouet-montessori.com',
-    tags: ['Shopify', 'Liquid', 'SEO'],
+    tags: ['Shopify', 'Liquid', 'Shopify app', 'SEO'],
   },
   {
     title: 'Deuspi',
@@ -713,7 +713,7 @@ const allProjects = [
     subtitle: 'Confidential project',
     category: 'mobile',
     categoryLabel: 'Mobile App',
-    role: 'Mobile Software Engineer',
+    role: 'Mobile Software Engineer · internship',
     description: 'Grocery delivery mobile app with real-time geolocation, on the Uber model. I was the only mobile engineer on the first version, built in React Native from the designer\'s wireframes. Its CEO recommends my work publicly on Malt.',
     previews: [{ label: 'App screenshot', src: `${base}/portfolio/deuspi.png` }],
     url: null,
@@ -759,8 +759,8 @@ const allProjects = [
 // Display order (portfolio, CV): flagship product and the agent tools first, then client work, research,
 // and older confidential work last (2026-11-26 selection).
 const order = [
-  'Piktechs', 'browser-agents', 'account-state-check', 'Claude Skill Router', 'KSUR', 'THE ICON',
-  'Vyrion International Consulting', 'Atandem Agency', 'Polymarket Up/Down Lab', 'A 180B Model on an eGPU',
+  'Piktechs', 'browser-agents', 'account-state-check', 'Claude Skill Router', 'KSUR',
+  'Vyrion International Consulting', 'Mon Jouet Montessori', 'THE ICON', 'Atandem Agency', 'Polymarket Up/Down Lab', 'A 180B Model on an eGPU',
   'Signal LLM Bot', 'Altao Discharge Summary Tool', 'Deuspi',
 ];
 const rank = (p) => { const i = order.indexOf(p.title); return i === -1 ? order.length : i; };
