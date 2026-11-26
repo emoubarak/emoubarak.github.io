@@ -59,6 +59,10 @@
     "one-person-it-department": {
       "scene": "A miniature city laid out on a large table, seen from slightly above, with no person anywhere in the image. The buildings of the city are computers and devices: a small mini PC tower with an external graphics card box beside it, a laptop opened like a building, a smartphone standing upright like a skyscraper, a stack of server boxes, a round clock tower, and a safe shaped like a bank vault. Thin grey roads connect all the buildings in a grid, with tiny orange dots travelling along them like cars. A small orange warning flag is planted on the roof of the safe. In the foreground, resting on the edge of the table, an orange hard hat and a clipboard with a pencil, as if the urban planner just stepped away. Paper background, generous empty space around the table. No people, no faces, no hands.",
       "alt": "A miniature city on a table whose buildings are computers, a phone, server boxes, a clock tower and a safe with a small warning flag, joined by little roads; a hard hat and a clipboard rest on the edge of the table."
+    },
+    "the-question-at-the-end": {
+      "scene": "A smartphone lying on a desk, its screen showing a chat: a grey speech bubble on the left and a light blue speech bubble on the right whose last element is a large orange question mark. A friendly hand holds a pair of scissors next to the screen, about to snip the question mark off the blue bubble. Beside the phone, a small neat stack of three blue speech bubbles, each with a small orange check mark. Abstract lines inside bubbles, no letters.",
+      "alt": "A phone on a desk showing a speech bubble that ends in a large orange question mark, a hand holding scissors about to cut the question mark off, and a small stack of approved bubbles with check marks beside it."
     }
   }
 }
