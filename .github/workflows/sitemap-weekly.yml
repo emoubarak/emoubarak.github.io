@@ -13,10 +13,6 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: sitemap-submit
-  cancel-in-progress: false
-
 jobs:
   submit:
     runs-on: ubuntu-latest

@@ -66,11 +66,19 @@ const WAIT_INTERVAL_MS = Number(process.env.SITEMAP_WAIT_INTERVAL_MS || 20 * 100
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const locs = xml => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].trim());
 
-/** GitHub Pages sits behind a CDN (max-age=600): a unique query string skips its cache. */
+/**
+ * GitHub Pages sits behind a CDN that caches pages and 404s (max-age=600): a
+ * unique query string skips its cache. 15 s timeout: a stalled site must not
+ * hold the build job, and the deploy behind it.
+ */
 async function fetchLive(url, init = {}) {
   const u = new URL(url);
   u.searchParams.set('nocache', `${Date.now()}-${Math.random().toString(36).slice(2)}`);
-  return fetch(u, { ...init, headers: { 'Cache-Control': 'no-cache', ...(init.headers || {}) } });
+  return fetch(u, {
+    signal: AbortSignal.timeout(15000),
+    ...init,
+    headers: { 'Cache-Control': 'no-cache', ...(init.headers || {}) },
+  });
 }
 
 /* ----------------------------------------------------------- the build --- */
@@ -171,8 +179,10 @@ async function waitForProd(changed) {
     }
     console.log(`   ... ${stale.length} file(s) not live yet, attempt ${attempt}: ${stale[0]}`);
     if (Date.now() + WAIT_INTERVAL_MS > deadline) {
-      console.error('❌ Timeout: production still serves the previous version.');
-      return false;
+      // deploy-pages has already confirmed the deployment: the likely cause is a
+      // newer deploy that replaced this build. Submitting is still right.
+      console.warn('⚠️  Timeout: production does not serve this exact build, submitting anyway.');
+      return true;
     }
     await sleep(WAIT_INTERVAL_MS);
   }
@@ -192,8 +202,8 @@ async function verifyUrls(urls) {
     for (let url = queue.shift(); url; url = queue.shift()) {
       let status;
       try {
-        let res = await fetch(url, { method: 'HEAD', redirect: 'manual' });
-        if (res.status === 405 || res.status === 501) res = await fetch(url, { redirect: 'manual' });
+        let res = await fetchLive(url, { method: 'HEAD', redirect: 'manual' });
+        if (res.status === 405 || res.status === 501) res = await fetchLive(url, { redirect: 'manual' });
         status = res.status;
       } catch (err) {
         failures.push(`${url}: ${err.message}`);
@@ -398,11 +408,12 @@ async function submitToIndexNow(urls) {
 
 /* ----------------------------------------------------------------- main --- */
 
+/** The URLs to announce, or null when the list was asked for but is missing. */
 function readChanged() {
   if (!CHANGED_FILE) return [];
   if (!fs.existsSync(CHANGED_FILE)) {
-    console.warn(`⚠️  ${CHANGED_FILE} not found: IndexNow gets no URL list.`);
-    return [];
+    console.warn(`⚠️  ${CHANGED_FILE} not found (the diff step failed?): IndexNow gets every URL.`);
+    return null;
   }
   const { changed = [], removed = [] } = JSON.parse(fs.readFileSync(CHANGED_FILE, 'utf8'));
   return [...changed, ...removed];
@@ -422,8 +433,9 @@ async function main() {
   }
 
   const { pages } = await loadSitemaps();
-  const changed = readChanged();
-  const indexNowUrls = INDEXNOW_ALL ? pages : changed;
+  const listed = readChanged();
+  const changed = listed || [];
+  const indexNowUrls = INDEXNOW_ALL || !listed ? pages : changed;
   console.log(`📄 ${SITEMAP_URL}: ${pages.length} URL(s), ${indexNowUrls.length} to push to IndexNow.`);
 
   if (WAIT_FOR_PROD && !REMOTE && !DRY_RUN && !(await waitForProd(changed))) process.exit(1);

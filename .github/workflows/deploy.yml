@@ -34,6 +34,7 @@ jobs:
       - name: List pages changed since the live version
         id: diff
         continue-on-error: true
+        timeout-minutes: 3
         run: |
           node scripts/submit-sitemap.js --changed-out=changed-urls.json
           count=$(node -p "require('./changed-urls.json').changed.length + require('./changed-urls.json').removed.length")
@@ -67,9 +68,6 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: read
-    concurrency:
-      group: sitemap-submit
-      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
 
