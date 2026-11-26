@@ -37,7 +37,7 @@ export const harness = {
     { n: '57% → 84%', label: 'of the skills a prompt needs, loaded once a router hook picks them (held-out prompts)' },
     { n: '180B', label: 'parameter mixture-of-experts model (about 6B active per token) on an RTX 3080 20 GB in my office' },
     { n: '303', label: 'open tickets triaged by the local model with no API bill; a Claude session checked the 11 closures it proposed and kept 3 open' },
-    { n: '3 bugs', label: 'that fixes had introduced or missed, found while a browser agent took the “after” screenshots of closed tickets' },
+    { n: '2 of 4', label: 'candidate vision models obeyed a prompt injection printed on a business card; the scanner uses one that resisted' },
   ],
 
   journey: [
