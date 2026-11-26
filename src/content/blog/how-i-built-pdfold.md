@@ -7,6 +7,8 @@ cover: "/blog/how-i-built-pdfold.webp"
 coverAlt: "A messy scanned page goes into a small press and comes out as a clean, structured page, with three check marks above it."
 ---
 
+*First published in July 2026, updated in November 2026 after PDFold was archived.*
+
 PDFold converted PDFs into structured Markdown in 11 languages. I built it alone, ran it in production from March 2026 with Stripe in live mode, and archived it in November.
 
 I wrote PDFold with Claude Code, from the first commit. Three things kept its output shippable: a workspace I corrected after each miss, a test suite that grew with the code, and infrastructure I didn't have to run.

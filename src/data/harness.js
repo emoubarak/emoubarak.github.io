@@ -138,7 +138,7 @@ export const harness = {
         'Renewals flow into my calendar as reminders: <b>19 created on the first run</b>.',
       ],
       incident: 'While filling it in, the agent found a contact address shown on one of my sites that had never existed as a mailbox. Every email sent to it had been lost since the site went live.',
-      visual: { kind: 'project', parts: ['Repositories', 'A domain', 'A mailbox', 'A host', 'Accounts', 'Renewals and bills'] },
+      visual: { kind: 'project', parts: ['Repos', 'A domain', 'A mailbox', 'A host', 'Accounts', 'Renewals and bills'] },
     },
     {
       id: 'watch', name: 'Watchtower', tag: 'probes & alerts', icon: icons.watch, anchor: 'vault', hidden: true,

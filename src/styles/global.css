@@ -549,14 +549,10 @@
     background: var(--bg-2);
     box-shadow: var(--shadow-sm);
   }
-  .frame img { display: block; width: 100%; height: auto; transition: transform 1.2s var(--ease-out); }
-  .js .frame[data-reveal]:not(.is-in) { opacity: 1; clip-path: inset(7% 7% 7% 7% round var(--radius)); }
-  .js .frame[data-reveal]:not(.is-in) img { transform: scale(1.12); }
-  .js .frame[data-reveal].is-in { animation: frame-in 1.2s var(--ease-out) backwards; }
-  .js .frame[data-reveal].is-in img { animation: img-in 1.5s var(--ease-out) backwards; }
-  @keyframes frame-in { from { clip-path: inset(7% 7% 7% 7% round var(--radius)); } to { clip-path: inset(0 0 0 0 round var(--radius)); } }
-  @keyframes img-in { from { transform: scale(1.12); } }
-  a:hover > .frame img, a.frame:hover img { transform: scale(1.025); }
+  .frame img { display: block; width: 100%; height: auto; }
+  /* Frames reveal like every other block (fade and rise); no clip or zoom from inside (« ça fait cheap », 2026-11-26) */
+  a.frame, a > .frame { transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out); }
+  a.frame:hover, a:hover > .frame { transform: translateY(-4px); box-shadow: var(--shadow-md, 0 18px 40px -18px rgb(0 0 0 / 0.35)); }
 
   /* Statement words light up as the paragraph crosses the screen */
   .js .scrub .w { opacity: 0.16; transition: opacity 0.35s linear; }

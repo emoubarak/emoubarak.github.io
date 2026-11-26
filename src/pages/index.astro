@@ -12,7 +12,7 @@ import { getCollection } from 'astro:content';
 // where they feed Malt and Upwork.
 const homeServices = ['SaaS & Web Apps', 'AI Automation & Agents', 'LLM & RAG Integration'];
 const services = homeServices.map((t) => allServices.find((s) => s.title === t)).filter(Boolean);
-const featured = ['Piktechs', 'PDFold', 'AI Search Visibility Tracker', 'Mon Jouet Montessori'];
+const featured = ['Piktechs', 'account-state-check', 'Claude Skill Router', 'browser-agents'];
 const projects = featured.map((t) => allProjects.find((p) => p.title === t)).filter(Boolean);
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);

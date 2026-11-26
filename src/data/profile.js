@@ -739,4 +739,14 @@ const allProjects = [
 ];
 
 // What the site shows: archived products flagged hidden stay in the data, out of the pages.
-export const projects = allProjects.filter((p) => !p.hidden);
+// Display order (portfolio, CV): flagship product and the open-source agent tools first, then client work,
+// research, and older or archived projects last (2026-11-26).
+const order = [
+  'Piktechs', 'account-state-check', 'Claude Skill Router', 'browser-agents', 'Hindsight', 'KSUR',
+  'THE ICON', 'Vyrion International Consulting', 'Group BW Invest', 'ID Advise', 'Atandem Agency',
+  'Prestige Auto Ecoservice', 'Central Garage', 'Polymarket Up/Down Lab', 'A 180B Model on an eGPU',
+  'Voice Browser', 'Signal LLM Bot', 'Altao Discharge Summary Tool', 'Deuspi', 'PDFold',
+  'AI Search Visibility Tracker', 'Mon Jouet Montessori', 'Worldline MQTT Tool',
+];
+const rank = (p) => { const i = order.indexOf(p.title); return i === -1 ? order.length : i; };
+export const projects = allProjects.filter((p) => !p.hidden).sort((a, b) => rank(a) - rank(b));
