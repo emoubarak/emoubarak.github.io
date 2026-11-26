@@ -29,7 +29,7 @@ const bios = [
 
 Since 2019 I've shipped software in cybersecurity, healthcare and fintech, often as the only engineer on the project. At Board of Cyber I spent three years on Security Rating®, a SaaS cyber-rating platform used by 200+ organizations, mostly on the front end, in a team of 20 developers. At ALTAO Santé I was the only software engineer on a new medical platform that processed 5,000+ hospital discharge summaries; the Data Science team supplied the ML models, which I integrated.
 
-Today I run EMM, my independent practice. I'm also co-founder and CTO of Piktechs (B2B SaaS for events and networking: digital business cards, lead capture, team workspaces) and CTO of KSUR (agence-ksur.com), a web agency whose client sites I build and host. In July 2026 I ran two hands-on ChatGPT workshops (FR/EN) for DRIVECO's teams.
+Today I run EMM, my independent practice. I'm also co-founder and CTO of Piktechs (B2B SaaS for field sales teams: digital business cards, lead capture, team workspaces) and CTO of KSUR (agence-ksur.com), a web agency whose client sites I build and host. In July 2026 I ran two hands-on ChatGPT workshops (FR/EN) for DRIVECO's teams.
 
 How I work with AI: I build in Claude Code. jev, Browser Use's browser agent, signs in to the deployed app as each kind of user, and a SQL query on the database checks each result. I write up these projects, with what went wrong, on moubarak.dev.
 
@@ -40,7 +40,7 @@ Engineering degree from IMT Nord Europe (CS, Networks & Telecoms). French (nativ
 
 Depuis 2019, je mets du logiciel en production en cybersécurité, en santé et dans la fintech, souvent comme seul ingénieur du projet. Chez Board of Cyber, j'ai passé trois ans sur Security Rating®, plateforme SaaS d'évaluation cyber utilisée par plus de 200 organisations, surtout côté front-end, dans une équipe de 20 développeurs. Chez ALTAO Santé, j'étais le seul ingénieur logiciel d'une nouvelle plateforme médicale qui a traité plus de 5 000 comptes rendus d'hospitalisation ; l'équipe Data Science fournissait les modèles ML, que j'ai intégrés.
 
-Aujourd'hui, je dirige EMM, mon activité indépendante. Je suis aussi cofondateur et CTO de Piktechs (SaaS B2B pour l'événementiel et le networking : cartes de visite numériques, capture de leads, espaces d'équipe) et CTO de KSUR (agence-ksur.com), une agence web dont je réalise et héberge les sites clients. En juillet 2026, j'ai animé deux ateliers ChatGPT pratiques (FR/EN) pour les équipes de DRIVECO.
+Aujourd'hui, je dirige EMM, mon activité indépendante. Je suis aussi cofondateur et CTO de Piktechs (SaaS B2B pour les équipes commerciales terrain : cartes de visite numériques, capture de leads, espaces d'équipe) et CTO de KSUR (agence-ksur.com), une agence web dont je réalise et héberge les sites clients. En juillet 2026, j'ai animé deux ateliers ChatGPT pratiques (FR/EN) pour les équipes de DRIVECO.
 
 Ma façon de travailler avec l'IA : je développe dans Claude Code. jev, l'agent navigateur de Browser Use, se connecte à l'app déployée sous chaque type de compte, et une requête SQL sur la base vérifie chaque résultat. Je raconte ces projets, avec ce qui a raté, sur moubarak.dev.
 
@@ -145,9 +145,9 @@ Compétences : AI Agents · Artificial Intelligence (AI) · Automation · Large 
     en: `Co-Founder & CTO - Piktechs
 March 2026 – Present · France
 
-B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.
+B2B SaaS for field sales teams: digital business cards (NFC/QR), lead capture and qualification, sync to the CRM and team workspaces.
 
-• Sole engineer: took a two-week prototype to a production B2B SaaS for event lead capture, built with Claude Code.
+• Sole engineer: took a two-week prototype to a production B2B SaaS for field sales lead capture, with an Android app on Google Play.
 • Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured by Postgres row-level security and role-based permissions.
 • Shipped an AI business-card scanner: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by prompt-injection testing (2 of 4 candidate models obeyed an injected card).
 • Agentic QA with jev, Browser Use's browser agent: it signs in to the test app as each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal; a SQL query on the database then checks the outcome. Standing checks cover what each plan unlocks and who can do what. Open-sourced as account-state-check.
@@ -160,9 +160,9 @@ Skills: Artificial Intelligence (AI) · Large Language Models (LLM) · Software 
     fr: `Cofondateur & CTO - Piktechs
 Mars 2026 – Aujourd'hui · France
 
-SaaS B2B pour l'événementiel et le networking : cartes de visite numériques (NFC/QR), capture de leads et CRM, espaces d'équipe.
+SaaS B2B pour les équipes commerciales terrain : cartes de visite numériques (NFC/QR), capture et qualification de leads, synchronisation avec le CRM et espaces d'équipe.
 
-• Seul ingénieur : j'ai fait d'un prototype de deux semaines un SaaS B2B en production pour la capture de leads sur les événements, développé avec Claude Code.
+• Seul ingénieur : j'ai fait d'un prototype de deux semaines un SaaS B2B en production pour la capture de leads des équipes terrain, développé avec Claude Code.
 • Facturation Stripe en production (paiement, portail client, webhooks, offres d'équipe facturées par siège, rapprochement planifié) et espaces de travail multi-locataires protégés par la sécurité au niveau des lignes (RLS) de Postgres et des permissions par rôle.
 • Scanner de cartes de visite par IA : modèle de vision avec sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours ; modèle de repli choisi par des tests d'injection de prompt (2 modèles candidats sur 4 ont obéi à une carte piégée).
 • QA automatisée avec jev, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe, équipe gelée) et suit un objectif écrit en langage courant ; une requête SQL sur la base vérifie ensuite le résultat. Des vérifications permanentes couvrent ce que débloque chaque offre et qui a le droit de faire quoi. Publié en open source : account-state-check.
@@ -334,13 +334,13 @@ const projects = [
     project: 'piktechs',
     link: 'https://piktechs.com/',
     en: `Piktechs - https://piktechs.com/
-B2B SaaS for NFC business cards and events: digital business cards, lead capture with an AI card scanner, CRM and team workspaces for professional networking. As the sole engineer, I designed, built and run all of it: multi-tenant workspaces isolated by Postgres row-level security, live Stripe billing with webhooks and a scheduled reconciliation, a card scanner whose fallback model I chose by prompt-injection testing, an Android app on Google Play, and agentic QA with jev, Browser Use's browser agent.
+B2B SaaS for field sales teams: digital business cards, lead capture with an AI card scanner, sync to the CRM and team workspaces. As the sole engineer, I designed, built and run all of it: multi-tenant workspaces isolated by Postgres row-level security, live Stripe billing with webhooks and a scheduled reconciliation, a card scanner whose fallback model I chose by prompt-injection testing, an Android app on Google Play, and agentic QA with jev, Browser Use's browser agent.
 
 Stack: React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter, jev (Browser Use)
 
 Skills: Stripe (Software) · React.js · Software as a Service (SaaS) · Full-Stack Development · Product Development · Large Language Models (LLM) · TypeScript · Supabase`,
     fr: `Piktechs - https://piktechs.com/
-SaaS B2B de cartes NFC et d'événementiel : cartes de visite numériques, capture de leads avec un scanner de cartes par IA, CRM et espaces d'équipe pour le networking professionnel. Seul ingénieur, j'ai tout conçu et développé, et je l'exploite : espaces de travail multi-locataires isolés par la sécurité au niveau des lignes (RLS) de Postgres, facturation Stripe en production avec webhooks et rapprochement planifié, un scanner dont j'ai choisi le modèle de repli par des tests d'injection de prompt, une application Android sur Google Play, et une QA automatisée avec jev, l'agent navigateur de Browser Use.
+SaaS B2B pour les équipes commerciales terrain : cartes de visite numériques, capture de leads avec un scanner de cartes par IA, CRM et espaces d'équipe pour le networking professionnel. Seul ingénieur, j'ai tout conçu et développé, et je l'exploite : espaces de travail multi-locataires isolés par la sécurité au niveau des lignes (RLS) de Postgres, facturation Stripe en production avec webhooks et rapprochement planifié, un scanner dont j'ai choisi le modèle de repli par des tests d'injection de prompt, une application Android sur Google Play, et une QA automatisée avec jev, l'agent navigateur de Browser Use.
 
 Stack : React, TypeScript, Vite, Supabase, Stripe, Capacitor, OpenRouter, jev (Browser Use)
 

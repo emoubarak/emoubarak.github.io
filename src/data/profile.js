@@ -46,13 +46,13 @@ export const identity = {
 export const proof = [
   { claim: { en: 'Medical platform for hospitals, sole engineer: 5,000+ documents processed; tests on past documents before rollout estimated €700,000 in savings for hospitals.', fr: "Plateforme médicale pour hôpitaux, seul ingénieur : 5 000+ documents traités ; 700 000 € d'économies estimées pour les hôpitaux lors des tests sur des documents passés, avant la mise en production." }, source: 'ALTAO Santé' },
   { claim: { en: 'Security Rating®, a cyber-rating SaaS used by 200+ organizations.', fr: 'Security Rating®, SaaS de cyber-notation utilisé par 200+ organisations.' }, source: 'Board of Cyber' },
-  { claim: { en: "Agentic QA with jev, Browser Use's browser agent: 16 permanent checks on what each plan unlocks and who can do what, each one decided by a SQL query on the database; its screenshots on closed tickets found 3 bugs the fixes had missed or introduced.", fr: "QA par agent navigateur avec jev, l'agent navigateur de Browser Use : 16 vérifications permanentes sur ce que débloque chaque offre et qui a le droit de faire quoi, chacune tranchée par une requête SQL sur la base ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits." }, source: 'Piktechs' },
+  { claim: { en: "Agentic QA with jev, Browser Use's browser agent: permanent checks on what each plan unlocks and who can do what, each one decided by a SQL query on the database.", fr: "QA par agent navigateur avec jev, l'agent navigateur de Browser Use : des vérifications permanentes sur ce que débloque chaque offre et qui a le droit de faire quoi, chacune tranchée par une requête SQL sur la base." }, source: 'Piktechs' },
   { claim: { en: 'AI card scanner: of four candidate vision models, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.', fr: "Scanner de cartes IA : sur quatre modèles de vision candidats, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le repli est celui qui a résisté." }, source: 'Piktechs' },
   { claim: { en: "Internal R&D tool to create, store and replay payment test sets; tests before rollout measured the team's development speed 70% higher.", fr: "Outil interne de R&D pour créer, stocker et rejouer des jeux de tests de paiement ; les tests avant la mise en production ont mesuré une vitesse de développement de l'équipe 70 % plus élevée." }, source: 'Worldline' },
-  { claim: { en: 'Paper trading only: ~12,000 simulated trades across 75 runners, settled against the Chainlink oracle; no edge after fees.', fr: "En paper trading seulement : ~12 000 trades simulés sur 75 instances, réglés contre l'oracle Chainlink ; aucun avantage après frais." }, source: 'Polymarket Up/Down Lab' },
-  { claim: { en: 'PDFs into structured Markdown, in 11 languages.', fr: 'Des PDF en Markdown structuré, en 11 langues.' }, source: 'PDFold' },
-  { claim: { en: 'Shopify store built, grown through SEO and marketing, and sold.', fr: 'Boutique Shopify créée, développée par le SEO et le marketing, puis vendue.' }, source: 'Mon Jouet Montessori' },
-  { claim: { en: 'Corporate AI training: two sessions, in French and English.', fr: 'Formation IA en entreprise : deux sessions, en français et en anglais.' }, source: 'DRIVECO' },
+  { claim: { en: 'Paper trading only: ~12,000 simulated trades across 75 strategy configurations (strategy, coin, time frame), settled against the Chainlink oracle; no edge after fees.', fr: "En paper trading seulement : ~12 000 trades simulés sur 75 configurations (stratégie, crypto, durée), réglés contre l'oracle Chainlink ; aucun avantage après frais." }, source: 'Polymarket Up/Down Lab' },
+  // PDFold (archived, no paying user) and Mon Jouet Montessori (sale not provable) left on 2026-11-26
+  // (emoubarak.github.io-runs/affirmations-cv.md); /kit keeps both projects.
+  { claim: { en: "Paid corporate AI training: two sessions, in French and English, with a public testimonial from the company's Chief People Officer.", fr: "Formation IA en entreprise, payée : deux sessions, en français et en anglais, avec un témoignage public de la DRH." }, source: 'DRIVECO' },
 ];
 
 // How I work with AI: principles, each with the place where a reader can check it.
@@ -159,14 +159,12 @@ export const experiences = [
     role: "Co-Founder & CTO",
     period: "Mar 2026 – Present",
     location: "France",
-    summary: "B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture and CRM, team workspaces.",
+    summary: "B2B SaaS for field sales teams: digital business cards (NFC/QR), lead capture and qualification, CRM sync and team workspaces.",
     achievements: [
-      "**Sole engineer:** took a two-week prototype to a **B2B SaaS in production** for event lead capture.",
-      "Multi-tenant workspaces isolated by **Postgres row-level security** across 143 migrations, with role-based permissions, and **live Stripe billing** with per-seat team plans: checkout, customer portal, webhooks and a scheduled reconciliation with Stripe. Every billing or permission change gets a **second review by a different model** from the one that wrote it.",
+      "**Sole engineer:** took a two-week prototype to a **B2B SaaS in production** for field sales lead capture, with an **Android app on Google Play** from the same codebase (Capacitor).",
+      "Multi-tenant workspaces isolated by **Postgres row-level security**, with role-based permissions, and **live Stripe billing** with per-seat team plans, webhooks and a scheduled reconciliation with Stripe. Every code change runs the unit and Playwright tests in CI; a billing or permission change also needs a **review by a second model** and my approval before production.",
       "Shipped an **AI business-card scanner**: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by **prompt-injection testing** (==2 of 4== candidate models obeyed an injected card).",
-      "**Agentic QA with jev**, Browser Use's browser agent: it signs in to the test app as a user in each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal; **a SQL query on the database then decides pass or fail**. ==16 permanent checks== on what each plan unlocks and who can do what; its before/after screenshots on closed tickets found ==3 bugs== that the fixes had missed or introduced. Open-sourced as account-state-check.",
-      "==1,493 unit tests== and ==140 Playwright tests== (Nov 2026) run in CI on every push, with separate test and production environments.",
-      "**Android app on Google Play** from the same codebase (Capacitor), CRM sync and a Zapier integration.",
+      "**Agentic QA with jev**, Browser Use's browser agent: it signs in to the test app as a user in each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal; **a SQL query on the database then decides pass or fail**. Permanent checks cover what each plan unlocks and who can do what. Open-sourced as account-state-check.",
     ],
     stack: ["React", "TypeScript", "Vite", "Tailwind", "Supabase (Postgres, RLS, Edge Functions)", "Stripe", "Capacitor", "OpenRouter", "Resend", "Playwright", "Vitest", "jev (Browser Use)", "GitHub Actions", "Cloudflare Pages", "Claude Code"],
     links: [
@@ -181,10 +179,10 @@ export const experiences = [
     role: "Founder & AI / Full-Stack Engineer",
     period: "Mar 2026 – Present",
     location: "France · Remote",
-    summary: "My own company, a French SASU, through which I invoice freelance work. The offer: self-hosted AI agents, rescue of AI-generated MVPs (Lovable, Bolt, Cursor, Claude Code), and LLM features in existing products.",
+    summary: "My own company, a French SASU, through which I invoice freelance work.",
     achievements: [
       "**AI browser automation with jev:** my own task runner drives dedicated browsers from the terminal to enter, extract and update data in back-offices that have no API, hands over to me for logins, captchas and 2FA, and logs every step with a screenshot and its cost.",
-      "**My own agent harness:** skills, hooks that turn repeated corrections into enforced checks, scheduled routines with failure alerts, semantic search over past sessions, and a 180B mixture-of-experts model (about 6B active per token) running locally on an RTX 3080 20 GB. A weekly job scans my sessions for corrections I keep repeating.",
+      "**My own agent harness:** hooks that turn repeated corrections into enforced checks, scheduled routines that alert me when they fail, and a 180B mixture-of-experts model running locally on an RTX 3080 20 GB, with public benchmarks.",
     ],
     stack: ["TypeScript", "Python", "Next.js", "Node.js", "Supabase", "Docker", "OpenAI, Claude, Gemini APIs", "MCP", "Browser Use", "Claude Code"],
     // the two articles already linked from "How I work with AI" on /cv are not repeated here
@@ -199,18 +197,18 @@ export const experiences = [
     role: "CTO",
     period: "Mar 2026 – Present",
     location: "France · Morocco",
-    summary: "Web agency (agence-ksur.com): websites, e-commerce and web apps for small businesses.",
+    summary: "Web agency (agence-ksur.com) that builds websites for small businesses.",
     achievements: [
       "KSUR has built ==more than twenty client websites==, mostly in Morocco, plus La Réunion; I run the **technical side, delivery and hosting**.",
       "**Partnership with THE ICON** (the-icon.be), a Belgian marketing and sales agency: KSUR built THE ICON's website, and the sites of two of its Belgian clients in French, English and Dutch.",
-      "Run the agency's hosting: one VPS serving the agency site, its demo sites and five client sites, with deployment on every push to GitHub and an email check per client site in CI.",
+      "Run the agency's hosting: deployment on every push to GitHub, and a daily check that each client site's mailbox and contact form still work, with an alert when one fails.",
     ],
   },
   {
     company: "DRIVECO",
     url: "https://www.driveco.com",
     role: "AI Trainer",
-    period: "Jul 2026",
+    period: "Jun 2026 – Jul 2026",
     location: "Paris (Hybrid)",
     summary: "AI training for the teams of DRIVECO, an electric-vehicle charging operator.",
     achievements: [
@@ -228,7 +226,7 @@ export const experiences = [
     location: "Paris (Remote)",
     summary: "Mostly front-end, in a **team of 20 developers**, on Security Rating®, a SaaS cyber-rating platform used by ==200+ organizations==: client platform, back office and manager office.",
     achievements: [
-      "Built **Angular components**, worked on the Angular version upgrades, added Spectator test coverage and fixed bugs.",
+      "Built **Angular components** and worked on the **Angular version upgrades** of a large codebase.",
       "Built a Python **vulnerability-scanning probe** on nmap that automated attack-surface data collection for the ratings.",
     ],
     stack: ["Angular", "TypeScript", "Python", "nmap", "Spectator", "Docker", "CI/CD"],
@@ -256,7 +254,6 @@ export const experiences = [
     summary: "**Sole mobile engineer** on the first version of a React Native grocery delivery app, transitioning the product from web-only to native mobile.",
     achievements: [
       "Built the whole front end from the designer's wireframes.",
-      "Implemented a gamified UX direction defined by the product team to drive customer retention.",
       "Co-defined API contracts with the backend developer for real-time order tracking and inventory sync.",
     ],
     stack: ["React Native", "JavaScript", "REST APIs"],
@@ -295,10 +292,11 @@ export const certifications = [
 ];
 
 export const techGroups = [
-  { label: "AI & Automation", items: ["AI Agents", "Claude Code (skills, hooks, subagents)", "MCP", "Browser agents & agentic QA (jev, Browser Use)", "LLM APIs (OpenAI, Claude, Gemini, OpenRouter)", "LLM evaluation & prompt-injection testing", "Local LLMs (llama.cpp, ExLlamaV2)", "Embeddings & vector search", "OCR & Vision pipelines", "ElevenLabs", "Voice AI"] },
-  { label: "Web & Mobile Dev", items: ["TypeScript", "JavaScript", "Next.js", "React", "React Native", "Capacitor", "Angular", "Vue.js", "Node.js", "Python", "Django", "Flask", "PostgreSQL", "Supabase"] },
-  { label: "Cloud & DevOps", items: ["AWS (EC2, Route53, Amplify)", "Docker", "Git", "CI/CD", "Vercel"] },
-  { label: "E-commerce", items: ["Shopify API", "Liquid", "Stripe", "SEO"] },
+  // 2026-11-26: only skills that a piece of work on the site or the CV shows (emoubarak.github.io-runs/affirmations-cv.md)
+  { label: "AI & Automation", items: ["AI Agents", "Claude Code (skills, hooks, subagents, MCP)", "Browser agents & agentic QA (jev, Browser Use)", "LLM APIs (OpenAI, Claude, Gemini, OpenRouter)", "LLM evaluation & prompt-injection testing", "Local LLMs (llama.cpp, GGUF)", "OCR & Vision pipelines"] },
+  { label: "Web & Mobile Dev", items: ["TypeScript", "JavaScript", "Next.js", "React", "React Native", "Capacitor", "Angular", "Vue.js", "Node.js", "Python", "Django", "PostgreSQL", "Supabase"] },
+  { label: "Cloud & DevOps", items: ["AWS (EC2, Route53, Amplify)", "Docker", "CI/CD", "Vercel"] },
+  { label: "Payments & SEO", items: ["Stripe", "SEO"] },
   // spoken languages are in identity.languages, shown once in the /cv header
 ];
 
@@ -328,12 +326,12 @@ const allProjects = [
   {
     title: 'Piktechs',
     thumb: `${base}/work/piktechs.webp`,
-    thumbAlt: 'Piktechs on a laptop and a phone: the events page of the web app and the mobile dashboard',
+    thumbAlt: 'Piktechs on a laptop and a phone: the web app dashboard and a published digital business card',
     subtitle: 'piktechs.com',
     category: 'saas',
     categoryLabel: 'SaaS',
     role: 'Co-Founder & CTO',
-    description: 'B2B SaaS for digital business cards (NFC and QR) at professional events: lead capture with an AI card scanner, a CRM and team workspaces. I am its only engineer: workspace isolation with Postgres row-level security, per-seat Stripe billing with webhooks and a scheduled reconciliation, and a scanner fallback model I chose by prompt-injection tests. 1,493 unit and 140 Playwright tests run in CI on every push (Nov 2026).',
+    description: 'B2B SaaS for field sales teams: digital business cards (NFC and QR), lead capture with an AI card scanner, sync to the CRM and team workspaces. I am its only engineer: workspace isolation with Postgres row-level security, per-seat Stripe billing with webhooks and a scheduled reconciliation, and a scanner fallback model I chose by prompt-injection tests. A billing or permission change needs a review by a second model and my approval before production.',
     previews: [
       { label: 'Dashboard', src: `${base}/portfolio/piktechs-devices.webp` },
       { label: 'Live site', src: 'https://piktechs.com' },
@@ -478,7 +476,7 @@ const allProjects = [
     category: 'agency',
     categoryLabel: 'Agency',
     role: 'CTO',
-    description: 'Web agency where I am CTO. It has built more than twenty client websites, mostly in Morocco, plus La Réunion, along with e-commerce and web apps for small businesses. Through a partnership with THE ICON, a Belgian marketing agency, KSUR also built THE ICON\'s website and the sites of two of its Belgian clients. I run the technical side, the delivery and the hosting.',
+    description: 'Web agency for small businesses, where I am CTO. It has built more than twenty client websites, mostly in Morocco, plus La Réunion. Through a partnership with THE ICON, a Belgian marketing agency, KSUR also built THE ICON\'s website and the sites of two of its Belgian clients. I run the technical side, the delivery and the hosting.',
     // agence-ksur.com sets frame-ancestors 'self', so it cannot be previewed in an iframe.
     previews: [
       { label: 'Homepage', src: `${base}/portfolio/ksur-home.webp` },
@@ -495,7 +493,7 @@ const allProjects = [
     category: 'research',
     categoryLabel: 'Research',
     role: 'Solo',
-    description: 'A search for a trading edge on Polymarket\'s 5 and 15 minute binary crypto markets, in paper trading only: hypothesis, out-of-sample backtest, simulated trades against the live order books, then falsification. ~12,000 simulated trades across 75 runners, settled against the Chainlink oracle. Result: no edge after fees; nearly every apparent edge came from a measurement artifact.',
+    description: 'A search for a trading edge on Polymarket\'s 5 and 15 minute binary crypto markets, in paper trading only: hypothesis, out-of-sample backtest, simulated trades against the live order books, then falsification. ~12,000 simulated trades across 75 strategy configurations (strategy, coin, time frame), settled against the Chainlink oracle. Result: no edge after fees; nearly every apparent edge came from a measurement artifact.',
     // github.com sets X-Frame-Options: DENY, so the repo cannot be previewed in an iframe.
     // The dashboard screenshot (portfolio/polymarket-dashboard.webp) was removed on 2026-11-26: it showed a real-money panel.
     previews: [
@@ -512,7 +510,7 @@ const allProjects = [
     category: 'research',
     categoryLabel: 'Research',
     role: 'Solo · MIT',
-    description: 'Dated benchmarks and the full working config for running Qwen3.8-Flash-Next 180B (about 6B active per token) with Strata on a mini PC whose only strong GPU sits in an OCuLink dock. With an RTX 3080 20 GB: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, up to 262k context. Two public repos, one per GPU, with frozen prompts and the scripts to reproduce every number. I also published WebJev-35B-A3B-GGUF, a GGUF conversion of a browser-agent decision model: 409 downloads on Hugging Face (Nov 2026), and the Q4 file matches Q8 on 52 of 54 real steps.',
+    description: 'Dated benchmarks and the full working config for running Qwen3.8-Flash-Next 180B (about 6B active per token) with Strata on a mini PC whose only strong GPU sits in an OCuLink dock. With an RTX 3080 20 GB: about 2,000 tokens/s prompt read and 110 to 204 tokens/s generation, up to 262k context. Two public repos, one per GPU, with frozen prompts and the scripts to reproduce every number. I also published WebJev-35B-A3B-GGUF, a GGUF conversion of a browser-agent decision model: 409 downloads on Hugging Face (Nov 2026), and its 4-bit file makes the same decisions as the 8-bit one on 52 of 54 steps replayed from real tasks.',
     previews: [
       { label: 'What it measures', src: `${base}/portfolio/strata-illustration.webp` },
       { label: '8 GB vs 20 GB', src: `${base}/portfolio/strata-8gb-vs-20gb.webp` },
@@ -529,7 +527,7 @@ const allProjects = [
     category: 'open-source',
     categoryLabel: 'Open source',
     role: 'Author',
-    description: 'Bot for Signal group chats, called by name in plain language. It summarizes what was said, explains a message, transcribes voice notes, makes and edits images, searches the web, does exact maths and posts reminders at the time you set. Runs in Docker on OpenRouter models, or on a local model with nothing leaving the machine.',
+    description: 'Bot for Signal group chats, maintained since April 2026 and used by 7 people in one group since October 2026. Called by name in plain language, it summarizes what was said, transcribes voice notes, makes images, searches the web and posts reminders at the time you set. No message is lost while it restarts, and a reminder that came due meanwhile is posted when it is back. Runs in Docker on OpenRouter models, or on a local model with nothing leaving the machine.',
     previews: [
       { label: 'In a group', src: `${base}/portfolio/signal-bot-illustration.webp` },
       { label: 'Repository', src: `${base}/portfolio/signal-bot-repo.webp` },
@@ -581,7 +579,7 @@ const allProjects = [
     category: 'website',
     categoryLabel: 'Website',
     role: 'Client work',
-    description: 'Website for T&EM, an integrated agency in Vienna: a scroll-driven horizontal journey on the home page, five service panels, an interactive 3D tandem bike on the contact page, and a small admin to add, hide or back up languages.',
+    description: 'Website for T&EM, an integrated agency in Vienna: a scroll-driven horizontal journey on the home page, an interactive 3D tandem bike on the contact page, and a small admin to add, hide or back up languages.',
     previews: [{ label: 'Live site', src: 'https://atandemagency.com' }],
     url: 'https://atandemagency.com',
     tags: ['Astro', 'Three.js', 'Scroll-driven', 'i18n'],
@@ -594,7 +592,7 @@ const allProjects = [
     category: 'website',
     categoryLabel: 'Website',
     role: 'Client work',
-    description: 'On the existing trilingual site (English, French, Chinese) of a consultancy that helps companies set up and operate in China, I added a short quiz on each service page that emails a checklist PDF, lead delivery through Resend, six guides and the SEO work.',
+    description: 'On the existing trilingual site (English, French, Chinese) of a consultancy that helps companies set up and operate in China, I added a short quiz on each service page that emails a checklist PDF and sends the lead to the team through Resend.',
     // vyrioncapital.com sends X-Frame-Options: DENY, so it cannot be previewed in an iframe.
     previews: [
       { label: 'Homepage', src: `${base}/portfolio/vyrion-home.webp` },
@@ -612,7 +610,7 @@ const allProjects = [
     category: 'website',
     categoryLabel: 'Website',
     role: 'Client work',
-    description: 'Website for THE ICON, a digital marketing and sales support agency: 22 pages covering their services, three offer tiers, method and results, plus two calculators (ad ROI, lost leads). Swiss brutalist design in static HTML, CSS and JS, with no build step.',
+    description: 'Website for THE ICON, a Belgian digital marketing and sales support agency: their services, three offer tiers, method and results, plus two calculators (ad ROI, lost leads).',
     previews: [
       { label: 'Homepage', src: `${base}/portfolio/the-icon-home.webp` },
       { label: 'Offers', src: `${base}/portfolio/the-icon-offres.webp` },
@@ -716,7 +714,7 @@ const allProjects = [
     category: 'mobile',
     categoryLabel: 'Mobile App',
     role: 'Mobile Software Engineer',
-    description: 'Grocery delivery mobile app with real-time geolocation, on the Uber model. I was the only mobile engineer on the first version, built in React Native from the designer\'s wireframes.',
+    description: 'Grocery delivery mobile app with real-time geolocation, on the Uber model. I was the only mobile engineer on the first version, built in React Native from the designer\'s wireframes. Its CEO recommends my work publicly on Malt.',
     previews: [{ label: 'App screenshot', src: `${base}/portfolio/deuspi.png` }],
     url: null,
     tags: ['React Native', 'JavaScript'],
