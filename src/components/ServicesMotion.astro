@@ -154,10 +154,7 @@ const scenes = [
   .sc .grow { animation-name: sm-grow; transform-origin: left center; }
   .sc .slide { animation-name: sm-slide; }
   .sc .toast { animation-name: sm-toast; }
-  .sc .bubble-r { animation-name: sm-pop; transform-origin: right bottom; }
-  .sc .bubble-l { animation-name: sm-pop; transform-origin: left top; }
   .sc .hl { animation-name: sm-grow; transform-origin: left center; }
-  .sc .typing { animation: sm-typing 0.8s ease both; animation-delay: calc(var(--d) * 1s); }
   .sc .draw { stroke-dasharray: var(--len) var(--len); animation: sm-draw 1s cubic-bezier(0.65, 0, 0.35, 1) both; animation-delay: calc(var(--d, 0) * 1s); }
   .sc path.draw[stroke-dasharray='6 6'] { stroke-dasharray: 6 6; animation-name: sm-dash-in; }
   .sc .packet { animation: sm-packet 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite both; animation-delay: calc(var(--d, 0) * 1s); }
@@ -169,7 +166,6 @@ const scenes = [
   @keyframes sm-toast { from { opacity: 0; transform: translateY(26px) scale(0.92); } }
   @keyframes sm-draw { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
   @keyframes sm-dash-in { from { opacity: 0; } }
-  @keyframes sm-typing { 0% { opacity: 0; } 15%, 75% { opacity: 1; } 100% { opacity: 0; } }
   @keyframes sm-packet { 0% { opacity: 0; transform: translateX(var(--x0)); } 15% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; transform: translateX(var(--x1)); } }
   @keyframes sm-spin { to { transform: rotate(360deg); } }
 
@@ -190,7 +186,6 @@ const scenes = [
   @media (prefers-reduced-motion: reduce) {
     .sm__float, .sc .spin, .sc .packet { animation: none !important; }
     .sc .a, .sc .draw { animation: none !important; opacity: 1; stroke-dashoffset: 0; }
-    .sc .typing { opacity: 0; }
     .sm__tab[aria-selected='true'] .sm__bar > span { animation: none; transform: scaleX(1); }
   }
 </style>

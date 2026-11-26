@@ -49,7 +49,7 @@ export const proof = [
   { claim: { en: "Agentic QA with jev, Browser Use's browser agent: 16 permanent checks on what each plan unlocks and who can do what, each one decided by a SQL query on the database; its screenshots on closed tickets found 3 bugs the fixes had missed or introduced.", fr: "QA par agent navigateur avec jev, l'agent navigateur de Browser Use : 16 vérifications permanentes sur ce que débloque chaque offre et qui a le droit de faire quoi, chacune tranchée par une requête SQL sur la base ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits." }, source: 'Piktechs' },
   { claim: { en: 'AI card scanner: of four candidate vision models, two obeyed a prompt-injection card and one errored; the fallback is the one that resisted.', fr: "Scanner de cartes IA : sur quatre modèles de vision candidats, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le repli est celui qui a résisté." }, source: 'Piktechs' },
   { claim: { en: "Internal R&D tool to create, store and replay payment test sets; tests before rollout measured the team's development speed 70% higher.", fr: "Outil interne de R&D pour créer, stocker et rejouer des jeux de tests de paiement ; les tests avant la mise en production ont mesuré une vitesse de développement de l'équipe 70 % plus élevée." }, source: 'Worldline' },
-  { claim: { en: 'Paper trading only: ~12,000 simulated trades across 75 runners, settled against the Chainlink oracle; no edge after fees.', fr: "En paper trading seulement : ~12 000 trades simulés sur 75 runners, réglés contre l'oracle Chainlink ; aucun avantage après frais." }, source: 'Polymarket Up/Down Lab' },
+  { claim: { en: 'Paper trading only: ~12,000 simulated trades across 75 runners, settled against the Chainlink oracle; no edge after fees.', fr: "En paper trading seulement : ~12 000 trades simulés sur 75 instances, réglés contre l'oracle Chainlink ; aucun avantage après frais." }, source: 'Polymarket Up/Down Lab' },
   { claim: { en: 'PDFs into structured Markdown, in 11 languages.', fr: 'Des PDF en Markdown structuré, en 11 langues.' }, source: 'PDFold' },
   { claim: { en: 'Shopify store built, grown through SEO and marketing, and sold.', fr: 'Boutique Shopify créée, développée par le SEO et le marketing, puis vendue.' }, source: 'Mon Jouet Montessori' },
   { claim: { en: 'Corporate AI training: two sessions, in French and English.', fr: 'Formation IA en entreprise : deux sessions, en français et en anglais.' }, source: 'DRIVECO' },
@@ -165,7 +165,7 @@ export const experiences = [
       "Multi-tenant workspaces isolated by **Postgres row-level security** across 143 migrations, with role-based permissions, and **live Stripe billing** with per-seat team plans: checkout, customer portal, webhooks and a scheduled reconciliation with Stripe. Every billing or permission change gets a **second review by a different model** from the one that wrote it.",
       "Shipped an **AI business-card scanner**: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by **prompt-injection testing** (==2 of 4== candidate models obeyed an injected card).",
       "**Agentic QA with jev**, Browser Use's browser agent: it signs in to the test app as a user in each account state (free, Pro, lapsed, team member, frozen team) and follows a plain-English goal; **a SQL query on the database then decides pass or fail**. ==16 permanent checks== on what each plan unlocks and who can do what; its before/after screenshots on closed tickets found ==3 bugs== that the fixes had missed or introduced. Open-sourced as account-state-check.",
-      "==1,493 unit tests== and ==140 Playwright tests== (Nov 2026) gate CI/CD across separate test and production environments.",
+      "==1,493 unit tests== and ==140 Playwright tests== (Nov 2026) run in CI on every push, with separate test and production environments.",
       "**Android app on Google Play** from the same codebase (Capacitor), CRM sync and a Zapier integration.",
     ],
     stack: ["React", "TypeScript", "Vite", "Tailwind", "Supabase (Postgres, RLS, Edge Functions)", "Stripe", "Capacitor", "OpenRouter", "Resend", "Playwright", "Vitest", "jev (Browser Use)", "GitHub Actions", "Cloudflare Pages", "Claude Code"],
@@ -201,7 +201,7 @@ export const experiences = [
     location: "France · Morocco",
     summary: "Web agency (agence-ksur.com): websites, e-commerce and web apps for small businesses.",
     achievements: [
-      "Run the **technical stack and delivery** for ==six live client sites== in Morocco and La Réunion.",
+      "KSUR has built ==more than twenty client websites==, mostly in Morocco, plus La Réunion; I run the **technical side, delivery and hosting**.",
       "**Partnership with THE ICON** (the-icon.be), a Belgian marketing and sales agency: KSUR built THE ICON's website, and the sites of two of its Belgian clients in French, English and Dutch.",
       "Run the agency's hosting: one VPS serving the agency site, its demo sites and five client sites, with deployment on every push to GitHub and an email check per client site in CI.",
     ],
@@ -333,7 +333,7 @@ const allProjects = [
     category: 'saas',
     categoryLabel: 'SaaS',
     role: 'Co-Founder & CTO',
-    description: 'B2B SaaS for digital business cards (NFC and QR) at professional events: lead capture with an AI card scanner, a CRM and team workspaces. I am its only engineer. Workspaces are isolated by Postgres row-level security, team plans are billed per seat through Stripe webhooks and a scheduled reconciliation, and the scanner\'s fallback model was chosen by prompt-injection tests. 1,493 unit and 140 Playwright tests gate each release (Nov 2026).',
+    description: 'B2B SaaS for digital business cards (NFC and QR) at professional events: lead capture with an AI card scanner, a CRM and team workspaces. I am its only engineer: workspace isolation with Postgres row-level security, per-seat Stripe billing with webhooks and a scheduled reconciliation, and a scanner fallback model I chose by prompt-injection tests. 1,493 unit and 140 Playwright tests run in CI on every push (Nov 2026).',
     previews: [
       { label: 'Dashboard', src: `${base}/portfolio/piktechs-devices.webp` },
       { label: 'Live site', src: 'https://piktechs.com' },
@@ -478,7 +478,7 @@ const allProjects = [
     category: 'agency',
     categoryLabel: 'Agency',
     role: 'CTO',
-    description: 'Web agency where I am CTO: websites, e-commerce and web apps for small businesses, with six client sites live in Morocco and La Réunion. Through a partnership with THE ICON, a Belgian marketing agency, KSUR also built THE ICON\'s website and the sites of two of its Belgian clients. I run the technical stack, the delivery and the hosting.',
+    description: 'Web agency where I am CTO. It has built more than twenty client websites, mostly in Morocco, plus La Réunion, along with e-commerce and web apps for small businesses. Through a partnership with THE ICON, a Belgian marketing agency, KSUR also built THE ICON\'s website and the sites of two of its Belgian clients. I run the technical side, the delivery and the hosting.',
     // agence-ksur.com sets frame-ancestors 'self', so it cannot be previewed in an iframe.
     previews: [
       { label: 'Homepage', src: `${base}/portfolio/ksur-home.webp` },
@@ -495,9 +495,9 @@ const allProjects = [
     category: 'research',
     categoryLabel: 'Research',
     role: 'Solo',
-    description: 'A search for a trading edge on Polymarket\'s 5 and 15 minute binary crypto markets, in paper trading only: hypothesis, out-of-sample backtest, simulated trades against the live order books, then falsification. ~12,000 simulated trades across 75 runners, settled against the Chainlink oracle. Result: no edge after fees, and nearly every edge I found came from a measurement artifact.',
+    description: 'A search for a trading edge on Polymarket\'s 5 and 15 minute binary crypto markets, in paper trading only: hypothesis, out-of-sample backtest, simulated trades against the live order books, then falsification. ~12,000 simulated trades across 75 runners, settled against the Chainlink oracle. Result: no edge after fees; nearly every apparent edge came from a measurement artifact.',
     // github.com sets X-Frame-Options: DENY, so the repo cannot be previewed in an iframe.
-    // The dashboard screenshot (portfolio/polymarket-dashboard.webp) left the card on 2026-11-26: it shows a real-money panel.
+    // The dashboard screenshot (portfolio/polymarket-dashboard.webp) was removed on 2026-11-26: it showed a real-money panel.
     previews: [
       { label: 'What it found', src: `${base}/portfolio/polymarket-illustration.webp` },
     ],

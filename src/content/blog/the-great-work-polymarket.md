@@ -55,9 +55,9 @@ Citrinitas is the dawn, the first gleam of gold. Mine gleamed for about 28 hours
 
 My second round of backtests, on the real trade tape, found it: three minutes before the end of a window, buy the favorite that is already extreme, skip the volatile windows. My journal said **+5% per dollar, positive four days out of five**. I put it on the paper broker as **coagula**, the alchemists' word for the moment the work finally solidifies.
 
-97 live paper trades later: it won **84.5%** of the time. Break-even, after fees, was **85.2%**. I was paying 84.2¢ for a favorite that won 84.5% of the time: it won at its price, and the live trades rejected the 8.6-point edge my backtest had promised.
+97 live paper trades later: it won **84.5%** of the time. Break-even, after fees, was **85.2%**. I was paying 84.2¢ for a favorite that won 84.5% of the time: it won at its price, and the paper trades rejected the 8.6-point edge my backtest had promised.
 
-![Hide the Pain Harold meme: "Won 84.5% of 97 live trades", then "Break-even after fees: 85.2%".](/blog/memes/the-great-work-polymarket-2.webp)
+![Hide the Pain Harold meme: "Won 84.5% of 97 paper trades", then "Break-even after fees: 85.2%".](/blog/memes/the-great-work-polymarket-2.webp)
 
 The autopsy found two stacked cherry-picks. The "+5%" came from a single cell of the grid, the one with zero execution cost; the same script in a realistic configuration printed **−$10 a day**, positive on one day in six. And the edge itself was momentum in disguise: the favorite only beats its price when Bitcoin trends, and the four "positive days" were trending days.
 

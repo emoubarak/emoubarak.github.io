@@ -65,7 +65,7 @@ From 2019 to 2026: software in cybersecurity, healthcare and fintech, often as t
 I write about all of this, mistakes included, on moubarak.dev. Based in France, working remotely across Europe.`,
     fr: `Ingénieur logiciel et IA. Je conçois des SaaS, des fonctionnalités LLM et des agents navigateur pour des fondateurs et des agences, et je les mets en production.
 
-Je travaille au quotidien dans Claude Code. Seul ingénieur de Piktechs, un SaaS B2B de cartes de visite numériques, je l'ai fait passer d'un prototype de deux semaines à un produit en production, avec la facturation Stripe, des espaces de travail multi-clients et une application Android sur Google Play. L'étude de cas (en anglais) détaille ce qui a cassé en route et ce que j'ai changé : https://moubarak.dev/blog/case-study-piktechs
+Je travaille au quotidien dans Claude Code. Seul ingénieur de Piktechs, un SaaS B2B de cartes de visite numériques, je l'ai fait passer d'un prototype de deux semaines à un produit en production, avec la facturation Stripe, des espaces de travail multi-locataires et une application Android sur Google Play. L'étude de cas (en anglais) détaille ce qui a cassé en route et ce que j'ai changé : https://moubarak.dev/blog/case-study-piktechs
 
 Quelques principes auxquels je tiens :
 • Quand un agent dit « fini », je vérifie sur l'app déployée, avec un agent navigateur connecté sous chaque type de compte. J'ai publié cette méthode en open source : account-state-check.
@@ -152,7 +152,7 @@ B2B SaaS for events & networking: digital business cards (NFC/QR), lead capture 
 • Shipped an AI business-card scanner: vision LLM with strict JSON output, a per-user quota and on-device OCR as the last resort; chose the cross-provider fallback by prompt-injection testing (2 of 4 candidate models obeyed an injected card).
 • Live Stripe billing (checkout, customer portal, webhooks, per-seat team plans, scheduled reconciliation) and multi-tenant workspaces secured by Postgres row-level security and role-based permissions; billing and permission code is reviewed by a different model from the one that wrote it.
 • Android app on Google Play from the same codebase (Capacitor), CRM sync and a Zapier integration.
-• Unit and Playwright tests gate CI/CD across separate test and production environments.
+• Unit and Playwright tests run in CI on every push, with separate test and production environments.
 
 Stack: React · TypeScript · Vite · Tailwind · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Resend · Playwright · Vitest · jev (Browser Use) · GitHub Actions · Cloudflare Pages · Claude Code
 
@@ -165,9 +165,9 @@ SaaS B2B pour l'événementiel et le networking : cartes de visite numériques (
 • Seul ingénieur : j'ai fait d'un prototype de deux semaines un SaaS B2B en production pour la capture de leads sur les événements, développé avec Claude Code.
 • QA automatisée avec jev, l'agent navigateur de Browser Use : il se connecte à l'app de test sous chaque état de compte (gratuit, Pro, expiré, membre d'équipe, équipe gelée) et suit un objectif écrit en langage courant ; une requête SQL sur la base vérifie ensuite le résultat. 16 vérifications permanentes sur les accès par offre et les permissions ; ses captures avant/après sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits. Publié en open source : account-state-check.
 • Scanner de cartes de visite par IA : modèle de vision avec sortie JSON stricte, quota par utilisateur et OCR sur l'appareil en dernier recours ; modèle de repli choisi par des tests d'injection de prompt (2 modèles candidats sur 4 ont obéi à une carte piégée).
-• Facturation Stripe en production (paiement, portail client, webhooks, offres d'équipe facturées par siège, rapprochement planifié) et espaces de travail multi-clients protégés par la sécurité au niveau des lignes (RLS) de Postgres et des permissions par rôle ; le code de facturation et de permissions est relu par un autre modèle que celui qui l'a écrit.
+• Facturation Stripe en production (paiement, portail client, webhooks, offres d'équipe facturées par siège, rapprochement planifié) et espaces de travail multi-locataires protégés par la sécurité au niveau des lignes (RLS) de Postgres et des permissions par rôle ; le code de facturation et de permissions est relu par un autre modèle que celui qui l'a écrit.
 • Application Android publiée sur Google Play depuis le même code (Capacitor), synchronisation CRM et intégration Zapier.
-• Les tests unitaires et Playwright bloquent la CI/CD en cas d'échec, avec des environnements de test et de production séparés.
+• Les tests unitaires et Playwright tournent dans la CI à chaque push, avec des environnements de test et de production séparés.
 
 Stack : React · TypeScript · Vite · Tailwind · Supabase (Postgres, RLS, Edge Functions) · Stripe · Capacitor · OpenRouter · Resend · Playwright · Vitest · jev (Browser Use) · GitHub Actions · Cloudflare Pages · Claude Code
 
@@ -179,9 +179,9 @@ Compétences : Artificial Intelligence (AI) · Large Language Models (LLM) · So
     en: `CTO - KSUR
 March 2026 – Present · France · Morocco
 
-KSUR (agence-ksur.com) is a web agency for small businesses. As CTO I run the technical side of its client sites: six live in Morocco and La Réunion, and three in Belgium through the THE ICON partnership.
+KSUR (agence-ksur.com) is a web agency for small businesses. It has built more than twenty client websites, mostly in Morocco, plus La Réunion; as CTO I run the technical side, delivery and hosting.
 
-• Partnership with THE ICON (the-icon.be), a Belgian marketing and sales agency: KSUR builds the websites of its clients, in French, English and Dutch.
+• Partnership with THE ICON (the-icon.be), a Belgian marketing and sales agency: KSUR built THE ICON's website and the sites of two of its clients, in French, English and Dutch.
 • Built eight business and e-commerce sites for companies in Morocco and France, including an online store connected to Odoo (sales, stock, accounting) that sold more than 300 products in its first year.
 • Set up and run the hosting: one Apache VPS for the agency site, its demos and five client sites, with push-to-deploy and an SMTP check per client site in CI.
 • Built nine live demos shown to prospects (law firm, medical practice, SME dashboard, warehouse management, route optimizer and more) and the agency's quote and invoice generator.
@@ -190,9 +190,9 @@ Skills: Web Development · Full-Stack Development · Software Architecture · De
     fr: `CTO - KSUR
 Mars 2026 – Aujourd'hui · France · Maroc
 
-KSUR (agence-ksur.com) est une agence web pour les petites entreprises. J'en dirige la partie technique : six sites clients en ligne au Maroc et à La Réunion, et trois en Belgique grâce au partenariat avec THE ICON.
+KSUR (agence-ksur.com) est une agence web pour les petites entreprises. Elle a réalisé plus de vingt sites clients, surtout au Maroc, et à La Réunion ; j'en dirige la partie technique, la livraison et l'hébergement.
 
-• Partenariat avec THE ICON (the-icon.be), agence belge de marketing et d'accompagnement commercial : KSUR réalise les sites de ses clients, en français, anglais et néerlandais.
+• Partenariat avec THE ICON (the-icon.be), agence belge de marketing et d'accompagnement commercial : KSUR a réalisé le site de THE ICON et ceux de deux de ses clients, en français, anglais et néerlandais.
 • Huit sites vitrines et e-commerce au Maroc et en France, dont une boutique en ligne connectée à Odoo (ventes, stock, comptabilité) qui a vendu plus de 300 produits la première année.
 • Hébergement du site de l'agence, de ses démos et de cinq sites clients sur un VPS Apache, avec déploiement à chaque push et vérification SMTP de chaque site client en CI.
 • Neuf démos en ligne montrées aux prospects (cabinet d'avocats, cabinet médical, tableau de bord de PME, gestion d'entrepôt, optimiseur de tournées…) et le générateur de devis et de factures de l'agence.
@@ -578,7 +578,7 @@ Juin 2026
 
 La recherche d'un avantage exploitable (edge) sur les marchés crypto binaires de Polymarket (fenêtres « Up or Down » de 5 et 15 minutes).
 
-Méthode : hypothèse, backtest sur l'échantillon puis hors échantillon, trading simulé (paper trading) en conditions réelles, puis tentative de réfutation. Environ 12 000 trades simulés, enregistrés sur 75 runners, réglés sur l'oracle Chainlink. Deux moteurs : un framework de paper trading en Python (bibliothèque standard seule, sans dépendance) et un market maker en Go qui calcule son prix en 114 ns environ.
+Méthode : hypothèse, backtest sur l'échantillon puis hors échantillon, trading simulé (paper trading) en conditions réelles, puis tentative de réfutation. Environ 12 000 trades simulés, enregistrés sur 75 instances, réglés sur l'oracle Chainlink. Deux moteurs : un framework de paper trading en Python (bibliothèque standard seule, sans dépendance) et un market maker en Go qui calcule son prix en 114 ns environ.
 
 Résultat : aucun avantage exploitable. Presque chaque edge trouvé s'est révélé être un artefact de mesure, et le seul signal qui a tenu hors échantillon rapportait à peu près zéro une fois les frais déduits. Le dépôt documente chaque étape.
 
@@ -939,13 +939,13 @@ Compétences : Python · Simulation · Video Production · Content Creation · A
     project: 'content',
     link: 'https://www.tiktok.com/@bouffon_lucide',
     en: `Bouffon Lucide - https://www.tiktok.com/@bouffon_lucide
-French TikTok series on manipulation and psychology: a jester explains to a kid, in a 1940s rubber-hose cartoon style, about 1:30 per episode. AI images, avatars and voices, edited by code, for $73.62 of spend so far. On 26 November 2026: 22 videos, 75,629 views, 5,986 likes and 1,446 followers on TikTok (241 on 3 November); the best video reached 42,779 views.
+French TikTok series on manipulation and psychology: a jester explains to a kid, in a 1940s rubber-hose cartoon style, about 1:30 per episode. Made with AI images, avatars and voices and edited by code; $73.62 spent so far. On 26 November 2026: 22 videos, 75,629 views, 5,986 likes and 1,446 followers on TikTok (241 on 3 November); the best video reached 42,779 views.
 
 Stack: Kling AI Avatar, HeyGen, GPT Image, ElevenLabs, MiniMax, HyperFrames, ffmpeg
 
 Skills: Content Creation · Generative AI · Video Production · Storytelling`,
     fr: `Bouffon Lucide - https://www.tiktok.com/@bouffon_lucide
-Série TikTok de vulgarisation sur la manipulation et la psychologie : un bouffon explique à un gamin, dans un style de dessin animé des années 1940, environ 1 min 30 par épisode. Images, avatars et voix générés par IA, montage par du code, pour 73,62 $ de dépenses à ce jour. Au 26 novembre 2026 : 22 vidéos, 75 629 vues, 5 986 j'aime et 1 446 abonnés sur TikTok (241 le 3 novembre) ; la meilleure vidéo a fait 42 779 vues.
+Série TikTok de vulgarisation sur la manipulation et la psychologie : un bouffon explique à un gamin, dans un style de dessin animé des années 1940, environ 1 min 30 par épisode. Images, avatars et voix générés par IA, montage par du code ; 73,62 $ dépensés à ce jour. Au 26 novembre 2026 : 22 vidéos, 75 629 vues, 5 986 j'aime et 1 446 abonnés sur TikTok (241 le 3 novembre) ; la meilleure vidéo a fait 42 779 vues.
 
 Stack : Kling AI Avatar, HeyGen, GPT Image, ElevenLabs, MiniMax, HyperFrames, ffmpeg
 
@@ -1200,7 +1200,7 @@ const proof = {
 - DRIVECO: two ChatGPT workshops (FR/EN) for its teams, with a public testimonial from its Chief People Officer.`,
   fr: `- ALTAO Santé, plateforme médicale pour les hôpitaux dont j'étais le seul ingénieur logiciel : plus de 5 000 documents traités.
 - Board of Cyber : trois ans sur Security Rating®, SaaS de notation cyber utilisé par plus de 200 organisations.
-- Polymarket Up/Down Lab : environ 12 000 trades simulés sur 75 runners, réglés sur l'oracle Chainlink ; résultat : aucun avantage exploitable une fois les frais déduits.
+- Polymarket Up/Down Lab : environ 12 000 trades simulés sur 75 instances, réglés sur l'oracle Chainlink ; résultat : aucun avantage exploitable une fois les frais déduits.
 - PDFold (archivé) : des PDF convertis en Markdown structuré, en 11 langues.
 - Scanner de cartes IA de Piktechs : sur quatre modèles de vision bon marché testés sur les mêmes photos, deux ont obéi à une carte piégée par injection de prompt et un a planté ; le modèle de repli est celui qui a résisté.
 - QA automatisée sur Piktechs avec jev, l'agent navigateur de Browser Use : 16 vérifications permanentes sur les accès par offre et les permissions, où une requête SQL sur la base décide si le test passe ; ses captures sur des tickets clos ont révélé 3 bugs que les correctifs avaient manqués ou introduits.
@@ -1712,7 +1712,7 @@ const bioSections = bios.map((b) => ({ label: b.label, blocks: pair(b) }));
 const featuredIds = ['case-study-piktechs', 'case-study-ai-card-scanner', 'case-study-jev-check', 'what-i-kept-telling-claude', 'browser-agents-at-work-jev', 'lazy-by-design', 'how-i-built-pdfold', 'the-great-work-polymarket'];
 // FR = translation of each article's current English title and description (frontmatter of src/content/blog/*.md)
 const featuredFr = {
-  'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment, seul ingénieur, j'ai fait d'un prototype de deux semaines un SaaS B2B en production : espaces de travail multi-clients, facturation en conditions réelles, une application Android et une fonctionnalité IA, avec Claude Code comme principal environnement de développement. Ma façon de travailler avec l'agent, et quatre erreurs que j'ai corrigées."],
+  'case-study-piktechs': ["Étude de cas : Piktechs, d'un prototype de deux semaines à un SaaS en production avec Claude Code", "Comment, seul ingénieur, j'ai fait d'un prototype de deux semaines un SaaS B2B en production : espaces de travail multi-locataires, facturation en conditions réelles, une application Android et une fonctionnalité IA, avec Claude Code comme principal environnement de développement. Ma façon de travailler avec l'agent, et quatre erreurs que j'ai corrigées."],
   'case-study-ai-card-scanner': ["Étude de cas : choisir le modèle de repli d'un LLM en l'attaquant", "Le scanner de cartes de visite de Piktechs lit la carte d'un inconnu avec un modèle de vision. Comment j'ai choisi son modèle de repli par un test d'injection de prompt avant de comparer les prix, et les garde-fous qui permettent d'exposer sans risque un endpoint LLM payant."],
   'case-study-jev-check': ["Étude de cas : account-state-check, une QA par agent navigateur où la base de données rend le verdict", "Les tests unitaires et les suites de tests de bout en bout à base de mocks ratent les bugs où le front déployé, le backend et les permissions se contredisent. J'ai construit un outil de QA par agent navigateur qui se connecte à l'app de test déployée sous un compte dans un état exact et vérifie le résultat dans la base de données, puis je l'ai publié en open source comme skill d'agent."],
   'what-i-kept-telling-claude': ["Ce que je répétais sans cesse à Claude : quatre mois de mes propres corrections", "J'ai relu environ 4 000 de mes propres prompts, sur quatre mois et deux machines, et retrouvé les six mêmes corrections dans chaque projet. Les écrire ne suffisait pas : une règle qu'un script peut vérifier va maintenant dans un hook, et le reste dans le fichier le plus ciblé qui marche."],

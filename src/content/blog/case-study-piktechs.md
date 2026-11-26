@@ -51,7 +51,7 @@ Turning it into a product that bills meant multi-tenant data with real permissio
 
 ## Where it stands in September 2026
 
-The product is in production with live billing, team workspaces, the AI scanner and CRM integrations. The Android app builds and releases from CI and is [live on Google Play](https://play.google.com/store/apps/details?id=com.piktechs.app). The iOS app is not published yet.
+The product is in production with live billing, team workspaces, the AI scanner and CRM integrations. The Android app builds and releases from CI and is on Google Play. The iOS app is not published yet.
 
 Four mistakes, and what I changed after each:
 
